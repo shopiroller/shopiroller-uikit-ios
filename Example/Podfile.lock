@@ -1,0 +1,23 @@
+PODS:
+  - Kingfisher (4.10.1)
+  - Shopiroller (0.1.0):
+    - Kingfisher
+
+DEPENDENCIES:
+  - Shopiroller (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+
+EXTERNAL SOURCES:
+  Shopiroller:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Shopiroller: 0f6422e24e02be1882831ec09b3eb4e40892aec6
+
+PODFILE CHECKSUM: 9bc5efdd81125f0574d57ad7de89b7115574c3b3
+
+COCOAPODS: 1.10.1

@@ -1,0 +1,6 @@
+framework module Shopiroller {
+  umbrella header "Shopiroller-umbrella.h"
+
+  export *
+  module * { export * }
+}
