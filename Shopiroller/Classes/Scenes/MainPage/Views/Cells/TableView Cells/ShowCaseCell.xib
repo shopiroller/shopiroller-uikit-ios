@@ -11,35 +11,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nxn-7P-FfL" customClass="ShowCaseCell" customModule="shopiroller" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nxn-7P-FfL" customClass="ShowCaseCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="501" height="205"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKE-44-smS">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="501" height="205"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04b-aq-5xq">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04b-aq-5xq">
+                        <rect key="frame" x="0.0" y="50" width="501" height="135"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gU2-67-eTM">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gU2-67-eTM">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njy-uz-Jt5">
+                        <rect key="frame" x="0.0" y="15" width="33" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="njy-uz-Jt5" firstAttribute="leading" secondItem="MKE-44-smS" secondAttribute="leading" id="1u5-zG-gwe"/>
                     <constraint firstItem="04b-aq-5xq" firstAttribute="leading" secondItem="MKE-44-smS" secondAttribute="leading" id="5cg-U5-Qx5"/>
+                    <constraint firstItem="04b-aq-5xq" firstAttribute="top" secondItem="njy-uz-Jt5" secondAttribute="bottom" constant="14" id="EIV-KV-GdL"/>
                     <constraint firstAttribute="trailing" secondItem="04b-aq-5xq" secondAttribute="trailing" id="Kjl-gK-zXt"/>
-                    <constraint firstAttribute="bottom" secondItem="04b-aq-5xq" secondAttribute="bottom" id="nsD-Tl-ioy"/>
-                    <constraint firstItem="04b-aq-5xq" firstAttribute="top" secondItem="MKE-44-smS" secondAttribute="top" id="yQw-Uz-osU"/>
+                    <constraint firstItem="njy-uz-Jt5" firstAttribute="top" secondItem="MKE-44-smS" secondAttribute="top" constant="15" id="WRt-w9-MaS"/>
+                    <constraint firstAttribute="bottom" secondItem="04b-aq-5xq" secondAttribute="bottom" constant="20" id="nsD-Tl-ioy"/>
+                    <constraint firstItem="04b-aq-5xq" firstAttribute="top" secondItem="MKE-44-smS" secondAttribute="top" constant="50" id="yQw-Uz-osU"/>
                 </constraints>
             </collectionViewCellContentView>
+            <size key="customSize" width="501" height="205"/>
             <connections>
                 <outlet property="collectionView" destination="04b-aq-5xq" id="Hhe-W6-Kir"/>
             </connections>
-            <point key="canvasLocation" x="135" y="-100"/>
+            <point key="canvasLocation" x="118.11594202898551" y="-48.549107142857139"/>
         </collectionViewCell>
     </objects>
     <resources>

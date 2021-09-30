@@ -87,7 +87,10 @@ class SRAppContext: NSObject {
 //
     static var fontFamily: SRFontFamily {
         get {
-            return .poppins
+            if let family = userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.fontFamily) as? String {
+                return SRFontFamily(rawValue: family) ?? .default
+            }
+            return .default
         }
         set {
             userDefaults.set(newValue.rawValue, forKey: SRAppConstants.UserDefaults.Key.fontFamily)

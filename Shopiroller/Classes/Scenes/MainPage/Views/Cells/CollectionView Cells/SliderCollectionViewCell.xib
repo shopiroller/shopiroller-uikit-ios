@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,25 +22,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOK-au-ImV">
                                 <rect key="frame" x="0.0" y="0.0" width="416" height="378"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xse-eB-l9S">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xse-eB-l9S">
                                         <rect key="frame" x="0.0" y="0.0" width="416" height="378"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29H-Td-wwi">
-                                        <rect key="frame" x="0.0" y="357" width="416" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="29H-Td-wwi" secondAttribute="bottom" id="CZc-VU-k4o"/>
                                     <constraint firstAttribute="trailing" secondItem="Xse-eB-l9S" secondAttribute="trailing" id="NuN-0Z-Tay"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="leading" secondItem="KOK-au-ImV" secondAttribute="leading" id="fKc-fj-Mf1"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="centerY" secondItem="KOK-au-ImV" secondAttribute="centerY" id="fmp-sE-rkF"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="top" secondItem="KOK-au-ImV" secondAttribute="top" id="g4V-Ef-Pgj"/>
-                                    <constraint firstItem="29H-Td-wwi" firstAttribute="leading" secondItem="KOK-au-ImV" secondAttribute="leading" id="qpc-Iu-rzr"/>
-                                    <constraint firstItem="29H-Td-wwi" firstAttribute="centerX" secondItem="KOK-au-ImV" secondAttribute="centerX" id="thl-Yk-cPF"/>
                                     <constraint firstAttribute="bottom" secondItem="Xse-eB-l9S" secondAttribute="bottom" id="z8b-vy-Rb7"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="centerX" secondItem="KOK-au-ImV" secondAttribute="centerX" id="zx5-oO-bUF"/>
                                 </constraints>
@@ -65,9 +57,8 @@
             </constraints>
             <size key="customSize" width="416" height="378"/>
             <connections>
-                <outlet property="mainContainer" destination="0h0-Ih-9kn" id="W87-60-IXc"/>
+                <outlet property="mainContainer" destination="KOK-au-ImV" id="GgZ-8p-t9V"/>
                 <outlet property="sliderImage" destination="Xse-eB-l9S" id="MAe-7u-3cR"/>
-                <outlet property="tempLabel" destination="29H-Td-wwi" id="L0l-VR-jK5"/>
             </connections>
             <point key="canvasLocation" x="282.60869565217394" y="127.90178571428571"/>
         </collectionViewCell>

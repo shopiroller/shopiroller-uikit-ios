@@ -44,7 +44,7 @@ public class SRMainPageViewModel {
         var urlQueryItems: [URLQueryItem] = []
         
         urlQueryItems.append(URLQueryItem(name: "page", value: String(1)))
-        urlQueryItems.append(URLQueryItem(name: "perPage", value: String(20)))
+        urlQueryItems.append(URLQueryItem(name: "perPage", value: String(50)))
         
         
         SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: networkManager) {
@@ -140,6 +140,9 @@ public class SRMainPageViewModel {
         return categories
     }
     
+    func getShowCaseViewModel() -> [SRShowcaseResponseModel]? {
+        return showcase
+    }
    
     
     func getSection(section: Int) -> CellType {
@@ -160,13 +163,13 @@ public class SRMainPageViewModel {
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
-            return 200
+            return 250
         case .categories:
             return 100
         case .showCase:
-            return 100
-        case .products:
             return 200
+        case .products:
+            return 250
         }
     }
     

@@ -10,7 +10,7 @@ import UIKit
 extension UIView {
     
     func makeCardView() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 8
         backgroundColor = .white
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 12

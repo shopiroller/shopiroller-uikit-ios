@@ -40,9 +40,9 @@ public class SRMainPageViewController: BaseViewController {
     
     public override func setup() {
         super.setup()
-
+        
         getSliders()
-
+        
         getProducts()
         
         getCategories()
@@ -58,8 +58,15 @@ public class SRMainPageViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         collectionView.clipsToBounds = false
         
-        
-        
+//        do {
+//            try UIFont.register(path:"", fileNameString: "Poppins-Bold", type: ".ttf")
+//            try UIFont.register(path:"", fileNameString: "Poppins-Medium", type: ".ttf")
+//            try UIFont.register(path:"", fileNameString: "Poppins-Regular", type: ".ttf")
+//            try UIFont.register(path:"", fileNameString: "Poppins-SemiBold", type: ".ttf")
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//        
         
     }
     
@@ -68,7 +75,13 @@ public class SRMainPageViewController: BaseViewController {
         
         configureEmptyView()
         
+        collectionView.iss
         
+        
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        <#code#>
     }
     
     private func getSliders() {
@@ -130,7 +143,7 @@ public class SRMainPageViewController: BaseViewController {
 }
 
 extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-        
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -138,7 +151,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         case 1:
             return viewModel.categoryItemCount()
         case 2:
-            return viewModel.showcaseItemCount()
+            return 2
+            //            return viewModel.showcaseItemCount()
         case 3:
             return viewModel.productItemCount()
         default:
@@ -150,7 +164,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
-
+    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -164,9 +178,9 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.configureCell(model: cellModel)
             return cell
         case 2:
-            let cellModel = ["ShowCase"]
+            let cellModel = ["T1EST","T2EST","T3EST"]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
-            cell.configureCell(model: cellModel[indexPath.row])
+            cell.configureCell(model: cellModel)
             return cell
         case 3:
             let cellModel = viewModel.getTableProductVieWModel(position: indexPath.row)
@@ -192,9 +206,9 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
         case 1:
             return CGSize(width: collectionView.frame.width, height: CGFloat(viewModel.getHeight(type: CellType.categories)))
         case 2:
-            return CGSize(width: collectionView.frame.width, height: CGFloat(viewModel.getHeight(type: CellType.showCase)))
+            return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2))
         case 3:
-            return CGSize(width: (collectionView.frame.width / 2) - 10, height: CGFloat(viewModel.getHeight(type: CellType.products)))
+            return CGSize(width: (collectionView.frame.width / 2) - 10, height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
         default:
             break
         }

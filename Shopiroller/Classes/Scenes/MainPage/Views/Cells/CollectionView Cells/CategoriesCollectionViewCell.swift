@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
 
@@ -19,14 +20,14 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        imageViewBackGround.layer.cornerRadius = 25
+        imageViewBackGround.layer.cornerRadius = imageViewBackGround.layer.frame.height / 2 
         imageViewBackGround.backgroundColor = .buttonLight
         
-//        categoryImage.image = .
     }
     
     func configureCell(model: SRCategoryResponseModel?){
         categoryTitle.text = model?.name
+        categoryImage.kf.setImage(with: URL(string: model?.icon ?? ""))
     }
 
 }

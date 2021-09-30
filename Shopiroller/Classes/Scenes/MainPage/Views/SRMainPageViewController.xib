@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRMainPageViewController" customModule="shopiroller" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRMainPageViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="4Pe-ee-Bh4" id="1Pb-0i-Kpf"/>
                 <outlet property="collectionViewContainer" destination="YA6-N1-PzX" id="Vzt-Ms-wAC"/>
@@ -29,7 +29,7 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQF-CQ-qcC" userLabel="Empty View Container">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MC-Ei-C3U" customClass="EmptyView" customModule="shopiroller" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MC-Ei-C3U" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
                                     <rect key="frame" x="32" y="73" width="350" height="632"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -49,10 +49,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YA6-N1-PzX" userLabel="CollectionView Container">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-ee-Bh4">
-                                                    <rect key="frame" x="15" y="0.0" width="384" height="0.0"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-ee-Bh4">
+                                                    <rect key="frame" x="15" y="20" width="384" height="0.0"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C0s-Pw-Xzp">
                                                         <size key="itemSize" width="128" height="128"/>
@@ -64,7 +64,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="4Pe-ee-Bh4" firstAttribute="top" secondItem="YA6-N1-PzX" secondAttribute="top" id="OS6-mS-8AB"/>
+                                                <constraint firstItem="4Pe-ee-Bh4" firstAttribute="top" secondItem="YA6-N1-PzX" secondAttribute="top" constant="20" id="OS6-mS-8AB"/>
                                                 <constraint firstAttribute="trailing" secondItem="4Pe-ee-Bh4" secondAttribute="trailing" constant="15" id="PxV-UB-9sN"/>
                                                 <constraint firstItem="4Pe-ee-Bh4" firstAttribute="leading" secondItem="YA6-N1-PzX" secondAttribute="leading" constant="15" id="Vhk-cd-QIi"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Pe-ee-Bh4" secondAttribute="bottom" id="eZe-W1-p40"/>
