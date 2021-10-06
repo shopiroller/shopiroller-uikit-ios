@@ -16,16 +16,13 @@ class SliderCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         sliderImage.layer.cornerRadius = 10
         sliderImage.layer.masksToBounds = true
-    }
-   
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        sliderImage.image = nil
+        
     }
 
+    
     public func configureUI(model: SliderSlidesModel?) {
         self.sliderImage.kf.setImage(with: URL(string: model?.imageUrl ?? ""))
     }

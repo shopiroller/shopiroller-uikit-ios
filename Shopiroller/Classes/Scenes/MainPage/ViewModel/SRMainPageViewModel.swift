@@ -17,12 +17,14 @@ public class SRMainPageViewModel {
     
     private let networkManager: SRNetworkManager
     
+    private var currentPage: Int = 0
+    
+    
     public init (networkManager: SRNetworkManager = SRNetworkManager()) {
         self.networkManager = networkManager
     }
     
     func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        
         SRNetworkManagerRequests.getSliders().response(using: networkManager) {
             (result) in
             switch result {
@@ -31,7 +33,6 @@ public class SRMainPageViewModel {
                 DispatchQueue.main.async {
                     success?()
                 }
-                
             case .failure(let err):
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
@@ -43,17 +44,36 @@ public class SRMainPageViewModel {
     func getProducts(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
-        urlQueryItems.append(URLQueryItem(name: "page", value: String(1)))
-        urlQueryItems.append(URLQueryItem(name: "perPage", value: String(50)))
+        if products?.count ?? 0 == 0 {
+            currentPage = 0
+        }else{
+            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+                return
+            }
+            currentPage = currentPage + 1
+        }
         
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
         SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: networkManager) {
             (result) in
             switch result{
             case .success(let response):
-                self.products = response.data
+                if self.currentPage != 0 {
+                    self.products = self.products! + (response.data ?? [])
+                }else{
+                    self.products = response.data
+                }
                 DispatchQueue.main.async {
                     succes?()
+                    print("------------------")
+                    print("------------------")
+                    print("------------------")
+                    print(self.currentPage)
+                    print("------------------")
+                    print("------------------")
+                    print("------------------")
                 }
             case.failure(let err):
                 DispatchQueue.main.async {
@@ -65,7 +85,6 @@ public class SRMainPageViewModel {
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        
         SRNetworkManagerRequests.getCategories().response(using: networkManager) {
             (result) in
             switch result{
@@ -120,7 +139,11 @@ public class SRMainPageViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        return 0
+        if let showcase = showcase , showcase.count > 0 {
+            return 2
+        }else{
+            return 0
+        }
     }
     
     func productItemCount() -> Int {
@@ -132,18 +155,18 @@ public class SRMainPageViewModel {
         return sliderModel?[position].slides
     }
     
-    func getTableProductVieWModel(position: Int) -> ProductListModel? {
-        return products?[position]
+    func getTableProductVieWModel() -> [ProductListModel]? {
+        return products
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
         return categories
     }
     
-    func getShowCaseViewModel() -> [SRShowcaseResponseModel]? {
-        return showcase
+    func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
+        return showcase?[position]
     }
-   
+    
     
     func getSection(section: Int) -> CellType {
         switch section{
@@ -165,7 +188,7 @@ public class SRMainPageViewModel {
         case .slider:
             return 250
         case .categories:
-            return 100
+            return 150
         case .showCase:
             return 200
         case .products:

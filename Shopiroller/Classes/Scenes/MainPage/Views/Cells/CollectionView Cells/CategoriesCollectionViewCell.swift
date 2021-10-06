@@ -8,26 +8,29 @@
 import UIKit
 import Kingfisher
 
-class CategoriesCollectionViewCell: UICollectionViewCell {
 
+class CategoriesCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet private weak var imageContainer: UIView!
     @IBOutlet private weak var categoryImage: UIImageView!
     @IBOutlet private weak var categoryTitleContainer: UIView!
-    @IBOutlet private weak var categoryTitle: UILabel!
+    @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet private weak var imageViewBackGround: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        imageViewBackGround.layer.cornerRadius = imageViewBackGround.layer.frame.height / 2 
+        imageViewBackGround.layer.cornerRadius = imageViewBackGround.layer.frame.height / 2
         imageViewBackGround.backgroundColor = .buttonLight
         
     }
     
     func configureCell(model: SRCategoryResponseModel?){
         categoryTitle.text = model?.name
+        categoryImage.backgroundColor = .clear
         categoryImage.kf.setImage(with: URL(string: model?.icon ?? ""))
-    }
-
+    }    
+    
 }

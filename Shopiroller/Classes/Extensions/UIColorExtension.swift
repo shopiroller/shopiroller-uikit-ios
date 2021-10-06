@@ -37,5 +37,7 @@ extension UIColor {
     
     static let textSecondary: UIColor = #colorLiteral(red: 0.2695193887, green: 0.3161548376, blue: 0.3300221562, alpha: 1)
     
+    static let skeletonDarkColor: UIColor = #colorLiteral(red: 25.0, green: 30.0, blue: 255.0, alpha: 1.0)
+    
     
 }

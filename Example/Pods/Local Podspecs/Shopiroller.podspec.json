@@ -28,6 +28,9 @@
   "dependencies": {
     "Kingfisher": [
 
+    ],
+    "SVProgressHUD": [
+
     ]
   }
 }

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Shimmer.swift">
+   </FileRef>
+   <FileRef
       location = "group:Shopiroller.xcodeproj">
    </FileRef>
    <FileRef

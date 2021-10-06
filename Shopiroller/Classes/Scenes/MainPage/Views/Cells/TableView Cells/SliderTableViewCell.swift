@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 public class SliderTableViewCell: UICollectionViewCell {
@@ -18,7 +19,7 @@ public class SliderTableViewCell: UICollectionViewCell {
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+                
         collectionView.register(cellClass: SliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -29,12 +30,11 @@ public class SliderTableViewCell: UICollectionViewCell {
         } else {
             // Fallback on earlier versions
         }
-        
     }
     
     func setup(viewModel : [SliderSlidesModel]?) {
         self.viewModel = viewModel
-        pageControl.numberOfPages = viewModel?.count ?? 0
+        pageControl.numberOfPages = 4
         collectionView.reloadData()
     }
     

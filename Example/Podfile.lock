@@ -2,6 +2,8 @@ PODS:
   - Kingfisher (4.10.1)
   - Shopiroller (0.1.0):
     - Kingfisher
+    - SVProgressHUD
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Shopiroller (from `../`)
@@ -9,6 +11,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Kingfisher
+    - SVProgressHUD
 
 EXTERNAL SOURCES:
   Shopiroller:
@@ -16,8 +19,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  Shopiroller: 0f6422e24e02be1882831ec09b3eb4e40892aec6
+  Shopiroller: 97d7a45c4fb544e7c2451702cb2a2c61931d7419
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 9bc5efdd81125f0574d57ad7de89b7115574c3b3
+PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
 
 COCOAPODS: 1.10.2

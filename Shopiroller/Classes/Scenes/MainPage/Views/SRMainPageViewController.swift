@@ -6,9 +6,10 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 extension SRMainPageViewController : NibLoadable { }
+
 
 private struct Constants {
     
@@ -26,6 +27,7 @@ public class SRMainPageViewController: BaseViewController {
     
     
     private let viewModel : SRMainPageViewModel
+
     
     public init(viewModel: SRMainPageViewModel = SRMainPageViewModel()) {
         self.viewModel = viewModel
@@ -41,48 +43,44 @@ public class SRMainPageViewController: BaseViewController {
     public override func setup() {
         super.setup()
         
-        getSliders()
+        collectionView.register(cellClass: SliderTableViewCell.self)
+        collectionView.register(cellClass: CategoriesCell.self)
+        collectionView.register(cellClass: ItemCollectionViewCell.self)
+        collectionView.register(cellClass: ShowCaseCell.self)
+        collectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ProductsTitleView.identifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
+      
         
-        getProducts()
+        //        do {
+        //            try UIFont.register(path:"", fileNameString: "Poppins-Bold", type: ".ttf")
+        //            try UIFont.register(path:"", fileNameString: "Poppins-Medium", type: ".ttf")
+        //            try UIFont.register(path:"", fileNameString: "Poppins-Regular", type: ".ttf")
+        //            try UIFont.register(path:"", fileNameString: "Poppins-SemiBold", type: ".ttf")
+        //        } catch let error {
+        //            print(error.localizedDescription)
+        //        }
+        //
+        
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getSliders()
         
         getCategories()
         
         getShowCase()
         
-        collectionView.register(cellClass: SliderTableViewCell.self)
-        collectionView.register(cellClass: CategoriesCell.self)
-        collectionView.register(cellClass: ItemCollectionViewCell.self)
-        collectionView.register(cellClass: ShowCaseCell.self)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.clipsToBounds = false
-        
-//        do {
-//            try UIFont.register(path:"", fileNameString: "Poppins-Bold", type: ".ttf")
-//            try UIFont.register(path:"", fileNameString: "Poppins-Medium", type: ".ttf")
-//            try UIFont.register(path:"", fileNameString: "Poppins-Regular", type: ".ttf")
-//            try UIFont.register(path:"", fileNameString: "Poppins-SemiBold", type: ".ttf")
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-//        
-        
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        getProducts()
         
         configureEmptyView()
         
-        collectionView.iss
-        
-        
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
-        <#code#>
-    }
     
     private func getSliders() {
         viewModel.getSliders(success: { [weak self] in
@@ -151,8 +149,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         case 1:
             return viewModel.categoryItemCount()
         case 2:
-            return 2
-            //            return viewModel.showcaseItemCount()
+            return viewModel.showcaseItemCount()
         case 3:
             return viewModel.productItemCount()
         default:
@@ -178,23 +175,21 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.configureCell(model: cellModel)
             return cell
         case 2:
-            let cellModel = ["T1EST","T2EST","T3EST"]
+            let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
-            cell.configureCell(model: cellModel)
+            cell.configureCell(viewModel: cellModel)
             return cell
         case 3:
-            let cellModel = viewModel.getTableProductVieWModel(position: indexPath.row)
+            let cellModel = viewModel.getTableProductVieWModel()
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
-            cell.configureProductCell(model: cellModel)
+            cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
             return cell
         default:
             break
         }
         return UICollectionViewCell()
     }
-    
 }
-
 
 
 extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
@@ -206,7 +201,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
         case 1:
             return CGSize(width: collectionView.frame.width, height: CGFloat(viewModel.getHeight(type: CellType.categories)))
         case 2:
-            return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2))
+            return CGSize(width: (collectionView.frame.width), height: ((collectionView.frame.height / 2) - 3 ) * 135 / 182 )
         case 3:
             return CGSize(width: (collectionView.frame.width / 2) - 10, height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
         default:
@@ -218,6 +213,23 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //        let bannerViewModel = viewModel.bannerViewModel(at: indexPath.row)
         //        descriptionLabel.text = bannerViewModel.description
+        if indexPath.row == viewModel.productItemCount() - 1 {
+            getProducts()
+        }
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ProductsTitleView.identifier, for: indexPath) as! ProductsTitleView
+        header.isHidden = false
+        return header
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 3 {
+            return CGSize(width: 100, height: 25)
+        }else{
+            return CGSize(width: view.frame.width, height: 0)
+        }
     }
     
 }
