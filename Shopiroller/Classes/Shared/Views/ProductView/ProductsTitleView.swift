@@ -1,29 +1,40 @@
 //
-//  ProductsTitleView.swift
+//  SectionHeader.swift
 //  Kingfisher
 //
-//  Created by Görkem Gür on 6.10.2021.
+//  Created by Görkem Gür on 12.10.2021.
 //
 
 import UIKit
 
-@available(iOS 8.2, *)
-
+@available(iOS 9.0, *)
 class ProductsTitleView: UICollectionReusableView {
-    static let identifier = "ProductsTitleView"
-     private let label: UILabel = {
-         let label = UILabel()
-         label.textColor = .black
-         label.text = "Products"
-         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-         label.textAlignment = .left
+    
+    private struct Constants {
+        static var titleText: String { return "explore-title-text".localized  }
+        
+    }
+    
+     var label: UILabel = {
+         let label: UILabel = UILabel()
+         label.font = UIFont.init(name: "Poppins-Regular", size: 18)
+         label.sizeToFit()
          return label
      }()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addSubview(label)
 
+     override init(frame: CGRect) {
+         super.init(frame: frame)
+         label.text = Constants.titleText
+         label.textColor = .textPrimary
+         addSubview(label)
+
+         label.translatesAutoresizingMaskIntoConstraints = false
+         label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+         label.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+         label.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

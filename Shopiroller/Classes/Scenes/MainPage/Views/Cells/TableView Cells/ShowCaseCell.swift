@@ -9,16 +9,24 @@ import UIKit
 import Kingfisher
 
 class ShowCaseCell: UICollectionViewCell {
+    
+    private struct Constants {
+        static var seeAllTitle: String { return "section-see-all-title".localized  }
+    }
 
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var seeAllContainer: UIView!
+    @IBOutlet private weak var seeAllImage: UIImageView!
+    @IBOutlet private weak var seeAllTitle: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     
     var viewModel: SRShowcaseResponseModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        seeAllTitle.text = Constants.seeAllTitle
+        seeAllImage.image = .rightArrow
         
         collectionView.register(cellClass: ItemCollectionViewCell.self)
         collectionView.delegate = self
@@ -67,7 +75,7 @@ extension ShowCaseCell: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ShowCaseCell: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 135, height: 173)
+        return CGSize(width: 135, height: collectionView.frame.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

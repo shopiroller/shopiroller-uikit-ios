@@ -7,11 +7,11 @@
 
 import Foundation
 
-class SRAppContext: NSObject {
-    
+public class SRAppContext: NSObject {
+
     static var userDefaults: UserDefaults {
         let combined = UserDefaults.standard
-        combined.addSuite(named: "com.shopiroller.ecommerce")
+        combined.addSuite(named: "org.cocoapods.Shopiroller")
         return combined
     }
     
@@ -22,21 +22,21 @@ class SRAppContext: NSObject {
         static let CustomURL = "custom_url_preference"
         static let CustomPort = "custom_port_preference"
     }
-    
+        
     class func getSettings() {
-#if APPSTORE
-        print("AppStore")
-        return
-#endif
-#if SANDBOX
-        self.currentEndpoint = .dev
-#elseif DEVELOPMENT
-        self.currentEndpoint = .dev
-#elseif QA
-        self.currentEndpoint = .dev
-#else
-        self.currentEndpoint = .dev
-#endif
+            #if APPSTORE
+                print("AppStore")
+                return
+            #endif
+            #if SANDBOX
+                self.currentEndpoint = .dev
+            #elseif DEVELOPMENT
+                self.currentEndpoint = .dev
+            #elseif QA
+                self.currentEndpoint = .dev
+            #else
+                self.currentEndpoint = .dev
+            #endif
     }
     
 }
@@ -59,7 +59,7 @@ extension SRAppContext {
     static var isLoading: Bool {
         get {
             return userDefaults.object(forKey:
-        SRAppConstants.NetworkDefault.Loading.isLoading) as? Bool ?? false
+                                        SRAppConstants.NetworkDefault.Loading.isLoading) as? Bool ?? false
         }
         
         set {

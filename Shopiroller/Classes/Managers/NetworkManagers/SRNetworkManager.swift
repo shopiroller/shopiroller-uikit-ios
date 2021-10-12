@@ -138,6 +138,7 @@ final public class SRNetworkManager {
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
 //                MTProgress.sharedInstance.dismiss()
+                SRAppContext.isLoading = false
                 SVProgressHUD.dismiss()
             }
             DispatchQueue.global(qos: .background).async {

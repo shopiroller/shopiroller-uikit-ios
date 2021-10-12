@@ -18,7 +18,7 @@ class ProductViewModel {
     }
     
     func getTitle() -> String? {
-        return productListModel?.title ?? ""
+        return productListModel?.title ?? (productDetailModel?.title ?? "")
     }
     
     func hasDiscount() -> Bool {
@@ -38,7 +38,11 @@ class ProductViewModel {
     }
     
     func isShippingFree() -> Bool {
-        return productListModel?.shippingPrice == 0.0 || productDetailModel?.shippingPrice == 0.0
+        return (productListModel?.shippingPrice == 0.0 ) || (productDetailModel?.shippingPrice == 0.0)
+    }
+    
+    func isStockOut() -> Bool {
+        return productListModel?.stock == 0 || (productDetailModel?.stock == 0)
     }
     
     func getPrice() -> String {

@@ -24,6 +24,8 @@ extension UIColor {
     static let badgeWarningInfo : UIColor = #colorLiteral(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0)
 
     static let textPrimary: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    
+    static let sliderBackground: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
 
     static let textPCaption: UIColor = #colorLiteral(red: 0.5878164768, green: 0.6251558661, blue: 0.6333152652, alpha: 1)
 

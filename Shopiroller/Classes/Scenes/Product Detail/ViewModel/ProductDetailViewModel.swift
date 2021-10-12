@@ -10,4 +10,8 @@ import UIKit
 
 public class ProductDetailViewModel {
     
+    func getItemCount() -> Int {
+        return 5
+    }
+    
 }

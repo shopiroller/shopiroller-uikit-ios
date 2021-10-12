@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="shopiroller" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="button" destination="ioh-4f-TaB" id="cDr-ST-83d"/>
                 <outlet property="descriptionLabel" destination="WM5-NK-7M8" id="PYb-qi-duZ"/>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fxr-XM-rOJ">
-                            <rect key="frame" x="62" y="281" width="290" height="161"/>
+                            <rect key="frame" x="62" y="283" width="290" height="157.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81x-mY-0Qi">
                                     <rect key="frame" x="0.0" y="0.0" width="290" height="80"/>
@@ -54,13 +54,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="246" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="755" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WM5-NK-7M8">
-                                    <rect key="frame" x="0.0" y="140.5" width="290" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="0.0" y="140.5" width="290" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioh-4f-TaB" userLabel="First Button">
-                                    <rect key="frame" x="0.0" y="161" width="290" height="44"/>
+                                    <rect key="frame" x="0.0" y="157.5" width="290" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="zYM-j1-RQ2"/>
                                     </constraints>

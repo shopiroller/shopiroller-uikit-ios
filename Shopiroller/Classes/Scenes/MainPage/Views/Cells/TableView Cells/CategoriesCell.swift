@@ -12,16 +12,30 @@ import Kingfisher
 
 class CategoriesCell: UICollectionViewCell {
     
+    private struct Constants {
+        
+        static var sectiontitle: String { return "categories-section-title".localized  }
+        static var seeAllTitle: String { return "section-see-all-title".localized  }
+        
+    }
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var seeAll: UIImageView!
+    @IBOutlet private weak var seeAllImage: UIImageView!
     @IBOutlet private weak var seeAllContainer: UIView!
+    @IBOutlet private weak var seeAllTitle: UILabel!
+    @IBOutlet private weak var sectionTitleLabel: UILabel!
     
     var viewModel: [SRCategoryResponseModel]?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        seeAllTitle.text = Constants.seeAllTitle
+        sectionTitleLabel.text = Constants.sectiontitle
+        seeAllImage.image = .rightArrow
+        
         collectionView.register(cellClass: CategoriesCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -45,12 +59,7 @@ extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoriesCollectionViewCell
         cell.configureCell(model: self.viewModel?[indexPath.row])
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.window?.rootViewController?.present(ProductDetailViewController(viewModel: ProductDetailViewModel()), animated: true, completion: nil)
-
-    }
-    
+    }   
     
 }
 
