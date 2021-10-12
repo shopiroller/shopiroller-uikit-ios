@@ -9,12 +9,15 @@ import Foundation
 import  UIKit
 
 
-@main
-class SRAppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain
+
+open class SRAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        UIFont.listAllFontsOnSystem()
+        SRAppContext.fontFamily = .poppins
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(coder: NSCoder())!)
         navigationController.setNavigationBarHidden(true, animated: true)
         window?.rootViewController = navigationController

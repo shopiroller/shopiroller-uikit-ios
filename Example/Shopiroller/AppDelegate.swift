@@ -10,6 +10,7 @@ import UIKit
 import Shopiroller
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?

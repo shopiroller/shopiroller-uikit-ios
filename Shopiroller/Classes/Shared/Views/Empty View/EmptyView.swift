@@ -28,6 +28,7 @@ public class EmptyView: BaseView {
         }
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
+        descriptionLabel.textColor = .textPCaption
         if let buttonTitle = viewModel.buttonTitle {
             button.isHidden = false
             button.setTitle(buttonTitle)

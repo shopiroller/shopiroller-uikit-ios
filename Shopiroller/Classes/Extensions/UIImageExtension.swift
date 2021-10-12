@@ -14,6 +14,10 @@ extension UIImage {
 //    static let notFound: UIImage = #imageLiteral(resourceName: "notFound")
     
     static let paymentFailed: UIImage = UIImage(named: "paymentFailed", in: .shopiroller, with: nil)!
+    
+    static let emptyProduct: UIImage = UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!
+    
+    static let rightArrow: UIImage = UIImage(named: "rightArrow", in: .shopiroller, with: nil)!
 }
 
 

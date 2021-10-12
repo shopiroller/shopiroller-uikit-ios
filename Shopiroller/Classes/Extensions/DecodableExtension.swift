@@ -11,7 +11,7 @@ protocol EnumDecodable: RawRepresentable, Decodable {
 
 extension EnumDecodable where RawValue: Decodable {
     
-    init(from decoder: Decoder) throws {
+    internal init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(RawValue.self)
         self = Self(rawValue: value) ?? Self.`default`
     }

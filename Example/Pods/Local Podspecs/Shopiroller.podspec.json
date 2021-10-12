@@ -22,11 +22,15 @@
   "resource_bundles": {
     "Shopiroller": [
       "Shopiroller/Assets/**/*",
-      "Shopiroller/Classes/**/*.xib"
+      "Shopiroller/Classes/**/*.xib",
+      "Shopiroller/Assests/Fonts/*.{ttf}"
     ]
   },
   "dependencies": {
     "Kingfisher": [
+
+    ],
+    "SVProgressHUD": [
 
     ]
   }

@@ -6,21 +6,25 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SliderCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var mainContainer: UIView!
-    @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var sliderImage: UIImageView!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        sliderImage.image = nil
+        sliderImage.layer.cornerRadius = 10
+        sliderImage.layer.masksToBounds = true
+        
     }
 
+    
     public func configureUI(model: SliderSlidesModel?) {
-        self.tempLabel.text = model?.id
+        self.sliderImage.kf.setImage(with: URL(string: model?.imageUrl ?? ""))
     }
 }
 

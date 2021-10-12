@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-//import SVProgressHUD
+import SVProgressHUD
 
 
 public typealias handler = (FetchResult) -> Void
@@ -80,7 +80,9 @@ final public class SRNetworkManager {
         //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
         //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName
         //        headers[AppConstants.Header.osVersion] = AppInfo.systemVersion
-        //        headers[AppConstants.Header.uuid] = AppInfo.uuid
+        headers[SRAppConstants.Header.language] = "tr"
+        headers[SRAppConstants.Header.acceptLanguage] = "tr-TR"
+        headers[SRAppConstants.Header.fallbackLanguage] = "tr"
         return headers
     }
     
@@ -117,8 +119,6 @@ final public class SRNetworkManager {
                 print(String(data: data, encoding: String.Encoding.utf8) ?? "")
                 handler(.success(result: data))
             } else {
-                
-                loggingPrint(error)
                 if error?.isConnectivityError ?? true {
                     handler(.error(ShopirollerError.network))
                 } else {
@@ -135,6 +135,12 @@ final public class SRNetworkManager {
             return
         }
         self.fetchData(for: urlRequest) { (result) in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//                MTProgress.sharedInstance.dismiss()
+                SRAppContext.isLoading = false
+                SVProgressHUD.dismiss()
+            }
             DispatchQueue.global(qos: .background).async {
                 switch result {
                 case .error(let error):
@@ -148,7 +154,6 @@ final public class SRNetworkManager {
                         resourceResult(.failure(ShopirollerError.parseJSON))
                         return
                     }
-                    
                     let decoder = JSONDecoder()
                     let obj = SRNetworkManagerResponse<T>.self
                     do {
@@ -182,7 +187,12 @@ final public class SRNetworkManager {
                 }
             }
         }
-        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            if request.shouldShowProgressHUD {
+                SVProgressHUD.show()
+            }
+        }
     }
     
     func objectResponse<T: Decodable>(for request: SRNetworkRequestManager<T>, response resourceResult: @escaping ((SRResponseResult<T>) -> Void)) {

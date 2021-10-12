@@ -1,0 +1,32 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+
+
+//MARK: - GENERAL USAGE
+
+"free-shipping-text" = "BEDAVA KARGO";
+
+"sold-out-text" = "STOK YOK";
+
+"section-see-all-title" = "Hepsini Göster";
+
+//MARK: - Products Empty View
+
+"empty-view-title" = "Ürün Bulunamadı.";
+
+"empty-view-description" = "Henüz ürün eklenmemiş.";
+
+// MARK: - Categories
+
+"categories-section-title" = "Kategoriler";
+
+//MARK: - Explore
+
+"explore-title-text" = "Keşfet";
+
+"products-identifier" = "ProductsTitleView";

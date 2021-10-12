@@ -19,6 +19,7 @@ enum SRFont: String {
     case semiBold
     case regular
     case bold
+    case medium
     
     func font(ofSize fontSize: CGFloat) -> UIFont {
         return UIFont(name: name, size: fontSize)!
@@ -33,6 +34,8 @@ enum SRFont: String {
             fontType = "Regular"
         case .bold:
             fontType = "Bold"
+        case .medium:
+            fontType = "Medium"
         }
         
         return fontFamily.appending("-\(fontType)")
@@ -42,6 +45,34 @@ enum SRFont: String {
         return SRAppContext.fontFamily.rawValue
     }
     
+    
+    
+}
+enum RegisterFontError: Error {
+  case invalidFontFile
+  case fontPathNotFound
+  case initFontError
+  case registerFailed
+}
+class GetBundle {}
+
+extension UIFont {
+    static func register(path: String, fileNameString: String, type: String) throws {
+      let frameworkBundle = Bundle(for: GetBundle.self)
+      guard let resourceBundleURL = frameworkBundle.path(forResource: fileNameString, ofType: type) else {
+         throw RegisterFontError.fontPathNotFound
+      }
+      guard let fontData = NSData(contentsOfFile: resourceBundleURL),    let dataProvider = CGDataProvider.init(data: fontData) else {
+        throw RegisterFontError.invalidFontFile
+      }
+      guard let fontRef = CGFont.init(dataProvider) else {
+         throw RegisterFontError.initFontError
+      }
+      var errorRef: Unmanaged<CFError>? = nil
+     guard CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) else   {
+           throw RegisterFontError.registerFailed
+      }
+     }
 }
 
 extension UIFont {
@@ -53,6 +84,10 @@ extension UIFont {
     static let headTwoSemiBold: UIFont = SRFont.semiBold.font(ofSize: 14.0)
     
     static let textStyle: UIFont = SRFont.regular.font(ofSize: 24.0)
+    
+    static let regular12: UIFont = SRFont.regular.font(ofSize: 12.0)
+    
+    static let medium12: UIFont = SRFont.medium.font(ofSize: 12.0)
     
     static let subHead: UIFont = SRFont.bold.font(ofSize: 14.0)
     

@@ -6,39 +6,66 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowCaseCell: UICollectionViewCell {
+    
+    private struct Constants {
+        static var seeAllTitle: String { return "section-see-all-title".localized  }
+    }
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var seeAllContainer: UIView!
+    @IBOutlet private weak var seeAllImage: UIImageView!
+    @IBOutlet private weak var seeAllTitle: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
-    var viewModel: String?
+    var viewModel: SRShowcaseResponseModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        collectionView.register(cellClass: ShowCaseCollectionViewCell.self)
+        seeAllTitle.text = Constants.seeAllTitle
+        seeAllImage.image = .rightArrow
+        
+        collectionView.register(cellClass: ItemCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let showAllTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.seeAllProducts(_:)))
+        seeAllContainer.addGestureRecognizer(showAllTapGesture)
     }
     
     
-    func configureCell(model: String?){
-        self.viewModel = model
+    func configureCell(viewModel: SRShowcaseResponseModel?){
+        self.viewModel = viewModel
         collectionView.reloadData()
+        
+        titleLabel.text = viewModel?.showcase?.name
+        
+    
+    }
+    
+    
+    @objc func seeAllProducts(_ sender: UITapGestureRecognizer? = nil) {
+        //TODO Show All Products
     }
     
 }
 
 extension ShowCaseCell: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return viewModel?.products?.count ?? 0
     }
-    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCollectionViewCell.reuseIdentifier, for: indexPath) as! ShowCaseCollectionViewCell
-        cell.configureCell(model: self.viewModel)
-        return cell
+        if viewModel?.showcase?.isPublished == true {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
+            cell.configureCell(viewModel: ProductViewModel(productDetailModel: viewModel?.products?[indexPath.row]))
+            return cell
+        }else{
+            return UICollectionViewCell()
+        }
+        
         
     }
     
@@ -48,7 +75,7 @@ extension ShowCaseCell: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ShowCaseCell: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: 70)
+        return CGSize(width: 135, height: collectionView.frame.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

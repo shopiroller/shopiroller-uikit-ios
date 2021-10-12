@@ -75,7 +75,7 @@ public extension String {
      - Returns: The localized string.
      */
     var localized: String {
-        return localized(using: nil, in: Bundle(identifier: "com.shopiroller.shopiroller"))
+        return localized(using: nil, in: Bundle(identifier: "org.cocoapods.Shopiroller"))
     }
 
     /**

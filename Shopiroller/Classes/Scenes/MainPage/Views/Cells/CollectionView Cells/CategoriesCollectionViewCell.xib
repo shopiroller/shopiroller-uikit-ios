@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoriesCollectionViewCell" customModule="shopiroller" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoriesCollectionViewCell" id="gTV-IL-0wX" customClass="CategoriesCollectionViewCell" customModule="Shopiroller" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -24,21 +24,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-yc-hat" userLabel="CategoryImage Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="124.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="121.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-fG-0Tr">
-                                                <rect key="frame" x="25.5" y="37.5" width="50" height="50"/>
+                                                <rect key="frame" x="20.5" y="31" width="60" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="0VR-kt-sad"/>
-                                                    <constraint firstAttribute="width" constant="50" id="dSS-NY-r99"/>
+                                                    <constraint firstAttribute="height" constant="60" id="0VR-kt-sad"/>
+                                                    <constraint firstAttribute="width" constant="60" id="dSS-NY-r99"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="xB2-TE-jj0" userLabel="CategoryImage">
-                                                <rect key="frame" x="35.5" y="47.5" width="30" height="30"/>
+                                                <rect key="frame" x="33" y="43.5" width="35" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="hkQ-lo-lw0"/>
-                                                    <constraint firstAttribute="height" constant="30" id="nPO-a3-1Ic"/>
+                                                    <constraint firstAttribute="width" constant="35" id="hkQ-lo-lw0"/>
+                                                    <constraint firstAttribute="height" constant="35" id="nPO-a3-1Ic"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -51,10 +51,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6h-TD-8Ak" userLabel="Category Title Container">
-                                        <rect key="frame" x="0.0" y="124.5" width="101" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="121.5" width="101" height="24.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elektronik" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-qh-G5c" userLabel="Category Title">
-                                                <rect key="frame" x="0.0" y="0.0" width="101" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="13.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
@@ -63,11 +63,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="xy0-qh-G5c" firstAttribute="centerY" secondItem="M6h-TD-8Ak" secondAttribute="centerY" id="BOe-XX-uCa"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="leading" secondItem="M6h-TD-8Ak" secondAttribute="leading" id="QwV-Uz-Jky"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="top" secondItem="M6h-TD-8Ak" secondAttribute="top" id="S9k-Zt-eOW"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="centerX" secondItem="M6h-TD-8Ak" secondAttribute="centerX" id="WVk-ed-A4n"/>
-                                            <constraint firstAttribute="bottom" secondItem="xy0-qh-G5c" secondAttribute="bottom" id="iae-tk-SCJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="xy0-qh-G5c" secondAttribute="bottom" constant="11" id="iae-tk-SCJ"/>
                                             <constraint firstAttribute="trailing" secondItem="xy0-qh-G5c" secondAttribute="trailing" id="kzZ-14-DTI"/>
                                         </constraints>
                                     </view>
@@ -94,12 +93,15 @@
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c92-y9-tlR"/>
                 <constraint firstAttribute="bottom" secondItem="SqV-5M-6aR" secondAttribute="bottom" id="f2W-JD-fWn"/>
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lE8-Kf-fSx"/>
-                <constraint firstItem="M6h-TD-8Ak" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.21" id="nca-Ys-DtI"/>
+                <constraint firstItem="M6h-TD-8Ak" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.24" id="nca-Ys-DtI"/>
             </constraints>
             <size key="customSize" width="264" height="376"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="categoryImage" destination="xB2-TE-jj0" id="deU-WW-s1I"/>
-                <outlet property="categoryTitle" destination="xy0-qh-G5c" id="w52-BJ-qGU"/>
+                <outlet property="categoryTitle" destination="xy0-qh-G5c" id="SHO-Pd-RHt"/>
                 <outlet property="categoryTitleContainer" destination="M6h-TD-8Ak" id="0GG-7q-icw"/>
                 <outlet property="imageContainer" destination="NA2-yc-hat" id="VUZ-8b-LhK"/>
                 <outlet property="imageViewBackGround" destination="Spa-fG-0Tr" id="h9h-Vt-nae"/>

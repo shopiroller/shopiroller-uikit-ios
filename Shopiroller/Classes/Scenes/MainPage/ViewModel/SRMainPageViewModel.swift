@@ -8,6 +8,16 @@
 import UIKit
 
 
+private struct Constants {
+    
+    static var title: String { return "empty-view-title".localized }
+    
+    static var description: String { return "empty-view-description".localized }
+       
+}
+
+
+
 public class SRMainPageViewModel {
     
     var sliderModel: [SRSliderDataModel]?
@@ -17,12 +27,14 @@ public class SRMainPageViewModel {
     
     private let networkManager: SRNetworkManager
     
+   var currentPage: Int = 0
+    
+    
     public init (networkManager: SRNetworkManager = SRNetworkManager()) {
         self.networkManager = networkManager
     }
     
     func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        
         SRNetworkManagerRequests.getSliders().response(using: networkManager) {
             (result) in
             switch result {
@@ -31,7 +43,6 @@ public class SRMainPageViewModel {
                 DispatchQueue.main.async {
                     success?()
                 }
-                
             case .failure(let err):
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
@@ -40,19 +51,36 @@ public class SRMainPageViewModel {
         }
     }
     
-    func getProducts(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
-        urlQueryItems.append(URLQueryItem(name: "page", value: String(1)))
-        urlQueryItems.append(URLQueryItem(name: "perPage", value: String(20)))
+        if products?.count ?? 0 == 0 {
+            currentPage = 0
+        }else{
+            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+                return
+            }
+            if pagination {
+                currentPage = currentPage + 1
+            }else {
+                currentPage = 0
+            }
+            
+        }
         
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
         SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: networkManager) {
             (result) in
             switch result{
             case .success(let response):
-                self.products = response.data
                 DispatchQueue.main.async {
+                    if self.currentPage != 0 {
+                        self.products = self.products! + (response.data ?? [])
+                    }else{
+                        self.products = response.data
+                    }
                     succes?()
                 }
             case.failure(let err):
@@ -65,7 +93,6 @@ public class SRMainPageViewModel {
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        
         SRNetworkManagerRequests.getCategories().response(using: networkManager) {
             (result) in
             switch result{
@@ -120,63 +147,59 @@ public class SRMainPageViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        return 0
+        var count = 0
+        if let showcase = showcase {
+            showcase.forEach{
+                if ($0.products?.count ?? 0 > 0){
+                    count = $0.products?.count ?? 0
+                }else{
+                    count = 0
+                }
+            }
+        }
+        return count
     }
     
     func productItemCount() -> Int {
-        return products?.count ?? 0
+        if let products = products {
+            return products.count
+        }else{
+            return 0
+        }
     }
-    
-    
+        
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
         return sliderModel?[position].slides
     }
     
-    func getTableProductVieWModel(position: Int) -> ProductListModel? {
-        return products?[position]
+    func getTableProductVieWModel() -> [ProductListModel]? {
+        return products
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
         return categories
     }
     
-   
-    
-    func getSection(section: Int) -> CellType {
-        switch section{
-        case 0:
-            return .slider
-        case 1:
-            return .categories
-        case 2:
-            return .showCase
-        case 3:
-            return .products
-        default:
-            return .products
-        }
+    func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
+        return showcase?[position]
     }
-    
+        
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
-            return 200
+            return 250
         case .categories:
-            return 100
-        case .showCase:
-            return 100
-        case .products:
-            return 200
+            return 150
         }
     }
     
-    
+    func getEmptyViewModel() -> EmptyViewModel {
+        EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
+    }
     
 }
 
 enum CellType {
     case slider
     case categories
-    case showCase
-    case products
 }

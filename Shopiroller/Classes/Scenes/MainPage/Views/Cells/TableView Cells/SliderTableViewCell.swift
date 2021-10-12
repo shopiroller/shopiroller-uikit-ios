@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 public class SliderTableViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var pageControlContainer: UIView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
     var viewModel: [SliderSlidesModel]?
@@ -22,15 +24,17 @@ public class SliderTableViewCell: UICollectionViewCell {
         collectionView.register(cellClass: SliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
+        pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.4)
+        pageControlContainer.backgroundColor = .sliderBackground
+        pageControlContainer.clipsToBounds = true
+        pageControlContainer.layer.cornerRadius = pageControl.frame.height / 2
         if #available(iOS 14.0, *) {
-            pageControl.backgroundStyle = .prominent
-        } else {
-            // Fallback on earlier versions
+            pageControl.backgroundStyle = .minimal
+            pageControl.allowsContinuousInteraction = false
         }
-        
     }
+    
     
     func setup(viewModel : [SliderSlidesModel]?) {
         self.viewModel = viewModel
