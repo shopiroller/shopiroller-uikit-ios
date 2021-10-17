@@ -33,6 +33,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk5-4P-N9O">
                                                 <rect key="frame" x="0.0" y="0.0" width="208" height="142"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrL-iv-W8k" userLabel="Product Image Free Shipping">
                                                 <rect key="frame" x="59" y="107" width="90" height="20"/>

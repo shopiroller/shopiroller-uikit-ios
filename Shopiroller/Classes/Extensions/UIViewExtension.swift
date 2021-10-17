@@ -29,4 +29,13 @@ extension UIView {
         subview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
     }
     
+    func makeAnimation() {
+        self.transform = CGAffineTransform.init(scaleX: 0.6, y: 0.6)
+
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+
+            self.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+        })
+    }
+    
 }

@@ -1,6 +1,6 @@
 //
 //  SectionHeader.swift
-//  Kingfisher
+//  shopiroller
 //
 //  Created by Görkem Gür on 12.10.2021.
 //

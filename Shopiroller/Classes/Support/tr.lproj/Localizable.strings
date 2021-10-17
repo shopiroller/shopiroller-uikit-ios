@@ -30,3 +30,19 @@
 "explore-title-text" = "Keşfet";
 
 "products-identifier" = "ProductsTitleView";
+
+//MARK: - Product Detail
+
+"quantity-title" = "Miktar Seçin";
+
+"description-title" = "Ürün Açıklaması";
+
+"return-exchange-terms-title" = "İade / Değişim Koşulları";
+
+"delivery-terms-title" = "Teslimat Koşulları";
+
+"add-to-cart" = "Sepete Ekle";
+
+"shipping-price-text" = "Kargo Ücreti XX";
+
+"product-detail-description-title-text" = "Description";

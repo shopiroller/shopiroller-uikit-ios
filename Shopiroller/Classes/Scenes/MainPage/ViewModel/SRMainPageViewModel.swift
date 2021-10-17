@@ -20,14 +20,14 @@ private struct Constants {
 
 public class SRMainPageViewModel {
     
-    var sliderModel: [SRSliderDataModel]?
-    var categories: [SRCategoryResponseModel]?
-    var products: [ProductListModel]?
-    var showcase: [SRShowcaseResponseModel]?
+    private var sliderModel: [SRSliderDataModel]?
+    private var categories: [SRCategoryResponseModel]?
+    private var products: [ProductListModel]?
+    private var showcase: [SRShowcaseResponseModel]?
     
     private let networkManager: SRNetworkManager
     
-   var currentPage: Int = 0
+    private var currentPage: Int = 0
     
     
     public init (networkManager: SRNetworkManager = SRNetworkManager()) {
@@ -182,6 +182,10 @@ public class SRMainPageViewModel {
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
         return showcase?[position]
+    }
+    
+    func getProductDetailList(position: Int) -> String? {
+        return products?[position].id
     }
         
     func getHeight(type: CellType) -> Float {

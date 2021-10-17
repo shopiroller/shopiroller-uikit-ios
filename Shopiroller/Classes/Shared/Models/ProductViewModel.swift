@@ -22,7 +22,7 @@ class ProductViewModel {
     }
     
     func hasDiscount() -> Bool {
-        if(productListModel?.campaignPrice != 0) || (productDetailModel?.campaignPrice != 0) {
+        if(productDetailModel?.campaignPrice != 0) {
             return true
         }else{
             return false
@@ -30,7 +30,8 @@ class ProductViewModel {
     }
     
     var discount: String {
-        return calculateDiscount(price: productListModel?.price ?? (productDetailModel?.price ?? 0.0), campaignPrice: productListModel?.campaignPrice ?? (productDetailModel?.campaignPrice ?? 0.0))
+        let discount = ""
+        return discount.calculateDiscount(price: productListModel?.price ?? (productDetailModel?.price ?? 0.0), campaignPrice: productListModel?.campaignPrice ?? (productDetailModel?.campaignPrice ?? 0.0))
     }
 
     func getImage() -> String? {
@@ -38,7 +39,7 @@ class ProductViewModel {
     }
     
     func isShippingFree() -> Bool {
-        return (productListModel?.shippingPrice == 0.0 ) || (productDetailModel?.shippingPrice == 0.0)
+        return productListModel?.shippingPrice == 0.0 || (productDetailModel?.shippingPrice == 0.0)
     }
     
     func isStockOut() -> Bool {
@@ -49,14 +50,16 @@ class ProductViewModel {
         return String(productListModel?.price ?? (productDetailModel?.price ?? 0.0))
     }
     
+    func getCurrency() -> String {
+        if productListModel?.currency == "TRY" || (productDetailModel?.currency == "TRY") {
+            return "TL"
+        }else {
+            return "$"
+        }
+    }
+    
     func getCampaignPrice() -> String {
         return String(productListModel?.campaignPrice ?? (productDetailModel?.campaignPrice ?? 0.0))
     }
     
-    private func calculateDiscount(price: Double , campaignPrice: Double) -> String {
-        let discount = price - campaignPrice
-        let percentage = (discount / price) * 100
-        let discountedPercenteage = String(format: "%.0f", percentage)
-        return "%\(discountedPercenteage)"
-    }
 }

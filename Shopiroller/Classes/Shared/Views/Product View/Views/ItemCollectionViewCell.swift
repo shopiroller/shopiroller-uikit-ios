@@ -52,18 +52,15 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productDiscountContainer.layer.masksToBounds = true
             productDiscountContainer.backgroundColor = .badgeSecondary
             productDiscountLabel.text = viewModel.discount
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: viewModel.getPrice())
-            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             productOldPrice.textColor = .textPCaption
-            productOldPrice.attributedText = attributeString
-            productNewPrice.text = viewModel.getCampaignPrice()
+            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(viewModel.getPrice(), currency: viewModel.getCurrency())
+            productNewPrice.text = viewModel.getCampaignPrice() + " " + viewModel.getCurrency()
         }else{
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
             productOldPrice.text = viewModel.getPrice()
             productOldPrice.textColor = .black
             productOldPrice.font.withSize(17)
-
         }
             
         if let image = viewModel.getImage() {

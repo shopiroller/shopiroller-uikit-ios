@@ -44,19 +44,19 @@ public class SRMainPageViewController: BaseViewController {
     
     public override func setup() {
         super.setup()
-        
-        shimmerCollectionView.register(cellClass: ItemCollectionViewCell.self)
+            
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
+        shimmerCollectionView.register(cellClass: ItemCollectionViewCell.self)
         shimmerCollectionView.reloadData()
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
         mainCollectionView.register(cellClass: SliderTableViewCell.self)
         mainCollectionView.register(cellClass: CategoriesCell.self)
         mainCollectionView.register(cellClass: ItemCollectionViewCell.self)
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
-        mainCollectionView.clipsToBounds = false
+       
         
         getProducts(pagination: false)
     }
@@ -64,21 +64,20 @@ public class SRMainPageViewController: BaseViewController {
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.
         scrollView.refreshControl = UIRefreshControl()
-        scrollView.refreshControl?.addTarget(self, action:
-                                                #selector(didPullToRefresh),
-                                             for: .valueChanged)
+        scrollView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        
+   
     }
     
     @objc func didPullToRefresh(_ sender: Any) {
-        getSliders()
-        getCategories()
-        getShowCase()
-        getProducts(pagination: false)
-        
         if SRAppContext.isLoading == false {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                self.scrollView.refreshControl?.endRefreshing()
-            }
+            DispatchQueue.main.async {
+                self.getSliders()
+                self.getCategories()
+                self.getShowCase()
+                self.getProducts(pagination: false)
+        }
+            self.scrollView.refreshControl?.endRefreshing()
         }
     }
     
@@ -224,7 +223,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             break
             //TODO OPEN Product Detail handle showcase
         case 3:
-            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel())
+            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(products: viewModel.getProductDetailList(position: indexPath.row) ?? ""))
             self.prompt(vc, animated: true)
         default:
             break

@@ -30,3 +30,20 @@
 "explore-title-text" = "Explore";
 
 "products-identifier" = "ProductsTitleView";
+
+//MARK: - Product Detail
+
+"quantity-title" = "Select Quantity";
+
+"description-title" = "Product Description";
+
+"return-exchange-terms-title" = "Return / Exchange Terms";
+
+"delivery-terms-title" = "Delivery Terms";
+
+"add-to-cart" = "Add To Cart";
+
+"shipping-price-text" = "Shipping Price XX";
+
+"product-detail-description-title-text" = "Description";
+

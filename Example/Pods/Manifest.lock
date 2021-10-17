@@ -1,6 +1,14 @@
 PODS:
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/Kingfisher (1.9.2):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (4.10.1)
   - Shopiroller (0.1.0):
+    - ImageSlideshow
+    - ImageSlideshow/Kingfisher
     - Kingfisher
     - SVProgressHUD
   - SVProgressHUD (2.2.5)
@@ -10,6 +18,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ImageSlideshow
     - Kingfisher
     - SVProgressHUD
 
@@ -18,8 +27,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  Shopiroller: b584d911b302169fd6d399fe8bc3d6647bb46b79
+  Shopiroller: fb8e3ac9e1adad62ade1c9dfa640aa6e2b1f422b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b

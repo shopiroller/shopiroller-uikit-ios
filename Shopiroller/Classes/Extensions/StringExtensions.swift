@@ -33,4 +33,12 @@ extension String {
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
     }
+    
+    func calculateDiscount(price: Double , campaignPrice: Double) -> String {
+        let discount = price - campaignPrice
+        let percentage = (discount / price) * 100
+        let discountedPercenteage = String(format: "%.0f", percentage)
+        return "%\(discountedPercenteage)"
+    }
+    
 }

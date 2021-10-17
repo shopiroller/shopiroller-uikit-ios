@@ -50,7 +50,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3gW-Fy-gEc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-3W-9Rg">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-3W-9Rg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zz1-6R-JUe">
@@ -137,7 +137,6 @@
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k7Y-gN-Yed"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rUj-Af-WG8"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-271.01449275362319" y="-20.089285714285712"/>
         </view>
     </objects>
