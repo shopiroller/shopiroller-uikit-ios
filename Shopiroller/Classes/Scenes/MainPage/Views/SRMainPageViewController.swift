@@ -210,7 +210,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             break
             //TODO OPEN Product Detail handle showcase
         case 3:
-            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel())
+            let vc = MyOrdersViewController(viewModel: MyOrdersViewModel())
             self.prompt(vc, animated: true)
         default:
             break
