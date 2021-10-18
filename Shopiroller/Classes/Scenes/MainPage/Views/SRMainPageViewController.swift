@@ -8,16 +8,12 @@
 import UIKit
 import Kingfisher
 
-extension SRMainPageViewController : NibLoadable { }
-
-
-public class SRMainPageViewController: BaseViewController {
+private struct Constants {
     
-    private struct Constants {
-        
-        static var productsTitleIdentifier: String { return "products-identifier".localized }
-        
-    }
+    static var productsTitleIdentifier: String { return "products-identifier".localized }
+    
+}
+public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var emptyViewContainer: UIView!
@@ -28,18 +24,8 @@ public class SRMainPageViewController: BaseViewController {
     
     private var refreshControl = UIRefreshControl()
     
-    private let viewModel : SRMainPageViewModel
-    
-    
-    public init(viewModel: SRMainPageViewModel = SRMainPageViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = SRMainPageViewModel()
-        super.init(coder: aDecoder)
+    public init(viewModel: SRMainPageViewModel){
+        super.init(viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
     
     public override func setup() {

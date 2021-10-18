@@ -13,29 +13,20 @@ private struct Constants {
     static var title: String { return "empty-view-title".localized }
     
     static var description: String { return "empty-view-description".localized }
-       
+    
 }
 
-
-
-public class SRMainPageViewModel {
+public class SRMainPageViewModel: BaseViewModel {
     
     var sliderModel: [SRSliderDataModel]?
     var categories: [SRCategoryResponseModel]?
     var products: [ProductListModel]?
     var showcase: [SRShowcaseResponseModel]?
     
-    private let networkManager: SRNetworkManager
-    
-   var currentPage: Int = 0
-    
-    
-    public init (networkManager: SRNetworkManager = SRNetworkManager()) {
-        self.networkManager = networkManager
-    }
+    var currentPage: Int = 0
     
     func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getSliders().response(using: networkManager) {
+        SRNetworkManagerRequests.getSliders().response(using: SRMainPageViewModel.networkManager) {
             (result) in
             switch result {
             case .success(let result):
@@ -71,7 +62,7 @@ public class SRMainPageViewModel {
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
-        SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: networkManager) {
+        SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: SRMainPageViewModel.networkManager) {
             (result) in
             switch result{
             case .success(let response):
@@ -93,7 +84,7 @@ public class SRMainPageViewModel {
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getCategories().response(using: networkManager) {
+        SRNetworkManagerRequests.getCategories().response(using: SRMainPageViewModel.networkManager) {
             (result) in
             switch result{
             case .success(let response):
@@ -113,7 +104,7 @@ public class SRMainPageViewModel {
     
     func getShowCase(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
-        SRNetworkManagerRequests.getShowCase().response(using: networkManager) {
+        SRNetworkManagerRequests.getShowCase().response(using: SRMainPageViewModel.networkManager) {
             (result) in
             switch result{
             case .success(let response):
@@ -167,7 +158,7 @@ public class SRMainPageViewModel {
             return 0
         }
     }
-        
+    
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
         return sliderModel?[position].slides
     }
@@ -183,7 +174,7 @@ public class SRMainPageViewModel {
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
         return showcase?[position]
     }
-        
+    
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:

@@ -8,18 +8,16 @@
 import UIKit
 import Kingfisher
 
-extension ProductDetailViewController : NibLoadable { }
-
-public class ProductDetailViewController: BaseViewController {
-
+class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var pageControlContainer: UIView!
-    
     @IBOutlet weak var container: UIView!
-    private let viewModel : ProductDetailViewModel
     
-    
+    init(viewModel: ProductDetailViewModel) {
+        super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
+    }
     
     public override func setup() {
         
@@ -41,18 +39,6 @@ public class ProductDetailViewController: BaseViewController {
             pageControl.allowsContinuousInteraction = false
         }
     }
-
-    public init(viewModel: ProductDetailViewModel ) {
-        self.viewModel = viewModel
-        super.init(nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = ProductDetailViewModel()
-        super.init(coder: aDecoder)
-    }
-
 }
 
 extension ProductDetailViewController : UICollectionViewDelegate , UICollectionViewDataSource {
@@ -70,7 +56,6 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
         return cell
     }
     
-   
 }
 
 extension ProductDetailViewController : UICollectionViewDelegateFlowLayout {
