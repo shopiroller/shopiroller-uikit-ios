@@ -30,3 +30,11 @@
 "explore-title-text" = "Keşfet";
 
 "products-identifier" = "ProductsTitleView";
+
+//MARK: - My Orders
+
+"empty-orders-title" = "No order yet";
+
+"empty-orders-description" = "You have no order yet. We can’t list any product for you.";
+
+"empty-orders-action-button" = "Start Shopping";

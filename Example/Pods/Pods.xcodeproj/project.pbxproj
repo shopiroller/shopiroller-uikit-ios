@@ -111,10 +111,10 @@
 		70ECB3E5FED2F2D4F6DEFE366519C8AE /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28DA691CF1F8E5A6265DBBA7A3F5B6A /* Resource.swift */; };
 		721BFF2020F8B6C4D6E9FC17E4DF1BE9 /* EmptyView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 89A5BCCB1695657A70CCD277F47426B9 /* EmptyView.xib */; };
 		7361311ADFB4EFC8D4E73A3F236FE1F8 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E9DA6D032626A9D442C74E64D08253 /* ProductDetailViewController.xib */; };
-		757E02D2271EA1E60077467F /* emptyOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 75F04982271DC79A004854FF /* emptyOrder.imageset */; };
 		757E02DC271ED5080077467F /* MyOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02DB271ED5080077467F /* MyOrdersViewModel.swift */; };
 		757E02DF271ED52F0077467F /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02DD271ED52F0077467F /* MyOrdersViewController.swift */; };
 		757E02E0271ED52F0077467F /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02DE271ED52F0077467F /* MyOrdersViewController.xib */; };
+		757E02E5271EF0EE0077467F /* emptyOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 757E02E4271EF0ED0077467F /* emptyOrder.imageset */; };
 		75F04976271DC1B8004854FF /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F04975271DC1B8004854FF /* BaseViewModel.swift */; };
 		75F04984271DC7C0004854FF /* successOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 5F82B527739635F509546B2A517BB0D9 /* successOrder.imageset */; };
 		76C284B35CA8E429BE844AB59E0C8898 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C16BC07778418707F67F6EE913002 /* BundleExtension.swift */; };
@@ -373,9 +373,9 @@
 		757E02DB271ED5080077467F /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		757E02DD271ED52F0077467F /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		757E02DE271ED52F0077467F /* MyOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrdersViewController.xib; sourceTree = "<group>"; };
+		757E02E4271EF0ED0077467F /* emptyOrder.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emptyOrder.imageset; sourceTree = "<group>"; };
 		759ACBBC25F737A090C6E617CC351B97 /* Shopiroller.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Shopiroller.modulemap; sourceTree = "<group>"; };
 		75F04975271DC1B8004854FF /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		75F04982271DC79A004854FF /* emptyOrder.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emptyOrder.imageset; sourceTree = "<group>"; };
 		7847A99B51D99B8514E4B39D8C570812 /* noResult.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = noResult.png; sourceTree = "<group>"; };
 		7853F1CAC21ECDAA6F37B9146926E591 /* Shopiroller-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Shopiroller-Info.plist"; sourceTree = "<group>"; };
 		79658980FDA226B765913F6E2C543429 /* SRMainPageViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SRMainPageViewModel.swift; sourceTree = "<group>"; };
@@ -839,7 +839,7 @@
 		719A1059A14ED992CCEC82249DF38C18 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				75F04982271DC79A004854FF /* emptyOrder.imageset */,
+				757E02E4271EF0ED0077467F /* emptyOrder.imageset */,
 				84A681C66B61987EAD6B21683549FD9E /* adressNoResult.imageset */,
 				5DD2139247A111951663DB0EB682B6FE /* emptyPaymentMethod.imageset */,
 				388DFD3AEFD19CC99F4A477C64FAD9DF /* emptyProductImage.imageset */,
@@ -1423,6 +1423,7 @@
 			files = (
 				2638891AF9D0E1C65B2C1AD71DFDD571 /* Shopiroller.bundle in Resources */,
 				757E02E0271ED52F0077467F /* MyOrdersViewController.xib in Resources */,
+				757E02E5271EF0EE0077467F /* emptyOrder.imageset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1438,7 +1439,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				757E02D2271EA1E60077467F /* emptyOrder.imageset in Resources */,
 				FF84F43DE50C13BA1595FC73F1DB413F /* adressNoResult.imageset in Resources */,
 				C96772B2CB98F6EA51B511A23A766E3D /* adressNoResult@2x-1.png in Resources */,
 				03C121FDD61251CD5A365DAE21034D9A /* adressNoResult@2x.png in Resources */,

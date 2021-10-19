@@ -19,5 +19,4 @@ struct EmptyModel {
 struct ButtonModel {
     let title: String
     let color: UIColor?
-    let clicked: (() -> Void)
 }

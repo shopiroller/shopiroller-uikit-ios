@@ -22,33 +22,44 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EBX-bs-sTu">
-                    <rect key="frame" x="62" y="225" width="290" height="273.5"/>
+                    <rect key="frame" x="62" y="227" width="290" height="269"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7RD-Zb-ic1">
-                            <rect key="frame" x="0.0" y="0.0" width="290" height="80"/>
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-cK-1uA">
-                            <rect key="frame" x="0.0" y="96" width="290" height="29"/>
+                            <rect key="frame" x="0.0" y="66" width="290" height="29"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKZ-ot-oyV">
-                            <rect key="frame" x="0.0" y="170.5" width="290" height="20.5"/>
+                            <rect key="frame" x="0.0" y="126" width="290" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VP-Cu-MV6">
+                            <rect key="frame" x="0.0" y="184" width="290" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="sNr-vn-aN9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45p-uo-rSy" userLabel="actionButton">
-                            <rect key="frame" x="0.0" y="229.5" width="290" height="44"/>
+                            <rect key="frame" x="0.0" y="225" width="290" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="UlN-4Y-Z56"/>
                             </constraints>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Button">
+                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                            </buttonConfiguration>
                             <connections>
-                                <action selector="actionButtonClicked:" destination="-1" eventType="touchUpOutside" id="JbF-k8-kYj"/>
+                                <action selector="actionButtonClicked:" destination="-1" eventType="touchUpInside" id="XPb-i6-UaL"/>
                             </connections>
                         </button>
                     </subviews>

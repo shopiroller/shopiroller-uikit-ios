@@ -1,32 +1,40 @@
-/* 
-  Localizable.strings
-  Pods
-
-  Created by Görkem Gür on 8.10.2021.
-  
-*/
+/*
+ Localizable.strings
+ Pods
+ 
+ Created by Görkem Gür on 8.10.2021.
+ 
+ */
 
 
 //MARK: - GENERAL USAGE
 
-"free-shipping-text" = "FREE SHIPPING";
+"free-shipping-text" = "BEDAVA KARGO";
 
-"sold-out-text" = "SOLD OUT";
+"sold-out-text" = "STOK YOK";
 
-"section-see-all-title" = "See All";
+"section-see-all-title" = "Hepsini Göster";
 
 //MARK: - Products Empty View
 
-"empty-view-title" = "No Products added.";
+"empty-view-title" = "Ürün Bulunamadı.";
 
-"empty-view-description" = "There are currently no added items in the shop";
+"empty-view-description" = "Henüz ürün eklenmemiş.";
 
 // MARK: - Categories
 
-"categories-section-title" = "Categories";
+"categories-section-title" = "Kategoriler";
 
 //MARK: - Explore
 
-"explore-title-text" = "Explore";
+"explore-title-text" = "Keşfet";
 
 "products-identifier" = "ProductsTitleView";
+
+//MARK: - My Orders
+
+"empty-orders-title" = "No order yet";
+
+"empty-orders-description" = "You have no order yet. We can’t list any product for you.";
+
+"empty-orders-action-button" = "Start Shopping";
