@@ -19,13 +19,30 @@ class MyOrdersViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDe
     override func setup() {
         super.setup()
         
-        emptyView.isHidden = false
-        emptyView.setup(model: viewModel.getEmptyModel())
-        emptyView.delegate = self
+        getOrderList()
+    }
+    
+    private func configure(){
+        if(viewModel.isOrderListEmpty()){
+            emptyView.isHidden = false
+            emptyView.setup(model: viewModel.getEmptyModel())
+            emptyView.delegate = self
+        }else{
+            
+        }
+    }
+    
+    private func getOrderList() {
+        viewModel.getOrderList(success: { [weak self] in
+            guard let self = self else { return }
+            self.configure()
+        }) { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
     }
     
     func actionButtonClicked(_ sender: Any) {
         pop(animated: true, completion: nil)
     }
-
+    
 }
