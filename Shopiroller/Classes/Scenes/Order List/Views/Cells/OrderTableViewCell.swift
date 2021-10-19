@@ -15,7 +15,7 @@ private struct Constants {
     
     static var orderNo: String { return "order-no".localized}
 }
-class OrderCellTableViewCell: UITableViewCell {
+class OrderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var orderNo: UILabel!

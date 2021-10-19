@@ -7,13 +7,13 @@
 
 import UIKit
 
-class MyOrdersViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDelegate {
+class OrderListViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDelegate {
     
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
     
     init(viewModel: MyOrdersViewModel){
-        super.init(viewModel: viewModel, nibName: MyOrdersViewController.nibName, bundle: Bundle(for: MyOrdersViewController.self))
+        super.init(viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
     override func setup() {
@@ -29,7 +29,7 @@ class MyOrdersViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDe
             emptyView.delegate = self
         }else{
             orderTable.isHidden = false
-            orderTable.register(cellClass: OrderCellTableViewCell.self)
+            orderTable.register(cellClass: OrderTableViewCell.self)
             orderTable.delegate = self
             orderTable.dataSource = self
             orderTable.backgroundColor = .clear
@@ -52,14 +52,14 @@ class MyOrdersViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDe
     
 }
 
-extension MyOrdersViewController: UITableViewDelegate, UITableViewDataSource {
+extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.orderListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: OrderCellTableViewCell.reuseIdentifier, for: indexPath) as! OrderCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.reuseIdentifier, for: indexPath) as! OrderTableViewCell
         
         if indexPath.row == 0 {
             cell.layer.cornerRadius = 20
