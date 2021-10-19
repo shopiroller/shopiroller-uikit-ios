@@ -117,6 +117,10 @@
 		757E02E5271EF0EE0077467F /* emptyOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 757E02E4271EF0ED0077467F /* emptyOrder.imageset */; };
 		757E02E9271EFB0A0077467F /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02E7271EFB0A0077467F /* OrderTableViewCell.swift */; };
 		757E02EA271EFB0A0077467F /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02E8271EFB0A0077467F /* OrderTableViewCell.xib */; };
+		757E02EF271F544C0077467F /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02EE271F544C0077467F /* OrderDetailViewModel.swift */; };
+		757E02F2271F54770077467F /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02F0271F54770077467F /* OrderDetailViewController.swift */; };
+		757E02F3271F54770077467F /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02F1271F54770077467F /* OrderDetailViewController.xib */; };
+		757E02F5271F617E0077467F /* paymentApproved.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 757E02F4271F617E0077467F /* paymentApproved.imageset */; };
 		75F04976271DC1B8004854FF /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F04975271DC1B8004854FF /* BaseViewModel.swift */; };
 		75F04984271DC7C0004854FF /* successOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 5F82B527739635F509546B2A517BB0D9 /* successOrder.imageset */; };
 		76C284B35CA8E429BE844AB59E0C8898 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C16BC07778418707F67F6EE913002 /* BundleExtension.swift */; };
@@ -378,6 +382,10 @@
 		757E02E4271EF0ED0077467F /* emptyOrder.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emptyOrder.imageset; sourceTree = "<group>"; };
 		757E02E7271EFB0A0077467F /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		757E02E8271EFB0A0077467F /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		757E02EE271F544C0077467F /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
+		757E02F0271F54770077467F /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		757E02F1271F54770077467F /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
+		757E02F4271F617E0077467F /* paymentApproved.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = paymentApproved.imageset; sourceTree = "<group>"; };
 		759ACBBC25F737A090C6E617CC351B97 /* Shopiroller.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Shopiroller.modulemap; sourceTree = "<group>"; };
 		75F04975271DC1B8004854FF /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		7847A99B51D99B8514E4B39D8C570812 /* noResult.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = noResult.png; sourceTree = "<group>"; };
@@ -843,6 +851,7 @@
 		719A1059A14ED992CCEC82249DF38C18 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				757E02F4271F617E0077467F /* paymentApproved.imageset */,
 				757E02E4271EF0ED0077467F /* emptyOrder.imageset */,
 				84A681C66B61987EAD6B21683549FD9E /* adressNoResult.imageset */,
 				5DD2139247A111951663DB0EB682B6FE /* emptyPaymentMethod.imageset */,
@@ -925,8 +934,27 @@
 		757E02EB271F51BE0077467F /* Order Detail */ = {
 			isa = PBXGroup;
 			children = (
+				757E02ED271F54370077467F /* ViewModel */,
+				757E02EC271F54320077467F /* Views */,
 			);
 			path = "Order Detail";
+			sourceTree = "<group>";
+		};
+		757E02EC271F54320077467F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				757E02F0271F54770077467F /* OrderDetailViewController.swift */,
+				757E02F1271F54770077467F /* OrderDetailViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		757E02ED271F54370077467F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				757E02EE271F544C0077467F /* OrderDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		862D95EEA33C1DFE5A6162DE7AA92843 /* RequestModels */ = {
@@ -1443,6 +1471,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757E02F5271F617E0077467F /* paymentApproved.imageset in Resources */,
+				757E02F3271F54770077467F /* OrderDetailViewController.xib in Resources */,
 				2638891AF9D0E1C65B2C1AD71DFDD571 /* Shopiroller.bundle in Resources */,
 				757E02E0271ED52F0077467F /* OrderListViewController.xib in Resources */,
 				757E02EA271EFB0A0077467F /* OrderTableViewCell.xib in Resources */,
@@ -1636,6 +1666,7 @@
 				721BFF2020F8B6C4D6E9FC17E4DF1BE9 /* EmptyView.xib in Sources */,
 				7DCF948065A6ED0DA3ABD845520C71FC /* EmptyModel.swift in Sources */,
 				C17633836ADE4B36793AF519A905D8BC /* EncodableExtension.swift in Sources */,
+				757E02EF271F544C0077467F /* OrderDetailViewModel.swift in Sources */,
 				FE489C52ABA9C79354DEC5ED91CA2DC8 /* ErrorViewModel.swift in Sources */,
 				637783360ABF5AA1C7C978968BA7AF44 /* ItemCollectionViewCell.swift in Sources */,
 				505441F73ED87A42746397621A09C1B6 /* ItemCollectionViewCell.xib in Sources */,
@@ -1723,6 +1754,7 @@
 				45618B5C8F20B5F6DED3478568DB7894 /* SuccessResponse.swift in Sources */,
 				757E02DC271ED5080077467F /* OrderListViewModel.swift in Sources */,
 				A99D3554C719FEF5D8AEC2A66EE0A38A /* UIButtonExtension.swift in Sources */,
+				757E02F2271F54770077467F /* OrderDetailViewController.swift in Sources */,
 				0EB7457482D629EFA4688213280B88C3 /* UIColorExtension.swift in Sources */,
 				75F04976271DC1B8004854FF /* BaseViewModel.swift in Sources */,
 				648625CBEB441E0B7F1B435C77C4C5DC /* UIFontExtension.swift in Sources */,
