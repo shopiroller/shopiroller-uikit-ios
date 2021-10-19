@@ -115,6 +115,8 @@
 		757E02DF271ED52F0077467F /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02DD271ED52F0077467F /* MyOrdersViewController.swift */; };
 		757E02E0271ED52F0077467F /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02DE271ED52F0077467F /* MyOrdersViewController.xib */; };
 		757E02E5271EF0EE0077467F /* emptyOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 757E02E4271EF0ED0077467F /* emptyOrder.imageset */; };
+		757E02E9271EFB0A0077467F /* OrderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02E7271EFB0A0077467F /* OrderCellTableViewCell.swift */; };
+		757E02EA271EFB0A0077467F /* OrderCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02E8271EFB0A0077467F /* OrderCellTableViewCell.xib */; };
 		75F04976271DC1B8004854FF /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F04975271DC1B8004854FF /* BaseViewModel.swift */; };
 		75F04984271DC7C0004854FF /* successOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 5F82B527739635F509546B2A517BB0D9 /* successOrder.imageset */; };
 		76C284B35CA8E429BE844AB59E0C8898 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C16BC07778418707F67F6EE913002 /* BundleExtension.swift */; };
@@ -374,6 +376,8 @@
 		757E02DD271ED52F0077467F /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		757E02DE271ED52F0077467F /* MyOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrdersViewController.xib; sourceTree = "<group>"; };
 		757E02E4271EF0ED0077467F /* emptyOrder.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emptyOrder.imageset; sourceTree = "<group>"; };
+		757E02E7271EFB0A0077467F /* OrderCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellTableViewCell.swift; sourceTree = "<group>"; };
+		757E02E8271EFB0A0077467F /* OrderCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCellTableViewCell.xib; sourceTree = "<group>"; };
 		759ACBBC25F737A090C6E617CC351B97 /* Shopiroller.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Shopiroller.modulemap; sourceTree = "<group>"; };
 		75F04975271DC1B8004854FF /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		7847A99B51D99B8514E4B39D8C570812 /* noResult.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = noResult.png; sourceTree = "<group>"; };
@@ -902,10 +906,27 @@
 		757E02DA271ED4ED0077467F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				757E02E6271EFA680077467F /* Cells */,
 				757E02DD271ED52F0077467F /* MyOrdersViewController.swift */,
 				757E02DE271ED52F0077467F /* MyOrdersViewController.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		757E02E6271EFA680077467F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				757E02E7271EFB0A0077467F /* OrderCellTableViewCell.swift */,
+				757E02E8271EFB0A0077467F /* OrderCellTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		757E02EB271F51BE0077467F /* Order Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Order Detail";
 			sourceTree = "<group>";
 		};
 		862D95EEA33C1DFE5A6162DE7AA92843 /* RequestModels */ = {
@@ -1098,9 +1119,9 @@
 		BDC9160F2800E3247F214C87113B6509 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				757E02EB271F51BE0077467F /* Order Detail */,
 				757E02D8271ED4D20077467F /* MyOrders */,
 				62F788EC90304871582B38DAB58ED160 /* MainPage */,
-				A4FDA6DE534FB475316B5115886E6D22 /* Product Detail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1222,6 +1243,7 @@
 		F8FC47D812ACE0A343CA5D9D52941835 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A4FDA6DE534FB475316B5115886E6D22 /* Product Detail */,
 				1357FE099A1B65771034A58642414019 /* Application */,
 				288F041BBDA589EBB9EA10FB19278732 /* Extensions */,
 				94A035D8E0A85B8AAB85CB2AC827E176 /* Helpers */,
@@ -1423,6 +1445,7 @@
 			files = (
 				2638891AF9D0E1C65B2C1AD71DFDD571 /* Shopiroller.bundle in Resources */,
 				757E02E0271ED52F0077467F /* MyOrdersViewController.xib in Resources */,
+				757E02EA271EFB0A0077467F /* OrderCellTableViewCell.xib in Resources */,
 				757E02E5271EF0EE0077467F /* emptyOrder.imageset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1607,6 +1630,7 @@
 				B404843D05E4AE45F1C97EAB5A99CFAF /* emptyShoppingCart.png in Sources */,
 				757E02DF271ED52F0077467F /* MyOrdersViewController.swift in Sources */,
 				8447B980D932E188FA5C7E5245873708 /* emptyShoppingCart@2x.png in Sources */,
+				757E02E9271EFB0A0077467F /* OrderCellTableViewCell.swift in Sources */,
 				967B8C1B7093C618427C633C2C3EFA8E /* emptyShoppingCart@3x.png in Sources */,
 				CCD29FECB57435302E71B3D49AC469A6 /* EmptyView.swift in Sources */,
 				721BFF2020F8B6C4D6E9FC17E4DF1BE9 /* EmptyView.xib in Sources */,

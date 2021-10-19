@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 private struct Constants {
     
@@ -36,6 +37,14 @@ class MyOrdersViewModel: BaseViewModel {
     
     func isOrderListEmpty() -> Bool {
         return orderList?.isEmpty ?? true
+    }
+    
+    func orderListCount() -> Int {
+        return orderList?.count ?? 0
+    }
+    
+    func getOrder(position: Int) -> SROrderModel? {
+        return orderList?[position]
     }
     
     //TODO: CHange image

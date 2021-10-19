@@ -38,3 +38,9 @@
 "empty-orders-description" = "You have no order yet. We can’t list any product for you.";
 
 "empty-orders-action-button" = "Start Shopping";
+
+//MARK: - My Orders Cell
+
+"order-no" = "Order No: ";
+
+"empty-orders-title" = "No order yet";
