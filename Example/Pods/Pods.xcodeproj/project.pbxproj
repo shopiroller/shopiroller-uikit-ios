@@ -124,7 +124,7 @@
 		7D0691A6E750B16328B93FCECE3744F1 /* ProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B2D20DD7631F8027548637F553D82 /* ProductListModel.swift */; };
 		7D4927524A801D2BA0B4A2DB91670586 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5AA64366219AA67D51F77CF2CBB2F4 /* ProductDetailViewController.swift */; };
 		7DB3B1554B725E9998E3D31A2AC57C52 /* OrderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22B44574A67EA71B88BCA6F073652C /* OrderCardModel.swift */; };
-		7DCF948065A6ED0DA3ABD845520C71FC /* EmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85EB81D689AD7018C9433EA9FD221 /* EmptyViewModel.swift */; };
+		7DCF948065A6ED0DA3ABD845520C71FC /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85EB81D689AD7018C9433EA9FD221 /* EmptyModel.swift */; };
 		7F119B8E36282A04F371E0987BA246E5 /* SROrderProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4696C6B2A411D1ACA28B701A3D1FD95B /* SROrderProductModel.swift */; };
 		7F52BD0341E46A6053B15014557ACB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2819C4C9D00A75CEC1A4F6D896AA81EC /* Foundation.framework */; };
 		82A27686DC18C92FAF3D85FF1A6E43F3 /* emptyProductImage@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E427D385D638B99DDA5D64B5699D8 /* emptyProductImage@2x.png */; };
@@ -381,7 +381,7 @@
 		79658980FDA226B765913F6E2C543429 /* SRMainPageViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SRMainPageViewModel.swift; sourceTree = "<group>"; };
 		7B649CBF45E0591446DF18C132CF75C1 /* Shopiroller-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Shopiroller-umbrella.h"; sourceTree = "<group>"; };
 		7C4E664FF3121CD8E21801BD87B57EF4 /* Contents.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		7CA85EB81D689AD7018C9433EA9FD221 /* EmptyViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmptyViewModel.swift; sourceTree = "<group>"; };
+		7CA85EB81D689AD7018C9433EA9FD221 /* EmptyModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		7D6D24F4E24A3087E50A6E6045F0F783 /* Shopiroller.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Shopiroller.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E49B0EDAF2EE8A3CA060C02AD82DE5C /* UpdateCartItemQuantity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UpdateCartItemQuantity.swift; sourceTree = "<group>"; };
 		7E81A5AF27B0EF088FA4109C5ACB9BF7 /* SRSHimmerEffect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SRSHimmerEffect.swift; sourceTree = "<group>"; };
@@ -1138,7 +1138,7 @@
 		CA90CA7FC5D70BE6AA9D9497ECC5446E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7CA85EB81D689AD7018C9433EA9FD221 /* EmptyViewModel.swift */,
+				7CA85EB81D689AD7018C9433EA9FD221 /* EmptyModel.swift */,
 				2A073451DD94B848C85CD47EA9534D72 /* ErrorViewModel.swift */,
 				66732FBA08357467F4E8F0A1968E35CE /* ProductViewModel.swift */,
 			);
@@ -1610,7 +1610,7 @@
 				967B8C1B7093C618427C633C2C3EFA8E /* emptyShoppingCart@3x.png in Sources */,
 				CCD29FECB57435302E71B3D49AC469A6 /* EmptyView.swift in Sources */,
 				721BFF2020F8B6C4D6E9FC17E4DF1BE9 /* EmptyView.xib in Sources */,
-				7DCF948065A6ED0DA3ABD845520C71FC /* EmptyViewModel.swift in Sources */,
+				7DCF948065A6ED0DA3ABD845520C71FC /* EmptyModel.swift in Sources */,
 				C17633836ADE4B36793AF519A905D8BC /* EncodableExtension.swift in Sources */,
 				FE489C52ABA9C79354DEC5ED91CA2DC8 /* ErrorViewModel.swift in Sources */,
 				637783360ABF5AA1C7C978968BA7AF44 /* ItemCollectionViewCell.swift in Sources */,

@@ -9,35 +9,38 @@ import UIKit
 
 extension EmptyView : NibLoadable { }
 
+protocol EmptyViewDelegate {
+    func actionButtonClicked(_ sender: Any)
+}
+
 public class EmptyView: BaseView {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var actionButton: UIButton!
     
-    override func setup() {
+    var delegate: EmptyViewDelegate?
+    
+    func setup(model: EmptyModel) {
         super.setup()
-        
         setupFromNib()
-    }
-    
-    func setupEmptyView(viewModel: EmptyViewModel) {
-        if let image = viewModel.image {
-            imageView.image = image
-        }
-        titleLabel.text = viewModel.title
-        descriptionLabel.text = viewModel.description
-        descriptionLabel.textColor = .textPCaption
-        if let buttonTitle = viewModel.buttonTitle {
-            button.isHidden = false
-            button.setTitle(buttonTitle)
-            button.backgroundColor = viewModel.buttonColor
-        }
         
+        imageView.image = model.image
+        titleLabel.text = model.title
+        descriptionLabel.text = model.description
+        descriptionLabel.textColor = .textPCaption
+        
+        if let button = model.button {
+            actionButton.isHidden = false
+            actionButton.setTitle(button.title)
+            actionButton.backgroundColor = button.color
+        }
     }
     
-
+    @IBAction func actionButtonClicked(_ sender: Any) {
+        delegate?.actionButtonClicked(sender)
+    }
     
 }
 

@@ -184,8 +184,8 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getEmptyViewModel() -> EmptyViewModel {
-        EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
+    func getEmptyModel() -> EmptyModel {
+        EmptyModel(image: .paymentFailed, title: Constants.title, description: Constants.description, button: nil)
     }
     
 }

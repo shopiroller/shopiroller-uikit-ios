@@ -24,6 +24,7 @@ public class BaseView: UIView {
         setup()
     }
     
-    func setup() { }
+    func setup() {
+    }
     
 }

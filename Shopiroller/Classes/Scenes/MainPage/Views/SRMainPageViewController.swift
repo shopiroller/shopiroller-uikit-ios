@@ -16,7 +16,6 @@ private struct Constants {
 public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     @IBOutlet private weak var emptyView: EmptyView!
-    @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var collectionViewContainer: UIView!
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -114,16 +113,15 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
             collectionViewContainer.isHidden = true
-            emptyViewContainer.isHidden = false
+            emptyView.setup(model: viewModel.getEmptyModel())
+            emptyView.isHidden = false
             scrollView.isScrollEnabled = false
-            emptyView.setupEmptyView(viewModel: viewModel.getEmptyViewModel())
         }else{
             collectionViewContainer.isHidden = false
-            emptyViewContainer.isHidden = true
+            emptyView.isHidden = true
             configureRefreshControl()
             getSliders()
             getCategories()
