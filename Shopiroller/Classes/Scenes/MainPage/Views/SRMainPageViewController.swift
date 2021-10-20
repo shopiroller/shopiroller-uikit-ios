@@ -8,14 +8,19 @@
 import UIKit
 import Kingfisher
 
-private struct Constants {
+extension SRMainPageViewController : NibLoadable { }
+
+
+public class SRMainPageViewController: BaseViewController {
     
-    static var productsTitleIdentifier: String { return "products-identifier".localized }
-    
-}
-public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
+    private struct Constants {
+        
+        static var productsTitleIdentifier: String { return "products-identifier".localized }
+        
+    }
     
     @IBOutlet private weak var emptyView: EmptyView!
+    @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var collectionViewContainer: UIView!
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -23,8 +28,18 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private var refreshControl = UIRefreshControl()
     
-    public init(viewModel: SRMainPageViewModel){
-        super.init(viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
+    private let viewModel : SRMainPageViewModel
+    
+    
+    public init(viewModel: SRMainPageViewModel = SRMainPageViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
+    }
+    
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.viewModel = SRMainPageViewModel()
+        super.init(coder: aDecoder)
     }
     
     public override func setup() {
@@ -113,15 +128,16 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
+    
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
             collectionViewContainer.isHidden = true
-            emptyView.setup(model: viewModel.getEmptyModel())
-            emptyView.isHidden = false
+            emptyViewContainer.isHidden = false
             scrollView.isScrollEnabled = false
+            emptyView.setupEmptyView(viewModel: viewModel.getEmptyViewModel())
         }else{
             collectionViewContainer.isHidden = false
-            emptyView.isHidden = true
+            emptyViewContainer.isHidden = true
             configureRefreshControl()
             getSliders()
             getCategories()
@@ -208,7 +224,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             break
             //TODO OPEN Product Detail handle showcase
         case 3:
-            let vc = OrderListViewController(viewModel: MyOrdersViewModel())
+            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel())
             self.prompt(vc, animated: true)
         default:
             break

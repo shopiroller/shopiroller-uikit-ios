@@ -14,7 +14,7 @@ struct SROrderModel: Codable {
     var totalPrice : Double?
     var shippingPrice : Double?
     var currency : String?
-    var currentStatus : OrderStatusEnum?
+    var currentStatus : String?
     var orderCode : String?
     var createdDate : String?
     var userNote : String?
