@@ -69,9 +69,8 @@ extension SRAppContext {
     
     static var shoppingCartCount: Int {
         get {
-            return userDefaults.object(forKey: SRAppConstants.ShoppingCart.badgeCount) as! Int
+            return userDefaults.object(forKey: SRAppConstants.ShoppingCart.badgeCount) as? Int ?? 0
             }
-    
         set {
             userDefaults.set(newValue , forKey: SRAppConstants.ShoppingCart.badgeCount)
         }
