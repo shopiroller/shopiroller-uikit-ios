@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    
+   
     static let pale: UIColor = #colorLiteral(red: 0.9723294377, green: 0.904499948, blue: 0.8483090401, alpha: 1)
     
     static let ice: UIColor = #colorLiteral(red: 0.846108973, green: 0.9595524669, blue: 0.8989967704, alpha: 1)
@@ -41,5 +41,6 @@ extension UIColor {
     
     static let skeletonDarkColor: UIColor = #colorLiteral(red: 25.0, green: 30.0, blue: 255.0, alpha: 1.0)
     
+    static let textSecondary10: UIColor = #colorLiteral(red: 69.0 / 255.0, green: 81.0 / 255.0, blue: 84.0 / 255.0, alpha: 0.1)
     
 }

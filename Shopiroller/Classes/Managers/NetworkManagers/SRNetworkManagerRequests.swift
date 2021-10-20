@@ -36,9 +36,8 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .post, path: .tryAgain, resourceType: SROrderResponseInnerModel.self, httpBody: completeOrder.data)
     }
     
-    
-    static func getOrderList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<SROrderModel> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getOrderList, resourceType: SROrderModel.self , urlQueryItems: urlQueryItems)
+    static func getOrderList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[SROrderModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getOrderList, resourceType: [SROrderModel].self , urlQueryItems: urlQueryItems)
     }
     
     static func getOrder(orderId: String) -> SRNetworkRequestManager<OrderDetailModel> {
@@ -98,6 +97,5 @@ struct SRNetworkManagerRequests {
     static func getFilterOptions(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<SRFilterOptionsResponseModel> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getFilterOptions , resourceType: SRFilterOptionsResponseModel.self, urlQueryItems: urlQueryItems)
     }
-    
 }
 

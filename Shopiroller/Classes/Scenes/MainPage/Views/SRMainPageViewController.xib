@@ -11,8 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRMainPageViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="collectionViewContainer" destination="YA6-N1-PzX" id="Vzt-Ms-wAC"/>
-                <outlet property="emptyView" destination="3MC-Ei-C3U" id="Gvl-cd-KOw"/>
-                <outlet property="emptyViewContainer" destination="kQF-CQ-qcC" id="cCM-15-GMQ"/>
+                <outlet property="emptyView" destination="tuL-h6-aUS" id="VvZ-Et-Zna"/>
                 <outlet property="mainCollectionView" destination="4Pe-ee-Bh4" id="ORv-8z-qNU"/>
                 <outlet property="scrollView" destination="Q6P-aq-NCD" id="g11-ej-VBK"/>
                 <outlet property="shimmerCollectionView" destination="Y5i-3W-9Rg" id="5oS-Kr-JJW"/>
@@ -24,29 +23,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-h6-aUS" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-iE-vCN">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6P-aq-NCD">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <subviews>
-                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQF-CQ-qcC" userLabel="Empty View Container">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MC-Ei-C3U" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
-                                            <rect key="frame" x="32" y="73" width="350" height="710"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="3MC-Ei-C3U" secondAttribute="trailing" constant="32" id="2pS-3O-ns5"/>
-                                        <constraint firstItem="3MC-Ei-C3U" firstAttribute="centerX" secondItem="kQF-CQ-qcC" secondAttribute="centerX" id="4gf-cJ-CYH"/>
-                                        <constraint firstItem="3MC-Ei-C3U" firstAttribute="leading" secondItem="kQF-CQ-qcC" secondAttribute="leading" constant="32" id="5M3-C2-qlH"/>
-                                        <constraint firstItem="3MC-Ei-C3U" firstAttribute="top" secondItem="kQF-CQ-qcC" secondAttribute="top" constant="73" id="pAF-G7-lan"/>
-                                        <constraint firstAttribute="bottom" secondItem="3MC-Ei-C3U" secondAttribute="bottom" constant="113" id="qsD-cV-l33"/>
-                                    </constraints>
-                                </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3gW-Fy-gEc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <subviews>
@@ -101,14 +87,8 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3gW-Fy-gEc" secondAttribute="trailing" id="4R7-Ra-kv0"/>
                                 <constraint firstAttribute="bottom" secondItem="3gW-Fy-gEc" secondAttribute="bottom" id="Ad5-sE-xkM"/>
-                                <constraint firstItem="kQF-CQ-qcC" firstAttribute="centerX" secondItem="Q6P-aq-NCD" secondAttribute="centerX" id="Mj4-sY-d5y"/>
-                                <constraint firstItem="kQF-CQ-qcC" firstAttribute="top" secondItem="Q6P-aq-NCD" secondAttribute="top" id="Yq9-Ic-NT9"/>
-                                <constraint firstItem="kQF-CQ-qcC" firstAttribute="leading" secondItem="Q6P-aq-NCD" secondAttribute="leading" id="cog-5G-ccp"/>
                                 <constraint firstItem="3gW-Fy-gEc" firstAttribute="top" secondItem="Q6P-aq-NCD" secondAttribute="top" id="eXw-4O-mm9"/>
-                                <constraint firstAttribute="bottom" secondItem="kQF-CQ-qcC" secondAttribute="bottom" id="gWA-2w-W1R"/>
-                                <constraint firstItem="kQF-CQ-qcC" firstAttribute="centerY" secondItem="Q6P-aq-NCD" secondAttribute="centerY" id="msi-pc-Say"/>
                                 <constraint firstItem="3gW-Fy-gEc" firstAttribute="leading" secondItem="Q6P-aq-NCD" secondAttribute="leading" id="p5h-PG-5I5"/>
-                                <constraint firstAttribute="trailing" secondItem="kQF-CQ-qcC" secondAttribute="trailing" id="qLp-IW-JOq"/>
                                 <constraint firstItem="3gW-Fy-gEc" firstAttribute="centerX" secondItem="Q6P-aq-NCD" secondAttribute="centerX" id="wJA-WP-Blq"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
@@ -132,10 +112,14 @@
                 <constraint firstItem="YA6-N1-PzX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="En7-0W-93y"/>
                 <constraint firstAttribute="bottom" secondItem="g3w-iE-vCN" secondAttribute="bottom" id="FUa-o2-NnK"/>
                 <constraint firstAttribute="trailing" secondItem="g3w-iE-vCN" secondAttribute="trailing" id="OIg-4b-Pav"/>
+                <constraint firstAttribute="bottom" secondItem="tuL-h6-aUS" secondAttribute="bottom" id="Q5D-Rp-YGz"/>
+                <constraint firstAttribute="trailing" secondItem="tuL-h6-aUS" secondAttribute="trailing" id="ai1-aD-Qcj"/>
                 <constraint firstItem="3gW-Fy-gEc" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="b2N-GY-J00"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gQR-HK-48J"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k7Y-gN-Yed"/>
+                <constraint firstItem="tuL-h6-aUS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nlJ-Cr-j9w"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rUj-Af-WG8"/>
+                <constraint firstItem="tuL-h6-aUS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ryk-1T-1F4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-271.01449275362319" y="-20.089285714285712"/>
