@@ -19,7 +19,7 @@ extension UIColor {
 
     static let buttonLight = #colorLiteral(red: 244.0 / 255.0, green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
 
-    //static let badgeSecondary = #colorLiteral(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0)
+    static let badgeSecondary = #colorLiteral(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0)
 
     static let badgeWarningInfo : UIColor = #colorLiteral(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0)
 

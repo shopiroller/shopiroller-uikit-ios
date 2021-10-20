@@ -19,7 +19,10 @@ class MyOrdersViewModel: BaseViewModel {
     var orderList: [SROrderModel]?
     
     func getOrderList(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getOrderList().response(using: SRMainPageViewModel.networkManager) {
+        let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppConstants.Query.Values.userId), URLQueryItem(name: "perPage", value: "50"),
+                                                                                                                                           URLQueryItem(name: "orderBy", value: "OrderByDescending"),]
+        
+        SRNetworkManagerRequests.getOrderList(urlQueryItems: urlQueryItems).response(using: SRMainPageViewModel.networkManager) {
             (result) in
             switch result {
             case .success(let result):
