@@ -26,17 +26,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mma-AA-1bQ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="mma-AA-1bQ">
                                 <rect key="frame" x="20" y="38" width="105" height="58.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02 Nisan 2019 Salı, 12:20" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIt-me-269" userLabel="date">
-                                        <rect key="frame" x="0.0" y="0.0" width="105" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02 Nisan 2019" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIt-me-269" userLabel="date">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="12.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salı, 12:20" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hga-SU-NAX" userLabel="time">
+                                        <rect key="frame" x="0.0" y="15.5" width="105" height="12.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF1-Vf-3uZ">
+                                        <rect key="frame" x="0.0" y="31" width="105" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="$279.98" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yv-FU-ibq" userLabel="price">
-                                        <rect key="frame" x="0.0" y="41.5" width="105" height="17"/>
+                                        <rect key="frame" x="0.0" y="46" width="105" height="12.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -99,9 +111,10 @@
                 <outlet property="containerView" destination="w7Z-IM-Bd1" id="eRq-xO-BLe"/>
                 <outlet property="date" destination="OIt-me-269" id="ECz-gc-jG0"/>
                 <outlet property="orderNo" destination="dlH-gp-tJK" id="ZV8-VI-LSp"/>
-                <outlet property="price" destination="3yv-FU-ibq" id="iCu-c8-kFF"/>
+                <outlet property="price" destination="3yv-FU-ibq" id="Yae-rv-NHc"/>
                 <outlet property="status" destination="iVV-DN-bgp" id="2j2-c8-FWa"/>
                 <outlet property="statusView" destination="HOC-x7-7YA" id="hqM-FA-EsY"/>
+                <outlet property="time" destination="hga-SU-NAX" id="btw-Wr-8pf"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="99.441964285714278"/>
         </tableViewCell>

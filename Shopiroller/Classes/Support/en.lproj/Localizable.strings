@@ -44,3 +44,18 @@
 "order-no" = "Order No: ";
 
 "empty-orders-title" = "No order yet";
+
+// MARK: - ORDER STATUS
+
+"WaitingPayment" = "Waiting Payment";
+"WaitingApproval" = "Waiting Approval";
+"Approved" = "Approved";
+"WaitingForSupplying" = "Waiting Supplying";
+"Preparing" = "Preparing";
+"Shipped" = "Shipped";
+"Delivered" = "Delivered";
+"CancelRequested" = "Cancellation Requested";
+"Canceled" = "Canceled";
+"Refunded" = "Refunded";
+"PaymentFailed" = "Payment Failed";
+

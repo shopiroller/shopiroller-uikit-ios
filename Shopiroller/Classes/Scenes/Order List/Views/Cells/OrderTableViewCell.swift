@@ -23,24 +23,25 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var time: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        // corner radius
-        statusView.layer.cornerRadius = 30
         
-        containerView.layer.cornerRadius = 10
+        statusView.layer.cornerRadius = 15
+        
+        containerView.layer.cornerRadius = 6
         containerView.layer.borderWidth = 1.0
         containerView.layer.borderColor = UIColor.textSecondary10.cgColor
-        
     }
     
     func setup(model: SROrderModel) {
-      //  orderNo.text = Constants.orderNo + model.orderCode
-        //date.text = model.createdDate
-        //price.text = model.totalPrice + model.currency
-        
+        orderNo.text = Constants.orderNo + (model.orderCode ?? "")
+        date.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.ddMMMMyyy)
+        time.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.EEEEhhmm)
+        price.text = ECommerceUtil.getFormattedPrice(price: model.totalPrice, currency: model.currency)
+        status.text = model.currentStatus?.text
+        statusView.backgroundColor = model.currentStatus?.backgroundColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

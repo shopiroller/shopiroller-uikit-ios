@@ -121,6 +121,8 @@
 		757E02F2271F54770077467F /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E02F0271F54770077467F /* OrderDetailViewController.swift */; };
 		757E02F3271F54770077467F /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757E02F1271F54770077467F /* OrderDetailViewController.xib */; };
 		757E02F5271F617E0077467F /* paymentApproved.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 757E02F4271F617E0077467F /* paymentApproved.imageset */; };
+		75D0F8C827204B7500C3499A /* ECommerceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0F8C727204B7500C3499A /* ECommerceUtil.swift */; };
+		75D0F8CA272054CE00C3499A /* ECommerceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0F8C9272054CE00C3499A /* ECommerceConstants.swift */; };
 		75F04976271DC1B8004854FF /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F04975271DC1B8004854FF /* BaseViewModel.swift */; };
 		75F04984271DC7C0004854FF /* successOrder.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 5F82B527739635F509546B2A517BB0D9 /* successOrder.imageset */; };
 		76C284B35CA8E429BE844AB59E0C8898 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C16BC07778418707F67F6EE913002 /* BundleExtension.swift */; };
@@ -387,6 +389,8 @@
 		757E02F1271F54770077467F /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		757E02F4271F617E0077467F /* paymentApproved.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = paymentApproved.imageset; sourceTree = "<group>"; };
 		759ACBBC25F737A090C6E617CC351B97 /* Shopiroller.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Shopiroller.modulemap; sourceTree = "<group>"; };
+		75D0F8C727204B7500C3499A /* ECommerceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECommerceUtil.swift; sourceTree = "<group>"; };
+		75D0F8C9272054CE00C3499A /* ECommerceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECommerceConstants.swift; sourceTree = "<group>"; };
 		75F04975271DC1B8004854FF /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		7847A99B51D99B8514E4B39D8C570812 /* noResult.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = noResult.png; sourceTree = "<group>"; };
 		7853F1CAC21ECDAA6F37B9146926E591 /* Shopiroller-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Shopiroller-Info.plist"; sourceTree = "<group>"; };
@@ -1000,6 +1004,7 @@
 				07030677C14549958CEDC1830719AD97 /* SRAppConstants.swift */,
 				A78D7624B18397031CE21FB3E9B4813E /* SRAppContext.swift */,
 				F1689B7F986156EEFBA5ABE158446A40 /* SRLoggingPrint.swift */,
+				75D0F8C727204B7500C3499A /* ECommerceUtil.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1044,6 +1049,7 @@
 				4696C6B2A411D1ACA28B701A3D1FD95B /* SROrderProductModel.swift */,
 				862D95EEA33C1DFE5A6162DE7AA92843 /* RequestModels */,
 				3CEE7CAF3CEECF488B32109E8B030F72 /* ResponseModels */,
+				75D0F8C9272054CE00C3499A /* ECommerceConstants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1658,6 +1664,7 @@
 				82A27686DC18C92FAF3D85FF1A6E43F3 /* emptyProductImage@2x.png in Sources */,
 				1BA01278AFB80CC41F08209321D53A22 /* emptyProductImage@3x.png in Sources */,
 				B404843D05E4AE45F1C97EAB5A99CFAF /* emptyShoppingCart.png in Sources */,
+				75D0F8CA272054CE00C3499A /* ECommerceConstants.swift in Sources */,
 				757E02DF271ED52F0077467F /* OrderListViewController.swift in Sources */,
 				8447B980D932E188FA5C7E5245873708 /* emptyShoppingCart@2x.png in Sources */,
 				757E02E9271EFB0A0077467F /* OrderTableViewCell.swift in Sources */,
@@ -1749,6 +1756,7 @@
 				3DF830FE8F585C6D7177DAEBFF61351C /* String+LocalizeTableName.swift in Sources */,
 				92430EB83C8351685B02A82289701480 /* StringExtensions.swift in Sources */,
 				B42B135E3C295D2937023A32A10E8FC8 /* successOrder.png in Sources */,
+				75D0F8C827204B7500C3499A /* ECommerceUtil.swift in Sources */,
 				5E75380B5F1A20424CC12671F088E15A /* successOrder@2x.png in Sources */,
 				F4860ABCA089A37C5EB43AFE2CD1667D /* successOrder@3x.png in Sources */,
 				45618B5C8F20B5F6DED3478568DB7894 /* SuccessResponse.swift in Sources */,
