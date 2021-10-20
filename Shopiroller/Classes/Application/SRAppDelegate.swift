@@ -18,7 +18,7 @@ open class SRAppDelegate: UIResponder, UIApplicationDelegate {
     private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         UIFont.listAllFontsOnSystem()
         SRAppContext.fontFamily = .poppins
-        let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
+        let navigationController = UINavigationController(rootViewController: SRMainPageViewController(coder: NSCoder())!)
         navigationController.setNavigationBarHidden(true, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

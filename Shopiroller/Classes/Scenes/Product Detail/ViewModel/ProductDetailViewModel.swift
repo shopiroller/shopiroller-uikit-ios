@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class ProductDetailViewModel: BaseViewModel {
+public class ProductDetailViewModel {
     
     func getItemCount() -> Int {
         return 5

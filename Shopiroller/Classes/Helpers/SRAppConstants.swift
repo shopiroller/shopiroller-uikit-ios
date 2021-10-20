@@ -39,7 +39,6 @@ struct SRAppConstants {
     struct Query {
         
         struct Keys {
-            static let userId = "userId"
             static let page = "page"
             static let perPage = "perPage"
         }
@@ -47,7 +46,6 @@ struct SRAppConstants {
         struct Values {
             static let page = "1"
             static let productsPerPageSize = 15
-            static let userId = "78971cc6-bda1-45a4-adee-638317c5a6e9"
         }
     }
 }

@@ -18,8 +18,6 @@ extension UIImage {
     static let emptyProduct: UIImage = UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!
     
     static let rightArrow: UIImage = UIImage(named: "rightArrow", in: .shopiroller, with: nil)!
-    
-    static let emptyOrder: UIImage = UIImage(named: "emptyOrder", in: .shopiroller, with: nil)!
 }
 
 
