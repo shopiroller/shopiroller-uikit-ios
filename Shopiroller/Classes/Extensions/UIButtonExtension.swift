@@ -35,5 +35,43 @@ extension UIButton {
     func setBackgroundImage(_ image: UIImage?) {
         UIControl.State.allCases.forEach { setBackgroundImage(image, for: $0) }
     }
+    
+    func createNavBarButton(image: UIImage?) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.tintColor = .black
+        button.setImage(image)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        return button
+    }
+    
+    func badgeLabel(withCount count: Int) -> UIButton {
+        let badgeSize: CGFloat = 17
+        let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
+        badgeCount.translatesAutoresizingMaskIntoConstraints = false
+        badgeCount.layer.cornerRadius = badgeCount.bounds.size.height / 2
+        badgeCount.textAlignment = .center
+        badgeCount.layer.masksToBounds = true
+        badgeCount.textColor = .white
+        badgeCount.font = UIFont.boldSystemFont(ofSize: 12)
+        badgeCount.backgroundColor = UIColor(red: 221/255, green: 55/255, blue: 95/255, alpha: 1)
+        badgeCount.text = String(count)
+        self.addSubview(badgeCount)
+            NSLayoutConstraint.activate([
+                badgeCount.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14),
+                badgeCount.topAnchor.constraint(equalTo: self.topAnchor, constant: -10),
+                badgeCount.widthAnchor.constraint(equalToConstant: badgeSize),
+                badgeCount.heightAnchor.constraint(equalToConstant: badgeSize)
+            ])
+        return self
+    }
 
+}
+
+extension UIBarButtonItem {
+    func createUIBarButtonItem(_ button: UIButton?) -> UIBarButtonItem {
+        let uiBarButton : UIBarButtonItem = UIBarButtonItem()
+        uiBarButton.customView = button
+        return uiBarButton
+    }
+    
 }

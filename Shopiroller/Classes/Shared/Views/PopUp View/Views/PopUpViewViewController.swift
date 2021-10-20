@@ -8,6 +8,11 @@
 import UIKit
 import Kingfisher
 
+protocol BackToProductListDelegate : AnyObject {
+    func popView()
+    func dismissView()
+}
+
 extension PopUpViewViewController : NibLoadable { }
 
 class PopUpViewViewController: BaseViewController {
@@ -24,6 +29,8 @@ class PopUpViewViewController: BaseViewController {
     @IBOutlet private weak var secondButtonContainerView: UIView!
 
     private let viewModel : PopUpViewModel
+    
+    var delegate: BackToProductListDelegate?
     
     override func setup() {
         super.setup()
@@ -75,14 +82,11 @@ class PopUpViewViewController: BaseViewController {
     
     
     @IBAction private func firstButtonTapped(_ sender: Any){
-        if(viewModel.secondButton?.type == .viewController) {
-            if let viewController = viewModel.secondButton?.viewController {
-                pop(animated: false) {
-                    self.prompt(viewController, animated: true)
-                }
-            }
-        }else{
-            pop(animated: true, completion: nil)
+        if(viewModel.firstButton?.type == .popToRoot) {
+            dismiss(animated: false, completion: nil)
+            self.delegate?.popView()
+        }else if viewModel.firstButton?.type == .dismiss {
+            self.delegate?.dismissView()
         }
     }
 

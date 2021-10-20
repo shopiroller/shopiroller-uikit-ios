@@ -8,13 +8,14 @@
 import UIKit
 import Kingfisher
 import ImageSlideshow
+import LinkPresentation
 
 extension ProductDetailViewController : NibLoadable { }
 
 public class ProductDetailViewController: BaseViewController {
     
-    private struct Constants {
- 
+    struct Constants {
+        
         static var quantityTitle: String { return "quantity-title".localized }
         
         static var descriptionTitle: String { return "description-title".localized }
@@ -30,6 +31,15 @@ public class ProductDetailViewController: BaseViewController {
         static var addToCartText: String { return "add-to-cart".localized }
         
         static var shippingPriceText: String { return "shipping-price-text".localized }
+        
+        static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
+        
+        static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
+        
+        static var outOfStockTitle: String { "product-detail-out-of-stock-title".localized }
+        
+        static var outOfStockDescription: String { "product-detail-out-of-stock-description".localized }
+        
     }
     
     public struct ImageSlideModel {
@@ -39,8 +49,8 @@ public class ProductDetailViewController: BaseViewController {
             return KingfisherSource(url: url)
         }
     }
-
-
+    
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var pageControlContainer: UIView!
@@ -48,20 +58,20 @@ public class ProductDetailViewController: BaseViewController {
     @IBOutlet private weak var situationContainer: UIStackView!
     @IBOutlet private weak var soldOutContainer: UIView!
     @IBOutlet private weak var soldOutLabel: UILabel!
-
+    
     @IBOutlet private weak var freeShippingContainer: UIView!
     @IBOutlet private weak var freeShippingLabel: UILabel!
     
     @IBOutlet private weak var productTitleLabel: UILabel!
-   
+    
     @IBOutlet private weak var productNewPrice: UILabel!
     @IBOutlet private weak var productOldPrice: UILabel!
     @IBOutlet private weak var discountContainer: UIView!
     @IBOutlet private weak var discountLabel: UILabel!
     
-    @IBOutlet private weak var addToCardImage: UIImageView!
-    @IBOutlet private weak var addToCardTitleLabel: UILabel!
+    @IBOutlet private weak var addToCardButton: SRButton!
     @IBOutlet private weak var addToCardContainer: UIView!
+    @IBOutlet private weak var checkmarkImage: UIImageView!
     
     @IBOutlet private weak var deliveryTermsContainer: UIView!
     @IBOutlet private weak var deliveryTermsTitleLabel: UILabel!
@@ -107,6 +117,8 @@ public class ProductDetailViewController: BaseViewController {
         
         view.backgroundColor = .white
         
+        checkmarkImage.tintColor = .black
+        
         descriptionContainerImage.image = UIImage(systemName: "chevron.right")
         descriptionContainerImage.tintColor = .black
         descriptionContainer.layer.cornerRadius = 8
@@ -116,7 +128,7 @@ public class ProductDetailViewController: BaseViewController {
         descriptionContainer.clipsToBounds = true
         descriptionTitleLabel.text = Constants.descriptionTitle
         descriptionTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-
+        
         returnExchangeContainer.makeCardView()
         returnExchangeContainer.backgroundColor = .buttonLight
         returnExchangeContainer.clipsToBounds = true
@@ -145,11 +157,11 @@ public class ProductDetailViewController: BaseViewController {
         shippingPriceContainer.backgroundColor = .badgeWarningInfo
         
         addToCardContainer.backgroundColor = .black
-        addToCardTitleLabel.textColor = .white
-        addToCardTitleLabel.text = Constants.addToCartText
-        addToCardTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        addToCardImage.tintColor = .white
-        addToCardImage.image = UIImage(systemName: "cart")
+        addToCardButton.setTitle(Constants.addToCartText)
+        addToCardButton.setTitleColor(.white)
+        addToCardButton.setImage(UIImage(systemName: "cart"))
+        addToCardButton.tintColor = .white
+        addToCardButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 35)
         
         let sumQuantityRecognizer = UITapGestureRecognizer(target: self, action: #selector(sumImageTapped(_:)))
         sumImage.addGestureRecognizer(sumQuantityRecognizer)
@@ -173,15 +185,13 @@ public class ProductDetailViewController: BaseViewController {
         let deliveryRecognizer = UITapGestureRecognizer(target: self, action: #selector(deliveryTermsContainerTapped(_:)))
         deliveryTermsContainer.addGestureRecognizer(deliveryRecognizer)
         
-        
-        
-            
         collectionView.register(cellClass: ProductImageSliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.clipsToBounds = false
         
-        pageControl.customizePageControl(pageControl, pageControlContainer: pageControlContainer)
+        pageControl.customizePageControl(pageControlContainer)
+        
         getProductDetail()
         
         getPaymentSettings()
@@ -189,6 +199,85 @@ public class ProductDetailViewController: BaseViewController {
         quantityCountLabel.text = "1"
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backButton = UIButton().createNavBarButton(image: UIImage(systemName: "chevron.left"))
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        
+        let cardButton = UIButton().createNavBarButton(image: UIImage(systemName: "cart.fill"))
+        cardButton.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
+        cardButton.badgeLabel(withCount: SRAppContext.shoppingCartCount)
+        
+        let searchButton = UIButton().createNavBarButton(image: UIImage(systemName: "magnifyingglass"))
+        searchButton.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
+        
+        let shareButton = UIButton().createNavBarButton(image: UIImage(systemName: "square.and.arrow.up"))
+        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
+        
+        var bvt : UIBarButtonItem = UIBarButtonItem()
+        var bvtArr: [UIBarButtonItem] = [UIBarButtonItem]()
+        
+        bvtArr.append(bvt.createUIBarButtonItem(shareButton))
+        bvtArr.append(bvt.createUIBarButtonItem(searchButton))
+        bvtArr.append(bvt.createUIBarButtonItem(cardButton))
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem().createUIBarButtonItem(backButton)
+        navigationItem.rightBarButtonItems = bvtArr
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.makeNavigationBar(.clear)
+        
+    }
+    
+    @objc func goBack() { // remove @objc for Swift 3
+        self.pop(animated: true, completion: nil)
+    }
+    
+    @objc func goToCard() {
+        //TODO
+    }
+    
+    
+    @objc func searchProduct() {
+        //TODO
+    }
+    
+    
+    @IBAction private func addToCardshowAnimation(_ sender: Any){
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+            self.addToCardButton.frame.origin.y += 70
+            self.checkmarkImage.isHidden = false
+            self.checkmarkImage.frame.origin.y += 70
+        }, completion: {_ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.hideAnimation()
+            }
+        })
+    }
+    
+    
+    private func hideAnimation() {
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+            self.addToCardButton.frame.origin.y = 0
+            self.checkmarkImage.frame.origin.y = self.checkmarkImage.frame.origin.y - 70
+        }, completion: {_ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.checkmarkImage.isHidden = true
+            }
+        })
+        
+    }
+    
+    
+    @objc func shareProduct() {
+        //TODO APP LINK
+        let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
+        let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
+    }
     
     private func getProductDetail() {
         viewModel.getProductDetail(succes: {
@@ -197,6 +286,9 @@ public class ProductDetailViewController: BaseViewController {
             self.pageControl.numberOfPages = self.viewModel.getItemCount() ?? 0
             self.setUI()
             self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.getCount()
+            }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -214,14 +306,25 @@ public class ProductDetailViewController: BaseViewController {
         }
     }
     
+    private func getCount() {
+        viewModel.getShoppingCartCount(succes: {
+            [weak self] in
+            guard let self = self else { return }
+            print(SRAppContext.shoppingCartCount)
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
+    
     @objc private func sumImageTapped(_ sender: Any) {
         sumImage.makeAnimation()
         if viewModel.isQuantityMax() {
             sumImage.isUserInteractionEnabled = false
         } else {
+            viewModel.quantityCount += 1
             minusImage.isUserInteractionEnabled = true
             sumImage.isUserInteractionEnabled = true
-            viewModel.quantityCount += 1
             quantityCountLabel.text = "\(viewModel.quantityCount)"
         }
     }
@@ -238,16 +341,19 @@ public class ProductDetailViewController: BaseViewController {
     
     @objc private func descriptionContainerTapped(_ sender: Any) {
         let vc = WebViewController(viewModel: WebViewViewModel(webViewUrl: viewModel.getDescriptionUrl() ?? ""))
-        self.present(vc,animated: true, completion: nil)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
     @objc private func returnExchangeContainerTapped(_ sender: Any) {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: "Return Exchange", description: "You are clearing all  products in shopping cart now." , firstButton: popUpButton(title: "Back To Product", type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
+        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: Constants.returnExchangeTitle, description: viewModel.getReturnExchangeTerms() , firstButton: popUpButton(title: Constants.backToProductButtonText, type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
         self.popUp(vc, completion: nil)
     }
     
     @objc private func deliveryTermsContainerTapped(_ sender: Any) {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: "Delivery Terms", description: viewModel.getDeliveryTerms()?.localized , firstButton: popUpButton(title: "Back To Product", type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
+        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: Constants.deliveryTitle, description: viewModel.getDeliveryTerms()?.localized , firstButton: popUpButton(title: Constants.backToProductButtonText, type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
         self.popUp(vc, completion: nil)
     }
     
@@ -256,6 +362,8 @@ public class ProductDetailViewController: BaseViewController {
         
         if let brandImage = viewModel.getBrandImage() {
             productBrandImage.kf.setImage(with: URL(string: brandImage))
+        }else{
+            productBrandImage.isHidden = true
         }
         
         if viewModel.hasDiscount() {
@@ -302,22 +410,32 @@ public class ProductDetailViewController: BaseViewController {
             soldOutLabel.textColor = .black
             soldOutLabel.text = Constants.soldOutText
             quantityContainer.isHidden = true
+            addToCardButton.imageView?.isHidden = true
+            addToCardButton.titleLabel?.text = Constants.soldOutText
             showSoldOutPopUp()
         }else{
             soldOutContainer.isHidden = true
             quantityContainer.isHidden = false
-            addToCardImage.isHidden = true
-            addToCardTitleLabel.text = Constants.soldOutText
         }
     }
     
     private func showSoldOutPopUp() {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: "Delivery Terms", description: viewModel.getDeliveryTerms()?.localized , firstButton: popUpButton(title: "Back To Product", type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
+        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: UIImage(systemName: "chevron.left"), title: Constants.outOfStockTitle, description: Constants.outOfStockDescription , firstButton: popUpButton(title: Constants.backToProductsButtonText, type: .popToRoot, viewController: nil, buttonType: .darkButton), secondButton: nil))
+        vc.delegate = self
         popUp(vc, completion: nil)
-    }    
+    }
 }
 
-
+extension ProductDetailViewController : BackToProductListDelegate {
+    func popView() {
+        pop(animated: false, completion: nil)
+    }
+    
+    func dismissView() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
 
 
 extension ProductDetailViewController : UICollectionViewDelegate , UICollectionViewDataSource {
@@ -340,8 +458,7 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
         let fullScreenController = FullScreenSlideshowViewController()
         var imagesArray : [ImageSlideModel] = [ImageSlideModel]()
         let images = viewModel.getImageArray()
-        // removed html prepare code
-        fullScreenController.initialPage = indexPath.row
+        fullScreenController.slideshow.pageIndicator?.view.tintColor = .white
         images?.forEach{ image in
             imagesArray.append(ImageSlideModel(url: URL(string: image.normal ?? "")!))
         }
@@ -349,7 +466,7 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
         present(fullScreenController, animated: true, completion: nil)
     }
     
-   
+    
 }
 
 extension ProductDetailViewController : UICollectionViewDelegateFlowLayout {
@@ -367,15 +484,6 @@ extension ProductDetailViewController: UIScrollViewDelegate {
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-        
     }
 }
-
-extension ProductDetailViewController: ImageSlideshowDelegate {
-    
-    func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int) {
-        print("current page:", page)
-    }
-}
-
 

@@ -46,3 +46,16 @@
 "shipping-price-text" = "Kargo Ücreti XX";
 
 "product-detail-description-title-text" = "Description";
+
+"product-detail-return-exchange-title-text" = "İade/Değişim Koşulları";
+
+"product-detail-delivery-title-text" = "Teslimat Koşulları";
+
+"product-detail-back-to-product-button-text" = "Ürüne dön";
+
+"product-detail-back-to-product-list-button-text" = "Ürünlere dön";
+
+"product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
+
+"product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
+

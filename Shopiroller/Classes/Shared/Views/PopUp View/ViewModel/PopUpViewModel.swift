@@ -41,7 +41,7 @@ public class popUpButton {
 }
 
 public enum popUpButtonType {
-    case pop
+    case popToRoot
     case viewController
     case dismiss
 }

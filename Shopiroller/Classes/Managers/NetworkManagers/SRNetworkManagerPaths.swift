@@ -23,13 +23,14 @@ enum SRNetworkManagerPaths: String {
     case updateItemQuantity = "/users/{userId}/shopping-cart/items/{cartItemId}/quantity"
     case addProductToShoppingCart = "/users/{userId}/shopping-cart/items"
     case clearShoppingCart = "/users/{userId}/shopping-cart/items/clear"
-    case getShoppingCartCount = "/users/{userId}/shopping-cart/count"
+    case getShoppingCartCount = "/shopping-cart/count"
     case failurePayment = "/orders/{orderId}/failure"
     case getSliders = "/sliders"
     case getCategories = "/categories"
     case getSubCategories = "/categories/{categoryId}"
     case getShowcase = "/showcases"
     case getFilterOptions = "/filterOptions"
+    case users = "/users/"
     
     var name: String {
         switch self {
@@ -41,4 +42,5 @@ enum SRNetworkManagerPaths: String {
     }
     
 }
+
 

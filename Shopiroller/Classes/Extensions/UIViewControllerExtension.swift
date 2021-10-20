@@ -59,7 +59,6 @@ extension UIViewController {
     func popUp(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             viewController.modalPresentationStyle = .overCurrentContext
-            viewController.modalPresentationStyle = .overFullScreen
             self.present(viewController, animated: false, completion: completion)
         }
         

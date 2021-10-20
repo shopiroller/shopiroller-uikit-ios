@@ -17,10 +17,10 @@ public class ProductDetailViewModel {
     
     private let networkManager: SRNetworkManager
     
-    var quantityCount = 0
+    var quantityCount = 1
     
-    init (products: String = String() , networkManager : SRNetworkManager = SRNetworkManager()) {
-        self.productId = products
+    init (productId: String = String() , networkManager : SRNetworkManager = SRNetworkManager()) {
+        self.productId = productId
         self.networkManager = networkManager
     }
     
@@ -57,6 +57,10 @@ public class ProductDetailViewModel {
             }
         }
         
+    }
+    
+    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
     }
     
     func getTitle() -> String? {
@@ -131,7 +135,7 @@ public class ProductDetailViewModel {
     }
     
     func isQuantityMax() -> Bool {
-        return productList?.maxQuantityPerOrder == quantityCount
+        return productList?.maxQuantityPerOrder == quantityCount || productList?.stock == quantityCount
     }
     
     func getReturnExchangeTerms() -> String? {
@@ -144,6 +148,10 @@ public class ProductDetailViewModel {
     
     func getDescriptionUrl() -> String? {
         return paymentSettings?.description
+    }
+    
+    func getAppId() -> String? {
+        return SRNetworkContext.appKey
     }
     
 }

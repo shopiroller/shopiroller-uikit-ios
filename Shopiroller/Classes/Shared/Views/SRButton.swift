@@ -102,10 +102,13 @@ public class SRButton: UIButton {
         titleLabel?.font = style.titleFont
         titleLabel?.textAlignment = .center
         
-        if type == .floatButton {
+        switch type {
+        case .floatButton:
             setImage(.rightArrow, for: .normal)
             semanticContentAttribute = .forceRightToLeft
             imageEdgeInsets.left = 15
+        default:
+            break
         }
     }
 }

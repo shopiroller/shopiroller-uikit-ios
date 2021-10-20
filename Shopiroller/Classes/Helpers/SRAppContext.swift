@@ -67,5 +67,15 @@ extension SRAppContext {
         }
     }
     
+    static var shoppingCartCount: Int {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.ShoppingCart.badgeCount) as! Int
+            }
+    
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.ShoppingCart.badgeCount)
+        }
+    }
+    
 }
 

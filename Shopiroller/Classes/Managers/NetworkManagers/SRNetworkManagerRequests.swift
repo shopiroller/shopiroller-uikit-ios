@@ -70,9 +70,9 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .delete, path: .clearShoppingCart,subpath: "/\(userId)" ,resourceType: SuccessResponse.self)
     }
     
-    static func getShoppingCartCount(userId: String) -> SRNetworkRequestManager<ShoppingCartCount> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getShoppingCartCount,
-                                       subpath: "/\(userId)",resourceType: ShoppingCartCount.self)
+    static func getShoppingCartCount(userId: String) -> SRNetworkRequestManager<Int> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.getShoppingCartCount.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subpath, resourceType: Int.self)
     }
     
     static func failurePayment(orderId: String) -> SRNetworkRequestManager<SuccessResponse> {

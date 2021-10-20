@@ -92,6 +92,10 @@ public class SRMainPageViewModel {
         
     }
     
+    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
+    }
+    
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getCategories().response(using: networkManager) {
             (result) in
@@ -184,10 +188,14 @@ public class SRMainPageViewModel {
         return showcase?[position]
     }
     
-    func getProductDetailList(position: Int) -> String? {
+    func getProductId(position: Int) -> String? {
         return products?[position].id
     }
-        
+    
+    func getshowCaseProductDetail(position: Int) -> [ProductDetailResponseModel] {
+        return showcase?[position].products ?? []
+    }
+ 
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
@@ -196,7 +204,7 @@ public class SRMainPageViewModel {
             return 150
         }
     }
-    
+
     func getEmptyViewModel() -> EmptyViewModel {
         EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
     }

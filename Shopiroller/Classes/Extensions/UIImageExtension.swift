@@ -19,7 +19,11 @@ extension UIImage {
     
     static let rightArrow: UIImage = UIImage(named: "rightArrow", in: .shopiroller, with: nil)!
     
-    static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!    
+    static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!
+ 
+    static let menuIcon: UIImage = UIImage(named: "menuIcon", in: .shopiroller, with: nil)!
+    
+    static let moreIcon: UIImage = UIImage(named: "moreIcon", in: .shopiroller, with: nil)!
 }
 
 

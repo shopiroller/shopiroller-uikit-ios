@@ -15,6 +15,7 @@ private struct Constans {
     
     static var webViewTitle: String { return "product-detail-description-title-text".localized }
 }
+
 class WebViewController: BaseViewController {
     
     @IBOutlet weak var webView: WKWebView!
@@ -36,8 +37,6 @@ class WebViewController: BaseViewController {
     
     override func setup() {
         super.setup()
-        
-        view.backgroundColor = .clear
         
         titleView.isHidden = false
         
