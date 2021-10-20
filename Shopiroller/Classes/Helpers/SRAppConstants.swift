@@ -48,4 +48,9 @@ struct SRAppConstants {
             static let productsPerPageSize = 15
         }
     }
+    
+    struct ShoppingCart {
+        
+        static var badgeCount = "badgeCount"
+    }
 }

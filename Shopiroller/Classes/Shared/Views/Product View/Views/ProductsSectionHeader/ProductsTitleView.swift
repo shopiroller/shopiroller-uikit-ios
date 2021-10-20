@@ -1,6 +1,6 @@
 //
 //  SectionHeader.swift
-//  Kingfisher
+//  shopiroller
 //
 //  Created by Görkem Gür on 12.10.2021.
 //
@@ -30,7 +30,7 @@ class ProductsTitleView: UICollectionReusableView {
 
          label.translatesAutoresizingMaskIntoConstraints = false
          label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-         label.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+         label.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 15).isActive = true
          label.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
 

@@ -58,7 +58,6 @@ extension UIViewController {
     //
     func popUp(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            viewController.view.backgroundColor = .buttonLight
             viewController.modalPresentationStyle = .overCurrentContext
             self.present(viewController, animated: false, completion: completion)
         }
@@ -73,14 +72,10 @@ extension UIViewController {
         }
     }
     
-    func popToRoot(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let navigationController = navigationController {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-            navigationController.popToRootViewController(animated: flag)
-            CATransaction.commit()
-        } else {
-            dismiss(animated: flag, completion: completion)
+    func popToRoot(_ viewController: UIViewController,animated flag: Bool, completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            viewController.modalPresentationStyle = .overCurrentContext
+            self.present(viewController, animated: false, completion: completion)
         }
     }
     

@@ -32,4 +32,6 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Kingfisher'
   s.dependency 'SVProgressHUD'
+  s.dependency 'ImageSlideshow'
+  s.dependency 'ImageSlideshow/Kingfisher'
 end

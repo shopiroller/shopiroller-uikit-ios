@@ -20,14 +20,14 @@ private struct Constants {
 
 public class SRMainPageViewModel {
     
-    var sliderModel: [SRSliderDataModel]?
-    var categories: [SRCategoryResponseModel]?
-    var products: [ProductListModel]?
-    var showcase: [SRShowcaseResponseModel]?
+    private var sliderModel: [SRSliderDataModel]?
+    private var categories: [SRCategoryResponseModel]?
+    private var products: [ProductListModel]?
+    private var showcase: [SRShowcaseResponseModel]?
     
     private let networkManager: SRNetworkManager
     
-   var currentPage: Int = 0
+    private var currentPage: Int = 0
     
     
     public init (networkManager: SRNetworkManager = SRNetworkManager()) {
@@ -90,6 +90,10 @@ public class SRMainPageViewModel {
             }
         }
         
+    }
+    
+    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -183,7 +187,15 @@ public class SRMainPageViewModel {
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
         return showcase?[position]
     }
-        
+    
+    func getProductId(position: Int) -> String? {
+        return products?[position].id
+    }
+    
+    func getshowCaseProductDetail(position: Int) -> [ProductDetailResponseModel] {
+        return showcase?[position].products ?? []
+    }
+ 
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
@@ -192,7 +204,7 @@ public class SRMainPageViewModel {
             return 150
         }
     }
-    
+
     func getEmptyViewModel() -> EmptyViewModel {
         EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
     }

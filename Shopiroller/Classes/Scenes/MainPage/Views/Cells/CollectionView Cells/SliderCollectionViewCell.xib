@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0h0-Ih-9kn" userLabel="Content View">
-                        <rect key="frame" x="0.0" y="0.0" width="416" height="378"/>
+                        <rect key="frame" x="0.0" y="15" width="416" height="363"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOK-au-ImV">
-                                <rect key="frame" x="0.0" y="0.0" width="416" height="378"/>
+                                <rect key="frame" x="0.0" y="0.0" width="416" height="363"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xse-eB-l9S">
-                                        <rect key="frame" x="0.0" y="0.0" width="416" height="378"/>
+                                        <rect key="frame" x="15" y="0.0" width="386" height="363"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -32,8 +32,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Xse-eB-l9S" secondAttribute="trailing" id="NuN-0Z-Tay"/>
-                                    <constraint firstItem="Xse-eB-l9S" firstAttribute="leading" secondItem="KOK-au-ImV" secondAttribute="leading" id="fKc-fj-Mf1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xse-eB-l9S" secondAttribute="trailing" constant="15" id="NuN-0Z-Tay"/>
+                                    <constraint firstItem="Xse-eB-l9S" firstAttribute="leading" secondItem="KOK-au-ImV" secondAttribute="leading" constant="15" id="fKc-fj-Mf1"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="centerY" secondItem="KOK-au-ImV" secondAttribute="centerY" id="fmp-sE-rkF"/>
                                     <constraint firstItem="Xse-eB-l9S" firstAttribute="top" secondItem="KOK-au-ImV" secondAttribute="top" id="g4V-Ef-Pgj"/>
                                     <constraint firstAttribute="bottom" secondItem="Xse-eB-l9S" secondAttribute="bottom" id="z8b-vy-Rb7"/>
@@ -62,7 +62,7 @@
                 <constraint firstItem="0h0-Ih-9kn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="45a-4Q-UPB"/>
                 <constraint firstAttribute="trailing" secondItem="0h0-Ih-9kn" secondAttribute="trailing" id="U13-tj-Nfg"/>
                 <constraint firstAttribute="bottom" secondItem="0h0-Ih-9kn" secondAttribute="bottom" id="ZeL-8Y-MGR"/>
-                <constraint firstItem="0h0-Ih-9kn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ixb-hZ-h1p"/>
+                <constraint firstItem="0h0-Ih-9kn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="ixb-hZ-h1p"/>
             </constraints>
             <size key="customSize" width="416" height="378"/>
             <userDefinedRuntimeAttributes>

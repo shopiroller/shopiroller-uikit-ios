@@ -12,7 +12,7 @@ extension SRMainPageViewController : NibLoadable { }
 
 
 public class SRMainPageViewController: BaseViewController {
-    
+  
     private struct Constants {
         
         static var productsTitleIdentifier: String { return "products-identifier".localized }
@@ -29,8 +29,8 @@ public class SRMainPageViewController: BaseViewController {
     private var refreshControl = UIRefreshControl()
     
     private let viewModel : SRMainPageViewModel
-    
-    
+    var dd : String?
+
     public init(viewModel: SRMainPageViewModel = SRMainPageViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
@@ -45,40 +45,89 @@ public class SRMainPageViewController: BaseViewController {
     public override func setup() {
         super.setup()
         
-        shimmerCollectionView.register(cellClass: ItemCollectionViewCell.self)
+        view.backgroundColor = .white
+
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
+        shimmerCollectionView.register(cellClass: ItemCollectionViewCell.self)
         shimmerCollectionView.reloadData()
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
         mainCollectionView.register(cellClass: SliderTableViewCell.self)
         mainCollectionView.register(cellClass: CategoriesCell.self)
         mainCollectionView.register(cellClass: ItemCollectionViewCell.self)
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
-        mainCollectionView.clipsToBounds = false
+       
         
         getProducts(pagination: false)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        let menuButton = UIButton().createNavBarButton(image: .menuIcon )
+        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+        
+        let cardButton = UIButton().createNavBarButton(image: UIImage(systemName: "cart.fill"))
+        cardButton.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
+        cardButton.badgeLabel(withCount: SRAppContext.shoppingCartCount)
+        
+        let searchButton = UIButton().createNavBarButton(image: UIImage(systemName: "magnifyingglass"))
+        searchButton.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
+        
+        let optionsButton = UIButton().createNavBarButton(image: .moreIcon)
+        optionsButton.addTarget(self, action: #selector(openOptions), for: .touchUpInside)
+        
+        let bvt : UIBarButtonItem = UIBarButtonItem()
+        var bvtArr: [UIBarButtonItem] = [UIBarButtonItem]()
+        
+        bvtArr.append(bvt.createUIBarButtonItem(optionsButton))
+        bvtArr.append(bvt.createUIBarButtonItem(searchButton))
+        bvtArr.append(bvt.createUIBarButtonItem(cardButton))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem().createUIBarButtonItem(menuButton)
+        navigationItem.rightBarButtonItems = bvtArr
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.makeNavigationBar(.clear)
+            
+        getCount()
+    }
+    
+    @objc func openMenu() {
+        
+    }
+    
+    @objc func goToCard() {
+        
+    }
+    
+    @objc func searchProduct() {
+        
+    }
+    
+    @objc func openOptions() {
+        
     }
     
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.
         scrollView.refreshControl = UIRefreshControl()
-        scrollView.refreshControl?.addTarget(self, action:
-                                                #selector(didPullToRefresh),
-                                             for: .valueChanged)
+        scrollView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        
+   
     }
     
     @objc func didPullToRefresh(_ sender: Any) {
-        getSliders()
-        getCategories()
-        getShowCase()
-        getProducts(pagination: false)
-        
         if SRAppContext.isLoading == false {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                self.scrollView.refreshControl?.endRefreshing()
-            }
+            DispatchQueue.main.async {
+                self.getSliders()
+                self.getCategories()
+                self.getShowCase()
+                self.getProducts(pagination: false)
+        }
+            self.scrollView.refreshControl?.endRefreshing()
         }
     }
     
@@ -138,6 +187,7 @@ public class SRMainPageViewController: BaseViewController {
         }else{
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
+            getCount()
             configureRefreshControl()
             getSliders()
             getCategories()
@@ -146,6 +196,13 @@ public class SRMainPageViewController: BaseViewController {
         
     }
     
+}
+
+extension SRMainPageViewController : ShowCaseProductIdProtocol {
+    func getProductId(productId: String) {
+        let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: productId))
+        self.prompt(vc, animated: true)
+    }
 }
 
 extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -167,6 +224,16 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             return 1
         }else {
             return 15
+        }
+    }
+    
+    private func getCount() {
+        viewModel.getShoppingCartCount(succes: {
+            [weak self] in
+            guard let self = self else { return }
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
         }
     }
     
@@ -198,6 +265,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             case 2:
                 let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
+                cell.delegate = self
                 cell.configureCell(viewModel: cellModel)
                 return cell
             case 3:
@@ -220,11 +288,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 2:
-            break
-            //TODO OPEN Product Detail handle showcase
         case 3:
-            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel())
+            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
             self.prompt(vc, animated: true)
         default:
             break
@@ -246,7 +311,6 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
 }
-
 
 extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     

@@ -30,3 +30,34 @@
 "explore-title-text" = "Explore";
 
 "products-identifier" = "ProductsTitleView";
+
+//MARK: - Product Detail
+
+"quantity-title" = "Select Quantity";
+
+"description-title" = "Product Description";
+
+"return-exchange-terms-title" = "Return / Exchange Terms";
+
+"delivery-terms-title" = "Delivery Terms";
+
+"add-to-cart" = "Add To Cart";
+
+"shipping-price-text" = "Shipping Price XX";
+
+"product-detail-description-title-text" = "Description";
+
+"product-detail-return-exchange-title-text" = "Return/Exchange Terms";
+
+"product-detail-delivery-title-text" = "Delivery Terms";
+
+"product-detail-back-to-product-button-text" = "Back to product";
+
+"product-detail-back-to-product-list-button-text" = "Back to product list";
+
+"product-detail-out-of-stock-title" = "Out of Stock";
+
+"product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
+
+
+

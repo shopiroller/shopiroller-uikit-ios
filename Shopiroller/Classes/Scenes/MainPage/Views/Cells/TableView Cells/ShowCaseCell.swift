@@ -8,7 +8,11 @@
 import UIKit
 import Kingfisher
 
-class ShowCaseCell: UICollectionViewCell {
+protocol ShowCaseProductIdProtocol : AnyObject {
+    func getProductId(productId: String)
+}
+
+public class ShowCaseCell: UICollectionViewCell  {
     
     private struct Constants {
         static var seeAllTitle: String { return "section-see-all-title".localized  }
@@ -22,7 +26,9 @@ class ShowCaseCell: UICollectionViewCell {
     
     var viewModel: SRShowcaseResponseModel?
     
-    override func awakeFromNib() {
+    var delegate: ShowCaseProductIdProtocol?
+    
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         seeAllTitle.text = Constants.seeAllTitle
@@ -35,15 +41,12 @@ class ShowCaseCell: UICollectionViewCell {
         let showAllTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.seeAllProducts(_:)))
         seeAllContainer.addGestureRecognizer(showAllTapGesture)
     }
-    
-    
+      
     func configureCell(viewModel: SRShowcaseResponseModel?){
         self.viewModel = viewModel
         collectionView.reloadData()
-        
         titleLabel.text = viewModel?.showcase?.name
         
-    
     }
     
     
@@ -54,9 +57,11 @@ class ShowCaseCell: UICollectionViewCell {
 }
 
 extension ShowCaseCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.products?.count ?? 0
     }
+    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if viewModel?.showcase?.isPublished == true {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
@@ -65,12 +70,14 @@ extension ShowCaseCell: UICollectionViewDelegate, UICollectionViewDataSource {
         }else{
             return UICollectionViewCell()
         }
-        
-        
     }
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.getProductId(productId: viewModel?.products?[indexPath.row].id ?? "")
+    }
     
 }
+
 
 extension ShowCaseCell: UICollectionViewDelegateFlowLayout {
     

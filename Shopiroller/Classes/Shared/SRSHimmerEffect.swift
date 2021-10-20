@@ -1,6 +1,6 @@
 //
 //  Shimmer.swift
-//  Kingfisher
+//  shopiroller
 //
 //  Created by Görkem Gür on 5.10.2021.
 //
