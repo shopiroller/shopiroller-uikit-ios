@@ -28,7 +28,11 @@ class OrderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         // corner radius
-        statusView.layer.cornerRadius = 40
+        statusView.layer.cornerRadius = 30
+        
+        containerView.layer.cornerRadius = 10
+        containerView.layer.borderWidth = 1.0
+        containerView.layer.borderColor = UIColor.textSecondary10.cgColor
         
     }
     
