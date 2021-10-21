@@ -106,8 +106,6 @@ public class SRMainPageViewController: BaseViewController {
         // Add the refresh control to your UIScrollView object.
         scrollView.refreshControl = UIRefreshControl()
         scrollView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        
-   
     }
     
     @objc func didPullToRefresh(_ sender: Any) {

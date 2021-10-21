@@ -26,6 +26,7 @@ struct SRShowCaseModel: Codable {
     var publishmentDate: String?
     var isPublished: Bool?
     var orderIndex: Int?
+    var productCount: Int?
     
     
     enum CodingKeys: String,CodingKey {
@@ -36,6 +37,7 @@ struct SRShowCaseModel: Codable {
         case updatedAt = "updateAt"
         case publishmentDate = "publishmentDate"
         case isPublished = "isPublished"
-        case orderIndex = "orderIndex"        
+        case orderIndex = "orderIndex"
+        case productCount = "productCount"
     }
 }

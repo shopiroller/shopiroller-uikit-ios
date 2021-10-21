@@ -24,6 +24,7 @@ public class SRMainPageViewModel {
     private var categories: [SRCategoryResponseModel]?
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
+    private var showcaseModel: SRShowcaseResponseModel?
     
     private let networkManager: SRNetworkManager
     
@@ -151,18 +152,7 @@ public class SRMainPageViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        var count = 0
-        if let showcase = showcase {
-            showcase.forEach{
-                if ($0.products?.count ?? 0 > 0){
-                    print($0.products)
-                    count = $0.products?.count ?? 0
-                }else{
-                    count = 0
-                }
-            }
-        }
-        return count
+        return showcaseModel?.showcase?.productCount ?? 0
     }
     
     func productItemCount() -> Int {
@@ -186,7 +176,8 @@ public class SRMainPageViewModel {
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
-        return showcase?[position]
+        showcaseModel = showcase?[position]
+        return showcaseModel
     }
     
     func getProductId(position: Int) -> String? {
