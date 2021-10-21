@@ -59,3 +59,31 @@
 
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
 
+//MARK: - Order List
+
+"empty-orders-title" = "No order yet";
+
+"empty-orders-description" = "You have no order yet. We can’t list any product for you.";
+
+"empty-orders-action-button" = "Start Shopping";
+
+//MARK: - Order Cell
+
+"order-no" = "Order No: ";
+
+"empty-orders-title" = "No order yet";
+
+// MARK: - Order Status
+
+"WaitingPayment" = "Waiting Payment";
+"WaitingApproval" = "Waiting Approval";
+"Approved" = "Approved";
+"WaitingForSupplying" = "Waiting Supplying";
+"Preparing" = "Preparing";
+"Shipped" = "Shipped";
+"Delivered" = "Delivered";
+"CancelRequested" = "Cancellation Requested";
+"Canceled" = "Canceled";
+"Refunded" = "Refunded";
+"PaymentFailed" = "Payment Failed";
+
