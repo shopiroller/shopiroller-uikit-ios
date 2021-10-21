@@ -11,6 +11,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderDetailViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
+                <outlet property="addressDetailTable" destination="Fdf-K5-YrW" id="Hma-In-xIT"/>
+                <outlet property="bottomShipping" destination="bqB-gs-6VJ" id="cbj-8B-k2T"/>
+                <outlet property="bottomSubTotal" destination="hLV-7J-6MQ" id="X7f-XZ-rMp"/>
+                <outlet property="bottomTotal" destination="e0i-w9-ljA" id="Ap9-LJ-ejC"/>
+                <outlet property="bottomTotalPrice" destination="2TK-iX-fGt" id="taa-P5-jdv"/>
+                <outlet property="cargoTrackingId" destination="kFX-OH-owe" id="QeY-il-jn0"/>
+                <outlet property="cargoTrackingName" destination="vCo-at-uM0" id="N82-65-fN8"/>
+                <outlet property="orderDetailDate" destination="8G3-ax-kQJ" id="Zig-5C-B6A"/>
+                <outlet property="orderDetailId" destination="c3X-ep-3V5" id="Fmb-xb-jl8"/>
+                <outlet property="orderDetailPaymentStatus" destination="ygn-JP-dHB" id="nsK-EV-7XJ"/>
+                <outlet property="orderDetailStatusImage" destination="XDf-wR-KAz" id="eyi-1v-98d"/>
+                <outlet property="orderId" destination="c3X-ep-3V5" id="yKy-34-uQZ"/>
+                <outlet property="paymentAccount" destination="MXb-vD-keQ" id="Unh-d0-xrL"/>
+                <outlet property="paymentBank" destination="R72-am-9aq" id="d5F-md-ATx"/>
+                <outlet property="paymentBankOwner" destination="Iub-dA-hH7" id="CFF-8s-hrM"/>
+                <outlet property="paymentIban" destination="Yzl-ab-J4l" id="5Wa-wD-499"/>
+                <outlet property="paymentTransfer" destination="dzk-B4-7QP" id="2aX-ge-neE"/>
+                <outlet property="productsTable" destination="ULp-xW-vLL" id="Ll1-og-5Be"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -222,7 +240,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-xW-vLL" userLabel="addressTableView">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-xW-vLL" userLabel="productsTableView">
                                             <rect key="frame" x="15" y="31.5" width="384" height="128"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </tableView>
