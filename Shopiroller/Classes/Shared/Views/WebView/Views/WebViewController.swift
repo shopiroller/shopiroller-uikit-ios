@@ -9,30 +9,19 @@ import UIKit
 import SafariServices
 import WebKit
 
-extension WebViewController: NibLoadable { }
-
 private struct Constans {
     
     static var webViewTitle: String { return "product-detail-description-title-text".localized }
 }
-
-class WebViewController: BaseViewController {
+class WebViewController: BaseViewController<WebViewViewModel> {
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var dismissButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     
-    private let viewModel: WebViewViewModel
-    
-    public init(viewModel: WebViewViewModel = WebViewViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: WebViewController.nibName, bundle: Bundle(for: WebViewController.self))
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.viewModel = WebViewViewModel()
-        super.init(coder: aDecoder)
+    public init(viewModel: WebViewViewModel) {
+        super.init(viewModel: viewModel, nibName: WebViewController.nibName, bundle: Bundle(for: WebViewController.self))
     }
     
     override func setup() {

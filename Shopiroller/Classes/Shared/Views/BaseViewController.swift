@@ -8,18 +8,28 @@
 import Foundation
 import UIKit
 
-public class BaseViewController: UIViewController {
+extension BaseViewController : NibLoadable { }
+
+public class BaseViewController<T>: UIViewController {
     
+    internal let viewModel: T
+    
+    init(viewModel: T, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
+        self.viewModel = viewModel
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
+        fatalError("disabled init")
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         overrideUserInterfaceStyle = .light
-        
     }
     
-    public func setup() {
-        
+    internal func setup() {
     }
     
     public func viewHeight() -> CGFloat {

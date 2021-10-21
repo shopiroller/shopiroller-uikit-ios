@@ -8,17 +8,13 @@
 import UIKit
 import Kingfisher
 
-extension SRMainPageViewController : NibLoadable { }
-
-
-public class SRMainPageViewController: BaseViewController {
-  
+public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
+    
     private struct Constants {
         
         static var productsTitleIdentifier: String { return "products-identifier".localized }
-        
     }
-    
+
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var collectionViewContainer: UIView!
@@ -27,19 +23,10 @@ public class SRMainPageViewController: BaseViewController {
     @IBOutlet private weak var shimmerCollectionView: UICollectionView!
     
     private var refreshControl = UIRefreshControl()
-    
-    private let viewModel : SRMainPageViewModel
     var dd : String?
 
-    public init(viewModel: SRMainPageViewModel = SRMainPageViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = SRMainPageViewModel()
-        super.init(coder: aDecoder)
+    public init(viewModel: SRMainPageViewModel) {
+        super.init(viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
     
     public override func setup() {
@@ -96,7 +83,8 @@ public class SRMainPageViewController: BaseViewController {
     }
     
     @objc func openMenu() {
-        
+        prompt(OrderListViewController(viewModel: OrderListViewModel())
+               , animated: true, completion: nil)
     }
     
     @objc func goToCard() {
@@ -177,13 +165,12 @@ public class SRMainPageViewController: BaseViewController {
         }
     }
     
-    
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
+            emptyView.setup(model: viewModel.getEmptyModel())
             collectionViewContainer.isHidden = true
             emptyViewContainer.isHidden = false
             scrollView.isScrollEnabled = false
-            emptyView.setupEmptyView(viewModel: viewModel.getEmptyViewModel())
         }else{
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
@@ -193,7 +180,6 @@ public class SRMainPageViewController: BaseViewController {
             getCategories()
             getShowCase()
         }
-        
     }
     
 }
