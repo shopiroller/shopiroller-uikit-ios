@@ -7,16 +7,16 @@
 
 import UIKit
 
-private struct Constants {
-    
-    static var successTransaction: String { return "success-transaction".localized}
-    
-    static var pendiginTransaction: String { return "pending-transaction".localized}
-    
-    static var orderNo: String { return "order-no".localized}
-}
-class OrderTableViewCell: UITableViewCell {
 
+class OrderTableViewCell: UITableViewCell {
+    private struct Constants {
+        
+        static var successTransaction: String { return "success-transaction".localized}
+        
+        static var pendiginTransaction: String { return "pending-transaction".localized}
+        
+        static var orderNo: String { return "order-no".localized}
+    }
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var orderNo: UILabel!
     @IBOutlet weak var date: UILabel!

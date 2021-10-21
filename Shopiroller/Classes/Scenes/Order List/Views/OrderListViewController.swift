@@ -7,12 +7,12 @@
 
 import UIKit
 
-class OrderListViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDelegate {
+class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyViewDelegate {
     
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
     
-    init(viewModel: MyOrdersViewModel){
+    init(viewModel: OrderListViewModel){
         super.init(viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MyOrdersViewModel: BaseViewModel {
+class OrderListViewModel: BaseViewModel {
     
     private struct Constants {
         
@@ -23,7 +23,7 @@ class MyOrdersViewModel: BaseViewModel {
         let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppConstants.Query.Values.userId), URLQueryItem(name: "perPage", value: "50"),
                                                                                                                                            URLQueryItem(name: "orderBy", value: "OrderByDescending"),]
         
-        SRNetworkManagerRequests.getOrderList(urlQueryItems: urlQueryItems).response(using: SRMainPageViewModel.networkManager) {
+        SRNetworkManagerRequests.getOrderList(urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result {
             case .success(let result):

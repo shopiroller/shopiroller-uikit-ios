@@ -83,7 +83,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     @objc func openMenu() {
-        
+        prompt(OrderListViewController(viewModel: OrderListViewModel())
+               , animated: true, completion: nil)
     }
     
     @objc func goToCard() {
