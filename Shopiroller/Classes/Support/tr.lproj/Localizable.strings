@@ -87,3 +87,9 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+// MARK: - Payment Method
+
+"CashOnDelivery" = "Cash on Delivery";
+"Transfer" = "Transfer";
+"CreditCard" = "Credit Card";
+"Paypal" = "PayPal";

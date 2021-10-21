@@ -23,14 +23,19 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var cargoTrackingName: UILabel!
     @IBOutlet private weak var cargoTrackingId: UILabel!
     
-    @IBOutlet private weak var paymentTransfer: UILabel!
-    @IBOutlet private weak var paymentBank: UILabel!
-    @IBOutlet private weak var paymentBankOwner: UILabel!
-    @IBOutlet private weak var paymentAccount: UILabel!
-    @IBOutlet private weak var paymentIban: UILabel!
+    @IBOutlet weak var paymentTitle: UILabel!
     
     @IBOutlet private weak var addressDetailTable: UITableView!
     @IBOutlet private weak var productsTable: UITableView!
+    
+    @IBOutlet private weak var cargoSeparator: UIView!
+    @IBOutlet private weak var cargoStackView: UIStackView!
+    @IBOutlet private weak var paymentSeparator: UIView!
+    @IBOutlet private weak var paymentStackView: UIStackView!
+    @IBOutlet private weak var addressSeparator: UIView!
+    @IBOutlet private weak var addressStackView: UIStackView!
+    @IBOutlet private weak var productsSeparator: UIView!
+    @IBOutlet private weak var productsStackView: UIView!
     
     
     init(viewModel: OrderDetailViewModel){
@@ -40,7 +45,33 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     override func setup() {
         super.setup()
         
-    
+        orderDetailId.text = viewModel.getOrderCode()
+        orderDetailPaymentStatus.text = viewModel.getCurrentStatus()
+        orderDetailDate.text = viewModel.getCreatedDate()
+        
+        if(viewModel.isCargoTrackingAvailable()){
+            cargoTrackingId.text = viewModel.getShippingTrackingCode()
+            cargoTrackingName.text = viewModel.getShippingTrackingCompany()
+        }else {
+            cargoSeparator.isHidden = true
+            cargoStackView.isHidden = true
+        }
+        
+        if(viewModel.isPaymentTypeAvailable()){
+            paymentTitle.text = viewModel.getPaymentMethodTitle()
+            let labelArr = viewModel.getPaymentLabels()
+            if(!labelArr.isEmpty){
+                for label in labelArr {
+                    paymentStackView.addArrangedSubview(label)
+                }
+            }
+        }else {
+            paymentSeparator.isHidden = true
+            paymentStackView.isHidden = true
+        }
+        
+        
+
     }
     
     

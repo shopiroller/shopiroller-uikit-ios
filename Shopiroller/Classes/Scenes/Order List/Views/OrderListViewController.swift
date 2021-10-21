@@ -38,9 +38,19 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     }
     
     private func getOrderList() {
-        viewModel.getOrderList(success: { [weak self] in
-            guard let self = self else { return }
+        viewModel.getOrderList(success: {
             self.configure()
+        }) { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
+    
+    private func getOrderDetail() {
+        viewModel.getOrderDetail(success: {
+            DispatchQueue.main.async {
+                guard let viewController = self.viewModel.selectedOrderDetailViewController else { return }
+                self.prompt(viewController, animated: true, completion: nil)
+            }
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
@@ -75,6 +85,7 @@ extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.prompt(OrderDetailViewController(viewModel: OrderDetailViewModel()), animated: true, completion: nil)
+        viewModel.selectedPosition = indexPath.row
+        self.getOrderDetail()
     }
 }
