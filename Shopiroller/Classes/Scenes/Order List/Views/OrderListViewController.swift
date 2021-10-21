@@ -75,17 +75,6 @@ extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        /*   let id = viewModel.getTransactionID(index: indexPath.row)
-         viewModel.getDetail(id: id, success: { [ weak self] in
-         DispatchQueue.main.async {
-         
-         self?.sheet(TransactionDetailViewController(viewModel: (self?.viewModel.getTransactionDetailViewModel(id: id))!))
-         }
-         
-         })  { [weak self] (errorViewModel) in
-         guard let self = self else { return }
-         self.showAlert(viewModel: errorViewModel)
-         }*/
+        self.prompt(OrderDetailViewController(viewModel: OrderDetailViewModel()), animated: true, completion: nil)
     }
 }
