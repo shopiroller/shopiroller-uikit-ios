@@ -10,46 +10,41 @@ import Kingfisher
 import ImageSlideshow
 import LinkPresentation
 
-extension ProductDetailViewController : NibLoadable { }
-
-public class ProductDetailViewController: BaseViewController {
+struct Constants {
     
-    struct Constants {
-        
-        static var quantityTitle: String { return "quantity-title".localized }
-        
-        static var descriptionTitle: String { return "description-title".localized }
-        
-        static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
-        
-        static var deliveryTitle: String { return "delivery-terms-title".localized }
-        
-        static var freeShippingText: String { return "free-shipping-text".localized }
-        
-        static var soldOutText: String { return "sold-out-text".localized }
-        
-        static var addToCartText: String { return "add-to-cart".localized }
-        
-        static var shippingPriceText: String { return "shipping-price-text".localized }
-        
-        static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
-        
-        static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
-        
-        static var outOfStockTitle: String { "product-detail-out-of-stock-title".localized }
-        
-        static var outOfStockDescription: String { "product-detail-out-of-stock-description".localized }
-        
+    static var quantityTitle: String { return "quantity-title".localized }
+    
+    static var descriptionTitle: String { return "description-title".localized }
+    
+    static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
+    
+    static var deliveryTitle: String { return "delivery-terms-title".localized }
+    
+    static var freeShippingText: String { return "free-shipping-text".localized }
+    
+    static var soldOutText: String { return "sold-out-text".localized }
+    
+    static var addToCartText: String { return "add-to-cart".localized }
+    
+    static var shippingPriceText: String { return "shipping-price-text".localized }
+    
+    static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
+    
+    static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
+    
+    static var outOfStockTitle: String { "product-detail-out-of-stock-title".localized }
+    
+    static var outOfStockDescription: String { "product-detail-out-of-stock-description".localized }
+    
+}
+public struct ImageSlideModel {
+    public let url: URL
+    
+    public var inputSource: InputSource {
+        return KingfisherSource(url: url)
     }
-    
-    public struct ImageSlideModel {
-        public let url: URL
-        
-        public var inputSource: InputSource {
-            return KingfisherSource(url: url)
-        }
-    }
-    
+}
+public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
@@ -99,17 +94,8 @@ public class ProductDetailViewController: BaseViewController {
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     
-    private let viewModel : ProductDetailViewModel
-    
     public init(viewModel: ProductDetailViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = ProductDetailViewModel()
-        super.init(coder: aDecoder)
+        super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
     }
     
     public override func setup() {
@@ -344,7 +330,6 @@ public class ProductDetailViewController: BaseViewController {
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
-        
     }
     
     @objc private func returnExchangeContainerTapped(_ sender: Any) {

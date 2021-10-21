@@ -16,26 +16,19 @@ private struct Constants {
        
 }
 
-
-
-public class SRMainPageViewModel {
+public class SRMainPageViewModel: BaseViewModel {
     
     private var sliderModel: [SRSliderDataModel]?
     private var categories: [SRCategoryResponseModel]?
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
     
-    private let networkManager: SRNetworkManager
-    
     private var currentPage: Int = 0
     
-    
-    public init (networkManager: SRNetworkManager = SRNetworkManager()) {
-        self.networkManager = networkManager
-    }
+    public init () {}
     
     func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getSliders().response(using: networkManager) {
+        SRNetworkManagerRequests.getSliders().response() {
             (result) in
             switch result {
             case .success(let result):
@@ -71,7 +64,7 @@ public class SRMainPageViewModel {
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
-        SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response(using: networkManager) {
+        SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -97,7 +90,7 @@ public class SRMainPageViewModel {
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getCategories().response(using: networkManager) {
+        SRNetworkManagerRequests.getCategories().response() {
             (result) in
             switch result{
             case .success(let response):
@@ -117,7 +110,7 @@ public class SRMainPageViewModel {
     
     func getShowCase(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
-        SRNetworkManagerRequests.getShowCase().response(using: networkManager) {
+        SRNetworkManagerRequests.getShowCase().response() {
             (result) in
             switch result{
             case .success(let response):
@@ -205,7 +198,7 @@ public class SRMainPageViewModel {
         }
     }
 
-    func getEmptyViewModel() -> EmptyViewModel {
+    func getEmptYModel() -> EmptyViewModel {
         EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
     }
     

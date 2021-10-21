@@ -1,29 +1,91 @@
 //
-//  OrderListViewController.swift
+//  MyOrdersViewController.swift
 //  Shopiroller
 //
-//  Created by abdllhyalcn on 21.10.2021.
+//  Created by abdllhyalcn on 19.10.2021.
 //
 
 import UIKit
 
-class OrderListViewController: BaseViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class OrderListViewController: BaseViewController<MyOrdersViewModel>, EmptyViewDelegate {
+    
+    @IBOutlet private weak var emptyView: EmptyView!
+    @IBOutlet private weak var orderTable: UITableView!
+    
+    init(viewModel: MyOrdersViewModel){
+        super.init(viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func setup() {
+        super.setup()
+        
+        getOrderList()
     }
-    */
+    
+    private func configure(){
+        if(viewModel.isOrderListEmpty()){
+            emptyView.isHidden = false
+            emptyView.setup(model: viewModel.getEmptyModel())
+            emptyView.delegate = self
+        }else{
+            orderTable.isHidden = false
+            orderTable.register(cellClass: OrderTableViewCell.self)
+            orderTable.delegate = self
+            orderTable.dataSource = self
+            orderTable.backgroundColor = .clear
+            orderTable.clipsToBounds = false
+        }
+    }
+    
+    private func getOrderList() {
+        viewModel.getOrderList(success: { [weak self] in
+            guard let self = self else { return }
+            self.configure()
+        }) { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
+    
+    func actionButtonClicked(_ sender: Any) {
+        pop(animated: true, completion: nil)
+    }
+    
+}
 
+extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.orderListCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.reuseIdentifier, for: indexPath) as! OrderTableViewCell
+        
+        if indexPath.row == 0 {
+            cell.layer.cornerRadius = 20
+            cell.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        } else {
+            cell.layer.cornerRadius = 0
+        }
+        
+        guard let order = viewModel.getOrder(position: indexPath.row) else { return cell}
+        cell.setup(model: order)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /*   let id = viewModel.getTransactionID(index: indexPath.row)
+         viewModel.getDetail(id: id, success: { [ weak self] in
+         DispatchQueue.main.async {
+         
+         self?.sheet(TransactionDetailViewController(viewModel: (self?.viewModel.getTransactionDetailViewModel(id: id))!))
+         }
+         
+         })  { [weak self] (errorViewModel) in
+         guard let self = self else { return }
+         self.showAlert(viewModel: errorViewModel)
+         }*/
+    }
 }

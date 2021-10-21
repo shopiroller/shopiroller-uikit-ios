@@ -12,11 +12,7 @@ protocol BackToProductListDelegate : AnyObject {
     func popView()
     func dismissView()
 }
-
-extension PopUpViewViewController : NibLoadable { }
-
-class PopUpViewViewController: BaseViewController {
-
+class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     
     @IBOutlet private weak var circleImageBackground: UIView!
     @IBOutlet private weak var circleImage: UIImageView!
@@ -27,10 +23,12 @@ class PopUpViewViewController: BaseViewController {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var firstButtonContainerView: UIView!
     @IBOutlet private weak var secondButtonContainerView: UIView!
-
-    private let viewModel : PopUpViewModel
     
     var delegate: BackToProductListDelegate?
+    
+    public init(viewModel: PopUpViewModel) {
+        super.init(viewModel: viewModel, nibName: PopUpViewViewController.nibName, bundle: Bundle(for: PopUpViewViewController.self))
+    }
     
     override func setup() {
         super.setup()
@@ -64,23 +62,8 @@ class PopUpViewViewController: BaseViewController {
         } else {
             self.secondButtonContainerView.isHidden = true
         }
-        
-        
-        
     }
-    
-    public init(viewModel: PopUpViewModel = PopUpViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: PopUpViewViewController.nibName, bundle: Bundle(for: PopUpViewViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = PopUpViewModel()
-        super.init(coder: aDecoder)
-    }
-    
-    
+  
     @IBAction private func firstButtonTapped(_ sender: Any){
         if(viewModel.firstButton?.type == .popToRoot) {
             dismiss(animated: false, completion: nil)
@@ -89,7 +72,5 @@ class PopUpViewViewController: BaseViewController {
             self.delegate?.dismissView()
         }
     }
-
-
 
 }

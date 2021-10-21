@@ -2,17 +2,23 @@
 //  OrderDetailViewController.swift
 //  Shopiroller
 //
-//  Created by abdllhyalcn on 21.10.2021.
+//  Created by abdllhyalcn on 19.10.2021.
 //
 
 import UIKit
 
-class OrderDetailViewController: BaseViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
+    
+    
+    
+    init(viewModel: OrderDetailViewModel){
+        super.init(viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
+    }
+    
+    override func setup() {
+        super.setup()
+        
+    
     }
 
 
