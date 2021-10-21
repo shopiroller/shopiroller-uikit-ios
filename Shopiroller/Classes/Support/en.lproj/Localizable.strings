@@ -94,4 +94,10 @@
 "CreditCard" = "Credit Card";
 "Paypal" = "PayPal";
 
+// MARK: - Order Details
 
+"order_details_bank_receiver" = "Receiver Name: ";
+"order_details_bank_account" = "Account: ";
+"order_details_bank_iban" = "Iban: ";
+"order_details_bank_subtotal" = "Subtotal: ";
+"order_details_bank_shipping" = "Shipping: ";

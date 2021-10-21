@@ -70,7 +70,10 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             paymentStackView.isHidden = true
         }
         
-        
+        bottomSubTotal.text = viewModel.getSubTotalText()
+        bottomShipping.text = viewModel.getShippingTotalText()
+        bottomTotalPrice.text = viewModel.getTotalText()
+
 
     }
     

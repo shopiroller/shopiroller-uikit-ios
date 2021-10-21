@@ -40,5 +40,5 @@ extension String {
         let discountedPercenteage = String(format: "%.0f", percentage)
         return "%\(discountedPercenteage)"
     }
-    
+
 }

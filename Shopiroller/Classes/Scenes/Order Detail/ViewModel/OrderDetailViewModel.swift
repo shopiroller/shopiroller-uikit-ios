@@ -58,29 +58,56 @@ class OrderDetailViewModel: BaseViewModel {
         if((detail?.paymentType == .Online || detail?.paymentType == .Online3DS) && detail?.cardNumber != nil){
             labelArr.append(getLabel(text: detail?.cardNumber))
         }else if(detail?.paymentType == .Transfer){
-            if(detail?.paymentAccount != nil){
-             
-            
-                labelArr.append(getLabel(text: detail?.cardNumber))
-                labelArr.append(getLabel(text: detail?.cardNumber))
-                labelArr.append(getLabel(text: detail?.cardNumber))
-                labelArr.append(getLabel(text: detail?.cardNumber))
-                
+            if(detail?.paymentAccount != nil) {
+                let bankName = [detail?.paymentAccount?.name, " - ", detail?.paymentAccount?.accountName, " / ", detail?.paymentAccount?.accountCode]
+                    .compactMap { $0 }
+                    .joined(separator: " ")
+                labelArr.append(getLabel(text: bankName))
+                if let value = detail?.paymentAccount?.nameSurname {
+                    labelArr.append(getLabel(attributedText: getBoldNormal("order_details_bank_receiver".localized, value)))
+                }
+                if let value = detail?.paymentAccount?.accountNumber {
+                    labelArr.append(getLabel(attributedText: getBoldNormal("order_details_bank_account".localized, value)))
+                }
+                if let value = detail?.paymentAccount?.accountAdress {
+                    labelArr.append(getLabel(attributedText: getBoldNormal("order_details_bank_iban".localized, value)))
+                }
             }else if(detail?.bankAccount != nil){
                 labelArr.append(getLabel(text: detail?.bankAccount))
             }
         }
-                    
-                    
         return labelArr
     }
     
-    private func getLabel(text: String?) -> UILabel {
+    private func getLabel(text: String? = nil, attributedText: NSMutableAttributedString? = nil) -> UILabel {
         let label = UILabel()
-        label.text = text
         label.textColor = .textPCaption
-        //TODO: do font
+        if attributedText != nil {
+            label.attributedText = attributedText
+        } else {
+            label.text = text
+            label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        }
         return label
     }
- 
+    
+    private func getBoldNormal(_ bold: String, _ normal: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: bold, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)])
+        attributedString.append(NSMutableAttributedString(string: normal, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular)]))
+        return attributedString
+    }
+    
+    func getSubTotalText() -> String? {
+        return "order_details_bank_subtotal".localized + ECommerceUtil.getFormattedPrice(price: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), currency: detail?.currency)
+    }
+    
+    func getShippingTotalText() -> String? {
+        return "order_details_bank_shipping".localized + ECommerceUtil.getFormattedPrice(price: detail?.shippingPrice, currency: detail?.currency)
+    }
+    
+    func getTotalText() -> String? {
+        return ECommerceUtil.getFormattedPrice(price: detail?.totalPrice, currency: detail?.currency)
+    }
+    
+    
 }
