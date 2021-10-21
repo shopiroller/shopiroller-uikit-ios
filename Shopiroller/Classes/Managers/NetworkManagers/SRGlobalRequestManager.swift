@@ -8,14 +8,14 @@
 import Foundation
 
 class SRGlobalRequestManager {
-    static func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    static func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCartCount(userId: "78971cc6-bda1-45a4-adee-638317c5a6e9").response(using: SRNetworkManager()) {
             (result) in
             switch result{
             case .success(let response):
                 DispatchQueue.main.async {
                     SRAppContext.shoppingCartCount = response.data ?? 0
-                    succes?()
+                    success?()
                 }
             case .failure(let err):
                 DispatchQueue.main.async {

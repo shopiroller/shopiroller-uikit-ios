@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8G-eK-5T5">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="211"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-q6-y1x">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-q6-y1x">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="186"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -50,7 +50,4 @@
             <point key="canvasLocation" x="263.768115942029" y="26.450892857142858"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="circle" width="128" height="128"/>
-    </resources>
 </document>

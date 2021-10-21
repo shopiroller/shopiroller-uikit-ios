@@ -88,7 +88,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yR5-VU-q3D">
                                                     <rect key="frame" x="0.0" y="0.0" width="389" height="15"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-Y4-QMN">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-Y4-QMN">
                                                             <rect key="frame" x="58" y="15" width="273" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
@@ -147,7 +147,7 @@
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain"/>
                                                             <connections>
-                                                                <action selector="firstButtonTapped:" destination="-1" eventType="touchUpInside" id="VfW-5A-g4I"/>
+                                                                <action selector="firstButtonTapped:" destination="-1" eventType="touchUpInside" id="a03-3J-FoZ"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>

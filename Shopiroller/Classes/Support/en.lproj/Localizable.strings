@@ -59,5 +59,9 @@
 
 "product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
 
+"product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
+
+"product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %s products in shopping cart";
+
 
 

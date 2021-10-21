@@ -40,11 +40,14 @@ extension UIButton {
         let button = UIButton(type: .custom)
         button.tintColor = .black
         button.setImage(image)
-        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        button.translatesAutoresizingMaskIntoConstraints = true
+        button.layer.masksToBounds = false
+        button.contentEdgeInsets.left = 7
+        button.frame.size = CGSize(width: 10, height: 10)
         return button
     }
     
-    func badgeLabel(withCount count: Int) -> UIButton {
+    func createBadge(withCount count: Int) -> UIButton {
         let badgeSize: CGFloat = 17
         let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
         badgeCount.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +61,7 @@ extension UIButton {
         self.addSubview(badgeCount)
             NSLayoutConstraint.activate([
                 badgeCount.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14),
-                badgeCount.topAnchor.constraint(equalTo: self.topAnchor, constant: -10),
+                badgeCount.topAnchor.constraint(equalTo: self.topAnchor, constant: -7),
                 badgeCount.widthAnchor.constraint(equalToConstant: badgeSize),
                 badgeCount.heightAnchor.constraint(equalToConstant: badgeSize)
             ])

@@ -93,7 +93,7 @@ public class SRMainPageViewModel {
     }
     
     func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
+        SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -155,6 +155,7 @@ public class SRMainPageViewModel {
         if let showcase = showcase {
             showcase.forEach{
                 if ($0.products?.count ?? 0 > 0){
+                    print($0.products)
                     count = $0.products?.count ?? 0
                 }else{
                     count = 0
