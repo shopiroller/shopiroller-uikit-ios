@@ -164,13 +164,12 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
+            emptyView.setup(model: viewModel.getEmptyModel())
             collectionViewContainer.isHidden = true
             emptyViewContainer.isHidden = false
             scrollView.isScrollEnabled = false
-          //  emptyView.setupEmptyView(viewModel: viewModel.getEmptyViewModel())
         }else{
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true

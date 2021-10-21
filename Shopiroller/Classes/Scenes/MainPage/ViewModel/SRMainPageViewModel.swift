@@ -7,16 +7,15 @@
 
 import UIKit
 
-
-private struct Constants {
-    
-    static var title: String { return "empty-view-title".localized }
-    
-    static var description: String { return "empty-view-description".localized }
-       
-}
-
 public class SRMainPageViewModel: BaseViewModel {
+    
+    private struct Constants {
+        
+        static var title: String { return "empty-view-title".localized }
+        
+        static var description: String { return "empty-view-description".localized }
+        
+    }
     
     private var sliderModel: [SRSliderDataModel]?
     private var categories: [SRCategoryResponseModel]?
@@ -24,8 +23,6 @@ public class SRMainPageViewModel: BaseViewModel {
     private var showcase: [SRShowcaseResponseModel]?
     
     private var currentPage: Int = 0
-    
-    public init () {}
     
     func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getSliders().response() {
@@ -198,8 +195,8 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
 
-    func getEmptYModel() -> EmptyViewModel {
-        EmptyViewModel(image: .paymentFailed, title: Constants.title, description: Constants.description)
+    func getEmptyModel() -> EmptyModel {
+        EmptyModel(image: .paymentFailed, title: Constants.title, description: Constants.description, button: nil)
     }
     
 }

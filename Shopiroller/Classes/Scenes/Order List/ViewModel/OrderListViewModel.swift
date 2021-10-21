@@ -8,13 +8,14 @@
 import Foundation
 import UIKit
 
-private struct Constants {
-    
-    static var emptyOrdersTitle: String { return "empty-orders-title".localized }
-    static var emptyOrdersDescription: String { return "empty-orders-description".localized }
-    static var emptyOrdersActionButton: String { return "empty-orders-action-button".localized }
-}
 class MyOrdersViewModel: BaseViewModel {
+    
+    private struct Constants {
+        
+        static var emptyOrdersTitle: String { return "empty-orders-title".localized }
+        static var emptyOrdersDescription: String { return "empty-orders-description".localized }
+        static var emptyOrdersActionButton: String { return "empty-orders-action-button".localized }
+    }
     
     var orderList: [SROrderModel]?
     
