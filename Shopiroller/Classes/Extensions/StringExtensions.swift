@@ -10,6 +10,8 @@ import UIKit
 
 extension String {
     
+    public static let NEW_LINE = "\n"
+    
     var length: Int {
         return count
     }

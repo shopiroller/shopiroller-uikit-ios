@@ -137,6 +137,10 @@
 		71A26D1FBA7BAD960CB109A7C1E905EB /* SliderTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 7ED217705AAD81455CF426926C7E20EE /* SliderTableViewCell.xib */; };
 		7343C49BA2F1885AA9BA20EE24827422 /* PageIndicatorPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081255105B584EA84F2B96DC0E9E863 /* PageIndicatorPosition.swift */; };
 		73D79FAD568B7CF44E3FD248FF2A91BC /* DecodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CF8ED80F1CB6F7A4501F0DA965D64 /* DecodableExtension.swift */; };
+		758227DE2722CEB200024371 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758227DD2722CEB200024371 /* AddressView.swift */; };
+		758227E02722CECA00024371 /* AddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 758227DF2722CECA00024371 /* AddressView.xib */; };
+		75D234762722AE9600CF62C6 /* deliveryAddress.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 75D234752722AE9600CF62C6 /* deliveryAddress.imageset */; };
+		75D234782722AEF300CF62C6 /* billingAddress.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 75D234772722AEF300CF62C6 /* billingAddress.imageset */; };
 		75E03FF6DF5A02622847A2A40AAF7EE7 /* OrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CDB9AC26D46F09500619BA31A20283 /* OrderDetailModel.swift */; };
 		75E37009272168670009EBD2 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E37007272168670009EBD2 /* OrderListViewController.swift */; };
 		75E3700A272168670009EBD2 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E37008272168670009EBD2 /* OrderListViewController.xib */; };
@@ -492,6 +496,10 @@
 		723678A42DFF4C6B469B274FDFDB87F7 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7377A9CFFB42D392A8A1B09BE2448576 /* noResult@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "noResult@3x.png"; sourceTree = "<group>"; };
 		73DCE23B63A0EB237AF20903CDB2A749 /* paymentFailed@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "paymentFailed@3x.png"; sourceTree = "<group>"; };
+		758227DD2722CEB200024371 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		758227DF2722CECA00024371 /* AddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressView.xib; sourceTree = "<group>"; };
+		75D234752722AE9600CF62C6 /* deliveryAddress.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = deliveryAddress.imageset; sourceTree = "<group>"; };
+		75D234772722AEF300CF62C6 /* billingAddress.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = billingAddress.imageset; sourceTree = "<group>"; };
 		75E37007272168670009EBD2 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		75E37008272168670009EBD2 /* OrderListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderListViewController.xib; sourceTree = "<group>"; };
 		75E3700B272168770009EBD2 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
@@ -709,6 +717,8 @@
 		00AABE450329BD12B6E6C7FE04FD94C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				75D234772722AEF300CF62C6 /* billingAddress.imageset */,
+				75D234752722AE9600CF62C6 /* deliveryAddress.imageset */,
 				51184277E87B4A1F9D4A4AD8466AA12B /* adressNoResult.imageset */,
 				9AC3527A71EED3E300D04718DED14670 /* cargoShippingImage */,
 				649AA514DC0ACC28BEFEACEBC48B6AFD /* emptyPaymentMethod.imageset */,
@@ -838,6 +848,7 @@
 		30A6CD663772C3930FFB56A68005E5F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				758227DC2722CE7D00024371 /* Address View */,
 				E39748DBA0E14F6440BC4DD671E700B8 /* BaseView.swift */,
 				25B70FB7CEA801A4C0BD74280BBF5D67 /* BaseViewController.swift */,
 				47C04F60C4BD27FE8185C5EE9D9B658D /* SRButton.swift */,
@@ -1049,6 +1060,15 @@
 				2003CDB8F4784BF72E03FE3F45768DF9 /* WebViewViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		758227DC2722CE7D00024371 /* Address View */ = {
+			isa = PBXGroup;
+			children = (
+				758227DD2722CEB200024371 /* AddressView.swift */,
+				758227DF2722CECA00024371 /* AddressView.xib */,
+			);
+			path = "Address View";
 			sourceTree = "<group>";
 		};
 		75CBD1FE646E4FC5E5B43EAD17747A60 /* Product View */ = {
@@ -1844,9 +1864,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA824135BE647AABB4217E6D790DF07 /* Shopiroller.bundle in Resources */,
+				758227E02722CECA00024371 /* AddressView.xib in Resources */,
 				75E3700A272168670009EBD2 /* OrderListViewController.xib in Resources */,
+				75D234762722AE9600CF62C6 /* deliveryAddress.imageset in Resources */,
 				75E370202721704F0009EBD2 /* OrderTableViewCell.xib in Resources */,
 				75E37010272168880009EBD2 /* OrderDetailViewController.xib in Resources */,
+				75D234782722AEF300CF62C6 /* billingAddress.imageset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2177,6 +2200,7 @@
 				EDE799D75552DDE81E59167761DD9D70 /* StringExtensions.swift in Sources */,
 				1A8829DDB8DF68552C3D3BD57D51DAC3 /* successOrder.png in Sources */,
 				017CF6C86E9C7314BE97CA9361BE553E /* successOrder@2x.png in Sources */,
+				758227DE2722CEB200024371 /* AddressView.swift in Sources */,
 				F7C26AF83995E6723EEB4F2D8084698D /* successOrder@3x.png in Sources */,
 				429B4F736C758701A83D8D2A1977B9F8 /* SuccessResponse.swift in Sources */,
 				60C871A0F0B47707C1998A84F26775CF /* UIButtonExtension.swift in Sources */,

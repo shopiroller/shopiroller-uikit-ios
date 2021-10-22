@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderDetailViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
-                <outlet property="addressDetailTable" destination="Fdf-K5-YrW" id="Hma-In-xIT"/>
+                <outlet property="addressDataStackView" destination="XFm-yQ-1ea" id="E7e-JT-fUa"/>
                 <outlet property="addressSeparator" destination="MEA-Zl-Umd" id="2fJ-ch-83I"/>
                 <outlet property="addressStackView" destination="M0w-mp-ajw" id="e89-by-hIq"/>
                 <outlet property="bottomShipping" destination="bqB-gs-6VJ" id="cbj-8B-k2T"/>
@@ -29,9 +29,9 @@
                 <outlet property="paymentSeparator" destination="aPI-dc-yaE" id="pDs-B4-sI6"/>
                 <outlet property="paymentStackView" destination="XIK-w8-XZD" id="RvS-3o-NeR"/>
                 <outlet property="paymentTitle" destination="dzk-B4-7QP" id="69T-S1-TAn"/>
+                <outlet property="productsDataStackView" destination="e50-Dj-5m5" id="jGU-sh-Yd0"/>
                 <outlet property="productsSeparator" destination="r9Y-Lh-bey" id="Hdr-Zg-6tZ"/>
                 <outlet property="productsStackView" destination="oiS-R0-Qks" id="hhr-Og-MtO"/>
-                <outlet property="productsTable" destination="ULp-xW-vLL" id="Ll1-og-5Be"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="748"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="LCF-O5-liO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="705.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="449.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wec-lO-qyd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
@@ -155,7 +155,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M0w-mp-ajw" userLabel="addressStackView">
-                                    <rect key="frame" x="0.0" y="347.5" width="414" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="347.5" width="414" height="31.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-Fz-d2k">
                                             <rect key="frame" x="15" y="0.0" width="384" height="21.5"/>
@@ -163,22 +163,21 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-K5-YrW" userLabel="addressTableView">
-                                            <rect key="frame" x="15" y="31.5" width="384" height="128"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </tableView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XFm-yQ-1ea" userLabel="addressStackView">
+                                            <rect key="frame" x="15" y="31.5" width="384" height="0.0"/>
+                                        </stackView>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
                                 </stackView>
                                 <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9Y-Lh-bey" userLabel="productsSeparator">
-                                    <rect key="frame" x="0.0" y="526" width="414" height="1"/>
+                                    <rect key="frame" x="0.0" y="398" width="414" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="PjB-ed-CAf"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oiS-R0-Qks" userLabel="productsStackView">
-                                    <rect key="frame" x="0.0" y="546" width="414" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="418" width="414" height="31.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-yA-mpF">
                                             <rect key="frame" x="15" y="0.0" width="384" height="21.5"/>
@@ -186,10 +185,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-xW-vLL" userLabel="productsTableView">
-                                            <rect key="frame" x="15" y="31.5" width="384" height="128"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </tableView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e50-Dj-5m5" userLabel="productsStackView">
+                                            <rect key="frame" x="15" y="31.5" width="384" height="0.0"/>
+                                        </stackView>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
                                 </stackView>

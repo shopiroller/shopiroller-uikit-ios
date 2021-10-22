@@ -23,10 +23,10 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var cargoTrackingName: UILabel!
     @IBOutlet private weak var cargoTrackingId: UILabel!
     
-    @IBOutlet weak var paymentTitle: UILabel!
+    @IBOutlet private weak var paymentTitle: UILabel!
     
-    @IBOutlet private weak var addressDetailTable: UITableView!
-    @IBOutlet private weak var productsTable: UITableView!
+    @IBOutlet private weak var productsDataStackView: UIStackView!
+    @IBOutlet private weak var addressDataStackView: UIStackView!
     
     @IBOutlet private weak var cargoSeparator: UIView!
     @IBOutlet private weak var cargoStackView: UIStackView!
@@ -73,21 +73,13 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         bottomSubTotal.text = viewModel.getSubTotalText()
         bottomShipping.text = viewModel.getShippingTotalText()
         bottomTotalPrice.text = viewModel.getTotalText()
-
-
+        
+        for item in viewModel.getAddressList() {
+            let view = AddressView()
+            view.setup(model: item)
+            addressDataStackView.addArrangedSubview(view)
+        }
     }
     
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
