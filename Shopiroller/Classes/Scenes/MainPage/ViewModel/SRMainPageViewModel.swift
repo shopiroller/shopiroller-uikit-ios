@@ -21,6 +21,7 @@ public class SRMainPageViewModel: BaseViewModel {
     private var categories: [SRCategoryResponseModel]?
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
+    private var showcaseModel: SRShowcaseResponseModel?
     
     private var currentPage: Int = 0
     
@@ -83,7 +84,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
+        SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
     }
     
     func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -141,17 +142,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        var count = 0
-        if let showcase = showcase {
-            showcase.forEach{
-                if ($0.products?.count ?? 0 > 0){
-                    count = $0.products?.count ?? 0
-                }else{
-                    count = 0
-                }
-            }
-        }
-        return count
+        return showcaseModel?.showcase?.productCount ?? 0
     }
     
     func productItemCount() -> Int {
@@ -175,7 +166,8 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
-        return showcase?[position]
+        showcaseModel = showcase?[position]
+        return showcaseModel
     }
     
     func getProductId(position: Int) -> String? {

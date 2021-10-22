@@ -90,5 +90,21 @@ extension UIViewController {
         }
     }
     
+    func createNavigationItem(_ image: UIImage? ,_ selector: Selector , _ isCartButton: Bool? = false ) -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
+        button.tintColor = .black
+        button.setImage(image)
+        button.translatesAutoresizingMaskIntoConstraints = true
+        button.layer.masksToBounds = false
+        button.contentEdgeInsets.right = 7
+        button.addTarget(self, action: selector, for: .touchUpInside)
+        if isCartButton == true {
+            button.createBadge(withCount: SRAppContext.shoppingCartCount)
+        }
+        let barButtonItem = UIBarButtonItem(customView: button)
+        return barButtonItem
+    }
+    
     
 }

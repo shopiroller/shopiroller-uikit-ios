@@ -17,8 +17,9 @@ struct SRNetworkRequestManager<T: Decodable> {
     var shouldShowProgressHUD: Bool
     var shouldBlockUI: Bool
     var otpTokenRequired: Bool
+    var ignoreParse: Bool
 
-    init(httpMethod: SRNetworkManagerHttpMethods? = nil, path: SRNetworkManagerPaths, contentType: SRNetworkManagerContentType = .json, subpath: String? = nil, resourceType: T.Type, urlQueryItems: [URLQueryItem]? = nil, httpBody: Data? = nil, shouldShowProgressHUD: Bool = true, shouldBlockUI: Bool = true, otpTokenRequired: Bool = false) {
+    init(httpMethod: SRNetworkManagerHttpMethods? = nil, path: SRNetworkManagerPaths, contentType: SRNetworkManagerContentType = .json, subpath: String? = nil, resourceType: T.Type, urlQueryItems: [URLQueryItem]? = nil, httpBody: Data? = nil, shouldShowProgressHUD: Bool = true, shouldBlockUI: Bool = true, otpTokenRequired: Bool = false, ignoreParse: Bool = false) {
         self.httpMethod = httpMethod
         self.path = path
         self.contentType = contentType
@@ -28,6 +29,7 @@ struct SRNetworkRequestManager<T: Decodable> {
         self.shouldShowProgressHUD = shouldShowProgressHUD
         self.shouldBlockUI = shouldBlockUI
         self.otpTokenRequired = otpTokenRequired
+        self.ignoreParse = ignoreParse
     }
 }
 

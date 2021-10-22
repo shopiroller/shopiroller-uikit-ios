@@ -65,6 +65,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     }
   
     @IBAction private func firstButtonTapped(_ sender: Any){
+        
         if(viewModel.firstButton?.type == .popToRoot) {
             dismiss(animated: false, completion: nil)
             self.delegate?.popView()

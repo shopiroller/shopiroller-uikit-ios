@@ -150,6 +150,12 @@ final public class SRNetworkManager {
                         resourceResult(.failure(error))
                     }
                 case .success(result: let result):
+                    
+                    if request.ignoreParse {
+                        resourceResult(.success(result: SRNetworkManagerResponse<T>()))
+                        return
+                    }
+                    
                     guard let data = result as? Data else {
                         resourceResult(.failure(ShopirollerError.parseJSON))
                         return

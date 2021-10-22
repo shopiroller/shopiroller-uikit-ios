@@ -62,8 +62,10 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .put, path: .updateItemQuantity, subpath: "/\(userId)" + "/\(cartItemId)", resourceType: SuccessResponse.self)
     }
     
-    static func addProductToShoppingCart(_ quantity: SRAddProductModel,userId: String) -> SRNetworkRequestManager<SuccessResponse> {
-        return SRNetworkRequestManager(httpMethod: .post, path: .addProductToShoppingCart, subpath: "/\(userId)", resourceType: SuccessResponse.self, httpBody: quantity.data)
+    static func addProductToShoppingCart(products: SRAddProductModel,userId: String) ->
+    SRNetworkRequestManager<String> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.addProductToShoppingCart.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath, resourceType: String.self, httpBody: products.data, ignoreParse: true)
     }
     
     static func clearShoppingCart(userId: String) -> SRNetworkRequestManager<SuccessResponse> {
