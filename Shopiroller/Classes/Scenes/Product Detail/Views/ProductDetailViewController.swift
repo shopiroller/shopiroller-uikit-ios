@@ -10,10 +10,9 @@ import Kingfisher
 import ImageSlideshow
 import LinkPresentation
 
-extension ProductDetailViewController : NibLoadable { }
-
-public class ProductDetailViewController: BaseViewController {
+struct Constants {
     
+
     private var lastContentOffset: CGFloat = 0
     
     struct Constants {
@@ -47,15 +46,15 @@ public class ProductDetailViewController: BaseViewController {
         static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
             
         }
+
+public struct ImageSlideModel {
+    public let url: URL
     
-    public struct ImageSlideModel {
-        public let url: URL
-        
-        public var inputSource: InputSource {
-            return KingfisherSource(url: url)
-        }
+    public var inputSource: InputSource {
+        return KingfisherSource(url: url)
     }
-    
+}
+public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -106,17 +105,8 @@ public class ProductDetailViewController: BaseViewController {
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     
-    private let viewModel : ProductDetailViewModel
-    
     public init(viewModel: ProductDetailViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
-    }
-    
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewModel = ProductDetailViewModel()
-        super.init(coder: aDecoder)
+        super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
     }
     
     public override func setup() {
@@ -373,7 +363,6 @@ public class ProductDetailViewController: BaseViewController {
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
-        
     }
     
     @objc private func returnExchangeContainerTapped(_ sender: Any) {

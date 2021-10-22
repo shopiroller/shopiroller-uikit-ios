@@ -9,23 +9,20 @@ import UIKit
 import Kingfisher
 
 
-public class ProductDetailViewModel {
+public class ProductDetailViewModel: BaseViewModel {
     
     private var productId: String?
     private var productList: ProductDetailResponseModel?
     private var paymentSettings: PaymentSettingsResponeModel?
     
-    private let networkManager: SRNetworkManager
-    
     var quantityCount = 1
     
-    init (productId: String = String() , networkManager : SRNetworkManager = SRNetworkManager()) {
+    init (productId: String = String()) {
         self.productId = productId
-        self.networkManager = networkManager
     }
     
-    func getProductTerms(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getPaymentSettings().response(using: networkManager) {
+    func getProductTerms(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getPaymentSettings().response() {
             (result) in
             switch result {
             case .success(let response):
@@ -41,8 +38,9 @@ public class ProductDetailViewModel {
         }
     }
     
-    func getProductDetail(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response(using: networkManager) {
+
+    func getProductDetail(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
             (result) in
             switch result{
             case .success(let response):

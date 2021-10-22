@@ -34,9 +34,9 @@ struct SRNetworkRequestManager<T: Decodable> {
 }
 
 extension SRNetworkRequestManager {
-    func response(using api: SRNetworkManager, response: @escaping ((SRResponseResult<SRNetworkManagerResponse<T>>) -> Void)) {
+    func response(response: @escaping ((SRResponseResult<SRNetworkManagerResponse<T>>) -> Void)) {
 //        api.response(for: self, response: response)
-        api.response(for: self) { result in
+        BaseViewModel.networkManager.response(for: self) { result in
             switch result {
             case .success:
                 response(result)
