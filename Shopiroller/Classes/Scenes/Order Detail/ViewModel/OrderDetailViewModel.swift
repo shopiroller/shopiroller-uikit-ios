@@ -112,7 +112,7 @@ class OrderDetailViewModel: BaseViewModel {
     func getAddressList() -> [AddressCellModel] {
         var arr: [AddressCellModel] = []
         arr.append(AddressCellModel(title: "order_details_address_delivery".localized, address: String(format: detail?.shippingAdress?.getDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .deliveryAddress))
-        arr.append(AddressCellModel(title: "order_details_address_shipping".localized, address: String(format: detail?.shippingAdress?.getBillingDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .shippingAddress))
+        arr.append(AddressCellModel(title: "order_details_address_shipping".localized, address: String(format: detail?.shippingAdress?.getBillingDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .billingAddress))
         return arr
     }
     

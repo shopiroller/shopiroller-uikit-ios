@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+extension AddressView : NibLoadable { }
 class AddressView: BaseView {
 
     @IBOutlet weak var title: UILabel!
@@ -14,12 +14,15 @@ class AddressView: BaseView {
     @IBOutlet weak var addressImage: UIImageView!
     
     func setup(model: AddressCellModel){
+        super.setup()
+        setupFromNib()
+        
         layer.cornerRadius = 6
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.textSecondary10.cgColor
-      //  title.text = model.title
-       // address.text = model.address
-        //addressImage.image = model.image
+        title.text = model.title
+        address.text = model.address
+        addressImage.image = model.image
     }
 
 }

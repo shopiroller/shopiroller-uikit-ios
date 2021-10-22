@@ -9,6 +9,7 @@ import UIKit
 
 class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
+    @IBOutlet weak var root: UIStackView!
     
     @IBOutlet private weak var bottomSubTotal: UILabel!
     @IBOutlet private weak var bottomShipping: UILabel!
@@ -37,6 +38,8 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var productsSeparator: UIView!
     @IBOutlet private weak var productsStackView: UIView!
     
+    @IBOutlet private weak var addressHeight: NSLayoutConstraint!
+    @IBOutlet private weak var productsHeight: NSLayoutConstraint!
     
     init(viewModel: OrderDetailViewModel){
         super.init(viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
@@ -78,7 +81,15 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             let view = AddressView()
             view.setup(model: item)
             addressDataStackView.addArrangedSubview(view)
+            NSLayoutConstraint.activate([
+                view.widthAnchor.constraint(equalToConstant: 100),
+                view.heightAnchor.constraint(equalToConstant: 100),
+            ])
         }
+       
+        addressHeight.constant = 222
+       
+    
     }
     
 }
