@@ -291,6 +291,11 @@
 		EAEE30E8E12AFCF533F44AACAC7A6C8A /* CategoriesCollectionViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = CF20EA09BB029A293B27F4F7CED9BC5A /* CategoriesCollectionViewCell.xib */; };
 		EB23B1D3818739E36B2B9258A0E6953B /* emptyProductImage.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 8AD93BB2C6F505FF8238D27B602A0805 /* emptyProductImage.imageset */; };
 		EBD9C96983BC7A7B0586509E772F715A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454FEC0B66CF52BCC15B6DD74E3D4DF /* BaseView.swift */; };
+		EE9267162722F636005DCEA6 /* CategoriesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9267142722F636005DCEA6 /* CategoriesListCell.swift */; };
+		EE9267172722F636005DCEA6 /* CategoriesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE9267152722F636005DCEA6 /* CategoriesListCell.xib */; };
+		EE94F3912722DA5D006FF2D6 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94F38F2722DA5D006FF2D6 /* CategoriesListViewController.swift */; };
+		EE94F3922722DA5D006FF2D6 /* CategoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE94F3902722DA5D006FF2D6 /* CategoriesListViewController.xib */; };
+		EE94F3942722DA72006FF2D6 /* CategoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94F3932722DA72006FF2D6 /* CategoriesListViewModel.swift */; };
 		EEAA1518C49804736C3F40117D064CBE /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD3FDD603AACBD73918070A175D8111 /* SVProgressAnimatedView.m */; };
 		F16BF983EB8CCE0C3FAE03F8DBEFE40A /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF20EA09BB029A293B27F4F7CED9BC5A /* CategoriesCollectionViewCell.xib */; };
 		F2D2F6A62B41A0A876EEFF52D759F6D1 /* ProductImageSliderCollectionViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 55ABB80A97F757D9F05173CFF7DE31F8 /* ProductImageSliderCollectionViewCell.xib */; };
@@ -643,6 +648,11 @@
 		EC144006C7334A0F1E0F33ABBF153D6B /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		EC5ECBB30F2D47513106147A7A3CD6B7 /* SliderCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = SliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		ECB471ACE94AC4EAF67AD38914A81387 /* orderNoResult.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = orderNoResult.png; sourceTree = "<group>"; };
+		EE9267142722F636005DCEA6 /* CategoriesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListCell.swift; sourceTree = "<group>"; };
+		EE9267152722F636005DCEA6 /* CategoriesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesListCell.xib; sourceTree = "<group>"; };
+		EE94F38F2722DA5D006FF2D6 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
+		EE94F3902722DA5D006FF2D6 /* CategoriesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesListViewController.xib; sourceTree = "<group>"; };
+		EE94F3932722DA72006FF2D6 /* CategoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewModel.swift; sourceTree = "<group>"; };
 		EEF6D123E1650B48180ADBCBD9C35C28 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF9E023AD4B749E0193F558FD96301A5 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		F05BE16B56A18C83E52F8EEC94AEAC61 /* EmptyView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
@@ -938,6 +948,7 @@
 		535E649DF23EBEFD6A2DF56F832999BC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EE94F38B2722DA34006FF2D6 /* Categories */,
 				74F6D2BA742268E463A9D5BA768FE962 /* MainPage */,
 				2A3315DD7526261CCE0DA0DE60D65BBF /* Order Detail */,
 				D06C722A1B5F3A5D9B9AD0652AE4F866 /* Order List */,
@@ -1586,6 +1597,42 @@
 			path = Shopiroller/Assets;
 			sourceTree = "<group>";
 		};
+		EE94F38B2722DA34006FF2D6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EE94F38C2722DA40006FF2D6 /* ViewModels */,
+				EE94F38D2722DA42006FF2D6 /* Views */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		EE94F38C2722DA40006FF2D6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EE94F3932722DA72006FF2D6 /* CategoriesListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EE94F38D2722DA42006FF2D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE94F38E2722DA4C006FF2D6 /* Cells */,
+				EE94F38F2722DA5D006FF2D6 /* CategoriesListViewController.swift */,
+				EE94F3902722DA5D006FF2D6 /* CategoriesListViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EE94F38E2722DA4C006FF2D6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EE9267142722F636005DCEA6 /* CategoriesListCell.swift */,
+				EE9267152722F636005DCEA6 /* CategoriesListCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F02403EA15203D3F2F4CEB207704463F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1969,6 +2016,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE9267172722F636005DCEA6 /* CategoriesListCell.xib in Resources */,
+				EE94F3922722DA5D006FF2D6 /* CategoriesListViewController.xib in Resources */,
 				283D2AAE32C66B2BA84D95E11D1F1330 /* Shopiroller.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2130,6 +2179,7 @@
 				CDC0B2D630009E044AFC03F1A649F853 /* OrderDetailViewController.swift in Sources */,
 				77A4A36B810B7A380FE51D6E165850D2 /* OrderDetailViewController.xib in Sources */,
 				B9C9EF6991B69E6D72D76F16C50C3378 /* OrderDetailViewModel.swift in Sources */,
+				EE94F3942722DA72006FF2D6 /* CategoriesListViewModel.swift in Sources */,
 				D25849CEEB40D33D67A20108C0463BEE /* OrderListViewController.swift in Sources */,
 				64E673108D1D0D43115B7F9DE83B7530 /* OrderListViewController.xib in Sources */,
 				2524E53083FE65A94094BC79AE04C6AF /* OrderListViewModel.swift in Sources */,
@@ -2179,6 +2229,8 @@
 				A0D43E3ED99177015F55901CD536B020 /* SliderTableViewCell.xib in Sources */,
 				DA5E50B52461225432535F058F09AB6C /* SRAddProductModel.swift in Sources */,
 				BE9FEF1BF642E05577550864E3FD7C83 /* SRAppConstants.swift in Sources */,
+				EE9267162722F636005DCEA6 /* CategoriesListCell.swift in Sources */,
+				EE94F3912722DA5D006FF2D6 /* CategoriesListViewController.swift in Sources */,
 				9E8D1367734F68D72E8633F5AE3F4C83 /* SRAppContext.swift in Sources */,
 				690101E7966502E021BCB9FA3AD899C1 /* SRAppDelegate.swift in Sources */,
 				C9247E1587DBA4A47CD944D144915089 /* SRButton.swift in Sources */,

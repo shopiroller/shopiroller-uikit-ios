@@ -209,30 +209,27 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let backButton = createNavigationItem(.backIcon , #selector(goBack))
-        let cartButton = createNavigationItem(.cartIcon, #selector(goToCard) , true)
-        let searchButton = createNavigationItem(.searchIcon , #selector(searchProduct))
-        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"), #selector(shareProduct))
+        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
+        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
+        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
+        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItems = [shareButton,searchButton,cartButton]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: shareButton),searchButton,cartButton]
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.makeNavigationBar(.clear)
         
         getCount()
     }
     
-    @objc func goBack() { // remove @objc for Swift 3
-        pop(animated: true, completion: nil)
-    }
-    
-    @objc func goToCard() {
-        //TODO
-    }
-    
-    
-    @objc func searchProduct() {
-        //TODO
+    @objc func shareProduct() {
+        //TODO APP LINK
+        let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
+        let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
     }
     
     
@@ -262,16 +259,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
                 self.checkmarkImage.isHidden = true
             }
         })
-        
-    }
-    
-    
-    @objc func shareProduct() {
-        //TODO APP LINK
-        let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
-        let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        self.present(activityVC, animated: true, completion: nil)
         
     }
     

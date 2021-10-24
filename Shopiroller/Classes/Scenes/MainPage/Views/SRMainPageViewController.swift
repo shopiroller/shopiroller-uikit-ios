@@ -23,8 +23,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     @IBOutlet private weak var shimmerCollectionView: UICollectionView!
     
     private var refreshControl = UIRefreshControl()
-    var dd : String?
-
+    
     public init(viewModel: SRMainPageViewModel) {
         super.init(viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
@@ -53,12 +52,13 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let cardButton = createNavigationItem(.cartIcon ,#selector(goToCard),true)
-        let searchButton = createNavigationItem(.searchIcon,#selector(searchProduct))
-        let optionsButton = createNavigationItem(.moreIcon,#selector(openOptions))
-        let menuButton = createNavigationItem(.menuIcon,#selector(openMenu))
+        let cardButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon , .goToCard ,true))
+        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
+        let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
+        let menuButton = createNavigationItem(.menuIcon)
+        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
 
-        navigationItem.leftBarButtonItem = menuButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         navigationItem.rightBarButtonItems = [optionsButton,searchButton,cardButton]
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.makeNavigationBar(.clear)
@@ -77,18 +77,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         prompt(OrderListViewController(viewModel: OrderListViewModel())
                , animated: true, completion: nil)
     }
-    
-    @objc func goToCard() {
-        
-    }
-    
-    @objc func searchProduct() {
-        
-    }
-    
-    @objc func openOptions() {
-        
-    }
+
     
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.
@@ -236,6 +225,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
                 let cellModel = viewModel.getCategoriesViewModel()
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseIdentifier, for: indexPath) as! CategoriesCell
                 cell.configureCell(model: cellModel)
+                cell.delegate = self
                 return cell
             case 2:
                 let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
@@ -318,5 +308,21 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
             getProducts(pagination: true)
         }
     }
+    
+}
+
+extension SRMainPageViewController : CategoriesCellDelegate {
+   
+    func getSubCategories(position: Int) {
+        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true))
+        self.prompt(vc, animated: true, completion: nil)
+    }
+    func getCategories(position: Int) {
+        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false))
+        self.prompt(vc, animated: true, completion: nil)
+    }
+    
+    
+    
     
 }

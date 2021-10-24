@@ -92,3 +92,9 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+//Mark: - Categories
+
+"category-items-text" = "XX ürünler";
+
+"sub-category-container-text" = "Tüm XX Ürünleri";
+

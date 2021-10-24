@@ -22,6 +22,7 @@ public class SRMainPageViewModel: BaseViewModel {
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
+    private var categoriesModel : SRCategoryResponseModel?
     
     private var currentPage: Int = 0
     
@@ -162,7 +163,17 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
+        categories?.sort() { $0.name ?? "" < $1.name ?? "" }
+        // Do not show if there is 0 product categories
+        categories = categories?.filter { $0.totalProduct != 0 }
         return categories
+    }
+    
+    func getSubCategories(position: Int) -> [SRCategoryResponseModel]? {
+        categories?.sort() { $0.name ?? "" < $1.name ?? "" }
+        // Do not show if there is 0 product categories
+        categories = categories?.filter { $0.totalProduct != 0 }
+        return categories?[position].subCategories
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {

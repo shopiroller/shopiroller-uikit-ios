@@ -55,4 +55,11 @@ struct SRAppConstants {
         
         static var badgeCount = "badgeCount"
     }
+    
+    enum NavigationItemSelectorType {
+        case goBack
+        case goToCard
+        case searchProduct
+        case openOptions
+    }
 }

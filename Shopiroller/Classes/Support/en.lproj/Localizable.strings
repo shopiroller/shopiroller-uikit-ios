@@ -92,6 +92,12 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+//Mark: - Categories
+
+"category-items-text" = "XX items";
+
+"sub-category-container-text" = "All XX Items ";
+
 
 
 
