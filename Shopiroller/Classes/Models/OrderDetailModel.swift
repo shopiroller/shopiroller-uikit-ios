@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct OrderDetailModel: Codable {
+class OrderDetailModel: SROrderModel {
     
     var bankAccount: String?
     var paymentAccount: BankAccountModel?

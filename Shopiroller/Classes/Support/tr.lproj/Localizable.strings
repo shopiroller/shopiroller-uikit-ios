@@ -92,3 +92,20 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+// MARK: - Payment Method
+
+"CashOnDelivery" = "Cash on Delivery";
+"Transfer" = "Transfer";
+"CreditCard" = "Credit Card";
+"Paypal" = "PayPal";
+
+// MARK: - Order Details
+
+"order_details_bank_receiver" = "Receiver Name: ";
+"order_details_bank_account" = "Account: ";
+"order_details_bank_iban" = "Iban: ";
+"order_details_bank_subtotal" = "Subtotal: ";
+"order_details_bank_shipping" = "Shipping: ";
+"order_details_address_delivery" = "Delivery Address";
+"order_details_address_shipping" = "Billing Address";
+"order_details_quantity" = "Piece: ";

@@ -8,7 +8,7 @@
 import Foundation
 
 class SRGlobalRequestManager {
-    static func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    static func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCartCount(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
             switch result{
