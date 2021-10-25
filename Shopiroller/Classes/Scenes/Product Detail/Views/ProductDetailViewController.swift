@@ -53,6 +53,39 @@ public struct ImageSlideModel {
 
 public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
     
+    struct Constants {
+        
+        static var quantityTitle: String { return "quantity-title".localized }
+        
+        static var descriptionTitle: String { return "description-title".localized }
+        
+        static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
+        
+        static var deliveryTitle: String { return "delivery-terms-title".localized }
+        
+        static var freeShippingText: String { return "free-shipping-text".localized }
+        
+        static var soldOutText: String { return "sold-out-text".localized }
+        
+        static var addToCartText: String { return "add-to-cart".localized }
+        
+        static var shippingPriceText: String { return "shipping-price-text".localized }
+        
+        static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
+        
+        static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
+        
+        static var outOfStockTitle: String { return "product-detail-out-of-stock-title".localized }
+        
+        static var outOfStockDescription: String { return "product-detail-out-of-stock-description".localized }
+        
+        static var maxQuantityTitle: String { return "product-detail-maximum-product-quantity-title".localized  }
+        
+        static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
+        
+    }
+
+    
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!

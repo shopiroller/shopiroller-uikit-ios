@@ -10,6 +10,8 @@ import UIKit
 
 extension String {
     
+    public static let NEW_LINE = "\n"
+    
     var length: Int {
         return count
     }
@@ -40,5 +42,5 @@ extension String {
         let discountedPercenteage = String(format: "%.0f", percentage)
         return "%\(discountedPercenteage)"
     }
-    
+
 }

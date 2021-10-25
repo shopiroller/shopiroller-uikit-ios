@@ -21,7 +21,7 @@ struct MakeOrderAddressModel: Codable {
     var phoneNumber: String?
     var taxOffice: String?
     var nameSurname: String?
-    var billingDescriptionArea: String? 
+    var billingDescriptionArea: String?
     
     enum CodingKeys: String,CodingKey {
         case id = "id"
@@ -38,5 +38,43 @@ struct MakeOrderAddressModel: Codable {
         case nameSurname = "nameSurname"
     }
     
+    func getDescriptionArea() -> String {
+        return [description
+                , String.NEW_LINE
+                , city
+                , " / " , state , " / " , country
+                , String.NEW_LINE
+                , "%@"
+                , " - "
+                , phoneNumber].compactMap { $0 }
+                .joined(separator: " ")
+    }
+    
+    func getBillingDescriptionArea() -> String {
+        if (taxOffice != nil && taxOffice != ""){
+            return [description
+            , String.NEW_LINE
+            , city
+            , " / " , state , " / " , country
+            , String.NEW_LINE
+            , "%s"
+            , " - "
+            , phoneNumber
+            , String.NEW_LINE
+            , taxOffice , " - " , taxNumber].compactMap { $0 }
+            .joined(separator: " ")}
+        else{
+            return [description
+            , String.NEW_LINE
+            , city
+            , " / " , state , " / " , country
+            , String.NEW_LINE
+            , "%s"
+            , " - "
+            , phoneNumber
+            , String.NEW_LINE
+            , identityNumber].compactMap { $0 }
+            .joined(separator: " ")}
+    }
 }
 

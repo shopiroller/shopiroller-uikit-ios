@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SROrderModel: Codable {
+class SROrderModel: Codable {
     
     var id : String?
     var totalPrice : Double?
@@ -18,7 +18,7 @@ struct SROrderModel: Codable {
     var orderCode : String?
     var createdDate : String?
     var userNote : String?
-    var paymentType : String?
+    var paymentType : PaymentTypeEnum?
     var cardNumber : String?
     var productList : [SROrderProductModel]?
     var shippingTrackingCode : String?
