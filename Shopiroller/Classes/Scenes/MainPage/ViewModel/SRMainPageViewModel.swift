@@ -11,9 +11,9 @@ public class SRMainPageViewModel: BaseViewModel {
     
     private struct Constants {
         
-        static var title: String { return "empty-view-title".localized }
+        static var emptyViewTitle: String { return "empty-view-title".localized }
         
-        static var description: String { return "empty-view-description".localized }
+        static var emptyViewDescription: String { return "empty-view-description".localized }
         
     }
     
@@ -22,6 +22,7 @@ public class SRMainPageViewModel: BaseViewModel {
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
+    private var categoriesModel : SRCategoryResponseModel?
     
     private var currentPage: Int = 0
     
@@ -165,6 +166,22 @@ public class SRMainPageViewModel: BaseViewModel {
         return categories
     }
     
+    func getSubCategories(position: Int) -> [SRCategoryResponseModel]? {
+        return categories?[position].subCategories
+    }
+    
+    func hasSubCategory(position: Int) -> Bool {
+        if categories?[position].subCategories != nil , !(categories?[position].subCategories?.isEmpty ?? false) {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    func getCategoryTitle(position: Int) -> String? {
+        return categories?[position].name
+    }
+    
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
         showcaseModel = showcase?[position]
         return showcaseModel
@@ -188,7 +205,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
 
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .paymentFailed, title: Constants.title, description: Constants.description, button: nil)
+        EmptyModel(image: .emptyProduct, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
     }
     
 }

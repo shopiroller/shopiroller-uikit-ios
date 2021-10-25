@@ -90,7 +90,7 @@ extension UIViewController {
         }
     }
     
-    func createNavigationItem(_ image: UIImage? ,_ selector: Selector , _ isCartButton: Bool? = false ) -> UIBarButtonItem {
+    func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil , _ isCartButton: Bool? = false ) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
         button.tintColor = .black
@@ -98,13 +98,40 @@ extension UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = true
         button.layer.masksToBounds = false
         button.contentEdgeInsets.right = 7
-        button.addTarget(self, action: selector, for: .touchUpInside)
+        switch selector {
+        case .goBack:
+            button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        case .goToCard:
+            button.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
+        case .searchProduct:
+            button.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
+        case .openOptions:
+            button.addTarget(self, action: #selector(openOptions), for: .touchUpInside)
+        case .none:
+            break
+        }
+        
         if isCartButton == true {
             button.createBadge(withCount: SRAppContext.shoppingCartCount)
         }
-        let barButtonItem = UIBarButtonItem(customView: button)
-        return barButtonItem
+        
+       return button
+    }
+        
+    @objc func goToCard() {
+        
     }
     
+    @objc func searchProduct() {
+        
+    }
+    
+    @objc func openOptions() {
+        
+    }
+    
+    @objc func goBack() { 
+        pop(animated: true, completion: nil)
+    }    
     
 }
