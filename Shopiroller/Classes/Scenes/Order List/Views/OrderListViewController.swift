@@ -32,9 +32,23 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
             orderTable.register(cellClass: OrderTableViewCell.self)
             orderTable.delegate = self
             orderTable.dataSource = self
+            orderTable.reloadData()
             orderTable.backgroundColor = .clear
             orderTable.clipsToBounds = false
         }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+        
+        navigationItem.leftBarButtonItem = backButton
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.makeNavigationBar(.clear)
+            
+        getCount()
+        
     }
     
     private func getOrderList() {
@@ -58,6 +72,16 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     
     func actionButtonClicked(_ sender: Any) {
         pop(animated: true, completion: nil)
+    }
+    
+    private func getCount() {
+        viewModel.getShoppingCartCount(succes: {
+            [weak self] in
+            guard let self = self else { return }
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
     }
     
 }
