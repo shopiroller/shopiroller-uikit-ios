@@ -123,7 +123,7 @@ class OrderDetailViewModel: BaseViewModel {
         UIPasteboard.general.string = detail?.paymentAccount?.accountAdress
     }
     
-    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
+    func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
     }
 }

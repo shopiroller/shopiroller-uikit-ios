@@ -133,7 +133,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         
     }
     private func getCount() {
-        viewModel.getShoppingCartCount(succes: {
+        viewModel.getShoppingCartCount(success: {
             [weak self] in
             guard let self = self else { return }
         }) {

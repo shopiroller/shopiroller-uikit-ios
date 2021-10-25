@@ -24,6 +24,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     
     private func configure(){
         if(viewModel.isOrderListEmpty()){
+            orderTable.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
             emptyView.delegate = self
@@ -75,7 +76,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     }
     
     private func getCount() {
-        viewModel.getShoppingCartCount(succes: {
+        viewModel.getShoppingCartCount(success: {
             [weak self] in
             guard let self = self else { return }
         }) {
@@ -89,7 +90,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
 extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.orderListCount()
+       return viewModel.orderListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
