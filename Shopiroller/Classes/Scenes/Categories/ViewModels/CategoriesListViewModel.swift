@@ -8,26 +8,28 @@
 import Foundation
 import UIKit
 
-
 class CategoriesListViewModel : BaseViewModel {
     
+    private struct Constants {
+        
+        static var subCategoryContainerText: String { return "sub-category-container-text".localized }
+        
+    }
+
     var categoryList : [SRCategoryResponseModel]?
     
     var isSubCategory: Bool? = false
     
-    var title: String? = ""
+    private var selectedRowName: String? = ""
          
-    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false){
+    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String()){
         self.categoryList = categoryList
         self.isSubCategory = isSubCategory
+        self.selectedRowName = selectedRowName
     }
     
     func getModel() -> [SRCategoryResponseModel]? {
-        // Sort categories By Name
-        categoryList?.sort() { $0.name ?? "" < $1.name ?? "" }
-        // Do not show if there is 0 product categories
-        categoryList = categoryList?.filter { $0.totalProduct != 0 }
-        return categoryList
+       return categoryList
     }
     
     
@@ -39,12 +41,20 @@ class CategoriesListViewModel : BaseViewModel {
         }
     }
     
-    func getCategoryTitle(position: Int) -> String? {
-        return categoryList?[position].name
+    func getTitle() -> String? {
+        return Constants.subCategoryContainerText.replacingOccurrences(of: "XX", with: selectedRowName ?? "" )
     }
     
-    func getTitle() -> String? {
-        return title
+    func setSelectedRowName(position: Int) {
+        self.selectedRowName = categoryList?[position].name
+    }
+    
+    func getSelectedRowName() -> String? {
+        return selectedRowName
+    }
+    
+    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
     }
     
 }

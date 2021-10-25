@@ -9,12 +9,6 @@ import UIKit
 
 class CategoriesListViewController: BaseViewController<CategoriesListViewModel> {
     
-    struct Constants {
-        
-        static var subCategoryContainerText: String { return "sub-category-container-text".localized }
-        
-    }
-    
     @IBOutlet private weak var showAllSubCategoriesContainer: UIView!
     @IBOutlet private weak var showAllSubCategoriesTitle: UILabel!
     @IBOutlet private weak var categoriesTableView: UITableView!
@@ -38,6 +32,14 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
         categoriesTableView.register(cellClass: CategoriesListCell.self)
         categoriesTableView.separatorStyle = .none
         
+        if viewModel.isSubCategory == true {
+            showAllSubCategoriesContainer.isHidden = false
+            showAllSubCategoriesTitle.text = viewModel.getTitle()
+        }else {
+            showAllSubCategoriesContainer.isHidden = true
+        }
+        navigationController?.isNavigationBarHidden = false
+        
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -50,23 +52,24 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
         
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItems = [shareButton,searchButton,cartButton]
-        navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.makeNavigationBar(.clear)
         
-        
-         if viewModel.isSubCategory == true {
-             showAllSubCategoriesTitle.text = Constants.subCategoryContainerText.replacingOccurrences(of: "XX", with: viewModel.getTitle() ?? "")
-             showAllSubCategoriesContainer.isHidden = false
-         }else {
-             showAllSubCategoriesContainer.isHidden = true
-         }
+        getCount()
         
     }
-
+    
+    private func getCount() {
+        viewModel.getShoppingCartCount(succes: {
+            [weak self] in
+            guard let self = self else { return }
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
     
     func setSubCategories(position: Int){
-        self.showAllSubCategoriesTitle.text = viewModel.getCategoryTitle(position: position)
-        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true))
+        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -87,11 +90,11 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if viewModel.hasSubCategory(position: indexPath.row){
+            viewModel.setSelectedRowName(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
-            viewModel.title = viewModel.getCategoryTitle(position: indexPath.row)
         }else {
-            //TO DO Go To Product List
-            print("\(viewModel.categoryList?[indexPath.row].name)")
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId))
+            prompt(vc, animated: true, completion: nil)
         }
         
     }

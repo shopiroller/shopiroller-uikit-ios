@@ -42,6 +42,7 @@ struct SRAppConstants {
             static let userId = "userId"
             static let page = "page"
             static let perPage = "perPage"
+            static let categoryId = "categoryId"
         }
         
         struct Values {

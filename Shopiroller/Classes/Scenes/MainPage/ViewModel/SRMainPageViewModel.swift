@@ -11,9 +11,9 @@ public class SRMainPageViewModel: BaseViewModel {
     
     private struct Constants {
         
-        static var title: String { return "empty-view-title".localized }
+        static var emptyViewTitle: String { return "empty-view-title".localized }
         
-        static var description: String { return "empty-view-description".localized }
+        static var emptyViewDescription: String { return "empty-view-description".localized }
         
     }
     
@@ -163,17 +163,23 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
-        categories?.sort() { $0.name ?? "" < $1.name ?? "" }
-        // Do not show if there is 0 product categories
-        categories = categories?.filter { $0.totalProduct != 0 }
         return categories
     }
     
     func getSubCategories(position: Int) -> [SRCategoryResponseModel]? {
-        categories?.sort() { $0.name ?? "" < $1.name ?? "" }
-        // Do not show if there is 0 product categories
-        categories = categories?.filter { $0.totalProduct != 0 }
         return categories?[position].subCategories
+    }
+    
+    func hasSubCategory(position: Int) -> Bool {
+        if categories?[position].subCategories != nil , !(categories?[position].subCategories?.isEmpty ?? false) {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    func getCategoryTitle(position: Int) -> String? {
+        return categories?[position].name
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
@@ -199,7 +205,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
 
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .paymentFailed, title: Constants.title, description: Constants.description, button: nil)
+        EmptyModel(image: .emptyProduct, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
     }
     
 }

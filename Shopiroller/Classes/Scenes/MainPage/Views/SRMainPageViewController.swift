@@ -314,8 +314,15 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
 extension SRMainPageViewController : CategoriesCellDelegate {
    
     func getSubCategories(position: Int) {
-        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true))
-        self.prompt(vc, animated: true, completion: nil)
+        
+        if viewModel.hasSubCategory(position: position){
+            let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoriesViewModel()?[position].name))
+            self.prompt(vc, animated: true, completion: nil)
+        }else {
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoriesViewModel()?[position].categoryId))
+            prompt(vc, animated: true, completion: nil)
+        }
+        
     }
     func getCategories(position: Int) {
         let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false))
