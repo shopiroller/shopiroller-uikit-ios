@@ -130,7 +130,7 @@ extension UIViewController {
         
     }
     
-    @objc func goBack() { // remove @objc for Swift 3
+    @objc func goBack() { 
         pop(animated: true, completion: nil)
     }    
     
