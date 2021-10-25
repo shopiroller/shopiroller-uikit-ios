@@ -87,7 +87,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     @objc func openOptions() {
-        
+        prompt(AddressListViewController(viewModel: AddressListViewModel())
+               , animated: true, completion: nil)
     }
     
     func configureRefreshControl () {

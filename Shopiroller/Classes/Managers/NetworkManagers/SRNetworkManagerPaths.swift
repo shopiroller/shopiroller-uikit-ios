@@ -31,8 +31,9 @@ enum SRNetworkManagerPaths: String {
     case getShowcase = "/showcases"
     case getFilterOptions = "/filterOptions"
     case users = "/users/"
-    case shippingAddress = "addresses/{userId}/shipping"
-    case billingAddress = "addresses/{userId}/billing"
+    case addresses = "/addresses/"
+    case shipping = "/shipping"
+    case billing = "/billing"
     
     var name: String {
         switch self {

@@ -9,9 +9,9 @@ import UIKit
 
 class AddressListViewController: BaseViewController<AddressListViewModel> {
     
-    @IBOutlet weak var addressSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var addressTableView: UITableView!
-    @IBOutlet weak var addressEmptyView: EmptyView!
+    @IBOutlet private weak var addressSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var addressTableView: UITableView!
+    @IBOutlet private weak var addressEmptyView: EmptyView!
 
     init(viewModel: AddressListViewModel){
         super.init(viewModel: viewModel, nibName: AddressListViewController.nibName, bundle: Bundle(for: AddressListViewController.self))
