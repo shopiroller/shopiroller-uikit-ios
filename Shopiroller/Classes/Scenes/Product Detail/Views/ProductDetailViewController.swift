@@ -15,6 +15,18 @@ struct Constants {
 
     private var lastContentOffset: CGFloat = 0
     
+   
+}
+
+public struct ImageSlideModel {
+    public let url: URL
+    
+    public var inputSource: InputSource {
+        return KingfisherSource(url: url)
+    }
+}
+public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
+    
     struct Constants {
         
         static var quantityTitle: String { return "quantity-title".localized }
@@ -40,21 +52,12 @@ struct Constants {
         static var outOfStockTitle: String { return "product-detail-out-of-stock-title".localized }
         
         static var outOfStockDescription: String { return "product-detail-out-of-stock-description".localized }
-            
+        
         static var maxQuantityTitle: String { return "product-detail-maximum-product-quantity-title".localized  }
         
         static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
-            
-        }
-
-public struct ImageSlideModel {
-    public let url: URL
-    
-    public var inputSource: InputSource {
-        return KingfisherSource(url: url)
+        
     }
-}
-public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
