@@ -127,7 +127,8 @@ extension UIViewController {
     }
     
     @objc func openOptions() {
-        
+        prompt(AddressListViewController(viewModel: AddressListViewModel())
+               , animated: true, completion: nil)
     }
     
     @objc func goBack() { 
