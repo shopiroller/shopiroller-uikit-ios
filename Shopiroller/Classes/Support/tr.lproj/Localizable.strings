@@ -101,5 +101,6 @@
 "order_details_bank_iban" = "Iban: ";
 "order_details_bank_subtotal" = "Subtotal: ";
 "order_details_bank_shipping" = "Shipping: ";
-"order_details_address_delivery" = "Billing Address";
-"order_details_address_shipping" = "Delivery Address: ";
+"order_details_address_delivery" = "Delivery Address";
+"order_details_address_shipping" = "Billing Address";
+"order_details_quantity" = "Piece: ";

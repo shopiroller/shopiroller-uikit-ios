@@ -48,19 +48,30 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     override func setup() {
         super.setup()
         
+        orderDetailId.textColor = .textPCaption
+        orderDetailPaymentStatus.textColor = .textPCaption
+        orderDetailDate.textColor = .textPCaption
+        
         orderDetailId.text = viewModel.getOrderCode()
         orderDetailPaymentStatus.text = viewModel.getCurrentStatus()
         orderDetailDate.text = viewModel.getCreatedDate()
         
         if(viewModel.isCargoTrackingAvailable()){
+            cargoTrackingId.textColor = .textPCaption
+            cargoTrackingName.textColor = .textPCaption
             cargoTrackingId.text = viewModel.getShippingTrackingCode()
             cargoTrackingName.text = viewModel.getShippingTrackingCompany()
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(OrderDetailViewController.onClickCargoText))
+            cargoTrackingId.addGestureRecognizer(tap)
+            
         }else {
             cargoSeparator.isHidden = true
             cargoStackView.isHidden = true
         }
         
         if(viewModel.isPaymentTypeAvailable()){
+            paymentTitle.textColor = .textPCaption
             paymentTitle.text = viewModel.getPaymentMethodTitle()
             let labelArr = viewModel.getPaymentLabels()
             if(!labelArr.isEmpty){
@@ -72,6 +83,10 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             paymentSeparator.isHidden = true
             paymentStackView.isHidden = true
         }
+        
+        bottomSubTotal.textColor = .textSecondary
+        bottomShipping.textColor = .textSecondary
+        bottomTotal.textColor = .textSecondary
         
         bottomSubTotal.text = viewModel.getSubTotalText()
         bottomShipping.text = viewModel.getShippingTotalText()
@@ -88,8 +103,25 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         }
        
         addressHeight.constant = 222
-       
     
+        if let list = viewModel.getProductList() {
+            for item in list {
+                let view = OrderDetailProductView()
+                view.setup(model: item)
+                productsDataStackView.addArrangedSubview(view)
+                NSLayoutConstraint.activate([
+                    view.widthAnchor.constraint(equalToConstant: 100),
+                    view.heightAnchor.constraint(equalToConstant: 100),
+                ])
+            }
+            productsHeight.constant = CGFloat(80 * list.count)
+        }
+    
+    }
+    
+    @objc
+    func onClickCargoText(sender:UITapGestureRecognizer) {
+        UIPasteboard.general.string = viewModel.getShippingTrackingCode()
     }
     
 }

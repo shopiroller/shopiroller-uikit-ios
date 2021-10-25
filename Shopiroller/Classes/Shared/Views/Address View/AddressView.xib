@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressView" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="address" destination="2Vf-8t-LjH" id="CYT-lg-2aC"/>
-                <outlet property="addressImage" destination="dar-2u-Nbf" id="Zfs-nf-Gc5"/>
+                <outlet property="addressImageView" destination="y90-tx-1Ja" id="jxX-fJ-6Fu"/>
                 <outlet property="title" destination="ehw-nr-ihg" id="CHP-Zj-MS6"/>
             </connections>
         </placeholder>
@@ -32,16 +32,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billingAddress.png" translatesAutoresizingMaskIntoConstraints="NO" id="dar-2u-Nbf">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y90-tx-1Ja" userLabel="addressImageView">
                     <rect key="frame" x="275" y="33" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="DvL-BR-SSa"/>
+                        <constraint firstAttribute="width" secondItem="y90-tx-1Ja" secondAttribute="height" multiplier="1:1" id="F44-3l-Al7"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dar-2u-Nbf" secondAttribute="trailing" constant="15" id="86N-wZ-O8i"/>
+                <constraint firstItem="y90-tx-1Ja" firstAttribute="centerY" secondItem="io3-Ky-Ot9" secondAttribute="centerY" id="4BG-ZW-6Cb"/>
                 <constraint firstItem="ehw-nr-ihg" firstAttribute="bottom" secondItem="2Vf-8t-LjH" secondAttribute="top" constant="-10" id="8jR-eU-5w3"/>
                 <constraint firstItem="ehw-nr-ihg" firstAttribute="leading" secondItem="io3-Ky-Ot9" secondAttribute="leading" constant="15" id="Cat-Ht-ami"/>
-                <constraint firstItem="dar-2u-Nbf" firstAttribute="centerY" secondItem="io3-Ky-Ot9" secondAttribute="centerY" id="tEU-bF-TdG"/>
+                <constraint firstAttribute="trailing" secondItem="y90-tx-1Ja" secondAttribute="trailing" constant="15" id="NRm-Tg-NkT"/>
                 <constraint firstItem="ehw-nr-ihg" firstAttribute="top" secondItem="io3-Ky-Ot9" secondAttribute="top" constant="15" id="y9x-yG-CQH"/>
                 <constraint firstItem="2Vf-8t-LjH" firstAttribute="leading" secondItem="io3-Ky-Ot9" secondAttribute="leading" constant="15" id="yDL-my-Yk1"/>
             </constraints>
@@ -50,7 +54,6 @@
         </view>
     </objects>
     <resources>
-        <image name="billingAddress.png" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
