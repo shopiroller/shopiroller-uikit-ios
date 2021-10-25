@@ -9,7 +9,7 @@ import Foundation
 
 enum SRNetworkManagerPaths: String {
 
-    case getProductsWithAdvancedFiltered = "products/advanced-filtered"
+    case getProductsWithAdvancedFiltered = "/products/advanced-filtered"
     case getProducts = "/products"
     case getProduct = "/products/"
     case getPaymentSettings = "/paymentSettings"

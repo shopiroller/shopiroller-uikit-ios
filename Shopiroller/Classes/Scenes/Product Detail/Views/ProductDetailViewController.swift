@@ -12,11 +12,36 @@ import LinkPresentation
 
 struct Constants {
     
-
-    private var lastContentOffset: CGFloat = 0
+    static var quantityTitle: String { return "quantity-title".localized }
     
-   
+    static var descriptionTitle: String { return "description-title".localized }
+    
+    static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
+    
+    static var deliveryTitle: String { return "delivery-terms-title".localized }
+    
+    static var freeShippingText: String { return "free-shipping-text".localized }
+    
+    static var soldOutText: String { return "sold-out-text".localized }
+    
+    static var addToCartText: String { return "add-to-cart".localized }
+    
+    static var shippingPriceText: String { return "shipping-price-text".localized }
+    
+    static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
+    
+    static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
+    
+    static var outOfStockTitle: String { return "product-detail-out-of-stock-title".localized }
+    
+    static var outOfStockDescription: String { return "product-detail-out-of-stock-description".localized }
+    
+    static var maxQuantityTitle: String { return "product-detail-maximum-product-quantity-title".localized  }
+    
+    static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
+    
 }
+private var lastContentOffset: CGFloat = 0
 
 public struct ImageSlideModel {
     public let url: URL
@@ -25,6 +50,7 @@ public struct ImageSlideModel {
         return KingfisherSource(url: url)
     }
 }
+
 public class ProductDetailViewController: BaseViewController<ProductDetailViewModel> {
     
     struct Constants {
@@ -58,6 +84,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
         
     }
+
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -215,30 +242,27 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let backButton = createNavigationItem(.backIcon , #selector(goBack))
-        let cartButton = createNavigationItem(.cartIcon, #selector(goToCard) , true)
-        let searchButton = createNavigationItem(.searchIcon , #selector(searchProduct))
-        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"), #selector(shareProduct))
-
+        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
+        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
+        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
+        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
+        
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItems = [shareButton,searchButton,cartButton]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: shareButton),searchButton,cartButton]
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.makeNavigationBar(.clear)
-            
+        
         getCount()
     }
     
-    @objc func goBack() { // remove @objc for Swift 3
-        pop(animated: true, completion: nil)
-    }
-    
-    @objc func goToCard() {
-        //TODO
-    }
-    
-    
-    @objc func searchProduct() {
-        //TODO
+    @objc func shareProduct() {
+        //TODO APP LINK
+        let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
+        let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
     }
     
     
@@ -268,16 +292,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
                 self.checkmarkImage.isHidden = true
             }
         })
-        
-    }
-    
-    
-    @objc func shareProduct() {
-        //TODO APP LINK
-        let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
-        let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        self.present(activityVC, animated: true, completion: nil)
         
     }
     
@@ -443,7 +457,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         soldOutLabel.textColor = .black
         soldOutLabel.text = Constants.soldOutText
         quantityContainer.isHidden = true
-
+        
         let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .backIcon, title: Constants.outOfStockTitle, description: Constants.outOfStockDescription , firstButton: popUpButton(title: Constants.backToProductsButtonText, type: .popToRoot, viewController: nil, buttonType: .darkButton), secondButton: nil))
         
         vc.delegate = self
@@ -519,7 +533,7 @@ extension ProductDetailViewController: UIScrollViewDelegate {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
-     
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -534,5 +548,6 @@ extension ProductDetailViewController: UIScrollViewDelegate {
             self.navigationController?.navigationBar.standardAppearance = appearance;
             self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
         }
+    }
 }
-}
+

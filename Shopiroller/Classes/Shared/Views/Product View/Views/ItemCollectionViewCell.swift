@@ -92,29 +92,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }
 
         
-        
-        //        productTitleLabel.textColor = .textSecondary
-        //        productTitleLabel.font = .regular12
-        //        productOldPrice.font = .medium12
-        //        productNewPrice.textColor = .textPrimary
-        //        productNewPrice.font = .headTwoSemiBold
-        
-//
-//        if model?.stock == 0 {
-//            productImageFreeShippingContainer.isHidden = true
-//            productImageSoldOutContainer.isHidden = false
-//            productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
-//            productImageSoldOutContainer.layer.cornerRadius = 5
-//            productImageSoldOutContainer.layer.masksToBounds = true
-//        }
-        
-        
-//        if let image = model?.featuredImage?.thumbnail {
-//            productImage.kf.setImage(with: URL(string: image))
-//        }else{
-//            productImage.image = .emptyProduct
-//        }
-        
     }
     
     func configureShimmer() {

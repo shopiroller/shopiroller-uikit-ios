@@ -9,14 +9,15 @@ import Foundation
 
 struct SRNetworkManagerRequests {
     
-    static func getProductsWithAdvancedFiltered(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<ProductDetailResponseModel> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getProductsWithAdvancedFiltered, resourceType: ProductDetailResponseModel.self,urlQueryItems: urlQueryItems)
+    static func getProductsWithAdvancedFiltered(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getProductsWithAdvancedFiltered, resourceType: [ProductListModel].self,urlQueryItems: urlQueryItems)
     }
     
     static func getProducts(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProducts, resourceType: [ProductListModel].self, urlQueryItems: urlQueryItems)
         
     }
+    
     static func getProduct(productId: String) -> SRNetworkRequestManager<ProductDetailResponseModel> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProduct, subpath:
         "\(productId)",resourceType: ProductDetailResponseModel.self)

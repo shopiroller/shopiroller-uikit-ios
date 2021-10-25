@@ -12,6 +12,7 @@ protocol BackToProductListDelegate : AnyObject {
     func popView()
     func dismissView()
 }
+
 class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     
     @IBOutlet private weak var circleImageBackground: UIView!

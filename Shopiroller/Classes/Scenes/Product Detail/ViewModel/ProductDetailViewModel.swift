@@ -97,7 +97,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func isOutofStock() -> Bool {
-        return Bool.random()
+        return productList?.maxQuantityPerOrder == quantityCount
     }
     
     func isShippingFree() -> Bool {

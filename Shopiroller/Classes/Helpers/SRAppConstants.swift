@@ -42,6 +42,7 @@ struct SRAppConstants {
             static let userId = "userId"
             static let page = "page"
             static let perPage = "perPage"
+            static let categoryId = "categoryId"
         }
         
         struct Values {
@@ -54,5 +55,12 @@ struct SRAppConstants {
     struct ShoppingCart {
         
         static var badgeCount = "badgeCount"
+    }
+    
+    enum NavigationItemSelectorType {
+        case goBack
+        case goToCard
+        case searchProduct
+        case openOptions
     }
 }

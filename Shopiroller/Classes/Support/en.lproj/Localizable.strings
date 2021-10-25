@@ -92,6 +92,18 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+//Mark: - Categories
+
+"category-items-text" = "XX items";
+
+"sub-category-container-text" = "All XX Items ";
+
+//Mark: - Product List
+
+"sort-title-text" = "Sorty By";
+
+"filter-title-text" = "Filter";
+
 // MARK: - Payment Method
 
 "CashOnDelivery" = "Cash on Delivery";
@@ -109,5 +121,6 @@
 "order_details_address_delivery" = "Delivery Address";
 "order_details_address_shipping" = "Billing Address";
 "order_details_quantity" = "Piece: ";
+
 
 

@@ -92,6 +92,18 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
+//Mark: - Categories
+
+"category-items-text" = "XX ürünler";
+
+"sub-category-container-text" = "Tüm XX Ürünleri";
+
+//Mark: - Product List
+
+"sort-title-text" = "Sırala";
+
+"filter-title-text" = "Filtrele";
+
 // MARK: - Payment Method
 
 "CashOnDelivery" = "Cash on Delivery";
