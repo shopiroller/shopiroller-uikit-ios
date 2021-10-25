@@ -29,7 +29,6 @@ class OrderDetailViewModel: BaseViewModel {
     }
     
     func isCargoTrackingAvailable() -> Bool {
-        return true
         return (detail?.shippingTrackingCode != nil || detail?.shippingTrackingCompany != nil) &&
         (detail?.currentStatus == OrderStatusEnum.Shipped || detail?.currentStatus == OrderStatusEnum.Delivered)
     }
