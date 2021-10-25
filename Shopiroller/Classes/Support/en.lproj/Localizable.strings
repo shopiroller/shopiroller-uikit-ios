@@ -59,6 +59,11 @@
 
 "product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
 
+
+"product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
+
+"product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %s products in shopping cart";
+
 //MARK: - Order List
 
 "empty-orders-title" = "No order yet";
@@ -104,4 +109,5 @@
 "order_details_address_delivery" = "Delivery Address";
 "order_details_address_shipping" = "Billing Address";
 "order_details_quantity" = "Piece: ";
+
 

@@ -53,31 +53,22 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        let menuButton = UIButton().createNavBarButton(image: .menuIcon )
-        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-        
-        let cardButton = UIButton().createNavBarButton(image: UIImage(systemName: "cart.fill"))
-        cardButton.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
-        cardButton.badgeLabel(withCount: SRAppContext.shoppingCartCount)
-        
-        let searchButton = UIButton().createNavBarButton(image: UIImage(systemName: "magnifyingglass"))
-        searchButton.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
-        
-        let optionsButton = UIButton().createNavBarButton(image: .moreIcon)
-        optionsButton.addTarget(self, action: #selector(openOptions), for: .touchUpInside)
-        
-        let bvt : UIBarButtonItem = UIBarButtonItem()
-        var bvtArr: [UIBarButtonItem] = [UIBarButtonItem]()
-        
-        bvtArr.append(bvt.createUIBarButtonItem(optionsButton))
-        bvtArr.append(bvt.createUIBarButtonItem(searchButton))
-        bvtArr.append(bvt.createUIBarButtonItem(cardButton))
+        let cardButton = createNavigationItem(.cartIcon ,#selector(goToCard),true)
+        let searchButton = createNavigationItem(.searchIcon,#selector(searchProduct))
+        let optionsButton = createNavigationItem(.moreIcon,#selector(openOptions))
+        let menuButton = createNavigationItem(.menuIcon,#selector(openMenu))
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem().createUIBarButtonItem(menuButton)
-        navigationItem.rightBarButtonItems = bvtArr
+        navigationItem.leftBarButtonItem = menuButton
+        navigationItem.rightBarButtonItems = [optionsButton,searchButton,cardButton]
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.makeNavigationBar(.clear)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
+        self.navigationController?.navigationBar.standardAppearance = appearance;
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
             
         getCount()
     }
@@ -103,8 +94,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         // Add the refresh control to your UIScrollView object.
         scrollView.refreshControl = UIRefreshControl()
         scrollView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        
-   
     }
     
     @objc func didPullToRefresh(_ sender: Any) {

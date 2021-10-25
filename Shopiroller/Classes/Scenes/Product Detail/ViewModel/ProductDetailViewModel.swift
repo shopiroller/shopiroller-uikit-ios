@@ -28,7 +28,7 @@ public class ProductDetailViewModel: BaseViewModel {
             case .success(let response):
                 self.paymentSettings = response.data
                 DispatchQueue.main.async {
-                    succes?()
+                    success?()
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
@@ -38,6 +38,7 @@ public class ProductDetailViewModel: BaseViewModel {
         }
     }
     
+
     func getProductDetail(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
             (result) in
@@ -45,7 +46,7 @@ public class ProductDetailViewModel: BaseViewModel {
             case .success(let response):
                 self.productList = response.data
                 DispatchQueue.main.async {
-                    succes?()
+                    success?()
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
@@ -53,11 +54,26 @@ public class ProductDetailViewModel: BaseViewModel {
                 }
             }
         }
-        
     }
     
-    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRGlobalRequestManager.getShoppingCartCount(succes: succes, error: error)
+    func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productList?.title), userId: "78971cc6-bda1-45a4-adee-638317c5a6e9").response(using: networkManager) {
+            (result) in
+            switch result {
+            case.success(let _):
+                DispatchQueue.main.async {
+                   success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
     }
     
     func getTitle() -> String? {
@@ -81,7 +97,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func isOutofStock() -> Bool {
-        return productList?.stock == 0
+        return Bool.random()
     }
     
     func isShippingFree() -> Bool {

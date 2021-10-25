@@ -23,8 +23,15 @@ extension UIImage {
  
     static let menuIcon: UIImage = UIImage(named: "menuIcon", in: .shopiroller, with: nil)!
     
-    static let moreIcon: UIImage = UIImage(named: "moreIcon", in: .shopiroller, with: nil)!
+    static let shareIcon: UIImage = UIImage(named: "shareIcon", in: .shopiroller, with: nil)!
     
+    static let moreIcon: UIImage = UIImage(named: "moreIcon", in: .shopiroller, with: nil)!
+    static let searchIcon: UIImage = UIImage(systemName: "magnifyingglass")!
+    
+    static let cartIcon: UIImage = UIImage(systemName: "cart.fill")!
+    
+    static let backIcon: UIImage = UIImage(systemName: "chevron.left")!
+
     static let deliveryAddress: UIImage = UIImage(named: "deliveryAddress", in: .shopiroller, with: nil)!
     
     static let billingAddress: UIImage = UIImage(named: "billingAddress", in: .shopiroller, with: nil)!
