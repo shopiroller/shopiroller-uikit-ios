@@ -8,15 +8,17 @@
 import UIKit
 
 class AddressListViewController: BaseViewController<AddressListViewModel> {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    
+    @IBOutlet weak var addressSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var addressTableView: UITableView!
+    @IBOutlet weak var addressEmptyView: EmptyView!
 
     init(viewModel: AddressListViewModel){
         super.init(viewModel: viewModel, nibName: AddressListViewController.nibName, bundle: Bundle(for: AddressListViewController.self))
+    }
+    
+    override func setup() {
+        super.setup()
     }
 
 }

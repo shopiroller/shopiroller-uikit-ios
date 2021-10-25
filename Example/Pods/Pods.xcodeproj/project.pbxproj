@@ -158,6 +158,8 @@
 		75C115BE2726D7EF009F08CF /* AddressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C115BD2726D7EF009F08CF /* AddressListViewModel.swift */; };
 		75C115C22726DB12009F08CF /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C115C02726DB12009F08CF /* AddressTableViewCell.swift */; };
 		75C115C32726DB12009F08CF /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C115C12726DB12009F08CF /* AddressTableViewCell.xib */; };
+		75C115C52726F5BF009F08CF /* UserShippingAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C115C42726F5BF009F08CF /* UserShippingAddressModel.swift */; };
+		75C115C72726F622009F08CF /* UserBillingAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C115C62726F622009F08CF /* UserBillingAddressModel.swift */; };
 		7729A9F090FE366226D4E9C16C219BB3 /* shareIcon@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1AC28AB108236A7A2A1F4B4D3F6F8 /* shareIcon@2x.png */; };
 		798FA71F8CAE44D05016FFF767100375 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B55B06972BACD858EF3F85B2C1D5337 /* Foundation.framework */; };
 		799A74522BD77C16F81A13DC7C3E6127 /* successOrder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6081CCBEF728722AFCF64354793E0547 /* successOrder.png */; };
@@ -542,6 +544,8 @@
 		75C115BD2726D7EF009F08CF /* AddressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewModel.swift; sourceTree = "<group>"; };
 		75C115C02726DB12009F08CF /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		75C115C12726DB12009F08CF /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		75C115C42726F5BF009F08CF /* UserShippingAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShippingAddressModel.swift; sourceTree = "<group>"; };
+		75C115C62726F622009F08CF /* UserBillingAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBillingAddressModel.swift; sourceTree = "<group>"; };
 		765D030B33FA110848033B3DD6D314A3 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		7A795F3D0706432F3E0C51524FCA2A26 /* cargoShippingImage@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "cargoShippingImage@3x.png"; sourceTree = "<group>"; };
 		7B1A26F0D463EEBCE5FF4F3B315EB30D /* OrderDetailProductView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderDetailProductView.swift; sourceTree = "<group>"; };
@@ -1314,6 +1318,8 @@
 				8EF1C3B909E8D091DAA81E03BC1E4760 /* SROrderProductModel.swift */,
 				F65B0F23C8A39FDB2887088EA657459F /* RequestModels */,
 				6B2B35418F334F73684BDF7BA1867B86 /* ResponseModels */,
+				75C115C42726F5BF009F08CF /* UserShippingAddressModel.swift */,
+				75C115C62726F622009F08CF /* UserBillingAddressModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2268,6 +2274,7 @@
 				417B8DA0370F611E8CC61509760B3C51 /* SRAppConstants.swift in Sources */,
 				CE999B42D8D83067F396CB5EBCF2101B /* SRAppContext.swift in Sources */,
 				45407D9456C3A991E67D464A6BD3B209 /* SRAppDelegate.swift in Sources */,
+				75C115C72726F622009F08CF /* UserBillingAddressModel.swift in Sources */,
 				F8A885271EB57D6D6BB517023E551B71 /* SRButton.swift in Sources */,
 				355CE77C2140CB6ECE592622C1D6650F /* SRCategoryResponseModel.swift in Sources */,
 				6BE1544B31B91129E614808A304ED963 /* SREndpointType.swift in Sources */,
@@ -2311,6 +2318,7 @@
 				BF6E200074A84E9351DC4903DD10D5F3 /* UIPageControlExtension.swift in Sources */,
 				86421D2D01BAD69D9C649F646058703B /* UIViewControllerExtension.swift in Sources */,
 				D761DD6A114CD1D3166911D32BE6096B /* UIViewExtension.swift in Sources */,
+				75C115C52726F5BF009F08CF /* UserShippingAddressModel.swift in Sources */,
 				16935AFE346F99E3C855FBE381D3CD37 /* UpdateCartItemQuantity.swift in Sources */,
 				55BBEC3F5DC8EA06FDEC7EC6C6C45DA4 /* WebViewController.swift in Sources */,
 				6C08352BCF5F7C7D6415CB7AD1041EB8 /* WebViewController.xib in Sources */,
