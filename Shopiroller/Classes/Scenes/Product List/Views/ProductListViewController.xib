@@ -30,12 +30,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-9s-eVM">
-                    <rect key="frame" x="15" y="44" width="384" height="808"/>
+                    <rect key="frame" x="15" y="54" width="384" height="798"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lTV-0s-Kl0">
-                            <rect key="frame" x="0.0" y="0.0" width="384" height="808"/>
+                            <rect key="frame" x="0.0" y="0.0" width="384" height="798"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gC-Qf-1iB">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gC-Qf-1iB">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="44"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-tG-lvU">
@@ -115,10 +115,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntD-YB-F3m">
-                                    <rect key="frame" x="0.0" y="44" width="384" height="764"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384" height="798"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qgN-SV-lwp">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="764"/>
+                                            <rect key="frame" x="0.0" y="15" width="384" height="783"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ECW-Od-0Q4">
                                                 <size key="itemSize" width="128" height="128"/>
@@ -130,16 +130,15 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="qgN-SV-lwp" secondAttribute="bottom" id="WMN-02-xgu"/>
+                                        <constraint firstAttribute="bottom" secondItem="qgN-SV-lwp" secondAttribute="bottom" id="OXp-Jr-O0G"/>
                                         <constraint firstItem="qgN-SV-lwp" firstAttribute="leading" secondItem="ntD-YB-F3m" secondAttribute="leading" id="aUi-uu-c1s"/>
-                                        <constraint firstItem="qgN-SV-lwp" firstAttribute="top" secondItem="ntD-YB-F3m" secondAttribute="top" id="fVf-tE-t9R"/>
                                         <constraint firstAttribute="trailing" secondItem="qgN-SV-lwp" secondAttribute="trailing" id="ugC-Sn-fRF"/>
+                                        <constraint firstItem="qgN-SV-lwp" firstAttribute="top" secondItem="ntD-YB-F3m" secondAttribute="top" constant="15" id="v2t-PW-vXV"/>
                                     </constraints>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="4gC-Qf-1iB" firstAttribute="leading" secondItem="lTV-0s-Kl0" secondAttribute="leading" id="2pr-i9-AQd"/>
-                                <constraint firstItem="ntD-YB-F3m" firstAttribute="top" secondItem="4gC-Qf-1iB" secondAttribute="bottom" id="C1T-z1-fsM"/>
                                 <constraint firstAttribute="trailing" secondItem="4gC-Qf-1iB" secondAttribute="trailing" id="KBD-qK-Fdw"/>
                                 <constraint firstItem="4gC-Qf-1iB" firstAttribute="top" secondItem="lTV-0s-Kl0" secondAttribute="top" id="v6T-4Z-ifa"/>
                             </constraints>
@@ -174,7 +173,7 @@
             <constraints>
                 <constraint firstItem="gav-PI-EdH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="40C-Yw-nSe"/>
                 <constraint firstItem="o5m-dJ-oKq" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.6" id="8Hw-Ed-adD"/>
-                <constraint firstItem="B4N-9s-eVM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Dgc-vm-s5E"/>
+                <constraint firstItem="B4N-9s-eVM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="Dgc-vm-s5E"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="B4N-9s-eVM" secondAttribute="bottom" constant="10" id="EBT-y2-s6e"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="B4N-9s-eVM" secondAttribute="trailing" constant="15" id="HXb-MS-w6G"/>
                 <constraint firstItem="gav-PI-EdH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MZ1-3e-MWu"/>

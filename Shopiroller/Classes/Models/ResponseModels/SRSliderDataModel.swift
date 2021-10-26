@@ -27,13 +27,14 @@ struct SRSliderDataModel: Codable {
 }
 
 struct SliderSlidesModel: Codable {
+    
     var imageUrl: String?
     var id: String?
     var orderIndex: Int?
     var createdDate: String?
     var updatedDate: String?
     var isActive: Bool?
-    var navigationType: String?
+    var navigationType: SliderNavigationType?
     var navigationLink: String?
     
     enum CodingKeys: String, CodingKey {
@@ -48,3 +49,13 @@ struct SliderSlidesModel: Codable {
     }
     
 }
+
+enum SliderNavigationType: String, Codable {
+    
+    case web = "Web"
+    case product = "Product"
+    case category = "Category"
+    case nothing = "None"
+    
+}
+
