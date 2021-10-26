@@ -24,6 +24,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     
     private func configure(){
         if(viewModel.isOrderListEmpty()){
+            orderTable.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
             emptyView.delegate = self
@@ -32,9 +33,23 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
             orderTable.register(cellClass: OrderTableViewCell.self)
             orderTable.delegate = self
             orderTable.dataSource = self
+            orderTable.reloadData()
             orderTable.backgroundColor = .clear
             orderTable.clipsToBounds = false
         }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+        
+        navigationItem.leftBarButtonItem = backButton
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.makeNavigationBar(.clear)
+            
+        getCount()
+        
     }
     
     private func getOrderList() {
@@ -60,12 +75,22 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
         pop(animated: true, completion: nil)
     }
     
+    private func getCount() {
+        viewModel.getShoppingCartCount(success: {
+            [weak self] in
+            guard let self = self else { return }
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
+    
 }
 
 extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.orderListCount()
+       return viewModel.orderListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

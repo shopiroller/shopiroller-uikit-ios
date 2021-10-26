@@ -11,6 +11,7 @@
 		A5DE622C2704DEC0007ACE7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE622B2704DEBF007ACE7E /* ViewController.swift */; };
 		EE19221227157F0E00A2BD7A /* Pods_Shopiroller_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6DCEE1A3F5E56F479F8CF5 /* Pods_Shopiroller_Example.framework */; };
 		EE19222527159B7500A2BD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE19222727159B7500A2BD7A /* LaunchScreen.storyboard */; };
+		EE7A34AF2727EF9700EBE8FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,8 +144,9 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 28T45Z4B66;
+						DevelopmentTeam = FVXZK3YK3C;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -173,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE19222527159B7500A2BD7A /* LaunchScreen.storyboard in Resources */,
+				EE7A34AF2727EF9700EBE8FE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +362,11 @@
 			baseConfigurationReference = 11CAFCDA80269E6749294552 /* Pods-Shopiroller_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 28T45Z4B66;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = FVXZK3YK3C;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
@@ -369,9 +376,11 @@
 				INFOPLIST_FILE = Shopiroller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shopiroller.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -382,7 +391,11 @@
 			baseConfigurationReference = F0A609C579CCE919317FDBCA /* Pods-Shopiroller_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 28T45Z4B66;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = FVXZK3YK3C;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
@@ -392,9 +405,11 @@
 				INFOPLIST_FILE = Shopiroller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shopiroller.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

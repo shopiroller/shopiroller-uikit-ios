@@ -119,6 +119,29 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+        
+        
+        navigationItem.leftBarButtonItem = backButton
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.makeNavigationBar(.clear)
+            
+        getCount()
+        
+    }
+    private func getCount() {
+        viewModel.getShoppingCartCount(success: {
+            [weak self] in
+            guard let self = self else { return }
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+        }
+    }
+    
     @objc
     func onClickCargoText(sender:UITapGestureRecognizer) {
         UIPasteboard.general.string = viewModel.getShippingTrackingCode()

@@ -26,6 +26,7 @@ extension UIImage {
     static let shareIcon: UIImage = UIImage(named: "shareIcon", in: .shopiroller, with: nil)!
     
     static let moreIcon: UIImage = UIImage(named: "moreIcon", in: .shopiroller, with: nil)!
+    
     static let searchIcon: UIImage = UIImage(systemName: "magnifyingglass")!
     
     static let cartIcon: UIImage = UIImage(systemName: "cart.fill")!
@@ -36,4 +37,8 @@ extension UIImage {
     
     static let billingAddress: UIImage = UIImage(named: "billingAddress", in: .shopiroller, with: nil)!
     
+    static let filterIcon: UIImage = UIImage(named: "filterIcon", in: .shopiroller, with: nil)!
+    
+    static let sortIcon: UIImage = UIImage(named: "sortIcon", in: .shopiroller, with: nil)!
+
 }
