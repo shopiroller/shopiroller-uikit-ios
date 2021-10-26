@@ -121,3 +121,17 @@
 "order_details_address_delivery" = "Delivery Address";
 "order_details_address_shipping" = "Billing Address";
 "order_details_quantity" = "Piece: ";
+
+// MARK: - Address List
+
+"address_list_segmented_shipping" = "Teslimat Adresi";
+"address_list_segmented_billing" = "Fatura Adresi";
+"address_list_empty_shipping_title" = "No delivery address";
+"address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
+"address_list_empty_billing_title" = "No billing address";
+"address_list_empty_billing_description" = "Launch your first address and take an items you want.";
+// MARK: - Address Cell
+
+"address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
+"address_cell_cancel" = "Cancel";
+"address_cell_delete" = "Delete";

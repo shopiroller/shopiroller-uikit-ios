@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "adressNoResult@2x-1.png",
+      "filename" : "emptyShippingAddresses.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "adressNoResult@2x.png",
+      "filename" : "emptyShippingAddresses@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "adressNoResult@3x.png",
+      "filename" : "emptyShippingAddresses@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

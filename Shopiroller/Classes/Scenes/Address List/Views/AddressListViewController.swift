@@ -34,6 +34,22 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
         super.setup()
         getShippingAddresses()
         getBillingAddresses()
+        configure()
+    }
+    
+    private func configure() {
+        if(viewModel.isListEmpty()){
+            addressTableView.isHidden = true
+            addressEmptyView.isHidden = false
+            addressEmptyView.setup(model: viewModel.getEmptyModel())
+        }else{
+            addressEmptyView.isHidden = true
+            addressTableView.isHidden = false
+            addressTableView.register(cellClass: AddressTableViewCell.self)
+            addressTableView.delegate = self
+            addressTableView.dataSource = self
+            addressTableView.reloadData()
+        }
     }
     
     private func getShippingAddresses() {
@@ -60,5 +76,21 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
+    }
+}
+
+extension AddressListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.reuseIdentifier, for: indexPath) as! AddressTableViewCell
+        
+        guard let model = viewModel.getShippingAddress(position: indexPath.row) else { return cell}
+        cell.setup(model: model)
+        
+        return cell
     }
 }

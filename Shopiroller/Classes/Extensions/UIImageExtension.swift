@@ -17,8 +17,7 @@ extension UIImage {
     static let backIcon: UIImage = UIImage(systemName: "chevron.left")!
     
     // MARK: Project Images
-    static let addressNoResult: UIImage = UIImage(named: "addressNoResult", in: .shopiroller, with: nil)!
-    
+ 
     static let billingAddress: UIImage = UIImage(named: "billingAddress", in: .shopiroller, with: nil)!
     
     static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!
@@ -26,6 +25,8 @@ extension UIImage {
     static let deliveryAddress: UIImage = UIImage(named: "deliveryAddress", in: .shopiroller, with: nil)!
     
     static let emptyProduct: UIImage = UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!
+    
+    static let emptyShippingAddresses: UIImage = UIImage(named: "emptyShippingAddresses", in: .shopiroller, with: nil)!
     
     static let filterIcon: UIImage = UIImage(named: "filterIcon", in: .shopiroller, with: nil)!
     

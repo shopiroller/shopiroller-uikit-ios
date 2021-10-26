@@ -15,12 +15,11 @@ class BaseAddressModel: Codable {
     var country: String?
     var state: String?
     var city: String?
-    var adressLine: String?
+    var addressLine: String?
     var zipCode: String?
     var description: String?
     var isDefault: Bool?
     var contact: AddressContactModel?
-    var isSelected: Bool?
     
     enum CodingKeys: String,CodingKey {
         case id = "id"
@@ -28,11 +27,21 @@ class BaseAddressModel: Codable {
         case country = "country"
         case state = "state"
         case city = "city"
-        case adressLine = "adressLine"
+        case addressLine = "adressLine"
         case zipCode = "zipCode"
         case description = "description"
         case isDefault = "isDefault"
-        case isSelected = "isSelected"
+    }
+    
+    func getListDeliveryDescriptionArea() -> String {
+        return [contact?.nameSurname
+        , String.NEW_LINE
+        , addressLine
+        , String.NEW_LINE
+        , city , " / " , state , " / " , country
+        , String.NEW_LINE
+        , contact?.phoneNumber].compactMap { $0 }
+        .joined(separator: " ")
     }
     
 }

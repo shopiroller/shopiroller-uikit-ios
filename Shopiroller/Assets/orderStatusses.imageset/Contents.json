@@ -1,0 +1,68 @@
+{
+  "images" : [
+    {
+      "filename" : "orderApproved.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+        "filename" : "orderCancelled.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderDelivered.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderPaymentFailed.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderPreparing.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderRefunded.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderRequestCancelled.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderShipped.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderWaitingApproval.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderWaitingPayment.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderWaitingShipment.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+    {
+        "filename" : "orderWaitingSupplying.png",
+        "idiom" : "universal",
+        "scale" : "1x"
+    },
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

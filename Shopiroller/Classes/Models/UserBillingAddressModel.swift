@@ -8,6 +8,7 @@
 import Foundation
 
 class UserBillingAdressModel: BaseAddressModel {
+    
     var type: String?
     var identityNumber: String?
     var companyName: String?
@@ -38,5 +39,32 @@ class UserBillingAdressModel: BaseAddressModel {
         makeOrderAddress.nameSurname = contact?.nameSurname
         return makeOrderAddress
     }
+    
+    func getListBillingDescriptionArea() -> String {
+        if(type?.caseInsensitiveCompare("Corporate") == ComparisonResult.orderedSame) {
+            return [contact?.nameSurname
+                    , String.NEW_LINE
+                    , addressLine
+                    , String.NEW_LINE
+                    , city , " / " , state , " / " , country
+                    , String.NEW_LINE
+                    , contact?.phoneNumber
+                    , String.NEW_LINE
+                    , taxOffice , " - " , taxNumber].compactMap { $0 }
+                    .joined(separator: " ")
+        } else {
+            return [contact?.nameSurname
+                    , String.NEW_LINE
+                    , addressLine
+                    , String.NEW_LINE
+                    , city , " / " , state , " / " , country
+                    , String.NEW_LINE
+                    , contact?.phoneNumber
+                    , String.NEW_LINE
+                    , identityNumber].compactMap { $0 }
+                    .joined(separator: " ")
+        }
+    }
+    
 }
 
