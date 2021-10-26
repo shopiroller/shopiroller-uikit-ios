@@ -68,7 +68,7 @@ extension SliderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         let navigationLink = viewModel?[indexPath.row].navigationLink
         switch viewModel?[indexPath.row].navigationType {
         case .category:
-            delegate?.openProductList(id: navigationLink)
+            delegate?.openProductList(categoryId: navigationLink)
         case .product:
             delegate?.openProductDetail(id: navigationLink)
         case .web:
