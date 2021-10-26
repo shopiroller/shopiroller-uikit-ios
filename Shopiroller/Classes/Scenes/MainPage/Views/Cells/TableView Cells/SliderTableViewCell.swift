@@ -8,6 +8,12 @@
 import UIKit
 import Kingfisher
 
+protocol SliderClickDelegate {
+    func openProductDetail(id: String?)
+    func openProductList(categoryId: String?)
+    func openWebView(link : String?)
+}
+
 
 public class SliderTableViewCell: UICollectionViewCell {
     
@@ -16,6 +22,8 @@ public class SliderTableViewCell: UICollectionViewCell {
     @IBOutlet private weak var pageControl: UIPageControl!
     
     var viewModel: [SliderSlidesModel]?
+    
+    var delegate : SliderClickDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,9 +61,24 @@ extension SliderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderCollectionViewCell.reuseIdentifier, for: indexPath) as! SliderCollectionViewCell
         cell.configureUI(model: self.viewModel?[indexPath.row])
         return cell
-        
     }
     
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let navigationLink = viewModel?[indexPath.row].navigationLink
+        switch viewModel?[indexPath.row].navigationType {
+        case .category:
+            delegate?.openProductList(id: navigationLink)
+        case .product:
+            delegate?.openProductDetail(id: navigationLink)
+        case .web:
+            delegate?.openWebView(link: navigationLink)
+        case .nothing:
+            break
+        default:
+            break
+        }
+    }
     
 }
 

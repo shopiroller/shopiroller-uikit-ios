@@ -81,8 +81,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.
-        scrollView.refreshControl = UIRefreshControl()
-        scrollView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        mainCollectionView.refreshControl = UIRefreshControl()
+        mainCollectionView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
     @objc func didPullToRefresh(_ sender: Any) {
@@ -93,7 +93,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.getShowCase()
                 self.getProducts(pagination: false)
         }
-            self.scrollView.refreshControl?.endRefreshing()
+            self.mainCollectionView.refreshControl?.endRefreshing()
         }
     }
     
@@ -220,6 +220,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
                 let cellModel = viewModel.getTableSliderVieWModel(position: indexPath.row)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderTableViewCell.reuseIdentifier, for: indexPath) as! SliderTableViewCell
                 cell.setup(viewModel: cellModel)
+                cell.delegate = self
                 return cell
             case 1:
                 let cellModel = viewModel.getCategoriesViewModel()
@@ -316,7 +317,7 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position){
-            let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoriesViewModel()?[position].name))
+            let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoryName(position: position),categoryId: viewModel.getCategoryId(position: position)))
             self.prompt(vc, animated: true, completion: nil)
         }else {
             let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoriesViewModel()?[position].categoryId))
@@ -328,7 +329,24 @@ extension SRMainPageViewController : CategoriesCellDelegate {
         let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false))
         self.prompt(vc, animated: true, completion: nil)
     }
+}
+
+extension SRMainPageViewController: SliderClickDelegate {
     
+    func openProductDetail(id: String?) {
+        let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: id ?? ""))
+        self.prompt(vc, animated: false, completion: nil)
+    }
+    
+    func openProductList(categoryId: String?) {
+        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: categoryId))
+        self.prompt(vc, animated: false, completion: nil)
+    }
+    
+    func openWebView(link: String?) {
+        let vc = WebViewController(viewModel: WebViewViewModel(webViewUrl: link))
+        self.prompt(vc, animated: false, completion: nil)
+    }
     
     
     
