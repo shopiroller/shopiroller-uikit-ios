@@ -20,6 +20,9 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     public override func setup() {
         super.setup()
         
+        let showAllProductTapGesture = UITapGestureRecognizer(target: self, action: #selector(showAllProducts))
+        showAllSubCategoriesContainer.addGestureRecognizer(showAllProductTapGesture)
+        
         showAllSubCategoriesContainer.layer.cornerRadius = 15
         showAllSubCategoriesContainer.layer.borderWidth = 1
         showAllSubCategoriesContainer.layer.borderColor = UIColor.textPCaption.withAlphaComponent(0.3).cgColor
@@ -40,6 +43,12 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
         }
         navigationController?.isNavigationBarHidden = false
         
+    }
+    
+    @objc func showAllProducts() {
+        print(viewModel.getCategoryId())
+        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId()))
+        prompt(vc, animated: true, completion: nil)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +78,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     }
     
     func setSubCategories(position: Int){
-        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName()))
+        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName(),categoryId: viewModel.getCategoryId()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -91,6 +100,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if viewModel.hasSubCategory(position: indexPath.row){
             viewModel.setSelectedRowName(position: indexPath.row)
+            viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
         }else {
             let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId))

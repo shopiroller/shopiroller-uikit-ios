@@ -21,11 +21,14 @@ class CategoriesListViewModel : BaseViewModel {
     var isSubCategory: Bool? = false
     
     private var selectedRowName: String? = ""
+    
+    private var categoryId: String? = ""
          
-    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String()){
+    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String(), categoryId: String? = String()){
         self.categoryList = categoryList
         self.isSubCategory = isSubCategory
         self.selectedRowName = selectedRowName
+        self.categoryId = categoryId
     }
     
     func getModel() -> [SRCategoryResponseModel]? {
@@ -47,6 +50,14 @@ class CategoriesListViewModel : BaseViewModel {
     
     func setSelectedRowName(position: Int) {
         self.selectedRowName = categoryList?[position].name
+    }
+    
+    func setCategoryId(position: Int){
+        self.categoryId = categoryList?[position].categoryId
+    }
+    
+    func getCategoryId() -> String {
+        return categoryId ?? ""
     }
     
     func getSelectedRowName() -> String? {
