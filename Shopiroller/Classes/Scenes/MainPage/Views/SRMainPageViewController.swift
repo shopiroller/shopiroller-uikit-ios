@@ -46,7 +46,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
         
-        getProducts(pagination: false)
+        getProducts(showProgress: true,pagination: false,refreshing: false)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -88,17 +88,17 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     @objc func didPullToRefresh(_ sender: Any) {
         if SRAppContext.isLoading == false {
             DispatchQueue.main.async {
-                self.getSliders()
-                self.getCategories()
-                self.getShowCase()
-                self.getProducts(pagination: false)
+                self.getSliders(showProgress: false)
+                self.getCategories(showProgress: false)
+                self.getShowCase(showProgress: false)
+                self.getProducts(showProgress:false,pagination: false,refreshing: true)
         }
             self.scrollView.refreshControl?.endRefreshing()
         }
     }
     
-    private func getSliders() {
-        viewModel.getSliders(success: { [weak self] in
+    private func getSliders(showProgress: Bool) {
+        viewModel.getSliders(showProgress: showProgress,success: { [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
         }) { [weak self] (errorViewModel) in
@@ -106,23 +106,26 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getProducts(pagination: Bool) {
-        viewModel.getProducts(pagination: pagination,succes: {
+    private func getProducts(showProgress: Bool,pagination: Bool,refreshing: Bool) {
+        viewModel.getProducts(showProgress: showProgress,pagination: pagination,succes: {
             [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
             self.shimmerCollectionView.isHidden = false
-            DispatchQueue.main.async {
-                self.configureEmptyView()
+            if !refreshing {
+                DispatchQueue.main.async {
+                    self.configureEmptyView()
+                }
             }
+            
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
     }
     
-    private func getCategories() {
-        viewModel.getCategories(succes: {
+    private func getCategories(showProgress: Bool) {
+        viewModel.getCategories(showProgress: showProgress,succes: {
             [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
@@ -132,8 +135,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getShowCase() {
-        viewModel.getShowCase(succes: {
+    private func getShowCase(showProgress: Bool) {
+        viewModel.getShowCase(showProgress: showProgress,succes: {
             [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
@@ -154,9 +157,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             emptyViewContainer.isHidden = true
             getCount()
             configureRefreshControl()
-            getSliders()
-            getCategories()
-            getShowCase()
+            getSliders(showProgress: true)
+            getCategories(showProgress: true)
+            getShowCase(showProgress: true)
         }
     }
     
@@ -305,7 +308,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print(indexPath.row)
         if (indexPath.row == viewModel.productItemCount() - 2){
-            getProducts(pagination: true)
+            getProducts(showProgress: false,pagination: true, refreshing: false)
         }
     }
     

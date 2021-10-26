@@ -13,8 +13,8 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProductsWithAdvancedFiltered, resourceType: [ProductListModel].self,urlQueryItems: urlQueryItems)
     }
     
-    static func getProducts(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getProducts, resourceType: [ProductListModel].self, urlQueryItems: urlQueryItems)
+    static func getProducts(showProgress: Bool,urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getProducts, resourceType: [ProductListModel].self, urlQueryItems: urlQueryItems,shouldShowProgressHUD: showProgress)
         
     }
     
@@ -82,20 +82,20 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .post, path: .failurePayment, subpath: "/\(orderId)", resourceType: SuccessResponse.self)
     }
     
-    static func getSliders() -> SRNetworkRequestManager<[SRSliderDataModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getSliders, resourceType: [SRSliderDataModel].self)
+    static func getSliders(showProgress: Bool) -> SRNetworkRequestManager<[SRSliderDataModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getSliders, resourceType: [SRSliderDataModel].self,shouldShowProgressHUD: showProgress)
     }
     
-    static func getCategories() -> SRNetworkRequestManager<[SRCategoryResponseModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getCategories, resourceType: [SRCategoryResponseModel].self)
+    static func getCategories(showProgress: Bool) -> SRNetworkRequestManager<[SRCategoryResponseModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getCategories, resourceType: [SRCategoryResponseModel].self,shouldShowProgressHUD: showProgress)
     }
     
     static func getSubCategories(categoryId: String) -> SRNetworkRequestManager<SRCategoryResponseModel> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getSubCategories, resourceType: SRCategoryResponseModel.self)
     }
     
-    static func getShowCase() -> SRNetworkRequestManager<[SRShowcaseResponseModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getShowcase, resourceType: [SRShowcaseResponseModel].self)
+    static func getShowCase(showProgress: Bool) -> SRNetworkRequestManager<[SRShowcaseResponseModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getShowcase, resourceType: [SRShowcaseResponseModel].self,shouldShowProgressHUD: showProgress)
     }
     
     static func getFilterOptions(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<SRFilterOptionsResponseModel> {
