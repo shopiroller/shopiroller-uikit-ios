@@ -37,6 +37,8 @@ enum SRNetworkManagerPaths: String {
     
     var name: String {
         switch self {
+        case.addresses:
+            return "/appuser/v2\(rawValue)"
 //        case .authorizationServer:
 //            return rawValue
         default:
@@ -45,5 +47,4 @@ enum SRNetworkManagerPaths: String {
     }
     
 }
-
 

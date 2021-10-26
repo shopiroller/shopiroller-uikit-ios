@@ -112,15 +112,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH7-jk-giq" userLabel="Delete Button">
-                                        <rect key="frame" x="296" y="120.5" width="19" height="22"/>
+                                        <rect key="frame" x="283" y="100.5" width="32" height="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                        <state key="normal" image="trash.png"/>
                                         <state key="disabled" image="square.and.arrow.up" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-Dx-RN8" userLabel="Edit Button">
-                                        <rect key="frame" x="296" y="153.5" width="19" height="22"/>
+                                        <rect key="frame" x="283" y="143.5" width="32" height="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                        <state key="normal" image="edit.png"/>
                                         <state key="disabled" image="square.and.arrow.up" catalog="system"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6s-e7-FRs" userLabel="Tax">
@@ -171,6 +171,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="edit.png" width="32" height="32"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="trash.png" width="32" height="32"/>
     </resources>
 </document>

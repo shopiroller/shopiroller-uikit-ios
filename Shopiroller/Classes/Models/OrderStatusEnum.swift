@@ -74,4 +74,31 @@ enum OrderStatusEnum: String, Codable {
             return .dangerBadge
         }
     }
+    
+    var image: UIImage {
+        switch self {
+        case .WaitingPayment:
+            return .orderWaitingPayment
+        case .WaitingApproval:
+            return .orderWaitingApproval
+        case .Approved:
+            return .orderApproved
+        case .WaitingForSupplying:
+            return .orderWaitingSupplying
+        case .Preparing:
+            return .orderPreparing
+        case .Shipped:
+            return .orderShipped
+        case .Delivered:
+            return .orderDelivered
+        case .CancelRequested:
+            return .orderRequestCancelled
+        case .Canceled:
+            return .orderCancelled
+        case .Refunded:
+            return .orderRefunded
+        case .PaymentFailed:
+            return .orderPaymentFailed
+        }
+    }
 }
