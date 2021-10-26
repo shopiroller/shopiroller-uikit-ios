@@ -10,17 +10,17 @@ import UIKit
 class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private struct Constants {
-        static var filterTitle: String { return "sort-title-text".localized }
-        static var sortByTitle: String { return "filter-title-text".localized }
+        static var filterTitle: String { return "filter-title-text".localized }
+        static var sortByTitle: String { return "sort-title-text".localized }
     }
     
-    @IBOutlet weak var sortyByTitleLabel: UILabel!
-    @IBOutlet weak var sortByImage: UIImageView!
-    @IBOutlet weak var filterTitleLabel: UILabel!
-    @IBOutlet weak var fitlerImage: UIImageView!
-    @IBOutlet weak var lineView: UIView!
-    @IBOutlet weak var productsCollectionView: UICollectionView!
-    @IBOutlet weak var filterProductsContainer: UIView!
+    @IBOutlet private weak var sortyByTitleLabel: UILabel!
+    @IBOutlet private weak var sortByImage: UIImageView!
+    @IBOutlet private weak var filterTitleLabel: UILabel!
+    @IBOutlet private weak var filterImage: UIImageView!
+    @IBOutlet private weak var lineView: UIView!
+    @IBOutlet private weak var productsCollectionView: UICollectionView!
+    @IBOutlet private weak var filterProductsContainer: UIView!
     @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var collectionViewContainer: UIView!
@@ -37,6 +37,8 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         filterProductsContainer.backgroundColor = .buttonLight
         filterProductsContainer.layer.masksToBounds = true
         filterProductsContainer.clipsToBounds = true
+        
+        lineView.backgroundColor = UIColor.textPrimary.withAlphaComponent(0.2)
        
         
         productsCollectionView.delegate = self
@@ -44,8 +46,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         productsCollectionView.register(cellClass: ItemCollectionViewCell.self)
         
         filterTitleLabel.text = Constants.filterTitle
+        filterImage.image = .filterIcon
     
-        filterTitleLabel.text = Constants.sortByTitle
+        sortyByTitleLabel.text = Constants.sortByTitle
+        sortByImage.image = .sortIcon
     
         getProducts(pagination: true)
         

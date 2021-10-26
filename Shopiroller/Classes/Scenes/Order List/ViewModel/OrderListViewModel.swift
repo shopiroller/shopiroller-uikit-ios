@@ -58,6 +58,10 @@ class OrderListViewModel: BaseViewModel {
         }
     }
     
+    func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
+    }
+    
     func isOrderListEmpty() -> Bool {
         return orderList?.isEmpty ?? true
     }

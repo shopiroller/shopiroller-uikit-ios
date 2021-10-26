@@ -122,4 +122,8 @@ class OrderDetailViewModel: BaseViewModel {
     func onClickIbanText(sender:UITapGestureRecognizer) {
         UIPasteboard.general.string = detail?.paymentAccount?.accountAdress
     }
+    
+    func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
+    }
 }
