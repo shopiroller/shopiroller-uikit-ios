@@ -26,8 +26,8 @@ public class SRMainPageViewModel: BaseViewModel {
     
     private var currentPage: Int = 0
     
-    func getSliders(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getSliders().response() {
+    func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getSliders(showProgress: showProgress ?? true).response() {
             (result) in
             switch result {
             case .success(let result):
@@ -43,7 +43,7 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getProducts(showProgress: Bool?,pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
         if products?.count ?? 0 == 0 {
@@ -63,7 +63,7 @@ public class SRMainPageViewModel: BaseViewModel {
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
-        SRNetworkManagerRequests.getProducts(urlQueryItems: urlQueryItems).response() {
+        SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -88,8 +88,8 @@ public class SRMainPageViewModel: BaseViewModel {
         SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
     }
     
-    func getCategories(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getCategories().response() {
+    func getCategories(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getCategories(showProgress: showProgress ?? true).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -107,9 +107,9 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     
-    func getShowCase(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getShowCase(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
-        SRNetworkManagerRequests.getShowCase().response() {
+        SRNetworkManagerRequests.getShowCase(showProgress: showProgress ?? true).response() {
             (result) in
             switch result{
             case .success(let response):
