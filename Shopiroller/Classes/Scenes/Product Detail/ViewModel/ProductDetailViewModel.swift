@@ -12,7 +12,7 @@ import Kingfisher
 public class ProductDetailViewModel: BaseViewModel {
     
     private var productId: String?
-    private var productList: ProductDetailResponseModel?
+    private var productDetailModel: ProductDetailResponseModel?
     private var paymentSettings: PaymentSettingsResponeModel?
     
     var quantityCount = 1
@@ -44,7 +44,7 @@ public class ProductDetailViewModel: BaseViewModel {
             (result) in
             switch result{
             case .success(let response):
-                self.productList = response.data
+                self.productDetailModel = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -57,7 +57,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productList?.title), userId: "78971cc6-bda1-45a4-adee-638317c5a6e9").response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: "78971cc6-bda1-45a4-adee-638317c5a6e9").response() {
             (result) in
             switch result {
             case.success(let _):
@@ -77,35 +77,35 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getTitle() -> String? {
-       return productList?.title
+       return productDetailModel?.title
     }
     
     func getItemCount() -> Int? {
-        return productList?.images?.count ?? 0
+        return productDetailModel?.images?.count ?? 0
     }
     
     func getImages(position : Int) -> ProductImageModel? {
-        return productList?.images?[position]
+        return productDetailModel?.images?[position]
     }
     
     func getImageArray() -> [ProductImageModel]? {
-        return productList?.images
+        return productDetailModel?.images
     }
     
     func getBrandImage() -> String? {
-        productList?.brand?.icon
+        productDetailModel?.brand?.icon
     }
     
     func isOutofStock() -> Bool {
-        return productList?.maxQuantityPerOrder == quantityCount
+        return productDetailModel?.maxQuantityPerOrder == quantityCount
     }
     
     func isShippingFree() -> Bool {
-        return productList?.shippingPrice == 0.0
+        return productDetailModel?.shippingPrice == 0.0
     }
     
     func hasDiscount() -> Bool {
-        if(productList?.campaignPrice != 0) {
+        if(productDetailModel?.campaignPrice != 0) {
             return true
         }else{
             return false
@@ -113,7 +113,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getCurrency() -> String {
-        if productList?.currency == "TRY" {
+        if productDetailModel?.currency == "TRY" {
             return "TL"
         }else {
             return "$"
@@ -127,28 +127,28 @@ public class ProductDetailViewModel: BaseViewModel {
     func getShippingPrice() -> String {
         let fmt = NumberFormatter()
         fmt.numberStyle = .decimal
-        return fmt.string(from: NSNumber(value: Double(productList?.shippingPrice ?? 0.0))) ?? ""
+        return fmt.string(from: NSNumber(value: Double(productDetailModel?.shippingPrice ?? 0.0))) ?? ""
     }
     
     func getPrice() -> String {
-        return String(productList?.price ?? 0.0)
+        return String(productDetailModel?.price ?? 0.0)
     }
     
     func getCampaignPrice() -> String {
-        return String(productList?.campaignPrice ?? 0.0)
+        return String(productDetailModel?.campaignPrice ?? 0.0)
     }
     
     var discount: String {
         let discount = ""
-        return discount.calculateDiscount(price: productList?.price ?? 0.0, campaignPrice: productList?.campaignPrice ?? 0.0)
+        return discount.calculateDiscount(price: productDetailModel?.price ?? 0.0, campaignPrice: productDetailModel?.campaignPrice ?? 0.0)
     }
     
     func getMaxQuantity() -> Int {
-        return productList?.maxQuantityPerOrder ?? 0
+        return productDetailModel?.maxQuantityPerOrder ?? 0
     }
     
     func isQuantityMax() -> Bool {
-        return productList?.maxQuantityPerOrder == quantityCount || productList?.stock == quantityCount
+        return productDetailModel?.maxQuantityPerOrder == quantityCount || productDetailModel?.stock == quantityCount
     }
     
     func getReturnExchangeTerms() -> String? {
@@ -159,8 +159,8 @@ public class ProductDetailViewModel: BaseViewModel {
         return paymentSettings?.deliveryConditions
     }
     
-    func getDescriptionUrl() -> String? {
-        return paymentSettings?.description
+    func getDescription() -> String? {
+        return productDetailModel?.description
     }
     
     func getAppId() -> String? {

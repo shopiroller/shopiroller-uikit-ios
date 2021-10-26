@@ -10,10 +10,12 @@ import SafariServices
 import WebKit
 
 public class WebViewViewModel {
-    public var webViewUrl: String
+    var webViewUrl: String?
+    var webViewHtml: String?
     
-    public init(webViewUrl: String = "") {
+    public init(webViewUrl: String? = String(), webViewHtml: String? = String()) {
         self.webViewUrl = webViewUrl
+        self.webViewHtml = webViewHtml
     }
     
 }

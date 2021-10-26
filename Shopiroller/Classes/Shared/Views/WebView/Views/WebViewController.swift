@@ -40,7 +40,7 @@ class WebViewController: BaseViewController<WebViewViewModel> {
     }
     
     private func loadWebView() {
-        if viewModel.webViewHtml != "" {
+        if viewModel.webViewHtml != ""{
             webView.loadHTMLString(viewModel.webViewHtml ?? "", baseURL: nil)
         }
     }
