@@ -77,9 +77,9 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
             emptyViewContainer.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
+            filterProductsContainer.isHidden = false
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
-            filterProductsContainer.isHidden = false
             getCount()
         }
     }

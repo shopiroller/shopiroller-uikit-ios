@@ -166,6 +166,14 @@ public class SRMainPageViewModel: BaseViewModel {
         return categories
     }
     
+    func getCategoryName(position: Int) -> String {
+        return categories?[position].name ?? ""
+    }
+    
+    func getCategoryId(position: Int) -> String {
+        return categories?[position].categoryId ?? ""
+    }
+    
     func getSubCategories(position: Int) -> [SRCategoryResponseModel]? {
         return categories?[position].subCategories
     }
@@ -176,10 +184,6 @@ public class SRMainPageViewModel: BaseViewModel {
         }else {
             return false
         }
-    }
-    
-    func getCategoryTitle(position: Int) -> String? {
-        return categories?[position].name
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
