@@ -376,7 +376,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @objc private func descriptionContainerTapped(_ sender: Any) {
-        let vc = WebViewController(viewModel: WebViewViewModel(webViewUrl: viewModel.getDescriptionUrl() ?? ""))
+        let vc = WebViewController(viewModel: WebViewViewModel(webViewHtml: viewModel.getDescription() ?? ""))
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
