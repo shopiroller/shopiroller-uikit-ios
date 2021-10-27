@@ -21,7 +21,7 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
         getAddressList()
     }
     
-    private func configure() {
+    private func configure(isUpdate: Bool) {
         if(viewModel.isListEmpty()){
             addressTable.isHidden = true
             emptyView.isHidden = false
@@ -29,23 +29,46 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
         }else{
             addressTable.isHidden = false
             emptyView.isHidden = true
-            addressTable.register(cellClass: AddressTableViewCell.self)
-            addressTable.delegate = self
-            addressTable.dataSource = self
-            addressTable.reloadData()
+            if(!isUpdate){
+                addressTable.register(cellClass: AddressTableViewCell.self)
+                addressTable.delegate = self
+                addressTable.dataSource = self
+                addressTable.reloadData()
+            }
         }
     }
     
     private func getAddressList() {
         viewModel.getAddressList(success: {
-            self.configure()
-        }) { [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            self.configure(isUpdate: false)
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
+    private func deleteAddress() {
+        viewModel.deleteAddress(success: {
+            guard let row = self.viewModel.selectedIndexPathRow else {return}
+            self.addressTable.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+            self.view.makeToast(text: "address_list_delete_success".localized)
+            self.configure(isUpdate: true)
+            
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
         }
     }
 }
 
-extension AddressListViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddressListViewController: UITableViewDelegate, UITableViewDataSource, AddressTableViewCellDelegate {
+    
+    func deleteButtonClicked(indexPathRow: Int?) {
+        viewModel.selectedIndexPathRow = indexPathRow
+        deleteAddress()
+    }
+    
+    func editButtonClicked(indexPathRow: Int?) {
+        //TODO: ADD ACTION
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getListSize()
@@ -53,14 +76,14 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.reuseIdentifier, for: indexPath) as! AddressTableViewCell
-        
+        cell.delegate = self
         switch viewModel.state {
         case .shipping:
             guard let model = viewModel.getShippingAddress(position: indexPath.row) else { return cell}
-            cell.setup(model: model)
+            cell.setup(model: model, indexPathRow: indexPath.row)
         case .billing:
             guard let model = viewModel.getBillingAddress(position: indexPath.row) else { return cell}
-            cell.setup(model: model)
+            cell.setup(model: model, indexPathRow: indexPath.row)
         }
         
         return cell

@@ -130,6 +130,7 @@
 "address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
 "address_list_empty_billing_title" = "No billing address";
 "address_list_empty_billing_description" = "Launch your first address and take an items you want.";
+"address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
 // MARK: - Address Cell
 
 "address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";

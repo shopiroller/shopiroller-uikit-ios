@@ -9,6 +9,14 @@ import UIKit
 
 extension UIView {
     
+    func makeToast(text: String?){
+        makeToast(text, duration: 3.0, position: .bottom)
+    }
+    
+    func makeToast(_ error: ErrorViewModel){
+        makeToast(error.message, duration: 3.0, position: .bottom)
+    }
+    
     func makeCardView() {
         layer.cornerRadius = 8
         backgroundColor = .white

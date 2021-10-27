@@ -13,6 +13,7 @@ class AddressListViewModel: BaseViewModel {
     let state: AddressStateEnum
     private var shippingAddressList: [UserShippingAddressModel]?
     private var billingAddressList: [UserBillingAdressModel]?
+    var selectedIndexPathRow: Int?
     
     init(state: AddressStateEnum){
         self.state = state
@@ -50,6 +51,53 @@ class AddressListViewModel: BaseViewModel {
             switch result{
             case .success(let response):
                 self.billingAddressList = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case.failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func deleteAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        switch state {
+        case .shipping:
+            deleteShippingAddress(success: success, error: error)
+        case .billing:
+            deleteBillingAddress(success: success, error: error)
+        }
+    }
+    
+    private func deleteShippingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let index = selectedIndexPathRow, let addressId = shippingAddressList?[index].id else { return }
+        
+        SRNetworkManagerRequests.deleteShippingAddress(userId: SRAppConstants.Query.Values.userId, addressId: addressId).response() {
+            (result) in
+            switch result{
+            case .success(_):
+                self.shippingAddressList?.remove(at: index)
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case.failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    private func deleteBillingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let index = selectedIndexPathRow, let addressId = billingAddressList?[index].id else { return }
+        
+        SRNetworkManagerRequests.deleteBillingAddress(userId: SRAppConstants.Query.Values.userId, addressId: addressId).response() {
+            (result) in
+            switch result{
+            case .success(_):
+                self.billingAddressList?.remove(at: index)
                 DispatchQueue.main.async {
                     success?()
                 }

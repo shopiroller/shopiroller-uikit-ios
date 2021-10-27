@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol AddressTableViewCellDelegate {
+    func deleteButtonClicked(indexPathRow: Int?)
+    func editButtonClicked(indexPathRow: Int?)
+}
+
 class AddressTableViewCell: UITableViewCell {
     
     
@@ -23,6 +28,9 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet private weak var informationDeleteButton: UIButton!
     @IBOutlet private weak var informationEditButton: UIButton!
     
+    var delegate: AddressTableViewCellDelegate?
+    
+    private var indexPathRow: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,13 +50,17 @@ class AddressTableViewCell: UITableViewCell {
         
     }
     
-    func setup(model: UserBillingAdressModel) {
+    func setup(model: UserBillingAdressModel, indexPathRow: Int) {
+        self.indexPathRow = indexPathRow
+        
         confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
         informationTitle.text = model.title
         informationAddress.text = model.getListBillingDescriptionArea()
     }
     
-    func setup(model: UserShippingAddressModel) {
+    func setup(model: UserShippingAddressModel, indexPathRow: Int) {
+        self.indexPathRow = indexPathRow
+        
         confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
         informationTitle.text = model.title
         informationAddress.text = model.getListDeliveryDescriptionArea()
@@ -59,6 +71,7 @@ class AddressTableViewCell: UITableViewCell {
     }
     
     @IBAction func confirmDeleteClicked(_ sender: Any) {
+        delegate?.deleteButtonClicked(indexPathRow: indexPathRow)
     }
     
     @IBAction func informationDeleteClicked(_ sender: Any) {
@@ -66,6 +79,7 @@ class AddressTableViewCell: UITableViewCell {
     }
     
     @IBAction func informationEditClicked(_ sender: Any) {
+        delegate?.editButtonClicked(indexPathRow: indexPathRow)
     }
     
     private func switchViews(openConfirm: Bool){
