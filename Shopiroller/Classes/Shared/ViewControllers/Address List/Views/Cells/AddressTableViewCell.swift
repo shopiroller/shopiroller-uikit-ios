@@ -56,7 +56,6 @@ class AddressTableViewCell: UITableViewCell {
     
     @IBAction func confirmCancelClicked(_ sender: Any) {
         switchViews(openConfirm: false)
-        
     }
     
     @IBAction func confirmDeleteClicked(_ sender: Any) {

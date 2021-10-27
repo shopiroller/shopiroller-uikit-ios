@@ -59,7 +59,7 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource 
             guard let model = viewModel.getShippingAddress(position: indexPath.row) else { return cell}
             cell.setup(model: model)
         case .billing:
-            guard let model = viewModel.getShippingAddress(position: indexPath.row) else { return cell}
+            guard let model = viewModel.getBillingAddress(position: indexPath.row) else { return cell}
             cell.setup(model: model)
         }
         

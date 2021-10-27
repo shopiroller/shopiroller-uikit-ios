@@ -30,6 +30,9 @@
                         <segment title="TESLİMAT ADRESİ"/>
                         <segment title="FATURA ADRESİ"/>
                     </segments>
+                    <connections>
+                        <action selector="segmentedControlValueChanged:" destination="-1" eventType="valueChanged" id="8Gx-FA-0q4"/>
+                    </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqj-ZO-NhA" userLabel="Container View">
                     <rect key="frame" x="0.0" y="92" width="414" height="770"/>
