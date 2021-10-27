@@ -11,9 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressListViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
-                <outlet property="addressEmptyView" destination="tra-LE-5iG" id="p9t-5B-kyQ"/>
                 <outlet property="addressSegmentedControl" destination="cPO-6r-qGA" id="rVo-0K-uj3"/>
-                <outlet property="addressTableView" destination="gA5-lM-su3" id="0xa-lN-JS8"/>
+                <outlet property="containerView" destination="tra-LE-5iG" id="Ofq-3n-QtE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,11 +31,7 @@
                         <segment title="FATURA ADRESİ"/>
                     </segments>
                 </segmentedControl>
-                <tableView hidden="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="170" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-lM-su3">
-                    <rect key="frame" x="0.0" y="107" width="414" height="755"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tra-LE-5iG" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tra-LE-5iG" userLabel="Container View">
                     <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
@@ -44,15 +39,11 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gA5-lM-su3" firstAttribute="top" secondItem="cPO-6r-qGA" secondAttribute="bottom" constant="15" id="C4V-oi-jq6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tra-LE-5iG" secondAttribute="trailing" id="Hje-A4-1v6"/>
                 <constraint firstItem="tra-LE-5iG" firstAttribute="top" secondItem="cPO-6r-qGA" secondAttribute="bottom" id="M8v-RU-mkB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cPO-6r-qGA" secondAttribute="trailing" id="T2s-HL-iNN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gA5-lM-su3" secondAttribute="bottom" id="Yf7-MQ-ijL"/>
                 <constraint firstItem="tra-LE-5iG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eHu-gC-GT6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tra-LE-5iG" secondAttribute="bottom" id="hvt-J2-dJw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gA5-lM-su3" secondAttribute="trailing" id="l4m-M0-LvR"/>
-                <constraint firstItem="gA5-lM-su3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nwj-3h-n9d"/>
                 <constraint firstItem="cPO-6r-qGA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tce-ky-43Y"/>
                 <constraint firstItem="cPO-6r-qGA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="trJ-mt-Xhc"/>
             </constraints>

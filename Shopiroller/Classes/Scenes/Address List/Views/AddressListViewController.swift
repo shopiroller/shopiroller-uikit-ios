@@ -10,8 +10,7 @@ import UIKit
 class AddressListViewController: BaseViewController<AddressListViewModel> {
     
     @IBOutlet private weak var addressSegmentedControl: UISegmentedControl!
-    @IBOutlet private weak var addressTableView: UITableView!
-    @IBOutlet private weak var addressEmptyView: EmptyView!
+    @IBOutlet weak var containerView: UIView!
 
     init(viewModel: AddressListViewModel){
         super.init(viewModel: viewModel, nibName: AddressListViewController.nibName, bundle: Bundle(for: AddressListViewController.self))
@@ -38,18 +37,23 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
     }
     
     private func configure() {
-        if(viewModel.isListEmpty()){
-            addressTableView.isHidden = true
-            addressEmptyView.isHidden = false
-            addressEmptyView.setup(model: viewModel.getEmptyModel())
-        }else{
-            addressEmptyView.isHidden = true
-            addressTableView.isHidden = false
-            addressTableView.register(cellClass: AddressTableViewCell.self)
-            addressTableView.delegate = self
-            addressTableView.dataSource = self
-            addressTableView.reloadData()
-        }
+        
+        let thePageVC = AddressListPageViewController()
+        addChildViewController(thePageVC)
+        thePageVC.view.translatesAutoresizingMaskIntoConstraints = false
+
+        containerView.addSubview(thePageVC.view)
+        
+        
+        NSLayoutConstraint.activate([
+            thePageVC.view.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0.0),
+            thePageVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0.0),
+            thePageVC.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0),
+            thePageVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
+        ])
+        
+        thePageVC.didMove(toParentViewController: self)
+        
     }
     
     private func getShippingAddresses() {

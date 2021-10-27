@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressListView" customModule="Shopiroller" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyView" destination="S2s-Ba-vLg" id="Raq-cc-UQf"/>
+                <outlet property="tableView" destination="imI-ME-ilG" id="iUw-bt-J3f"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="imI-ME-ilG">
+                    <rect key="frame" x="0.0" y="5" width="414" height="891"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2s-Ba-vLg" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="S2s-Ba-vLg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7ap-1C-CtZ"/>
+                <constraint firstAttribute="trailing" secondItem="imI-ME-ilG" secondAttribute="trailing" id="9y7-xQ-Ah9"/>
+                <constraint firstItem="imI-ME-ilG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="ACB-AL-dUl"/>
+                <constraint firstAttribute="trailing" secondItem="S2s-Ba-vLg" secondAttribute="trailing" id="ANP-tS-sQH"/>
+                <constraint firstItem="imI-ME-ilG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gJT-Jg-a4R"/>
+                <constraint firstAttribute="bottom" secondItem="imI-ME-ilG" secondAttribute="bottom" id="j6u-GJ-G1q"/>
+                <constraint firstItem="S2s-Ba-vLg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kZP-iK-3cH"/>
+                <constraint firstAttribute="bottom" secondItem="S2s-Ba-vLg" secondAttribute="bottom" id="ttz-bP-d15"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="100"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
