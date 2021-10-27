@@ -56,8 +56,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
         let menuButton = createNavigationItem(.menuIcon)
+        
         menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         navigationItem.rightBarButtonItems = [optionsButton,searchButton,cardButton]
         navigationController?.isNavigationBarHidden = false
@@ -77,7 +78,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         prompt(OrderListViewController(viewModel: OrderListViewModel())
                , animated: true, completion: nil)
     }
-
     
     func configureRefreshControl () {
         // Add the refresh control to your UIScrollView object.

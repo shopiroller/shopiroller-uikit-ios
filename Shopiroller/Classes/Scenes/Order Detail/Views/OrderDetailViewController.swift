@@ -9,7 +9,6 @@ import UIKit
 
 class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
-    @IBOutlet weak var root: UIStackView!
     
     @IBOutlet private weak var bottomSubTotal: UILabel!
     @IBOutlet private weak var bottomShipping: UILabel!
@@ -26,8 +25,8 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     @IBOutlet private weak var paymentTitle: UILabel!
     
-    @IBOutlet private weak var productsDataStackView: UIStackView!
     @IBOutlet private weak var addressDataStackView: UIStackView!
+    @IBOutlet private weak var productsDataStackView: UIStackView!
     
     @IBOutlet private weak var cargoSeparator: UIView!
     @IBOutlet private weak var cargoStackView: UIStackView!
@@ -36,10 +35,11 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var addressSeparator: UIView!
     @IBOutlet private weak var addressStackView: UIStackView!
     @IBOutlet private weak var productsSeparator: UIView!
-    @IBOutlet private weak var productsStackView: UIView!
+    @IBOutlet private weak var productsStackView: UIStackView!
     
     @IBOutlet private weak var addressHeight: NSLayoutConstraint!
     @IBOutlet private weak var productsHeight: NSLayoutConstraint!
+    
     
     init(viewModel: OrderDetailViewModel){
         super.init(viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
@@ -48,6 +48,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     override func setup() {
         super.setup()
         
+        orderDetailStatusImage.image = viewModel.getStatusImage()
         orderDetailId.textColor = .textPCaption
         orderDetailPaymentStatus.textColor = .textPCaption
         orderDetailDate.textColor = .textPCaption
@@ -105,6 +106,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         addressHeight.constant = 222
     
         if let list = viewModel.getProductList() {
+            
             for item in list {
                 let view = OrderDetailProductView()
                 view.setup(model: item)
@@ -113,8 +115,8 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
                     view.widthAnchor.constraint(equalToConstant: 100),
                     view.heightAnchor.constraint(equalToConstant: 100),
                 ])
+                productsHeight.constant = productsHeight.constant + 100
             }
-            productsHeight.constant = CGFloat(80 * list.count)
         }
     
     }

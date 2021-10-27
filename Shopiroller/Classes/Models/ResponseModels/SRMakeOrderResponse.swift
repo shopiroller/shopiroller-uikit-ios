@@ -26,8 +26,8 @@ struct SRMakeOrderResponse: Codable {
     var orderId: String?
     var tryAgain: Bool?
     var bankAccountModel: BankAccountModel?
-    var userShippingAdressModel: userShippingAddressModel?
-    var userBillingAdressModel: userBillingAdressModel?
+    var userShippingAdressModel: UserShippingAddressModel?
+    var userBillingAdressModel: UserBillingAdressModel?
     
     enum CodingKeys: String, CodingKey {
         case userId = "userId"
@@ -42,53 +42,3 @@ struct SRMakeOrderResponse: Codable {
     }
     
 }
-
-class userShippingAddressModel: BaseAddressModel {
-    func getOrderAdress() -> MakeOrderAddressModel{
-        var makeOrderAddress = MakeOrderAddressModel()
-        makeOrderAddress.city = city
-        makeOrderAddress.state = state
-        makeOrderAddress.country = country
-        makeOrderAddress.description = description
-        makeOrderAddress.id = id
-        makeOrderAddress.zipCode = zipCode
-        makeOrderAddress.phoneNumber = contact?.phoneNumber
-        makeOrderAddress.nameSurname = contact?.nameSurname
-        return makeOrderAddress
-    }
-}
-
-class userBillingAdressModel: BaseAddressModel {
-    var type: String?
-    var identityNumber: String?
-    var companyName: String?
-    var taxNumber: String?
-    var taxOffice: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case type = "type"
-        case identityNumber = "identityNumber"
-        case companyName = "companyName"
-        case taxNumber = "taxNumber"
-        case taxOffice = "taxOffice"
-    }
-    
-    func getOrderAdress() -> MakeOrderAddressModel {
-        var makeOrderAddress = MakeOrderAddressModel()
-        makeOrderAddress.city = city
-        makeOrderAddress.companyName = companyName
-        makeOrderAddress.state = state
-        makeOrderAddress.country = country
-        makeOrderAddress.description = description
-        makeOrderAddress.id = id
-        makeOrderAddress.identityNumber = identityNumber
-        makeOrderAddress.taxOffice = taxOffice
-        makeOrderAddress.taxNumber = taxNumber
-        makeOrderAddress.zipCode = zipCode
-        makeOrderAddress.phoneNumber = contact?.phoneNumber
-        makeOrderAddress.nameSurname = contact?.nameSurname
-        return makeOrderAddress
-    }
-}
-
-

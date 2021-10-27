@@ -16,6 +16,11 @@ class OrderDetailViewModel: BaseViewModel {
         self.detail = detail
     }
     
+    func getStatusImage() -> UIImage? {
+        return detail?.currentStatus?.image
+    }
+    
+    
     func getOrderCode() -> String? {
         return detail?.orderCode
     }

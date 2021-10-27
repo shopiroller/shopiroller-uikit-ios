@@ -30,11 +30,10 @@
                 <outlet property="paymentSeparator" destination="aPI-dc-yaE" id="pDs-B4-sI6"/>
                 <outlet property="paymentStackView" destination="XIK-w8-XZD" id="RvS-3o-NeR"/>
                 <outlet property="paymentTitle" destination="dzk-B4-7QP" id="69T-S1-TAn"/>
-                <outlet property="productsDataStackView" destination="e50-Dj-5m5" id="jGU-sh-Yd0"/>
-                <outlet property="productsHeight" destination="4F3-nn-Hjw" id="dcp-B1-ByM"/>
+                <outlet property="productsDataStackView" destination="LyG-Ma-9pS" id="ChT-oE-G3d"/>
+                <outlet property="productsHeight" destination="zAW-hl-pQK" id="Sbd-mc-Z1Z"/>
                 <outlet property="productsSeparator" destination="r9Y-Lh-bey" id="Hdr-Zg-6tZ"/>
-                <outlet property="productsStackView" destination="oiS-R0-Qks" id="hhr-Og-MtO"/>
-                <outlet property="root" destination="LCF-O5-liO" id="IqR-Cd-f0I"/>
+                <outlet property="productsStackView" destination="NlO-F9-NIk" id="KHB-Ad-TNL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -166,7 +165,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XFm-yQ-1ea" userLabel="addressStackView">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XFm-yQ-1ea" userLabel="addressDataStackView">
                                             <rect key="frame" x="15" y="31.5" width="384" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" id="Oi9-j7-cSw"/>
@@ -182,19 +181,19 @@
                                         <constraint firstAttribute="height" constant="1" id="PjB-ed-CAf"/>
                                     </constraints>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oiS-R0-Qks" userLabel="productsStackView">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NlO-F9-NIk" userLabel="productsStackView">
                                     <rect key="frame" x="0.0" y="418" width="414" height="31.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-yA-mpF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0t-IC-Gy0">
                                             <rect key="frame" x="15" y="0.0" width="384" height="21.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e50-Dj-5m5" userLabel="productsStackView">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LyG-Ma-9pS" userLabel="productsDataStackView">
                                             <rect key="frame" x="15" y="31.5" width="384" height="0.0"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" id="4F3-nn-Hjw"/>
+                                                <constraint firstAttribute="height" id="zAW-hl-pQK"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>

@@ -47,8 +47,9 @@ final public class SRNetworkManager {
         urlComponents.host = environment.baseURL
         urlComponents.port = environment.port
         urlComponents.path = request.path.name + (request.subpath ?? "")
-        var urlQueryItems = request.urlQueryItems ?? []
-        urlComponents.queryItems = urlQueryItems
+        if let queryItems = request.urlQueryItems, !queryItems.isEmpty {
+            urlComponents.queryItems = queryItems
+        }
         return urlComponents.url
     }
     

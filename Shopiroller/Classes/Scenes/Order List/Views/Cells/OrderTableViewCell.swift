@@ -43,11 +43,5 @@ class OrderTableViewCell: UITableViewCell {
         status.text = model.currentStatus?.text
         statusView.backgroundColor = model.currentStatus?.backgroundColor
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }

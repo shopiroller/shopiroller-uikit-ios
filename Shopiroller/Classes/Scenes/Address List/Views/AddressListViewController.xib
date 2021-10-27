@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressListViewController" customModule="Shopiroller" customModuleProvider="target">
+            <connections>
+                <outlet property="addressEmptyView" destination="tra-LE-5iG" id="p9t-5B-kyQ"/>
+                <outlet property="addressSegmentedControl" destination="cPO-6r-qGA" id="rVo-0K-uj3"/>
+                <outlet property="addressTableView" destination="gA5-lM-su3" id="0xa-lN-JS8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-6r-qGA">
+                    <rect key="frame" x="0.0" y="44" width="414" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="JYJ-hf-Ord"/>
+                    </constraints>
+                    <segments>
+                        <segment title="TESLİMAT ADRESİ"/>
+                        <segment title="FATURA ADRESİ"/>
+                    </segments>
+                </segmentedControl>
+                <tableView hidden="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="170" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-lM-su3">
+                    <rect key="frame" x="0.0" y="107" width="414" height="755"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tra-LE-5iG" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gA5-lM-su3" firstAttribute="top" secondItem="cPO-6r-qGA" secondAttribute="bottom" constant="15" id="C4V-oi-jq6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tra-LE-5iG" secondAttribute="trailing" id="Hje-A4-1v6"/>
+                <constraint firstItem="tra-LE-5iG" firstAttribute="top" secondItem="cPO-6r-qGA" secondAttribute="bottom" id="M8v-RU-mkB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cPO-6r-qGA" secondAttribute="trailing" id="T2s-HL-iNN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gA5-lM-su3" secondAttribute="bottom" id="Yf7-MQ-ijL"/>
+                <constraint firstItem="tra-LE-5iG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eHu-gC-GT6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tra-LE-5iG" secondAttribute="bottom" id="hvt-J2-dJw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gA5-lM-su3" secondAttribute="trailing" id="l4m-M0-LvR"/>
+                <constraint firstItem="gA5-lM-su3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nwj-3h-n9d"/>
+                <constraint firstItem="cPO-6r-qGA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tce-ky-43Y"/>
+                <constraint firstItem="cPO-6r-qGA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="trJ-mt-Xhc"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="85"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
