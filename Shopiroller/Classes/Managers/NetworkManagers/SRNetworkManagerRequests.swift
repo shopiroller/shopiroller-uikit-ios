@@ -101,6 +101,12 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .getFilterOptions , resourceType: SRFilterOptionsResponseModel.self, urlQueryItems: urlQueryItems)
     }
     
+    static func getAddresses<T>(userId: String) -> SRNetworkRequestManager<[T]> {
+        let type = (T.self == UserBillingAdressModel.self) ? SRNetworkManagerPaths.billing.rawValue : SRNetworkManagerPaths.shipping.rawValue
+        let subpath = "\(userId)\(type)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses, subpath: subpath, resourceType: [T].self)
+    }
+    
     static func getShippingAddresses(userId: String) -> SRNetworkRequestManager<[UserShippingAddressModel]> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shipping.rawValue)"
         return SRNetworkRequestManager(httpMethod: .get, path: .addresses, subpath: subpath, resourceType: [UserShippingAddressModel].self)

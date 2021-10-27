@@ -127,7 +127,7 @@ extension UIViewController {
     }
     
     @objc func openOptions() {
-        prompt(AddressListViewController(viewModel: AddressListViewModel())
+        prompt(UserAddressViewController(viewModel: UserAddressViewModel())
                , animated: true, completion: nil)
     }
     

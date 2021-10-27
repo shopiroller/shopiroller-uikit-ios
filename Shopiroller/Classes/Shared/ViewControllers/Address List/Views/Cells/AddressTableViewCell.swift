@@ -42,12 +42,16 @@ class AddressTableViewCell: UITableViewCell {
         
     }
     
+    func setup(model: UserBillingAdressModel) {
+        confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
+        informationTitle.text = model.title
+        informationAddress.text = model.getListBillingDescriptionArea()
+    }
+    
     func setup(model: UserShippingAddressModel) {
         confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
-        
         informationTitle.text = model.title
         informationAddress.text = model.getListDeliveryDescriptionArea()
-        
     }
     
     @IBAction func confirmCancelClicked(_ sender: Any) {

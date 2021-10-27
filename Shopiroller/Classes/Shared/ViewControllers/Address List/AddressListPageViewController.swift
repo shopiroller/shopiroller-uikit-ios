@@ -11,35 +11,30 @@ class AddressListPageViewController: UIPageViewController {
     
     fileprivate var items: [UIViewController] = []
     
+    init() {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        
         populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
     }
     
-    fileprivate func populateItems() {
-        let text = ["🎖", "👑", "🥇"]
-        let backgroundColor:[UIColor] = [.blue, .red, .green]
-        
-        for (index, t) in text.enumerated() {
-            let c = createCarouselItemControler(with: t, with: backgroundColor[index])
-            items.append(c)
-        }
+    private func populateItems() {
+        let shippingVC = AddressListViewController(viewModel: AddressListViewModel(state: .shipping))
+        items.append(shippingVC)
+        let billingVC = AddressListViewController(viewModel: AddressListViewModel(state: .billing))
+        items.append(billingVC)
     }
     
-    fileprivate func createCarouselItemControler(with titleText: String?, with color: UIColor?) -> UIViewController {
-        let c = UIViewController()
-        let v = AddressListView()
-        v.setup(text: color ?? .black)
-        c.view = v
-        
-        
-        return c
-    }
 }
 
 extension AddressListPageViewController: UIPageViewControllerDataSource {
