@@ -46,7 +46,7 @@ struct SRAppConstants {
         }
         
         struct Values {
-            static let userId = "78971cc6-bda1-45a4-adee-638317c5a6e9"
+            static let userId = "6141a20ac701a10ecce6178a"
             static let page = "1"
             static let productsPerPageSize = 15
         }
