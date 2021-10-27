@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserAddressViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="Jxg-g2-r1F" id="xdc-EY-X8Y"/>
                 <outlet property="containerView" destination="Wqj-ZO-NhA" id="ZRy-go-8JB"/>
                 <outlet property="segmentedControl" destination="NrY-Co-SGR" id="5Qe-V5-vYi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,6 +39,17 @@
                     <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxg-g2-r1F" customClass="MDCFloatingButton">
+                    <rect key="frame" x="339" y="787" width="60" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="5vH-RG-p43"/>
+                        <constraint firstAttribute="width" constant="60" id="B8Q-qA-HIP"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="plus.png"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,8 +57,10 @@
                 <constraint firstItem="NrY-Co-SGR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0OM-5M-vvd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wqj-ZO-NhA" secondAttribute="trailing" id="1Z4-aT-2mr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NrY-Co-SGR" secondAttribute="trailing" id="46p-L6-f6M"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jxg-g2-r1F" secondAttribute="trailing" constant="15" id="9cj-sE-86z"/>
                 <constraint firstItem="NrY-Co-SGR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Fkz-zS-BOq"/>
                 <constraint firstItem="Wqj-ZO-NhA" firstAttribute="top" secondItem="NrY-Co-SGR" secondAttribute="bottom" id="K4k-2L-9sp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Jxg-g2-r1F" secondAttribute="bottom" constant="15" id="LbB-Fv-XfE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wqj-ZO-NhA" secondAttribute="bottom" id="cmR-eK-IQh"/>
                 <constraint firstItem="Wqj-ZO-NhA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zVa-SN-NgB"/>
             </constraints>
@@ -54,6 +68,7 @@
         </view>
     </objects>
     <resources>
+        <image name="plus.png" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -34,4 +34,5 @@ TODO: Add long description of the pod here.
   s.dependency 'SVProgressHUD'
   s.dependency 'ImageSlideshow'
   s.dependency 'ImageSlideshow/Kingfisher'
+  s.dependency 'MaterialComponents/Buttons'
 end

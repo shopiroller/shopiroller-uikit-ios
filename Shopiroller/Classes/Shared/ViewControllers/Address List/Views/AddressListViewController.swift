@@ -11,6 +11,7 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
 
     @IBOutlet private weak var addressTable: UITableView!
     @IBOutlet private weak var emptyView: EmptyView!
+    @IBOutlet weak var addButton: UIButton!
     
     init(viewModel: AddressListViewModel){
         super.init(viewModel: viewModel, nibName: AddressListViewController.nibName, bundle: Bundle(for: AddressListViewController.self))
@@ -52,7 +53,6 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
             self.addressTable.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
             self.view.makeToast(text: "address_list_delete_success".localized)
             self.configure(isUpdate: true)
-            
         }) { (errorViewModel) in
             self.view.makeToast(errorViewModel)
         }
