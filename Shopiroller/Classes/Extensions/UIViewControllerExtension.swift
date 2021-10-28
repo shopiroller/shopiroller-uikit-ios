@@ -46,7 +46,7 @@ extension UIViewController {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
         })
     }
-   
+    
     func popUp(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             viewController.modalPresentationStyle = .overCurrentContext
@@ -104,9 +104,9 @@ extension UIViewController {
             button.createBadge(withCount: SRAppContext.shoppingCartCount)
         }
         
-       return button
+        return button
     }
-        
+    
     @objc func goToCard() {
         
     }
@@ -131,6 +131,7 @@ extension UIViewController {
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]){
+        initializeNavigationBar()
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     

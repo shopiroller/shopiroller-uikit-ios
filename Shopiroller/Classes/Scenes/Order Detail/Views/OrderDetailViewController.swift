@@ -102,9 +102,9 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
                 view.heightAnchor.constraint(equalToConstant: 100),
             ])
         }
-       
+        
         addressHeight.constant = 222
-    
+        
         if let list = viewModel.getProductList() {
             
             for item in list {
@@ -118,9 +118,13 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
                 productsHeight.constant = productsHeight.constant + 100
             }
         }
-    
     }
-   
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        initializeNavigationBar()
+    }
+    
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
             [weak self] in

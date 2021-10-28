@@ -50,7 +50,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        initializeNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon , .goToCard ,true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
