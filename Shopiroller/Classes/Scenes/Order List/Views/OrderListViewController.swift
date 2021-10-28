@@ -112,5 +112,6 @@ extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedPosition = indexPath.row
         self.getOrderDetail()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
