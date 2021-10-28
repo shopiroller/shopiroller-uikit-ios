@@ -24,7 +24,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pageVC = AddressListPageViewController(addressDelegate: self)
-        addChildViewController(pageVC)
+        addChild(pageVC)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(pageVC.view)
@@ -36,7 +36,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
             pageVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
         ])
         
-        pageVC.didMove(toParentViewController: self)
+        pageVC.didMove(toParent: self)
         
         self.pageVC = pageVC
     }

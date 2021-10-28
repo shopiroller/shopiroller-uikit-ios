@@ -33,7 +33,7 @@ extension String {
     func makeStrokeCurrency(_ price: String , currency: String) -> NSMutableAttributedString {
         let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: price)
         
-        attributedString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
         
         attributedString.appendSpace()
         

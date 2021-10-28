@@ -12,9 +12,9 @@ import  UIKit
 @UIApplicationMain
 open class SRAppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
+    public var window: UIWindow?
     
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         UIFont.listAllFontsOnSystem()
         SRAppContext.fontFamily = .poppins
         

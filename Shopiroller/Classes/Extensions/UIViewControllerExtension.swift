@@ -49,13 +49,7 @@ extension UIViewController {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
         })
     }
-    //
-    //    func layover(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-    //        viewController.view.backgroundColor = .gunMetal40
-    //        viewController.modalPresentationStyle = .overCurrentContext
-    //        present(viewController, animated: flag, completion: completion)
-    //    }
-    //
+   
     func popUp(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             viewController.modalPresentationStyle = .overCurrentContext

@@ -98,7 +98,7 @@ extension AddressListPageViewController: UIPageViewControllerDataSource {
     
     func presentationIndex(for _: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-              let firstViewControllerIndex = items.index(of: firstViewController) else {
+              let firstViewControllerIndex = items.firstIndex(of: firstViewController) else {
                   return 0
               }
         

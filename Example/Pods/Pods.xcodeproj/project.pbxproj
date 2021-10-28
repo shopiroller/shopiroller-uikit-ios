@@ -1033,7 +1033,7 @@
 		95CD8507DF02F51A31E5CBBC4AF1BE2F /* SRAppConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SRAppConstants.swift; sourceTree = "<group>"; };
 		969EA968331C45E3709B1EA7FFE6424E /* MDFColorCalculations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFColorCalculations.h; path = src/private/MDFColorCalculations.h; sourceTree = "<group>"; };
 		96E53871C45904A53742D2FB22C35758 /* MDCFontScaler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFontScaler.h; path = components/Typography/src/MDCFontScaler.h; sourceTree = "<group>"; };
-		97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Shopiroller; path = Shopiroller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shopiroller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FE2996D492B99EC0A4AA1967162C58 /* menuIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "menuIcon@3x.png"; sourceTree = "<group>"; };
 		985745BCF0E319A8BBA15626EDE6EF28 /* MaterialButtons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialButtons.h; path = components/Buttons/src/MaterialButtons.h; sourceTree = "<group>"; };
 		9922A20B1032B2721906B5E857AEA6FA /* MDCRippleViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCRippleViewDelegate.h; path = components/Ripple/src/MDCRippleViewDelegate.h; sourceTree = "<group>"; };
@@ -1130,7 +1130,7 @@
 		C26A8AD673F8966276077F50B63BB738 /* AddressListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		C3AF0801D465791F2A18ACBF33FD04C9 /* UserAddressViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserAddressViewController.swift; sourceTree = "<group>"; };
 		C3E0082C815C22ACFEC015FA18502D9E /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47CEE6B141C37FBDD9B586966A03CDF /* MDCInkView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCInkView.m; path = components/Ink/src/MDCInkView.m; sourceTree = "<group>"; };
 		C50EF2FC79C2966DD8EE6576DC7D144F /* emptyShippingAddresses@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "emptyShippingAddresses@2x.png"; sourceTree = "<group>"; };
 		C552BAC4B7FB60FCCA10FAB6010755F9 /* ProductListModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProductListModel.swift; sourceTree = "<group>"; };
@@ -1547,12 +1547,12 @@
 			isa = PBXGroup;
 			children = (
 				C1D78A7F43807F49FDB5B04DD9BD6AC7 /* ImageSlideshow */,
-				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
+				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */,
 				A34157B3708EDB7D17422B3D92F591D2 /* MaterialComponents */,
 				9A2AC0B8BAC6EF061EBC28825653DF99 /* MDFInternationalization */,
 				FB8220FA4D9117310AEFC629A6EE4A08 /* MDFTextAccessibility */,
 				CC1A27D028F7EE2466E7E976429B80AC /* Pods-Shopiroller_Example */,
-				97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller */,
+				97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller.framework */,
 				7D6D24F4E24A3087E50A6E6045F0F783 /* Shopiroller-Shopiroller */,
 				E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */,
 			);
@@ -3131,7 +3131,7 @@
 			);
 			name = Shopiroller;
 			productName = Shopiroller;
-			productReference = 97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller */;
+			productReference = 97728A1527F397EDE8AF08BE94FD3743 /* Shopiroller.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B4723B5744013DF08BE3A5FEAA286944 /* MaterialComponents */ = {
@@ -3211,7 +3211,7 @@
 			);
 			name = Kingfisher;
 			productName = Kingfisher;
-			productReference = C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */;
+			productReference = C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -3222,6 +3222,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					B380E6F5B9C37BE59D5BEF50700769CF = {
+						LastSwiftMigration = 1300;
+					};
+					E8022D22FAA6690B5E1C379C1BCE1491 = {
+						LastSwiftMigration = 1300;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4022,7 +4030,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4201,7 +4209,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4637,7 +4645,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4668,7 +4676,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
