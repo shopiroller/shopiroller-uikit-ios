@@ -13,12 +13,12 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     @IBOutlet private weak var orderTable: UITableView!
     
     init(viewModel: OrderListViewModel){
-        super.init(viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
+        super.init("order-list-page-title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
     override func setup() {
         super.setup()
-        
+        getCount()
         getOrderList()
     }
     
@@ -37,19 +37,6 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
             orderTable.backgroundColor = .clear
             orderTable.clipsToBounds = false
         }
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-            
-        getCount()
-        
     }
     
     private func getOrderList() {

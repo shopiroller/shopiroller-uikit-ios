@@ -10,15 +10,14 @@ import UIKit
 
 
 extension UINavigationBar {
-
-    func makeNavigationBar(_ backgroundColor: UIColor) {
-        self.setBackgroundImage(UIImage(), for: .default)
-        self.shadowImage = UIImage()
-        self.isTranslucent = true
-        self.backgroundColor = backgroundColor
-    }
-}
-extension UINavigationItem {
     
+    func initializeNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
+        standardAppearance = appearance;
+        scrollEdgeAppearance = standardAppearance
+    }
 }
 

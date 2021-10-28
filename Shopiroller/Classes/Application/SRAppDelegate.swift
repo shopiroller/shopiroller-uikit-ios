@@ -19,8 +19,7 @@ open class SRAppDelegate: UIResponder, UIApplicationDelegate {
         SRAppContext.fontFamily = .poppins
         
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
-        navigationController.setNavigationBarHidden(true, animated: true)
-        
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true

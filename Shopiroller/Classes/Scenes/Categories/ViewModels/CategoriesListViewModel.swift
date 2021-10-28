@@ -31,10 +31,13 @@ class CategoriesListViewModel : BaseViewModel {
         self.categoryId = categoryId
     }
     
+    func getPageTitle() -> String? {
+        return (isSubCategory == true) ? selectedRowName : "category-page-title".localized
+    }
+    
     func getModel() -> [SRCategoryResponseModel]? {
        return categoryList
     }
-    
     
     func hasSubCategory(position: Int) -> Bool {
         if categoryList?[position].subCategories != nil , !(categoryList?[position].subCategories?.isEmpty ?? false) {

@@ -42,12 +42,12 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     
     init(viewModel: OrderDetailViewModel){
-        super.init(viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
+        super.init("order-detail-page-title".localized, viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
     }
     
     override func setup() {
         super.setup()
-        
+        getCount()
         orderDetailStatusImage.image = viewModel.getStatusImage()
         orderDetailId.textColor = .textPCaption
         orderDetailPaymentStatus.textColor = .textPCaption
@@ -120,20 +120,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         }
     
     }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
-        
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-            
-        getCount()
-        
-    }
+   
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
             [weak self] in

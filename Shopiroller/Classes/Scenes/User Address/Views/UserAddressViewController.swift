@@ -18,11 +18,12 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     private var pageVC: AddressListPageViewController?
     
     init(viewModel: UserAddressViewModel){
-        super.init(viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
+        super.init("address_list_page_title".localized, viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setup() {
+        super.setup()
+        getCount()
         let pageVC = AddressListPageViewController(addressDelegate: self)
         addChild(pageVC)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,18 +40,6 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
         pageVC.didMove(toParent: self)
         
         self.pageVC = pageVC
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-        
-        getCount()
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {

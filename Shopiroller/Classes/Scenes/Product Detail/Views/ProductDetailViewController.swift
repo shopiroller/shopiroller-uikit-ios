@@ -141,7 +141,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     public override func setup() {
         super.setup()
-        
+        getCount()
         view.backgroundColor = .white
         
         checkmarkImage.tintColor = .white
@@ -239,21 +239,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityCountLabel.text = "1"
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: shareButton),searchButton,cartButton]
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-        
-        getCount()
+        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cartButton])
     }
     
     @objc func shareProduct() {
@@ -262,9 +254,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
-        
     }
-    
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
         addProductToCart()

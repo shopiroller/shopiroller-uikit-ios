@@ -14,13 +14,11 @@ extension UIViewController {
         if let navigationController = navigationController {
             CATransaction.begin()
             CATransaction.setCompletionBlock(completion)
-            navigationController.isNavigationBarHidden = true
             navigationController.pushViewController(viewController, animated: flag)
             CATransaction.commit()
         } else {
             let navigationController = UINavigationController()
             navigationController.viewControllers = [viewController]
-            navigationController.isNavigationBarHidden = true
             navigationController.modalPresentationStyle = .overFullScreen
             present(navigationController, animated: flag, completion: completion)
         }
@@ -28,7 +26,6 @@ extension UIViewController {
     
     func push(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.setNavigationBarHidden(true, animated: true)
         
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
@@ -125,8 +122,24 @@ extension UIViewController {
                , animated: true, completion: nil)
     }
     
-    @objc func goBack() { 
+    @objc func goBack() {
         pop(animated: true, completion: nil)
-    }    
+    }
+    
+    @objc func openMenu() {
+        prompt(OrderListViewController(viewModel: OrderListViewModel())
+               , animated: true, completion: nil)
+    }
+    
+    func initializeNavigationBar() {
+        navigationItem.backButtonTitle = " "
+        navigationController?.navigationBar.tintColor = .black
+    }
+    
+    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]){
+        navigationItem.backButtonTitle = " "
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.rightBarButtonItems = rightBarButtonItems
+    }
     
 }

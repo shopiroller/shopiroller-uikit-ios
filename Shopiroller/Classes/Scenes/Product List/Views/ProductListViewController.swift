@@ -32,7 +32,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     public override func setup() {
         super.setup()
-        
+        getCount()
         filterProductsContainer.layer.cornerRadius = 10
         filterProductsContainer.backgroundColor = .buttonLight
         filterProductsContainer.layer.masksToBounds = true
@@ -55,19 +55,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItems = [shareButton,searchButton,cartButton]
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-        
+        updateNavigationBar(rightBarButtonItems:  [shareButton,searchButton,cartButton])
     }
     
     private func configureEmptyView() {
@@ -80,7 +73,6 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
             filterProductsContainer.isHidden = false
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
-            getCount()
         }
     }
     
