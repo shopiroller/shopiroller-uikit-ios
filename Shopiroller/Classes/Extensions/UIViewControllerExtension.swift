@@ -90,8 +90,6 @@ extension UIViewController {
         button.layer.masksToBounds = false
         button.contentEdgeInsets.right = 7
         switch selector {
-        case .goBack:
-            button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         case .goToCard:
             button.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
         case .searchProduct:
@@ -122,10 +120,6 @@ extension UIViewController {
                , animated: true, completion: nil)
     }
     
-    @objc func goBack() {
-        pop(animated: true, completion: nil)
-    }
-    
     @objc func openMenu() {
         prompt(OrderListViewController(viewModel: OrderListViewModel())
                , animated: true, completion: nil)
@@ -137,8 +131,6 @@ extension UIViewController {
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]){
-        navigationItem.backButtonTitle = " "
-        navigationController?.navigationBar.tintColor = .black
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     
