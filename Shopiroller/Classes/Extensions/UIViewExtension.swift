@@ -9,6 +9,14 @@ import UIKit
 
 extension UIView {
     
+    func makeToast(text: String?){
+        makeToast(text, duration: 3.0, position: .bottom)
+    }
+    
+    func makeToast(_ error: ErrorViewModel){
+        makeToast(error.message, duration: 3.0, position: .bottom)
+    }
+    
     func makeCardView() {
         layer.cornerRadius = 8
         backgroundColor = .white
@@ -39,7 +47,7 @@ extension UIView {
     }
     
     func fadeOut() {
-        UIView.animate(withDuration: 3.0, delay: 0.2, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 3.0, delay: 0.2, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.alpha = 1.0
         }, completion: nil)
     }

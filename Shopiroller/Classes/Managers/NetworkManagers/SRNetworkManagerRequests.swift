@@ -111,5 +111,14 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .addresses, subpath: subpath, resourceType: [UserBillingAdressModel].self)
     }
     
+    static func deleteShippingAddress(userId: String, addressId: String) -> SRNetworkRequestManager<SuccessResponse> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shipping.rawValue)\(addressId)"
+        return SRNetworkRequestManager(httpMethod: .delete, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self)
+    }
+    
+    static func deleteBillingAddress(userId: String, addressId: String) -> SRNetworkRequestManager<SuccessResponse> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.billing.rawValue)\(addressId)"
+        return SRNetworkRequestManager(httpMethod: .delete, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self)
+    }
 }
 
