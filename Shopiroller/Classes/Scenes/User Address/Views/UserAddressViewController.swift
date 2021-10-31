@@ -21,6 +21,11 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
         super.init("address_list_page_title".localized, viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
     }
     
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
+    }
+    
     override func setup() {
         super.setup()
         getCount()

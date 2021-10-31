@@ -122,8 +122,9 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        initializeNavigationBar()
+        updateNavigationBar(isBackButtonActive: true)
     }
+    
     
     private func getCount() {
         viewModel.getShoppingCartCount(success: {

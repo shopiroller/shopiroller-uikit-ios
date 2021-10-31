@@ -245,7 +245,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
-        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cartButton])
+        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cartButton],isBackButtonActive: true)
     }
     
     @objc func shareProduct() {

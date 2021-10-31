@@ -96,6 +96,8 @@ extension UIViewController {
             button.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
         case .openOptions:
             button.addTarget(self, action: #selector(openOptions), for: .touchUpInside)
+        case .goBack:
+            button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         case .none:
             break
         }
@@ -125,13 +127,28 @@ extension UIViewController {
                , animated: true, completion: nil)
     }
     
+    @objc func goBack() {
+            pop(animated: true, completion: nil)
+    }
+    
     func initializeNavigationBar() {
         navigationItem.backButtonTitle = " "
         navigationController?.navigationBar.tintColor = .black
     }
     
-    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]){
+    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
         initializeNavigationBar()
+        let menuButton = createNavigationItem(.menuIcon)
+        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+        
+        let backButton = createNavigationItem(.backIcon , .goBack)
+        
+        if isBackButtonActive == true {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        }else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        }
+        
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     

@@ -60,6 +60,7 @@ struct SRAppConstants {
     enum NavigationItemSelectorType {
         case goToCard
         case searchProduct
+        case goBack
         case openOptions
     }
 }

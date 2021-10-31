@@ -59,8 +59,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
-        let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [shareButton,searchButton,cartButton])
+        let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
+        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton])
+        
+
     }
     
     private func configureEmptyView() {

@@ -53,10 +53,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon , .goToCard ,true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
-        let menuButton = createNavigationItem(.menuIcon)
-        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        
         updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cardButton])
     }
     
