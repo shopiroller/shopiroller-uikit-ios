@@ -14,13 +14,11 @@ extension UIViewController {
         if let navigationController = navigationController {
             CATransaction.begin()
             CATransaction.setCompletionBlock(completion)
-            navigationController.isNavigationBarHidden = true
             navigationController.pushViewController(viewController, animated: flag)
             CATransaction.commit()
         } else {
             let navigationController = UINavigationController()
             navigationController.viewControllers = [viewController]
-            navigationController.isNavigationBarHidden = true
             navigationController.modalPresentationStyle = .overFullScreen
             present(navigationController, animated: flag, completion: completion)
         }
@@ -28,7 +26,6 @@ extension UIViewController {
     
     func push(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.setNavigationBarHidden(true, animated: true)
         
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
@@ -49,7 +46,7 @@ extension UIViewController {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
         })
     }
-   
+    
     func popUp(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             viewController.modalPresentationStyle = .overCurrentContext
@@ -93,14 +90,14 @@ extension UIViewController {
         button.layer.masksToBounds = false
         button.contentEdgeInsets.right = 7
         switch selector {
-        case .goBack:
-            button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         case .goToCard:
             button.addTarget(self, action: #selector(goToCard), for: .touchUpInside)
         case .searchProduct:
             button.addTarget(self, action: #selector(searchProduct), for: .touchUpInside)
         case .openOptions:
             button.addTarget(self, action: #selector(openOptions), for: .touchUpInside)
+        case .goBack:
+            button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         case .none:
             break
         }
@@ -109,9 +106,9 @@ extension UIViewController {
             button.createBadge(withCount: SRAppContext.shoppingCartCount)
         }
         
-       return button
+        return button
     }
-        
+    
     @objc func goToCard() {
         
     }
@@ -125,8 +122,34 @@ extension UIViewController {
                , animated: true, completion: nil)
     }
     
-    @objc func goBack() { 
-        pop(animated: true, completion: nil)
-    }    
+    @objc func openMenu() {
+        prompt(OrderListViewController(viewModel: OrderListViewModel())
+               , animated: true, completion: nil)
+    }
+    
+    @objc func goBack() {
+            pop(animated: true, completion: nil)
+    }
+    
+    func initializeNavigationBar() {
+        navigationItem.backButtonTitle = " "
+        navigationController?.navigationBar.tintColor = .black
+    }
+    
+    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
+        initializeNavigationBar()
+        let menuButton = createNavigationItem(.menuIcon)
+        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
+        
+        let backButton = createNavigationItem(.backIcon , .goBack)
+        
+        if isBackButtonActive == true {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        }else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        }
+        
+        navigationItem.rightBarButtonItems = rightBarButtonItems
+    }
     
 }

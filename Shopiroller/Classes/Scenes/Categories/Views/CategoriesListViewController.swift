@@ -15,11 +15,12 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
 
     init(viewModel: CategoriesListViewModel){
         super.init(viewModel: viewModel, nibName: CategoriesListViewController.nibName, bundle: Bundle(for: CategoriesListViewController.self))
+        title = viewModel.getPageTitle()
     }
     
     public override func setup() {
         super.setup()
-        
+        getCount()
         let showAllProductTapGesture = UITapGestureRecognizer(target: self, action: #selector(showAllProducts))
         showAllSubCategoriesContainer.addGestureRecognizer(showAllProductTapGesture)
         
@@ -28,7 +29,6 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
         showAllSubCategoriesContainer.layer.borderColor = UIColor.textPCaption.withAlphaComponent(0.3).cgColor
         showAllSubCategoriesContainer.layer.masksToBounds = true
         showAllSubCategoriesContainer.clipsToBounds = true
-       
         
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
@@ -46,25 +46,16 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     }
     
     @objc func showAllProducts() {
-        print(viewModel.getCategoryId())
         let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId()))
         prompt(vc, animated: true, completion: nil)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backButton = UIBarButtonItem(customView: createNavigationItem(.backIcon , .goBack))
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItems = [shareButton,searchButton,cartButton]
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-        
-        getCount()
-        
+        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cartButton])
     }
     
     private func getCount() {

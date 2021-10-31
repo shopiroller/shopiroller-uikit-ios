@@ -27,6 +27,8 @@
 
 //MARK: - Explore
 
+"explore-page-title" = "Polsto";
+
 "explore-title-text" = "Explore";
 
 "products-identifier" = "ProductsTitleView";
@@ -66,6 +68,8 @@
 
 //MARK: - Order List
 
+"order-list-page-title" = "My Orders";
+
 "empty-orders-title" = "No order yet";
 
 "empty-orders-description" = "You have no order yet. We can’t list any product for you.";
@@ -78,7 +82,9 @@
 
 "empty-orders-title" = "No order yet";
 
-// MARK: - Order Status
+// MARK: - Order Detail
+
+"order-detail-page-title" = "Order Detail";
 
 "WaitingPayment" = "Waiting Payment";
 "WaitingApproval" = "Waiting Approval";
@@ -92,7 +98,9 @@
 "Refunded" = "Refunded";
 "PaymentFailed" = "Payment Failed";
 
-//Mark: - Categories
+//MARK: - Categories
+
+"category-page-title" = "Categories";
 
 "category-items-text" = "XX items";
 
@@ -123,6 +131,8 @@
 "order_details_quantity" = "Piece: ";
 
 // MARK: - Address List
+
+"address_list_page_title" = "My Addresses";
 
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";

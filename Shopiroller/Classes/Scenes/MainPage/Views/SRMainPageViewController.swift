@@ -25,12 +25,12 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private var refreshControl = UIRefreshControl()
     
     public init(viewModel: SRMainPageViewModel) {
-        super.init(viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
+        super.init("explore-page-title".localized, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
     
     public override func setup() {
         super.setup()
-        
+        getCount()
         view.backgroundColor = .white
 
         shimmerCollectionView.delegate = self
@@ -45,38 +45,16 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
-        
         getProducts(showProgress: true,pagination: false,refreshing: false)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon , .goToCard ,true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
-        let menuButton = createNavigationItem(.menuIcon)
         
-        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
-        navigationItem.rightBarButtonItems = [optionsButton,searchButton,cardButton]
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.makeNavigationBar(.clear)
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = .clear
-        self.navigationController?.navigationBar.standardAppearance = appearance;
-        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-            
-        getCount()
-    }
-    
-    @objc func openMenu() {
-        prompt(OrderListViewController(viewModel: OrderListViewModel())
-               , animated: true, completion: nil)
+        updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cardButton])
     }
     
     func configureRefreshControl () {
@@ -155,7 +133,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }else{
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
-            getCount()
             configureRefreshControl()
             getSliders(showProgress: true)
             getCategories(showProgress: true)
