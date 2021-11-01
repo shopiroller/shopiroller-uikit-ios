@@ -152,3 +152,10 @@
 "bottom_price_view_shipping" = "Shipping: ";
 "bottom_price_view_total" = "Total";
 "bottom_price_view_free" = "Free";
+
+// MARK: - Shopping Cart
+
+"shopping_cart_empty_title" = "Your bag is empty";
+"shopping_cart_empty_description" = "You have no items in your shopping cart";
+"shopping_cart_empty_button_title" = "Start Shopping";
+"shopping_cart_item_count" = "%@ items";

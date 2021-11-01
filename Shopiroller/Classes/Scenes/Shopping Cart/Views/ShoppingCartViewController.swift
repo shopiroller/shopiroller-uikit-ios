@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel> {
+class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, EmptyViewDelegate {
+    
 
     @IBOutlet private weak var emptyView: EmptyView!
     
@@ -30,9 +31,43 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel> {
     
     override func setup() {
         super.setup()
-        
+        getShoppingCart()
         
     }
     
+    func configure() {
+        if(viewModel.isShoppingCartEmpty()){
+            containerView.isHidden = true
+            emptyView.isHidden = false
+            emptyView.setup(model: viewModel.getEmptyModel())
+            emptyView.delegate = self
+        }else {
+            containerView.isHidden = false
+            emptyView.isHidden = true
+            
+            bottomPriceView.setup(model: viewModel.getBottomPriceModel())
+            itemCountLabel.text = viewModel.getItemCountText()
+            
+            if(viewModel.hasCampaign()){
+                campaignView.isHidden = false
+                campaignLabel.text = viewModel.campaignMessage
+            }else{
+                campaignView.isHidden = true
+            }
+            
+        }
+    }
+    
+    private func getShoppingCart() {
+        viewModel.getShoppingCart(success: {
+            self.configure()
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
+    func actionButtonClicked(_ sender: Any) {
+       popToRoot(animated: true, completion: nil)
+    }
     
 }

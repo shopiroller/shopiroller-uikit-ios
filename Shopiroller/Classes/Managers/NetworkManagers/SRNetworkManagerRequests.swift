@@ -46,7 +46,9 @@ struct SRNetworkManagerRequests {
     }
     
     static func getShoppingCart(userId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getShoppingCart, subpath: "/\(userId)", resourceType: SRShoppingCartResponseModel.self)
+        let subPath = "\(userId)\(SRNetworkManagerPaths.shoppingCart.rawValue)"
+        
+        return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subPath, resourceType: SRShoppingCartResponseModel.self)
     }
     
     static func validateShoppingCart(userId: String,cartItemId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {

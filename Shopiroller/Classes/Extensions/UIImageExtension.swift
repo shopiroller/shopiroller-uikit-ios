@@ -30,6 +30,8 @@ extension UIImage {
     
     static let emptyShippingAddresses: UIImage = UIImage(named: "emptyShippingAddresses", in: .shopiroller, with: nil)!
     
+    static let emptyShoppingCart: UIImage = UIImage(named: "emptyShoppingCart", in: .shopiroller, with: nil)!
+    
     static let filterIcon: UIImage = UIImage(named: "filterIcon", in: .shopiroller, with: nil)!
     
     static let menuIcon: UIImage = UIImage(named: "menuIcon", in: .shopiroller, with: nil)!

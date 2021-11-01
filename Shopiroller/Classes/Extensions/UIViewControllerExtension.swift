@@ -63,10 +63,14 @@ extension UIViewController {
         }
     }
     
-    func popToRoot(_ viewController: UIViewController,animated flag: Bool, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            viewController.modalPresentationStyle = .overCurrentContext
-            self.present(viewController, animated: false, completion: completion)
+    func popToRoot(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let navigationController = navigationController {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
+            navigationController.popToRootViewController(animated: flag)
+            CATransaction.commit()
+        } else {
+            dismiss(animated: flag, completion: completion)
         }
     }
     
@@ -110,7 +114,8 @@ extension UIViewController {
     }
     
     @objc func goToCard() {
-        
+        prompt(ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+               , animated: true, completion: nil)
     }
     
     @objc func searchProduct() {

@@ -15,8 +15,7 @@
                 <outlet property="campaignLabel" destination="6DE-aG-8eF" id="w3J-aV-zFp"/>
                 <outlet property="campaignView" destination="dEY-bJ-zEg" id="AM6-sv-F7H"/>
                 <outlet property="checkoutButton" destination="w6u-md-Q9h" id="RVY-ga-F9q"/>
-                <outlet property="clearCart" destination="dDJ-S5-6Ib" id="CJY-2x-F11"/>
-                <outlet property="clearCartButton" destination="dDJ-S5-6Ib" id="Qmd-IQ-F3N"/>
+                <outlet property="clearCartButton" destination="dDJ-S5-6Ib" id="1Qc-zu-2Gl"/>
                 <outlet property="containerView" destination="RfG-G5-5DR" id="bwu-ks-4l1"/>
                 <outlet property="emptyView" destination="0ID-l1-U7a" id="kzi-GS-DDQ"/>
                 <outlet property="itemCountLabel" destination="SeN-fu-Aj6" id="DYw-i9-U6U"/>
