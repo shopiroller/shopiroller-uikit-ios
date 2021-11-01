@@ -275,6 +275,8 @@
 		75488511C0EB03E6C3B90820BC7C9112 /* SRNetworkManagerURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60544EF0D36C8FEEC1814683970E2EEA /* SRNetworkManagerURLSessionDelegate.swift */; };
 		75C67B5F272FF4580089CB67 /* BottomPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C67B5E272FF4580089CB67 /* BottomPriceView.swift */; };
 		75C67B61272FF46C0089CB67 /* BottomPriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C67B60272FF46C0089CB67 /* BottomPriceView.xib */; };
+		75C67B65273028840089CB67 /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C67B63273028840089CB67 /* ShoppingCartTableViewCell.swift */; };
+		75C67B66273028840089CB67 /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C67B64273028840089CB67 /* ShoppingCartTableViewCell.xib */; };
 		75C815192E4CEAFE56F738DD89C4683C /* emptyBillingAddresses.png in Resources */ = {isa = PBXBuildFile; fileRef = CFBB24F47688FD7CD6F77B971B2E7D99 /* emptyBillingAddresses.png */; };
 		7634916D2C8288076BA4B92B326826E0 /* orderPreparing.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBD06EF7B890A9C8619BFE38AEE74F8 /* orderPreparing.png */; };
 		7649023AF0B95768C7838080FF6B3E7B /* UIFont+MaterialTypographyPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 861DAA0B60E7C638A4C87CE0E1B3FC18 /* UIFont+MaterialTypographyPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -959,6 +961,8 @@
 		746D3E93D0056E803619ED2D660D20C5 /* MDCRectangleShapeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCRectangleShapeGenerator.h; path = components/Shapes/src/MDCRectangleShapeGenerator.h; sourceTree = "<group>"; };
 		75C67B5E272FF4580089CB67 /* BottomPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPriceView.swift; sourceTree = "<group>"; };
 		75C67B60272FF46C0089CB67 /* BottomPriceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomPriceView.xib; sourceTree = "<group>"; };
+		75C67B63273028840089CB67 /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		75C67B64273028840089CB67 /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		76F31C2D366CDFD87BD58B122502660F /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = ImageSlideshow/Classes/Core/SwiftSupport.swift; sourceTree = "<group>"; };
 		78C6212CE6BD1C5980A846DFA16B0F1E /* ImageSlideshow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageSlideshow.swift; path = ImageSlideshow/Classes/Core/ImageSlideshow.swift; sourceTree = "<group>"; };
 		792D5A3E870E231AE81F32A566064444 /* MDFInternationalization.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MDFInternationalization.modulemap; sourceTree = "<group>"; };
@@ -2136,6 +2140,15 @@
 			path = "Bottom Price View";
 			sourceTree = "<group>";
 		};
+		75C67B622730283C0089CB67 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				75C67B63273028840089CB67 /* ShoppingCartTableViewCell.swift */,
+				75C67B64273028840089CB67 /* ShoppingCartTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		79FB21A2192BBF6725E24C0DBA5BA083 /* Order Detail Product View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2892,6 +2905,7 @@
 		F7D3D2020CA4D95F2F481A836008FC3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				75C67B622730283C0089CB67 /* Cells */,
 				EDAC995A065B5860F2E46F54AC721D2C /* ShoppingCartViewController.swift */,
 				1524A6F0D325EE47BBD2C25192B33270 /* ShoppingCartViewController.xib */,
 			);
@@ -3508,6 +3522,7 @@
 			files = (
 				F40562E5E26003A74FC4700B16466E4F /* Shopiroller-Shopiroller in Resources */,
 				75C67B61272FF46C0089CB67 /* BottomPriceView.xib in Resources */,
+				75C67B66273028840089CB67 /* ShoppingCartTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3906,6 +3921,7 @@
 				5ACD82BE7E32481C58B5D9E48DF328EC /* SliderCollectionViewCell.xib in Sources */,
 				3E9EC94CC5A37EC82840750E37F4E99D /* SliderTableViewCell.swift in Sources */,
 				2786EA33F1417552C68D69C510D098E9 /* SliderTableViewCell.xib in Sources */,
+				75C67B65273028840089CB67 /* ShoppingCartTableViewCell.swift in Sources */,
 				49EB3362CD75539E1292999463B729E8 /* sortIcon.png in Sources */,
 				0A965BB19ADBB8104F73F741F79186C6 /* sortIcon@2x.png in Sources */,
 				BEC646EADC09D2D53BEBEC7DC6FDEF36 /* sortIcon@3x.png in Sources */,

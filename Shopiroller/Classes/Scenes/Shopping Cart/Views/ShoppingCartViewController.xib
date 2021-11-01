@@ -16,7 +16,7 @@
                 <outlet property="campaignView" destination="dEY-bJ-zEg" id="AM6-sv-F7H"/>
                 <outlet property="checkoutButton" destination="w6u-md-Q9h" id="RVY-ga-F9q"/>
                 <outlet property="clearCartButton" destination="dDJ-S5-6Ib" id="1Qc-zu-2Gl"/>
-                <outlet property="containerView" destination="RfG-G5-5DR" id="bwu-ks-4l1"/>
+                <outlet property="containerView" destination="jcM-vH-C2R" id="s2o-Tw-YO1"/>
                 <outlet property="emptyView" destination="0ID-l1-U7a" id="kzi-GS-DDQ"/>
                 <outlet property="itemCountLabel" destination="SeN-fu-Aj6" id="DYw-i9-U6U"/>
                 <outlet property="tableView" destination="9eq-LT-85j" id="u94-cd-CyG"/>
@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-vH-C2R">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-vH-C2R" userLabel="Container View">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-G5-5DR">
@@ -93,9 +93,8 @@
                                 <constraint firstItem="SeN-fu-Aj6" firstAttribute="top" secondItem="RfG-G5-5DR" secondAttribute="top" id="sip-dR-1bf"/>
                             </constraints>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-LT-85j">
-                            <rect key="frame" x="0.0" y="136" width="414" height="557"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-LT-85j">
+                            <rect key="frame" x="15" y="136" width="384" height="557"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-OH-8i5" userLabel="Bottom View">
                             <rect key="frame" x="0.0" y="693" width="414" height="125"/>
@@ -139,8 +138,8 @@
                         <constraint firstItem="9eq-LT-85j" firstAttribute="top" secondItem="RfG-G5-5DR" secondAttribute="bottom" constant="20" id="C2C-rr-glP"/>
                         <constraint firstAttribute="trailing" secondItem="Zoh-OH-8i5" secondAttribute="trailing" id="Lx1-Xw-M87"/>
                         <constraint firstAttribute="bottom" secondItem="Zoh-OH-8i5" secondAttribute="bottom" id="TIS-c3-l1H"/>
-                        <constraint firstItem="9eq-LT-85j" firstAttribute="leading" secondItem="jcM-vH-C2R" secondAttribute="leading" id="aw7-Yg-vUu"/>
-                        <constraint firstAttribute="trailing" secondItem="9eq-LT-85j" secondAttribute="trailing" id="hMZ-4s-Nrf"/>
+                        <constraint firstItem="9eq-LT-85j" firstAttribute="leading" secondItem="jcM-vH-C2R" secondAttribute="leading" constant="15" id="aw7-Yg-vUu"/>
+                        <constraint firstAttribute="trailing" secondItem="9eq-LT-85j" secondAttribute="trailing" constant="15" id="hMZ-4s-Nrf"/>
                         <constraint firstAttribute="trailing" secondItem="RfG-G5-5DR" secondAttribute="trailing" constant="15" id="nqh-CI-O9g"/>
                         <constraint firstItem="Zoh-OH-8i5" firstAttribute="leading" secondItem="jcM-vH-C2R" secondAttribute="leading" id="s6V-zE-B6M"/>
                         <constraint firstItem="RfG-G5-5DR" firstAttribute="top" secondItem="jcM-vH-C2R" secondAttribute="top" constant="20" id="zd6-T0-yCi"/>

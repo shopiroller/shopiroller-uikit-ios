@@ -14,7 +14,7 @@ class ShoppingCartViewModel: BaseViewModel {
     var campaignMessage: String?
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Keys.userId).response() {
+        SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
             switch result {
             case .success(let result):
@@ -38,8 +38,8 @@ class ShoppingCartViewModel: BaseViewModel {
         return EmptyModel(image: .emptyShoppingCart, title: "shopping_cart_empty_title".localized, description: "shopping_cart_empty_description".localized, button: ButtonModel(title:     "shopping_cart_empty_button_title".localized, color: .textPrimary))
     }
     
-    func getItemCountText() -> String {
-        return String(format: "shopping_cart_item_count".localized, (shoppingCart?.items?.count ?? 0) as CVarArg)
+    func getItemCountText() -> String {
+        return String(format: "shopping_cart_item_count".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg)
     }
     
     func getBottomPriceModel() -> BottomPriceModel {

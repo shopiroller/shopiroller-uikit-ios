@@ -33,6 +33,11 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         super.setup()
         getShoppingCart()
         
+        itemCountLabel.textColor = .textPCaption
+        clearCartButton.tintColor = .textPrimary
+        
+        campaignView.backgroundColor = .buttonLight
+        campaignLabel.textColor = .textPrimary
     }
     
     func configure() {
