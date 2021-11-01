@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+class ShoppingCartViewModel: BaseViewModel {
+    
+    
+    
+}
