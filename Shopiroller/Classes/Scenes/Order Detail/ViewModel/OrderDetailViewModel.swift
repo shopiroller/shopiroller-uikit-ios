@@ -100,16 +100,8 @@ class OrderDetailViewModel: BaseViewModel {
         return label
     }
     
-    func getSubTotalText() -> String? {
-        return "order_details_bank_subtotal".localized + ECommerceUtil.getFormattedPrice(price: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), currency: detail?.currency)
-    }
-   
-    func getShippingTotalText() -> String? {
-        return "order_details_bank_shipping".localized + ECommerceUtil.getFormattedPrice(price: detail?.shippingPrice, currency: detail?.currency)
-    }
-    
-    func getTotalText() -> String? {
-        return ECommerceUtil.getFormattedPrice(price: detail?.totalPrice, currency: detail?.currency)
+    func getBottomPriceModel() -> BottomPriceModel {
+        return BottomPriceModel(subTotalPrice: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), shippingPrice: detail?.shippingPrice, totalPrice: detail?.totalPrice, currency: detail?.currency)
     }
     
     func getAddressList() -> [AddressCellModel] {

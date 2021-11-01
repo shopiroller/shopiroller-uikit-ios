@@ -10,10 +10,7 @@ import UIKit
 class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     
-    @IBOutlet private weak var bottomSubTotal: UILabel!
-    @IBOutlet private weak var bottomShipping: UILabel!
-    @IBOutlet private weak var bottomTotal: UILabel!
-    @IBOutlet private weak var bottomTotalPrice: UILabel!
+    @IBOutlet weak var bottomPriceView: BottomPriceView!
     
     @IBOutlet private weak var orderDetailId: UILabel!
     @IBOutlet private weak var orderDetailPaymentStatus: UILabel!
@@ -85,14 +82,8 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             paymentStackView.isHidden = true
         }
         
-        bottomSubTotal.textColor = .textSecondary
-        bottomShipping.textColor = .textSecondary
-        bottomTotal.textColor = .textSecondary
-        
-        bottomSubTotal.text = viewModel.getSubTotalText()
-        bottomShipping.text = viewModel.getShippingTotalText()
-        bottomTotalPrice.text = viewModel.getTotalText()
-        
+        bottomPriceView.setup(model: viewModel.getBottomPriceModel())
+      
         for item in viewModel.getAddressList() {
             let view = AddressView()
             view.setup(model: item)

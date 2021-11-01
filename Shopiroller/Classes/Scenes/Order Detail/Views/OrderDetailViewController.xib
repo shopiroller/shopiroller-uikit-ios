@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,10 +15,7 @@
                 <outlet property="addressHeight" destination="Oi9-j7-cSw" id="3lW-Ml-Bh4"/>
                 <outlet property="addressSeparator" destination="MEA-Zl-Umd" id="2fJ-ch-83I"/>
                 <outlet property="addressStackView" destination="Oi9-j7-cSw" id="5CY-2G-PGf"/>
-                <outlet property="bottomShipping" destination="bqB-gs-6VJ" id="cbj-8B-k2T"/>
-                <outlet property="bottomSubTotal" destination="hLV-7J-6MQ" id="X7f-XZ-rMp"/>
-                <outlet property="bottomTotal" destination="e0i-w9-ljA" id="Ap9-LJ-ejC"/>
-                <outlet property="bottomTotalPrice" destination="2TK-iX-fGt" id="taa-P5-jdv"/>
+                <outlet property="bottomPriceView" destination="88e-7N-CV7" id="Pns-IU-ilA"/>
                 <outlet property="cargoSeparator" destination="9SC-Sd-dni" id="eFF-cM-jke"/>
                 <outlet property="cargoStackView" destination="6OQ-Uw-45G" id="a4b-Ce-idZ"/>
                 <outlet property="cargoTrackingId" destination="kFX-OH-owe" id="QeY-il-jn0"/>
@@ -212,45 +209,11 @@
                         <constraint firstItem="LCF-O5-liO" firstAttribute="leading" secondItem="hAw-cS-UNk" secondAttribute="leading" id="pcX-X4-wKJ"/>
                     </constraints>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88e-7N-CV7" userLabel="bottomView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88e-7N-CV7" userLabel="bottomView" customClass="BottomPriceView" customModule="Shopiroller" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="792" width="414" height="70"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal: $348.48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLV-7J-6MQ">
-                            <rect key="frame" x="15" y="15" width="103" height="14.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping: Free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqB-gs-6VJ">
-                            <rect key="frame" x="15" y="36.5" width="82" height="14.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0i-w9-ljA">
-                            <rect key="frame" x="371" y="10" width="28" height="14.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="348,48 TL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TK-iX-fGt">
-                            <rect key="frame" x="313.5" y="29.5" width="85.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="bqB-gs-6VJ" firstAttribute="leading" secondItem="hLV-7J-6MQ" secondAttribute="leading" id="2GM-jU-4Ka"/>
-                        <constraint firstItem="2TK-iX-fGt" firstAttribute="trailing" secondItem="e0i-w9-ljA" secondAttribute="trailing" id="B15-rk-di1"/>
-                        <constraint firstItem="bqB-gs-6VJ" firstAttribute="top" secondItem="hLV-7J-6MQ" secondAttribute="bottom" constant="7" id="Kxd-ai-LHU"/>
-                        <constraint firstItem="hLV-7J-6MQ" firstAttribute="leading" secondItem="88e-7N-CV7" secondAttribute="leading" constant="15" id="VMe-Nh-8UG"/>
                         <constraint firstAttribute="height" constant="70" id="aPQ-7T-ZBa"/>
-                        <constraint firstAttribute="trailing" secondItem="e0i-w9-ljA" secondAttribute="trailing" constant="15" id="cwS-yj-bIo"/>
-                        <constraint firstItem="e0i-w9-ljA" firstAttribute="top" secondItem="88e-7N-CV7" secondAttribute="top" constant="10" id="lnJ-UT-bky"/>
-                        <constraint firstItem="hLV-7J-6MQ" firstAttribute="top" secondItem="88e-7N-CV7" secondAttribute="top" constant="15" id="q0K-tD-FkR"/>
-                        <constraint firstItem="2TK-iX-fGt" firstAttribute="top" secondItem="e0i-w9-ljA" secondAttribute="bottom" constant="5" id="vT2-V5-BWP"/>
                     </constraints>
                 </view>
             </subviews>
