@@ -155,7 +155,13 @@
 
 // MARK: - Shopping Cart
 
+"shopping_cart_title" = "Shopping Cart";
+
 "shopping_cart_empty_title" = "Your bag is empty";
 "shopping_cart_empty_description" = "You have no items in your shopping cart";
 "shopping_cart_empty_button_title" = "Start Shopping";
 "shopping_cart_item_count" = "%@ items";
+
+// MARK: - Shopping Cell
+"shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
+

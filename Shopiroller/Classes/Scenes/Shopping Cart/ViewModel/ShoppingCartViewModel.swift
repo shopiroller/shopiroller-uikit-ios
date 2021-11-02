@@ -58,5 +58,13 @@ class ShoppingCartViewModel: BaseViewModel {
         return false
     }
     
+    func shopingItemCount() -> Int {
+        return shoppingCart?.items?.count ?? 0
+    }
+    
+    func getShoppingCartItem(position : Int) -> ShoppingCartItem? {
+        return shoppingCart?.items?[position]
+    }
+    
     
 }

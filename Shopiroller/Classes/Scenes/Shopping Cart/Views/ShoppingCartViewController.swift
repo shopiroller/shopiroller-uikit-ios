@@ -26,7 +26,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
 
     init(viewModel: ShoppingCartViewModel){
-        super.init(viewModel: viewModel, nibName: ShoppingCartViewController.nibName, bundle: Bundle(for: ShoppingCartViewController.self))
+        super.init("shopping_cart_title".localized, viewModel: viewModel, nibName: ShoppingCartViewController.nibName, bundle: Bundle(for: ShoppingCartViewController.self))
     }
     
     override func setup() {
@@ -60,6 +60,10 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
                 campaignView.isHidden = true
             }
             
+            tableView.register(cellClass: ShoppingCartTableViewCell.self)
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.reloadData()
         }
     }
     
@@ -73,6 +77,33 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     func actionButtonClicked(_ sender: Any) {
        popToRoot(animated: true, completion: nil)
+    }
+    
+}
+
+extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.shopingItemCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
+        
+        guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
+        cell.setup(model: model, indexPathRow: indexPath.row, self)
+        
+        return cell
+    }
+}
+
+extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
+    func deleteClicked(indexPathRow: Int?) {
+        
+    }
+    
+    func updateQuantityClicked(indexPathRow: Int?, quantity: Int) {
+        
     }
     
 }
