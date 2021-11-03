@@ -165,6 +165,10 @@
 "shopping_cart_clear_cart_description" = "You are clearing all  products in shopping cart now.";
 "shopping_cart_clear_cart_not_now" = "No, not now";
 "shopping_cart_clear_cart_clear_cart" = "Yes, clear my cart";
+"shopping_cart_validate_title" = "Cart is updating";
+"shopping_cart_validate_description" = "Your basket will be updated for the reasons below.";
+"shopping_cart_validate_warning" = "%@ product’s stock changed, %@ products are out of stock.";
+"shopping_cart_validate_ready_checkout" = "Ready to Checkout";
 
 // MARK: - Shopping Cell
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";

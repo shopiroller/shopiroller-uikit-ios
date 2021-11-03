@@ -87,5 +87,13 @@ class ShoppingCartViewModel: BaseViewModel {
         return PopUpViewModel(image: .clearCart, title:  "shopping_cart_clear_cart_title".localized, description: "shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title:     "shopping_cart_clear_cart_not_now".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "shopping_cart_clear_cart_clear_cart".localized, type: .lightButton))
     }
     
+    func hasInvalidItems() -> Bool {
+        return shoppingCart?.invalidItems?.count ?? 0 > 0
+    }
+    
+    func geShoppingCartPopUpViewModel() -> ShoppingCartPopUpViewModel {
+        return ShoppingCartPopUpViewModel(productList: shoppingCart?.items)
+    }
+    
     
 }

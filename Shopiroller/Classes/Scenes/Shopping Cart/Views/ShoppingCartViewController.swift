@@ -64,6 +64,8 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             tableView.delegate = self
             tableView.dataSource = self
             tableView.reloadData()
+            
+            checkInvalidation()
         }
     }
     
@@ -83,6 +85,14 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
+    private func checkInvalidation() {
+        if(true){
+            let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel())
+          //  vc.delegate = self
+            popUp(vc, completion: nil)
+        }
+    }
+    
     func actionButtonClicked(_ sender: Any) {
        popToRoot(animated: true, completion: nil)
     }
@@ -92,6 +102,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         vc.delegate = self
         popUp(vc, completion: nil)
     }
+    
     
 }
 

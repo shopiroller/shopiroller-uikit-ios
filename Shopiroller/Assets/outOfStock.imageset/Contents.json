@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "productWarning.png",
+      "filename" : "outOfStock.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "productWarning@2x.png",
+      "filename" : "outOfStock@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "productWarning@3x.png",
+      "filename" : "outOfStock@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
