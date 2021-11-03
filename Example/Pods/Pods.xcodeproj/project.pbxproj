@@ -312,6 +312,9 @@
 		740B335D3A7E18A9280DC17E64774B81 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0029129906FB0C8BF4AA12220D5370 /* UIViewControllerExtension.swift */; };
 		7479F1EFDA151F4FCDE5688B31C5A47D /* MDCPathGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF4097DDDACDB32E56574920CDDAD9C /* MDCPathGenerator.m */; };
 		749B253403FC615B2C24BE1E1B8CF387 /* SRMainPageViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0F15EF5125930E1832DC2254F175F1D1 /* SRMainPageViewController.xib */; };
+		753687502732B68000AE7C09 /* ShoppingCartPopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7536874F2732B68000AE7C09 /* ShoppingCartPopUpViewModel.swift */; };
+		753687532732B6D100AE7C09 /* ShoppingCartPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753687512732B6D100AE7C09 /* ShoppingCartPopUpViewController.swift */; };
+		753687542732B6D100AE7C09 /* ShoppingCartPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 753687522732B6D100AE7C09 /* ShoppingCartPopUpViewController.xib */; };
 		75C673C38FD7FFDBAB4C0F44BF3C65B0 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583A8AEFC4B15A77FF09F453CA08B31C /* WebViewController.xib */; };
 		76216C505AD653C3DD693AD307E630B1 /* CategoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBE5C5793FC2840DC22EDDA9DE9C2207 /* CategoriesListViewController.xib */; };
 		7649023AF0B95768C7838080FF6B3E7B /* UIFont+MaterialTypographyPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 861DAA0B60E7C638A4C87CE0E1B3FC18 /* UIFont+MaterialTypographyPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1024,6 +1027,9 @@
 		7506F6A0B13D7BAA0344F3B71C9DC099 /* orderWaitingSupplying.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = orderWaitingSupplying.png; sourceTree = "<group>"; };
 		750CB926CC83D3E6C1BAA1F3AB751816 /* validateCart.imageset */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = validateCart.imageset; sourceTree = "<group>"; };
 		7511C4E99D2FEAF2237FAFA5EDFD31E4 /* UserShippingAddressModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserShippingAddressModel.swift; sourceTree = "<group>"; };
+		7536874F2732B68000AE7C09 /* ShoppingCartPopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartPopUpViewModel.swift; sourceTree = "<group>"; };
+		753687512732B6D100AE7C09 /* ShoppingCartPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartPopUpViewController.swift; sourceTree = "<group>"; };
+		753687522732B6D100AE7C09 /* ShoppingCartPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartPopUpViewController.xib; sourceTree = "<group>"; };
 		7560958311610D129DC2FF223CB37D65 /* Shopiroller-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Shopiroller-dummy.m"; sourceTree = "<group>"; };
 		75B4FC324E73A8E02DA1AA7A77E23697 /* deliveryAddress.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = deliveryAddress.png; sourceTree = "<group>"; };
 		76482F15D1D173EF058E75D086046498 /* ShopirollerError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopirollerError.swift; sourceTree = "<group>"; };
@@ -2294,6 +2300,32 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		7536874C2732B62E00AE7C09 /* Shopping Cart PopUp View */ = {
+			isa = PBXGroup;
+			children = (
+				7536874E2732B66700AE7C09 /* Views */,
+				7536874D2732B65D00AE7C09 /* ViewModel */,
+			);
+			path = "Shopping Cart PopUp View";
+			sourceTree = "<group>";
+		};
+		7536874D2732B65D00AE7C09 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7536874F2732B68000AE7C09 /* ShoppingCartPopUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7536874E2732B66700AE7C09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				753687512732B6D100AE7C09 /* ShoppingCartPopUpViewController.swift */,
+				753687522732B6D100AE7C09 /* ShoppingCartPopUpViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7C5CC86C2B390D35E004DE22A8EA1F9E /* AnimationTiming */ = {
 			isa = PBXGroup;
 			children = (
@@ -2462,6 +2494,7 @@
 		A3FA1892F3C326BD3E81BD58BF407371 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7536874C2732B62E00AE7C09 /* Shopping Cart PopUp View */,
 				D8DA2FFD7338D748BCDD76F3673408B2 /* BaseView.swift */,
 				C90757C3CC57292A8684A0BE4307D832 /* SRButton.swift */,
 				167D166A17949264B57D5D4F43B7336E /* Address View */,
@@ -3525,6 +3558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B37687C571E7B5834F5BBF361B03F3A /* Shopiroller-Shopiroller in Resources */,
+				753687542732B6D100AE7C09 /* ShoppingCartPopUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4002,6 +4036,7 @@
 				0B6B8C4A379DE322DD4E9B4D95F5C01D /* OrderListViewController.xib in Sources */,
 				276A2D34098DA28461860E62DC74F7B4 /* OrderListViewModel.swift in Sources */,
 				F68279F4DDA917D61B128547CED29F5D /* orderNoResult.png in Sources */,
+				753687502732B68000AE7C09 /* ShoppingCartPopUpViewModel.swift in Sources */,
 				4D75F45568D04E1936EDEF0281AFD8BB /* orderNoResult@2x.png in Sources */,
 				D3FA232B7A55C4AE55A36599D435E59E /* orderNoResult@3x.png in Sources */,
 				D6D68E02516E17FAD780F21AD27BAC9A /* orderPaymentFailed.png in Sources */,
@@ -4096,6 +4131,7 @@
 				BD1CDC12317A30589F97CD47365DC7EE /* SRNetworkManager.swift in Sources */,
 				F34D32F7F7CEBA434C34287FCAD2F341 /* SRNetworkManagerContentType.swift in Sources */,
 				B2696FF187971269E33B6FDBE7EE0F16 /* SRNetworkManagerHttpMethods.swift in Sources */,
+				753687532732B6D100AE7C09 /* ShoppingCartPopUpViewController.swift in Sources */,
 				F2B09DB4E9BD5671481F80B2B813909B /* SRNetworkManagerPaths.swift in Sources */,
 				643819E2677502E762CD4D6EBF861A41 /* SRNetworkManagerRequests.swift in Sources */,
 				C536DC7F757F08EAC1EA299BDA4290EC /* SRNetworkManagerResponse.swift in Sources */,
