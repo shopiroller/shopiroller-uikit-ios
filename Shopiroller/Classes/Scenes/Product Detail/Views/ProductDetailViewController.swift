@@ -329,7 +329,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             if self.viewModel.isOutofStock() {
                 self.showSoldOutPopUp()
             }else if self.viewModel.isQuantityMax() {
-                self.showMaxQuantityPopUp()
+                self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
             }else {
                 self.soldOutContainer.isHidden = true
                 self.quantityContainer.isHidden = false
@@ -373,15 +373,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @objc private func returnExchangeContainerTapped(_ sender: Any) {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: Constants.returnExchangeTitle, description: viewModel.getReturnExchangeTerms() , firstButton: popUpButton(title: Constants.backToProductButtonText, type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
-        vc.delegate = self
-        self.popUp(vc, completion: nil)
+        showPopUp(viewModel: viewModel.getReturnExchangePopUpViewModel())
     }
     
     @objc private func deliveryTermsContainerTapped(_ sender: Any) {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .paymentFailed, title: Constants.deliveryTitle, description: viewModel.getDeliveryTerms()?.localized , firstButton: popUpButton(title: Constants.backToProductButtonText, type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
-        vc.delegate = self
-        self.popUp(vc, completion: nil)
+        showPopUp(viewModel: viewModel.getDeliveryTermsPopUpViewModel())
     }
     
     private func setUI() {
@@ -448,31 +444,25 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         soldOutLabel.text = Constants.soldOutText
         quantityContainer.isHidden = true
         
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .backIcon, title: Constants.outOfStockTitle, description: Constants.outOfStockDescription , firstButton: popUpButton(title: Constants.backToProductsButtonText, type: .popToRoot, viewController: nil, buttonType: .darkButton), secondButton: nil))
-        
-        vc.delegate = self
-        
-        popUp(vc, completion: nil)
+        showPopUp(viewModel: viewModel.getSoldOutPopUpViewModel())
     }
     
-    private func showMaxQuantityPopUp() {
-        let vc = PopUpViewViewController(viewModel: PopUpViewModel(image: .backIcon, title: Constants.maxQuantityTitle, description: Constants.maxQuantityDescription , firstButton: popUpButton(title: Constants.backToProductButtonText, type: .dismiss, viewController: nil, buttonType: .darkButton), secondButton: nil))
-        
+    private func showPopUp(viewModel: PopUpViewModel) {
+        let vc = PopUpViewViewController(viewModel: viewModel)
         vc.delegate = self
-        
         popUp(vc, completion: nil)
     }
 }
 
-extension ProductDetailViewController : BackToProductListDelegate {
-    func popView() {
-        pop(animated: false, completion: nil)
+extension ProductDetailViewController : PopUpViewViewControllerDelegate {
+    func firstButtonClicked(_ sender: Any) {
+        if(viewModel.isStateSoldOut()) {
+            popToRoot(animated: true, completion: nil)
+        }
     }
     
-    func dismissView() {
-        dismiss(animated: false, completion: nil)
+    func secondButtonClicked(_ sender: Any) {
     }
-    
 }
 
 

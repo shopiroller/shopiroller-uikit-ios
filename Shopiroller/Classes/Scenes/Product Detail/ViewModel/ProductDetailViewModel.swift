@@ -16,6 +16,7 @@ public class ProductDetailViewModel: BaseViewModel {
     private var paymentSettings: PaymentSettingsResponeModel?
     
     var quantityCount = 1
+    private var popUpState: PopUpState = .deliveryTerms
     
     init (productId: String = String()) {
         self.productId = productId
@@ -167,4 +168,31 @@ public class ProductDetailViewModel: BaseViewModel {
         return SRNetworkContext.appKey
     }
     
+    func getReturnExchangePopUpViewModel() -> PopUpViewModel {
+        popUpState = .returnExchange
+        return PopUpViewModel(image: .paymentFailed, title: "return-exchange-terms-title".localized, description: getReturnExchangeTerms() , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+    }
+
+    func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
+        popUpState = .deliveryTerms
+        return PopUpViewModel(image: .paymentFailed, title: "delivery-terms-title".localized, description: getDeliveryTerms()?.localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+    }
+
+    func getSoldOutPopUpViewModel() -> PopUpViewModel {
+        popUpState = .soldOut
+        return PopUpViewModel(image: .backIcon, title: "product-detail-out-of-stock-title".localized, description: "product-detail-out-of-stock-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-list-button-text".localized, type: .lightButton), secondButton: nil)
+    }
+    
+    func getMaxQuantityPopUpViewModel() -> PopUpViewModel {
+        popUpState = .maxQuantity
+        return PopUpViewModel(image: .backIcon, title: "product-detail-maximum-product-quantity-title".localized, description: "product-detail-maximum-product-quantity-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+    }
+    
+    func isStateSoldOut() -> Bool {
+        return popUpState == .soldOut
+    }
+}
+
+enum PopUpState {
+    case returnExchange, deliveryTerms, soldOut, maxQuantity
 }
