@@ -128,8 +128,11 @@ extension UIViewController {
     }
     
     @objc func openMenu() {
-        prompt(OrderListViewController(viewModel: OrderListViewModel())
-               , animated: true, completion: nil)
+//        prompt(OrderListViewController(viewModel: OrderListViewModel())
+//               , animated: true, completion: nil)
+        let vc = CheckOutViewController(viewModel: CheckOutViewModel())
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func goBack() {

@@ -15,6 +15,12 @@
 
 "section-see-all-title" = "See All";
 
+"address-text" = "Address";
+
+"payment-text" = "Payment";
+
+"info-text" = "Info";
+
 //MARK: - Products Empty View
 
 "empty-view-title" = "No Products added.";
@@ -138,11 +144,10 @@
 "address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
 "address_list_empty_billing_title" = "No billing address";
 "address_list_empty_billing_description" = "Launch your first address and take an items you want.";
-"address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
-
+"address_list_delete_success" = "Delivery adress successfully deleted.";
 // MARK: - Address Cell
 
-"address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
+"address_cell_confirm_title" = " Are you sure you want to delete the address?";
 "address_cell_cancel" = "Cancel";
 "address_cell_delete" = "Delete";
 
@@ -173,3 +178,21 @@
 // MARK: - Shopping Cell
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
 
+//Mark: - Checkout Progress
+
+"delivery-information-page-title" = "Delivery Information";
+
+"payment-information-page-title" = "Payment";
+
+"info-information-page-title" = "Info";
+
+
+//Mark: - GeneralAddressView
+
+"delivery-address-title" = "Delivery Adress";
+
+"billing-address-title" = "Billing Address";
+
+"add-address-button-text" = "Add Address";
+
+"select-other-address-button-text" = "Select Other Address";
