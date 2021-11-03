@@ -64,7 +64,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     }
     
     func actionButtonClicked(_ sender: Any) {
-        pop(animated: true, completion: nil)
+       popToRoot(animated: true, completion: nil)
     }
     
     private func getCount() {

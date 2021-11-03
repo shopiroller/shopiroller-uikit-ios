@@ -124,8 +124,6 @@
 "order_details_bank_receiver" = "Receiver Name: ";
 "order_details_bank_account" = "Account: ";
 "order_details_bank_iban" = "Iban: ";
-"order_details_bank_subtotal" = "Subtotal: ";
-"order_details_bank_shipping" = "Shipping: ";
 "order_details_address_delivery" = "Delivery Address";
 "order_details_address_shipping" = "Billing Address";
 "order_details_quantity" = "Piece: ";
@@ -141,8 +139,29 @@
 "address_list_empty_billing_title" = "No billing address";
 "address_list_empty_billing_description" = "Launch your first address and take an items you want.";
 "address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
+
 // MARK: - Address Cell
 
 "address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
 "address_cell_cancel" = "Cancel";
 "address_cell_delete" = "Delete";
+
+// MARK: - Bottom Price View
+
+"bottom_price_view_subtotal" = "Subtotal: ";
+"bottom_price_view_shipping" = "Shipping: ";
+"bottom_price_view_total" = "Total";
+"bottom_price_view_free" = "Free";
+
+// MARK: - Shopping Cart
+
+"shopping_cart_title" = "Shopping Cart";
+
+"shopping_cart_empty_title" = "Your bag is empty";
+"shopping_cart_empty_description" = "You have no items in your shopping cart";
+"shopping_cart_empty_button_title" = "Start Shopping";
+"shopping_cart_item_count" = "%@ items";
+
+// MARK: - Shopping Cell
+"shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
+
