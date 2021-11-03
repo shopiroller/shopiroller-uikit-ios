@@ -10,5 +10,5 @@ import Foundation
 
 class CheckOutAddressViewModel: BaseViewModel {
     
-    private var defaultAdressList: 
+    
 }
