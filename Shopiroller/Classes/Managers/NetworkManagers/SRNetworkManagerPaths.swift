@@ -22,7 +22,7 @@ enum SRNetworkManagerPaths: String {
     case removeItemFromShoppingCart = "/users/{userId}/shopping-cart/items/{cartItemId}"
     case updateItemQuantity = "/users/{userId}/shopping-cart/items/{cartItemId}/quantity"
     case addProductToShoppingCart = "/shopping-cart/items"
-    case clearShoppingCart = "/users/{userId}/shopping-cart/items/clear"
+    case clearShoppingCart = "/shopping-cart/items/"
     case getShoppingCartCount = "/shopping-cart/count"
     case failurePayment = "/orders/{orderId}/failure"
     case getSliders = "/sliders"

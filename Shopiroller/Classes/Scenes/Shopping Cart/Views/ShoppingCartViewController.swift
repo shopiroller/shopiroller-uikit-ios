@@ -75,8 +75,22 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
+    private func clearShoppingCart() {
+        viewModel.clearShoppingCart(success: {
+            self.configure()
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
     func actionButtonClicked(_ sender: Any) {
        popToRoot(animated: true, completion: nil)
+    }
+    
+    @IBAction func clearCartButtonClicked(_ sender: Any) {
+        let vc = PopUpViewViewController(viewModel: viewModel.getClearCartPopUpViewModel())
+        vc.delegate = self
+        popUp(vc, completion: nil)
     }
     
 }
@@ -104,6 +118,17 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
     
     func updateQuantityClicked(indexPathRow: Int?, quantity: Int) {
         
+    }
+    
+}
+
+extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
+    func firstButtonClicked(_ sender: Any) {
+        
+    }
+    
+    func secondButtonClicked(_ sender: Any) {
+        clearShoppingCart()
     }
     
 }

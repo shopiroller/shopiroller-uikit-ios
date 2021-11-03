@@ -58,7 +58,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: "78971cc6-bda1-45a4-adee-638317c5a6e9").response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
             switch result {
             case.success(let _):
