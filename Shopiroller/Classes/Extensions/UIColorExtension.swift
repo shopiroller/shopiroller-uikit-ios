@@ -47,5 +47,5 @@ extension UIColor {
 
     static let textSecondary10: UIColor = #colorLiteral(red: 69.0 / 255.0, green: 81.0 / 255.0, blue: 84.0 / 255.0, alpha: 0.1)
     
-    
+    static let veryLightPink : UIColor = #colorLiteral(red: 231.0 / 255.0, green: 231.0 / 255.0, blue: 231.0 / 255.0, alpha : 1)
 }

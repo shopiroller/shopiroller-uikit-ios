@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckOutAddressViewController" customModule="Shopiroller" customModuleProvider="target">
+            <connections>
+                <outlet property="billingAddressEmptyView" destination="3AU-XV-LmI" id="TAQ-5Q-xst"/>
+                <outlet property="shippingAddressEmptyView" destination="bM5-LH-8iY" id="w6x-KM-DdD"/>
+                <outlet property="shippingAddressView" destination="fry-Jm-H4g" id="ZUL-Dm-GvY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lv-fQ-CbB">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uv-3F-lki">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-eN-6RW">
+                                    <rect key="frame" x="15" y="20" width="384" height="20"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27I-zP-wfi">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F75-lf-Cea">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                    <subviews>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bM5-LH-8iY" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fry-Jm-H4g" customClass="GeneralAdressView" customModule="Shopiroller" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                            <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="F75-lf-Cea" secondAttribute="trailing" id="4Vr-fG-9Y9"/>
+                                                <constraint firstItem="bM5-LH-8iY" firstAttribute="height" secondItem="27I-zP-wfi" secondAttribute="height" multiplier="0.7" id="Hr7-Kt-HIL"/>
+                                                <constraint firstItem="bM5-LH-8iY" firstAttribute="centerY" secondItem="27I-zP-wfi" secondAttribute="centerY" id="hLu-CG-cE2"/>
+                                                <constraint firstAttribute="bottom" secondItem="F75-lf-Cea" secondAttribute="bottom" id="hl9-z3-K9o"/>
+                                                <constraint firstItem="bM5-LH-8iY" firstAttribute="centerX" secondItem="27I-zP-wfi" secondAttribute="centerX" id="klv-kL-UG8"/>
+                                                <constraint firstItem="F75-lf-Cea" firstAttribute="leading" secondItem="27I-zP-wfi" secondAttribute="leading" id="nQy-ga-a1P"/>
+                                                <constraint firstItem="F75-lf-Cea" firstAttribute="top" secondItem="27I-zP-wfi" secondAttribute="top" id="qaF-dp-pq0"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocG-J4-SeA">
+                                            <rect key="frame" x="0.0" y="20" width="384" height="0.0"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-MY-Cqt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                    <subviews>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AU-XV-LmI" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-XF-aeQ" customClass="GeneralAdressView" customModule="Shopiroller" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="3AU-XV-LmI" firstAttribute="centerX" secondItem="ocG-J4-SeA" secondAttribute="centerX" id="3Cq-Nh-Xdd"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yj7-MY-Cqt" secondAttribute="trailing" id="6Hw-2e-G8U"/>
+                                                <constraint firstItem="3AU-XV-LmI" firstAttribute="centerY" secondItem="ocG-J4-SeA" secondAttribute="centerY" id="8FT-aW-pym"/>
+                                                <constraint firstAttribute="bottom" secondItem="Yj7-MY-Cqt" secondAttribute="bottom" id="Jh6-ye-E1w"/>
+                                                <constraint firstItem="Yj7-MY-Cqt" firstAttribute="leading" secondItem="ocG-J4-SeA" secondAttribute="leading" id="bbC-VI-8OB"/>
+                                                <constraint firstItem="Yj7-MY-Cqt" firstAttribute="top" secondItem="ocG-J4-SeA" secondAttribute="top" id="ce4-qH-far"/>
+                                                <constraint firstItem="3AU-XV-LmI" firstAttribute="height" secondItem="ocG-J4-SeA" secondAttribute="height" multiplier="0.7" id="dNx-dI-OSS"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="wtX-eN-6RW" secondAttribute="trailing" constant="15" id="Dib-Lo-bTm"/>
+                                <constraint firstAttribute="bottom" secondItem="wtX-eN-6RW" secondAttribute="bottom" id="czb-uZ-FKn"/>
+                                <constraint firstItem="wtX-eN-6RW" firstAttribute="top" secondItem="7Uv-3F-lki" secondAttribute="top" constant="20" id="fZj-2J-l59"/>
+                                <constraint firstItem="wtX-eN-6RW" firstAttribute="leading" secondItem="7Uv-3F-lki" secondAttribute="leading" constant="15" id="gb8-Bh-wHa"/>
+                            </constraints>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="7Uv-3F-lki" secondAttribute="bottom" id="5Tl-vc-lb1"/>
+                        <constraint firstItem="7Uv-3F-lki" firstAttribute="top" secondItem="8lv-fQ-CbB" secondAttribute="top" id="7GT-2W-fmB"/>
+                        <constraint firstAttribute="trailing" secondItem="7Uv-3F-lki" secondAttribute="trailing" id="ZEQ-jq-hxh"/>
+                        <constraint firstItem="7Uv-3F-lki" firstAttribute="leading" secondItem="8lv-fQ-CbB" secondAttribute="leading" id="bzo-JI-x88"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="wtX-eN-6RW" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="2XB-sA-0FA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8lv-fQ-CbB" secondAttribute="trailing" id="6cU-VD-NlQ"/>
+                <constraint firstItem="8lv-fQ-CbB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="80a-EE-rZ5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8lv-fQ-CbB" secondAttribute="bottom" id="g17-en-OC6"/>
+                <constraint firstItem="8lv-fQ-CbB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vhL-HH-gpo"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="118.52678571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

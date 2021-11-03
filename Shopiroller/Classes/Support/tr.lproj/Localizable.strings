@@ -15,6 +15,12 @@
 
 "section-see-all-title" = "Hepsini Göster";
 
+"address-text" = "Adres";
+
+"payment-text" = "Ödeme";
+
+"info-text" = "Bilgilendirme";
+
 //MARK: - Products Empty View
 
 "empty-view-title" = "Ürün Bulunamadı.";
@@ -114,19 +120,22 @@
 
 // MARK: - Payment Method
 
-"CashOnDelivery" = "Cash on Delivery";
-"Transfer" = "Transfer";
-"CreditCard" = "Credit Card";
-"Paypal" = "PayPal";
+"CashOnDelivery" = "Kapıda Ödeme";
+"Transfer" = "Banka Hesabına Transfer";
+"CreditCard" = "Kredi Kartı İle Ödeme";
+"Paypal" = "PayPal ile Ödeme";
 
 // MARK: - Order Details
 
-"order_details_bank_receiver" = "Receiver Name: ";
-"order_details_bank_account" = "Account: ";
-"order_details_bank_iban" = "Iban: ";
-"order_details_address_delivery" = "Delivery Address";
-"order_details_address_shipping" = "Billing Address";
-"order_details_quantity" = "Piece: ";
+
+"order_details_bank_receiver" = "Alıcı İsmi: ";
+"order_details_bank_account" = "Hesap : ";
+"order_details_bank_iban" = "Iban Numarası: ";
+"order_details_bank_subtotal" = "Toplam Tutar: ";
+"order_details_bank_shipping" = "Kargolama: ";
+"order_details_address_delivery" = "Teslimat Adresi";
+"order_details_address_shipping" = "Fatura Adresi";
+"order_details_quantity" = "Parça: ";
 
 // MARK: - Address List
 
@@ -134,10 +143,10 @@
 
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
-"address_list_empty_shipping_title" = "No delivery address";
-"address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
-"address_list_empty_billing_title" = "No billing address";
-"address_list_empty_billing_description" = "Launch your first address and take an items you want.";
+"address_list_empty_shipping_title" = "Teslimat Adresi Bulunamadı";
+"address_list_empty_shipping_description" = "İlk adresinizi ekleyerek alışverişe başlayabilirsiniz.";
+"address_list_empty_billing_title" = "Fatura Adresi Bulunamadı";
+"address_list_empty_billing_description" = "Fatura adresinizi ekleyerek alışverişe başlayabilirsiniz";
 "address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
 
 // MARK: - Address Cell
@@ -164,3 +173,24 @@
 
 // MARK: - Shopping Cell
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
+"address_cell_cancel" = "Vazgeç";
+"address_cell_delete" = "Sil";
+
+//Mark: - Checkout Progress
+
+"delivery-information-page-title" = "Teslimat Bilgileri";
+
+"payment-information-page-title" = "Ödeme";
+
+"info-information-page-title" = "Bilgilendirme";
+
+
+//Mark: - GeneralAddressView
+
+"delivery-address-title" = "Teslimat Adresi";
+
+"billing-address-title" = "Fatura Adresi";
+
+"add-address-button-text" = "Yeni Adress Ekle";
+
+"select-other-address-button-text" = "Başka Bir Adres Seç";
