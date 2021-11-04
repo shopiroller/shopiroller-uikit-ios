@@ -8,90 +8,54 @@
 
 
 //MARK: - GENERAL USAGE
-
 "free-shipping-text" = "FREE SHIPPING";
-
 "sold-out-text" = "SOLD OUT";
-
 "section-see-all-title" = "See All";
-
 "address-text" = "Address";
-
 "payment-text" = "Payment";
-
 "info-text" = "Info";
 
 //MARK: - Products Empty View
-
 "empty-view-title" = "No Products added.";
-
 "empty-view-description" = "There are currently no added items in the shop";
 
 // MARK: - Categories
-
 "categories-section-title" = "Categories";
 
 //MARK: - Explore
-
 "explore-page-title" = "Polsto";
-
 "explore-title-text" = "Explore";
-
 "products-identifier" = "ProductsTitleView";
 
 //MARK: - Product Detail
-
 "quantity-title" = "Select Quantity";
-
 "description-title" = "Product Description";
-
 "return-exchange-terms-title" = "Return / Exchange Terms";
-
 "delivery-terms-title" = "Delivery Terms";
-
 "add-to-cart" = "Add To Cart";
-
 "shipping-price-text" = "Shipping Price XX";
-
 "product-detail-description-title-text" = "Description";
-
 "product-detail-return-exchange-title-text" = "Return/Exchange Terms";
-
 "product-detail-delivery-title-text" = "Delivery Terms";
-
 "product-detail-back-to-product-button-text" = "Back to product";
-
 "product-detail-back-to-product-list-button-text" = "Back to product list";
-
 "product-detail-out-of-stock-title" = "Out of Stock";
-
 "product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
-
-
 "product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
-
 "product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %s products in shopping cart";
 
 //MARK: - Order List
-
 "order-list-page-title" = "My Orders";
-
 "empty-orders-title" = "No order yet";
-
 "empty-orders-description" = "You have no order yet. We can’t list any product for you.";
-
 "empty-orders-action-button" = "Start Shopping";
 
 //MARK: - Order Cell
-
 "order-no" = "Order No: ";
-
 "empty-orders-title" = "No order yet";
 
 // MARK: - Order Detail
-
 "order-detail-page-title" = "Order Detail";
-
 "WaitingPayment" = "Waiting Payment";
 "WaitingApproval" = "Waiting Approval";
 "Approved" = "Approved";
@@ -105,28 +69,21 @@
 "PaymentFailed" = "Payment Failed";
 
 //MARK: - Categories
-
 "category-page-title" = "Categories";
-
 "category-items-text" = "XX items";
-
 "sub-category-container-text" = "All XX Items ";
 
-//Mark: - Product List
-
+//MARK: - Product List
 "sort-title-text" = "Sorty By";
-
 "filter-title-text" = "Filter";
 
 // MARK: - Payment Method
-
 "CashOnDelivery" = "Cash on Delivery";
 "Transfer" = "Transfer";
 "CreditCard" = "Credit Card";
 "Paypal" = "PayPal";
 
 // MARK: - Order Details
-
 "order_details_bank_receiver" = "Receiver Name: ";
 "order_details_bank_account" = "Account: ";
 "order_details_bank_iban" = "Iban: ";
@@ -135,9 +92,7 @@
 "order_details_quantity" = "Piece: ";
 
 // MARK: - Address List
-
 "address_list_page_title" = "My Addresses";
-
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
 "address_list_empty_shipping_title" = "No delivery address";
@@ -145,23 +100,20 @@
 "address_list_empty_billing_title" = "No billing address";
 "address_list_empty_billing_description" = "Launch your first address and take an items you want.";
 "address_list_delete_success" = "Delivery adress successfully deleted.";
-// MARK: - Address Cell
 
+// MARK: - Address Cell
 "address_cell_confirm_title" = " Are you sure you want to delete the address?";
 "address_cell_cancel" = "Cancel";
 "address_cell_delete" = "Delete";
 
 // MARK: - Bottom Price View
-
 "bottom_price_view_subtotal" = "Subtotal: ";
 "bottom_price_view_shipping" = "Shipping: ";
 "bottom_price_view_total" = "Total";
 "bottom_price_view_free" = "Free";
 
 // MARK: - Shopping Cart
-
 "shopping_cart_title" = "Shopping Cart";
-
 "shopping_cart_empty_title" = "Your bag is empty";
 "shopping_cart_empty_description" = "You have no items in your shopping cart";
 "shopping_cart_empty_button_title" = "Start Shopping";
@@ -175,24 +127,22 @@
 "shopping_cart_validate_warning" = "%@ product’s stock changed, %@ products are out of stock.";
 "shopping_cart_validate_ready_checkout" = "Ready to Checkout";
 
+//MARK: - Cart Message Key
+"NotEnoughStock" = "%@ product left";
+"OutOfStock" = "Out Of Stock";
+"OverPublishmentDate" = "Product Removed";
+"ProductNotFound" = "Removed basket";
+
 // MARK: - Shopping Cell
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
 
-//Mark: - Checkout Progress
-
+//MARK: - Checkout Progress
 "delivery-information-page-title" = "Delivery Information";
-
 "payment-information-page-title" = "Payment";
-
 "info-information-page-title" = "Info";
 
-
-//Mark: - GeneralAddressView
-
+//MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";
-
 "billing-address-title" = "Billing Address";
-
 "add-address-button-text" = "Add Address";
-
 "select-other-address-button-text" = "Select Other Address";

@@ -8,90 +8,54 @@
 
 
 //MARK: - GENERAL USAGE
-
 "free-shipping-text" = "BEDAVA KARGO";
-
 "sold-out-text" = "STOK YOK";
-
 "section-see-all-title" = "Hepsini Göster";
-
 "address-text" = "Adres";
-
 "payment-text" = "Ödeme";
-
 "info-text" = "Bilgilendirme";
 
 //MARK: - Products Empty View
-
 "empty-view-title" = "Ürün Bulunamadı.";
-
 "empty-view-description" = "Henüz ürün eklenmemiş.";
 
 // MARK: - Categories
-
 "categories-section-title" = "Kategoriler";
 
 //MARK: - Explore
-
 "explore-page-title" = "Polsto";
-
 "explore-title-text" = "Keşfet";
-
 "products-identifier" = "ProductsTitleView";
 
 //MARK: - Product Detail
-
 "quantity-title" = "Miktar Seçin";
-
 "description-title" = "Ürün Açıklaması";
-
 "return-exchange-terms-title" = "İade / Değişim Koşulları";
-
 "delivery-terms-title" = "Teslimat Koşulları";
-
 "add-to-cart" = "Sepete Ekle";
-
 "shipping-price-text" = "Kargo Ücreti XX";
-
 "product-detail-description-title-text" = "Description";
-
 "product-detail-return-exchange-title-text" = "İade/Değişim Koşulları";
-
 "product-detail-delivery-title-text" = "Teslimat Koşulları";
-
 "product-detail-back-to-product-button-text" = "Ürüne dön";
-
 "product-detail-back-to-product-list-button-text" = "Ürünlere dön";
-
 "product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
-
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
-
-
 "product-detail-maximum-product-quantity-title" = "Daha fazla miktarda ürün ekleyemezsiniz.";
-
 "product-detail-maximum-product-quantity-description" = "Sepetinize eklenebilecek en fazla miktarda ürünü eklediniz , bu üründen fazla XX adet satın alabilirsiniz.";
 
 //MARK: - Order List
-
 "order-list-page-title" = "My Orders";
-
 "empty-orders-title" = "No order yet";
-
 "empty-orders-description" = "You have no order yet. We can’t list any product for you.";
-
 "empty-orders-action-button" = "Start Shopping";
 
 //MARK: - Order Cell
-
 "order-no" = "Order No: ";
-
 "empty-orders-title" = "No order yet";
 
 // MARK: - Order Detail
-
 "order-detail-page-title" = "Order Detail";
-
 "WaitingPayment" = "Waiting Payment";
 "WaitingApproval" = "Waiting Approval";
 "Approved" = "Approved";
@@ -105,29 +69,21 @@
 "PaymentFailed" = "Payment Failed";
 
 //MARK: - Categories
-
 "category-page-title" = "Categories";
-
 "category-items-text" = "XX ürünler";
-
 "sub-category-container-text" = "Tüm XX Ürünleri";
 
-//Mark: - Product List
-
+//MARK: - Product List
 "sort-title-text" = "Sırala";
-
 "filter-title-text" = "Filtrele";
 
 // MARK: - Payment Method
-
 "CashOnDelivery" = "Kapıda Ödeme";
 "Transfer" = "Banka Hesabına Transfer";
 "CreditCard" = "Kredi Kartı İle Ödeme";
 "Paypal" = "PayPal ile Ödeme";
 
 // MARK: - Order Details
-
-
 "order_details_bank_receiver" = "Alıcı İsmi: ";
 "order_details_bank_account" = "Hesap : ";
 "order_details_bank_iban" = "Iban Numarası: ";
@@ -138,9 +94,7 @@
 "order_details_quantity" = "Parça: ";
 
 // MARK: - Address List
-
 "address_list_page_title" = "My Addresses";
-
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
 "address_list_empty_shipping_title" = "Teslimat Adresi Bulunamadı";
@@ -150,22 +104,18 @@
 "address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
 
 // MARK: - Address Cell
-
 "address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
 "address_cell_cancel" = "Cancel";
 "address_cell_delete" = "Delete";
 
 // MARK: - Bottom Price View
-
 "bottom_price_view_subtotal" = "Subtotal: ";
 "bottom_price_view_shipping" = "Shipping: ";
 "bottom_price_view_total" = "Total";
 "bottom_price_view_free" = "Free";
 
 // MARK: - Shopping Cart
-
 "shopping_cart_title" = "Shopping Cart";
-
 "shopping_cart_empty_title" = "Your bag is empty";
 "shopping_cart_empty_description" = "You have no items in your shopping cart";
 "shopping_cart_empty_button_title" = "Start Shopping";
@@ -174,27 +124,29 @@
 "shopping_cart_clear_cart_description" = "You are clearing all  products in shopping cart now.";
 "shopping_cart_clear_cart_not_now" = "No, not now";
 "shopping_cart_clear_cart_clear_cart" = "Yes, clear my cart";
+"shopping_cart_validate_title" = "Cart is updating";
+"shopping_cart_validate_description" = "Your basket will be updated for the reasons below.";
+"shopping_cart_validate_warning" = "%@ product’s stock changed, %@ products are out of stock.";
+"shopping_cart_validate_ready_checkout" = "Ready to Checkout";
+
+//MARK: - Cart Message Key
+"NotEnoughStock" = "%@ product left";
+"OutOfStock" = "Out Of Stock";
+"OverPublishmentDate" = "Product Removed";
+"ProductNotFound" = "Removed basket";
 
 // MARK: - Shopping Cell
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
 "address_cell_cancel" = "Vazgeç";
 "address_cell_delete" = "Sil";
 
-//Mark: - Checkout Progress
-
+//MARK: - Checkout Progress
 "delivery-information-page-title" = "Teslimat Bilgileri";
-
 "payment-information-page-title" = "Ödeme";
-
 "info-information-page-title" = "Bilgilendirme";
 
-
-//Mark: - GeneralAddressView
-
+//MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
-
 "billing-address-title" = "Fatura Adresi";
-
 "add-address-button-text" = "Yeni Adress Ekle";
-
 "select-other-address-button-text" = "Başka Bir Adres Seç";

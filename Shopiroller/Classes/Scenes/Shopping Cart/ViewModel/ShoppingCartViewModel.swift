@@ -34,7 +34,7 @@ class ShoppingCartViewModel: BaseViewModel {
         SRNetworkManagerRequests.clearShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
             switch result {
-            case .success(let result):
+            case .success(_):
                 self.shoppingCart = nil
                 DispatchQueue.main.async {
                     success?()

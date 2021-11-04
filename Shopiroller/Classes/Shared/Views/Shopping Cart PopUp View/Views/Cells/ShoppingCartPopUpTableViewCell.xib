@@ -31,10 +31,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17S-9b-Gbt" userLabel="Stock View">
-                        <rect key="frame" x="90" y="61" width="34" height="24"/>
+                        <rect key="frame" x="90" y="61" width="36" height="24"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0w-S7-AaI">
-                                <rect key="frame" x="3" y="6" width="28" height="12"/>
+                                <rect key="frame" x="4" y="6" width="28" height="12"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,11 +44,11 @@
                         <constraints>
                             <constraint firstItem="g0w-S7-AaI" firstAttribute="top" secondItem="17S-9b-Gbt" secondAttribute="top" constant="6" id="Llt-FR-REa"/>
                             <constraint firstAttribute="bottom" secondItem="g0w-S7-AaI" secondAttribute="bottom" constant="6" id="XFD-Wk-Nhj"/>
-                            <constraint firstAttribute="trailing" secondItem="g0w-S7-AaI" secondAttribute="trailing" constant="3" id="efi-5H-hpO"/>
-                            <constraint firstItem="g0w-S7-AaI" firstAttribute="leading" secondItem="17S-9b-Gbt" secondAttribute="leading" constant="3" id="wOo-pd-GxN"/>
+                            <constraint firstAttribute="trailing" secondItem="g0w-S7-AaI" secondAttribute="trailing" constant="4" id="efi-5H-hpO"/>
+                            <constraint firstItem="g0w-S7-AaI" firstAttribute="leading" secondItem="17S-9b-Gbt" secondAttribute="leading" constant="4" id="wOo-pd-GxN"/>
                         </constraints>
                     </view>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh1-Th-T6F" userLabel="Control View">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh1-Th-T6F" userLabel="Control View">
                         <rect key="frame" x="232.5" y="58" width="87.5" height="27"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-mj-1QX" userLabel="Minus Button">
