@@ -7,7 +7,6 @@
 
 import Foundation
 
-extension CheckOutProgress: NibLoadable { }
 
 class CheckOutProgress : BaseView {
 

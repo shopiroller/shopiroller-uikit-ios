@@ -6,7 +6,6 @@
 //
 
 import UIKit
-extension AddressView : NibLoadable { }
 
 class AddressView: BaseView {
     

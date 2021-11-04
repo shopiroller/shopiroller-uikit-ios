@@ -7,7 +7,6 @@
 
 import UIKit
 
-extension OrderDetailProductView : NibLoadable { }
 
 class OrderDetailProductView: BaseView {
     

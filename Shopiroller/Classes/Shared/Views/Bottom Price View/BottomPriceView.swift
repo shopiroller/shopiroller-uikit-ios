@@ -7,7 +7,6 @@
 
 import UIKit
 
-extension BottomPriceView : NibLoadable { }
 
 class BottomPriceView: BaseView {
 

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-extension GeneralAddressView : NibLoadable { }
 
 protocol GeneralAddressDelegate {
     func editButtonTapped()

@@ -7,7 +7,6 @@
 
 import UIKit
 
-extension EmptyView : NibLoadable { }
 
 protocol EmptyViewDelegate {
     func actionButtonClicked(_ sender: Any)

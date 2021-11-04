@@ -7,12 +7,9 @@
 
 import UIKit
 
+extension BaseView : NibLoadable { }
+
 public class BaseView: UIView {
-    
-    init() {
-        super.init(frame: .zero)
-        setup()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
