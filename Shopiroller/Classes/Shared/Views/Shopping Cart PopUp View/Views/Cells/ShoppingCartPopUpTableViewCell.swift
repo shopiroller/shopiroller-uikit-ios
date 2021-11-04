@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ShoppingCartPopUpTableViewCellDelegate {
-    func updateQuantityClicked(indexPathRow: Int?, quantity: Int)
+    func updateQuantityClicked(itemId: String?, quantity: Int)
 }
 
 class ShoppingCartPopUpTableViewCell: UITableViewCell {
@@ -23,7 +23,6 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     @IBOutlet weak var plusButton: UIButton!
     
     private var model: ShoppingCartItem?
-    private var indexPathRow: Int?
     private var delegate: ShoppingCartPopUpTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -40,8 +39,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
 
     func setup(model: ShoppingCartItem, indexPathRow: Int) {
         self.model = model
-        self.indexPathRow = indexPathRow
-        
+      
         if let imageUrl = model.product?.featuredImage?.thumbnail {
             productImage.kf.setImage(with: URL(string: imageUrl))
         }
@@ -75,7 +73,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     
     @IBAction func minusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity, quantity != 1 {
-            delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity - 1)
+            delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity - 1)
         }
     }
     
@@ -84,7 +82,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
                 makeToast(String(format: "shopping_cell_maximum_product_message".localized, quantity))
             }else {
-                delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity + 1)
+                delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }
         }
     }

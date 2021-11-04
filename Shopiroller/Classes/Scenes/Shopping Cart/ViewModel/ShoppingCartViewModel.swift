@@ -24,7 +24,7 @@ class ShoppingCartViewModel: BaseViewModel {
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
-                    error?(ErrorViewModel(error: err))
+                    success?()
                 }
             }
         }
@@ -40,6 +40,22 @@ class ShoppingCartViewModel: BaseViewModel {
                     success?()
                 }
             case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func removeItemFromShoppingCart(itemId: String?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let id = itemId else { return }
+        SRNetworkManagerRequests.removeItemFromShoppingCart(userId: SRAppConstants.Query.Values.userId, cartItemId: id).response() {
+            (result) in
+            switch result {
+            case .success(_):
+                self.getShoppingCart(success: success, error: error)
+            case .failure(let err):
+                self.getShoppingCart(success: success, error: error)
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
                 }
@@ -92,7 +108,7 @@ class ShoppingCartViewModel: BaseViewModel {
     }
     
     func geShoppingCartPopUpViewModel() -> ShoppingCartPopUpViewModel {
-        return ShoppingCartPopUpViewModel(productList: shoppingCart?.items)
+        return ShoppingCartPopUpViewModel(productList: shoppingCart?.invalidItems)
     }
     
     

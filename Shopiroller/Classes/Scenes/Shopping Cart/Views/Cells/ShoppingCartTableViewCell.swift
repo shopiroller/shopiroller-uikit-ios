@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelegate {
-    func deleteClicked(indexPathRow: Int?)
+    func deleteClicked(itemId: String?)
 }
 
 class ShoppingCartTableViewCell: UITableViewCell {
@@ -30,7 +30,6 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productImageToStackView: NSLayoutConstraint!
     
-    private var indexPathRow: Int?
     private var model: ShoppingCartItem?
     private var delegate: ShoppingCartTableViewCellDelegate?
     
@@ -50,9 +49,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem, indexPathRow: Int,_ delegate: ShoppingCartTableViewCellDelegate? = nil) {
+    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil) {
         self.model = model
-        self.indexPathRow = indexPathRow
         self.delegate = delegate
         
         if let imageUrl = model.product?.featuredImage?.thumbnail {
@@ -96,12 +94,12 @@ class ShoppingCartTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
-        delegate?.deleteClicked(indexPathRow: indexPathRow)
+        delegate?.deleteClicked(itemId: model?.id)
     }
     
     @IBAction func minusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity, quantity != 1 {
-            delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity - 1)
+            delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity - 1)
         }
     }
   
@@ -110,7 +108,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
                 makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
             }else {
-                delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity + 1)
+                delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }
         }
     }

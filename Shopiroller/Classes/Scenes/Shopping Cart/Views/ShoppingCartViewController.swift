@@ -85,8 +85,16 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
+    private func removeItemFromShoppingCart(itemId: String?) {
+        viewModel.removeItemFromShoppingCart(itemId: itemId, success: {
+            self.configure()
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
     private func checkInvalidation() {
-        if(true){
+        if(viewModel.hasInvalidItems()){
             let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel())
           //  vc.delegate = self
             popUp(vc, completion: nil)
@@ -116,22 +124,23 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
         
         guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
-        cell.setup(model: model, indexPathRow: indexPath.row, self)
+        cell.setup(model: model, self)
         
         return cell
     }
 }
 
 extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
-    func deleteClicked(indexPathRow: Int?) {
-        
+    func updateQuantityClicked(itemId: String?, quantity: Int) {
+    
     }
     
-    func updateQuantityClicked(indexPathRow: Int?, quantity: Int) {
-        
+    func deleteClicked(itemId: String?) {
+        removeItemFromShoppingCart(itemId: itemId)
     }
     
 }
+
 
 extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
     func firstButtonClicked(_ sender: Any) {
