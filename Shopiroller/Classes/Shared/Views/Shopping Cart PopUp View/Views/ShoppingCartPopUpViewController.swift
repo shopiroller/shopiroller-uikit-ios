@@ -47,7 +47,11 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
         tableView.reloadData()
         
     }
-
+    
+    @IBAction func readyToCheckoutClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension ShoppingCartPopUpViewController: UITableViewDelegate, UITableViewDataSource {
