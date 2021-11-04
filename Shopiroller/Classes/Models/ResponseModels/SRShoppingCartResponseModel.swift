@@ -38,32 +38,3 @@ class SRShoppingCartResponseModel: Codable {
         case createdDate = "createDate"
     }
 }
-
-struct ShoppingCartMessage: Codable {
-    var key: String?
-    var message: String?
-    var type: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case key = "key"
-        case message = "message"
-        case type = "type"
-    }
-}
-
-struct ShoppingCartItem: Codable {
-    
-    var id: String?
-    var productId: String?
-    var product: ProductDetailResponseModel?
-    var quantity: Int?
-    var price: Double?
-    var isValid: Bool?
-    var createdDate: String?
-    var updatedDate: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case createdDate = "createDate"
-        case updatedDate = "updateDate"
-    }
-}

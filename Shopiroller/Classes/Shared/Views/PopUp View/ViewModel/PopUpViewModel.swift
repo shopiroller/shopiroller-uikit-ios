@@ -11,37 +11,59 @@ import UIKit
 
 public class PopUpViewModel {
     
-    public var image: UIImage?
-    public var title: String?
-    public var description: String?
-    public var firstButton: popUpButton?
-    public var secondButton: popUpButton?
+    private let image: UIImage
+    private let title: String
+    private let description: String?
+    private let firstButton: PopUpButtonModel?
+    private let secondButton: PopUpButtonModel?
     
-    public init(image: UIImage? = nil , title: String? = nil, description: String? = nil, firstButton: popUpButton? = nil , secondButton: popUpButton? = nil ){
+    init(image: UIImage, title: String, description: String?, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil ){
         self.image = image
         self.title = title
         self.firstButton = firstButton
         self.secondButton = secondButton
         self.description = description
     }
-}
-
-public class popUpButton {
-    public var title: String?
-    public var type: popUpButtonType?
-    public var viewController: UIViewController?
-    public var buttonType: SRButtonType?
     
-    init(title: String? = nil , type: popUpButtonType? = nil , viewController: UIViewController? = nil , buttonType: SRButtonType? = nil){
-        self.title = title
-        self.type = type
-        self.viewController = viewController
-        self.buttonType = buttonType
+    func getImage() -> UIImage {
+        return image
     }
+    
+    func getTitle() -> String {
+        return title
+    }
+    
+    func getDescription() -> String? {
+        return description
+    }
+    
+    func hasFirstButton() -> Bool {
+        return firstButton != nil
+    }
+    
+    func hasSecondButton() -> Bool {
+        return secondButton != nil
+    }
+    
+    func getFirstButtonTitle() -> String? {
+        return firstButton?.title
+    }
+    
+    func getSecondButtonTitle() -> String? {
+        return secondButton?.title
+    }
+    
+    func getFirstButtonType() -> SRButtonType? {
+        return firstButton?.type
+    }
+    
+    func getSecondButtonType() -> SRButtonType? {
+        return secondButton?.type
+    }
+    
 }
 
-public enum popUpButtonType {
-    case popToRoot
-    case viewController
-    case dismiss
+struct PopUpButtonModel {
+    let title: String
+    let type: SRButtonType
 }

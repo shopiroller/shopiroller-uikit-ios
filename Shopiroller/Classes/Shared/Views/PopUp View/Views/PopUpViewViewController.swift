@@ -8,9 +8,10 @@
 import UIKit
 import Kingfisher
 
-protocol BackToProductListDelegate : AnyObject {
-    func popView()
-    func dismissView()
+
+protocol PopUpViewViewControllerDelegate {
+    func firstButtonClicked(_ sender: Any)
+    func secondButtonClicked(_ sender: Any)
 }
 
 class PopUpViewViewController: BaseViewController<PopUpViewModel> {
@@ -25,7 +26,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var firstButtonContainerView: UIView!
     @IBOutlet private weak var secondButtonContainerView: UIView!
     
-    var delegate: BackToProductListDelegate?
+    var delegate: PopUpViewViewControllerDelegate?
     
     public init(viewModel: PopUpViewModel) {
         super.init(viewModel: viewModel, nibName: PopUpViewViewController.nibName, bundle: Bundle(for: PopUpViewViewController.self))
@@ -34,45 +35,43 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     override func setup() {
         super.setup()
         
-        containerView.makeCardView()
-        
-        titleLabel.text = viewModel.title
-        
-        descriptionLabel.text = viewModel.description
-        descriptionLabel.clipsToBounds = true
-        
         circleImageBackground.backgroundColor = .white
         circleImageBackground.layer.cornerRadius = circleImageBackground.frame.width / 2
         circleImage.layer.backgroundColor = UIColor.badgeSecondary.cgColor
         circleImage.layer.cornerRadius = circleImage.frame.width / 2
-        circleImage.image = viewModel.image
         
+        containerView.makeCardView()
+        descriptionLabel.textColor = .textPCaption
         
-        if let firstButton = viewModel.firstButton {
-            self.firstButtonContainerView.isHidden = false
-            self.firstButton.type = firstButton.buttonType
-            self.firstButton.setTitle(firstButton.title)
-        } else {
-            self.firstButtonContainerView.isHidden = true
+        titleLabel.text = viewModel.getTitle()
+        descriptionLabel.text = viewModel.getDescription()
+        circleImage.image = viewModel.getImage()
+        
+        if(viewModel.hasFirstButton()) {
+            firstButtonContainerView.isHidden = false
+            firstButton.type = viewModel.getFirstButtonType()
+            firstButton.setTitle(viewModel.getFirstButtonTitle())
+        }else {
+            firstButtonContainerView.isHidden = true
         }
         
-        if let secondButton = viewModel.secondButton {
-            self.secondButtonContainerView.isHidden = false
-            self.secondButton.type = secondButton.buttonType
-            self.secondButton.setTitle(secondButton.title)
-        } else {
-            self.secondButtonContainerView.isHidden = true
+        if(viewModel.hasSecondButton()) {
+            secondButtonContainerView.isHidden = false
+            secondButton.type = viewModel.getSecondButtonType()
+            secondButton.setTitle(viewModel.getSecondButtonTitle())
+        }else {
+            secondButtonContainerView.isHidden = true
         }
     }
   
-    @IBAction private func firstButtonTapped(_ sender: Any){
-        
-        if(viewModel.firstButton?.type == .popToRoot) {
-            dismiss(animated: false, completion: nil)
-            self.delegate?.popView()
-        }else if viewModel.firstButton?.type == .dismiss {
-            self.delegate?.dismissView()
-        }
+    @IBAction private func firstButtonTapped(_ sender: Any) {
+        delegate?.firstButtonClicked(sender)
+        dismiss(animated: true, completion: nil)
     }
-
+    
+    @IBAction func secondButtonTapped(_ sender: Any) {
+        delegate?.secondButtonClicked(sender)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

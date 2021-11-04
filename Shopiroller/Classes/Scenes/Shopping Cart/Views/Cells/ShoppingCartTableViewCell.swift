@@ -7,9 +7,8 @@
 
 import UIKit
 
-protocol ShoppingCartTableViewCellDelegate {
+protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelegate {
     func deleteClicked(indexPathRow: Int?)
-    func updateQuantityClicked(indexPathRow: Int?, quantity: Int)
 }
 
 class ShoppingCartTableViewCell: UITableViewCell {

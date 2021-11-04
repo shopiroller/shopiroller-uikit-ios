@@ -30,6 +30,23 @@ class ShoppingCartViewModel: BaseViewModel {
         }
     }
     
+    func clearShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.clearShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+            (result) in
+            switch result {
+            case .success(_):
+                self.shoppingCart = nil
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
     func isShoppingCartEmpty() -> Bool {
         return shoppingCart?.items?.isEmpty ?? true
     }
@@ -64,6 +81,18 @@ class ShoppingCartViewModel: BaseViewModel {
     
     func getShoppingCartItem(position : Int) -> ShoppingCartItem? {
         return shoppingCart?.items?[position]
+    }
+    
+    func getClearCartPopUpViewModel() -> PopUpViewModel {
+        return PopUpViewModel(image: .clearCart, title:  "shopping_cart_clear_cart_title".localized, description: "shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title:     "shopping_cart_clear_cart_not_now".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "shopping_cart_clear_cart_clear_cart".localized, type: .lightButton))
+    }
+    
+    func hasInvalidItems() -> Bool {
+        return shoppingCart?.invalidItems?.count ?? 0 > 0
+    }
+    
+    func geShoppingCartPopUpViewModel() -> ShoppingCartPopUpViewModel {
+        return ShoppingCartPopUpViewModel(productList: shoppingCart?.items)
     }
     
     

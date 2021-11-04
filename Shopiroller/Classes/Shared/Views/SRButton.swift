@@ -20,9 +20,9 @@ public enum SRButtonType {
         case .darkButton:
             return SRButtonStyle(backgroundColor: .textPrimary , titleColor: .white)
         case .lightButton:
-            return SRButtonStyle(backgroundColor: .buttonLight, titleColor: .black)
+            return SRButtonStyle(backgroundColor: .buttonLight, titleColor: .textPrimary)
         case .clearButton:
-            return SRButtonStyle(backgroundColor: .clear)
+            return SRButtonStyle(backgroundColor: .clear, titleColor: .textPCaption)
         case .floatButton:
             return SRButtonStyle(backgroundColor: .black)
         }

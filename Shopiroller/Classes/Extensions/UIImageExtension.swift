@@ -22,7 +22,11 @@ extension UIImage {
     
     static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!
     
+    static let clearCart: UIImage = UIImage(named: "clearCart", in: .shopiroller, with: nil)!
+    
     static let deliveryAddress: UIImage = UIImage(named: "deliveryAddress", in: .shopiroller, with: nil)!
+    
+    static let deliveryTerms: UIImage = UIImage(named: "deliveryTerms", in: .shopiroller, with: nil)!
     
     static let emptyProduct: UIImage = UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!
     
@@ -38,6 +42,8 @@ extension UIImage {
     
     static let moreIcon: UIImage = UIImage(named: "moreIcon", in: .shopiroller, with: nil)!
     
+    static let outOfStock: UIImage = UIImage(named: "outOfStock", in: .shopiroller, with: nil)!
+    
     static let paymentFailed: UIImage = UIImage(named: "paymentFailed", in: .shopiroller, with: nil)!
     
     static let rightArrow: UIImage = UIImage(named: "rightArrow", in: .shopiroller, with: nil)!
@@ -45,6 +51,8 @@ extension UIImage {
     static let shareIcon: UIImage = UIImage(named: "shareIcon", in: .shopiroller, with: nil)!
     
     static let sortIcon: UIImage = UIImage(named: "sortIcon", in: .shopiroller, with: nil)!
+    
+    static let validateCart: UIImage = UIImage(named: "validateCart", in: .shopiroller, with: nil)!
     
     // MARK: Order Statusses
     static let orderApproved: UIImage = UIImage(named: "orderApproved", in: .shopiroller, with: nil)!
