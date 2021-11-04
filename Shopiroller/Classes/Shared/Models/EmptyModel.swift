@@ -11,7 +11,7 @@ struct EmptyModel {
     
     let image: UIImage
     let title: String
-    let description: String
+    let description: String?
     let button: ButtonModel?
     
 }
