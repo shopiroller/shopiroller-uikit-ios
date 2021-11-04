@@ -162,8 +162,18 @@ final public class SRNetworkManager {
                         return
                     }
                     let decoder = JSONDecoder()
+                   
+
                     let obj = SRNetworkManagerResponse<T>.self
                     do {
+                        
+                        if request.ignoreBaseModel {
+                            let object = T.self
+                            let value = try decoder.decode(object, from: data)
+                            let a = SRNetworkManagerResponse(data: value, success: nil, isUserFriendlyMessage: nil, key: nil, message: nil, errors: nil)
+                            resourceResult(.success(result: a))
+                            return
+                        }
                         var value = try decoder.decode(obj, from: data)
                         
                         if let error = value.message {

@@ -27,21 +27,32 @@ class BaseAddressModel: Codable {
         case country = "country"
         case state = "state"
         case city = "city"
-        case addressLine = "adressLine"
+        case addressLine = "addressLine"
         case zipCode = "zipCode"
         case description = "description"
         case isDefault = "isDefault"
+        case contact = "contact"
     }
     
     func getListDeliveryDescriptionArea() -> String {
         return [contact?.nameSurname
-        , String.NEW_LINE
-        , addressLine
-        , String.NEW_LINE
-        , city , " / " , state , " / " , country
-        , String.NEW_LINE
-        , contact?.phoneNumber].compactMap { $0 }
-        .joined(separator: " ")
+        ,String.NEW_LINE
+        ,addressLine
+        ,String.NEW_LINE
+        ,city , " / " , state , " / " , country
+        ,String.NEW_LINE
+        ,contact?.phoneNumber].compactMap { $0 }
+        .joined(separator: "")
+    }
+    
+    func getDescriptionArea() -> String {
+        return [city
+                , " / ", state , " / ", country
+                , String.NEW_LINE
+                , contact?.nameSurname
+                , " - "
+                , contact?.phoneNumber].compactMap { $0 }
+                .joined(separator: "")
     }
     
 }
@@ -52,7 +63,7 @@ struct AddressContactModel: Codable {
     var phoneNumber: String?
     var email: String?
     
-    enum CdoingKeys: String,CodingKey {
+    enum CodingKeys: String,CodingKey {
         case nameSurname = "nameSurname"
         case phoneNumber = "phoneNumber"
         case email = "email"

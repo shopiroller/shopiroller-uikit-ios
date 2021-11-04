@@ -12,26 +12,17 @@ extension GeneralAddressView : NibLoadable { }
 
 protocol GeneralAddressDelegate {
     func editButtonTapped()
-    func addAddressButtonTapped(type: GeneralAddressType?)
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
 }
 
 public class GeneralAddressView: BaseView {
     
     private struct Constants {
-      
-        static var deliveryAddressText: String { return "delivery-address-title".localized }
         
-        static var billingAddressText: String { return "billing-address-title".localized }
-        
-        static var addAddressButtonText: String { return "add-address-button-text".localized }
-
         static var selectOtherAdressButtonText: String { return "select-other-address-button-text".localized }
     }
     
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var containerLabel: UILabel!
-    @IBOutlet private weak var addAddressButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addressLine: UILabel!
     @IBOutlet private weak var descriptionArea: UILabel!
@@ -49,21 +40,16 @@ public class GeneralAddressView: BaseView {
         
         type = model.type
         
-        addAddressButton.setTitle(Constants.addAddressButtonText)
-        
+        containerView.backgroundColor = .buttonLight
+        containerView.layer.cornerRadius = 8
+        containerView.layer.masksToBounds = true
+                
         selectOtherAddressButton.setTitle(Constants.selectOtherAdressButtonText)
+        selectOtherAddressButton.tintColor = .textPrimary
+        selectOtherAddressButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
-        switch model.type {
-        case .shipping:
-            containerLabel.text = Constants.deliveryAddressText
-        case .billing:
-            containerLabel.text = Constants.billingAddressText
-        case .none:
-            break
-        }
-        
-        titleLabel.textColor = .textPCaption
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.textColor = .textPrimary
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
     
         addressLine.textColor = .textPCaption
         addressLine.font = UIFont.systemFont(ofSize: 12)
@@ -76,14 +62,12 @@ public class GeneralAddressView: BaseView {
         
         if model.isEmpty {
             selectOtherAddressButton.isHidden = true
-            addAddressButton.isHidden = true
             containerView.isHidden = true
         }else {
+            selectOtherAddressButton.isHidden = false
             containerView.isHidden = false
             titleLabel.text = model.title
             addressLine.text = model.address
-            addressLine.adjustsFontSizeToFitWidth = false
-            addressLine.lineBreakMode = .byTruncatingMiddle
             descriptionArea.text = model.description
         }
         
@@ -91,10 +75,6 @@ public class GeneralAddressView: BaseView {
     
     @IBAction func editButtonTapped(_ sender: Any) {
         delegate?.editButtonTapped()
-    }
-    
-    @IBAction func addAddressButtonTapped(_ sender: Any) {
-        delegate?.addAddressButtonTapped(type: self.type)
     }
     
     @IBAction func selectOtherAddressButtonTapped(_ sender: Any) {

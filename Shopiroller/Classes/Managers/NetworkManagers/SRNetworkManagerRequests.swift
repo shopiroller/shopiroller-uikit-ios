@@ -123,5 +123,10 @@ struct SRNetworkManagerRequests {
         let subpath = "\(userId)\(SRNetworkManagerPaths.billing.rawValue)\(addressId)"
         return SRNetworkRequestManager(httpMethod: .delete, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self)
     }
+    
+    static func getDefaultAddress(userId: String) -> SRNetworkRequestManager<SRDefaultAddressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.defaultAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: SRDefaultAddressModel.self, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
 }
 
