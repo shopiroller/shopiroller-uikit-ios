@@ -44,7 +44,6 @@ public class GeneralAddressView: BaseView {
     
     func setup(model: GeneralAddressModel) {
         super.setup()
-        setupFromNib()
         
         type = model.type
         

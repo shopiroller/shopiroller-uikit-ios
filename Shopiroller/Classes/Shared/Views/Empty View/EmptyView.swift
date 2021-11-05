@@ -23,7 +23,6 @@ public class EmptyView: BaseView {
     
     func setup(model: EmptyModel) {
         super.setup()
-        setupFromNib()
         
         imageView.image = model.image
         titleLabel.text = model.title

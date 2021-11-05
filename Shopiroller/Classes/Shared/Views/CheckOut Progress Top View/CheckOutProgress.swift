@@ -17,7 +17,6 @@ class CheckOutProgress : BaseView {
         
     }
     
-    
     @IBOutlet private weak var addressDotImage: UIImageView!
     @IBOutlet private weak var addressToPaymentLine: UIView!
     @IBOutlet private weak var paymentDotImage: UIImageView!
@@ -29,7 +28,6 @@ class CheckOutProgress : BaseView {
 
     override func setup() {
         super.setup()
-        setupFromNib()
         
         addressLabel.text = Constants.adressText
         addressLabel.font = UIFont.systemFont(ofSize: 12.0)

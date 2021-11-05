@@ -17,7 +17,6 @@ class OrderDetailProductView: BaseView {
     
     func setup(model: SROrderProductModel) {
         super.setup()
-        setupFromNib()
         
         if let url = model.featuredImage?.thumbnail {
             orderImage.kf.setImage(with: URL(string: url))

@@ -17,7 +17,6 @@ class BottomPriceView: BaseView {
     
     func setup(model: BottomPriceModel) {
         super.setup()
-        setupFromNib()
         
         subTotal.textColor = .textSecondary
         shipping.textColor = .textSecondary

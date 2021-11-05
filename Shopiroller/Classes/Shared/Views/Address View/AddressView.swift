@@ -17,7 +17,6 @@ class AddressView: BaseView {
     
     func setup(model: AddressCellModel){
         super.setup()
-        setupFromNib()
         type = model.type
         layer.cornerRadius = 6
         layer.borderWidth = 1.0
@@ -26,7 +25,6 @@ class AddressView: BaseView {
         title.text = model.type.text
         address.text = model.address
         addressImageView.image = model.image
-     
     }
     
 }
