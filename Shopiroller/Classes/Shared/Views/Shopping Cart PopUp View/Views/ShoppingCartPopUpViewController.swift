@@ -14,14 +14,14 @@ protocol ShoppingCartPopUpViewControllerDelegate: ShoppingCartPopUpTableViewCell
 
 class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewModel> {
 
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var checkoutButton: UIButton!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var warningLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var checkoutButton: UIButton!
     
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
     
     private let delegate: ShoppingCartPopUpViewControllerDelegate
     

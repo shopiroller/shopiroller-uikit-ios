@@ -13,22 +13,21 @@ protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelega
 
 class ShoppingCartTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var warningView: UIView!
-    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet private weak var warningView: UIView!
+    @IBOutlet private weak var warningLabel: UILabel!
     
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var discount: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet private weak var productImage: UIImageView!
+    @IBOutlet private weak var title: UILabel!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var discount: UILabel!
+    @IBOutlet private weak var price: UILabel!
     
-    @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var count: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet private weak var controlView: UIView!
+    @IBOutlet private weak var minusButton: UIButton!
+    @IBOutlet private weak var count: UILabel!
+    @IBOutlet private weak var plusButton: UIButton!
     
-    
-    @IBOutlet weak var productImageToStackView: NSLayoutConstraint!
+    @IBOutlet private weak var productImageToStackView: NSLayoutConstraint!
     
     private var model: ShoppingCartItem?
     private var delegate: ShoppingCartTableViewCellDelegate?
