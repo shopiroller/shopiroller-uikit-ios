@@ -37,9 +37,10 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem, indexPathRow: Int) {
+    func setup(model: ShoppingCartItem, delegate: ShoppingCartPopUpTableViewCellDelegate) {
         self.model = model
-      
+        self.delegate = delegate
+        
         if let imageUrl = model.product?.featuredImage?.thumbnail {
             productImage.kf.setImage(with: URL(string: imageUrl))
         }
@@ -58,7 +59,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
         if let messages = model.messages, !messages.isEmpty, let key = messages[0].key, key != .UpdatedProduct {
             stockView.isHidden = false
             if(key == .NotEnoughStock) {
-                stockLabel.text = String(format: key.text, arguments: [model.product?.stock ?? 0])
+                stockLabel.text = String(format: key.text, String(model.product?.stock ?? 0))
                 countLabel.text = String(model.product?.stock ?? 0)
                 controlView.isHidden = false
             }else {
@@ -80,7 +81,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(String(format: "shopping_cell_maximum_product_message".localized, quantity))
+                makeToast(String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
             }else {
                 delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }

@@ -18,7 +18,7 @@ enum SRNetworkManagerPaths: String {
     case getOrderList = "/orders"
     case getOrder = "/orders/"
     case shoppingCart = "/shopping-cart/"
-    case validateShoppingCart = "/users/{userId}/shopping-cart/validate"
+    case shoppingCartValidate = "/shopping-cart/validate"
     case quantity = "/quantity/"
     case shoppingCartItems = "/shopping-cart/items/"
     case getShoppingCartCount = "/shopping-cart/count"

@@ -65,7 +65,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             tableView.dataSource = self
             tableView.reloadData()
             
-            checkInvalidation()
+            isInvalid()
         }
     }
     
@@ -101,12 +101,21 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
-    private func checkInvalidation() {
-        if(viewModel.hasInvalidItems()){
-            let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel())
-          //  vc.delegate = self
-            popUp(vc, completion: nil)
+    private func validateShoppingCart() {
+        viewModel.validateShoppingCart(success: {
+            self.configure()
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
         }
+    }
+    
+    private func isInvalid() -> Bool {
+        if(viewModel.hasInvalidItems()){
+            let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel(), delegate: self)
+            popUp(vc, completion: nil)
+            return true
+        }
+        return false
     }
     
     func actionButtonClicked(_ sender: Any) {
@@ -117,6 +126,12 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         let vc = PopUpViewViewController(viewModel: viewModel.getClearCartPopUpViewModel())
         vc.delegate = self
         popUp(vc, completion: nil)
+    }
+    
+    @IBAction func proceedToCheckoutClicked(_ sender: Any) {
+        if(!isInvalid()){
+            // TODO: route
+        }
     }
     
 }
@@ -137,7 +152,12 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
+extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, ShoppingCartPopUpViewControllerDelegate {
+    
+    func readyToCheckoutClicked(_ sender: Any) {
+        validateShoppingCart()
+    }
+    
     func updateQuantityClicked(itemId: String?, quantity: Int) {
         updateItemQuantity(itemId: itemId, quantity: quantity)
     }
@@ -150,9 +170,7 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
 
 
 extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
-    func firstButtonClicked(_ sender: Any) {
-        
-    }
+    func firstButtonClicked(_ sender: Any) {}
     
     func secondButtonClicked(_ sender: Any) {
         clearShoppingCart()

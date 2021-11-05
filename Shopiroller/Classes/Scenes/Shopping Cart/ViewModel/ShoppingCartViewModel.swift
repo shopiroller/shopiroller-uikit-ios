@@ -55,7 +55,6 @@ class ShoppingCartViewModel: BaseViewModel {
             case .success(_):
                 self.getShoppingCart(success: success, error: error)
             case .failure(let err):
-                self.getShoppingCart(success: success, error: error)
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
                 }
@@ -71,7 +70,23 @@ class ShoppingCartViewModel: BaseViewModel {
             case .success(_):
                 self.getShoppingCart(success: success, error: error)
             case .failure(let err):
-                self.getShoppingCart(success: success, error: error)
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func validateShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.validateShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+            (result) in
+            switch result {
+            case .success(let result):
+                self.shoppingCart = result.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
                 }
