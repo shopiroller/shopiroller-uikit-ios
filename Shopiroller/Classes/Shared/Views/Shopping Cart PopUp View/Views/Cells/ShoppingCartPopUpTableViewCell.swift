@@ -58,9 +58,9 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     
         if let messages = model.messages, !messages.isEmpty, let key = messages[0].key, key != .UpdatedProduct {
             stockView.isHidden = false
-            if(key == .NotEnoughStock) {
-                stockLabel.text = String(format: key.text, String(model.product?.stock ?? 0))
-                countLabel.text = String(model.product?.stock ?? 0)
+            if let stock = model.product?.stock, key == .NotEnoughStock {
+                stockLabel.text = String(format: key.text, String(stock))
+                countLabel.text = String(stock)
                 controlView.isHidden = false
             }else {
                 stockLabel.text = key.text
