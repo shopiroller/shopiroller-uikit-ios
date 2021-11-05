@@ -24,7 +24,7 @@ class ShoppingCartViewModel: BaseViewModel {
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
-                    success?()
+                    error?(ErrorViewModel(error: err))
                 }
             }
         }
