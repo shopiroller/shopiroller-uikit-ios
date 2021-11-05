@@ -63,6 +63,22 @@ class ShoppingCartViewModel: BaseViewModel {
         }
     }
     
+    func updateItemQuantity(itemId: String?, quantity: Int?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let id = itemId else { return }
+        SRNetworkManagerRequests.updateItemQuantity(userId: SRAppConstants.Query.Values.userId, cartItemId: id, body: UpdateCartItemQuantity(amount: quantity)).response() {
+            (result) in
+            switch result {
+            case .success(_):
+                self.getShoppingCart(success: success, error: error)
+            case .failure(let err):
+                self.getShoppingCart(success: success, error: error)
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
     func isShoppingCartEmpty() -> Bool {
         return shoppingCart?.items?.isEmpty ?? true
     }

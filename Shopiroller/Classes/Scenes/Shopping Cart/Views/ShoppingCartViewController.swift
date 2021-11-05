@@ -93,6 +93,14 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
+    private func updateItemQuantity(itemId: String?, quantity: Int?) {
+        viewModel.updateItemQuantity(itemId: itemId, quantity: quantity, success: {
+            self.configure()
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
     private func checkInvalidation() {
         if(viewModel.hasInvalidItems()){
             let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel())
@@ -110,7 +118,6 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         vc.delegate = self
         popUp(vc, completion: nil)
     }
-    
     
 }
 
@@ -132,7 +139,7 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
 
 extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
     func updateQuantityClicked(itemId: String?, quantity: Int) {
-    
+        updateItemQuantity(itemId: itemId, quantity: quantity)
     }
     
     func deleteClicked(itemId: String?) {

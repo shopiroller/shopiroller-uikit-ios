@@ -21,7 +21,6 @@ public class BaseView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        print(String(describing:type(of:self)))
         setupFromNib()
         setup()
     }
