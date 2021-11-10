@@ -25,6 +25,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var firstButtonContainerView: UIView!
     @IBOutlet private weak var secondButtonContainerView: UIView!
+    @IBOutlet private weak var buttonContainer: UIView!
+    @IBOutlet private weak var button: UIButton!
     
     var delegate: PopUpViewViewControllerDelegate?
     

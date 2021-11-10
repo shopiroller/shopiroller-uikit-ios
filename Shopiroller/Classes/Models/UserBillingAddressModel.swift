@@ -7,13 +7,23 @@
 
 import Foundation
 
-class UserBillingAdressModel: BaseAddressModel {
+struct UserBillingAdressModel: Codable {
     
     var type: String?
     var identityNumber: String?
     var companyName: String?
     var taxNumber: String?
     var taxOffice: String?
+    var id: String?
+    var title: String?
+    var country: String?
+    var state: String?
+    var city: String?
+    var addressLine: String?
+    var zipCode: String?
+    var description: String?
+    var isDefault: Bool?
+    var contact: AddressContactModel?
     
     enum CodingKeys: String,CodingKey {
         case type = "type"
@@ -21,6 +31,16 @@ class UserBillingAdressModel: BaseAddressModel {
         case companyName = "companyName"
         case taxNumber = "taxNumber"
         case taxOffice = "taxOffice"
+        case id = "id"
+        case title = "title"
+        case country = "country"
+        case state = "state"
+        case city = "city"
+        case addressLine = "addressLine"
+        case zipCode = "zipCode"
+        case description = "description"
+        case isDefault = "isDefault"
+        case contact = "contact"
     }
     
     func getOrderAdress() -> MakeOrderAddressModel {
@@ -66,5 +86,58 @@ class UserBillingAdressModel: BaseAddressModel {
         }
     }
     
+    func getListDeliveryDescriptionArea() -> String {
+        return [contact?.nameSurname
+                ,String.NEW_LINE
+                ,addressLine
+                ,String.NEW_LINE
+                ,city , " / " , state , " / " , country
+                ,String.NEW_LINE
+                ,contact?.phoneNumber].compactMap { $0 }
+                .joined(separator: "")
+    }
+    
+    func getDescriptionArea() -> String {
+        return [city
+                , " / ", state , " / ", country
+                , String.NEW_LINE
+                , contact?.nameSurname
+                , " - "
+                , contact?.phoneNumber].compactMap { $0 }
+                .joined(separator: "")
+        
+    }
+    
+    func getPopupAddressFirstLine() -> String  {
+        return addressLine ?? ""
+    }
+
+    func getPopupAddressSecondLine() -> String {
+        return [city
+                , " / " , state
+                , " / " , country].compactMap { $0 }
+                .joined(separator: "")
+    }
+        
+
+    func getPopupAddressThirdLine() -> String {
+        return [contact?.nameSurname
+                , " - " ,contact?.phoneNumber].compactMap { $0 }
+                .joined(separator: "")
+    }
+        
+}
+
+struct AddressContactModel: Codable {
+    
+    var nameSurname: String?
+    var phoneNumber: String?
+    var email: String?
+    
+    enum CodingKeys: String,CodingKey {
+        case nameSurname = "nameSurname"
+        case phoneNumber = "phoneNumber"
+        case email = "email"
+    }
 }
 

@@ -96,6 +96,10 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
 }
 
 extension CheckOutViewController : CheckOutProgressPageDelegate {
+    func showSuccessfullToastMessage() {
+        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized),position: ToastPosition.bottom)
+    }
+    
     func currentPageIndex(currentIndex: Int) {
         self.index = currentIndex
     }

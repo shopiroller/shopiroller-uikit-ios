@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import FittedSheets
 
 extension UIViewController {
     
@@ -83,6 +83,21 @@ extension UIViewController {
         } else {
             dismiss(animated: flag, completion: completion)
         }
+    }
+    
+    func sheet(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
+        let options = SheetOptions(
+            pullBarHeight: 0)
+        let sheetController = SheetViewController(controller: viewController, sizes: [.percent(0.73)],options: options)
+        sheetController.contentBackgroundColor = .white
+        sheetController.pullBarBackgroundColor = .iceBlue
+        sheetController.cornerRadius = 15
+        sheetController.gripColor = .black
+        DispatchQueue.main.async {
+            viewController.modalPresentationStyle = .overCurrentContext
+            self.present(sheetController, animated: true, completion: nil)
+        }
+       
     }
     
     func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil , _ isCartButton: Bool? = false ) -> UIButton {

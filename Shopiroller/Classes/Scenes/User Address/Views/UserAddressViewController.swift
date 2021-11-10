@@ -55,6 +55,18 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
         }
     }
     
+    @IBAction func addButtonTapped() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: false))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }else {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: false))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }
+    }
+    
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
             [weak self] in
@@ -69,5 +81,18 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
 extension UserAddressViewController: AddressListPageDelegate {
     func pageViewController(currentIndex: Int) {
         segmentedControl.selectedSegmentIndex = currentIndex
+        print(currentIndex)
     }
+}
+
+extension UserAddressViewController: AddressBottomViewDelegate {
+    func saveButtonTapped() {
+        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func closeButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

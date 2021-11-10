@@ -12,6 +12,10 @@ class CheckOutAddressViewModel: BaseViewModel {
     
     private var defaultAdressList: SRDefaultAddressModel?
     
+    private var userBillingAddress: UserBillingAdressModel?
+     
+    private var userShippingAddress: UserShippingAddressModel?
+    
     func getDefaultAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getDefaultAddress(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
@@ -46,7 +50,15 @@ class CheckOutAddressViewModel: BaseViewModel {
         return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: nil)
     }
     
+    func getShippingAddress() -> UserShippingAddressModel? {
+        userShippingAddress = defaultAdressList?.shippingAddress
+        return userShippingAddress
+    }
     
+    func getBillingAddress() -> UserBillingAdressModel? {
+        userBillingAddress = defaultAdressList?.billingAddress
+        return userBillingAddress
+    }
     
     func isShippingAddressEmpty() -> Bool {
         return defaultAdressList?.shippingAddress == nil
@@ -54,6 +66,14 @@ class CheckOutAddressViewModel: BaseViewModel {
     
     func isBillingAddressEmpty() -> Bool {
         return defaultAdressList?.billingAddress == nil
+    }
+    
+    func setBillingAddress(billingAddress: UserBillingAdressModel?) {
+        userBillingAddress = billingAddress
+    }
+    
+    func setShippingAddress(shippingAddress: UserShippingAddressModel?) {
+        userShippingAddress = shippingAddress
     }
     
 }

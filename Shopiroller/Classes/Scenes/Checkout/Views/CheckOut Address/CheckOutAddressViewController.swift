@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CheckOutAddressViewControllerDelegate {
+    func showToastMessage()
+}
+
 class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel> {
     
     private struct Constants {
@@ -27,11 +31,16 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     @IBOutlet private weak var defaultBillingAddress: GeneralAddressView!
     
     
+    var delegate : CheckOutAddressViewControllerDelegate?
+    
     override func setup() {
         super.setup()
         
         shippingAddressAddButton.setTitle(Constants.addAddressButtonText)
         billingAddressAddButton.setTitle(Constants.addAddressButtonText)
+        
+        defaultBillingAddress.delegate = self
+        defaultDeliveryAddress.delegate = self
         
         shippingAddressViewLabel.text = Constants.deliveryAddressText
         shippingAddressViewLabel.textColor = .textPrimary
@@ -85,20 +94,67 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
         }
     }
+    
+    @IBAction func addShippingAddressButtonTapped() {
+        let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping))
+        vc.delegate = self
+        self.sheet(vc, completion: nil)
+    }
+    
+    @IBAction func addBillingAddressButtonTapped() {
+        let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing))
+        vc.delegate = self
+        self.sheet(vc, completion: nil)
+    }
 
 }
 
 extension CheckOutAddressViewController: GeneralAddressDelegate {
-    func addAddressButtonTapped(type: GeneralAddressType?) {
-        //TODO Add Address
+    func editButtonTapped(type: GeneralAddressType) {
+        switch type {
+        case .shipping:
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.getShippingAddress()))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        case .billing:
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.getBillingAddress()))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }
     }
     
+
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
-        //TODO Select Other Adress
+        let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .address,addressType: type ?? .shipping ))
+        vc.delegate = self
+        popUp(vc, completion: nil)
+    }
+}
+
+extension CheckOutAddressViewController : AddressBottomViewDelegate {
+    func saveButtonTapped() {
+        DispatchQueue.main.async {
+            self.getDefaultAddress()
+            self.view.layoutIfNeeded()
+        }
+        delegate?.showToastMessage()
+        dismiss(animated: true, completion: nil)
     }
     
-    func editButtonTapped() {
-        //TODO Edit Address
+    func closeButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CheckOutAddressViewController: ListPopUpDelegate {
+    func getBillingAddress(billingAddress: UserBillingAdressModel?) {
+        defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
+        self.view.layoutIfNeeded()
+    }
+    
+    func getShippingAddress(shippingAddress: UserShippingAddressModel?) {
+        defaultDeliveryAddress.setup(model: GeneralAddressModel(title: shippingAddress?.title, address: shippingAddress?.addressLine, description: shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: false))
+        self.view.layoutIfNeeded()
     }
     
     

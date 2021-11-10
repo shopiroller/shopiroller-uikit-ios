@@ -11,7 +11,7 @@ import UIKit
 extension GeneralAddressView : NibLoadable { }
 
 protocol GeneralAddressDelegate {
-    func editButtonTapped()
+    func editButtonTapped(type: GeneralAddressType)
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
 }
 
@@ -33,7 +33,7 @@ public class GeneralAddressView: BaseView {
     var delegate: GeneralAddressDelegate?
     
     var type: GeneralAddressType?
-    
+        
     func setup(model: GeneralAddressModel) {
         super.setup()
         setupFromNib()
@@ -74,7 +74,11 @@ public class GeneralAddressView: BaseView {
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        delegate?.editButtonTapped()
+        if type == .shipping {
+            delegate?.editButtonTapped(type: .shipping)
+        } else {
+            delegate?.editButtonTapped(type: .billing)
+        }
     }
     
     @IBAction func selectOtherAddressButtonTapped(_ sender: Any) {
