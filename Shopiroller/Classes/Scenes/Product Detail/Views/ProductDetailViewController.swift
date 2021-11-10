@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import ImageSlideshow
 import LinkPresentation
 
 struct Constants {

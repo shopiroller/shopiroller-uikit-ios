@@ -30,10 +30,11 @@ TODO: Add long description of the pod here.
   }
 
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Kingfisher'
   s.dependency 'SVProgressHUD'
-  s.dependency 'ImageSlideshow'
-  s.dependency 'ImageSlideshow/Kingfisher'
+  #s.dependency 'ImageSlideshow', '~> 1.9.1'
+  #s.dependency 'ImageSlideshow/Kingfisher'
   s.dependency 'MaterialComponents/Buttons'
   s.dependency 'FittedSheets'
+  s.dependency 'Kingfisher'
+  s.dependency 'AFNetworking', '~> 3.0'
 end
