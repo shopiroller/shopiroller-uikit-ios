@@ -36,5 +36,4 @@ TODO: Add long description of the pod here.
   s.dependency 'MaterialComponents/Buttons'
   s.dependency 'FittedSheets'
   s.dependency 'Kingfisher'
-  s.dependency 'AFNetworking', '~> 3.0'
 end
