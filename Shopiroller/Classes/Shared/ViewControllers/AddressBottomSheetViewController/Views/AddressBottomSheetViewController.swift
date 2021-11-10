@@ -103,7 +103,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         super.setup()
         
         closeButton.tintColor = .white
-        closeButton.setImage(UIImage(systemName: "clear"))
+        closeButton.setImage(UIImage(systemName: "xmark"))
         closeButton.imageView?.tintColor = .black
         
         titleLabel.text = Constants.titleText

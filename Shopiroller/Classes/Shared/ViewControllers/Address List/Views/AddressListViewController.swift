@@ -59,16 +59,7 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
     }
 }
 
-extension AddressListViewController: UITableViewDelegate, UITableViewDataSource, AddressTableViewCellDelegate , AddressBottomViewDelegate {
-    func saveButtonTapped() {
-        print("ok")
-    }
-    
-    func closeButtonTapped() {
-        pop(animated: true)
-    }
-    
-    
+extension AddressListViewController: UITableViewDelegate, UITableViewDataSource, AddressTableViewCellDelegate {
     func deleteButtonClicked(indexPathRow: Int?) {
         viewModel.selectedIndexPathRow = indexPathRow
         deleteAddress()
@@ -107,4 +98,15 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
         
         return cell
     }
+}
+
+extension AddressListViewController: AddressBottomViewDelegate {
+    func saveButtonTapped() {
+        print("ok")
+    }
+    
+    func closeButtonTapped() {
+       dismiss(animated: true)
+    }
+    
 }
