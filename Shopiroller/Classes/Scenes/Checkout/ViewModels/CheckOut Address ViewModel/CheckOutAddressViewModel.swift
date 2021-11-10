@@ -12,9 +12,9 @@ class CheckOutAddressViewModel: BaseViewModel {
     
     private var defaultAdressList: SRDefaultAddressModel?
     
-    private var userBillingAddress: UserBillingAdressModel?
-     
-    private var userShippingAddress: UserShippingAddressModel?
+    private var _selectedShippingAddress: UserShippingAddressModel?
+    
+    private var _selectedBillingAddress: UserBillingAdressModel?
     
     func getDefaultAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getDefaultAddress(userId: SRAppConstants.Query.Values.userId).response() {
@@ -51,13 +51,13 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     func getShippingAddress() -> UserShippingAddressModel? {
-        userShippingAddress = defaultAdressList?.shippingAddress
-        return userShippingAddress
+        _selectedShippingAddress = defaultAdressList?.shippingAddress
+        return _selectedShippingAddress
     }
     
     func getBillingAddress() -> UserBillingAdressModel? {
-        userBillingAddress = defaultAdressList?.billingAddress
-        return userBillingAddress
+        _selectedBillingAddress = defaultAdressList?.billingAddress
+        return _selectedBillingAddress
     }
     
     func isShippingAddressEmpty() -> Bool {
@@ -68,12 +68,21 @@ class CheckOutAddressViewModel: BaseViewModel {
         return defaultAdressList?.billingAddress == nil
     }
     
-    func setBillingAddress(billingAddress: UserBillingAdressModel?) {
-        userBillingAddress = billingAddress
+    var selectedShippingAddress: UserShippingAddressModel? {
+        set {
+            _selectedShippingAddress = newValue
+        }
+        get {
+            return _selectedShippingAddress
+        }
     }
     
-    func setShippingAddress(shippingAddress: UserShippingAddressModel?) {
-        userShippingAddress = shippingAddress
+    var selectedBillingAddress: UserBillingAdressModel? {
+        set {
+            _selectedBillingAddress = newValue
+        } get {
+            return _selectedBillingAddress
+        }
     }
     
 }

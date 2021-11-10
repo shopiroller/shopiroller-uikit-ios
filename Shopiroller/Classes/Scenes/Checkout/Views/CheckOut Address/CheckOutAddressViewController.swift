@@ -82,6 +82,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             billingAddressEmptyView.setup(model: viewModel.getBillingEmptyModel())
         } else {
             billingAddressAddButton.isHidden = false
+            viewModel.selectedBillingAddress = viewModel.getBillingAddress()
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
         }
         
@@ -91,6 +92,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             shippingAddressEmptyView.setup(model: viewModel.getShippingEmptyModel())
         } else {
             shippingAddressAddButton.isHidden = false
+            viewModel.selectedShippingAddress = viewModel.getShippingAddress()
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
         }
     }
@@ -113,11 +115,11 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     func editButtonTapped(type: GeneralAddressType) {
         switch type {
         case .shipping:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.getShippingAddress()))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.selectedShippingAddress))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         case .billing:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.getBillingAddress()))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.selectedBillingAddress))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         }
@@ -149,11 +151,13 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
 extension CheckOutAddressViewController: ListPopUpDelegate {
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
         defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
+        viewModel.selectedBillingAddress = billingAddress
         self.view.layoutIfNeeded()
     }
     
     func getShippingAddress(shippingAddress: UserShippingAddressModel?) {
         defaultDeliveryAddress.setup(model: GeneralAddressModel(title: shippingAddress?.title, address: shippingAddress?.addressLine, description: shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: false))
+        viewModel.selectedShippingAddress = shippingAddress
         self.view.layoutIfNeeded()
     }
     

@@ -102,7 +102,8 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
 
 extension AddressListViewController: AddressBottomViewDelegate {
     func saveButtonTapped() {
-        print("ok")
+        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        dismiss(animated: true, completion: nil)
     }
     
     func closeButtonTapped() {

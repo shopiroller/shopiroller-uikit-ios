@@ -129,7 +129,6 @@ extension ProductListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         if (indexPath.row == viewModel.getProductCount() - 2){
             getProducts(pagination: true)
         }

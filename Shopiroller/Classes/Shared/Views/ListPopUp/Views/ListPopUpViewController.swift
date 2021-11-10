@@ -132,10 +132,6 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
 }
 
 extension ListPopUpViewController: AddressPopUpSelectedDelegate {

@@ -37,20 +37,6 @@ class SelectionPopUpViewModel: BaseViewModel {
         return type
     }
     
-    //    func filter(searchText: String?) {
-    //        filteredList = []
-    //        if let searchText = searchText {
-    //            for (index, item) in selectionList.enumerated() {
-    //                if(item.name?.lowercased().contains(searchText.lowercased()) ?? false) {
-    //                    filteredList.append(selectionList[index])
-    //                }
-    //            }
-    //        } else {
-    //            isSearching = false
-    //            filteredList = selectionList
-    //        }
-    //    }
-    
     func filterContentForSearchText(searchText: String) {
         filteredList = selectionList.filter { $0.name?.lowercased().contains(searchText.lowercased()) as! Bool }
     }

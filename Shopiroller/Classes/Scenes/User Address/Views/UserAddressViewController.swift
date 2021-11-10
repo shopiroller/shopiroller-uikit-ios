@@ -81,7 +81,6 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
 extension UserAddressViewController: AddressListPageDelegate {
     func pageViewController(currentIndex: Int) {
         segmentedControl.selectedSegmentIndex = currentIndex
-        print(currentIndex)
     }
 }
 
