@@ -7,7 +7,6 @@
 
 import UIKit
 
-extension EmptyView : NibLoadable { }
 
 protocol EmptyViewDelegate {
     func actionButtonClicked(_ sender: Any)
@@ -24,7 +23,6 @@ public class EmptyView: BaseView {
     
     func setup(model: EmptyModel) {
         super.setup()
-        setupFromNib()
         
         imageView.image = model.image
         titleLabel.text = model.title

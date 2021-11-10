@@ -8,26 +8,27 @@
 import UIKit
 
 protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelegate {
-    func deleteClicked(indexPathRow: Int?)
+    func deleteClicked(itemId: String?)
 }
 
 class ShoppingCartTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var warningView: UIView!
-    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet private weak var warningView: UIView!
+    @IBOutlet private weak var warningLabel: UILabel!
     
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var discount: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet private weak var productImage: UIImageView!
+    @IBOutlet private weak var title: UILabel!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var discount: UILabel!
+    @IBOutlet private weak var price: UILabel!
     
-    @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var count: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet private weak var controlView: UIView!
+    @IBOutlet private weak var minusButton: UIButton!
+    @IBOutlet private weak var count: UILabel!
+    @IBOutlet private weak var plusButton: UIButton!
     
-    private var indexPathRow: Int?
+    @IBOutlet private weak var productImageToStackView: NSLayoutConstraint!
+    
     private var model: ShoppingCartItem?
     private var delegate: ShoppingCartTableViewCellDelegate?
     
@@ -47,9 +48,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem, indexPathRow: Int,_ delegate: ShoppingCartTableViewCellDelegate? = nil) {
+    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil) {
         self.model = model
-        self.indexPathRow = indexPathRow
         self.delegate = delegate
         
         if let imageUrl = model.product?.featuredImage?.thumbnail {
@@ -86,28 +86,28 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
             warningView.isHidden = false
-            
-            
+            warningLabel.text = String(format: "shopping_cell_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency))
+            productImageToStackView.constant = 10
         }
         
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
-        delegate?.deleteClicked(indexPathRow: indexPathRow)
+        delegate?.deleteClicked(itemId: model?.id)
     }
     
     @IBAction func minusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity, quantity != 1 {
-            delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity - 1)
+            delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity - 1)
         }
     }
   
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(String(format: "shopping_cell_maximum_product_message".localized, quantity))
+                makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
             }else {
-                delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity + 1)
+                delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }
         }
     }

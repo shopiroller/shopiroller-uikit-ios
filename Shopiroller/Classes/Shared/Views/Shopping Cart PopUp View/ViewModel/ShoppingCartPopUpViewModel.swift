@@ -11,6 +11,8 @@ class ShoppingCartPopUpViewModel: BaseViewModel {
     
     private let productList: [ShoppingCartItem]?
     
+    private var outOfStockCount = 0
+    
     init(productList: [ShoppingCartItem]?) {
         self.productList = productList
     }
@@ -24,7 +26,21 @@ class ShoppingCartPopUpViewModel: BaseViewModel {
     }
     
     func getWarning() -> String {
-        return  "shopping_cart_validate_warning".localized
+        return String(format: "shopping_cart_validate_warning".localized, arguments: [String(changedProductCount()), String(outOfStockCount)])
+    }
+    
+    private func changedProductCount() -> Int {
+        var count = 0
+        if let list = productList {
+            for item in list {
+                if(item.messages?[0].key == .UpdatedProduct || item.messages?[0].key == .NotEnoughStock){
+                    count += 1
+                }else if(item.messages?[0].key == .OutOfStock) {
+                    outOfStockCount += 1
+                }
+            }
+        }
+        return count
     }
     
     func getButtonTitle() -> String {

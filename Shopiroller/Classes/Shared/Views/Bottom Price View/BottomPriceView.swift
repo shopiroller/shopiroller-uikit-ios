@@ -7,7 +7,6 @@
 
 import UIKit
 
-extension BottomPriceView : NibLoadable { }
 
 class BottomPriceView: BaseView {
 
@@ -18,7 +17,6 @@ class BottomPriceView: BaseView {
     
     func setup(model: BottomPriceModel) {
         super.setup()
-        setupFromNib()
         
         subTotal.textColor = .textSecondary
         shipping.textColor = .textSecondary

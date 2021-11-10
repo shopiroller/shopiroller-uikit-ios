@@ -51,27 +51,29 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subPath, resourceType: SRShoppingCartResponseModel.self)
     }
     
-    static func validateShoppingCart(userId: String,cartItemId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .validateShoppingCart,subpath: "/\(userId)" + "/\(cartItemId)", resourceType: SRShoppingCartResponseModel.self)
+    static func validateShoppingCart(userId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartValidate.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subpath, resourceType: SRShoppingCartResponseModel.self)
     }
     
     static func removeItemFromShoppingCart(userId: String, cartItemId: String) -> SRNetworkRequestManager<SuccessResponse> {
-        return SRNetworkRequestManager(httpMethod: .delete, path: .removeItemFromShoppingCart, subpath: "/\(userId)" + "/\(cartItemId)" , resourceType: SuccessResponse.self)
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)\(cartItemId)"
+        return SRNetworkRequestManager(httpMethod: .delete, path: .users, subpath: subpath , resourceType: SuccessResponse.self)
     }
     
-    static func updateItemQuantity(userId: String, cartItemId: String) -> SRNetworkRequestManager<SuccessResponse> {
-        return SRNetworkRequestManager(httpMethod: .put, path: .updateItemQuantity, subpath: "/\(userId)" + "/\(cartItemId)", resourceType: SuccessResponse.self)
+    static func updateItemQuantity(userId: String, cartItemId: String, body: UpdateCartItemQuantity) -> SRNetworkRequestManager<SuccessResponse> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)\(cartItemId)\(SRNetworkManagerPaths.quantity.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .put, path: .users, subpath: subpath, resourceType: SuccessResponse.self, httpBody: body.data)
     }
     
     static func addProductToShoppingCart(products: SRAddProductModel,userId: String) ->
     SRNetworkRequestManager<String> {
-        let subpath = "\(userId)\(SRNetworkManagerPaths.addProductToShoppingCart.rawValue)"
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)"
         return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath, resourceType: String.self, httpBody: products.data, ignoreParse: true)
     }
     
     static func clearShoppingCart(userId: String) -> SRNetworkRequestManager<SuccessResponse> {
-        let subPath = "\(userId)\(SRNetworkManagerPaths.clearShoppingCart.rawValue)"
-        
+        let subPath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)"
         return SRNetworkRequestManager(httpMethod: .delete, path: .users, subpath: subPath , resourceType: SuccessResponse.self)
     }
     

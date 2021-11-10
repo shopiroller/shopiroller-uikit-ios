@@ -134,6 +134,7 @@
 "ProductNotFound" = "Removed basket";
 
 // MARK: - Shopping Cell
+"shopping_cell_cargo_warning" = "%@ special cargo fee applied.";
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
 
 //MARK: - Checkout Progress

@@ -47,6 +47,53 @@ class ShoppingCartViewModel: BaseViewModel {
         }
     }
     
+    func removeItemFromShoppingCart(itemId: String?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let id = itemId else { return }
+        SRNetworkManagerRequests.removeItemFromShoppingCart(userId: SRAppConstants.Query.Values.userId, cartItemId: id).response() {
+            (result) in
+            switch result {
+            case .success(_):
+                self.getShoppingCart(success: success, error: error)
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func updateItemQuantity(itemId: String?, quantity: Int?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        guard let id = itemId else { return }
+        SRNetworkManagerRequests.updateItemQuantity(userId: SRAppConstants.Query.Values.userId, cartItemId: id, body: UpdateCartItemQuantity(amount: quantity)).response() {
+            (result) in
+            switch result {
+            case .success(_):
+                self.getShoppingCart(success: success, error: error)
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func validateShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.validateShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+            (result) in
+            switch result {
+            case .success(let result):
+                self.shoppingCart = result.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
     func isShoppingCartEmpty() -> Bool {
         return shoppingCart?.items?.isEmpty ?? true
     }
@@ -92,7 +139,7 @@ class ShoppingCartViewModel: BaseViewModel {
     }
     
     func geShoppingCartPopUpViewModel() -> ShoppingCartPopUpViewModel {
-        return ShoppingCartPopUpViewModel(productList: shoppingCart?.items)
+        return ShoppingCartPopUpViewModel(productList: shoppingCart?.invalidItems)
     }
     
     

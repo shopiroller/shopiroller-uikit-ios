@@ -8,22 +8,21 @@
 import UIKit
 
 protocol ShoppingCartPopUpTableViewCellDelegate {
-    func updateQuantityClicked(indexPathRow: Int?, quantity: Int)
+    func updateQuantityClicked(itemId: String?, quantity: Int)
 }
 
 class ShoppingCartPopUpTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var stockView: UIView!
-    @IBOutlet weak var stockLabel: UILabel!
-    @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet private weak var productImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var stockView: UIView!
+    @IBOutlet private weak var stockLabel: UILabel!
+    @IBOutlet private weak var controlView: UIView!
+    @IBOutlet private weak var minusButton: UIButton!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var plusButton: UIButton!
     
     private var model: ShoppingCartItem?
-    private var indexPathRow: Int?
     private var delegate: ShoppingCartPopUpTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -38,9 +37,9 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem, indexPathRow: Int) {
+    func setup(model: ShoppingCartItem, delegate: ShoppingCartPopUpTableViewCellDelegate) {
         self.model = model
-        self.indexPathRow = indexPathRow
+        self.delegate = delegate
         
         if let imageUrl = model.product?.featuredImage?.thumbnail {
             productImage.kf.setImage(with: URL(string: imageUrl))
@@ -59,9 +58,9 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     
         if let messages = model.messages, !messages.isEmpty, let key = messages[0].key, key != .UpdatedProduct {
             stockView.isHidden = false
-            if(key == .NotEnoughStock) {
-                stockLabel.text = String(format: key.text, arguments: [model.product?.stock ?? 0])
-                countLabel.text = String(model.product?.stock ?? 0)
+            if let stock = model.product?.stock, key == .NotEnoughStock {
+                stockLabel.text = String(format: key.text, String(stock))
+                countLabel.text = String(stock)
                 controlView.isHidden = false
             }else {
                 stockLabel.text = key.text
@@ -75,16 +74,16 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     
     @IBAction func minusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity, quantity != 1 {
-            delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity - 1)
+            delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity - 1)
         }
     }
     
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(String(format: "shopping_cell_maximum_product_message".localized, quantity))
+                makeToast(String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
             }else {
-                delegate?.updateQuantityClicked(indexPathRow: indexPathRow, quantity: quantity + 1)
+                delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }
         }
     }
