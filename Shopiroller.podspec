@@ -35,4 +35,5 @@ TODO: Add long description of the pod here.
   s.dependency 'ImageSlideshow'
   s.dependency 'ImageSlideshow/Kingfisher'
   s.dependency 'MaterialComponents/Buttons'
+  s.dependency 'FittedSheets'
 end

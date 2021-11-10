@@ -147,3 +147,34 @@
 "billing-address-title" = "Billing Address";
 "add-address-button-text" = "Add Address";
 "select-other-address-button-text" = "Select Other Address";
+
+
+//MARK: - AddressBottomView
+
+"address-bottom-view-title-text" = "Add New Address";
+"address-bottom-view-name-text" = "Name";
+"address-bottom-view-surname-text" = "Surname";
+"address-bottom-view-phone-text" = "Phone";
+"address-bottom-view-country-text" = "Country";
+"address-bottom-view-states-text" = "States";
+"address-bottom-view-cities-text" = "Cities";
+"address-bottom-view-address-text" = "Address";
+"address-bottom-view-zipcode-text" = "Zip Code";
+"address-bottom-view-address-title-text" = "Address Title";
+"address-bottom-view-individual-checkbox-text" = "Individual";
+"address-bottom-view-corporate-checkbox-text" = "Corporate";
+"address-bottom-view-identitynumber-text" = "Identity Number";
+"address-bottom-view-corporate-company-name-text" = "Company Name";
+"address-bottom-view-corporate-tax-office-text" = "Tax Office";
+"address-bottom-view-corporate-tax-number-text" = "Tax Number";
+"address-bottom-view-save-button-text" = "Save";
+"address-bottom-view-address-saved-text" = "Address Saved";
+"address-bottom-view-save-as-billing-address-text" = "Save As Billing Address";
+
+//MARK: - ListPopUp
+
+"list-popup-select-address-title" = "Select Address";
+"list-popup-select-payment-title" = "Select Payment";
+"list-popup-shopping-cart-title" = "Cart is updating";
+
+

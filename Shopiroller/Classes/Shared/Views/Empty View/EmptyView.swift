@@ -26,8 +26,12 @@ public class EmptyView: BaseView {
         
         imageView.image = model.image
         titleLabel.text = model.title
-        descriptionLabel.text = model.description
         descriptionLabel.textColor = .textPCaption
+        
+        if let description = model.description {
+            descriptionLabel.isHidden = false
+            descriptionLabel.text = description
+        }
         
         if let button = model.button {
             actionButton.isHidden = false

@@ -125,5 +125,51 @@ struct SRNetworkManagerRequests {
         let subpath = "\(userId)\(SRNetworkManagerPaths.billing.rawValue)\(addressId)"
         return SRNetworkRequestManager(httpMethod: .delete, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self)
     }
+    
+    static func getDefaultAddress(userId: String) -> SRNetworkRequestManager<SRDefaultAddressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.defaultAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: SRDefaultAddressModel.self, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func addBillingAddress(_ request: AddAddressModel,userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .addresses , subpath: subpath, resourceType: UserBillingAdressModel.self,httpBody: request.data, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func addShippingAddress(_ request: AddAddressModel,userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .addresses , subpath: subpath, resourceType: UserShippingAddressModel.self,httpBody: request.data, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func editBillingAddress(_ request: EditAddressModel,userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .put, path: .addresses , subpath: subpath, resourceType: UserBillingAdressModel.self,httpBody: request.data, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func editShippingAddress(_ request: EditAddressModel,userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .put, path: .addresses , subpath: subpath, resourceType: UserShippingAddressModel.self,httpBody: request.data, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func getCountryList() -> SRNetworkRequestManager<[CountryModel]> {
+        let subpath = "\(SRNetworkManagerPaths.countries.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: [CountryModel].self, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func getStateList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[CountryModel]> {
+        let subpath = "\(SRNetworkManagerPaths.states.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: [CountryModel].self, urlQueryItems: urlQueryItems, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func getCityList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[CountryModel]> {
+        let subpath = "\(SRNetworkManagerPaths.cities.rawValue)"
+        return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: [CountryModel].self, urlQueryItems: urlQueryItems, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    static func addAddress(userId: String?, address: AddAddressModel) -> SRNetworkRequestManager<SRDefaultAddressModel> {
+        return SRNetworkRequestManager(httpMethod: .post, path: .addresses , subpath: userId, resourceType: SRDefaultAddressModel.self, httpBody: address.data, shouldShowProgressHUD: true,ignoreBaseModel: true)
+    }
+    
+    
 }
 

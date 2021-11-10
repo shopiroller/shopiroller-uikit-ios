@@ -60,14 +60,24 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
 }
 
 extension AddressListViewController: UITableViewDelegate, UITableViewDataSource, AddressTableViewCellDelegate {
-    
     func deleteButtonClicked(indexPathRow: Int?) {
         viewModel.selectedIndexPathRow = indexPathRow
         deleteAddress()
     }
     
     func editButtonClicked(indexPathRow: Int?) {
-        //TODO: ADD ACTION
+        switch viewModel.state {
+        case .billing:
+            guard let model = viewModel.getBillingAddress(position: indexPathRow ?? 0) else { return }
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: model))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        case .shipping:
+            guard let model = viewModel.getShippingAddress(position: indexPathRow ?? 0) else { return }
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: model))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,4 +98,16 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
         
         return cell
     }
+}
+
+extension AddressListViewController: AddressBottomViewDelegate {
+    func saveButtonTapped() {
+        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func closeButtonTapped() {
+       dismiss(animated: true)
+    }
+    
 }

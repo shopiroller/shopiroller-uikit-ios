@@ -9,6 +9,7 @@ import UIKit
 
 protocol CheckOutProgressPageDelegate {
     func currentPageIndex(currentIndex: Int)
+    func showSuccessfullToastMessage()
 }
 
 class CheckOutPageViewController: UIPageViewController {
@@ -39,12 +40,13 @@ class CheckOutPageViewController: UIPageViewController {
     }
     
     private func createViewControllers() {
-        let CheckOutAdressVC = CheckOutAddressViewController(viewModel: CheckOutAddressViewModel())
-        items.append(CheckOutAdressVC)
-        let CheckOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
-        items.append(CheckOutPaymentVC)
-        let CheckOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
-        items.append(CheckOutInfoVC)
+        let checkOutAdressVC = CheckOutAddressViewController(viewModel: CheckOutAddressViewModel())
+        checkOutAdressVC.delegate = self
+        items.append(checkOutAdressVC)
+        let checkOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
+        items.append(checkOutPaymentVC)
+        let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
+        items.append(checkOutInfoVC)
     }
 }
 
@@ -87,3 +89,11 @@ extension CheckOutPageViewController: UIPageViewControllerDataSource {
     }
 }
 
+
+extension CheckOutPageViewController : CheckOutAddressViewControllerDelegate {
+    func showToastMessage() {
+        checkOutPageDelegate.showSuccessfullToastMessage()
+    }
+    
+    
+}

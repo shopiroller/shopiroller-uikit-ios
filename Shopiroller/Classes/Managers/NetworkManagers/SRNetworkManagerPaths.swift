@@ -30,6 +30,12 @@ enum SRNetworkManagerPaths: String {
     case getFilterOptions = "/filterOptions"
     case users = "/users/"
     case addresses = "/addresses/"
+    case countries = "countries/"
+    case states = "states/"
+    case cities = "cities/"
+    case defaultAddress = "/defaults"
+    case billingAddress = "/billing"
+    case shippingAddress = "/shipping"
     case shipping = "/shipping/"
     case billing = "/billing/"
     

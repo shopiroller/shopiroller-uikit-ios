@@ -284,7 +284,6 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         if (indexPath.row == viewModel.productItemCount() - 2){
             getProducts(showProgress: false,pagination: true, refreshing: false)
         }

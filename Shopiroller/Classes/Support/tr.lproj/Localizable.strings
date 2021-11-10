@@ -149,3 +149,31 @@
 "billing-address-title" = "Fatura Adresi";
 "add-address-button-text" = "Yeni Adress Ekle";
 "select-other-address-button-text" = "Başka Bir Adres Seç";
+
+//MARK: - AddressBottomView
+
+"address-bottom-view-title-text" = "Yeni Adres Ekle";
+"address-bottom-view-name-text" = "İsim";
+"address-bottom-view-surname-text" = "Soyisim";
+"address-bottom-view-phone-text" = "Telefon";
+"address-bottom-view-country-text" = "Ülke";
+"address-bottom-view-states-text" = "Şehir";
+"address-bottom-view-cities-text" = "İlçe";
+"address-bottom-view-address-text" = "Adres";
+"address-bottom-view-zipcode-text" = "Posta Kodu";
+"address-bottom-view-address-title-text" = "Adres Başlığı";
+"address-bottom-view-individual-checkbox-text" = "Bireysel";
+"address-bottom-view-corporate-checkbox-text" = "Kurumsal";
+"address-bottom-view-identitynumber-text" = "Kimlik Numarası";
+"address-bottom-view-corporate-company-name-text" = "Şirket Adı";
+"address-bottom-view-corporate-tax-office-text" = "Vergi Dairesi";
+"address-bottom-view-corporate-tax-number-text" = "Vergi Numarası";
+"address-bottom-view-save-button-text" = "Kaydet";
+"address-bottom-view-address-saved-text" = "Adres Başarıyla Kaydedildi";
+"address-bottom-view-save-as-billing-address-text" = "Fatura Adresi Olarak Kaydet";
+
+//MARK: - ListPopUp
+
+"list-popup-select-address-title" = "Adres Seç";
+"list-popup-select-payment-title" = "Ödeme Yöntemi Seç";
+"list-popup-shopping-cart-title" = "Sepet Güncelleniyor";

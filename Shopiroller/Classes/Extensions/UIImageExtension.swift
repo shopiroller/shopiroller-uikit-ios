@@ -78,5 +78,9 @@ extension UIImage {
     static let orderWaitingShipment: UIImage = UIImage(named: "orderWaitingShipment", in: .shopiroller, with: nil)!
     
     static let orderWaitingSupplying: UIImage = UIImage(named: "orderWaitingSupplying", in: .shopiroller, with: nil)!
+    
+    static let radioOn : UIImage = UIImage(named: "radioOn", in: .shopiroller, with: nil)!
+    
+    static let radioOff : UIImage = UIImage(named: "radioOff", in: .shopiroller, with: nil)!
 
 }

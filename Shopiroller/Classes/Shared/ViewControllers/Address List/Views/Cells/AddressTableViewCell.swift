@@ -52,7 +52,6 @@ class AddressTableViewCell: UITableViewCell {
     
     func setup(model: UserBillingAdressModel, indexPathRow: Int) {
         self.indexPathRow = indexPathRow
-        
         confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
         informationTitle.text = model.title
         informationAddress.text = model.getListBillingDescriptionArea()
@@ -60,7 +59,6 @@ class AddressTableViewCell: UITableViewCell {
     
     func setup(model: UserShippingAddressModel, indexPathRow: Int) {
         self.indexPathRow = indexPathRow
-        
         confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
         informationTitle.text = model.title
         informationAddress.text = model.getListDeliveryDescriptionArea()
