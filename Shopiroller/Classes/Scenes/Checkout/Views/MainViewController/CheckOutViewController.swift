@@ -46,41 +46,33 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     @IBAction func nextButtonTapped() {
         checkOutPageViewController?.goToNextPage()
-        if index == 2 {
-            return
-        }else {
-            index += 1
-            switch index {
-            case 1:
-                checkOutProgress.configureView(stage: .payment)
-                setTitle(stage: .payment)
-            case 2:
-                checkOutProgress.configureView(stage: .info)
-                setTitle(stage: .info)
-            default:
-                checkOutProgress.configureView(stage: .address)
-                setTitle(stage: .address)
-            }
+        switch index {
+        case 1:
+            checkOutProgress.configureView(stage: .payment)
+            setTitle(stage: .payment)
+        case 2:
+            checkOutProgress.configureView(stage: .info)
+            setTitle(stage: .info)
+        default:
+            checkOutProgress.configureView(stage: .address)
+            setTitle(stage: .address)
+            
         }
     }
     
     @IBAction func backButtonTapped() {
         checkOutPageViewController?.goToPreviousPage()
-        if index == 0 {
-            self.pop(animated: true, completion: nil)
-        }else{
-            index -= 1
-            switch index {
-            case 1:
-                checkOutProgress.configureView(stage: .payment)
-                setTitle(stage: .payment)
-            case 0:
-                checkOutProgress.configureView(stage: .address)
-                setTitle(stage: .address)
-            default:
-                break
-            }
+        switch index {
+        case 1:
+            checkOutProgress.configureView(stage: .payment)
+            setTitle(stage: .payment)
+        case 0:
+            checkOutProgress.configureView(stage: .address)
+            setTitle(stage: .address)
+        default:
+            break
         }
+        
 }
     private func setTitle(stage : ProgressStageEnum) {
         switch stage {
@@ -96,12 +88,36 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
 }
 
 extension CheckOutViewController : CheckOutProgressPageDelegate {
+    func isEnabledNextButton(enabled: Bool?) {
+        if enabled == true {
+            self.nextPageButton.isUserInteractionEnabled = true
+            self.nextPageButton.backgroundColor = .black
+        } else {
+            self.nextPageButton.isUserInteractionEnabled = false
+            self.nextPageButton.backgroundColor = .black.withAlphaComponent(0.35)
+        }
+    }
+    
+    func isHidingNextButton(hide: Bool?) {
+        if hide == true {
+            self.nextPageButton.isHidden = true
+        } else {
+            self.nextPageButton.isHidden = false
+        }
+    }
+    
+    
+    func popLastViewController() {
+        self.pop(animated: true, completion: nil)
+    }
+    
     func showSuccessfullToastMessage() {
         self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized),position: ToastPosition.bottom)
     }
     
     func currentPageIndex(currentIndex: Int) {
         self.index = currentIndex
+        print(currentIndex)
     }
 
 }

@@ -177,4 +177,21 @@
 "list-popup-select-payment-title" = "Select Payment";
 "list-popup-shopping-cart-title" = "Cart is updating";
 
+//MARK: - CheckOutPayment
+
+"checkout-payment-select-payment-method-text" = "Select Payment Method";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Credit Cart";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Bank Transfer";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Pay At The Door";
+"checkout-payment-credit-card-holder-placeholder" = "Card Holder Name";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "There is no payment method yet.";
+"checkout-payment-empty-view-description" = "The store owner has not added a payment method yet.";
+"checkout-payment-pay-at-the-door-description" = "You can pay at the door via credit card or cash easily.";
+"checkout-table-view-account-iban-text"= "Iban: ";
+"checkout-table-view-account-department-text" = "Department: ";
+"checkout-table-view-account-number-text" = "Account: ";
+
 

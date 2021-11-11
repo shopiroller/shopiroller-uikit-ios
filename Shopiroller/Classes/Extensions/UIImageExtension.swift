@@ -82,5 +82,7 @@ extension UIImage {
     static let radioOn : UIImage = UIImage(named: "radioOn", in: .shopiroller, with: nil)!
     
     static let radioOff : UIImage = UIImage(named: "radioOff", in: .shopiroller, with: nil)!
+    
+    static let emptyPaymentMethod: UIImage = UIImage(named: "emptyPaymentMethod", in: .shopiroller, with: nil)!
 
 }

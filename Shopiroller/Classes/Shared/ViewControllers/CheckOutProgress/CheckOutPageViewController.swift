@@ -10,6 +10,9 @@ import UIKit
 protocol CheckOutProgressPageDelegate {
     func currentPageIndex(currentIndex: Int)
     func showSuccessfullToastMessage()
+    func popLastViewController()
+    func isHidingNextButton(hide: Bool?)
+    func isEnabledNextButton(enabled: Bool?)
 }
 
 class CheckOutPageViewController: UIPageViewController {
@@ -41,9 +44,10 @@ class CheckOutPageViewController: UIPageViewController {
     
     private func createViewControllers() {
         let checkOutAdressVC = CheckOutAddressViewController(viewModel: CheckOutAddressViewModel())
-        checkOutAdressVC.delegate = self
+        checkOutAdressVC.delegate = checkOutPageDelegate
         items.append(checkOutAdressVC)
         let checkOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
+        checkOutPaymentVC.delegate = checkOutPageDelegate
         items.append(checkOutPaymentVC)
         let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
         items.append(checkOutInfoVC)
@@ -59,12 +63,14 @@ extension CheckOutPageViewController: UIPageViewControllerDataSource {
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
+            checkOutPageDelegate.popLastViewController()
             return nil
         }
         
         guard items.count > previousIndex else {
             return nil
         }
+        checkOutPageDelegate.currentPageIndex(currentIndex: previousIndex)
         return items[previousIndex]
     }
     
@@ -81,19 +87,11 @@ extension CheckOutPageViewController: UIPageViewControllerDataSource {
         guard items.count > nextIndex else {
             return nil
         }
+        checkOutPageDelegate.currentPageIndex(currentIndex: nextIndex)
         return items[nextIndex]
     }
     
     func presentationCount(for _: UIPageViewController) -> Int {
         return items.count
     }
-}
-
-
-extension CheckOutPageViewController : CheckOutAddressViewControllerDelegate {
-    func showToastMessage() {
-        checkOutPageDelegate.showSuccessfullToastMessage()
-    }
-    
-    
 }

@@ -63,17 +63,17 @@
                     <rect key="frame" x="0.0" y="50" width="320" height="55"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-97-eMW" customClass="CheckOutProgress" customModule="Shopiroller" customModuleProvider="target">
-                            <rect key="frame" x="20" y="0.0" width="280" height="55"/>
+                            <rect key="frame" x="29" y="0.0" width="262" height="55"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Jx3-97-eMW" secondAttribute="trailing" constant="20" id="1JL-0X-qDa"/>
-                        <constraint firstAttribute="bottom" secondItem="Jx3-97-eMW" secondAttribute="bottom" id="E9f-uC-Hoo"/>
-                        <constraint firstItem="Jx3-97-eMW" firstAttribute="top" secondItem="pw0-b1-JZa" secondAttribute="top" id="GcM-gi-W0P"/>
+                        <constraint firstItem="Jx3-97-eMW" firstAttribute="centerX" secondItem="pw0-b1-JZa" secondAttribute="centerX" id="7Gg-bK-Ukh"/>
+                        <constraint firstAttribute="bottom" secondItem="Jx3-97-eMW" secondAttribute="bottom" id="7y0-M5-i7a"/>
+                        <constraint firstItem="Jx3-97-eMW" firstAttribute="top" secondItem="pw0-b1-JZa" secondAttribute="top" id="Nrz-c2-ede"/>
                         <constraint firstAttribute="height" constant="55" id="RA1-9J-TUK"/>
-                        <constraint firstItem="Jx3-97-eMW" firstAttribute="leading" secondItem="pw0-b1-JZa" secondAttribute="leading" constant="20" id="og4-wU-uTX"/>
+                        <constraint firstItem="Jx3-97-eMW" firstAttribute="centerY" secondItem="pw0-b1-JZa" secondAttribute="centerY" id="fOJ-rd-jet"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5c-aR-9gA">
@@ -130,6 +130,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N5c-aR-9gA" secondAttribute="trailing" id="il2-d2-Ae1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WeR-E9-ZsO" secondAttribute="trailing" constant="15" id="jD0-iO-elk"/>
                 <constraint firstItem="pw0-b1-JZa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nVb-eq-Wlg"/>
+                <constraint firstItem="Jx3-97-eMW" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.82" id="ndQ-PV-uEi"/>
                 <constraint firstItem="N5c-aR-9gA" firstAttribute="top" secondItem="pw0-b1-JZa" secondAttribute="bottom" id="tii-QE-mJt"/>
             </constraints>
             <point key="canvasLocation" x="132" y="104"/>

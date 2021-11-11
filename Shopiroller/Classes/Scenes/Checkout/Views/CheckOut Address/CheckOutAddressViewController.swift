@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CheckOutAddressViewControllerDelegate {
-    func showToastMessage()
-}
-
 class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel> {
     
     private struct Constants {
@@ -31,7 +27,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     @IBOutlet private weak var defaultBillingAddress: GeneralAddressView!
     
     
-    var delegate : CheckOutAddressViewControllerDelegate?
+    var delegate : CheckOutProgressPageDelegate?
     
     override func setup() {
         super.setup()
@@ -57,13 +53,16 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         billingAddressAddButton.tintColor = .textSecondary
         billingAddressAddButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         
-        
-        
-        getDefaultAddress()
     }
     
     init(viewModel: CheckOutAddressViewModel){
         super.init(viewModel: viewModel, nibName: CheckOutAddressViewController.nibName, bundle: Bundle(for: CheckOutAddressViewController.self))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.isHidingNextButton(hide: false)
+        getDefaultAddress()
     }
     
     private func getDefaultAddress() {
@@ -80,20 +79,24 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             billingAddressEmptyView.isHidden = false
             billingAddressAddButton.isHidden = true
             billingAddressEmptyView.setup(model: viewModel.getBillingEmptyModel())
+            delegate?.isEnabledNextButton(enabled: false)
         } else {
             billingAddressAddButton.isHidden = false
             viewModel.selectedBillingAddress = viewModel.getBillingAddress()
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
+            delegate?.isEnabledNextButton(enabled: true)
         }
         
         if viewModel.isShippingAddressEmpty() {
             shippingAddressEmptyView.isHidden = false
             shippingAddressAddButton.isHidden = true
             shippingAddressEmptyView.setup(model: viewModel.getShippingEmptyModel())
+            delegate?.isEnabledNextButton(enabled: false)
         } else {
             shippingAddressAddButton.isHidden = false
             viewModel.selectedShippingAddress = viewModel.getShippingAddress()
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
+            delegate?.isEnabledNextButton(enabled: true)
         }
     }
     
@@ -139,7 +142,7 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
             self.getDefaultAddress()
             self.view.layoutIfNeeded()
         }
-        delegate?.showToastMessage()
+        delegate?.showSuccessfullToastMessage()
         dismiss(animated: true, completion: nil)
     }
     
@@ -160,6 +163,4 @@ extension CheckOutAddressViewController: ListPopUpDelegate {
         viewModel.selectedShippingAddress = shippingAddress
         self.view.layoutIfNeeded()
     }
-    
-    
 }

@@ -53,4 +53,5 @@ extension UIColor {
     
     static let orangeyRed: UIColor = #colorLiteral(red: 250.0 / 255.0, green: 46.0 / 255.0, blue: 46.0 / 255.0, alpha: 1.0)
 
+    static let veryLightBlue: UIColor = #colorLiteral (red: 231.0 / 255.0 , green: 234.0 / 255.0 , blue: 235.0 / 255.0, alpha: 1.0)
 }

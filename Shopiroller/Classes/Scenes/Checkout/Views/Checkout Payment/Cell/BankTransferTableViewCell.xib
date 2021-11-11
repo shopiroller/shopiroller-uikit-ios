@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="266" id="KGk-i7-Jjw" customClass="BankTransferTableViewCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="266"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="266"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fm-LJ-MoV">
+                        <rect key="frame" x="15" y="20" width="290" height="246"/>
+                        <subviews>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t45-HX-iM5">
+                                <rect key="frame" x="237.5" y="-10" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="C5y-FL-acP"/>
+                                    <constraint firstAttribute="width" constant="25" id="Zvm-4l-hwV"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3S3-9L-zxO">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="246"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QxB-aQ-lxe">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="246"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wpg-02-43l">
+                                                <rect key="frame" x="20" y="18" width="185" height="210"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="T.C. HalkBank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEx-yW-KOc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Çelik Giyim Züccaciye Ltd. Şti." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xM-xj-U5W">
+                                                        <rect key="frame" x="0.0" y="31.5" width="185" height="41"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iban: TR09 4444 1231 5321 4765 8532Züccaciye Ltd. Şti." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN3-r6-gmd">
+                                                        <rect key="frame" x="0.0" y="77.5" width="185" height="61"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şube: Finike / 211" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-jz-qXt">
+                                                        <rect key="frame" x="0.0" y="143.5" width="185" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Şube: Finike / 211 Şube: Finike / 211" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1V-SI-2si">
+                                                        <rect key="frame" x="0.0" y="169" width="185" height="41"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Wpg-02-43l" firstAttribute="top" secondItem="QxB-aQ-lxe" secondAttribute="top" constant="18" id="1bC-Or-OjE"/>
+                                            <constraint firstAttribute="bottom" secondItem="Wpg-02-43l" secondAttribute="bottom" constant="18" id="HSd-IS-T3h"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wpg-02-43l" secondAttribute="trailing" constant="5" id="Yuj-pZ-Kz9"/>
+                                            <constraint firstItem="Wpg-02-43l" firstAttribute="leading" secondItem="QxB-aQ-lxe" secondAttribute="leading" constant="20" id="iCD-Fs-TMF"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-1i-I5e">
+                                        <rect key="frame" x="210" y="0.0" width="80" height="246"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdD-oS-Ehe">
+                                                <rect key="frame" x="24" y="194" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="7o2-xz-KS8"/>
+                                                    <constraint firstAttribute="width" constant="32" id="MQO-Tu-Qtn"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="DPi-LP-F1m"/>
+                                            <constraint firstAttribute="bottom" secondItem="cdD-oS-Ehe" secondAttribute="bottom" constant="20" id="ECf-a5-U6o"/>
+                                            <constraint firstItem="cdD-oS-Ehe" firstAttribute="centerX" secondItem="zBI-1i-I5e" secondAttribute="centerX" id="Ekn-B2-kZX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="QxB-aQ-lxe" firstAttribute="leading" secondItem="3S3-9L-zxO" secondAttribute="leading" id="BBw-9s-EMa"/>
+                                    <constraint firstItem="zBI-1i-I5e" firstAttribute="leading" secondItem="QxB-aQ-lxe" secondAttribute="trailing" id="NQc-ce-mWu"/>
+                                    <constraint firstAttribute="bottom" secondItem="QxB-aQ-lxe" secondAttribute="bottom" id="Yzu-9p-1TY"/>
+                                    <constraint firstItem="QxB-aQ-lxe" firstAttribute="top" secondItem="3S3-9L-zxO" secondAttribute="top" id="oSL-Cu-f81"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t45-HX-iM5" firstAttribute="centerX" secondItem="zBI-1i-I5e" secondAttribute="centerX" id="2cD-a6-DKg"/>
+                            <constraint firstItem="t45-HX-iM5" firstAttribute="top" secondItem="1Fm-LJ-MoV" secondAttribute="top" constant="-10" id="CHP-wI-i3J"/>
+                            <constraint firstAttribute="bottom" secondItem="3S3-9L-zxO" secondAttribute="bottom" id="KAt-it-TDD"/>
+                            <constraint firstAttribute="trailing" secondItem="3S3-9L-zxO" secondAttribute="trailing" id="Zii-Hq-1Ac"/>
+                            <constraint firstItem="3S3-9L-zxO" firstAttribute="leading" secondItem="1Fm-LJ-MoV" secondAttribute="leading" id="o5O-eQ-MYk"/>
+                            <constraint firstItem="3S3-9L-zxO" firstAttribute="top" secondItem="1Fm-LJ-MoV" secondAttribute="top" id="vRk-RD-Lzv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="1Fm-LJ-MoV" secondAttribute="bottom" id="5A1-N7-RNb"/>
+                    <constraint firstItem="1Fm-LJ-MoV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="9VR-MB-d2b"/>
+                    <constraint firstAttribute="trailing" secondItem="1Fm-LJ-MoV" secondAttribute="trailing" constant="15" id="A8H-Ca-6QS"/>
+                    <constraint firstItem="1Fm-LJ-MoV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="R0n-99-oQI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bankAccountDepartment" destination="xV5-jz-qXt" id="Fay-Gw-rGe"/>
+                <outlet property="bankAccountDescription" destination="6xM-xj-U5W" id="s1f-aU-HcY"/>
+                <outlet property="bankAccountIban" destination="VN3-r6-gmd" id="Uvx-7e-65O"/>
+                <outlet property="bankAccountNumber" destination="N1V-SI-2si" id="Rb4-ur-lnT"/>
+                <outlet property="bankAccountTitle" destination="HEx-yW-KOc" id="V0i-0O-fl7"/>
+                <outlet property="checkMarkIcon" destination="t45-HX-iM5" id="xcg-Cm-0Ur"/>
+                <outlet property="ibanCopyButton" destination="cdD-oS-Ehe" id="yol-au-6O9"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="135.26785714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

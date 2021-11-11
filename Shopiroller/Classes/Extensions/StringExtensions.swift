@@ -42,5 +42,13 @@ extension String {
         let discountedPercenteage = String(format: "%.0f", percentage)
         return "%\(discountedPercenteage)"
     }
+    
+    func makeBoldAfterString(normalText: String?) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: normalText ?? "")
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
+        let boldString = NSMutableAttributedString(string: self, attributes: attrs)
+        boldString.append(attributedString)
+        return boldString
+    }
 
 }

@@ -177,3 +177,24 @@
 "list-popup-select-address-title" = "Adres Seç";
 "list-popup-select-payment-title" = "Ödeme Yöntemi Seç";
 "list-popup-shopping-cart-title" = "Sepet Güncelleniyor";
+
+
+//MARK: - CheckOutPayment
+
+"checkout-payment-select-payment-method-text" = "Ödeme Yöntemi Seçin";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Kredi Kartı";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Banka Transferi";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Kapıda Ödeme";
+"checkout-payment-credit-card-holder-placeholder" = "Kart Sahibinin Adı";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "Henüz bir ödeme yöntemi eklenmemiş.";
+"checkout-payment-empty-view-description" = "Mağaza Sahibi Henüz bir ödeme yöntemi eklememiş.";
+"checkout-payment-pay-at-the-door-description" = "Kapıda Kredi Kartı Veya Nakit Olarak Ödeyebilirsiniz.";
+"checkout-table-view-account-iban-text"= "Iban: ";
+"checkout-table-view-account-department-text" = "Şube: ";
+"checkout-table-view-account-number-text" = "Hesap: ";
+
+
+
