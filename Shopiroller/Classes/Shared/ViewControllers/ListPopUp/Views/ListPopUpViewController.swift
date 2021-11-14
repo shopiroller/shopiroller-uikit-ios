@@ -7,9 +7,13 @@
 
 import UIKit
 
-protocol ListPopUpDelegate {
+protocol ListPopUpAddressDelegate {
     func getBillingAddress(billingAddress: UserBillingAdressModel?)
     func getShippingAddress(shippingAddress: UserShippingAddressModel?)
+}
+
+protocol ListPopUpPaymentDelegate {
+    func getSelectedPayment(payment: SupportedPaymentType?)
 }
 
 class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
@@ -26,7 +30,9 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     @IBOutlet private weak var buttonContainer: UIView!
     @IBOutlet private weak var button: UIButton!
     
-    var delegate : ListPopUpDelegate?
+    var addressDelegate : ListPopUpAddressDelegate?
+    
+    var paymentDelegate: ListPopUpPaymentDelegate?
     
     override func setup() {
         super.setup()
@@ -45,6 +51,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         shoppingCartInformation.textColor = .orangeyRed
         
         popUpTableView.register(cellClass: AddressSelectTableViewCell.self)
+        popUpTableView.register(cellClass: PaymentTableViewCell.self)
+        popUpTableView.separatorInset = UIEdgeInsets.zero
         popUpTableView.delegate = self
         popUpTableView.dataSource = self
         
@@ -74,6 +82,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     }
     
     private func setUpForPayment() {
+        popUpImageView.image = .emptyPaymentMethod
         popUpTitle.text = "list-popup-select-payment-title".localized
         popUpTitle.font = UIFont.boldSystemFont(ofSize: 20)
         popUpTitle.textColor = .black
@@ -128,7 +137,11 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
         case .shoppingCart:
             break
         case .payment:
-            break
+            let model = viewModel.getSupportedMethods(position: indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: PaymentTableViewCell.reuseIdentifier, for: indexPath) as! PaymentTableViewCell
+            cell.setupCell(model: model,index: indexPath.row)
+            cell.delegate = self
+            return cell
         }
         return UITableViewCell()
     }
@@ -137,14 +150,19 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
 extension ListPopUpViewController: AddressPopUpSelectedDelegate {
     func getIndex(shippingAddressIndex: Int?, billingAddressIndex: Int?) {
         if let shippingAddressIndex = shippingAddressIndex {
-            delegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: shippingAddressIndex))
+            addressDelegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: shippingAddressIndex))
             self.popView()
         }
         if let billingAddressIndex = billingAddressIndex {
-            delegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: billingAddressIndex))
+            addressDelegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: billingAddressIndex))
             self.popView()
         }
-        
     }
-    
 }
+
+extension ListPopUpViewController: PaymentTableViewCellDelegate {
+    func getPaymentIndex(index: Int?) {
+        paymentDelegate?.getSelectedPayment(payment: viewModel.getSupportedMethods(position: index ?? 0))
+    }
+}
+

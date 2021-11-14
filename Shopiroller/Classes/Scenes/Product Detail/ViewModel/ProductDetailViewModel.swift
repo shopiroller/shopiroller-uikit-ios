@@ -98,7 +98,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func isOutofStock() -> Bool {
-        return productDetailModel?.maxQuantityPerOrder == quantityCount
+        return productDetailModel?.stock == 0
     }
     
     func isShippingFree() -> Bool {
@@ -180,7 +180,7 @@ public class ProductDetailViewModel: BaseViewModel {
 
     func getSoldOutPopUpViewModel() -> PopUpViewModel {
         popUpState = .soldOut
-        return PopUpViewModel(image: .backIcon, title: "product-detail-out-of-stock-title".localized, description: "product-detail-out-of-stock-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-list-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "product-detail-out-of-stock-title".localized, description: "product-detail-out-of-stock-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-list-button-text".localized, type: .lightButton), secondButton: nil)
     }
     
     func getMaxQuantityPopUpViewModel() -> PopUpViewModel {
