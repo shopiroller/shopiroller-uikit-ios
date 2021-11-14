@@ -52,6 +52,7 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
             guard let row = self.viewModel.selectedIndexPathRow else {return}
             self.addressTable.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
             self.view.makeToast(text: "address_list_delete_success".localized)
+            self.view.layoutIfNeeded()
             self.configure(isUpdate: true)
         }) { (errorViewModel) in
             self.view.makeToast(errorViewModel)
@@ -102,6 +103,10 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
 
 extension AddressListViewController: AddressBottomViewDelegate {
     func saveButtonTapped() {
+        DispatchQueue.main.async {
+            self.getAddressList()
+            self.view.layoutIfNeeded()
+        }
         self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
         dismiss(animated: true, completion: nil)
     }

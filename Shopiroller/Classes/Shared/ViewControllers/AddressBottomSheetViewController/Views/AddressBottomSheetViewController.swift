@@ -114,6 +114,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveAsBillingAddressButton.imageView?.tintColor = .black
         
         individualCheckBoxButton.setImage(.radioOn)
+        individualCheckBoxTitle.text = Constants.individualTextFieldText
+        corporateCheckBoxTitle.text = Constants.corporateCheckBoxText
         corporateCheckBoxButton.setImage(.radioOff)
         
         saveAsBillingAddressTitle.text = Constants.saveAsBillingAddressText
@@ -167,13 +169,13 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     private func setUpLayout() {
-        setBillingAddressRadioButtons()
         switch viewModel.getAddressType() {
         case .billing:
             saveAsBillingContainer.isHidden = true
         case .shipping:
             saveAsBillingContainer.isHidden = false
         }
+        setBillingAddressRadioButtons()
     }
     
     @IBAction func saveAsBillingAddressButtonTapped() {
@@ -228,15 +230,12 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 saveAddress()
             }
         }
-        delegate?.saveButtonTapped()
-        pop(animated: true, completion: nil)
     }
     
     
     @objc func countryViewTapped() {
         self.viewModel.selectionType = .country
         statesTextField.isEnabled = true
-        statesTextField.placeholder = ""
         statesTextField.text = ""
         citiesContainerView.isHidden = true
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getCountries(), type: .country))
@@ -247,7 +246,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     @objc func statesViewTapped() {
         self.viewModel.selectionType = .state
         citiesTextField.isEnabled = true
-        citiesTextField.placeholder = ""
         citiesTextField.text = ""
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getStates(), type: .state))
         vc.delegate = self
@@ -316,50 +314,54 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         }
         if (surnameTextField.text == "") {
             surnameTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         } else if (surnameTextField.text?.count ?? 0 < 3) {
             surnameTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
         if (phoneNumberTextField.text == "") {
             phoneNumberTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         } else if (phoneNumberTextField.text?.count ?? 0 < 11) {
             phoneNumberTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
         if (countryTextField.text == "") {
             countryTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
-        if (statesTextField.text == "" && statesTextField.placeholder == "") {
-            statesTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+        if (statesTextField.isHidden == true) {
+            if(statesTextField.text == "" && statesTextField.placeholder == "") {
+                statesTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
+                isValid = false
+            }
         }
-        if (citiesTextField.text == "" && citiesTextField.placeholder == "") {
-            citiesTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+        if (citiesTextField.isHidden == false) {
+            if(citiesTextField.text == "" && citiesTextField.placeholder == "") {
+                citiesTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
+                isValid = false
+            }
         }
         if (addressTextField.text == "") {
             addressTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         } else if (addressTextField.text?.count ?? 0 < 3) {
             addressTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
         if (zipCodeTextField.text == "") {
             zipCodeTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         } else if (zipCodeTextField.text?.count ?? 0 < 3) {
             zipCodeTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
         if (addressTitleTextField.text == "") {
             addressTitleTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         } else if (addressTitleTextField.text?.count ?? 0 < 2) {
             addressTitleTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
-            isValid = false;
+            isValid = false
         }
         
         if (viewModel.isEditAvailable() && viewModel.userShippingAddress != nil) {
@@ -577,6 +579,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.saveEdittedShippingAddress(success: {
                 [weak self] in
                 guard let self = self else { return }
+                
+                self.delegate?.saveButtonTapped()
+                self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
                 guard let self = self else { return }
@@ -585,6 +590,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.addShippingAddress(success: {
                 [weak self] in
                 guard let self = self else { return }
+                
+                self.delegate?.saveButtonTapped()
+                self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
                 guard let self = self else { return }
@@ -599,6 +607,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.saveEdittedBillingAddress(success: {
                 [weak self] in
                 guard let self = self else { return }
+                
+                self.delegate?.saveButtonTapped()
+                self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
                 guard let self = self else { return }
@@ -607,6 +618,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.addBillingAddress(success: {
                 [weak self] in
                 guard let self = self else { return }
+                
+                self.delegate?.saveButtonTapped()
+                self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
                 guard let self = self else { return }
@@ -619,6 +633,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         viewModel.addAddress(success: {
             [weak self] in
             guard let self = self else { return }
+            
+            self.delegate?.saveButtonTapped()
+            self.pop(animated: true, completion: nil)
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -638,7 +655,6 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .state:
             self.viewModel.stateId = id ?? ""
             getCitiesList()
-            self.citiesContainerView.isHidden = false
         case .city:
             break
         case .none:

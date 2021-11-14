@@ -68,6 +68,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     private func getDefaultAddress() {
         viewModel.getDefaultAddress(success: {
             self.configureViews()
+            self.view.layoutIfNeeded()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
@@ -78,10 +79,14 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         if viewModel.isBillingAddressEmpty() {
             billingAddressEmptyView.isHidden = false
             billingAddressAddButton.isHidden = true
+            defaultBillingAddress.isHidden = true
             billingAddressEmptyView.setup(model: viewModel.getBillingEmptyModel())
+            billingAddressEmptyView.addressDelegate = self
             delegate?.isEnabledNextButton(enabled: false)
         } else {
             billingAddressAddButton.isHidden = false
+            billingAddressEmptyView.isHidden = true
+            defaultBillingAddress.isHidden = false
             viewModel.selectedBillingAddress = viewModel.getBillingAddress()
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
@@ -90,10 +95,14 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         if viewModel.isShippingAddressEmpty() {
             shippingAddressEmptyView.isHidden = false
             shippingAddressAddButton.isHidden = true
+            defaultDeliveryAddress.isHidden = true
             shippingAddressEmptyView.setup(model: viewModel.getShippingEmptyModel())
+            shippingAddressEmptyView.addressDelegate = self
             delegate?.isEnabledNextButton(enabled: false)
         } else {
+            shippingAddressEmptyView.isHidden = true
             shippingAddressAddButton.isHidden = false
+            defaultDeliveryAddress.isHidden = false
             viewModel.selectedShippingAddress = viewModel.getShippingAddress()
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
@@ -131,7 +140,7 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
         let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .address,addressType: type ?? .shipping ))
-        vc.delegate = self
+        vc.addressDelegate = self
         popUp(vc, completion: nil)
     }
 }
@@ -151,7 +160,7 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
     }
 }
 
-extension CheckOutAddressViewController: ListPopUpDelegate {
+extension CheckOutAddressViewController: ListPopUpAddressDelegate {
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
         defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
         viewModel.selectedBillingAddress = billingAddress
@@ -163,4 +172,19 @@ extension CheckOutAddressViewController: ListPopUpDelegate {
         viewModel.selectedShippingAddress = shippingAddress
         self.view.layoutIfNeeded()
     }
+}
+
+extension CheckOutAddressViewController : EmptyViewAddressDelegate {
+    func addAddressButtonClicked(type: GeneralAddressType?) {
+        if type == .shipping {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }else {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }
+    }    
+    
 }

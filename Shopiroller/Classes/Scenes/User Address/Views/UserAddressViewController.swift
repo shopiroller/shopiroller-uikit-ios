@@ -57,7 +57,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     @IBAction func addButtonTapped() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: false))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: false))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         }else {

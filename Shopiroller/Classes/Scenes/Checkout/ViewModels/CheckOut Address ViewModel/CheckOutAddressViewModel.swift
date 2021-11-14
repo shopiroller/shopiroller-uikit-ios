@@ -43,11 +43,11 @@ class CheckOutAddressViewModel: BaseViewModel {
     
     
     func getShippingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized,description: nil, button: nil)
+        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
     }
     
     func getBillingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: nil)
+        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
     }
     
     func getShippingAddress() -> UserShippingAddressModel? {
