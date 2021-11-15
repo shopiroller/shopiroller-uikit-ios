@@ -13,7 +13,7 @@ protocol ListPopUpAddressDelegate {
 }
 
 protocol ListPopUpPaymentDelegate {
-    func getSelectedPayment(payment: SupportedPaymentType?)
+    func getSelectedPayment(payment: PaymentTypeEnum)
 }
 
 class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
@@ -162,7 +162,11 @@ extension ListPopUpViewController: AddressPopUpSelectedDelegate {
 
 extension ListPopUpViewController: PaymentTableViewCellDelegate {
     func getPaymentIndex(index: Int?) {
-        paymentDelegate?.getSelectedPayment(payment: viewModel.getSupportedMethods(position: index ?? 0))
+        if let paymentType = viewModel.getSupportedMethods(position: index ?? 0)?.paymentType {
+            paymentDelegate?.getSelectedPayment(payment: paymentType)
+            self.popView()
+        }
+      
     }
 }
 

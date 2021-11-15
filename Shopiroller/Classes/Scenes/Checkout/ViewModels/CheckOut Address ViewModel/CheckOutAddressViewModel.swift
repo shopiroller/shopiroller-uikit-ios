@@ -51,12 +51,16 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     func getShippingAddress() -> UserShippingAddressModel? {
-        _selectedShippingAddress = defaultAdressList?.shippingAddress
+        if _selectedShippingAddress == nil {
+            _selectedShippingAddress = defaultAdressList?.shippingAddress
+        }
         return _selectedShippingAddress
     }
     
     func getBillingAddress() -> UserBillingAdressModel? {
-        _selectedBillingAddress = defaultAdressList?.billingAddress
+        if _selectedBillingAddress == nil {
+            _selectedBillingAddress = defaultAdressList?.billingAddress
+        }
         return _selectedBillingAddress
     }
     

@@ -10,6 +10,8 @@ import Foundation
 class CheckOutPaymentViewModel: BaseViewModel {
     
     private var paymentSettings : PaymentSettingsResponeModel?
+    
+    private var _selectedPayment: PaymentTypeEnum? = nil
 
     func getPaymentSettings(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getPaymentSettings().response() {
@@ -28,12 +30,15 @@ class CheckOutPaymentViewModel: BaseViewModel {
         }
     }
     
-    func getPaymentSettingsList() -> PaymentSettingsResponeModel? {
-        return paymentSettings
+    func getSupportedPaymentList() -> [SupportedPaymentType]? {
+        return paymentSettings?.supportedPaymentTypes
     }
     
     func getDefaultPaymentMethod() -> PaymentTypeEnum? {
-        return paymentSettings?.supportedPaymentTypes?[0].paymentType
+        if _selectedPayment == nil {
+            _selectedPayment = paymentSettings?.supportedPaymentTypes?[0].paymentType
+        }
+        return _selectedPayment
     }
     
     func arePaymentSettingsEmpty() -> Bool {
@@ -44,6 +49,15 @@ class CheckOutPaymentViewModel: BaseViewModel {
         return EmptyModel(image: .emptyPaymentMethod, title:"checkout-payment-empty-view-title".localized, description:  "checkout-payment-empty-view-description".localized, button: nil)
     }
     
+    
+    var paymentType: PaymentTypeEnum? {
+        set {
+            _selectedPayment = newValue
+        }
+        get {
+            return _selectedPayment
+        }
+    }
     
 
 }
