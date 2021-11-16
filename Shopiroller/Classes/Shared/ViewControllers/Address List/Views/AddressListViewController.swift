@@ -22,6 +22,16 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
         getAddressList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userAddressListObserve), object: nil)
+    }
+    
+    @objc func updateAddress() {
+        getAddressList()
+        self.view.layoutIfNeeded()
+    }
+    
     private func configure(isUpdate: Bool) {
         if(viewModel.isListEmpty()){
             addressTable.isHidden = true

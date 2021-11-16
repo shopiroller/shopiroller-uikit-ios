@@ -87,6 +87,7 @@ extension UserAddressViewController: AddressListPageDelegate {
 extension UserAddressViewController: AddressBottomViewDelegate {
     func saveButtonTapped() {
         self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userAddressListObserve), object: nil)
         dismiss(animated: true, completion: nil)
     }
     
