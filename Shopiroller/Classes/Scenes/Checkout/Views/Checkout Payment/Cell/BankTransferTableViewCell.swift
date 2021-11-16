@@ -26,6 +26,8 @@ class BankTransferTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.makeCardView()
+        
         bankAccountTitle.font = UIFont.boldSystemFont(ofSize: 14)
         bankAccountTitle.textColor = .textPrimary
         
@@ -43,15 +45,18 @@ class BankTransferTableViewCell: UITableViewCell {
     }
     
     func configureBankList(model : BankAccountModel?) {
-        if let nameSurname = model?.nameSurname {
-            bankAccountDescription.text = nameSurname
+        bankAccountTitle.text = model?.name
+        
+        if(model?.nameSurname != nil){
+            bankAccountDescription.text = model?.nameSurname
         } else {
             bankAccountDescription.isHidden = true
-            bankAccountTitle.text = model?.name
-            bankAccountIban.attributedText = Constants.accountIbanText.makeBoldAfterString(normalText: model?.accountAdress)
-            bankAccountDepartment.attributedText = Constants.accountDepartmentText.makeBoldAfterString(normalText: "\(model?.accountName) / \(model?.accountCode)")
-            bankAccountNumber.attributedText = Constants.accountNumberText.makeBoldAfterString(normalText: model?.accountNumber)
         }
+        if let iban = model?.accountAdress {
+            bankAccountIban.attributedText = String().makeBoldAfterString(boldText: Constants.accountIbanText, normalText: iban)
+        }
+        bankAccountDepartment.attributedText = String().makeBoldAfterString(boldText: Constants.accountDepartmentText, normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""))
+        bankAccountNumber.attributedText = String().makeBoldAfterString(boldText: Constants.accountNumberText, normalText: model?.accountNumber)
         
     }
     

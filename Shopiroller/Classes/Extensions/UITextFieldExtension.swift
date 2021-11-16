@@ -12,13 +12,15 @@ import UIKit
 extension UITextField {
     
     func setBottomBorderOnlyWith(color: CGColor) {
-           self.borderStyle = .none
-           self.layer.masksToBounds = false
-           self.layer.shadowColor = color
-           self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-           self.layer.shadowOpacity = 1.0
-           self.layer.shadowRadius = 0.0
-       }
+        self.borderStyle = .none
+        let border = CALayer()
+        let width = CGFloat(0.5)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+        
+    }
     
     func isError(baseColor: CGColor, numberOfShakes shakes: Float, revert: Bool) {
         let animation: CABasicAnimation = CABasicAnimation(keyPath: "shadowColor")
@@ -27,7 +29,7 @@ extension UITextField {
         animation.duration = 0.4
         if revert { animation.autoreverses = true } else { animation.autoreverses = false }
         self.layer.add(animation, forKey: "")
-
+        
         let shake: CABasicAnimation = CABasicAnimation(keyPath: "position")
         shake.duration = 0.07
         shake.repeatCount = shakes
@@ -45,19 +47,35 @@ extension UITextField {
         
         let errorMessage = UILabel()
         errorMessage.autoresizesSubviews = false
-                errorMessage.text = message
-                errorMessage.textColor = .red
-                errorMessage.isHidden = true
-
-                NSLayoutConstraint.activate([
-                            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                            self.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 10.0)
-                ])
+        errorMessage.text = message
+        errorMessage.textColor = .red
+        errorMessage.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 10.0)
+        ])
         messageVw.addSubview(errorMessage)
         
-    
+        
         
         self.addSubview(messageVw)
-
-}
+    }
+    
+    var rightViewImage: UIImage? {
+        set {
+            let button = UIButton(type: .custom)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: bounds.size.height)
+            button.setImage(newValue)
+            self.rightView = button
+            self.rightViewMode = .always
+            
+            translatesAutoresizingMaskIntoConstraints = false
+            rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        }
+        get {
+            return (rightView as? UIImageView)?.image
+        }
+    }
 }

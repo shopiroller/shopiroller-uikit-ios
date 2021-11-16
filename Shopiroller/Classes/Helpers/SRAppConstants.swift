@@ -25,6 +25,10 @@ struct SRAppConstants {
             static let fontFamily = "font_family"
         }
         
+        struct Notifications {
+            static let userAddressListObserve = "userAddressListObserve"
+        }
+        
     }
     
     

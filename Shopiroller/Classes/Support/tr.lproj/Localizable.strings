@@ -177,6 +177,10 @@
 "list-popup-select-address-title" = "Adres Seç";
 "list-popup-select-payment-title" = "Ödeme Yöntemi Seç";
 "list-popup-shopping-cart-title" = "Sepet Güncelleniyor";
+"list-pop-up-credit-cart-text" = "Kredi Kartı";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Banka Hesabına Transfer";
+"list-pop-up-pay-at-the-door-text" = "Kapıda Ödeme";
 
 
 //MARK: - CheckOutPayment
@@ -195,6 +199,20 @@
 "checkout-table-view-account-iban-text"= "Iban: ";
 "checkout-table-view-account-department-text" = "Şube: ";
 "checkout-table-view-account-number-text" = "Hesap: ";
+
+//MARK: - SelectionPopUp
+
+"selection-pop-up-country-text" = "Ülke";
+"selection-pop-up-search-placeholder" = "Arayın";
+"selection-pop-up-cancel-button-text" = "Vazgeç";
+
+//MARK: - Credit Card Validation
+
+"credit-card-number-error-text" = "Lütfen kart numaranızı kontrol edin";
+"credit-card-holder-error-text" = "Lütfen isim ve soy isim alanlarını kontrol edin.";
+"credit-card-expire-date-error-text" = "Lütfen son kullanma tarihini kontrol edin.";
+"credit-card-cvv-error-text" = "Lütfen cvv alanını kontrol edin.";
+
 
 
 

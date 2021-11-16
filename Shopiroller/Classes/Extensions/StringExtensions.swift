@@ -43,12 +43,58 @@ extension String {
         return "%\(discountedPercenteage)"
     }
     
-    func makeBoldAfterString(normalText: String?) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: normalText ?? "")
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]
-        let boldString = NSMutableAttributedString(string: self, attributes: attrs)
-        boldString.append(attributedString)
-        return boldString
+    func makeBoldAfterString(boldText: String? , normalText: String?) -> NSMutableAttributedString {
+        let firstText = NSMutableAttributedString.init(string: boldText ?? "")
+        firstText.setAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12),
+                                NSAttributedString.Key.foregroundColor: UIColor.textPCaption], range: NSMakeRange(0, firstText.length))
+        let secondText = NSMutableAttributedString.init(string: normalText ?? "")
+        secondText.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+                                NSAttributedString.Key.foregroundColor: UIColor.textPCaption], range: NSMakeRange(0, secondText.length))
+        
+        let finalText = NSMutableAttributedString()
+        finalText.append(firstText)
+        finalText.append(secondText)
+        
+        return finalText
+    }
+    
+    var creditCardBrand: UIImage? {
+        let numberOnly = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        for card in CardType.allCards {
+            if (matchesRegex(regex: card.regex, text: numberOnly)) {
+                return card.image
+            }
+        }
+        
+        return nil
+    }
+    
+    func matchesRegex(regex: String!, text: String!) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
+            let nsString = text as NSString
+            let match = regex.firstMatch(in: text, options: [], range: NSMakeRange(0, nsString.length))
+            return (match != nil)
+        } catch {
+            return false
+        }
+    }
+    
+    var isValidFullName: Bool {
+        return 1...50 ~= count && rangeOfCharacter(from: CharacterSet.fullname.inverted) == nil
+    }
+    
+    var isValidIban: Bool {
+        return 1...50 ~= count && rangeOfCharacter(from: CharacterSet.fullname.inverted) == nil
+    }
+
+    var isValidCreditCardNumber: Bool {
+        return 12...19 ~= count && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
+    var isValidCreditCardCvv: Bool {
+        return count == 3 && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 
 }

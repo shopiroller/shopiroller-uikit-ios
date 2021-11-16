@@ -176,6 +176,10 @@
 "list-popup-select-address-title" = "Select Address";
 "list-popup-select-payment-title" = "Select Payment";
 "list-popup-shopping-cart-title" = "Cart is updating";
+"list-pop-up-credit-cart-text" = "Credit Cart";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Bank Transfer";
+"list-pop-up-pay-at-the-door-text" = "Pay At The Door";
 
 //MARK: - CheckOutPayment
 
@@ -193,5 +197,19 @@
 "checkout-table-view-account-iban-text"= "Iban: ";
 "checkout-table-view-account-department-text" = "Department: ";
 "checkout-table-view-account-number-text" = "Account: ";
+
+//MARK: - SelectionPopUp
+
+"selection-pop-up-country-text" = "Country";
+"selection-pop-up-search-placeholder" = "Search";
+"selection-pop-up-cancel-button-text" = "Cancel";
+
+//MARK: - Credit Card Validation
+
+"credit-card-number-error-text" = "Please check the credit card number";
+"credit-card-holder-error-text" = "Please check the credit card holder";
+"credit-card-expire-date-error-text" = "Please check the expire date";
+"credit-card-cvv-error-text" = "Please check the cvv";
+
 
 

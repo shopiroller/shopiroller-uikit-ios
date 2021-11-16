@@ -87,7 +87,6 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             billingAddressAddButton.isHidden = false
             billingAddressEmptyView.isHidden = true
             defaultBillingAddress.isHidden = false
-            viewModel.selectedBillingAddress = viewModel.getBillingAddress()
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
         }
@@ -103,7 +102,6 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             shippingAddressEmptyView.isHidden = true
             shippingAddressAddButton.isHidden = false
             defaultDeliveryAddress.isHidden = false
-            viewModel.selectedShippingAddress = viewModel.getShippingAddress()
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
         }
@@ -127,11 +125,11 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     func editButtonTapped(type: GeneralAddressType) {
         switch type {
         case .shipping:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.selectedShippingAddress))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.getShippingAddress()))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         case .billing:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.selectedBillingAddress))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.getBillingAddress()))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         }

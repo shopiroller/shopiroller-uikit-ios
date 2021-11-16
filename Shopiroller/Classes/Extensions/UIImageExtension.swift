@@ -84,5 +84,18 @@ extension UIImage {
     static let radioOff : UIImage = UIImage(named: "radioOff", in: .shopiroller, with: nil)!
     
     static let emptyPaymentMethod: UIImage = UIImage(named: "emptyPaymentMethod", in: .shopiroller, with: nil)!
+    
+    static let creditCartIcon : UIImage = UIImage(named: "creditCartIcon", in: .shopiroller, with: nil)!
+
+    static let bankIcon : UIImage = UIImage(named: "bankIcon", in: .shopiroller, with: nil)!
+
+    static let paypalIcon : UIImage = UIImage(named: "paypalIcon", in: .shopiroller, with: nil)!
+
+    static let payAtTheDoorIcon : UIImage = UIImage(named: "payAtTheDoorIcon", in: .shopiroller, with: nil)!
+    
+    static let masterCardIcon : UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
+
+    static let visaIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
+
 
 }

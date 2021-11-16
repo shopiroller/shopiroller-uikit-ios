@@ -97,7 +97,7 @@ extension UIViewController {
             viewController.modalPresentationStyle = .overCurrentContext
             self.present(sheetController, animated: true, completion: nil)
         }
-       
+        
     }
     
     func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil , _ isCartButton: Bool? = false ) -> UIButton {
@@ -143,15 +143,15 @@ extension UIViewController {
     }
     
     @objc func openMenu() {
-//        prompt(OrderListViewController(viewModel: OrderListViewModel())
-//               , animated: true, completion: nil)
+        //        prompt(OrderListViewController(viewModel: OrderListViewModel())
+        //               , animated: true, completion: nil)
         let vc = CheckOutViewController(viewModel: CheckOutViewModel())
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
     
     @objc func goBack() {
-            pop(animated: true, completion: nil)
+        pop(animated: true, completion: nil)
     }
     
     func initializeNavigationBar() {
@@ -175,4 +175,26 @@ extension UIViewController {
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     
+    func showAlert(title: String?,
+                   message: String?,
+                   isMessageHtml : Bool? = false,
+                   htmlMessage : NSAttributedString? = nil,
+                   url: String? = nil,
+                   icon: UIImage? = nil,
+                   isTopViewHidden: Bool? = false,
+                   confirmButtonTitle: String? = nil,
+                   confirmed: (() -> Void)? = nil,
+                   canceled: (() -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        popUp(alert)
+    }
+    
+    func showAlertError(viewModel: ErrorViewModel?,
+                        confirmed: (() -> Void)? = nil,
+                        canceled: (() -> Void)? = nil) {
+        showAlert(title: viewModel?.title, message: viewModel?.message)
+    }
 }
