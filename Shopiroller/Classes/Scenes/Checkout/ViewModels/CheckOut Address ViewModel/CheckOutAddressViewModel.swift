@@ -22,6 +22,8 @@ class CheckOutAddressViewModel: BaseViewModel {
             switch result {
             case .success(let response):
                 self.defaultAdressList = response.data
+                self.getShippingAddress()
+                self.getBillingAddress()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -34,11 +36,11 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     func getDeliveryAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: defaultAdressList?.shippingAddress?.title, address: defaultAdressList?.shippingAddress?.addressLine, description: defaultAdressList?.shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
+        return GeneralAddressModel(title: _selectedShippingAddress?.title, address: _selectedShippingAddress?.addressLine, description: _selectedShippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
     }
     
     func getBillingAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: defaultAdressList?.billingAddress?.title, address: defaultAdressList?.billingAddress?.addressLine, description: defaultAdressList?.billingAddress?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
+        return GeneralAddressModel(title: _selectedBillingAddress?.title, address: _selectedBillingAddress?.addressLine, description: _selectedBillingAddress?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
     }
     
     

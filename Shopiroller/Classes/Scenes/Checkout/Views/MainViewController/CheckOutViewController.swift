@@ -53,6 +53,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         case 2:
             checkOutProgress.configureView(stage: .info)
             setTitle(stage: .info)
+            isHidingNextButton(hide: true)
         default:
             checkOutProgress.configureView(stage: .address)
             setTitle(stage: .address)

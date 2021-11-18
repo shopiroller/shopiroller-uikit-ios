@@ -346,6 +346,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         sumImage.makeAnimation()
         if viewModel.isQuantityMax() {
             sumImage.isUserInteractionEnabled = false
+            self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.quantityCount)))
         } else {
             viewModel.quantityCount += 1
             minusImage.isUserInteractionEnabled = true

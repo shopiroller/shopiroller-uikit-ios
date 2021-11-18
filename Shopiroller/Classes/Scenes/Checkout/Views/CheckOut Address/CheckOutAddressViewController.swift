@@ -63,6 +63,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         super.viewWillAppear(animated)
         delegate?.isHidingNextButton(hide: false)
         getDefaultAddress()
+        print("*-*-*-*---**--*")
+        print("*-*-*-*---**--*")
+        print(viewModel.selectedShippingAddress)
+        print("*-*-*-*---**--*")
+        print("*-*-*-*---**--*")
     }
     
     private func getDefaultAddress() {

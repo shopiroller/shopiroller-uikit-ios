@@ -17,7 +17,7 @@ extension UIColor {
     
     static let badgeSuccess = #colorLiteral(red: 216.0 / 255.0, green: 245.0 / 255.0, blue: 229.0 / 255.0, alpha: 1.0)
 
-    static let buttonLight = #colorLiteral(red: 244.0 / 255.0, green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    static let buttonLight = #colorLiteral(red: 0.956705153, green: 0.9661328197, blue: 0.9660719037, alpha: 1)
 
     static let badgeSecondary = #colorLiteral(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0)
 
@@ -54,4 +54,6 @@ extension UIColor {
     static let orangeyRed: UIColor = #colorLiteral(red: 250.0 / 255.0, green: 46.0 / 255.0, blue: 46.0 / 255.0, alpha: 1.0)
 
     static let veryLightBlue: UIColor = #colorLiteral (red: 231.0 / 255.0 , green: 234.0 / 255.0 , blue: 235.0 / 255.0, alpha: 1.0)
+    
+    static let brownGrey: UIColor = #colorLiteral (red: 137 / 255.0, green: 137 / 255.0, blue: 137.0 / 255.0, alpha: 1.0)
 }

@@ -21,6 +21,10 @@ class CheckOutPaymentViewModel: BaseViewModel {
     private var _selectedPayment: PaymentTypeEnum? = nil
     
     var orderEvent: OrderPaymentEvent = OrderPaymentEvent()
+    
+    var selectedBankIndex: Int?
+    
+    var isSelected: Bool = false
 
     func getPaymentSettings(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getPaymentSettings().response() {

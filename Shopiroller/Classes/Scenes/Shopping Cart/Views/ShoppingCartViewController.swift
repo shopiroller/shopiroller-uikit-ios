@@ -38,6 +38,13 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         
         campaignView.backgroundColor = .buttonLight
         campaignLabel.textColor = .textPrimary
+        
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        self.title = "shopping_cart_title".localized
+        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
     func configure() {
@@ -72,6 +79,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     private func getShoppingCart() {
         viewModel.getShoppingCart(success: {
             self.configure()
+            self.isInvalid()
         }) { (errorViewModel) in
             self.view.makeToast(errorViewModel)
         }
@@ -130,7 +138,9 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     @IBAction func proceedToCheckoutClicked(_ sender: Any) {
         if(!isInvalid()){
-            // TODO: route
+            let checkOutViewController = CheckOutViewController(viewModel: CheckOutViewModel())
+            checkOutViewController.modalPresentationStyle = .fullScreen
+            present(checkOutViewController, animated: true, completion: nil)
         }
     }
     

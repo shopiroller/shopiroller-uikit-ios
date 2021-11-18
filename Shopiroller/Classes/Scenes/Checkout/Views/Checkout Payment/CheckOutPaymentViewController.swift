@@ -14,13 +14,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         
         static var selectPaymentMethodText : String { return "checkout-payment-select-payment-method-text".localized }
         static var selectedPaymentMethodCreditCart : String { return "checkout-payment-selected-payment-method-credit-cart-placeholder".localized }
-        static var selectedPaymentMethodBankTransfer : String { return "checkout-payment-selected-payment-method-transfer-bank-placeholder".localized }
+        static var selectedPaymentMethodBankTransfer : String { return "checkout-payment-selected-payment-method-transfer-bank-placeholder".localized}
         static var selectedPaymentMethodPayAtTheDoor : String { return "checkout-payment-selected-payment-method-pay-at-the-door-placeholder".localized }
         static var creditCartHolderNamePlaceholder : String { return "checkout-payment-credit-card-holder-placeholder".localized }
         static var creditCartNumberPlaceholder : String { return "checkout-payment-credit-card-number-placeholder".localized }
         static var creditCartExpireDatePlaceholder : String { return "checkout-payment-credit-card-expire-date-placeholer".localized }
         static var creditCartCvvPlaceholder : String { return "checkout-payment-credit-card-cvv-placeholder".localized }
-        
         static var payAtTheDoorDescription: String {
             return "checkout-payment-pay-at-the-door-description".localized
         }
@@ -211,7 +210,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         }
     }
     
-    private func checkIsValid()  {
+    private func checkIsValid() {
         isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
 //        delegate?.isEnabledNextButton(enabled: isValid)
         if isValid == true {
@@ -219,8 +218,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             case .PayPal:
                 viewModel.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
             case .Transfer:
+                setBankTransferUI()
                 viewModel.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
-                //TO-DO Selected Bank
             case .Online3DS, .Online:
                 validateCreditCardFields()
                 if viewModel.getDefaultPaymentMethod() == .Online {
@@ -236,6 +235,14 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             }
         }
 //        return isValid
+    }
+    
+    private func setBankTransferUI() {
+        if viewModel.isSelected  {
+            delegate?.isEnabledNextButton(enabled: true)
+        } else {
+            delegate?.isEnabledNextButton(enabled: false)
+        }
     }
     
     @objc func openPaymentList() {
@@ -333,15 +340,32 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = viewModel.getBankAccountModel(position: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: BankTransferTableViewCell.reuseIdentifier, for: indexPath) as! BankTransferTableViewCell
-        cell.configureBankList(model: model)
+        if viewModel.selectedBankIndex == indexPath.row {
+            viewModel.isSelected = true
+            setBankTransferUI()
+        } else {
+            viewModel.isSelected = false
+        }
+        cell.configureBankList(model: model,index: indexPath.row, isSelected: viewModel.isSelected)
+        cell.delegate = self
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+}
+
+extension CheckOutPaymentViewController: BankTransferCellDelegate {
+    func tappedCopyIbanButton() {
+        var style = ToastStyle()
+        style.backgroundColor = .veryLightPink
+        style.messageColor = .textPrimary
+        style.messageFont = UIFont.systemFont(ofSize: 12)
+        self.view.makeToast(String(format: "checkout-table-view-iban-copied-message".localized),position: ToastPosition.bottom,style: style)
     }
     
-    
+    func setSelectedBankIndex(index: Int?) {
+        print(viewModel.getBankAccountModel(position: index ?? 0))
+        viewModel.selectedBankIndex = index
+        bankTransferTableView.reloadData()
+    }
 }
     
 

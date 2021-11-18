@@ -30,7 +30,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public override func setup() {
         super.setup()
-        getCount()
         view.backgroundColor = .white
 
         shimmerCollectionView.delegate = self
@@ -46,6 +45,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
         getProducts(showProgress: true,pagination: false,refreshing: false)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCount()
     }
     
     override func setupNavigationBar() {
@@ -126,6 +130,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
+            shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())
             collectionViewContainer.isHidden = true
             emptyViewContainer.isHidden = false

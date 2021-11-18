@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="10" width="320" height="20"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPD-AC-Suc">
-                            <rect key="frame" x="0.0" y="1" width="40" height="18"/>
+                            <rect key="frame" x="14" y="1" width="40" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="vVP-1v-J7O"/>
                             </constraints>
@@ -42,8 +42,8 @@
                                 <action selector="backButtonTapped" destination="-1" eventType="touchUpInside" id="d7Z-d2-bCF"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cae-wj-3rk">
-                            <rect key="frame" x="90" y="10" width="230" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cae-wj-3rk">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -52,11 +52,14 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="7R4-ry-cZ5"/>
-                        <constraint firstItem="cae-wj-3rk" firstAttribute="leading" secondItem="PPD-AC-Suc" secondAttribute="trailing" constant="50" id="LAP-Ij-E9J"/>
                         <constraint firstAttribute="trailing" secondItem="cae-wj-3rk" secondAttribute="trailing" id="V0C-KD-d02"/>
+                        <constraint firstItem="cae-wj-3rk" firstAttribute="centerX" secondItem="BGO-OH-ybM" secondAttribute="centerX" id="WV4-Ji-Vjs"/>
+                        <constraint firstItem="cae-wj-3rk" firstAttribute="leading" secondItem="BGO-OH-ybM" secondAttribute="leading" id="XkS-jw-DdP"/>
                         <constraint firstItem="cae-wj-3rk" firstAttribute="centerY" secondItem="BGO-OH-ybM" secondAttribute="centerY" id="ZRZ-zr-A7B"/>
                         <constraint firstItem="PPD-AC-Suc" firstAttribute="centerY" secondItem="BGO-OH-ybM" secondAttribute="centerY" id="eOQ-1R-Huz"/>
-                        <constraint firstItem="PPD-AC-Suc" firstAttribute="leading" secondItem="BGO-OH-ybM" secondAttribute="leading" id="weD-68-IgW"/>
+                        <constraint firstAttribute="bottom" secondItem="cae-wj-3rk" secondAttribute="bottom" id="ecO-9w-97J"/>
+                        <constraint firstItem="cae-wj-3rk" firstAttribute="top" secondItem="BGO-OH-ybM" secondAttribute="top" id="f2X-Wa-sYR"/>
+                        <constraint firstItem="PPD-AC-Suc" firstAttribute="leading" secondItem="BGO-OH-ybM" secondAttribute="leading" constant="14" id="weD-68-IgW"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw0-b1-JZa">
