@@ -10,7 +10,7 @@ import Foundation
 
 struct SRNetworkContext {
     
-    public static let apiKey = "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I="
-    public static let appKey = "X5hyTTGjDxwGZkdPl2Y3hkFEPkI="
+    public static let apiKey = "ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY="
+    public static let appKey = "hH44D508wztkyBoQ3HiPqjMN/O4="
     
 }
