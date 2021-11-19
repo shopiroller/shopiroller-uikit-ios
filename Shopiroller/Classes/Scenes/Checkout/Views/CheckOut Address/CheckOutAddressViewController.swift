@@ -89,6 +89,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             defaultBillingAddress.isHidden = false
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
+            SRSessionManager.shared.userBillingAddress = viewModel.selectedBillingAddress
         }
         
         if viewModel.isShippingAddressEmpty() {
@@ -104,6 +105,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             defaultDeliveryAddress.isHidden = false
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
             delegate?.isEnabledNextButton(enabled: true)
+            SRSessionManager.shared.userDeliveryAddress = viewModel.selectedShippingAddress
         }
     }
     
@@ -118,7 +120,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         vc.delegate = self
         self.sheet(vc, completion: nil)
     }
-
+    
 }
 
 extension CheckOutAddressViewController: GeneralAddressDelegate {
@@ -135,7 +137,7 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
         }
     }
     
-
+    
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
         let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .address,addressType: type ?? .shipping ))
         vc.addressDelegate = self
@@ -162,12 +164,14 @@ extension CheckOutAddressViewController: ListPopUpAddressDelegate {
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
         defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
         viewModel.selectedBillingAddress = billingAddress
+        SRSessionManager.shared.userBillingAddress = viewModel.selectedBillingAddress
         self.view.layoutIfNeeded()
     }
     
     func getShippingAddress(shippingAddress: UserShippingAddressModel?) {
         defaultDeliveryAddress.setup(model: GeneralAddressModel(title: shippingAddress?.title, address: shippingAddress?.addressLine, description: shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: false))
         viewModel.selectedShippingAddress = shippingAddress
+        SRSessionManager.shared.userDeliveryAddress = viewModel.selectedShippingAddress
         self.view.layoutIfNeeded()
     }
 }

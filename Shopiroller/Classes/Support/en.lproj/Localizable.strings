@@ -209,6 +209,9 @@
 "checkout-info-order-note-text-view-placeholder" = "Leave a note for your order";
 "checkout-info-confirm-order-button-title" = "Confirm Order";
 "checkout-info-terms-and-conditions-text" = "Agree the Terms of Conditions and Privacy Policy";
+"checkout-info-update-order-pop-up-title" = "Update your order!";
+"checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
+"checkout-info-update-order-pop-up-button-text" = "Update My Cart";
 
 
 

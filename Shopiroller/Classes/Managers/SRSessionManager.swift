@@ -13,4 +13,8 @@ class SRSessionManager {
     
     var orderEvent: OrderPaymentEvent = OrderPaymentEvent()
     
+    var userBillingAddress: UserBillingAdressModel?
+    
+    var userDeliveryAddress: UserShippingAddressModel?
+    
 }

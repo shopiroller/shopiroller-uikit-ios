@@ -195,7 +195,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = PaymentTypeEnum.PayPal.rawValue.uppercased().localized
-            selectMethodTitle.text = PaymentTypeEnum.PayPal.rawValue
+            selectedMethodTitle.text = PaymentTypeEnum.PayPal.rawValue
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true

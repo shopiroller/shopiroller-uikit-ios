@@ -21,6 +21,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         
     }
     
+    @IBOutlet private weak var mainContainerView: UIView!
     @IBOutlet private weak var shoppingCardViewImage: UIImageView!
     @IBOutlet private weak var shoppingCardViewTitle: UILabel!
     @IBOutlet private weak var shoppingCardViewDescription: UILabel!
@@ -106,6 +107,52 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getShoppingCart(isCheckOut: false)
+        print(SRSessionManager.shared.userDeliveryAddress)
+    }
+    
+    private func getShoppingCart(isCheckOut: Bool){
+        viewModel.getShoppingCart(success: {
+            self.setUpLayout()
+            if isCheckOut {
+                self.showUpdateShoppingCartDialog()
+            } else {
+                self.makeOrder()
+            }
+        }) { (errorViewModel) in
+            self.view.makeToast(errorViewModel)
+        }
+    }
+    
+    private func makeOrder() {
+        
+    }
+    
+    private func showUpdateShoppingCartDialog() {
+        let popUpVc = PopUpViewViewController(viewModel: viewModel.getUpdateCardPopUpModel())
+        popUp(popUpVc, completion: nil)
+    }
+
+    private func setUpLayout() {
+        mainContainerView.isHidden = false
+        switch SRSessionManager.shared.orderEvent.paymentType {
+        case PaymentTypeEnum.PayPal.rawValue:
+            paymentCardViewTitle.text = "list-pop-up-paypal-text".localized
+        case PaymentTypeEnum.PayAtDoor.rawValue:
+            paymentCardViewTitle.text = "list-pop-up-bank-transfer-text".localized
+        case PaymentTypeEnum.Online.rawValue , PaymentTypeEnum.Online3DS.rawValue:
+            paymentCardViewTitle.text = "list-pop-up-credit-cart-text".localized
+        case PaymentTypeEnum.Transfer.rawValue:
+            billingAddressViewTitle.text = "checkout-info-billing-address-card-view-title".localized
+            deliveryAddressCardTitle.text = "checkout-info-delivery-address-card-view-title"
+            paymentCardViewTitle.text = "list-pop-up-pay-at-the-door-text".localized
+        default:
+            break
+        }
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if orderNote.textColor == UIColor.lightGray {
             orderNote.text = nil
@@ -135,6 +182,17 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             agreeTermsButton.imageView?.tintColor = .veryLightPink
         }
     }
-    
 
+}
+
+extension CheckOutInfoViewController : PopUpViewViewControllerDelegate {
+    
+    func firstButtonClicked(_ sender: Any) {
+        let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+        popUp(shoppingCartVC, completion: nil)
+    }
+    
+    func secondButtonClicked(_ sender: Any) {
+        
+    }
 }

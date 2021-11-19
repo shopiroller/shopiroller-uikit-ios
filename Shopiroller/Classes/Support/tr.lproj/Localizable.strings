@@ -213,6 +213,9 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "checkout-info-order-note-text-view-placeholder" = "Siparişiniz için not bırakın";
 "checkout-info-confirm-order-button-title" = "Ödemeyi Onayla";
 "checkout-info-terms-and-conditions-text" = "Koşullar ve Gizlilik politikasını kabul ediyorum.";
+"checkout-info-update-order-pop-up-title" = "Update your order!";
+"checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
+"checkout-info-update-order-pop-up-button-text" = "Update My Cart";
 
 //MARK: - SelectionPopUp
 
