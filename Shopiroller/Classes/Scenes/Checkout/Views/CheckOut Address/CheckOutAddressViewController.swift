@@ -184,5 +184,4 @@ extension CheckOutAddressViewController : EmptyViewAddressDelegate {
             self.sheet(vc, completion: nil)
         }
     }    
-    
 }
