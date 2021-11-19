@@ -9,11 +9,17 @@ import UIKit
 import MaterialComponents.MaterialButtons
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
+    
+    private struct Constants {
+        static var confirmOrderButtonText: String { "confirm-order-button-text".localized }
+    }
     @IBOutlet private weak var checkOutProgress: CheckOutProgress!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var nextPageButton: MDCFloatingButton!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var viewControllerTitle: UILabel!
+    @IBOutlet private weak var confirmOrderButtonContainer: UIView!
+    @IBOutlet private weak var confirmOrderButton: UIButton!
     
     var index = 0
     
@@ -41,6 +47,11 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         self.viewControllerTitle.text = "delivery-information-page-title".localized
                 
         self.checkOutPageViewController = checkOutPageViewController
+        
+        confirmOrderButton.backgroundColor = .textPrimary
+        confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
+        
+        confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
         
     }
     
@@ -85,6 +96,10 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             self.viewControllerTitle.text =
             "info-information-page-title".localized
         }
+    }
+    
+    @IBAction func confirmButtonTapped() {
+        // Route Success Fail Screen
     }
 }
 

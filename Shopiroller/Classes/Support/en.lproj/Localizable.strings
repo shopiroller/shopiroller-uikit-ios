@@ -141,6 +141,7 @@
 "delivery-information-page-title" = "Delivery Information";
 "payment-information-page-title" = "Payment";
 "info-information-page-title" = "Info";
+"confirm-order-button-text" = "Confirm Order";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";

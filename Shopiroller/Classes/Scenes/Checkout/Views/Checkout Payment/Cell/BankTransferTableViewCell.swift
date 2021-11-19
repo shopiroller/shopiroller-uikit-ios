@@ -122,7 +122,9 @@ class BankTransferTableViewCell: UITableViewCell {
     }
     
     @IBAction func ibanCopyButtonTapped() {
-        delegate?.tappedCopyIbanButton()
-        UIPasteboard.general.string = model?.accountAdress
+        if let iban = model?.accountAdress , !iban.isEmpty {
+            UIPasteboard.general.string = model?.accountAdress
+            delegate?.tappedCopyIbanButton()
+        }
     }
 }

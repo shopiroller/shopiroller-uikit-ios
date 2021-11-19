@@ -73,6 +73,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageFreeShippingContainer.isHidden = false
             freeShippingLabel.textColor = .white
             freeShippingLabel.text = Constants.freeShipping
+            freeShippingLabel.font = UIFont.systemFont(ofSize: 9)
             productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
             productImageFreeShippingContainer.layer.cornerRadius = 5
             productImageFreeShippingContainer.layer.masksToBounds = true
@@ -84,6 +85,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageSoldOutContainer.isHidden = false
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
+            soldOutLabel.font = UIFont.systemFont(ofSize: 9)
             productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
             productImageSoldOutContainer.layer.cornerRadius = 5
             productImageSoldOutContainer.layer.masksToBounds = true
@@ -94,12 +96,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureShimmer() {
+    func startShimmer() {
         stackView.spacing = CGFloat(10)
         [productImageContainer,productDiscountContainer,productTitleLabel,productPriceContainer].forEach {
             Shimmer.start(for: $0)
         }
-    }
-      
+    }      
     
 }

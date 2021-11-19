@@ -55,6 +55,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         popUpTableView.separatorInset = UIEdgeInsets.zero
         popUpTableView.delegate = self
         popUpTableView.dataSource = self
+        popUpTableView.tableFooterView = UIView()
+
         
         let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(popView))
         self.view.backgroundColor = .black.withAlphaComponent(0.2)

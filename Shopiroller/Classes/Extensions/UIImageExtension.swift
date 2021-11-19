@@ -12,7 +12,7 @@ extension UIImage {
     // MARK: System Images
     static let searchIcon: UIImage = UIImage(systemName: "magnifyingglass")!
     
-    static let cartIcon: UIImage = UIImage(systemName: "cart.fill")!
+    static let generalCartIcon: UIImage = UIImage(systemName: "cart.fill")!
     
     static let backIcon: UIImage = UIImage(systemName: "chevron.left")!
     
@@ -98,5 +98,14 @@ extension UIImage {
     static let visaIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
     
     static let copyIcon : UIImage = UIImage(systemName: "doc.on.doc.fill")!
+    
+    static let cartIcon : UIImage = UIImage(named: "cartIcon", in: .shopiroller, with: nil)!
+
+    static let paymentIcon : UIImage = UIImage(named: "paymentIcon", in: .shopiroller, with: nil)!
+
+    static let billingAddressIcon : UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
+
+    static let deliveryAddressIcon : UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
+
 
 }

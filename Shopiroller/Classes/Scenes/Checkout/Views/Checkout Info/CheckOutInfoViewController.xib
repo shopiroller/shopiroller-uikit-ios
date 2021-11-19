@@ -62,11 +62,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAe-K9-mWD">
                                                             <rect key="frame" x="0.0" y="0.0" width="186" height="120.5"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wag-ui-Ncg">
-                                                                    <rect key="frame" x="147" y="7" width="32" height="32"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wag-ui-Ncg">
+                                                                    <rect key="frame" x="159" y="7" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="32" id="8Ew-gr-WfM"/>
-                                                                        <constraint firstAttribute="width" constant="32" id="C8C-AB-xrk"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="8Ew-gr-WfM"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="C8C-AB-xrk"/>
                                                                     </constraints>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 </button>
@@ -143,11 +143,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2N-vz-0CS">
                                                             <rect key="frame" x="196" y="0.0" width="186" height="120.5"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJE-pK-dP9">
-                                                                    <rect key="frame" x="147" y="7" width="32" height="32"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJE-pK-dP9">
+                                                                    <rect key="frame" x="159" y="7" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="32" id="UIR-uP-cLC"/>
-                                                                        <constraint firstAttribute="width" constant="32" id="uHs-ft-Vm3"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="UIR-uP-cLC"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="uHs-ft-Vm3"/>
                                                                     </constraints>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 </button>
@@ -229,11 +229,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-s8-34B">
                                                             <rect key="frame" x="0.0" y="0.0" width="186" height="121"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-Xj-GI4">
-                                                                    <rect key="frame" x="147" y="7" width="32" height="32"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-Xj-GI4">
+                                                                    <rect key="frame" x="159" y="7" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="32" id="KeZ-xG-iLF"/>
-                                                                        <constraint firstAttribute="height" constant="32" id="scs-l4-kWj"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="KeZ-xG-iLF"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="scs-l4-kWj"/>
                                                                     </constraints>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 </button>
@@ -310,11 +310,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIp-6m-SFq">
                                                             <rect key="frame" x="196" y="0.0" width="186" height="121"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDQ-7J-mlr">
-                                                                    <rect key="frame" x="147" y="7" width="32" height="32"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDQ-7J-mlr">
+                                                                    <rect key="frame" x="159" y="7" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="32" id="FP0-qc-G7r"/>
-                                                                        <constraint firstAttribute="width" constant="32" id="Xu0-Td-muI"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="FP0-qc-G7r"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="Xu0-Td-muI"/>
                                                                     </constraints>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 </button>

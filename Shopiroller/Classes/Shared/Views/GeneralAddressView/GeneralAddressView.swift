@@ -51,9 +51,14 @@ public class GeneralAddressView: BaseView {
     
         addressLine.textColor = .textPCaption
         addressLine.font = UIFont.systemFont(ofSize: 12)
-        
+        addressLine.adjustsFontSizeToFitWidth = false;
+        addressLine.lineBreakMode = NSLineBreakMode.byTruncatingTail
+
         descriptionArea.textColor = .textPCaption
         descriptionArea.font = UIFont.systemFont(ofSize: 12)
+        descriptionArea.adjustsFontSizeToFitWidth = false;
+        descriptionArea.lineBreakMode = NSLineBreakMode.byTruncatingTail
+
         
         editAddressButton.setImage(UIImage(systemName: "pencil"))
         editAddressButton.tintColor = .black

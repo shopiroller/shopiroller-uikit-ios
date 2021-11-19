@@ -122,7 +122,7 @@ extension UIViewController {
         }
         
         if isCartButton == true {
-            button.createBadge(withCount: SRAppContext.shoppingCartCount)
+            button.createBadge()
         }
         
         return button

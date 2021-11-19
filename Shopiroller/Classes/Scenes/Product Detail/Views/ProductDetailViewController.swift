@@ -240,7 +240,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
@@ -253,6 +253,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.getCount()
+        }
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
@@ -291,9 +298,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             self.pageControl.numberOfPages = self.viewModel.getItemCount() ?? 0
             self.setUI()
             self.collectionView.reloadData()
-            DispatchQueue.main.async {
-                self.getCount()
-            }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }

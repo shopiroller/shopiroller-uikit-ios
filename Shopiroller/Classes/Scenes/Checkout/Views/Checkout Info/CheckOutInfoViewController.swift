@@ -64,28 +64,32 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         shoppingCardViewTitle.text = Constants.shoppingCardViewTitle
         shoppingCardViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
         shoppingCardViewEditButton.setImage(UIImage(systemName: "pencil"))
-        shoppingCardViewEditButton.imageView?.tintColor = .textPCaption
+        shoppingCardViewEditButton.tintColor = .textPCaption
+        shoppingCardViewImage.image = .cartIcon
         
         paymentCardViewContainer.layer.cornerRadius = 6
         paymentCardViewContainer.backgroundColor = .buttonLight
         paymentCardViewTitle.text = Constants.paymentCardViewTitle
         paymentCardViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
         paymentCardViewEditButton.setImage(UIImage(systemName: "pencil"))
-        paymentCardViewEditButton.imageView?.tintColor = .textPCaption
+        paymentCardViewEditButton.tintColor = .textPCaption
+        paymentCardViewImage.image = .paymentIcon
         
         billingAddressCardViewContainer.layer.cornerRadius = 6
         billingAddressCardViewContainer.backgroundColor = .buttonLight
         billingAddressViewTitle.text = Constants.billingAddressCardViewTitle
         billingAddressViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
         billingAddressCardViewEditButton.setImage(UIImage(systemName: "pencil"))
-        billingAddressCardViewEditButton.imageView?.tintColor = .textPCaption
+        billingAddressCardViewEditButton.tintColor = .textPCaption
+        billingAddressViewImage.image = .billingAddressIcon
         
         deliveryAddressCardViewContainer.layer.cornerRadius = 6
         deliveryAddressCardViewContainer.backgroundColor = .buttonLight
         deliveryAddressCardTitle.text = Constants.deliveryAddressCardViewTitle
         deliveryAddressCardTitle.font = UIFont.boldSystemFont(ofSize: 14)
         deliveryAddressCardEditButton.setImage(UIImage(systemName: "pencil"))
-        deliveryAddressCardEditButton.imageView?.tintColor = .textPCaption
+        deliveryAddressCardEditButton.tintColor = .textPCaption
+        deliveryAddressCardImage.image = .deliveryAddressIcon
         
         
         agreeTermsButton.setImage(UIImage(systemName: "circle"))

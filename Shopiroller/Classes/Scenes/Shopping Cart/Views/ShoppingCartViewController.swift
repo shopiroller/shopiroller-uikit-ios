@@ -39,6 +39,9 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         campaignView.backgroundColor = .buttonLight
         campaignLabel.textColor = .textPrimary
         
+        tableView.tableFooterView = UIView()
+
+        
     }
     
     override func setupNavigationBar() {

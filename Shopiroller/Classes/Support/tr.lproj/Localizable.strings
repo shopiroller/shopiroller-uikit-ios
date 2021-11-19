@@ -145,6 +145,7 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "delivery-information-page-title" = "Teslimat Bilgileri";
 "payment-information-page-title" = "Ödeme";
 "info-information-page-title" = "Bilgilendirme";
+"confirm-order-button-text" = "Siparişi Onayla";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
