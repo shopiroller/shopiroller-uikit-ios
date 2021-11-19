@@ -19,9 +19,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     private var paymentSettings : PaymentSettingsResponeModel?
     
     private var _selectedPayment: PaymentTypeEnum? = nil
-    
-    var orderEvent: OrderPaymentEvent = OrderPaymentEvent()
-    
+        
     var selectedBankIndex: Int?
     
     var isSelected: Bool = false
@@ -82,46 +80,46 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     var creditCardHolder: String? {
         set {
-            orderEvent.orderCard.cardHolderName = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cardHolderName = newValue
         }
         get {
-            return orderEvent.orderCard.cardHolderName
+            return  SRSessionManager.shared.orderEvent.orderCard.cardHolderName
         }
     }
     
     var creditCardNumber: String? {
         set {
-            orderEvent.orderCard.cardNumber = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cardNumber = newValue
         }
         get {
-            return  orderEvent.orderCard.cardNumber
+            return SRSessionManager.shared.orderEvent.orderCard.cardNumber
         }
     }
     
     var creditCardExpireYear: String? {
         set {
-            orderEvent.orderCard.expireYear = newValue
+            SRSessionManager.shared.orderEvent.orderCard.expireYear = newValue
         }
         get {
-            return orderEvent.orderCard.expireYear
+            return SRSessionManager.shared.orderEvent.orderCard.expireYear
         }
     }
     
     var creditCardExpireMonth: String? {
         set {
-            orderEvent.orderCard.expireMonth = newValue
+            SRSessionManager.shared.orderEvent.orderCard.expireMonth = newValue
         }
         get {
-            return orderEvent.orderCard.expireMonth
+            return SRSessionManager.shared.orderEvent.orderCard.expireMonth
         }
     }
     
     var creditCardCvv: String? {
         set {
-            orderEvent.orderCard.cvc = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cvc = newValue
         }
         get {
-            return orderEvent.orderCard.cvc
+            return SRSessionManager.shared.orderEvent.orderCard.cvc
         }
     }
     

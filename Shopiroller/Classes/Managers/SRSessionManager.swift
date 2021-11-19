@@ -11,10 +11,6 @@ class SRSessionManager {
     
     static var shared = SRSessionManager()
     
-    var userBillingAddress : UserBillingAdressModel?
-    
-    var userShippingAddress: UserShippingAddressModel?
-    
-    var makeOrder : SRMakeOrderResponse?
+    var orderEvent: OrderPaymentEvent = OrderPaymentEvent()
     
 }

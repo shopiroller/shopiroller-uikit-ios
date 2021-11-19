@@ -103,6 +103,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         orderNoteContainerView.layer.cornerRadius = 6
         orderNoteContainerView.layer.borderColor = UIColor.brownGrey.cgColor
         orderNoteContainerView.layer.borderWidth = 1
+        
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

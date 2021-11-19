@@ -212,29 +212,27 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private func checkIsValid() {
         isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
-//        delegate?.isEnabledNextButton(enabled: isValid)
         if isValid == true {
             switch viewModel.getDefaultPaymentMethod() {
             case .PayPal:
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
             case .Transfer:
                 setBankTransferUI()
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
                 validateCreditCardFields()
                 if viewModel.getDefaultPaymentMethod() == .Online {
-                    viewModel.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
+                    SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
                 } else {
-                    viewModel.orderEvent.paymentType = PaymentTypeEnum.Online3DS.rawValue
+                    SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online3DS.rawValue
                 }
             case .PayAtDoor:
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.PayAtDoor.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayAtDoor.rawValue
                 self.delegate?.isEnabledNextButton(enabled: true)
             case .none:
                 break
             }
         }
-//        return isValid
     }
     
     private func setBankTransferUI() {
@@ -362,7 +360,7 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
     }
     
     func setSelectedBankIndex(index: Int?) {
-        print(viewModel.getBankAccountModel(position: index ?? 0))
+        SRSessionManager.shared.orderEvent.bankAccount = viewModel.getBankAccountModel(position: index ?? 0)
         viewModel.selectedBankIndex = index
         bankTransferTableView.reloadData()
     }
