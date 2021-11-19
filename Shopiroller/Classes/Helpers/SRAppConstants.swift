@@ -25,6 +25,10 @@ struct SRAppConstants {
             static let fontFamily = "font_family"
         }
         
+        struct Notifications {
+            static let userAddressListObserve = "userAddressListObserve"
+        }
+        
     }
     
     
@@ -65,4 +69,22 @@ struct SRAppConstants {
         case goBack
         case openOptions
     }
+}
+
+
+extension Notification.Name
+{
+    
+    public static let shoppingCartCount = Notification.Name(rawValue: "ShoppingCartCount")
+
+}
+
+extension Notification
+{
+    public static func isShoppingCartCountChange() {
+        NotificationCenter.default.post(name: .shoppingCartCount
+            , object: nil
+            , userInfo: nil)
+    }
+    
 }

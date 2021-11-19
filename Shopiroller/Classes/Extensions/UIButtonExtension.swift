@@ -47,7 +47,7 @@ extension UIButton {
         return button
     }
     
-    func createBadge(withCount count: Int) -> UIButton {
+    func createBadge() {
         let badgeSize: CGFloat = 17
         let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
         badgeCount.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ extension UIButton {
         badgeCount.textColor = .white
         badgeCount.font = UIFont.boldSystemFont(ofSize: 12)
         badgeCount.backgroundColor = UIColor(red: 221/255, green: 55/255, blue: 95/255, alpha: 1)
-        badgeCount.text = String(count)
+        badgeCount.text = "\(SRAppContext.shoppingCartCount)"
         self.addSubview(badgeCount)
             NSLayoutConstraint.activate([
                 badgeCount.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14),
@@ -65,7 +65,7 @@ extension UIButton {
                 badgeCount.widthAnchor.constraint(equalToConstant: badgeSize),
                 badgeCount.heightAnchor.constraint(equalToConstant: badgeSize)
             ])
-        return self
+        self.layoutIfNeeded()
     }
 
 }

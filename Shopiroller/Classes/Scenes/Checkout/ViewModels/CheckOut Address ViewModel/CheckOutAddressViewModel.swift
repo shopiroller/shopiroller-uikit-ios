@@ -22,6 +22,8 @@ class CheckOutAddressViewModel: BaseViewModel {
             switch result {
             case .success(let response):
                 self.defaultAdressList = response.data
+                self.getShippingAddress()
+                self.getBillingAddress()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -34,29 +36,33 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     func getDeliveryAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: defaultAdressList?.shippingAddress?.title, address: defaultAdressList?.shippingAddress?.addressLine, description: defaultAdressList?.shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
+        return GeneralAddressModel(title: _selectedShippingAddress?.title, address: _selectedShippingAddress?.addressLine, description: _selectedShippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
     }
     
     func getBillingAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: defaultAdressList?.billingAddress?.title, address: defaultAdressList?.billingAddress?.addressLine, description: defaultAdressList?.billingAddress?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
+        return GeneralAddressModel(title: _selectedBillingAddress?.title, address: _selectedBillingAddress?.addressLine, description: _selectedBillingAddress?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
     }
     
     
     func getShippingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized,description: nil, button: nil)
+        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
     }
     
     func getBillingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: nil)
+        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
     }
     
     func getShippingAddress() -> UserShippingAddressModel? {
-        _selectedShippingAddress = defaultAdressList?.shippingAddress
+        if _selectedShippingAddress == nil {
+            _selectedShippingAddress = defaultAdressList?.shippingAddress
+        }
         return _selectedShippingAddress
     }
     
     func getBillingAddress() -> UserBillingAdressModel? {
-        _selectedBillingAddress = defaultAdressList?.billingAddress
+        if _selectedBillingAddress == nil {
+            _selectedBillingAddress = defaultAdressList?.billingAddress
+        }
         return _selectedBillingAddress
     }
     

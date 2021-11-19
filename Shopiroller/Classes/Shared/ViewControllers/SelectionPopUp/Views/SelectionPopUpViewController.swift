@@ -14,9 +14,17 @@ protocol SelectionPopoUpDelegate {
 }
 
 class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> {
+    
+    private struct Constants {
+        static var searchText : String { return "selection-pop-up-search-placeholder".localized }
+        static var viewTitleLabel: String { return "selection-pop-up-country-text".localized }
+        static var cancelButtonText: String { return "selection-pop-up-cancel-button-text".localized }
+    }
 
+    @IBOutlet private weak var selectionPopUpTitle: UILabel!
     @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var selectionTableView: UITableView!
+    @IBOutlet private weak var cancelButton: UIButton!
     
     var delegate: SelectionPopoUpDelegate?
         
@@ -34,10 +42,16 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         selectionTableView.rowHeight = 50
         selectionTableView.separatorStyle = .none
         
+        selectionPopUpTitle.text = Constants.viewTitleLabel
+        cancelButton.setTitle(Constants.cancelButtonText)
+        cancelButton.setTitleColor(.textPrimary)
+        cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        searchTextField.placeholder = Constants.searchText
         
-        let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(popView))
+        searchTextField.setBottomBorderOnlyWith(color: UIColor.darkGray.cgColor)
+        
+        self.view.layer.cornerRadius = 6
         self.view.backgroundColor = .black.withAlphaComponent(0.2)
-        view.addGestureRecognizer(dismissGesture)
         
     }
     
@@ -51,9 +65,9 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         selectionTableView.reloadData()
     }
     
-    
-    @objc func popView() {
+    @IBAction func cancelButtonTapped() {
         pop(animated: false)
+
     }
     
 }

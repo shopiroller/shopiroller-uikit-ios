@@ -84,7 +84,7 @@
                             <rect key="frame" x="0.0" y="55" width="414" height="713"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UPv-Mg-jUc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="417"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvU-7I-O3k">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
@@ -283,8 +283,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="MRc-xZ-XBF" secondAttribute="trailing" constant="15" id="tQK-Dw-cvy"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg3-eX-gcb">
-                                            <rect key="frame" x="0.0" y="275" width="414" height="30"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg3-eX-gcb">
+                                            <rect key="frame" x="0.0" y="267.5" width="414" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQK-U5-aHt">
                                                     <rect key="frame" x="25" y="-2" width="30" height="34"/>
@@ -310,7 +310,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSv-84-b6d">
-                                            <rect key="frame" x="0.0" y="320" width="414" height="97"/>
+                                            <rect key="frame" x="0.0" y="275" width="414" height="97"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BZw-hl-Ey2">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>

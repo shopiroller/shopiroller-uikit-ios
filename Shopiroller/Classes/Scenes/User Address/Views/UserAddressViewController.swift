@@ -57,7 +57,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     @IBAction func addButtonTapped() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: false))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: false))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         }else {
@@ -87,6 +87,7 @@ extension UserAddressViewController: AddressListPageDelegate {
 extension UserAddressViewController: AddressBottomViewDelegate {
     func saveButtonTapped() {
         self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userAddressListObserve), object: nil)
         dismiss(animated: true, completion: nil)
     }
     

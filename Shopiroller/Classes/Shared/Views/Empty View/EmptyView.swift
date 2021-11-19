@@ -12,14 +12,23 @@ protocol EmptyViewDelegate {
     func actionButtonClicked(_ sender: Any)
 }
 
+protocol EmptyViewAddressDelegate {
+    func addAddressButtonClicked(type: GeneralAddressType?)
+}
+
 public class EmptyView: BaseView {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var buttonContainer: UIView!
     
     var delegate: EmptyViewDelegate?
+    
+    var addressDelegate : EmptyViewAddressDelegate?
+    
+    private var type : GeneralAddressType? = .shipping
     
     func setup(model: EmptyModel) {
         super.setup()
@@ -28,13 +37,19 @@ public class EmptyView: BaseView {
         titleLabel.text = model.title
         descriptionLabel.textColor = .textPCaption
         
+        if model.image == .emptyShippingAddresses {
+            type = .shipping
+        } else {
+            type = .billing
+        }
+        
         if let description = model.description {
             descriptionLabel.isHidden = false
             descriptionLabel.text = description
         }
         
         if let button = model.button {
-            actionButton.isHidden = false
+            buttonContainer.isHidden = false
             actionButton.setTitle(button.title)
             if(button.color != nil){
                 actionButton.tintColor = button.color
@@ -44,6 +59,10 @@ public class EmptyView: BaseView {
     
     @IBAction func actionButtonClicked(_ sender: Any) {
         delegate?.actionButtonClicked(sender)
+    }
+    
+    @IBAction func addAddressButtonClicked(_ sender: Any){
+        addressDelegate?.addAddressButtonClicked(type: self.type)
     }
     
 }

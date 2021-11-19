@@ -52,10 +52,10 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cartButton])
+        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cartButton],isBackButtonActive: true)
     }
     
     private func getCount() {

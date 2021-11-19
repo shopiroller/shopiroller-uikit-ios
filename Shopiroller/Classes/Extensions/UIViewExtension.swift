@@ -9,8 +9,13 @@ import UIKit
 
 extension UIView {
     
-    func makeToast(text: String?){
-        makeToast(text, duration: 3.0, position: .bottom)
+    func makeToast(text: String?,style: ToastStyle? = ToastStyle()){
+        if let style = style {
+            makeToast(text, duration: 3.0, position: .bottom,style: style)
+        } else {
+            makeToast(text, duration: 3.0, position: .bottom)
+
+        }
     }
     
     func makeToast(_ error: ErrorViewModel){

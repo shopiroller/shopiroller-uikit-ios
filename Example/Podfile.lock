@@ -1,5 +1,6 @@
 PODS:
   - FittedSheets (2.4.2)
+  - InputMask (6.1.0)
   - Kingfisher (4.10.1)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
@@ -53,6 +54,7 @@ PODS:
   - MDFTextAccessibility (2.0.1)
   - Shopiroller (0.1.0):
     - FittedSheets
+    - InputMask
     - Kingfisher
     - MaterialComponents/Buttons
     - SVProgressHUD
@@ -64,6 +66,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FittedSheets
+    - InputMask
     - Kingfisher
     - MaterialComponents
     - MDFInternationalization
@@ -76,11 +79,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Shopiroller: f41a63c9552c2afc1f6a60221c046b025b52d8ff
+  Shopiroller: f40d4c293b374e5f7e7016b5bebeb6bf44d7410b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b

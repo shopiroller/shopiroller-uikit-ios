@@ -39,7 +39,6 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         filterProductsContainer.clipsToBounds = true
         
         lineView.backgroundColor = UIColor.textPrimary.withAlphaComponent(0.2)
-       
         
         productsCollectionView.delegate = self
         productsCollectionView.dataSource = self
@@ -57,10 +56,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cartButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon, .goToCard , true))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton])
+        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton],isBackButtonActive: true)
         
 
     }

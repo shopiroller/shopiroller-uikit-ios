@@ -13,8 +13,8 @@ class SRGlobalRequestManager {
             (result) in
             switch result{
             case .success(let response):
+                SRAppContext.shoppingCartCount = response.data ?? 0
                 DispatchQueue.main.async {
-                    SRAppContext.shoppingCartCount = response.data ?? 0
                     success?()
                 }
             case .failure(let err):

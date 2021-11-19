@@ -30,8 +30,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public override func setup() {
         super.setup()
-        getCount()
         view.backgroundColor = .white
+        getCount()
 
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
@@ -48,9 +48,16 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         getProducts(showProgress: true,pagination: false,refreshing: false)
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.getCount()
+        }
+    }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.cartIcon , .goToCard ,true))
+        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard ,true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
         
@@ -126,6 +133,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private func configureEmptyView() {
         if viewModel.productItemCount() == 0 {
+            shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())
             collectionViewContainer.isHidden = true
             emptyViewContainer.isHidden = false
@@ -175,6 +183,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         viewModel.getShoppingCartCount(succes: {
             [weak self] in
             guard let self = self else { return }
+            
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -224,7 +233,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             }
         case shimmerCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
-            cell.configureShimmer()
+            cell.startShimmer()
             return cell
         default:
             break

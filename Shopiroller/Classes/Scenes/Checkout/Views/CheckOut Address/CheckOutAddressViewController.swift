@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CheckOutAddressViewControllerDelegate {
-    func showToastMessage()
-}
-
 class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel> {
     
     private struct Constants {
@@ -31,7 +27,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     @IBOutlet private weak var defaultBillingAddress: GeneralAddressView!
     
     
-    var delegate : CheckOutAddressViewControllerDelegate?
+    var delegate : CheckOutProgressPageDelegate?
     
     override func setup() {
         super.setup()
@@ -57,18 +53,22 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         billingAddressAddButton.tintColor = .textSecondary
         billingAddressAddButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         
-        
-        
-        getDefaultAddress()
     }
     
     init(viewModel: CheckOutAddressViewModel){
         super.init(viewModel: viewModel, nibName: CheckOutAddressViewController.nibName, bundle: Bundle(for: CheckOutAddressViewController.self))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.isHidingNextButton(hide: false)
+        getDefaultAddress()
+    }
+    
     private func getDefaultAddress() {
         viewModel.getDefaultAddress(success: {
             self.configureViews()
+            self.view.layoutIfNeeded()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
@@ -79,21 +79,31 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         if viewModel.isBillingAddressEmpty() {
             billingAddressEmptyView.isHidden = false
             billingAddressAddButton.isHidden = true
+            defaultBillingAddress.isHidden = true
             billingAddressEmptyView.setup(model: viewModel.getBillingEmptyModel())
+            billingAddressEmptyView.addressDelegate = self
+            delegate?.isEnabledNextButton(enabled: false)
         } else {
             billingAddressAddButton.isHidden = false
-            viewModel.selectedBillingAddress = viewModel.getBillingAddress()
+            billingAddressEmptyView.isHidden = true
+            defaultBillingAddress.isHidden = false
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
+            delegate?.isEnabledNextButton(enabled: true)
         }
         
         if viewModel.isShippingAddressEmpty() {
             shippingAddressEmptyView.isHidden = false
             shippingAddressAddButton.isHidden = true
+            defaultDeliveryAddress.isHidden = true
             shippingAddressEmptyView.setup(model: viewModel.getShippingEmptyModel())
+            shippingAddressEmptyView.addressDelegate = self
+            delegate?.isEnabledNextButton(enabled: false)
         } else {
+            shippingAddressEmptyView.isHidden = true
             shippingAddressAddButton.isHidden = false
-            viewModel.selectedShippingAddress = viewModel.getShippingAddress()
+            defaultDeliveryAddress.isHidden = false
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
+            delegate?.isEnabledNextButton(enabled: true)
         }
     }
     
@@ -115,11 +125,11 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     func editButtonTapped(type: GeneralAddressType) {
         switch type {
         case .shipping:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.selectedShippingAddress))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: viewModel.getShippingAddress()))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         case .billing:
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.selectedBillingAddress))
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: viewModel.getBillingAddress()))
             vc.delegate = self
             self.sheet(vc, completion: nil)
         }
@@ -128,7 +138,7 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
         let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .address,addressType: type ?? .shipping ))
-        vc.delegate = self
+        vc.addressDelegate = self
         popUp(vc, completion: nil)
     }
 }
@@ -139,7 +149,7 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
             self.getDefaultAddress()
             self.view.layoutIfNeeded()
         }
-        delegate?.showToastMessage()
+        delegate?.showSuccessfullToastMessage()
         dismiss(animated: true, completion: nil)
     }
     
@@ -148,7 +158,7 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
     }
 }
 
-extension CheckOutAddressViewController: ListPopUpDelegate {
+extension CheckOutAddressViewController: ListPopUpAddressDelegate {
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
         defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
         viewModel.selectedBillingAddress = billingAddress
@@ -160,6 +170,19 @@ extension CheckOutAddressViewController: ListPopUpDelegate {
         viewModel.selectedShippingAddress = shippingAddress
         self.view.layoutIfNeeded()
     }
-    
+}
+
+extension CheckOutAddressViewController : EmptyViewAddressDelegate {
+    func addAddressButtonClicked(type: GeneralAddressType?) {
+        if type == .shipping {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }else {
+            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing))
+            vc.delegate = self
+            self.sheet(vc, completion: nil)
+        }
+    }    
     
 }

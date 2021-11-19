@@ -16,7 +16,6 @@ class AddressSelectTableViewCell: UITableViewCell {
     @IBOutlet private weak var addressFirstLine: UILabel!
     @IBOutlet private weak var addressSecondLine: UILabel!
     @IBOutlet private weak var addressThirdLine: UILabel!
-    
     @IBOutlet private weak var rightArrowImage: UIImageView!
     
     private var billingAddressIndex : Int?
@@ -45,6 +44,7 @@ class AddressSelectTableViewCell: UITableViewCell {
         addressThirdLine.lineBreakMode = .byTruncatingTail
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapGesture)
         tapGesture.delegate = self
         

@@ -16,6 +16,9 @@ struct BankAccountModel: Codable {
     var accountName: String?
     var name: String?
     var nameSurname: String?
+    
+    var isSelected: Bool?
+    
     var accountToString: String? {
         return (name ?? "") + " " + (accountName ?? "") + " " + (accountCode ?? "") + " " + (accountNumber ?? "")
     }

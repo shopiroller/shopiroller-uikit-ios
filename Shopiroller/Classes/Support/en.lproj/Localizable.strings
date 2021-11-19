@@ -141,6 +141,7 @@
 "delivery-information-page-title" = "Delivery Information";
 "payment-information-page-title" = "Payment";
 "info-information-page-title" = "Info";
+"confirm-order-button-text" = "Confirm Order";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";
@@ -176,5 +177,53 @@
 "list-popup-select-address-title" = "Select Address";
 "list-popup-select-payment-title" = "Select Payment";
 "list-popup-shopping-cart-title" = "Cart is updating";
+"list-pop-up-credit-cart-text" = "Credit Cart";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Bank Transfer";
+"list-pop-up-pay-at-the-door-text" = "Pay At The Door";
+
+//MARK: - CheckOutPayment
+
+"checkout-payment-select-payment-method-text" = "Select Payment Method";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Credit Cart";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Bank Transfer";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Pay At The Door";
+"checkout-payment-credit-card-holder-placeholder" = "Card Holder Name";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "There is no payment method yet.";
+"checkout-payment-empty-view-description" = "The store owner has not added a payment method yet.";
+"checkout-payment-pay-at-the-door-description" = "You can pay at the door via credit card or cash easily.";
+"checkout-table-view-account-iban-text"= "Iban: ";
+"checkout-table-view-account-department-text" = "Department: ";
+"checkout-table-view-account-number-text" = "Account: ";
+"checkout-table-view-iban-copied-message" = "Iban information was copied for the selected bank.";
+
+//MARK: - CheckOutInfo
+
+"checkout-info-shopping-card-view-title" = "Card";
+"checkout-info-payment-card-view-title" = "Payment";
+"checkout-info-billing-address-card-view-title" = "Billing Address";
+"checkout-info-delivery-addresss-card-view-title" = "Delivery Address";
+"checkout-info-order-note-text-view-placeholder" = "Leave a note for your order";
+"checkout-info-confirm-order-button-title" = "Confirm Order";
+"checkout-info-terms-and-conditions-text" = "Agree the Terms of Conditions and Privacy Policy";
+
+
+
+//MARK: - SelectionPopUp
+
+"selection-pop-up-country-text" = "Country";
+"selection-pop-up-search-placeholder" = "Search";
+"selection-pop-up-cancel-button-text" = "Cancel";
+
+//MARK: - Credit Card Validation
+
+"credit-card-number-error-text" = "Please check the credit card number";
+"credit-card-holder-error-text" = "Please check the credit card holder";
+"credit-card-expire-date-error-text" = "Please check the expire date";
+"credit-card-cvv-error-text" = "Please check the cvv";
+
 
 
