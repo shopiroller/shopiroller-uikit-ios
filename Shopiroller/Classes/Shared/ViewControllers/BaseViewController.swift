@@ -36,6 +36,11 @@ public class BaseViewController<T>: UIViewController {
     
     internal func setupNavigationBar(){}
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
     public func viewHeight() -> CGFloat {
         return self.view.frame.height
     }
