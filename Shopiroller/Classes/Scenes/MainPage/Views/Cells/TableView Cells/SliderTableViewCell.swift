@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SafariServices
 
 protocol SliderClickDelegate {
     func openProductDetail(id: String?)
@@ -72,7 +73,10 @@ extension SliderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         case .product:
             delegate?.openProductDetail(id: navigationLink)
         case .web:
-            delegate?.openWebView(link: navigationLink)
+            let url = URL(string: navigationLink ?? "")!
+            let controller = SFSafariViewController(url: url)
+            self.window?.rootViewController?.present(controller, animated: true, completion: nil)
+            controller.delegate = self
         case .nothing:
             break
         default:
@@ -107,6 +111,12 @@ extension SliderTableViewCell: UIScrollViewDelegate {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         
+    }
+}
+
+extension SliderTableViewCell : SFSafariViewControllerDelegate {
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
