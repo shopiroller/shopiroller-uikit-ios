@@ -36,14 +36,21 @@ class ItemCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        productTitleLabel.textColor = .textSecondary
+        productTitleLabel.font = .regular12
+        
+        productImageContainer.makeCardView()
+        productImageContainer.clipsToBounds = true
+        
+        productNewPrice.font = .headTwoSemiBold
+        
+        productDiscountLabel.font = .semiBold12
     }
     
     
     func configureCell(viewModel: ProductViewModel){
         productTitleLabel.text = viewModel.getTitle()
-        productTitleLabel.textColor = .textSecondary
-        productImageContainer.makeCardView()
-        productImageContainer.clipsToBounds = true
+        
         
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
@@ -53,6 +60,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productDiscountContainer.backgroundColor = .badgeSecondary
             productDiscountLabel.text = viewModel.discount
             productOldPrice.textColor = .textPCaption
+            productOldPrice.font = .medium12
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(viewModel.getPrice(), currency: viewModel.getCurrency())
             productNewPrice.text = viewModel.getCampaignPrice() + " " + viewModel.getCurrency()
         }else{
@@ -73,7 +81,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageFreeShippingContainer.isHidden = false
             freeShippingLabel.textColor = .white
             freeShippingLabel.text = Constants.freeShipping
-            freeShippingLabel.font = UIFont.systemFont(ofSize: 9)
+            freeShippingLabel.font = .badgeText
             productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
             productImageFreeShippingContainer.layer.cornerRadius = 5
             productImageFreeShippingContainer.layer.masksToBounds = true
@@ -85,7 +93,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageSoldOutContainer.isHidden = false
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
-            soldOutLabel.font = UIFont.systemFont(ofSize: 9)
+            soldOutLabel.font = .badgeText
             productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
             productImageSoldOutContainer.layer.cornerRadius = 5
             productImageSoldOutContainer.layer.masksToBounds = true

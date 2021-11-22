@@ -45,7 +45,10 @@ class CategoriesCell: UICollectionViewCell {
         seeAllContainer.addGestureRecognizer(seeAllTapGesture)
         seeAllTitle.text = Constants.seeAllTitle
         sectionTitleLabel.text = Constants.sectiontitle
+        sectionTitleLabel.font = .headTwo
         seeAllImage.image = .rightArrow
+        seeAllTitle.font = .regular12
+        seeAllTitle.textColor = .textPCaption
         
         collectionView.register(cellClass: CategoriesCollectionViewCell.self)
         collectionView.delegate = self

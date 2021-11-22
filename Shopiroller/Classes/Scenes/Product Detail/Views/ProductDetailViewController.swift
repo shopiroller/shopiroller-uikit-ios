@@ -431,6 +431,15 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
         
         if viewModel.isOutofStock() {
+            addToCardButton.setImage(nil)
+            addToCardButton.titleLabel?.text = Constants.soldOutText
+            soldOutContainer.isHidden = false
+            soldOutContainer.makeCardView()
+            soldOutContainer.backgroundColor = .badgeWarningInfo
+            soldOutLabel.textColor = .black
+            soldOutLabel.text = Constants.soldOutText
+            quantityContainer.isHidden = true
+            
             showSoldOutPopUp()
         }else{
             soldOutContainer.isHidden = true
@@ -439,15 +448,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func showSoldOutPopUp() {
-        addToCardButton.imageView?.isHidden = true
-        addToCardButton.titleLabel?.text = Constants.soldOutText
-        soldOutContainer.isHidden = false
-        soldOutContainer.makeCardView()
-        soldOutContainer.backgroundColor = .badgeWarningInfo
-        soldOutLabel.textColor = .black
-        soldOutLabel.text = Constants.soldOutText
-        quantityContainer.isHidden = true
-        
         showPopUp(viewModel: viewModel.getSoldOutPopUpViewModel())
     }
     
