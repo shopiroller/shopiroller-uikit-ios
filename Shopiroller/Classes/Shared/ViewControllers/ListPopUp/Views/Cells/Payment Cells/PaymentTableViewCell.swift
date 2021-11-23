@@ -49,6 +49,8 @@ class PaymentTableViewCell: UITableViewCell {
             paymentTypeImage.image = .bankIcon
         case .none:
             break
+        case .Stripe:
+            print("Stripe")
         }
     }
     

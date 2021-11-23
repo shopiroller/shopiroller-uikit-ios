@@ -132,6 +132,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func configureEmptyView() {
+        getCount()
         if viewModel.productItemCount() == 0 {
             shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())

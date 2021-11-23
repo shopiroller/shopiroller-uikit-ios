@@ -89,14 +89,10 @@ extension SliderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
 extension SliderTableViewCell: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //        let height  = view.frame.height/2
-        //        return CGSize(width: view.frame.width, height: height)
         return collectionView.frame.size
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //        let bannerViewModel = viewModel.bannerViewModel(at: indexPath.row)
-        //        descriptionLabel.text = bannerViewModel.description
     }
     
 }

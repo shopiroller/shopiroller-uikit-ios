@@ -207,12 +207,15 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
         case .none:
             break
+        case .Stripe:
+            print("Stripe")
         }
     }
     
     private func checkIsValid() {
-        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
+        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .Stripe  || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
         if isValid == true {
+            SRSessionManager.shared.paymentSettings = viewModel.getPaymentSettings()
             switch viewModel.getDefaultPaymentMethod() {
             case .PayPal:
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
@@ -231,6 +234,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 self.delegate?.isEnabledNextButton(enabled: true)
             case .none:
                 break
+            case .Stripe:
+                print("Stripe")
             }
         }
     }

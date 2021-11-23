@@ -68,6 +68,10 @@ class CheckOutPaymentViewModel: BaseViewModel {
         return paymentSettings?.paymentAccounts?[position]
     }
     
+    func getPaymentSettings() -> PaymentSettingsResponeModel? {
+        return paymentSettings
+    }
+    
     
     var paymentType: PaymentTypeEnum? {
         set {
@@ -134,9 +138,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     private func isValidCreditCardHolder(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
         if let fullName = creditCardHolder, fullName.isValidFullName {
-            print("name Tamam")
             return true
-
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardHolderErrorText))
         return false
@@ -155,9 +157,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     private func isValidCreditCardNumber(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
         if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true)  {
             print("card n umber Tamam")
-
             return true
-
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardNumberErrorText))
         return false
@@ -165,8 +165,6 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     private func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
         if let cvv = creditCardCvv, cvv.isValidCreditCardCvv {
-            print("cvv Tamam")
-
             return true
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardCvvText))

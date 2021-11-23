@@ -109,10 +109,10 @@
 "address_cell_delete" = "Delete";
 
 // MARK: - Bottom Price View
-"bottom_price_view_subtotal" = "Subtotal: ";
-"bottom_price_view_shipping" = "Shipping: ";
-"bottom_price_view_total" = "Total";
-"bottom_price_view_free" = "Free";
+"bottom_price_view_subtotal" = "Ara Toplam: ";
+"bottom_price_view_shipping" = "Teslimat: ";
+"bottom_price_view_total" = "Toplam";
+"bottom_price_view_free" = "Ücretsiz Kargo";
 
 // MARK: - Shopping Cart
 "shopping_cart_title" = "Sepetim";
@@ -212,10 +212,16 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "checkout-info-delivery-addresss-card-view-title" = "Teslimat Adresi";
 "checkout-info-order-note-text-view-placeholder" = "Siparişiniz için not bırakın";
 "checkout-info-confirm-order-button-title" = "Ödemeyi Onayla";
-"checkout-info-terms-and-conditions-text" = "Koşullar ve Gizlilik politikasını kabul ediyorum.";
-"checkout-info-update-order-pop-up-title" = "Update your order!";
-"checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
-"checkout-info-update-order-pop-up-button-text" = "Update My Cart";
+"checkout-info-terms-and-conditions-text" = "<u><b>Satış Sözleşmesi Formunu</b></u> okuduğumu, anladığımı ve kabul ettiğimi onaylıyorum.";
+"checkout-info-update-order-pop-up-title" = "Siparisinizi guncelleyin";
+"checkout-info-update-order-pop-up-description" = "Sepetinizdeki ürünleri sipariş edemezsiniz. %@ Bazı Ürünler değişti veya stokta kalmadı";
+"checkout-info-update-order-pop-up-button-text" = "Sepetimi güncelle";
+"checkout-info-card-description-text" = "%@ ürün %@ %@ ";
+"checkout-info-bank-transfer-description-text" = "Banka Hesabına Transfer %@ %@";
+"checkout-info-credit-card-description-text" = "Kredi Kartı %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "Şartları kabul etmelisiniz.";
+"checkout-info-agreement-is-not-checked-description" = "Koşul Şartlarını ve Gizlilik Politikasını kabul etmeniz gerekir.";
+"checkout-info-agreement-is-not-checked-title" = "Şimdi kabul et";
 
 //MARK: - SelectionPopUp
 
@@ -229,6 +235,19 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "credit-card-holder-error-text" = "Lütfen isim ve soy isim alanlarını kontrol edin.";
 "credit-card-expire-date-error-text" = "Lütfen son kullanma tarihini kontrol edin.";
 "credit-card-cvv-error-text" = "Lütfen cvv alanını kontrol edin.";
+
+//MARK: - CheckOut Order Info
+
+"checkout-order-info-page-title" = "Sipariş Bilgileri";
+"checkout-order-info-success-title" = "Sipariş verildi!";
+"checkout-order-info-success-description" = "Siparişiniz için teşekkür ederiz, umarız bizimle alışveriş yapmaktan keyif almışsınızdır";
+"checkout-order-info-success-order-number" = "";
+"checkout-order-info-fail-title" = "Ödeme Başarısız";
+"checkout-order-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
+"checkout-order-info-fail-message" = "Hata Mesajı %@ Ödeme yönteminiz reddedildi. (%@)";
+"checkout-order-info-success-check-order-button-text" = "Siparişi Kontrol Et";
+"checkout-order-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
+"checkout-order-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
 
 
 

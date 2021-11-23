@@ -41,4 +41,14 @@ struct SRMakeOrderResponse: Codable {
         case tryAgain = "tryAgain"
     }
     
+    func getCompleteOrderModel() -> CompleteOrderModel {
+        if (paymentType?.lowercased() == PaymentTypeEnum.Online3DS.rawValue.lowercased() || paymentType?.lowercased() == PaymentTypeEnum.Online.rawValue.lowercased()) {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, card: card)
+        } else if (paymentType?.lowercased() == PaymentTypeEnum.Transfer.rawValue.lowercased()) {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, bankAccount: bankAccount, paymentAccount: paymentAccount)
+        } else {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType)
+        }
+    }
+    
 }

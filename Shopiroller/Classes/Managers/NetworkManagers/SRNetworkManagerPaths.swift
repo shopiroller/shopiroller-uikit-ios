@@ -13,7 +13,7 @@ enum SRNetworkManagerPaths: String {
     case getProducts = "/products"
     case getProduct = "/products/"
     case getPaymentSettings = "/paymentSettings"
-    case makeOrder = "/orders/user/{userId}"
+    case makeOrder = "/orders/user"
     case tryAgain = "/orders/complete"
     case getOrderList = "/orders"
     case getOrder = "/orders/"

@@ -38,7 +38,7 @@ class CheckOutPageViewController: UIPageViewController {
         }
         
         if let scrollView = self.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
-                     scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = false
         }
     }
     
@@ -50,6 +50,7 @@ class CheckOutPageViewController: UIPageViewController {
         checkOutPaymentVC.delegate = checkOutPageDelegate
         items.append(checkOutPaymentVC)
         let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
+        checkOutInfoVC.delegate = checkOutPageDelegate
         items.append(checkOutInfoVC)
     }
 }

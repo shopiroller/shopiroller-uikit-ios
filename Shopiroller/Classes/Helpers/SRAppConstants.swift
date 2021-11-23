@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SRAppConstants {
+public struct SRAppConstants {
     
     struct Header {
         static let apiKey = "api-Key"
@@ -27,6 +27,8 @@ struct SRAppConstants {
         
         struct Notifications {
             static let userAddressListObserve = "userAddressListObserve"
+            static let userConfirmOrderObserve = "userConfirmOrderObserve"
+            static let orderInnerResponseObserve = "OrderResponseInnerObserve"
         }
         
     }
@@ -58,9 +60,9 @@ struct SRAppConstants {
         }
     }
     
-    struct ShoppingCart {
+    public struct ShoppingCart {
         
-        static var badgeCount = "badgeCount"
+        public static var badgeCount = "badgeCount"
     }
     
     enum NavigationItemSelectorType {
@@ -71,20 +73,3 @@ struct SRAppConstants {
     }
 }
 
-
-extension Notification.Name
-{
-    
-    public static let shoppingCartCount = Notification.Name(rawValue: "ShoppingCartCount")
-
-}
-
-extension Notification
-{
-    public static func isShoppingCartCountChange() {
-        NotificationCenter.default.post(name: .shoppingCartCount
-            , object: nil
-            , userInfo: nil)
-    }
-    
-}

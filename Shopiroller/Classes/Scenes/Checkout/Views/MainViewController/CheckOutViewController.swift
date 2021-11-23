@@ -13,6 +13,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     private struct Constants {
         static var confirmOrderButtonText: String { "confirm-order-button-text".localized }
     }
+    
     @IBOutlet private weak var checkOutProgress: CheckOutProgress!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var nextPageButton: MDCFloatingButton!
@@ -22,7 +23,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var confirmOrderButton: UIButton!
     
     var index = 0
-    
+        
     private var checkOutPageViewController: CheckOutPageViewController?
     
     init(viewModel: CheckOutViewModel){
@@ -47,9 +48,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         self.viewControllerTitle.text = "delivery-information-page-title".localized
         
         self.checkOutPageViewController = checkOutPageViewController
-        
     }
-    
     
     @IBAction func nextButtonTapped() {
         checkOutPageViewController?.goToNextPage()
@@ -61,11 +60,11 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             checkOutProgress.configureView(stage: .info)
             setTitle(stage: .info)
             isHidingNextButton(hide: true)
+            setButton()
         default:
             checkOutProgress.configureView(stage: .address)
             setTitle(stage: .address)
         }
-        setButton()
     }
     
     @IBAction func backButtonTapped() {
@@ -75,6 +74,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             checkOutProgress.configureView(stage: .payment)
             setTitle(stage: .payment)
             isHidingNextButton(hide: false)
+            setButton()
         case 0:
             checkOutProgress.configureView(stage: .address)
             setTitle(stage: .address)
@@ -89,7 +89,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
         confirmOrderButtonContainer.backgroundColor = .textPrimary
         confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
-        confirmOrderButton.tintColor = .white
+        confirmOrderButton.setTitleColor(.white)
     }
     
     private func setTitle(stage : ProgressStageEnum) {
@@ -105,7 +105,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     @IBAction func confirmButtonTapped() {
-        // Route Success Fail Screen
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
     }
 }
 

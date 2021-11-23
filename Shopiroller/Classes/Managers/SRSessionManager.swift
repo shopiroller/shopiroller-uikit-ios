@@ -16,5 +16,11 @@ class SRSessionManager {
     var userBillingAddress: UserBillingAdressModel?
     
     var userDeliveryAddress: UserShippingAddressModel?
+
+    var paymentSettings : PaymentSettingsResponeModel?
+    
+    var orderResponseInnerModel : SROrderResponseInnerModel?
+    
+    var makeOrder : SRMakeOrderResponse?
     
 }

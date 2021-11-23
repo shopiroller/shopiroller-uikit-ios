@@ -10,6 +10,12 @@ import Foundation
 
 class CheckOutViewModel {
     
+    private var currentStage : ProgressStageEnum?
+    
+    init(currentStage: ProgressStageEnum? = .address){
+        self.currentStage = currentStage
+    }
+    
     private var progressStage: ProgressStageEnum = .address
     
     func getPageTitle() -> String? {
@@ -24,14 +30,9 @@ class CheckOutViewModel {
         }
     }
     
-    func getCurrentStep() -> ProgressStageEnum {
-        return progressStage
+    func getCurrentStage() -> ProgressStageEnum? {
+        return currentStage
     }
-    
-    func setCurrentStep(_ stage: ProgressStageEnum) {
-        self.progressStage = stage
-    }
-    
     
 }
 

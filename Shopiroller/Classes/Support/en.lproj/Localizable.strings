@@ -208,12 +208,16 @@
 "checkout-info-delivery-addresss-card-view-title" = "Delivery Address";
 "checkout-info-order-note-text-view-placeholder" = "Leave a note for your order";
 "checkout-info-confirm-order-button-title" = "Confirm Order";
-"checkout-info-terms-and-conditions-text" = "Agree the Terms of Conditions and Privacy Policy";
+"checkout-info-terms-and-conditions-text" = "I confirm that I have read, understand and agree to the <u><b>Sales Agreement Form</b></u>";
 "checkout-info-update-order-pop-up-title" = "Update your order!";
 "checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
 "checkout-info-update-order-pop-up-button-text" = "Update My Cart";
-
-
+"checkout-info-card-description-text" = "%@ items %@ ";
+"checkout-info-bank-transfer-description-text" = "Bank Transfer %@ %@";
+"checkout-info-credit-card-description-text" = "Credit Card %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "You have to agree the terms.";
+"checkout-info-agreement-is-not-checked-description" = "You have to agree the Terms of Conditions and Privacy Policy.";
+"checkout-info-agreement-is-not-checked-title" = "Agree Now";
 
 //MARK: - SelectionPopUp
 
@@ -227,6 +231,19 @@
 "credit-card-holder-error-text" = "Please check the credit card holder";
 "credit-card-expire-date-error-text" = "Please check the expire date";
 "credit-card-cvv-error-text" = "Please check the cvv";
+
+//MARK: - CheckOut Order Info
+
+"checkout-order-info-page-title" = "Order Info";
+"checkout-order-info-success-title" = "It's ordered!";
+"checkout-order-info-success-description" = "Thanks for your order , we hope you enjoyed shopping with us";
+"checkout-order-info-success-order-number" = "";
+"checkout-order-info-fail-title" = "Payment Failed";
+"checkout-order-info-fail-description" = "Sorry' payment failed. You can change the payment method and try again.";
+"checkout-order-info-fail-message" = "Error Message %@ Your payment method was declined. (%@)";
+"checkout-order-info-success-check-order-button-text" = "Check Order";
+"checkout-order-info-success-continue-shopping-button-text" = "Continue Shopping";
+"checkout-order-info-fail-update-payment-method-button-text" = "Update Payment Method";
 
 
 

@@ -85,4 +85,14 @@ struct UserShippingAddressModel: Codable {
                 ,contact?.phoneNumber].compactMap { $0 }
                 .joined(separator: "")
     }
+    
+    func getSummaryDescriptionArea () -> String {
+        return [ addressLine
+                 , " " , city
+                 , " / " , state
+                 , " " , contact?.nameSurname
+                 , " - "
+                 , contact?.phoneNumber].compactMap{ $0 }
+                 .joined(separator: "")
+    }
 }
