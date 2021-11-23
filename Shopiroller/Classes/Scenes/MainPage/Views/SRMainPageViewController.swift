@@ -280,7 +280,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
             case 2:
                 return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2)  * 135 / 170 )
             case 3:
-                return CGSize(width: (collectionView.frame.width / 2) - 10, height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
+                return CGSize(width: ((collectionView.frame.width / 2) - 5), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
             default:
                 break
             }

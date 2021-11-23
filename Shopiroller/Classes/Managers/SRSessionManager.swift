@@ -17,6 +17,4 @@ class SRSessionManager {
     
     var makeOrder : SRMakeOrderResponse?
     
-    
-    
 }

@@ -23,7 +23,7 @@ class BundleEx: Bundle {
 extension Bundle {
     
     static var shopiroller : Bundle {
-        return Bundle(identifier: "org.cocoapods.Shopiroller")!
+        return Bundle(for: ShopirollerApp.self)
     }
     
     static let once: Void = {

@@ -9,7 +9,7 @@
 
 //MARK: - GENERAL USAGE
 "free-shipping-text" = "BEDAVA KARGO";
-"sold-out-text" = "STOK YOK";
+"sold-out-text" = "TÜKENDİ";
 "section-see-all-title" = "Hepsini Göster";
 "address-text" = "Adres";
 "payment-text" = "Ödeme";

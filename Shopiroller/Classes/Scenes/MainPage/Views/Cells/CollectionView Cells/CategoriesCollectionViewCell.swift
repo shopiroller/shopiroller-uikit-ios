@@ -25,6 +25,9 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         imageViewBackGround.layer.cornerRadius = imageViewBackGround.layer.frame.height / 2
         imageViewBackGround.backgroundColor = .buttonLight
         
+        categoryTitle.font =  .regular12
+        categoryTitle.textColor = .textPrimary
+        
     }
     
     func configureCell(model: SRCategoryResponseModel?){
