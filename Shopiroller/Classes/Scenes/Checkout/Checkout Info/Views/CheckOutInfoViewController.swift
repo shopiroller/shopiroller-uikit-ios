@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 import SafariServices
 
 class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
@@ -47,10 +48,15 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     @IBOutlet private weak var agreeTermsButton: UIButton!
     @IBOutlet private weak var agreeTermsTitle: UILabel!
     @IBOutlet private weak var agreeTermsTitleContainer: UIView!
+    @IBOutlet private weak var animationView: AnimationView!
+
     
     private var isAgreeTermsButtonChecked: Bool = false
     
     private var isShoppingCartPopUp : Bool = true
+    
+    private let time = NSDate().timeIntervalSince1970 * 1000
+    
     
     var delegate: CheckOutProgressPageDelegate?
     
@@ -114,15 +120,16 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         orderNoteContainerView.layer.cornerRadius = 6
         orderNoteContainerView.layer.borderColor = UIColor.brownGrey.cgColor
         orderNoteContainerView.layer.borderWidth = 1
-        getShoppingCart(isCheckOut: false)
+        
         orderNote.delegate = self
         orderNote.text = "checkout-info-order-note-text-view-placeholder".localized
         orderNote.textColor = UIColor.lightGray
         
     }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getShoppingCart(isCheckOut: false)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonTapped), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
     }
  
@@ -142,7 +149,6 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             guard let self = self else { return }
         }
     }
-    
     
     private func openTermsLink() {
         if let url = viewModel.getTermsLink() {
@@ -208,27 +214,37 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     private func makeOrder() {
+        if SRNetworkCheckHelper.isConnectedToNetwork(){
+            bottomPriceView.isHidden = true
+            if (!animationView.isAnimationPlaying){
+                showAnimation()
+            }
+        }else{
+            print("Internet Connection not Available!")
+        }
         let names : [String] = SRSessionManager.shared.userBillingAddress?.contact?.nameSurname?.components(separatedBy: " ") ?? []
         if names.count != 0 {
-            viewModel.makeOrder?.buyer?.name = names[0]
-            viewModel.makeOrder?.buyer?.surname = ""
+            viewModel.makeOrder?.buyer.name = names[0]
+            viewModel.makeOrder?.buyer.surname = ""
             if names.count > 1 {
                 for i in 1..<(names.count){
                     if i == 1 {
-                        viewModel.makeOrder?.buyer?.surname = names[0]
+                        viewModel.makeOrder?.buyer.surname = names[0]
                     }else {
-                        viewModel.makeOrder?.buyer?.surname? += " " + names[i]
+                        viewModel.makeOrder?.buyer.surname? += " " + names[i]
                     }
                 }
             }
         }
-        viewModel.makeOrder?.buyer?.email = "gorkemgur@mobiroller.com"
+        viewModel.makeOrder?.buyer.email = "gorkemgur@mobiroller.com"
         viewModel.makeOrder?.userId = SRAppConstants.Query.Values.userId
         viewModel.makeOrder?.bankAccount = SRSessionManager.shared.orderEvent.bankAccount?.accountToString
         viewModel.makeOrder?.paymentAccount = SRSessionManager.shared.orderEvent.bankAccount
         viewModel.makeOrder?.bankAccountModel = SRSessionManager.shared.orderEvent.bankAccount
         viewModel.makeOrder?.userBillingAdressModel = SRSessionManager.shared.userBillingAddress
         viewModel.makeOrder?.userShippingAdressModel = SRSessionManager.shared.userDeliveryAddress
+        viewModel.makeOrder?.billingAddress = SRSessionManager.shared.userBillingAddress?.getOrderAdress()
+        viewModel.makeOrder?.shippingAddress = SRSessionManager.shared.userDeliveryAddress?.getOrderAdress()
         viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
         if viewModel.makeOrder?.tryAgain == true {
             tryAgainOrder()
@@ -237,21 +253,77 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         }
     }
     
+    private func showAnimation() {
+        animationView.isHidden = false
+        animationView.animation = Animation.named("progress_bar",bundle: .shopiroller)
+            animationView.contentMode = .scaleToFill
+            animationView.backgroundBehavior = .pauseAndRestore
+            animationView.play()
+       
+    }
+    
+    
     private func tryAgainOrder() {
         viewModel.tryAgainOrder(success: {
             NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+            var delay = 0
+            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            if (responseTime < 1500) {
+                delay = Int(1500 - responseTime)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
+                    self.animationView.isHidden = true
+                    self.animationView.stop()
+                }
+            }
+            
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            var delay = 0
+            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            if (responseTime < 1500) {
+                delay = Int(1500 - responseTime)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
+                    self.animationView.isHidden = true
+                    self.animationView.stop()
+                }
+            }
         }
     }
     
     private func sendOrder() {
         viewModel.sendOrder(success: {
             NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+            var delay = 0
+            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            if (responseTime < 1500) {
+                delay = Int(1500 - responseTime)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
+                    self.animationView.isHidden = true
+                    self.animationView.stop()
+                }
+            }
+            
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            var delay = 0
+            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            if (responseTime < 1500) {
+                delay = Int(1500 - responseTime)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
+                    self.animationView.isHidden = true
+                    self.animationView.stop()
+                }
+            }
         }
     }
     

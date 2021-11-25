@@ -23,7 +23,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var confirmOrderButton: UIButton!
     
     var index = 0
-        
+    
     private var checkOutPageViewController: CheckOutPageViewController?
     
     init(viewModel: CheckOutViewModel){
@@ -48,6 +48,45 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         self.viewControllerTitle.text = "delivery-information-page-title".localized
         
         self.checkOutPageViewController = checkOutPageViewController
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+    }
+    
+    @objc func onResultEvent() {
+        let orderResponse = SRSessionManager.shared.orderResponseInnerModel
+        
+        //        if (e.orderResponse != null && e.orderResponse.order.paymentType.equalsIgnoreCase(ECommerceConstant.PAYPAL) && e.orderResponse.paymentResult != null && e.orderResponse.paymentResult.token != null) {
+        //                        startActivityForResult(
+        //                                new Intent(this, PayPalActivity.class)
+        //                                        .putExtra(PayPalActivity.PAYPAL_AUTH_TOKEN_KEY, e.orderResponse.paymentResult.token)
+        //                                        .putExtra(PayPalActivity.PAYPAL_AMOUNT_KEY, e.orderResponse.order.totalPrice)
+        //                                        .putExtra(PayPalActivity.PAYPAL_CURRENCY_CODE_KEY, e.orderResponse.order.currency)
+        //                                        .putExtra(PayPalActivity.PAYPAL_ORDER_ID_KEY, e.orderResponse.order.id)
+        //                                        .putExtra(PayPalActivity.PAYPAL_DISPLAY_NAME_KEY, e.orderResponse.order.orderCode),
+        //                                ECommerceConstant.PAYPAL_REQUEST_CODE);
+        //            } else
+        
+        if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.paymentResult != nil && orderResponse?.paymentResult?._3DSecureHtml != nil) {
+            let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.paymentResult?._3DSecureHtml))
+            threeDSViewController.modalPresentationStyle = .overCurrentContext
+            present(threeDSViewController, animated: true, completion: nil)
+        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel())
+        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel())
+        }
+        //        } else {
+//                            if (e.orderResponse == nil && e.failedResponse != nil) {
+//                                loadOrderResultFailed(e.failedResponse, true);
+//                            } else
+//        }
+    }
+    
+    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel) {
+        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel())
+        resultVC.modalPresentationStyle = .overFullScreen
+        present(resultVC, animated: false, completion: nil)
     }
     
     @IBAction func nextButtonTapped() {

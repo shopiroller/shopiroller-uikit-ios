@@ -42,6 +42,15 @@ public struct SRAppConstants {
         
     }
     
+    struct URLResults {
+        static let paymentSuccess = "http://applyze-ecommerce-service/v1/paymentSuccess"
+        static let paymentSuccess1 = "https://ecommerce.applyze.com/v2.0/paymentSuccess"
+        static let paymentSuccess2 = "/paymentSuccess"
+        static let paymentFailed = "http://applyze-ecommerce-service/v1/paymentFailure"
+        static let paymentFailed1 = "https://ecommerce.applyze.com/v2.0/paymentFailure"
+        static let paymentFailed2 = "/paymentFailure"
+    }
+    
     struct Query {
         
         struct Keys {

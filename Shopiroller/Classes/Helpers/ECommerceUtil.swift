@@ -47,4 +47,9 @@ class ECommerceUtil {
         attributedString.append(NSMutableAttributedString(string: normal, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular)]))
         return attributedString
     }
+    
+    static func urlContainsOf(_ url :String ,queryParamaterName: String) -> String? {
+        guard let url = URLComponents(string: url) else { return nil }
+        return url.queryItems?.first(where: { $0.name == queryParamaterName })?.value
+    }
 }

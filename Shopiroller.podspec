@@ -37,4 +37,5 @@ TODO: Add long description of the pod here.
   s.dependency 'FittedSheets'
   s.dependency 'Kingfisher'
   s.dependency 'InputMask'
+  s.dependency 'lottie-ios'
 end

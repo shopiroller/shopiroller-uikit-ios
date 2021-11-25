@@ -51,6 +51,8 @@ class PaymentTableViewCell: UITableViewCell {
             break
         case .Stripe:
             print("Stripe")
+        case .Stripe3DS:
+            print("Stripe3DS")
         }
     }
     

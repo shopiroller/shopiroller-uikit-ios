@@ -22,7 +22,7 @@ class SRResultViewControllerViewModel : BaseViewModel {
         return type
     }
     
-    func getMessage() -> String {
+    func getMessage() -> String? {
         return message ?? ""
     }
     

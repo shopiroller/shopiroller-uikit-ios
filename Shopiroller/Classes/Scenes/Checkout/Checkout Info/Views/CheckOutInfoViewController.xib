@@ -14,6 +14,7 @@
                 <outlet property="agreeTermsButton" destination="Hxp-H1-bm2" id="BF8-uU-ITQ"/>
                 <outlet property="agreeTermsTitle" destination="yYl-71-NJ3" id="EyH-WL-wUh"/>
                 <outlet property="agreeTermsTitleContainer" destination="9bE-JS-hLP" id="i3L-Cg-pIq"/>
+                <outlet property="animationView" destination="RHp-HS-kG0" id="unh-Ul-ZcA"/>
                 <outlet property="billingAddressCardViewContainer" destination="HLh-s8-34B" id="gAO-cS-XSw"/>
                 <outlet property="billingAddressCardViewEditButton" destination="nKn-Xj-GI4" id="mqh-rN-YQF"/>
                 <outlet property="billingAddressViewDescription" destination="Tsh-8Z-IF6" id="kx1-9a-134"/>
@@ -506,6 +507,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="9bE-JS-hLP" firstAttribute="centerY" secondItem="Hxp-H1-bm2" secondAttribute="centerY" id="4lj-Y4-9On"/>
                                                 <constraint firstAttribute="bottom" secondItem="9bE-JS-hLP" secondAttribute="bottom" id="8mQ-4X-1vY"/>
                                                 <constraint firstAttribute="trailing" secondItem="9bE-JS-hLP" secondAttribute="trailing" id="Ieh-Xs-hK7"/>
                                                 <constraint firstItem="9bE-JS-hLP" firstAttribute="leading" secondItem="Hxp-H1-bm2" secondAttribute="trailing" constant="10" id="RIw-cm-wsY"/>
@@ -516,14 +518,6 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="vsQ-Is-A11" secondAttribute="trailing" id="2P9-nx-3Ou"/>
-                                        <constraint firstAttribute="trailing" secondItem="lZW-Zq-Er6" secondAttribute="trailing" id="8a8-g7-mXt"/>
-                                        <constraint firstItem="vsQ-Is-A11" firstAttribute="leading" secondItem="57R-3i-H1Q" secondAttribute="leading" id="HuC-eN-Qbn"/>
-                                        <constraint firstItem="lZW-Zq-Er6" firstAttribute="top" secondItem="57R-3i-H1Q" secondAttribute="top" id="MTq-6R-GnA"/>
-                                        <constraint firstAttribute="bottom" secondItem="vsQ-Is-A11" secondAttribute="bottom" id="cEc-DD-Rba"/>
-                                        <constraint firstItem="lZW-Zq-Er6" firstAttribute="leading" secondItem="57R-3i-H1Q" secondAttribute="leading" id="vvi-x7-KGZ"/>
-                                    </constraints>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -547,13 +541,21 @@
                         <constraint firstItem="pYf-qf-rDK" firstAttribute="top" secondItem="5Yc-c7-irg" secondAttribute="bottom" id="zu4-Hp-v55"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-HS-kG0" customClass="AnimationView" customModule="Lottie">
+                    <rect key="frame" x="0.0" y="207.5" width="414" height="491"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="v2u-cP-21o" secondAttribute="bottom" id="50f-R6-BTS"/>
+                <constraint firstItem="RHp-HS-kG0" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="a6R-BO-ygT"/>
+                <constraint firstItem="RHp-HS-kG0" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="bQ9-7c-QOk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v2u-cP-21o" secondAttribute="trailing" id="giL-yr-JhN"/>
+                <constraint firstItem="RHp-HS-kG0" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="pCq-Ro-LAw"/>
                 <constraint firstItem="v2u-cP-21o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uHR-dE-JWu"/>
+                <constraint firstItem="RHp-HS-kG0" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.6" id="vyJ-eV-buQ"/>
                 <constraint firstItem="v2u-cP-21o" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xad-7s-8Mw"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="79.6875"/>

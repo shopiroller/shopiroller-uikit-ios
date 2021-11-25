@@ -209,11 +209,13 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             break
         case .Stripe:
             print("Stripe")
+        case .Stripe3DS:
+            print("Stripe3DS")
         }
     }
     
     private func checkIsValid() {
-        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .Stripe  || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
+        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .Stripe  || viewModel.getDefaultPaymentMethod() == .Stripe3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
         if isValid == true {
             SRSessionManager.shared.paymentSettings = viewModel.getPaymentSettings()
             switch viewModel.getDefaultPaymentMethod() {
@@ -236,6 +238,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 break
             case .Stripe:
                 print("Stripe")
+            case .Stripe3DS:
+                print("Stripe3DS")
             }
         }
     }

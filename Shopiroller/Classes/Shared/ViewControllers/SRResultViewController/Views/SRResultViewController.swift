@@ -25,7 +25,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     @IBOutlet private weak var resultImageView: UIImageView!
     @IBOutlet private weak var resultTitle: UILabel!
     @IBOutlet private weak var resultDescription: UILabel!
-    @IBOutlet private weak var resultOrderNumber: UILabel!
+    @IBOutlet private weak var resultDetailDescription: UILabel!
     @IBOutlet private weak var resultFirstButton: UIButton!
     @IBOutlet private weak var resultSecondButton: UIButton!
     
@@ -36,6 +36,16 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     override func setup() {
         super.setup()
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
+        
+        resultTitle.textColor = .textPrimary
+        resultTitle.font = UIFont.bold24
+        
+        resultDescription.textColor = .textPCaption
+        resultDescription.font = UIFont.regular14
+        
+        resultFirstButton.layer.cornerRadius = 6
+        resultSecondButton.layer.cornerRadius = 6
+        
         setUpLayout()
         
     }
@@ -58,7 +68,8 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.failUpdatePaymentMethodButtonText)
         resultFirstButton.setTitleColor(.white)
-        resultOrderNumber.isHidden = true
+        resultFirstButton.titleLabel?.font = UIFont.semiBold14
+        resultDetailDescription.isHidden = true
         resultSecondButton.isHidden = true
     }
     
@@ -66,17 +77,13 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultImageView.image = .paymentSuccess
         resultTitle.text = Constants.successTitle
         resultDescription.text = Constants.successDescription
-        resultOrderNumber.text = Constants.successOrderNumber
+        resultDetailDescription.text = Constants.successOrderNumber
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.successCheckOrderButtonText)
         resultFirstButton.setTitleColor(.white)
         resultSecondButton.backgroundColor = .buttonLight
         resultSecondButton.setTitle(Constants.successContinueShoppingButtonText)
         resultSecondButton.setTitleColor(.textPrimary)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
 }

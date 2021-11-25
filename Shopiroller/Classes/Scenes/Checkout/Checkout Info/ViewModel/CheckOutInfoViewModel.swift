@@ -10,7 +10,7 @@ import Foundation
 class CheckOutInfoViewModel: BaseViewModel {
     private var shoppingCart: SRShoppingCartResponseModel?
         
-    var makeOrder: SRMakeOrderResponse? = SRSessionManager.shared.makeOrder
+    var makeOrder: SRMakeOrderResponse? = SRMakeOrderResponse()
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
@@ -118,20 +118,6 @@ class CheckOutInfoViewModel: BaseViewModel {
         }
     }
     
-    func getResultPageModel() -> SRResultViewControllerViewModel {
-        if SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.isSuccess == true {
-            return getResultPageSuccessModel()
-        } else {
-            return getResultPageFailModel()
-        }
-    }
     
-    private func getResultPageFailModel() -> SRResultViewControllerViewModel {
-       return SRResultViewControllerViewModel(type: .fail, id: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.id, message: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.message)
-    }
-    
-    private func getResultPageSuccessModel() -> SRResultViewControllerViewModel {
-        return SRResultViewControllerViewModel(type: .success, id: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.id, message: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.message)
-    }
     
 }
