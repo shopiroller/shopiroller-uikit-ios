@@ -23,7 +23,6 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     @IBOutlet private weak var filterProductsContainer: UIView!
     @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var emptyView: EmptyView!
-    @IBOutlet private weak var collectionViewContainer: UIView!
     
     
     init(viewModel: ProductListViewModel){
@@ -60,19 +59,17 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
         updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton],isBackButtonActive: true)
-        
-
     }
     
     private func configureEmptyView() {
         if viewModel.getProductCount() == 0 {
             filterProductsContainer.isHidden = true
-            collectionViewContainer.isHidden = true
+            productsCollectionView.isHidden = true
             emptyViewContainer.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
             filterProductsContainer.isHidden = false
-            collectionViewContainer.isHidden = false
+            productsCollectionView.isHidden = false
             emptyViewContainer.isHidden = true
         }
     }
