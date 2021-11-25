@@ -68,7 +68,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V36-uK-ZwP">
-                                                    <rect key="frame" x="143.5" y="199.5" width="67" height="44"/>
+                                                    <rect key="frame" x="17.5" y="199.5" width="319" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="60d-Ix-AQQ"/>
                                                     </constraints>
@@ -76,27 +76,34 @@
                                                     <inset key="imageEdgeInsets" minX="18" minY="12" maxX="18" maxY="12"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                    <connections>
+                                                        <action selector="firstButtonTapped" destination="-1" eventType="touchUpInside" id="g6c-7S-KZL"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="594-fT-6si">
-                                                    <rect key="frame" x="20" y="263.5" width="314" height="44"/>
+                                                    <rect key="frame" x="17.5" y="263.5" width="319" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="imI-r5-dvl"/>
                                                     </constraints>
                                                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="secondButtonTapped" destination="-1" eventType="touchUpInside" id="N9f-Aj-5KN"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="594-fT-6si" secondAttribute="trailing" constant="20" id="Hhe-zy-veb"/>
                                                 <constraint firstAttribute="trailing" secondItem="hcI-do-1yc" secondAttribute="trailing" id="R49-ee-2en"/>
+                                                <constraint firstItem="V36-uK-ZwP" firstAttribute="width" secondItem="53D-G3-ZMg" secondAttribute="width" multiplier="0.9" id="Ud1-H5-IYl"/>
                                                 <constraint firstItem="V36-uK-ZwP" firstAttribute="centerX" secondItem="53D-G3-ZMg" secondAttribute="centerX" id="XVU-XA-7d5"/>
                                                 <constraint firstItem="m6M-8P-3SG" firstAttribute="centerX" secondItem="53D-G3-ZMg" secondAttribute="centerX" id="d62-7p-nhD"/>
                                                 <constraint firstItem="594-fT-6si" firstAttribute="top" secondItem="V36-uK-ZwP" secondAttribute="bottom" constant="20" id="efR-nY-lsH"/>
                                                 <constraint firstItem="V36-uK-ZwP" firstAttribute="top" secondItem="hcI-do-1yc" secondAttribute="bottom" constant="25" id="k6J-oV-5pn"/>
                                                 <constraint firstItem="hcI-do-1yc" firstAttribute="leading" secondItem="53D-G3-ZMg" secondAttribute="leading" id="min-I0-cfl"/>
-                                                <constraint firstItem="594-fT-6si" firstAttribute="leading" secondItem="53D-G3-ZMg" secondAttribute="leading" constant="20" id="oHj-KF-I2W"/>
+                                                <constraint firstItem="594-fT-6si" firstAttribute="centerX" secondItem="53D-G3-ZMg" secondAttribute="centerX" id="o9h-XD-8sc"/>
+                                                <constraint firstItem="594-fT-6si" firstAttribute="width" secondItem="53D-G3-ZMg" secondAttribute="width" multiplier="0.9" id="u8K-ug-QK3"/>
                                                 <constraint firstItem="m6M-8P-3SG" firstAttribute="top" secondItem="53D-G3-ZMg" secondAttribute="top" id="vgh-jQ-2Ck"/>
                                                 <constraint firstItem="hcI-do-1yc" firstAttribute="top" secondItem="m6M-8P-3SG" secondAttribute="bottom" constant="19" id="wYc-gp-gnj"/>
                                             </constraints>

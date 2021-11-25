@@ -34,20 +34,25 @@ class CheckOutViewModel {
         return currentStage
     }
     
-    func getResultPageModel() -> SRResultViewControllerViewModel {
-        if SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.isSuccess == true {
-            return getResultPageSuccessModel()
+    func getResultPageModel(isCreditCard: Bool) -> SRResultViewControllerViewModel {
+        if isCreditCard {
+            if SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.isSuccess == true {
+                return getResultPageSuccessModel()
+            } else {
+                return getResultPageFailModel()
+            }
         } else {
-            return getResultPageFailModel()
+            return getResultPageSuccessModel()
         }
+        
     }
     
     private func getResultPageFailModel() -> SRResultViewControllerViewModel {
-       return SRResultViewControllerViewModel(type: .fail, id: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.id, message: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.message)
+        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel)
     }
     
     private func getResultPageSuccessModel() -> SRResultViewControllerViewModel {
-        return SRResultViewControllerViewModel(type: .success, id: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.id, message: SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.message)
+        return SRResultViewControllerViewModel(type: .success, orderResponse: SRSessionManager.shared.orderResponseInnerModel)
     }
     
 }

@@ -51,6 +51,26 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+    }
+    
+    @objc func loadPayment() {
+        checkOutProgress.configureView(stage: .payment)
+        setTitle(stage: .payment)
+        isHidingNextButton(hide: false)
+        setButton()
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func loadAddress() {
+        checkOutProgress.configureView(stage: .address)
+        setTitle(stage: .address)
+        isHidingNextButton(hide: false)
+        setButton()
+        self.view.layoutIfNeeded()
     }
     
     @objc func onResultEvent() {
@@ -72,9 +92,9 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             threeDSViewController.modalPresentationStyle = .overCurrentContext
             present(threeDSViewController, animated: true, completion: nil)
         } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
-            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel())
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
         } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
-            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel())
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(), isCreditCard: false)
         }
         //        } else {
 //                            if (e.orderResponse == nil && e.failedResponse != nil) {
@@ -83,8 +103,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
 //        }
     }
     
-    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel) {
-        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel())
+    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel , isCreditCard : Bool) {
+        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isCreditCard : isCreditCard))
         resultVC.modalPresentationStyle = .overFullScreen
         present(resultVC, animated: false, completion: nil)
     }

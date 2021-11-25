@@ -86,4 +86,18 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultSecondButton.setTitleColor(.textPrimary)
     }
     
+    @IBAction func firstButtonTapped() {
+        if viewModel.getType() == .success {
+            let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
+            orderDetailVC.modalPresentationStyle = .fullScreen
+            present(orderDetailVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func secondButtonTapped() {
+        let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
+        mainPageVC.modalPresentationStyle = .fullScreen
+        present(mainPageVC, animated: true, completion: nil)
+    }
+    
 }

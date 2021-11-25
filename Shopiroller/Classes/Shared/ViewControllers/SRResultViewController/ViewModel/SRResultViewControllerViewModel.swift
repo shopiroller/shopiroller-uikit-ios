@@ -8,27 +8,20 @@
 import Foundation
 
 class SRResultViewControllerViewModel : BaseViewModel {
-    private let type: OrderResultType?
-    private let id: String?
-    private let message: String?
     
-    init (type: OrderResultType? = nil, id: String? = nil, message: String? = nil) {
+    private let orderResponse: SROrderResponseInnerModel?
+    
+    private let type: OrderResultType?
+    
+    init (type: OrderResultType? = nil, orderResponse: SROrderResponseInnerModel?) {
         self.type = type
-        self.id = id
-        self.message = message
+        self.orderResponse = orderResponse
     }
     
     func getType() -> OrderResultType? {
         return type
     }
     
-    func getMessage() -> String? {
-        return message ?? ""
-    }
-    
-    func getId() -> String {
-        return id ?? ""
-    }
 }
 
 enum OrderResultType {

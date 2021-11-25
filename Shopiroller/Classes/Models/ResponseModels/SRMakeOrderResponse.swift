@@ -18,7 +18,7 @@ struct SRMakeOrderResponse: Codable {
     var shippingAddress: MakeOrderAddressModel?
     var billingAddress: MakeOrderAddressModel?
     var buyer: BuyerOrderModel = BuyerOrderModel()
-    var card: OrderCardModel?
+    var card: OrderCardModel = OrderCardModel()
     var productPriceTotal:
         Double?
     var shippingPrice: Double?
@@ -38,6 +38,7 @@ struct SRMakeOrderResponse: Codable {
         case productPriceTotal = "productPriceTotal"
         case shippingPrice = "shippingPrice"
         case buyer = "buyer"
+        case card = "card"
         case currency = "currency"
         case orderId = "orderId"
         case tryAgain = "tryAgain"

@@ -68,7 +68,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
   
     @IBAction private func firstButtonTapped(_ sender: Any) {
         delegate?.firstButtonClicked(sender)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     @IBAction func secondButtonTapped(_ sender: Any) {

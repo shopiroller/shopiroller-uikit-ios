@@ -55,7 +55,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     private var isShoppingCartPopUp : Bool = true
     
-    private let time = NSDate().timeIntervalSince1970 * 1000
+    private let timeInSeconds: TimeInterval = Date().timeIntervalSince1970
     
     
     var delegate: CheckOutProgressPageDelegate?
@@ -125,6 +125,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         orderNote.text = "checkout-info-order-note-text-view-placeholder".localized
         orderNote.textColor = UIColor.lightGray
         
+        self.animationView.frame = self.view.frame
+        self.view.addSubview(animationView)
+        
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -165,22 +168,15 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     @IBAction func paymentViewEditButtonTapped() {
-        delegate?.currentPageIndex(currentIndex: 1)
-        let checkOutPaymentVC = CheckOutViewController(viewModel: CheckOutViewModel(currentStage: .payment))
-        checkOutPaymentVC.modalPresentationStyle = .overFullScreen
-        present(checkOutPaymentVC, animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
     }
     
     @IBAction func billingAddressEditButtonTapped() {
-        let checkOutBillingAddressVC = CheckOutViewController(viewModel: CheckOutViewModel(currentStage: .address))
-        checkOutBillingAddressVC.modalPresentationStyle = .overFullScreen
-        present(checkOutBillingAddressVC, animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
     }
     
     @IBAction func deliveryAddressEditButtonTapped() {
-        let checkOutDeliveryAddressVC = CheckOutViewController(viewModel: CheckOutViewModel(currentStage: .address))
-        checkOutDeliveryAddressVC.modalPresentationStyle = .overFullScreen
-        present(checkOutDeliveryAddressVC, animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
     }
     
     
@@ -217,7 +213,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         if SRNetworkCheckHelper.isConnectedToNetwork(){
             bottomPriceView.isHidden = true
             if (!animationView.isAnimationPlaying){
-                showAnimation()
+                DispatchQueue.main.async {
+                    self.showAnimation()
+                }
             }
         }else{
             print("Internet Connection not Available!")
@@ -246,6 +244,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         viewModel.makeOrder?.billingAddress = SRSessionManager.shared.userBillingAddress?.getOrderAdress()
         viewModel.makeOrder?.shippingAddress = SRSessionManager.shared.userDeliveryAddress?.getOrderAdress()
         viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
+        viewModel.makeOrder?.card = SRSessionManager.shared.orderEvent.orderCard
         if viewModel.makeOrder?.tryAgain == true {
             tryAgainOrder()
         } else {
@@ -256,73 +255,73 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     private func showAnimation() {
         animationView.isHidden = false
         animationView.animation = Animation.named("progress_bar",bundle: .shopiroller)
-            animationView.contentMode = .scaleToFill
-            animationView.backgroundBehavior = .pauseAndRestore
-            animationView.play()
-       
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
     }
     
     
     private func tryAgainOrder() {
         viewModel.tryAgainOrder(success: {
-            NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             var delay = 0
-            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            let responseTime = Date().timeIntervalSince1970 - self.timeInSeconds
             if (responseTime < 1500) {
                 delay = Int(1500 - responseTime)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
                     self.animationView.isHidden = true
                     self.animationView.stop()
                 }
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
             
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
             var delay = 0
-            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            let responseTime = Date().timeIntervalSince1970 - self.timeInSeconds
             if (responseTime < 1500) {
                 delay = Int(1500 - responseTime)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
                     self.animationView.isHidden = true
                     self.animationView.stop()
                 }
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
         }
     }
     
     private func sendOrder() {
         viewModel.sendOrder(success: {
-            NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             var delay = 0
-            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            let responseTime = Date().timeIntervalSince1970 - self.timeInSeconds
             if (responseTime < 1500) {
                 delay = Int(1500 - responseTime)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
                     self.animationView.isHidden = true
                     self.animationView.stop()
                 }
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
             
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
             var delay = 0
-            let responseTime = (NSDate().timeIntervalSince1970 * 1000) - self.time
+            let responseTime = Date().timeIntervalSince1970 - self.timeInSeconds
             if (responseTime < 1500) {
                 delay = Int(1500 - responseTime)
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(delay))) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
                     self.animationView.isHidden = true
                     self.animationView.stop()
                 }
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
         }
     }

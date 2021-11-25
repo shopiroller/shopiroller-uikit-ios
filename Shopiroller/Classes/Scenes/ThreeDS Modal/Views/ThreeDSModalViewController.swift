@@ -55,8 +55,8 @@ extension ThreeDSModalViewController: WKNavigationDelegate {
         guard let url = URLComponents(string: webView.url!.absoluteString) else { return }
         if viewModel.isPageFinished(url: url.string!){
             webView.removeFromSuperview()
-            
             dismiss(animated: true, completion: nil)
+            
         }
         SVProgressHUD.dismiss()
     }
