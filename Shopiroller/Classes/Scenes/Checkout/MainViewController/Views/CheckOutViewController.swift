@@ -76,8 +76,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @objc func onResultEvent() {
         let orderResponse = SRSessionManager.shared.orderResponseInnerModel
         
-        if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.paymentResult != nil && orderResponse?.paymentResult?._3DSecureHtml != nil) {
-            let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.paymentResult?._3DSecureHtml))
+        if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.payment != nil && orderResponse?.payment?._3DSecureHtml != nil) {
+            let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.payment?._3DSecureHtml))
             threeDSViewController.modalPresentationStyle = .overCurrentContext
             present(threeDSViewController, animated: true, completion: nil)
         } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
@@ -89,8 +89,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel , isCreditCard : Bool) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isCreditCard : isCreditCard))
-        resultVC.modalPresentationStyle = .overFullScreen
-        present(resultVC, animated: false, completion: nil)
+        self.prompt(resultVC, animated: true, completion: nil)
     }
     
     @IBAction func nextButtonTapped() {

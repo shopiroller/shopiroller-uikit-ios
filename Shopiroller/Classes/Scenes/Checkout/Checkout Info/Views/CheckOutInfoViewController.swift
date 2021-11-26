@@ -164,8 +164,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     @IBAction func cardViewEditButtonTapped() {
         let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
-        shoppingCartVC.modalPresentationStyle = .overFullScreen
-        present(shoppingCartVC, animated: true, completion: nil)
+        self.prompt(shoppingCartVC, animated: true, completion: nil)
     }
     
     @IBAction func paymentViewEditButtonTapped() {
@@ -240,9 +239,11 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             viewModel.makeOrder?.userBillingAdressModel = SRSessionManager.shared.userBillingAddress
             viewModel.makeOrder?.userShippingAdressModel = SRSessionManager.shared.userDeliveryAddress
             viewModel.makeOrder?.billingAddress = SRSessionManager.shared.userBillingAddress?.getOrderAdress()
+            viewModel.makeOrder?.billingAddress?.description = SRSessionManager.shared.userBillingAddress?.addressLine
             viewModel.makeOrder?.shippingAddress = SRSessionManager.shared.userDeliveryAddress?.getOrderAdress()
+            viewModel.makeOrder?.shippingAddress?.description = SRSessionManager.shared.userDeliveryAddress?.addressLine
             viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
-            viewModel.makeOrder?.card = SRSessionManager.shared.orderEvent.orderCard
+            viewModel.makeOrder?.creditCard = SRSessionManager.shared.orderEvent.orderCard
             if viewModel.makeOrder?.tryAgain == true {
                 tryAgainOrder()
             } else {

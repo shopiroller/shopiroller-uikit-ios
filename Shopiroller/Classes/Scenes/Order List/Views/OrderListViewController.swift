@@ -22,6 +22,18 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
         getOrderList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.isOpenedFromResultPage() == true {
+            goBack()
+        }
+    }
+    
+    override func goBack() {
+        let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
+        self.prompt(mainPageVC, animated: true, completion: nil)
+    }
+    
     private func configure(){
         if(viewModel.isOrderListEmpty()){
             orderTable.isHidden = true

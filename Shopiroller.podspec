@@ -26,7 +26,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'Shopiroller/**/*'
   
   s.resource_bundles = {
-    'Shopiroller' => ['Shopiroller/Assets/**/*', 'Shopiroller/Classes/**/*.xib','Shopiroller/Assests/Fonts/*.{ttf}']
+    'Shopiroller' => ['Shopiroller/Assets/**/*', 'Shopiroller/Classes/**/*.xib','Shopiroller/Assests/Fonts/*.{ttf}','Shopiroller/Assests/Animations/*.{json}']
   }
 
   # s.frameworks = 'UIKit', 'MapKit'

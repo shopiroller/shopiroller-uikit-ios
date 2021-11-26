@@ -22,6 +22,10 @@ class SRResultViewControllerViewModel : BaseViewModel {
         return type
     }
     
+    func getOrderNumber() -> String {
+        return orderResponse?.order?.orderCode ?? ""
+    }
+    
 }
 
 enum OrderResultType {

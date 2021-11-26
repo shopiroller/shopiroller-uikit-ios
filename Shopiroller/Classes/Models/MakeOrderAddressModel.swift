@@ -21,7 +21,6 @@ struct MakeOrderAddressModel: Codable {
     var phoneNumber: String?
     var taxOffice: String?
     var nameSurname: String?
-    var billingDescriptionArea: String?
     
     enum CodingKeys: String,CodingKey {
         case id = "id"

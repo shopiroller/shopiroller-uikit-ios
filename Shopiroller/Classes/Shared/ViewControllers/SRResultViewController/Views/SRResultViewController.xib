@@ -45,7 +45,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hcI-do-1yc">
-                                                    <rect key="frame" x="0.0" y="93" width="354" height="81.5"/>
+                                                    <rect key="frame" x="0.0" y="93" width="354" height="51"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXY-Al-NJ6">
                                                             <rect key="frame" x="0.0" y="0.0" width="354" height="20.5"/>
@@ -59,8 +59,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVQ-Ya-vxs">
-                                                            <rect key="frame" x="0.0" y="61" width="354" height="20.5"/>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVQ-Ya-vxs">
+                                                            <rect key="frame" x="0.0" y="51" width="354" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V36-uK-ZwP">
-                                                    <rect key="frame" x="17.5" y="199.5" width="319" height="44"/>
+                                                    <rect key="frame" x="17.5" y="169" width="319" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="60d-Ix-AQQ"/>
                                                     </constraints>
@@ -81,7 +81,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="594-fT-6si">
-                                                    <rect key="frame" x="17.5" y="263.5" width="319" height="44"/>
+                                                    <rect key="frame" x="17.5" y="233" width="319" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="imI-r5-dvl"/>
                                                     </constraints>

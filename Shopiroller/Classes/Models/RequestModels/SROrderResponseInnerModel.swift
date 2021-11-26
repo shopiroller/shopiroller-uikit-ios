@@ -10,7 +10,7 @@ import Foundation
 struct SROrderResponseInnerModel: Codable {
     
     var order : SROrderModel?
-    var paymentResult : SROrderPaymentResultModel?
+    var payment : SROrderPaymentResultModel?
     var key : String?
     var message : String?
     var isUserFriendlyMessage: Bool?
@@ -18,7 +18,7 @@ struct SROrderResponseInnerModel: Codable {
         
     enum CodingKeys: String,CodingKey {
         case order = "order"
-        case paymentResult = "paymentResult"
+        case payment = "payment"
         case key = "key"
         case message = "message"
         case isUserFriendlyMessage = "isUserFriendlyMessage"

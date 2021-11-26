@@ -17,6 +17,7 @@
 "no-internet-connection-title" = "İnternet Bağlantısı Yok";
 "no-internet-connection-description" = "Lütfen İnternet Bağlantınızı Kontrol Edin";
 "no-internet-connection-button-text" = "Tamam";
+"error-general-title" = "Hata";
 
 //MARK: - Products Empty View
 "empty-view-title" = "Ürün Bulunamadı.";
@@ -48,31 +49,31 @@
 "product-detail-maximum-product-quantity-description" = "Sepetinize eklenebilecek en fazla miktarda ürünü eklediniz , bu üründen fazla XX adet satın alabilirsiniz.";
 
 //MARK: - Order List
-"order-list-page-title" = "My Orders";
-"empty-orders-title" = "No order yet";
-"empty-orders-description" = "You have no order yet. We can’t list any product for you.";
-"empty-orders-action-button" = "Start Shopping";
+"order-list-page-title" = "Siparişlerim";
+"empty-orders-title" = "Henüz Sipariş Yok";
+"empty-orders-description" = "Henüz Siparişiniz Yokç Sizin için herhangi bir ürün listeleyemiyoruz.";
+"empty-orders-action-button" = "Alışverişe Başla";
 
 //MARK: - Order Cell
-"order-no" = "Order No: ";
-"empty-orders-title" = "No order yet";
+"order-no" = "Sipariş No: ";
+"empty-orders-title" = "Henüz Sipariş Yok";
 
 // MARK: - Order Detail
-"order-detail-page-title" = "Order Detail";
-"WaitingPayment" = "Waiting Payment";
-"WaitingApproval" = "Waiting Approval";
-"Approved" = "Approved";
-"WaitingForSupplying" = "Waiting Supplying";
-"Preparing" = "Preparing";
-"Shipped" = "Shipped";
-"Delivered" = "Delivered";
-"CancelRequested" = "Cancellation Requested";
-"Canceled" = "Canceled";
-"Refunded" = "Refunded";
-"PaymentFailed" = "Payment Failed";
+"order-detail-page-title" = "Ürün Detayı";
+"WaitingPayment" = "Ödeme Bekleniyor";
+"WaitingApproval" = "Onay Bekliyor";
+"Approved" = "Onaylandı";
+"WaitingForSupplying" = "Tedarik Bekleniyor";
+"Preparing" = "Hazırlanıyor";
+"Shipped" = "Kargolandı";
+"Delivered" = "Teslim Edildi";
+"CancelRequested" = "İptal Edildi";
+"Canceled" = "Vazgeçıldı";
+"Refunded" = "Geri Ödeme Yapıldı";
+"PaymentFailed" = "Ödeme Başarısız";
 
 //MARK: - Categories
-"category-page-title" = "Categories";
+"category-page-title" = "Kategoriler";
 "category-items-text" = "XX ürünler";
 "sub-category-container-text" = "Tüm XX Ürünleri";
 
@@ -97,19 +98,21 @@
 "order_details_quantity" = "Parça: ";
 
 // MARK: - Address List
-"address_list_page_title" = "My Addresses";
+"address_list_page_title" = "Adreslerim";
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
 "address_list_empty_shipping_title" = "Teslimat Adresi Bulunamadı";
 "address_list_empty_shipping_description" = "İlk adresinizi ekleyerek alışverişe başlayabilirsiniz.";
 "address_list_empty_billing_title" = "Fatura Adresi Bulunamadı";
 "address_list_empty_billing_description" = "Fatura adresinizi ekleyerek alışverişe başlayabilirsiniz";
-"address_list_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
+"address_list_delivery_address_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
+"address_list_billing_address_delete_success" = "Fatura adresi başarıyla silinmiştir.";
+
 
 // MARK: - Address Cell
 "address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
-"address_cell_cancel" = "Cancel";
-"address_cell_delete" = "Delete";
+"address_cell_cancel" = "Vazgeç";
+"address_cell_delete" = "Sil";
 
 // MARK: - Bottom Price View
 "bottom_price_view_subtotal" = "Ara Toplam: ";
@@ -128,8 +131,7 @@
 "shopping_cart_clear_cart_not_now" = "Hayır, Şimdi Değil";
 "shopping_cart_clear_cart_clear_cart" = "Evet, Sepeti Temizle";
 "shopping_cart_validate_title" = "Sepet Güncelleniyor";
-"shopping_cart_validate_description" = "
-Sepetiniz aşağıdaki nedenlerle güncellenecektir..";
+"shopping_cart_validate_description" = "Sepetiniz aşağıdaki nedenlerle güncellenecektir..";
 "shopping_cart_validate_warning" = "%@ ürünün stoğu değişti, %@ ürünün stoğu kalmadı";
 "shopping_cart_validate_ready_checkout" = "Hazır";
 
@@ -241,16 +243,16 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 
 //MARK: - CheckOut Order Info
 
-"checkout-order-info-page-title" = "Sipariş Bilgileri";
-"checkout-order-info-success-title" = "Sipariş verildi!";
-"checkout-order-info-success-description" = "Siparişiniz için teşekkür ederiz, umarız bizimle alışveriş yapmaktan keyif almışsınızdır";
-"checkout-order-info-success-order-number" = "";
-"checkout-order-info-fail-title" = "Ödeme Başarısız";
-"checkout-order-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
-"checkout-order-info-fail-message" = "Hata Mesajı %@ Ödeme yönteminiz reddedildi. (%@)";
-"checkout-order-info-success-check-order-button-text" = "Siparişi Kontrol Et";
-"checkout-order-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
-"checkout-order-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
+"checkout-result-info-page-title" = "Sipariş Bilgileri";
+"checkout-result-info-success-title" = "Sipariş verildi!";
+"checkout-result-info-success-description" = "Siparişiniz için teşekkür ederiz, umarız bizimle alışveriş yapmaktan keyif almışsınızdır";
+"checkout-result-info-success-order-number" = "Order Number %@";
+"checkout-result-info-fail-title" = "Ödeme Başarısız";
+"checkout-result-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
+"checkout-result-info-fail-message" = "Hata Mesajı %@ Ödeme yönteminiz reddedildi. (%@)";
+"checkout-result-info-success-check-order-button-text" = "Siparişi Kontrol Et";
+"checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
+"checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
 
 
 

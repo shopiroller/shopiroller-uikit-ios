@@ -51,14 +51,19 @@ extension ThreeDSModalViewController: WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+       
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let _ = webView.url else { return }
         guard let url = URLComponents(string: webView.url!.absoluteString) else { return }
         if viewModel.isPageFinished(url: url.string!){
             webView.removeFromSuperview()
             dismiss(animated: true, completion: nil)
-            
+            decisionHandler(.cancel)
         }
         SVProgressHUD.dismiss()
+        decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -66,4 +71,3 @@ extension ThreeDSModalViewController: WKNavigationDelegate {
     }
     
 }
-

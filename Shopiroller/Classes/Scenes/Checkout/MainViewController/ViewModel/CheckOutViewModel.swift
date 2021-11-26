@@ -36,7 +36,7 @@ class CheckOutViewModel {
     
     func getResultPageModel(isCreditCard: Bool) -> SRResultViewControllerViewModel {
         if isCreditCard {
-            if SRSessionManager.shared.orderResponseInnerModel?.paymentResult?.isSuccess == true {
+            if SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess == true {
                 return getResultPageSuccessModel()
             } else {
                 return getResultPageFailModel()

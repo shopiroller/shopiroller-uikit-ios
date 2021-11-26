@@ -10,16 +10,16 @@ import UIKit
 class SRResultViewController: BaseViewController<SRResultViewControllerViewModel> {
     
     private struct Constants {
-        static var pageTitle: String { "checkout-order-info-success-title".localized }
-        static var successTitle: String { "checkout-order-info-success-title".localized }
-        static var successDescription: String { "checkout-order-info-success-description" .localized }
-        static var successOrderNumber: String { "checkout-order-info-success-order-number".localized }
-        static var successCheckOrderButtonText: String { "checkout-order-info-success-check-order-button-text".localized }
-        static var successContinueShoppingButtonText: String { "checkout-order-info-success-continue-shopping-button-text".localized }
-        static var failTitle: String {  "checkout-order-info-fail-title" .localized }
-        static var failDescription: String { "checkout-order-info-fail-description".localized }
-        static var failMessage: String { "ccheckout-order-info-fail-message".localized }
-        static var failUpdatePaymentMethodButtonText: String { "checkout-order-info-fail-update-payment-method-button-text".localized }
+        static var pageTitle: String { "checkout-result-info-page-title".localized }
+        static var successTitle: String { "checkout-result-info-success-title".localized }
+        static var successDescription: String { "checkout-result-info-success-description" .localized }
+        static var successOrderNumber: String { "checkout-result-info-success-order-number".localized }
+        static var successCheckOrderButtonText: String { "checkout-result-info-success-check-order-button-text".localized }
+        static var successContinueShoppingButtonText: String { "checkout-result-info-success-continue-shopping-button-text".localized }
+        static var failTitle: String {  "checkout-result-info-fail-title" .localized }
+        static var failDescription: String { "checkout-result-info-fail-description".localized }
+        static var failMessage: String { "ccheckout-result-info-fail-message".localized }
+        static var failUpdatePaymentMethodButtonText: String { "checkout-result-info-fail-update-payment-method-button-text".localized }
     }
     
     @IBOutlet private weak var resultImageView: UIImageView!
@@ -30,12 +30,11 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     @IBOutlet private weak var resultSecondButton: UIButton!
     
     init(viewModel : SRResultViewControllerViewModel) {
-        super.init("Order Info", viewModel: viewModel, nibName: SRResultViewController.nibName, bundle: Bundle(for: SRResultViewController.self))
+        super.init(Constants.pageTitle, viewModel: viewModel, nibName: SRResultViewController.nibName, bundle: Bundle(for: SRResultViewController.self))
     }
     
     override func setup() {
         super.setup()
-        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
         
         resultTitle.textColor = .textPrimary
         resultTitle.font = UIFont.bold24
@@ -45,6 +44,9 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         
         resultFirstButton.layer.cornerRadius = 6
         resultSecondButton.layer.cornerRadius = 6
+        
+        resultDetailDescription.font = .semiBold14
+        resultDetailDescription.textColor = .textPCaption
         
         setUpLayout()
         
@@ -77,7 +79,8 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultImageView.image = .paymentSuccess
         resultTitle.text = Constants.successTitle
         resultDescription.text = Constants.successDescription
-        resultDetailDescription.text = Constants.successOrderNumber
+        resultDetailDescription.isHidden = false
+        resultDetailDescription.text = String(format: Constants.successOrderNumber, viewModel.getOrderNumber())
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.successCheckOrderButtonText)
         resultFirstButton.setTitleColor(.white)
@@ -89,15 +92,13 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     @IBAction func firstButtonTapped() {
         if viewModel.getType() == .success {
             let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
-            orderDetailVC.modalPresentationStyle = .fullScreen
-            present(orderDetailVC, animated: true, completion: nil)
+            self.prompt(orderDetailVC, animated: true, completion: nil)
         }
     }
     
     @IBAction func secondButtonTapped() {
         let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-        mainPageVC.modalPresentationStyle = .fullScreen
-        present(mainPageVC, animated: true, completion: nil)
+        self.prompt(mainPageVC, animated: true, completion: nil)
     }
     
 }

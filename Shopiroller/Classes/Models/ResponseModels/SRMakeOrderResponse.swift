@@ -18,7 +18,7 @@ struct SRMakeOrderResponse: Codable {
     var shippingAddress: MakeOrderAddressModel?
     var billingAddress: MakeOrderAddressModel?
     var buyer: BuyerOrderModel = BuyerOrderModel()
-    var card: OrderCardModel = OrderCardModel()
+    var creditCard: OrderCardModel = OrderCardModel()
     var productPriceTotal:
         Double?
     var shippingPrice: Double?
@@ -38,7 +38,7 @@ struct SRMakeOrderResponse: Codable {
         case productPriceTotal = "productPriceTotal"
         case shippingPrice = "shippingPrice"
         case buyer = "buyer"
-        case card = "card"
+        case creditCard = "creditCard"
         case currency = "currency"
         case orderId = "orderId"
         case tryAgain = "tryAgain"
@@ -48,7 +48,7 @@ struct SRMakeOrderResponse: Codable {
     
     func getCompleteOrderModel() -> CompleteOrderModel {
         if (paymentType?.lowercased() == PaymentTypeEnum.Online3DS.rawValue.lowercased() || paymentType?.lowercased() == PaymentTypeEnum.Online.rawValue.lowercased()) {
-            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, card: card)
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, card: creditCard)
         } else if (paymentType?.lowercased() == PaymentTypeEnum.Transfer.rawValue.lowercased()) {
             return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, bankAccount: bankAccount, paymentAccount: paymentAccount)
         } else {

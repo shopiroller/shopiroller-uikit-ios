@@ -293,9 +293,6 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
         if textField == creditCartCvvTextField {
             self.viewModel.creditCardCvv = value
         }
-//        if textField == creditCartHolderNameTextField {
-//            viewModel.orderEvent.orderCard.cardHolderName = value
-//        }
         validateCreditCardFields()
     }
 }
