@@ -227,6 +227,8 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "credit-card-expire-date-error-text" = "Lütfen son kullanma tarihini kontrol edin.";
 "credit-card-cvv-error-text" = "Lütfen cvv alanını kontrol edin.";
 
+//MARK: - Filter
 
+"filter_title" = "Filtrele";
 
 

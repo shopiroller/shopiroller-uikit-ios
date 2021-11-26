@@ -14,16 +14,13 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         static var sortByTitle: String { return "sort-title-text".localized }
     }
     
-    @IBOutlet private weak var sortyByTitleLabel: UILabel!
-    @IBOutlet private weak var sortByImage: UIImageView!
-    @IBOutlet private weak var filterTitleLabel: UILabel!
-    @IBOutlet private weak var filterImage: UIImageView!
+    @IBOutlet private weak var contentStackView: UIStackView!
+    @IBOutlet private weak var sortFilterContainerView: UIView!
     @IBOutlet private weak var lineView: UIView!
+    @IBOutlet private weak var sortButton: UIButton!
+    @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var productsCollectionView: UICollectionView!
-    @IBOutlet private weak var filterProductsContainer: UIView!
-    @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var emptyView: EmptyView!
-    
     
     init(viewModel: ProductListViewModel){
         super.init(viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
@@ -32,10 +29,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     public override func setup() {
         super.setup()
         getCount()
-        filterProductsContainer.layer.cornerRadius = 10
-        filterProductsContainer.backgroundColor = .buttonLight
-        filterProductsContainer.layer.masksToBounds = true
-        filterProductsContainer.clipsToBounds = true
+        sortFilterContainerView.layer.cornerRadius = 10
+        sortFilterContainerView.backgroundColor = .buttonLight
+        sortFilterContainerView.layer.masksToBounds = true
+        sortFilterContainerView.clipsToBounds = true
         
         lineView.backgroundColor = UIColor.textPrimary.withAlphaComponent(0.2)
         
@@ -43,14 +40,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         productsCollectionView.dataSource = self
         productsCollectionView.register(cellClass: ItemCollectionViewCell.self)
         
-        filterTitleLabel.text = Constants.filterTitle
-        filterImage.image = .filterIcon
-    
-        sortyByTitleLabel.text = Constants.sortByTitle
-        sortByImage.image = .sortIcon
+        sortButton.setTitle("sort-title-text".localized)
+        sortButton.setTitleColor(.textPrimary)
+        filterButton.setTitle("filter-title-text".localized)
+        filterButton.setTitleColor(.textPrimary)
     
         getProducts(pagination: true)
-        
     }
     
     override func setupNavigationBar() {
@@ -63,14 +58,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private func configureEmptyView() {
         if viewModel.getProductCount() == 0 {
-            filterProductsContainer.isHidden = true
-            productsCollectionView.isHidden = true
-            emptyViewContainer.isHidden = false
+            contentStackView.isHidden = true
+            emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
-            filterProductsContainer.isHidden = false
-            productsCollectionView.isHidden = false
-            emptyViewContainer.isHidden = true
+            contentStackView.isHidden = false
+            emptyView.isHidden = true
         }
     }
     
@@ -96,6 +89,13 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
+    }
+    
+    @IBAction func sortButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        prompt(FilterViewController(), animated: true, completion: nil)
     }
     
 }

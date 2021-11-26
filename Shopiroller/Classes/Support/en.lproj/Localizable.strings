@@ -225,5 +225,6 @@
 "credit-card-expire-date-error-text" = "Please check the expire date";
 "credit-card-cvv-error-text" = "Please check the cvv";
 
+//MARK: - Filter
 
-
+"filter_title" = "Filter";
