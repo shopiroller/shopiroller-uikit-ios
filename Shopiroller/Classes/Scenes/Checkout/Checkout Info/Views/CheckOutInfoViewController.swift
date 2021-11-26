@@ -49,7 +49,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     @IBOutlet private weak var agreeTermsTitle: UILabel!
     @IBOutlet private weak var agreeTermsTitleContainer: UIView!
     @IBOutlet private weak var animationView: AnimationView!
-
+    
     
     private var isAgreeTermsButtonChecked: Bool = false
     
@@ -129,13 +129,13 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         self.view.addSubview(animationView)
         
     }
-   
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getShoppingCart(isCheckOut: false)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonTapped), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
     }
- 
+    
     @objc func getTerms() {
         if viewModel.isPaymentSettingsEmpty() {
             getPaymentSettings()
@@ -150,6 +150,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -205,7 +206,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             }
             
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -217,38 +218,38 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                     self.showAnimation()
                 }
             }
-        }else{
-            print("Internet Connection not Available!")
-        }
-        let names : [String] = SRSessionManager.shared.userBillingAddress?.contact?.nameSurname?.components(separatedBy: " ") ?? []
-        if names.count != 0 {
-            viewModel.makeOrder?.buyer.name = names[0]
-            viewModel.makeOrder?.buyer.surname = ""
-            if names.count > 1 {
-                for i in 1..<(names.count){
-                    if i == 1 {
-                        viewModel.makeOrder?.buyer.surname = names[0]
-                    }else {
-                        viewModel.makeOrder?.buyer.surname? += " " + names[i]
+            let names : [String] = SRSessionManager.shared.userBillingAddress?.contact?.nameSurname?.components(separatedBy: " ") ?? []
+            if names.count != 0 {
+                viewModel.makeOrder?.buyer.name = names[0]
+                viewModel.makeOrder?.buyer.surname = ""
+                if names.count > 1 {
+                    for i in 1..<(names.count){
+                        if i == 1 {
+                            viewModel.makeOrder?.buyer.surname = names[0]
+                        }else {
+                            viewModel.makeOrder?.buyer.surname? += " " + names[i]
+                        }
                     }
                 }
             }
-        }
-        viewModel.makeOrder?.buyer.email = "gorkemgur@mobiroller.com"
-        viewModel.makeOrder?.userId = SRAppConstants.Query.Values.userId
-        viewModel.makeOrder?.bankAccount = SRSessionManager.shared.orderEvent.bankAccount?.accountToString
-        viewModel.makeOrder?.paymentAccount = SRSessionManager.shared.orderEvent.bankAccount
-        viewModel.makeOrder?.bankAccountModel = SRSessionManager.shared.orderEvent.bankAccount
-        viewModel.makeOrder?.userBillingAdressModel = SRSessionManager.shared.userBillingAddress
-        viewModel.makeOrder?.userShippingAdressModel = SRSessionManager.shared.userDeliveryAddress
-        viewModel.makeOrder?.billingAddress = SRSessionManager.shared.userBillingAddress?.getOrderAdress()
-        viewModel.makeOrder?.shippingAddress = SRSessionManager.shared.userDeliveryAddress?.getOrderAdress()
-        viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
-        viewModel.makeOrder?.card = SRSessionManager.shared.orderEvent.orderCard
-        if viewModel.makeOrder?.tryAgain == true {
-            tryAgainOrder()
-        } else {
-            sendOrder()
+            viewModel.makeOrder?.buyer.email = "gorkemgur@mobiroller.com"
+            viewModel.makeOrder?.userId = SRAppConstants.Query.Values.userId
+            viewModel.makeOrder?.bankAccount = SRSessionManager.shared.orderEvent.bankAccount?.accountToString
+            viewModel.makeOrder?.paymentAccount = SRSessionManager.shared.orderEvent.bankAccount
+            viewModel.makeOrder?.bankAccountModel = SRSessionManager.shared.orderEvent.bankAccount
+            viewModel.makeOrder?.userBillingAdressModel = SRSessionManager.shared.userBillingAddress
+            viewModel.makeOrder?.userShippingAdressModel = SRSessionManager.shared.userDeliveryAddress
+            viewModel.makeOrder?.billingAddress = SRSessionManager.shared.userBillingAddress?.getOrderAdress()
+            viewModel.makeOrder?.shippingAddress = SRSessionManager.shared.userDeliveryAddress?.getOrderAdress()
+            viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
+            viewModel.makeOrder?.card = SRSessionManager.shared.orderEvent.orderCard
+            if viewModel.makeOrder?.tryAgain == true {
+                tryAgainOrder()
+            } else {
+                sendOrder()
+            }
+        } else{
+            showNoConnectionAlert()
         }
     }
     
@@ -290,6 +291,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 }
                 NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -323,6 +325,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 }
                 NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     

@@ -14,6 +14,9 @@
 "address-text" = "Address";
 "payment-text" = "Payment";
 "info-text" = "Info";
+"no-internet-connection-title" = "No Internet Connection";
+"no-internet-connection-description" = "Please Check Your Internet Connection";
+"no-internet-connection-button-text" = "Ok";
 
 //MARK: - Products Empty View
 "empty-view-title" = "No Products added.";

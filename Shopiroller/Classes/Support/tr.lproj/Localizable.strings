@@ -14,6 +14,9 @@
 "address-text" = "Adres";
 "payment-text" = "Ödeme";
 "info-text" = "Bilgilendirme";
+"no-internet-connection-title" = "İnternet Bağlantısı Yok";
+"no-internet-connection-description" = "Lütfen İnternet Bağlantınızı Kontrol Edin";
+"no-internet-connection-button-text" = "Tamam";
 
 //MARK: - Products Empty View
 "empty-view-title" = "Ürün Bulunamadı.";

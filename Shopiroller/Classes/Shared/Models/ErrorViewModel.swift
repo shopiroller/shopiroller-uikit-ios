@@ -27,8 +27,5 @@ class ErrorViewModel {
 }
 
 extension ErrorViewModel {
-    
     static let serverSide = ErrorViewModel(error: ShopirollerError.network)
-    
-    
 }

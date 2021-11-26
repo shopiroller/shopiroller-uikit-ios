@@ -8,6 +8,7 @@
 import Foundation
 
 class CheckOutInfoViewModel: BaseViewModel {
+    
     private var shoppingCart: SRShoppingCartResponseModel?
         
     var makeOrder: SRMakeOrderResponse? = SRMakeOrderResponse()
@@ -117,7 +118,6 @@ class CheckOutInfoViewModel: BaseViewModel {
             }
         }
     }
-    
     
     
 }
