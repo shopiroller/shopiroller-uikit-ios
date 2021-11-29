@@ -19,7 +19,7 @@ public class SRMainPageViewModel: BaseViewModel {
     
     private var sliderModel: [SRSliderDataModel]?
     private var categories: [SRCategoryResponseModel]?
-    private var products: [ProductListModel]?
+    private var products: [ProductListModel] = []
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel : SRCategoryResponseModel?
@@ -43,36 +43,19 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getProducts(showProgress: Bool?,pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getProducts(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
-        
-        if products?.count ?? 0 == 0 {
-            currentPage = 0
-        }else{
-            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
-                return
-            }
-            if pagination {
-                currentPage = currentPage + 1
-            }else {
-                currentPage = 0
-            }
-            
-        }
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
-        SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
+        SRNetworkManagerRequests.getProducts(showProgress: false, urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):
+                self.products.append(contentsOf: response.data ?? [])
+                self.currentPage += 1
                 DispatchQueue.main.async {
-                    if self.currentPage != 0 {
-                        self.products = self.products! + (response.data ?? [])
-                    }else{
-                        self.products = response.data
-                    }
                     succes?()
                 }
             case.failure(let err):
@@ -147,13 +130,9 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func productItemCount() -> Int {
-        if let products = products {
-            return products.count
-        }else{
-            return 0
-        }
+        products.count
     }
-        
+    
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
         return sliderModel?[position].slides
     }
@@ -192,13 +171,13 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getProductId(position: Int) -> String? {
-        return products?[position].id
+        return products[position].id
     }
     
     func getshowCaseProductDetail(position: Int) -> [ProductDetailResponseModel] {
         return showcase?[position].products ?? []
     }
- 
+    
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
@@ -207,9 +186,15 @@ public class SRMainPageViewModel: BaseViewModel {
             return 150
         }
     }
-
+    
     func getEmptyModel() -> EmptyModel {
         EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+    }
+    
+    func clearProductListAndCurrentPage() {
+        products = []
+        currentPage = 0
+        
     }
     
 }
