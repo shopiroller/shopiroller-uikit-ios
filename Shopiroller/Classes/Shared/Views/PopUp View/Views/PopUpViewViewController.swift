@@ -46,7 +46,6 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         descriptionLabel.textColor = .textPCaption
         
         titleLabel.text = viewModel.getTitle()
-        descriptionLabel.text = viewModel.getDescription()
         circleImage.image = viewModel.getImage()
         
         if(viewModel.hasFirstButton()) {
@@ -63,6 +62,12 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             secondButton.setTitle(viewModel.getSecondButtonTitle())
         }else {
             secondButtonContainerView.isHidden = true
+        }
+        
+        if let htmlDescription = viewModel.getHtmlDescription() {
+            descriptionLabel.attributedText = htmlDescription
+        } else {
+            descriptionLabel.text = viewModel.getDescription()
         }
     }
   

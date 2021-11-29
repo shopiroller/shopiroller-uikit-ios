@@ -14,15 +14,17 @@ public class PopUpViewModel {
     private let image: UIImage
     private let title: String
     private let description: String?
+    private let htmlDescription: NSAttributedString?
     private let firstButton: PopUpButtonModel?
     private let secondButton: PopUpButtonModel?
     
-    init(image: UIImage, title: String, description: String?, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil ){
+    init(image: UIImage, title: String, description: String?, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil, htmlDescription: NSAttributedString? = nil ){
         self.image = image
         self.title = title
         self.firstButton = firstButton
         self.secondButton = secondButton
         self.description = description
+        self.htmlDescription = htmlDescription
     }
     
     func getImage() -> UIImage {
@@ -59,6 +61,10 @@ public class PopUpViewModel {
     
     func getSecondButtonType() -> SRButtonType? {
         return secondButton?.type
+    }
+    
+    func getHtmlDescription() -> NSAttributedString? {
+        return htmlDescription
     }
     
 }
