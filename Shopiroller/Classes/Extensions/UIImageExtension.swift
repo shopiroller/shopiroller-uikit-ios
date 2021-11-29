@@ -108,6 +108,8 @@ extension UIImage {
     static let deliveryAddressIcon : UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
     
     static let paymentSuccess : UIImage = UIImage(named: "paymentSuccess",in: .shopiroller , with: nil)!
+    
+    static let noProductsIcon : UIImage = UIImage(named: "noProductsIcon",in: .shopiroller , with: nil)!
 
 
 }
