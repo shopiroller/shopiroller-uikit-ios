@@ -228,3 +228,10 @@
 //MARK: - Filter
 
 "filter_title" = "Filter";
+"filter_confirm" = "List Products";
+"filter_category" = "Category";
+"filter_brand" = "Brand";
+"filter_price_range" = "Price Range";
+"filter_only_stock" = "Only Stock";
+"filter_discounted_products" = "Discounted Products";
+"filter_free_shipping" = "Free Shipping";

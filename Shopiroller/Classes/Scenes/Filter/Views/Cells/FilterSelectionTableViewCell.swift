@@ -9,15 +9,25 @@ import UIKit
 
 class FilterSelectionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var selectionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        titleLabel.textColor = .textPrimary
     }
     
+    func setup(model: VariationGroupsItem) {
+        titleLabel.textColor = .textPrimary
+        titleLabel.text = model.name
+    }
+    
+    func setupCategory() {
+        titleLabel.text = "filter_category".localized
+    }
+    
+    func setupBrand() {
+        titleLabel.text = "filter_brand".localized
+    }
+ 
 }

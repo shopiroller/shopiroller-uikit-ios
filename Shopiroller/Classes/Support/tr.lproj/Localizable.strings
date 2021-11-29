@@ -230,5 +230,10 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 //MARK: - Filter
 
 "filter_title" = "Filtrele";
-
-
+"filter_confirm" = "Ürünleri Listele";
+"filter_category" = "Kategori";
+"filter_brand" = "Marka";
+"filter_price_range" = "Fiyat Aralığı";
+"filter_only_stock" = "Sadece Stoktakiler";
+"filter_discounted_products" = "İndirimli Ürünler";
+"filter_free_shipping" = "Ücretsiz Kargo";

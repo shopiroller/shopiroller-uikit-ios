@@ -52,6 +52,8 @@ extension UIColor {
     static let coral15: UIColor = #colorLiteral(red: 246.0 / 255.0, green: 89.0 / 255.0, blue: 68.0 / 255.0, alpha: 0.15)
     
     static let orangeyRed: UIColor = #colorLiteral(red: 250.0 / 255.0, green: 46.0 / 255.0, blue: 46.0 / 255.0, alpha: 1.0)
+    
+    static let buttonPrimary: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
     static let veryLightBlue: UIColor = #colorLiteral (red: 231.0 / 255.0 , green: 234.0 / 255.0 , blue: 235.0 / 255.0, alpha: 1.0)
     

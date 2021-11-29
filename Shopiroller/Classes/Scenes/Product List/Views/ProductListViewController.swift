@@ -95,7 +95,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        prompt(FilterViewController(), animated: true, completion: nil)
+        prompt(FilterViewController(viewModel: viewModel.getFilterViewModel()), animated: true, completion: nil)
     }
     
 }
@@ -106,7 +106,7 @@ extension ProductListViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellModel = viewModel.getProductModel()
+        let cellModel = viewModel.getProductModelList()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
         cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
         return cell

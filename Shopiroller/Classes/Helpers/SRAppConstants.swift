@@ -49,6 +49,8 @@ struct SRAppConstants {
             static let categoryId = "categoryId"
             static let countryId = "countryId"
             static let stateId = "stateId"
+            static let searchText = "searchText"
+            static let showcaseId = "showcaseId"
         }
         
         struct Values {

@@ -11,21 +11,10 @@ import UIKit
 
 class ProductListViewModel : BaseViewModel {
     
-    private struct Constants {
-        
-        static var emptyViewTitle: String { return "empty-view-title".localized }
-        
-        static var emptyViewDescription: String { return "empty-view-description".localized }
-        
-    }
-    
-    var categoryId: String?
-    
+    let categoryId: String?
     private var currentPage = 0
-    
     private var productList: [ProductListModel]?
 
-    
     init(categoryId: String? = String()) {
         self.categoryId = categoryId
     }
@@ -76,7 +65,7 @@ class ProductListViewModel : BaseViewModel {
         return productList?.count ?? 0
     }
     
-    func getProductModel() -> [ProductListModel]? {
+    func getProductModelList() -> [ProductListModel]? {
         return productList
     }
     
@@ -85,12 +74,15 @@ class ProductListViewModel : BaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .cargoShippingImage, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+        EmptyModel(image: .cargoShippingImage, title: "empty-view-title".localized, description: "empty-view-description".localized, button: nil)
     }
     
     func getProductId(position: Int) -> String {
         return productList?[position].id ?? ""
     }
     
+    func getFilterViewModel() -> FilterViewModel {
+        return FilterViewModel(categoryId: categoryId)
+    }
     
 }
