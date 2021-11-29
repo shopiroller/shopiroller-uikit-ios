@@ -45,7 +45,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
-        getProducts(showProgress: true,pagination: false,refreshing: false)
+        getProducts()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -71,12 +71,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     @objc func didPullToRefresh(_ sender: Any) {
         if SRAppContext.isLoading == false {
-            DispatchQueue.main.async {
-                self.getSliders(showProgress: false)
-                self.getCategories(showProgress: false)
-                self.getShowCase(showProgress: false)
-                self.getProducts(showProgress:false,pagination: false,refreshing: true)
-        }
+            self.getSliders(showProgress: false)
+            self.getCategories(showProgress: false)
+            self.getShowCase(showProgress: false)
+            self.viewModel.clearProductListAndCurrentPage()
+            self.getProducts()
             self.mainCollectionView.refreshControl?.endRefreshing()
         }
     }
@@ -90,18 +89,14 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getProducts(showProgress: Bool,pagination: Bool,refreshing: Bool) {
-        viewModel.getProducts(isRefreshing: refreshing,showProgress: showProgress,pagination: pagination,succes: {
+    private func getProducts() {
+        viewModel.getProducts(succes: {
             [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
             self.shimmerCollectionView.isHidden = false
-            if !refreshing {
-                DispatchQueue.main.async {
-                    self.configureEmptyView()
-                }
-            }
-            
+            self.configureEmptyView()
+            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -294,7 +289,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == viewModel.productItemCount() - 2){
-            getProducts(showProgress: false,pagination: true, refreshing: false)
+            getProducts()
         }
     }
     
