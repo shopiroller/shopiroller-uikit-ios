@@ -38,4 +38,5 @@ TODO: Add long description of the pod here.
   s.dependency 'Kingfisher'
   s.dependency 'InputMask'
   s.dependency 'lottie-ios'
+  s.dependency 'IQKeyboardManagerSwift'
 end

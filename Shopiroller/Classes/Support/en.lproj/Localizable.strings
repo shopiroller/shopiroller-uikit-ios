@@ -18,6 +18,8 @@
 "no-internet-connection-description" = "Please Check Your Internet Connection";
 "no-internet-connection-button-text" = "Ok";
 "error-general-title" = "Error";
+"keyboard-next-action-text" = "Next";
+"keyboard-done-action-text" = "Done";
 
 //MARK: - Products Empty View
 "empty-view-title" = "No Products added.";
