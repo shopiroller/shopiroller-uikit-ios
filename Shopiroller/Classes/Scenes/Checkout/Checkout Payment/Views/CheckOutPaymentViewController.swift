@@ -124,6 +124,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCardCvvListener.primaryMaskFormat = "[000]"
         creditCardCvvListener.affinityCalculationStrategy = .prefix
         creditCartCvvTextField.placeholder = Constants.creditCartCvvPlaceholder
+        creditCartCvvTextField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         
         
@@ -131,6 +132,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         selectPaymentMethodView.isUserInteractionEnabled = true
         selectPaymentMethodView.addGestureRecognizer(addressSelectTapGesture)
         
+    }
+    
+    @objc func toolbarDoneButtonClicked() {
+        validateCreditCardFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {

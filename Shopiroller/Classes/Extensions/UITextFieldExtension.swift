@@ -65,7 +65,7 @@ extension UITextField {
     var rightViewImage: UIImage? {
         set {
             let button = UIButton(type: .custom)
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
             button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: bounds.size.height)
             button.setImage(newValue)
             self.rightView = button
@@ -78,4 +78,39 @@ extension UITextField {
             return (rightView as? UIImageView)?.image
         }
     }
+    
+    typealias ToolbarItem = (title: String, target: Any, selector: Selector)
+
+    func addToolbar(leading: [ToolbarItem] = [], trailing: [ToolbarItem] = []) {
+        let toolbar = UIToolbar()
+
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let leadingItems = leading.map { item in
+            return UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+        }
+
+        let trailingItems = trailing.map { item in
+            return UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+        }
+
+        var toolbarItems: [UIBarButtonItem] = leadingItems
+        toolbarItems.append(flexibleSpace)
+        toolbarItems.append(contentsOf: trailingItems)
+
+        toolbar.setItems(toolbarItems, animated: false)
+        toolbar.sizeToFit()
+
+         self.inputAccessoryView = toolbar
+    }
+
+    func addNextAction(target: Any, selector: Selector) {
+        let nextButton = UITextField.ToolbarItem(title: "keyboard-next-action-text" .localized, target: target, selector: selector)
+        self.addToolbar(trailing: [nextButton])
+    }
+    
+    func addCustomTextAction(title: String, target: Any, selector: Selector) {
+        let customButton = UITextField.ToolbarItem(title: title.capitalized, target: target, selector: selector)
+        self.addToolbar(trailing: [customButton])
+    }
+    
 }
