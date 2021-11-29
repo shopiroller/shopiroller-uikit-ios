@@ -40,10 +40,10 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
         shippingAddressViewLabel.text = Constants.deliveryAddressText
         shippingAddressViewLabel.textColor = .textPrimary
-        shippingAddressViewLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        shippingAddressViewLabel.font = UIFont.semiBold14
         billingAddressViewTitle.text = Constants.billingAddressText
         billingAddressViewTitle.textColor = .textPrimary
-        billingAddressViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
+        billingAddressViewTitle.font = UIFont.semiBold14
         
         shippingAddressAddButton.tintColor = .black
         shippingAddressAddButton.tintColor = .textSecondary
