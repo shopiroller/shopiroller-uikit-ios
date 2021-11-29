@@ -51,8 +51,9 @@ public class EmptyView: BaseView {
         if let button = model.button {
             buttonContainer.isHidden = false
             actionButton.setTitle(button.title)
+            actionButton.setTitleColor(.white)
             if(button.color != nil){
-                actionButton.tintColor = button.color
+                buttonContainer.backgroundColor = button.color
             }
         }
     }

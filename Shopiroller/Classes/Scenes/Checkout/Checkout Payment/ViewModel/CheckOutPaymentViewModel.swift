@@ -19,9 +19,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     private var paymentSettings : PaymentSettingsResponeModel?
     
     private var _selectedPayment: PaymentTypeEnum? = nil
-    
-    var orderEvent: OrderPaymentEvent = OrderPaymentEvent()
-    
+        
     var selectedBankIndex: Int?
     
     var isSelected: Bool = false
@@ -70,6 +68,10 @@ class CheckOutPaymentViewModel: BaseViewModel {
         return paymentSettings?.paymentAccounts?[position]
     }
     
+    func getPaymentSettings() -> PaymentSettingsResponeModel? {
+        return paymentSettings
+    }
+    
     
     var paymentType: PaymentTypeEnum? {
         set {
@@ -82,46 +84,46 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     var creditCardHolder: String? {
         set {
-            orderEvent.orderCard.cardHolderName = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cardHolderName = newValue
         }
         get {
-            return orderEvent.orderCard.cardHolderName
+            return  SRSessionManager.shared.orderEvent.orderCard.cardHolderName
         }
     }
     
     var creditCardNumber: String? {
         set {
-            orderEvent.orderCard.cardNumber = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cardNumber = newValue
         }
         get {
-            return  orderEvent.orderCard.cardNumber
+            return SRSessionManager.shared.orderEvent.orderCard.cardNumber
         }
     }
     
     var creditCardExpireYear: String? {
         set {
-            orderEvent.orderCard.expireYear = newValue
+            SRSessionManager.shared.orderEvent.orderCard.expireYear = newValue
         }
         get {
-            return orderEvent.orderCard.expireYear
+            return SRSessionManager.shared.orderEvent.orderCard.expireYear
         }
     }
     
     var creditCardExpireMonth: String? {
         set {
-            orderEvent.orderCard.expireMonth = newValue
+            SRSessionManager.shared.orderEvent.orderCard.expireMonth = newValue
         }
         get {
-            return orderEvent.orderCard.expireMonth
+            return SRSessionManager.shared.orderEvent.orderCard.expireMonth
         }
     }
     
     var creditCardCvv: String? {
         set {
-            orderEvent.orderCard.cvc = newValue
+            SRSessionManager.shared.orderEvent.orderCard.cvc = newValue
         }
         get {
-            return orderEvent.orderCard.cvc
+            return SRSessionManager.shared.orderEvent.orderCard.cvc
         }
     }
     
@@ -136,9 +138,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     private func isValidCreditCardHolder(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
         if let fullName = creditCardHolder, fullName.isValidFullName {
-            print("name Tamam")
             return true
-
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardHolderErrorText))
         return false
@@ -157,9 +157,7 @@ class CheckOutPaymentViewModel: BaseViewModel {
     private func isValidCreditCardNumber(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
         if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true)  {
             print("card n umber Tamam")
-
             return true
-
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardNumberErrorText))
         return false
@@ -167,8 +165,6 @@ class CheckOutPaymentViewModel: BaseViewModel {
     
     private func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
         if let cvv = creditCardCvv, cvv.isValidCreditCardCvv {
-            print("cvv Tamam")
-
             return true
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardCvvText))

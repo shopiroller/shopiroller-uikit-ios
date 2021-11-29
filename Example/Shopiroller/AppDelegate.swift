@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
+    
+    public func applicationWillTerminate(_ application: UIApplication) {
+        SRAppConstants.ShoppingCart.badgeCount = "0"
+    }
 
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SRAppConstants {
+public struct SRAppConstants {
     
     struct Header {
         static let apiKey = "api-Key"
@@ -27,6 +27,10 @@ struct SRAppConstants {
         
         struct Notifications {
             static let userAddressListObserve = "userAddressListObserve"
+            static let userConfirmOrderObserve = "userConfirmOrderObserve"
+            static let orderInnerResponseObserve = "OrderResponseInnerObserve"
+            static let updatePaymentMethodObserve = "updatePaymentMethodObserve"
+            static let updateAddressMethodObserve = "updateAddressMethodObserve"
         }
         
     }
@@ -38,6 +42,15 @@ struct SRAppConstants {
             static let isLoading = "isLoading"
         }
         
+    }
+    
+    struct URLResults {
+        static let paymentSuccess = "http://applyze-ecommerce-service/v1/paymentSuccess"
+        static let paymentSuccess1 = "https://ecommerce.applyze.com/v2.0/paymentSuccess"
+        static let paymentSuccess2 = "/paymentSuccess"
+        static let paymentFailed = "http://applyze-ecommerce-service/v1/paymentFailure"
+        static let paymentFailed1 = "https://ecommerce.applyze.com/v2.0/paymentFailure"
+        static let paymentFailed2 = "/paymentFailure"
     }
     
     struct Query {
@@ -58,9 +71,9 @@ struct SRAppConstants {
         }
     }
     
-    struct ShoppingCart {
+    public struct ShoppingCart {
         
-        static var badgeCount = "badgeCount"
+        public static var badgeCount = "badgeCount"
     }
     
     enum NavigationItemSelectorType {
@@ -71,20 +84,3 @@ struct SRAppConstants {
     }
 }
 
-
-extension Notification.Name
-{
-    
-    public static let shoppingCartCount = Notification.Name(rawValue: "ShoppingCartCount")
-
-}
-
-extension Notification
-{
-    public static func isShoppingCartCountChange() {
-        NotificationCenter.default.post(name: .shoppingCartCount
-            , object: nil
-            , userInfo: nil)
-    }
-    
-}

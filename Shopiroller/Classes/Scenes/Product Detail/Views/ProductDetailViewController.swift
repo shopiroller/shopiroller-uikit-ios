@@ -461,11 +461,15 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
 extension ProductDetailViewController : PopUpViewViewControllerDelegate {
     func firstButtonClicked(_ sender: Any) {
         if(viewModel.isStateSoldOut()) {
-            popToRoot(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+            popToRoot(animated: false, completion: nil)
         }
     }
     
     func secondButtonClicked(_ sender: Any) {
+        
     }
 }
 

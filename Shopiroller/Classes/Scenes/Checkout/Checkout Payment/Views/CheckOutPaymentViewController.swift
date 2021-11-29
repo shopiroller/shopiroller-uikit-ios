@@ -195,7 +195,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = PaymentTypeEnum.PayPal.rawValue.uppercased().localized
-            selectMethodTitle.text = PaymentTypeEnum.PayPal.rawValue
+            selectedMethodTitle.text = PaymentTypeEnum.PayPal.rawValue
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
@@ -207,34 +207,41 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
         case .none:
             break
+        case .Stripe:
+            print("Stripe")
+        case .Stripe3DS:
+            print("Stripe3DS")
         }
     }
     
     private func checkIsValid() {
-        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
-//        delegate?.isEnabledNextButton(enabled: isValid)
+        isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .Stripe  || viewModel.getDefaultPaymentMethod() == .Stripe3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
         if isValid == true {
+            SRSessionManager.shared.paymentSettings = viewModel.getPaymentSettings()
             switch viewModel.getDefaultPaymentMethod() {
             case .PayPal:
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
             case .Transfer:
                 setBankTransferUI()
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
                 validateCreditCardFields()
                 if viewModel.getDefaultPaymentMethod() == .Online {
-                    viewModel.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
+                    SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
                 } else {
-                    viewModel.orderEvent.paymentType = PaymentTypeEnum.Online3DS.rawValue
+                    SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online3DS.rawValue
                 }
             case .PayAtDoor:
-                viewModel.orderEvent.paymentType = PaymentTypeEnum.PayAtDoor.rawValue
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayAtDoor.rawValue
                 self.delegate?.isEnabledNextButton(enabled: true)
             case .none:
                 break
+            case .Stripe:
+                print("Stripe")
+            case .Stripe3DS:
+                print("Stripe3DS")
             }
         }
-//        return isValid
     }
     
     private func setBankTransferUI() {
@@ -286,9 +293,6 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
         if textField == creditCartCvvTextField {
             self.viewModel.creditCardCvv = value
         }
-//        if textField == creditCartHolderNameTextField {
-//            viewModel.orderEvent.orderCard.cardHolderName = value
-//        }
         validateCreditCardFields()
     }
 }
@@ -362,7 +366,7 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
     }
     
     func setSelectedBankIndex(index: Int?) {
-        print(viewModel.getBankAccountModel(position: index ?? 0))
+        SRSessionManager.shared.orderEvent.bankAccount = viewModel.getBankAccountModel(position: index ?? 0)
         viewModel.selectedBankIndex = index
         bankTransferTableView.reloadData()
     }

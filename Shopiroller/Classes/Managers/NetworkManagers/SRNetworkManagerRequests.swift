@@ -28,7 +28,7 @@ struct SRNetworkManagerRequests {
                                        , resourceType: PaymentSettingsResponeModel.self)
     }
     
-    static func makeOrder(_ makeOrder: MakeOrderAddressModel,userId: String) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
+    static func makeOrder(_ makeOrder: SRMakeOrderResponse,userId: String) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
         return SRNetworkRequestManager(httpMethod: .post, path: .makeOrder, subpath:
                                         "/\(userId)", resourceType: SROrderResponseInnerModel.self, httpBody: makeOrder.data)
     }

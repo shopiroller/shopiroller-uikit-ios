@@ -59,11 +59,13 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
     
     private func deleteAddress() {
         viewModel.deleteAddress(success: {
-            guard let row = self.viewModel.selectedIndexPathRow else {return}
+            guard let row = self.viewModel.selectedIndexPathRow else { return }
             self.addressTable.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
-            self.view.makeToast(text: "address_list_delete_success".localized)
-            self.view.layoutIfNeeded()
+            self.view.makeToast(text: self.viewModel.state == .shipping ? "address_list_delivery_address_delete_success".localized : "address_list_billing_address_delete_success".localized)
             self.configure(isUpdate: true)
+            self.getAddressList()
+            self.addressTable.reloadData()
+            self.view.layoutIfNeeded()
         }) { (errorViewModel) in
             self.view.makeToast(errorViewModel)
         }

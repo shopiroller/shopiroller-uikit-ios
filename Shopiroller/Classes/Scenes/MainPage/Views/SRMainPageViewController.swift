@@ -50,14 +50,13 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.getCount()
-        }
+        self.getCount()
+        
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard ,true))
+        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard , true))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
         
@@ -132,6 +131,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func configureEmptyView() {
+        getCount()
         if viewModel.productItemCount() == 0 {
             shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())

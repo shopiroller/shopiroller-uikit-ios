@@ -52,7 +52,7 @@ extension UIImage {
     
     static let sortIcon: UIImage = UIImage(named: "sortIcon", in: .shopiroller, with: nil)!
     
-    static let validateCart: UIImage = UIImage(named: "validateCart", in: .shopiroller, with: nil)!
+    static let validateCart: UIImage = UIImage(named: "updateCart", in: .shopiroller, with: nil)!
     
     // MARK: Order Statusses
     static let orderApproved: UIImage = UIImage(named: "orderApproved", in: .shopiroller, with: nil)!
@@ -106,6 +106,8 @@ extension UIImage {
     static let billingAddressIcon : UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
 
     static let deliveryAddressIcon : UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
+    
+    static let paymentSuccess : UIImage = UIImage(named: "paymentSuccess",in: .shopiroller , with: nil)!
 
 
 }

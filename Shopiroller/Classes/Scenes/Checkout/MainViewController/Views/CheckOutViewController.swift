@@ -13,6 +13,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     private struct Constants {
         static var confirmOrderButtonText: String { "confirm-order-button-text".localized }
     }
+    
     @IBOutlet private weak var checkOutProgress: CheckOutProgress!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var nextPageButton: MDCFloatingButton!
@@ -28,7 +29,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     init(viewModel: CheckOutViewModel){
         super.init(viewModel.getPageTitle()?.localized, viewModel: viewModel, nibName: CheckOutViewController.nibName, bundle: Bundle(for: CheckOutViewController.self))
     }
- 
+    
     override func setup() {
         super.setup()
         
@@ -45,14 +46,50 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkOutPageViewController.didMove(toParent: self)
         
         self.viewControllerTitle.text = "delivery-information-page-title".localized
-                
+        
         self.checkOutPageViewController = checkOutPageViewController
         
-        confirmOrderButton.backgroundColor = .textPrimary
-        confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
         
-        confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
+        NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+    }
+    
+    @objc func loadPayment() {
+        checkOutProgress.configureView(stage: .payment)
+        setTitle(stage: .payment)
+        isHidingNextButton(hide: false)
+        setButton()
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func loadAddress() {
+        checkOutProgress.configureView(stage: .address)
+        setTitle(stage: .address)
+        isHidingNextButton(hide: false)
+        setButton()
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func onResultEvent() {
+        let orderResponse = SRSessionManager.shared.orderResponseInnerModel
+        
+        if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.payment != nil && orderResponse?.payment?._3DSecureHtml != nil) {
+            let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.payment?._3DSecureHtml))
+            threeDSViewController.modalPresentationStyle = .overCurrentContext
+            present(threeDSViewController, animated: true, completion: nil)
+        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
+        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
+            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(), isCreditCard: false)
+        }
+    }
+    
+    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel , isCreditCard : Bool) {
+        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isCreditCard : isCreditCard))
+        self.prompt(resultVC, animated: true, completion: nil)
     }
     
     @IBAction func nextButtonTapped() {
@@ -65,10 +102,10 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             checkOutProgress.configureView(stage: .info)
             setTitle(stage: .info)
             isHidingNextButton(hide: true)
+            setButton()
         default:
             checkOutProgress.configureView(stage: .address)
             setTitle(stage: .address)
-            
         }
     }
     
@@ -78,14 +115,25 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         case 1:
             checkOutProgress.configureView(stage: .payment)
             setTitle(stage: .payment)
+            isHidingNextButton(hide: false)
+            setButton()
         case 0:
             checkOutProgress.configureView(stage: .address)
             setTitle(stage: .address)
         default:
             break
         }
-        
-}
+        setButton()
+    }
+    
+    
+    private func setButton() {
+        confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
+        confirmOrderButtonContainer.backgroundColor = .textPrimary
+        confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
+        confirmOrderButton.setTitleColor(.white)
+    }
+    
     private func setTitle(stage : ProgressStageEnum) {
         switch stage {
         case .address:
@@ -99,7 +147,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     @IBAction func confirmButtonTapped() {
-        // Route Success Fail Screen
+        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
     }
 }
 
@@ -135,5 +183,5 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
         self.index = currentIndex
         print(currentIndex)
     }
-
+    
 }

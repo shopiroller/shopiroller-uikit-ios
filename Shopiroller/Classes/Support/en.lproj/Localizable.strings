@@ -14,6 +14,10 @@
 "address-text" = "Address";
 "payment-text" = "Payment";
 "info-text" = "Info";
+"no-internet-connection-title" = "No Internet Connection";
+"no-internet-connection-description" = "Please Check Your Internet Connection";
+"no-internet-connection-button-text" = "Ok";
+"error-general-title" = "Error";
 
 //MARK: - Products Empty View
 "empty-view-title" = "No Products added.";
@@ -99,7 +103,8 @@
 "address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
 "address_list_empty_billing_title" = "No billing address";
 "address_list_empty_billing_description" = "Launch your first address and take an items you want.";
-"address_list_delete_success" = "Delivery adress successfully deleted.";
+"address_list_delivery_address_delete_success" = "Delivery adress successfully deleted.";
+"address_list_billing_address_delete_success" = "Billing adress successfully deleted.";
 
 // MARK: - Address Cell
 "address_cell_confirm_title" = " Are you sure you want to delete the address?";
@@ -208,9 +213,16 @@
 "checkout-info-delivery-addresss-card-view-title" = "Delivery Address";
 "checkout-info-order-note-text-view-placeholder" = "Leave a note for your order";
 "checkout-info-confirm-order-button-title" = "Confirm Order";
-"checkout-info-terms-and-conditions-text" = "Agree the Terms of Conditions and Privacy Policy";
-
-
+"checkout-info-terms-and-conditions-text" = "I confirm that I have read, understand and agree to the <u><b>Sales Agreement Form</b></u>";
+"checkout-info-update-order-pop-up-title" = "Update your order!";
+"checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
+"checkout-info-update-order-pop-up-button-text" = "Update My Cart";
+"checkout-info-card-description-text" = "%@ items %@ %@ ";
+"checkout-info-bank-transfer-description-text" = "Bank Transfer %@ %@";
+"checkout-info-credit-card-description-text" = "Credit Card %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "You have to agree the terms.";
+"checkout-info-agreement-is-not-checked-description" = "You have to agree the Terms of Conditions and Privacy Policy.";
+"checkout-info-agreement-is-not-checked-title" = "Agree Now";
 
 //MARK: - SelectionPopUp
 
@@ -224,6 +236,19 @@
 "credit-card-holder-error-text" = "Please check the credit card holder";
 "credit-card-expire-date-error-text" = "Please check the expire date";
 "credit-card-cvv-error-text" = "Please check the cvv";
+
+//MARK: - CheckOut Result Page
+
+"checkout-result-info-page-title" = "Order Info";
+"checkout-result-info-success-title" = "It's ordered!";
+"checkout-result-info-success-description" = "Thanks for your order , we hope you enjoyed shopping with us";
+"checkout-result-info-success-order-number" = "Order Number %@";
+"checkout-result-info-fail-title" = "Payment Failed";
+"checkout-result-info-fail-description" = "Sorry' payment failed. You can change the payment method and try again.";
+"checkout-result-info-fail-message" = "Error Message %@ Your payment method was declined. (%@)";
+"checkout-result-info-success-check-order-button-text" = "Check Order";
+"checkout-result-info-success-continue-shopping-button-text" = "Continue Shopping";
+"checkout-result-info-fail-update-payment-method-button-text" = "Update Payment Method";
 
 
 

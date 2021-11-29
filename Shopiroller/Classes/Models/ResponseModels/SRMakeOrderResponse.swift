@@ -10,15 +10,15 @@ import Foundation
 struct SRMakeOrderResponse: Codable {
     
     var userId: String?
-    var userNote: String?
+    var userNote: String = ""
     var bankAccount: String?
     var paymentAccount: BankAccountModel?
     var paymentType: String?
     var products: [SROrderProductModel]?
-    var shippingAdress: MakeOrderAddressModel?
-    var billingAdress: MakeOrderAddressModel?
-    var buyer: BuyerOrderModel?
-    var card: OrderCardModel?
+    var shippingAddress: MakeOrderAddressModel?
+    var billingAddress: MakeOrderAddressModel?
+    var buyer: BuyerOrderModel = BuyerOrderModel()
+    var creditCard: OrderCardModel = OrderCardModel()
     var productPriceTotal:
         Double?
     var shippingPrice: Double?
@@ -33,12 +33,27 @@ struct SRMakeOrderResponse: Codable {
         case userId = "userId"
         case userNote = "userNote"
         case bankAccount = "bankAccount"
+        case paymentAccount = "paymentAccount"
         case paymentType = "paymentType"
         case productPriceTotal = "productPriceTotal"
         case shippingPrice = "shippingPrice"
+        case buyer = "buyer"
+        case creditCard = "creditCard"
         case currency = "currency"
         case orderId = "orderId"
         case tryAgain = "tryAgain"
+        case shippingAddress = "shippingAddress"
+        case billingAddress = "billingAddress"
+    }
+    
+    func getCompleteOrderModel() -> CompleteOrderModel {
+        if (paymentType?.lowercased() == PaymentTypeEnum.Online3DS.rawValue.lowercased() || paymentType?.lowercased() == PaymentTypeEnum.Online.rawValue.lowercased()) {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, card: creditCard)
+        } else if (paymentType?.lowercased() == PaymentTypeEnum.Transfer.rawValue.lowercased()) {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, bankAccount: bankAccount, paymentAccount: paymentAccount)
+        } else {
+            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType)
+        }
     }
     
 }

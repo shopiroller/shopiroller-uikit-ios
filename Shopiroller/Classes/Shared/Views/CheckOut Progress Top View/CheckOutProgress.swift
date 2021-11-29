@@ -85,6 +85,10 @@ class CheckOutProgress : BaseView {
             paymentLabel.textColor = .textPCaption
             paymentDotImage.backgroundColor = .veryLightPink
             paymentDotImage.layer.cornerRadius = infoDotImage.frame.width / 2
+            paymentToInfoLine.backgroundColor = UIColor.textPrimary.withAlphaComponent(0.1)
+            infoDotImage.backgroundColor = .veryLightPink
+            infoDotImage.layer.cornerRadius = infoDotImage.frame.width / 2
+            infoLabel.textColor = .textPCaption
         }
     }
     
