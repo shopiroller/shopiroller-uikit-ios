@@ -91,7 +91,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func getProducts(showProgress: Bool,pagination: Bool,refreshing: Bool) {
-        viewModel.getProducts(showProgress: showProgress,pagination: pagination,succes: {
+        viewModel.getProducts(isRefreshing: refreshing,showProgress: showProgress,pagination: pagination,succes: {
             [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()

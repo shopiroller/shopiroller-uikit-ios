@@ -43,21 +43,25 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getProducts(showProgress: Bool?,pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getProducts(isRefreshing: Bool,showProgress: Bool?,pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
-        if products?.count ?? 0 == 0 {
+        if isRefreshing {
             currentPage = 0
-        }else{
-            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
-                return
-            }
-            if pagination {
-                currentPage = currentPage + 1
-            }else {
+        } else {
+            if products?.count ?? 0 == 0 {
                 currentPage = 0
+            }else{
+                if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+                    return
+                }
+                if pagination {
+                    currentPage = currentPage + 1
+                }else {
+                    currentPage = 0
+                }
+                
             }
-            
         }
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
