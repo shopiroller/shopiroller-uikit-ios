@@ -209,7 +209,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
 
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .emptyProduct, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+        EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
     }
     
 }
