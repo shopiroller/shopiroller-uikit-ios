@@ -170,12 +170,12 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {
         popUpState = .returnExchange
-        return PopUpViewModel(image: .paymentFailed, title: "return-exchange-terms-title".localized, description: getReturnExchangeTerms() , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .deliveryTerms, title: "return-exchange-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
     }
 
     func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
         popUpState = .deliveryTerms
-        return PopUpViewModel(image: .paymentFailed, title: "delivery-terms-title".localized, description: getDeliveryTerms()?.localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .deliveryTerms, title: "delivery-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
     }
 
     func getSoldOutPopUpViewModel() -> PopUpViewModel {

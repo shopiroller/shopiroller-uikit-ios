@@ -17,9 +17,9 @@ class ThreeDSModalViewModel : BaseViewModel {
     }
     
     func isPageFinished(url: String) -> Bool {
-        if (url == SRAppConstants.URLResults.paymentSuccess) || (url == SRAppConstants.URLResults.paymentSuccess1) || (url == SRAppConstants.URLResults.paymentSuccess2) {
+        if (url.contains(SRAppConstants.URLResults.paymentSuccess)) || (url.contains( SRAppConstants.URLResults.paymentSuccess1 )) || (url.contains( SRAppConstants.URLResults.paymentSuccess2 )) {
             SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess = true
-        } else if (url == SRAppConstants.URLResults.paymentFailed) || (url == SRAppConstants.URLResults.paymentFailed1) || (url == SRAppConstants.URLResults.paymentFailed2) {
+        } else if (url.contains(SRAppConstants.URLResults.paymentFailed)) || (url.contains( SRAppConstants.URLResults.paymentFailed1)) || (url.contains( SRAppConstants.URLResults.paymentFailed2)) {
             SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess = false
             if let status = ECommerceUtil.urlContainsOf(url, queryParamaterName: "status") {
                 SRSessionManager.shared.orderResponseInnerModel?.payment?.status = status

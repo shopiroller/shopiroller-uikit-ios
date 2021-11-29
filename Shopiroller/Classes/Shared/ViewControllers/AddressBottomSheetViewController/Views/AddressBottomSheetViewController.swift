@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AddressBottomViewDelegate {
     func closeButtonTapped()
@@ -128,18 +129,83 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveButton.tintColor = .white
         
         nameTextField.placeholder = Constants.nameTextFieldText
+        nameTextField.returnKeyType = .next
+        nameTextField.delegate = self
+        nameTextField.keyboardType = .alphabet
+        phoneNumberTextField.addNextAction(target: self, selector: #selector(nextActionNameTextField))
+
         surnameTextField.placeholder = Constants.surNameTextFieldText
+        surnameTextField.returnKeyType = .next
+        surnameTextField.delegate = self
+        surnameTextField.keyboardType = .alphabet
+        surnameTextField.addNextAction(target: self, selector: #selector(nextActionSurnameTextField))
+        
         phoneNumberTextField.placeholder = Constants.phoneTextFieldText
+        phoneNumberTextField.returnKeyType = .next
+        phoneNumberTextField.delegate = self
+        phoneNumberTextField.keyboardType = .numberPad
+        phoneNumberTextField.addNextAction(target: self, selector: #selector(nextActionPhoneNumberTextField))
+        
         countryTextField.placeholder = Constants.countryTextFieldText
+        countryTextField.returnKeyType = .done
+        countryTextField.keyboardType = .alphabet
+        countryTextField.delegate = self
+        countryTextField.addCustomTextAction(title: Constants.statesTextFieldText, target: self, selector: #selector(nextActionCountryTextField))
+        
         statesTextField.placeholder = Constants.statesTextFieldText
+        statesTextField.returnKeyType = .done
+        statesTextField.keyboardType = .alphabet
+        statesTextField.delegate = self
+        statesTextField.addCustomTextAction(title: Constants.citiesTextFieldText, target: self, selector: #selector(nextActionStateTextField))
+        
         citiesTextField.placeholder = Constants.citiesTextFieldText
+        citiesTextField.returnKeyType = .done
+        citiesTextField.keyboardType = .numberPad
+        citiesTextField.delegate = self
+        citiesTextField.addCustomTextAction(title: Constants.addressTextFieldText, target: self, selector: #selector(nextActionCitiesTextField))
+        
         addressTextField.placeholder = Constants.addressTextFieldText
+        addressTextField.returnKeyType = .next
+        addressTextField.delegate = self
+        addressTextField.keyboardType = .alphabet
+        addressTextField.addNextAction(target: self, selector: #selector(nextActionAddressTextField))
+        
         zipCodeTextField.placeholder = Constants.zipCodeTextFieldText
+        zipCodeTextField.returnKeyType = .next
+        zipCodeTextField.delegate = self
+        zipCodeTextField.keyboardType = .numberPad
+        zipCodeTextField.addNextAction(target: self, selector: #selector(nextActionZipCodeTextField))
+        
         addressTitleTextField.placeholder = Constants.addressTitleTextFieldText
+        addressTitleTextField.returnKeyType = .next
+        addressTitleTextField.delegate = self
+        addressTitleTextField.keyboardType = .alphabet
+        addressTitleTextField.addNextAction(target: self, selector: #selector(nextActionAddressTitleTextField))
+        
         identityNumberTextField.placeholder = Constants.identityNumberTextFieldText
+        identityNumberTextField.returnKeyType = .done
+        identityNumberTextField.delegate = self
+        identityNumberTextField.keyboardType = .numberPad
+        identityNumberTextField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+
+        
         companyNameTextField.placeholder = Constants.companyNameTextFieldText
+        companyNameTextField.returnKeyType = .next
+        companyNameTextField.delegate = self
+        companyNameTextField.keyboardType = .alphabet
+        companyNameTextField.addNextAction(target: self, selector: #selector(nextActionCompanyNameTextField))
+        
         taxOfficeTextField.placeholder = Constants.corporateTaxOfficeTextFieldText
+        taxOfficeTextField.returnKeyType = .next
+        taxOfficeTextField.delegate = self
+        taxOfficeTextField.keyboardType = .alphabet
+        taxOfficeTextField.addNextAction(target: self, selector: #selector(nextActionTaxOfficeTextField))
+        
         taxNumberTextField.placeholder = Constants.corporateTaxNumberTextFieldText
+        taxNumberTextField.returnKeyType = .done
+        taxNumberTextField.delegate = self
+        taxNumberTextField.keyboardType = .numberPad
+        taxNumberTextField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         let tapCountryTextField = UITapGestureRecognizer(target: self, action: #selector(countryViewTapped))
         countryTextField.backgroundColor = .clear
@@ -166,6 +232,56 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             citiesContainerView.isHidden = false
         }
         
+    }
+    
+    //MARK: - Actions
+    
+    @objc func nextActionNameTextField() {
+        _ = textFieldShouldReturn(nameTextField)
+    }
+    
+    @objc func nextActionSurnameTextField() {
+        _ = textFieldShouldReturn(surnameTextField)
+    }
+    
+    @objc func nextActionPhoneNumberTextField() {
+        _ = textFieldShouldReturn(phoneNumberTextField)
+    }
+    
+    @objc func nextActionCountryTextField() {
+        _ = textFieldShouldReturn(countryTextField)
+    }
+    
+    @objc func nextActionStateTextField() {
+        _ = textFieldShouldReturn(statesTextField)
+    }
+    
+    @objc func nextActionCitiesTextField() {
+        _ = textFieldShouldReturn(citiesTextField)
+    }
+    
+    @objc func nextActionAddressTextField() {
+        _ = textFieldShouldReturn(addressTextField)
+    }
+    
+    @objc func nextActionZipCodeTextField() {
+        _ = textFieldShouldReturn(zipCodeTextField)
+    }
+    
+    @objc func nextActionAddressTitleTextField() {
+        _ = textFieldShouldReturn(addressTitleTextField)
+    }
+    
+    @objc func nextActionCompanyNameTextField() {
+        _ = textFieldShouldReturn(companyNameTextField)
+    }
+    
+    @objc func nextActionTaxOfficeTextField() {
+        _ = textFieldShouldReturn(taxOfficeTextField)
+    }
+    
+    @objc func toolbarDoneButtonClicked() {
+        saveButtonTapped()
     }
     
     private func setUpLayout() {
@@ -234,6 +350,16 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     
     @objc func countryViewTapped() {
+        nameTextField.resignFirstResponder()
+        surnameTextField.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        addressTextField.resignFirstResponder()
+        zipCodeTextField.resignFirstResponder()
+        identityNumberTextField.resignFirstResponder()
+        companyNameTextField.resignFirstResponder()
+        taxNumberTextField.resignFirstResponder()
+        taxOfficeTextField.resignFirstResponder()
+        addressTitleTextField.resignFirstResponder()
         self.viewModel.selectionType = .country
         statesTextField.isEnabled = true
         statesTextField.text = ""
@@ -244,6 +370,16 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func statesViewTapped() {
+        nameTextField.resignFirstResponder()
+        surnameTextField.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        addressTextField.resignFirstResponder()
+        zipCodeTextField.resignFirstResponder()
+        identityNumberContainer.resignFirstResponder()
+        companyNameTextField.resignFirstResponder()
+        taxNumberTextField.resignFirstResponder()
+        taxOfficeTextField.resignFirstResponder()
+        addressTitleTextField.resignFirstResponder()
         self.viewModel.selectionType = .state
         citiesTextField.isEnabled = true
         citiesTextField.text = ""
@@ -253,6 +389,16 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func citiesViewTapped() {
+        nameTextField.resignFirstResponder()
+        surnameTextField.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        addressTextField.resignFirstResponder()
+        zipCodeTextField.resignFirstResponder()
+        companyNameTextField.resignFirstResponder()
+        taxNumberTextField.resignFirstResponder()
+        identityNumberContainer.resignFirstResponder()
+        taxOfficeTextField.resignFirstResponder()
+        addressTitleTextField.resignFirstResponder()
         self.viewModel.selectionType = .city
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getCities(), type: .city))
         vc.delegate = self
@@ -520,55 +666,51 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func saveAddress() {
         switch viewModel.getAddressType() {
         case .shipping:
-            var addShippingAddress : AddAddressModel? = AddAddressModel()
-            addShippingAddress?.apiKey = SRNetworkContext.apiKey
-            addShippingAddress?.appKey = SRNetworkContext.appKey
-            addShippingAddress?.addressLine = addressTextField.text
-            addShippingAddress?.country = countryTextField.text
-            addShippingAddress?.state = statesTextField.text
-            addShippingAddress?.city = citiesTextField.text
-            addShippingAddress?.phone = phoneNumberTextField.text
-            addShippingAddress?.zipCode = zipCodeTextField.text
-            addShippingAddress?.title = addressTitleTextField.text
-            addShippingAddress?.nameSurname = (nameTextField.text ?? "") + " " + (surnameTextField.text ?? "")
-            addShippingAddress?.addBoth = isBillingAddressChecked
+            viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
+            viewModel.addAddressModel.appKey = SRNetworkContext.appKey
+            viewModel.addAddressModel.addressLine = addressTextField.text
+            viewModel.addAddressModel.country = countryTextField.text
+            viewModel.addAddressModel.state = statesTextField.text
+            viewModel.addAddressModel.city = citiesTextField.text
+            viewModel.addAddressModel.phone = phoneNumberTextField.text
+            viewModel.addAddressModel.zipCode = zipCodeTextField.text
+            viewModel.addAddressModel.title = addressTitleTextField.text
+            viewModel.addAddressModel.nameSurname = (nameTextField.text ?? "") + " " + (surnameTextField.text ?? "")
+            viewModel.addAddressModel.addBoth = isBillingAddressChecked
             if isIndividualButtonTapped {
-                addShippingAddress?.type = "Individual"
-                addShippingAddress?.identityNumber = identityNumberTextField.text
+                viewModel.addAddressModel.type = "Individual"
+                viewModel.addAddressModel.identityNumber = identityNumberTextField.text
             }else {
-                addShippingAddress?.type = "Corporate"
-                addShippingAddress?.companyName = companyNameTextField.text
-                addShippingAddress?.taxNumber = taxNumberTextField.text
-                addShippingAddress?.taxOffice = taxOfficeTextField.text
+                viewModel.addAddressModel.type = "Corporate"
+                viewModel.addAddressModel.companyName = companyNameTextField.text
+                viewModel.addAddressModel.taxNumber = taxNumberTextField.text
+                viewModel.addAddressModel.taxOffice = taxOfficeTextField.text
             }
-            viewModel.addAddressModel = addShippingAddress ?? AddAddressModel()
-            if addShippingAddress?.addBoth == true {
+            if viewModel.addAddressModel.addBoth == true {
                 addAddress()
             } else {
                 saveShippingAddress(isEditing: false)
             }
         case .billing:
-            var addBillingAddress : AddAddressModel? = AddAddressModel()
-            addBillingAddress?.apiKey = SRNetworkContext.apiKey
-            addBillingAddress?.appKey = SRNetworkContext.appKey
-            addBillingAddress?.addressLine = addressTextField.text
-            addBillingAddress?.city = citiesTextField.text
-            addBillingAddress?.country = countryTextField.text
-            addBillingAddress?.state = statesTextField.text
-            addBillingAddress?.zipCode = zipCodeTextField.text
-            addBillingAddress?.phone = phoneNumberTextField.text
-            addBillingAddress?.nameSurname = (nameTextField.text ?? "") + " " + (surnameTextField.text ?? "")
-            addBillingAddress?.title = addressTitleTextField.text
+            viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
+            viewModel.addAddressModel.appKey = SRNetworkContext.appKey
+            viewModel.addAddressModel.addressLine = addressTextField.text
+            viewModel.addAddressModel.city = citiesTextField.text
+            viewModel.addAddressModel.country = countryTextField.text
+            viewModel.addAddressModel.state = statesTextField.text
+            viewModel.addAddressModel.zipCode = zipCodeTextField.text
+            viewModel.addAddressModel.phone = phoneNumberTextField.text
+            viewModel.addAddressModel.nameSurname = (nameTextField.text ?? "") + " " + (surnameTextField.text ?? "")
+            viewModel.addAddressModel.title = addressTitleTextField.text
             if isIndividualButtonTapped {
-                addBillingAddress?.type = "Individual"
-                addBillingAddress?.identityNumber = identityNumberTextField.text
+                viewModel.addAddressModel.type = "Individual"
+                viewModel.addAddressModel.identityNumber = identityNumberTextField.text
             }else {
-                addBillingAddress?.type = "Corporate"
-                addBillingAddress?.companyName = companyNameTextField.text
-                addBillingAddress?.taxNumber = taxNumberTextField.text
-                addBillingAddress?.taxOffice = taxOfficeTextField.text
+                viewModel.addAddressModel.type = "Corporate"
+                viewModel.addAddressModel.companyName = companyNameTextField.text
+                viewModel.addAddressModel.taxNumber = taxNumberTextField.text
+                viewModel.addAddressModel.taxOffice = taxOfficeTextField.text
             }
-            viewModel.addAddressModel = addBillingAddress ?? AddAddressModel()
             saveBillingAddress(isEditing: false)
         }
         
@@ -642,9 +784,62 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         }
         
     }
-    
 }
 
+extension AddressBottomSheetViewController : UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if (textField == countryTextField) {
+            countryViewTapped()
+            return false
+        }
+        if (textField == statesTextField){
+            statesViewTapped()
+            return false
+        }
+        if (textField == citiesTextField){
+            citiesViewTapped()
+            return false
+        }
+        return true;
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        switch textField {
+        case nameTextField:
+            surnameTextField.becomeFirstResponder()
+        case surnameTextField:
+            phoneNumberTextField.becomeFirstResponder()
+        case phoneNumberTextField:
+            countryTextField.becomeFirstResponder()
+        case countryTextField:
+            statesTextField.becomeFirstResponder()
+        case statesTextField:
+            citiesTextField.becomeFirstResponder()
+        case citiesTextField:
+            addressTextField.becomeFirstResponder()
+        case addressTextField:
+            zipCodeTextField.becomeFirstResponder()
+        case zipCodeTextField:
+            addressTitleTextField.becomeFirstResponder()
+        case addressTitleTextField:
+            identityNumberTextField.becomeFirstResponder()
+        case identityNumberContainer:
+            return true
+        case companyNameTextField:
+            taxOfficeTextField.becomeFirstResponder()
+        case taxOfficeTextField:
+            taxNumberTextField.becomeFirstResponder()
+        case taxNumberTextField:
+            return true
+        default:
+            break
+        }
+        return true
+    }
+}
 
 extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
     func getCountryId(id: String?, type: SelectionType?) {
@@ -652,9 +847,16 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .country:
             self.viewModel.countryId = id ?? ""
             getStateList()
+            if viewModel.getStates().count == 0 {
+                statesTextField.text = viewModel.addAddressModel.country
+                citiesTextField.text = viewModel.addAddressModel.country
+            }
         case .state:
             self.viewModel.stateId = id ?? ""
             getCitiesList()
+            if viewModel.getCities().count == 0 {
+                citiesTextField.text = viewModel.addAddressModel.country
+            }
         case .city:
             break
         case .none:
@@ -667,7 +869,11 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .country:
             countryTextField.text = name
         case .city:
-            citiesTextField.text = name
+            if viewModel.getCities().count == 0 {
+                viewModel.addAddressModel.city = viewModel.addAddressModel.state
+            }else {
+                citiesTextField.text = name
+            }
         case .state:
             statesTextField.text = name
         case .none:
@@ -676,4 +882,5 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
     }   
     
 }
+
 
