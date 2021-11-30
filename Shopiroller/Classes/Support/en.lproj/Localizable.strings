@@ -235,3 +235,4 @@
 "filter_only_stock" = "Only Stock";
 "filter_discounted_products" = "Discounted Products";
 "filter_free_shipping" = "Free Shipping";
+"filter_choice_apply" = "Apply";

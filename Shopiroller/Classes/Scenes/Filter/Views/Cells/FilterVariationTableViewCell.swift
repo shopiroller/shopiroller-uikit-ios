@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterSelectionTableViewCell: UITableViewCell {
+class FilterVariationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var selectionLabel: UILabel!

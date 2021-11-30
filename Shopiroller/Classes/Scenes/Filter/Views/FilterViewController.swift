@@ -27,7 +27,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     
     private func configureUI() {
         viewModel.configureTableList()
-        filterTableView.register(cellClass: FilterSelectionTableViewCell.self)
+        filterTableView.register(cellClass: FilterVariationTableViewCell.self)
         filterTableView.register(cellClass: FilterPriceRangeTableViewCell.self)
         filterTableView.register(cellClass: FilterSwitchTableViewCell.self)
         filterTableView.delegate = self
@@ -58,15 +58,15 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch viewModel.getFilterListSelector(position: indexPath.row) {
         case .category:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FilterSelectionTableViewCell.reuseIdentifier, for: indexPath) as! FilterSelectionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
             cell.setupCategory()
             return cell
         case .brand:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FilterSelectionTableViewCell.reuseIdentifier, for: indexPath) as! FilterSelectionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
             cell.setupBrand()
             return cell
         case .variationGroups(position: let position):
-            let cell = tableView.dequeueReusableCell(withIdentifier: FilterSelectionTableViewCell.reuseIdentifier, for: indexPath) as! FilterSelectionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
             if let item = viewModel.getVariationGroupsItem(position: position) {
                 cell.setup(model: item)
             }
@@ -85,7 +85,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch viewModel.getFilterListSelector(position: indexPath.row) {
         case .category:
-            break
+            prompt(FilterChoiceViewController(viewModel: viewModel.getFilterChoiceViewModel(), delegate: self), animated: true)
         case .brand:
             break
         case .variationGroups(position: let position):
@@ -97,7 +97,11 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension FilterViewController: FilterSwitchTableViewCellDelegate {
+extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate {
+    func choiceConfirmed(selectedItem: CategoriesItem?) {
+        
+    }
+    
     func checkedChanged(type: FilterSwitchType, checked: Bool) {
         
     }

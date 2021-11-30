@@ -86,6 +86,10 @@ class FilterViewModel: BaseViewModel {
         return filterOptions?.variationGroups?[position]
     }
     
+    func getFilterChoiceViewModel() -> FilterChoiceViewModel {
+        return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [])
+    }
+    
     
 }
 
