@@ -71,7 +71,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productOldPrice.font.withSize(17)
         }
             
-        if let image = viewModel.getImage() {
+        if let image = viewModel.getImage() { 
             productImage.kf.setImage(with: URL(string: image))
         }else{
             productImage.image = .emptyProduct

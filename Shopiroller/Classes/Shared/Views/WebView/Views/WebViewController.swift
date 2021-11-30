@@ -46,7 +46,6 @@ class WebViewController: BaseViewController<WebViewViewModel> {
     }
 
     @IBAction func dismissButtonPressed(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
 }

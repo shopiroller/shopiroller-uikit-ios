@@ -30,7 +30,7 @@ class CategoriesCell: UICollectionViewCell {
     @IBOutlet private weak var seeAllTitle: UILabel!
     @IBOutlet private weak var sectionTitleLabel: UILabel!
     
-    var viewModel: [SRCategoryResponseModel]?
+    var model: [SRCategoryResponseModel]?
     
     var delegate: CategoriesCellDelegate?
     
@@ -57,7 +57,7 @@ class CategoriesCell: UICollectionViewCell {
     
     
     func configureCell(model: [SRCategoryResponseModel]?){
-        self.viewModel = model
+        self.model = model
     }
     
     @objc func goToCategory() {
@@ -69,13 +69,13 @@ class CategoriesCell: UICollectionViewCell {
 extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel?.count ?? 0
+        return self.model?.count ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoriesCollectionViewCell
         self.cellPosition = indexPath.row
-        cell.configureCell(model: self.viewModel?[indexPath.row])
+        cell.configureCell(model: self.model?[indexPath.row])
         return cell
     }
     
@@ -88,14 +88,6 @@ extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
 extension CategoriesCell: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height  = view.frame.height/2
-//        return CGSize(width: view.frame.width, height: height)
         return CGSize(width: 60, height: collectionView.frame.height)
     }
-    
-    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let bannerViewModel = viewModel.bannerViewModel(at: indexPath.row)
-//        descriptionLabel.text = bannerViewModel.description
-    }
-    
 }    

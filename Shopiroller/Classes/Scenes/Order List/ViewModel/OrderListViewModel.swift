@@ -16,6 +16,12 @@ class OrderListViewModel: BaseViewModel {
         static var emptyOrdersActionButton: String { return "empty-orders-action-button".localized }
     }
     
+    private var isOpenedFromResult: Bool? = false
+    
+    init(isOpenedFromResult: Bool? = false) {
+        self.isOpenedFromResult = isOpenedFromResult
+    }
+    
     var orderList: [SROrderModel]?
     var selectedPosition: Int?
     var selectedOrderDetailViewController: OrderDetailViewController?
@@ -81,6 +87,10 @@ class OrderListViewModel: BaseViewModel {
     //TODO: CHange image
     func getEmptyModel() -> EmptyModel {
         return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: nil))
+    }
+    
+    func isOpenedFromResultPage() -> Bool? {
+        return isOpenedFromResult
     }
     
     

@@ -38,8 +38,23 @@ class CheckOutPageViewController: UIPageViewController {
         }
         
         if let scrollView = self.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
-                     scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = false
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        
+    }
+    
+    @objc func loadPayment() {
+        setViewControllers([items[1]],
+                           direction: .reverse, animated: true, completion: nil)
+    }
+    
+    @objc func loadAddress() {
+        setViewControllers([items[0]],
+                           direction: .reverse, animated: true, completion: nil)
     }
     
     private func createViewControllers() {
@@ -50,6 +65,7 @@ class CheckOutPageViewController: UIPageViewController {
         checkOutPaymentVC.delegate = checkOutPageDelegate
         items.append(checkOutPaymentVC)
         let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
+        checkOutInfoVC.delegate = checkOutPageDelegate
         items.append(checkOutInfoVC)
     }
 }

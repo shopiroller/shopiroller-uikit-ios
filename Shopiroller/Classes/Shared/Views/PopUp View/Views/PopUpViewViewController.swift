@@ -46,7 +46,6 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         descriptionLabel.textColor = .textPCaption
         
         titleLabel.text = viewModel.getTitle()
-        descriptionLabel.text = viewModel.getDescription()
         circleImage.image = viewModel.getImage()
         
         if(viewModel.hasFirstButton()) {
@@ -64,11 +63,17 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         }else {
             secondButtonContainerView.isHidden = true
         }
+        
+        if let htmlDescription = viewModel.getHtmlDescription() {
+            descriptionLabel.attributedText = htmlDescription
+        } else {
+            descriptionLabel.text = viewModel.getDescription()
+        }
     }
   
     @IBAction private func firstButtonTapped(_ sender: Any) {
         delegate?.firstButtonClicked(sender)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     @IBAction func secondButtonTapped(_ sender: Any) {

@@ -187,14 +187,19 @@ extension UIViewController {
                    canceled: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
+        alert.addAction(UIAlertAction(title: "no-internet-connection-button-text".localized , style: .default, handler: nil))
+        
         popUp(alert)
     }
     
-    func showAlertError(viewModel: ErrorViewModel?,
-                        confirmed: (() -> Void)? = nil,
-                        canceled: (() -> Void)? = nil) {
+    func showAlertError(viewModel: ErrorViewModel?) {
+        if viewModel?.error == .network {
+            showNoConnectionAlert()
+        }
         showAlert(title: viewModel?.title, message: viewModel?.message)
+    }
+    
+    func showNoConnectionAlert() {
+        showAlert(title: "no-internet-connection-title".localized, message: "no-internet-connection-description".localized)
     }
 }

@@ -96,5 +96,18 @@ extension String {
     var isValidCreditCardCvv: Bool {
         return count == 3 && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
-
+    
+    func convertHtml() -> NSAttributedString{
+            guard let data = data(using: String.Encoding.utf8) else { return NSAttributedString() }
+        var attributedString: NSAttributedString = NSAttributedString()
+        do {
+            attributedString = try NSAttributedString(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html,NSAttributedString.DocumentReadingOptionKey.characterEncoding:NSNumber(value: String.Encoding.utf8.rawValue)], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        } catch {
+            print("error")
+        }
+        return attributedString
+        }
 }
+
