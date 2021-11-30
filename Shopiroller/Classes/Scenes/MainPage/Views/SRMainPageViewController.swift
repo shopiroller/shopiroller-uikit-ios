@@ -89,9 +89,10 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         
         group?.notify(queue: .main, execute: {
             if SRAppContext.isLoading == false {
+                self.group = nil
                 self.mainCollectionView.refreshControl?.endRefreshing()
                 self.mainCollectionView.reloadData()
-                configureEmptyView()
+                self.configureEmptyView()
             }
         })
     }
