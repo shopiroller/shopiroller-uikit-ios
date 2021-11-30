@@ -36,7 +36,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
         stockLabel.textColor = .orangeyRed
         stockLabel.font = .bold10
         
-        countLabel.textColor = (countLabel.text == 0 ? .textPCaption : .textPrimary)
+        countLabel.textColor = (countLabel.text == "\(0)" ? .textPCaption : .textPrimary)
         countLabel.font = .semiBold12
         
         controlView.layer.cornerRadius = 6
