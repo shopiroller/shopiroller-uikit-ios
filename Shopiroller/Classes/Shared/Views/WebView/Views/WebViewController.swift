@@ -29,7 +29,8 @@ class WebViewController: BaseViewController<WebViewViewModel> {
         
         titleView.isHidden = false
         
-        titleLabel.textColor = .black
+        titleLabel.textColor = .textPrimary
+        titleLabel.font = .medium20
         titleLabel.text = Constans.webViewTitle
         
         dismissButton.setImage(UIImage(systemName: "xmark"))

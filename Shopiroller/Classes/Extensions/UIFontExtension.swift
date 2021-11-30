@@ -91,6 +91,8 @@ extension UIFont {
     
     static let medium12: UIFont = SRFont.medium.font(ofSize: 12.0)
     
+    static let medium20: UIFont = SRFont.medium.font(ofSize: 20.0)
+    
     static let medium14: UIFont = SRFont.medium.font(ofSize: 14.0)
     
     static let semiBold12: UIFont = SRFont.semiBold.font(ofSize: 12.0)
@@ -99,11 +101,19 @@ extension UIFont {
     
     static let semiBold14: UIFont = SRFont.semiBold.font(ofSize: 14.0)
     
+    static let semiBold15: UIFont = SRFont.semiBold.font(ofSize: 15.0)
+    
+    static let semiBold16: UIFont = SRFont.semiBold.font(ofSize: 16.0)
+    
+    static let semiBold20: UIFont = SRFont.semiBold.font(ofSize: 20.0)
+    
     static let subHead: UIFont = SRFont.bold.font(ofSize: 14.0)
     
     static let bold24: UIFont = SRFont.bold.font(ofSize: 24)
     
     static let bold18: UIFont = SRFont.bold.font(ofSize: 18)
+    
+    static let bold10: UIFont = SRFont.bold.font(ofSize: 10)
     
     static let pharagraph: UIFont = SRFont.regular.font(ofSize: 14.0)
     

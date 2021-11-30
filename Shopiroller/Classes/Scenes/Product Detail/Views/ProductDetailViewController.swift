@@ -155,7 +155,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         descriptionContainer.layer.masksToBounds = true
         descriptionContainer.clipsToBounds = true
         descriptionTitleLabel.text = Constants.descriptionTitle
-        descriptionTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        descriptionTitleLabel.font = .semiBold14
         
         returnExchangeContainer.makeCardView()
         returnExchangeContainer.backgroundColor = .buttonLight
@@ -163,7 +163,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         returnExchangeImage.image = UIImage(systemName: "chevron.right")
         returnExchangeImage.tintColor = .black
         returnExchangeTitleLabel.text = Constants.returnExchangeTitle
-        returnExchangeTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        returnExchangeTitleLabel.font = .semiBold14
         
         deliveryTermsContainer.makeCardView()
         deliveryTermsContainer.backgroundColor = .buttonLight
@@ -171,13 +171,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         deliveryContainerImage.image = UIImage(systemName: "chevron.right")
         deliveryContainerImage.tintColor = .black
         deliveryTermsTitleLabel.text = Constants.deliveryTitle
-        deliveryTermsTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        deliveryTermsTitleLabel.font = .semiBold14
         
         quantityContainer.makeCardView()
         quantityContainer.backgroundColor = .buttonLight
         quantityContainer.clipsToBounds = true
         quantityTitleLabel.text = Constants.quantityTitle
-        quantityTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        quantityTitleLabel.font = .semiBold14
         
         
         shippingPriceContainer.makeCardView()
@@ -189,6 +189,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         addToCardButton.setTitleColor(.white)
         addToCardButton.setImage(UIImage(systemName: "cart"))
         addToCardButton.tintColor = .white
+        addToCardButton.titleLabel?.font = .semiBold16
         if #available(iOS 15.0, *) {
             addToCardButton.configuration?.imagePadding = 15
         } else {
@@ -385,6 +386,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func setUI() {
+        
+        productTitleLabel.textColor = .textPrimary
+        productTitleLabel.font = .bold24
         productTitleLabel.text = viewModel.getTitle()
         
         if let brandImage = viewModel.getBrandImage() {

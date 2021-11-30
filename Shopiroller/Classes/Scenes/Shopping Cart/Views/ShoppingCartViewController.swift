@@ -34,10 +34,18 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         getShoppingCart()
         
         itemCountLabel.textColor = .textPCaption
-        clearCartButton.tintColor = .textPrimary
+        itemCountLabel.font = .regular12
+        
+        clearCartButton.tintColor = .textSecondary
+        clearCartButton.titleLabel?.font = .regular12
         
         campaignView.backgroundColor = .buttonLight
         campaignLabel.textColor = .textPrimary
+        campaignLabel.font = .regular12
+        
+        checkoutButton.setTitle("shopping_cart_validate_proceed_checkout".localized)
+        checkoutButton.titleLabel?.font = .semiBold15
+        checkoutButton.setTitleColor(.white)
         
         tableView.tableFooterView = UIView()
 

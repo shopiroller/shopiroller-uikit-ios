@@ -22,8 +22,11 @@ class AddressView: BaseView {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.textSecondary10.cgColor
         address.textColor = .textPCaption
-        title.text = model.type.text
+        address.font = .regular12
         address.text = model.address
+        title.textColor = .textPrimary
+        title.font = .semiBold14
+        title.text = model.type.text
         addressImageView.image = model.image
     }
     

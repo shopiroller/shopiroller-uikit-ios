@@ -49,26 +49,34 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     
     func configureCell(viewModel: ProductViewModel){
+        
+        productTitleLabel.font = .regular12
+        productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
         
         
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
             productNewPrice.isHidden = false
+            
             productDiscountContainer.makeCardView()
             productDiscountContainer.layer.masksToBounds = true
             productDiscountContainer.backgroundColor = .badgeSecondary
             productDiscountLabel.text = viewModel.discount
+            productDiscountLabel.font = .semiBold12
+            
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium12
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(viewModel.getPrice(), currency: viewModel.getCurrency())
+            
+            productNewPrice.font = .semiBold14
             productNewPrice.text = viewModel.getCampaignPrice() + " " + viewModel.getCurrency()
         }else{
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
             productOldPrice.text = viewModel.getPrice()
             productOldPrice.textColor = .black
-            productOldPrice.font.withSize(17)
+            productNewPrice.font = .semiBold14
         }
             
         if let image = viewModel.getImage() { 

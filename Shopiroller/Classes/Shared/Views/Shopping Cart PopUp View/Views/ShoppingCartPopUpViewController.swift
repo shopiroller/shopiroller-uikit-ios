@@ -34,13 +34,19 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
         super.setup()
         
         titleLabel.textColor = .textPrimary
+        titleLabel.font = .bold24
         descriptionLabel.textColor = .textPCaption
+        descriptionLabel.font = .regular14
         warningLabel.textColor = .orangeyRed
+        warningLabel.font = .medium12
         
         containerView.layer.cornerRadius = 6
+        
         checkoutButton.backgroundColor = .textPrimary
         checkoutButton.tintColor = .white
         checkoutButton.layer.cornerRadius = 6
+        checkoutButton.titleLabel?.textColor = .white
+        checkoutButton.titleLabel?.font = .semiBold14
         
         titleLabel.text = viewModel.getTitle()
         descriptionLabel.text = viewModel.getDescription()

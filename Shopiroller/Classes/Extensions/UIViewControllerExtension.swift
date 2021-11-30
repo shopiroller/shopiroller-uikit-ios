@@ -155,7 +155,7 @@ extension UIViewController {
     }
     
     func initializeNavigationBar() {
-        navigationItem.backButtonTitle = " "
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
     }
     
