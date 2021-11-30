@@ -59,7 +59,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         switch viewModel.getFilterListSelector(position: indexPath.row) {
         case .category:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
-            cell.setupCategory()
+            cell.setupCategory(selectedLabel: viewModel.getSelectedCategoryName())
             return cell
         case .brand:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
@@ -98,8 +98,12 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate {
-    func choiceConfirmed(selectedItem: CategoriesItem?) {
-        
+    func choiceConfirmed(selectedItem: FilterChoiceTableViewModel?) {
+        guard let selectedItem = selectedItem else {
+            return
+        }
+        viewModel.selectedModel.categoryIds = [selectedItem]
+        filterTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
     func checkedChanged(type: FilterSwitchType, checked: Bool) {

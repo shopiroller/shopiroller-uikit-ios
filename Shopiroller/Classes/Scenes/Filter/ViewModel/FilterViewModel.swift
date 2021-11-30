@@ -14,12 +14,13 @@ class FilterViewModel: BaseViewModel {
     private let showcaseId: String?
     
     private var filterOptions: SRFilterOptionsResponseModel?
-    
     private var filterListSelector: [FilterTableViewSelector] = []
+    
+    var selectedModel: FilterModel = FilterModel()
     
     init(searchText: String? = nil, categoryId: String? = nil, showcaseId: String? = nil) {
         self.searchText = searchText
-        self.categoryId = categoryId
+        self.categoryId = nil
         self.showcaseId = showcaseId
     }
     
@@ -28,7 +29,7 @@ class FilterViewModel: BaseViewModel {
             URLQueryItem(name: SRAppConstants.Query.Keys.searchText, value: searchText),
             URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId),
             URLQueryItem(name: SRAppConstants.Query.Keys.showcaseId, value: showcaseId)]
-       
+        
         SRNetworkManagerRequests.getFilterOptions(urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
@@ -88,6 +89,19 @@ class FilterViewModel: BaseViewModel {
     
     func getFilterChoiceViewModel() -> FilterChoiceViewModel {
         return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [])
+    }
+    
+    func getSelectedCategoryName() -> String {
+        var label =  ""
+        for (index, item) in selectedModel.categoryIds.enumerated() {
+            if let name = item.name {
+                label += name
+                if (index != selectedModel.categoryIds.count - 1) {
+                    label += ","
+                }
+            }
+        }
+        return label
     }
     
     

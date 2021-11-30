@@ -15,6 +15,7 @@ class FilterVariationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.textColor = .textPrimary
+        selectionLabel.textColor = .textPCaption
     }
     
     func setup(model: VariationGroupsItem) {
@@ -22,8 +23,14 @@ class FilterVariationTableViewCell: UITableViewCell {
         titleLabel.text = model.name
     }
     
-    func setupCategory() {
+    func setupCategory(selectedLabel: String) {
         titleLabel.text = "filter_category".localized
+        if(selectedLabel.isEmpty) {
+            selectionLabel.isHidden = true
+        }else {
+            selectionLabel.isHidden = false
+            selectionLabel.text = selectedLabel
+        }
     }
     
     func setupBrand() {

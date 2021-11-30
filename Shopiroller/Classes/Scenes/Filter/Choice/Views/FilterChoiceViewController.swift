@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol FilterChoiceViewControllerDelegate {
-    func choiceConfirmed(selectedItem: CategoriesItem?)
+    func choiceConfirmed(selectedItem: FilterChoiceTableViewModel?)
 }
 class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
@@ -35,6 +36,12 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
+        if(viewModel.isValid()) {
+            delegate.choiceConfirmed(selectedItem: viewModel.getSelectedFilterChoiceTableViewModel())
+            pop(animated: true, completion: nil)
+        } else {
+            view.makeToast("filter_choice_validation".localized)
+        }
     }
     
 }
@@ -42,17 +49,20 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
 extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getDataListCount()
+        return viewModel.getTableViewListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterChoiceTableViewCell.reuseIdentifier, for: indexPath) as! FilterChoiceTableViewCell
-        cell.setup(name: "filter_choice_apply")
+        cell.setup(model: viewModel.getTableViewListItem(position: indexPath.row))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        if let indexPath = viewModel.selectedIndexPath {
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        viewModel.selectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -27,10 +27,17 @@ class FilterChoiceTableViewCell: UITableViewCell {
         }
     }
     
-    func setup(name: String?) {
-        titleLabel.text = name
+    func setup(model: FilterChoiceTableViewModel) {
+        titleLabel.text = model.name
         doneIcon.isHidden = true
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        titleLeadingConstraint.constant = 20 + CGFloat((model.depth * 10))
     }
     
+}
+
+struct FilterChoiceTableViewModel {
+    let categoryId: String?
+    let name: String?
+    let depth: Int
 }
