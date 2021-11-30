@@ -59,16 +59,16 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         switch viewModel.getFilterListSelector(position: indexPath.row) {
         case .category:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
-            cell.setupCategory(selectedLabel: viewModel.getSelectedCategoryName())
+            cell.setupCategory(selectionLabel: viewModel.getSelectionLabel())
             return cell
         case .brand:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
-            cell.setupBrand()
+            cell.setupBrand(selectionLabel: viewModel.getSelectionLabel())
             return cell
         case .variationGroups(position: let position):
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterVariationTableViewCell.reuseIdentifier, for: indexPath) as! FilterVariationTableViewCell
             if let item = viewModel.getVariationGroupsItem(position: position) {
-                cell.setup(model: item)
+                cell.setup(model: item, selectionLabel: viewModel.getSelectionLabel())
             }
             return cell
         case .priceRange:
@@ -83,27 +83,18 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch viewModel.getFilterListSelector(position: indexPath.row) {
-        case .category:
-            prompt(FilterChoiceViewController(viewModel: viewModel.getFilterChoiceViewModel(), delegate: self), animated: true)
-        case .brand:
-            break
-        case .variationGroups(position: let position):
-            break
-        default:
-            break
+        viewModel.selectedIndexPath = indexPath
+        if let viewModel = viewModel.getFilterChoiceViewModel() {
+            prompt(FilterChoiceViewController(viewModel: viewModel, delegate: self), animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate {
-    func choiceConfirmed(selectedItem: FilterChoiceTableViewModel?) {
-        guard let selectedItem = selectedItem else {
-            return
-        }
-        viewModel.selectedModel.categoryIds = [selectedItem]
-        filterTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    func choiceConfirmed(selectedIds: [String], selectionLabel: String){
+        viewModel.choiceConfirmed(selectedIds: selectedIds, selectionLabel: selectionLabel)
+        filterTableView.reloadRows(at: [viewModel.selectedIndexPath], with: .automatic)
     }
     
     func checkedChanged(type: FilterSwitchType, checked: Bool) {

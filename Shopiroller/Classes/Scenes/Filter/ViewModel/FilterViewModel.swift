@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class FilterViewModel: BaseViewModel {
     
@@ -16,6 +17,8 @@ class FilterViewModel: BaseViewModel {
     private var filterOptions: SRFilterOptionsResponseModel?
     private var filterListSelector: [FilterTableViewSelector] = []
     
+    var selectedIndexPath = IndexPath(row: 0, section: 0)
+    private var selectionLabel = String()
     var selectedModel: FilterModel = FilterModel()
     
     init(searchText: String? = nil, categoryId: String? = nil, showcaseId: String? = nil) {
@@ -25,7 +28,7 @@ class FilterViewModel: BaseViewModel {
     }
     
     func getFilterOptions(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        var urlQueryItems: [URLQueryItem] = [
+        let urlQueryItems: [URLQueryItem] = [
             URLQueryItem(name: SRAppConstants.Query.Keys.searchText, value: searchText),
             URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId),
             URLQueryItem(name: SRAppConstants.Query.Keys.showcaseId, value: showcaseId)]
@@ -48,10 +51,10 @@ class FilterViewModel: BaseViewModel {
     }
     
     func configureTableList() {
-        if(!isCategoriesNullOrEmpty()) {
+        if(!(filterOptions?.categories?.isEmpty ?? true)) {
             filterListSelector.append(.category)
         }
-        if(!isBrandsNullOrEmpty()) {
+        if(!(filterOptions?.brands?.isEmpty ?? true)) {
             filterListSelector.append(.brand)
         }
         
@@ -67,12 +70,8 @@ class FilterViewModel: BaseViewModel {
         filterListSelector.append(.filterSwitch(type: .freeShippingSwitch))
     }
     
-    func isCategoriesNullOrEmpty() -> Bool {
-        return filterOptions?.categories?.isEmpty ?? true
-    }
-    
-    func isBrandsNullOrEmpty() -> Bool {
-        return filterOptions?.brands?.isEmpty ?? true
+    func getSelectionLabel() -> String {
+        return selectionLabel
     }
     
     func getFilterListSelectorCount() -> Int {
@@ -87,24 +86,39 @@ class FilterViewModel: BaseViewModel {
         return filterOptions?.variationGroups?[position]
     }
     
-    func getFilterChoiceViewModel() -> FilterChoiceViewModel {
-        return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [])
-    }
-    
-    func getSelectedCategoryName() -> String {
-        var label =  ""
-        for (index, item) in selectedModel.categoryIds.enumerated() {
-            if let name = item.name {
-                label += name
-                if (index != selectedModel.categoryIds.count - 1) {
-                    label += ","
-                }
-            }
+    func getFilterChoiceViewModel() -> FilterChoiceViewModel? {
+        switch getFilterListSelector(position: selectedIndexPath.row) {
+        case .category:
+            return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [])
+        case .brand:
+            return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [])
+        case .variationGroups(position: let position):
+            guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
+            return FilterChoiceViewModel(dataList: variationGroup)
+        default:
+            return nil
         }
-        return label
     }
     
-    
+    func choiceConfirmed(selectedIds: [String], selectionLabel: String) {
+        self.selectionLabel = selectionLabel
+        switch getFilterListSelector(position: selectedIndexPath.row) {
+        case .category:
+            selectedModel.categoryIds = selectedIds
+        case .brand:
+            selectedModel.brandIds = selectedIds
+        case .variationGroups(position: let position):
+            guard let variationGroup = getVariationGroupsItem(position: position) else {return}
+            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
+                selectedModel.variationGroups[index].variationIds = selectedIds
+            } else {
+                selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: selectedIds))
+            }
+        default:
+            break
+        }
+    }
+   
 }
 
 enum FilterTableViewSelector {

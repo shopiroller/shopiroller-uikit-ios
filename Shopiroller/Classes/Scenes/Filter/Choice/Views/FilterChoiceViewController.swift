@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol FilterChoiceViewControllerDelegate {
-    func choiceConfirmed(selectedItem: FilterChoiceTableViewModel?)
+    func choiceConfirmed(selectedIds: [String], selectionLabel: String)
 }
 class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
@@ -20,7 +20,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
     init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate) {
         self.delegate = delegate
-        super.init("filter_category".localized, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
+        super.init(viewModel.title, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
     }
 
     override func setup() {
@@ -32,16 +32,13 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         selectionTableView.register(cellClass: FilterChoiceTableViewCell.self)
         selectionTableView.delegate = self
         selectionTableView.dataSource = self
+        selectionTableView.allowsMultipleSelection = viewModel.isMultipleChoice
         selectionTableView.reloadData()
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        if(viewModel.isValid()) {
-            delegate.choiceConfirmed(selectedItem: viewModel.getSelectedFilterChoiceTableViewModel())
-            pop(animated: true, completion: nil)
-        } else {
-            view.makeToast("filter_choice_validation".localized)
-        }
+        delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds(), selectionLabel: viewModel.getSelectionNameLabel())
+        pop(animated: true, completion: nil)
     }
     
 }
@@ -54,15 +51,15 @@ extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterChoiceTableViewCell.reuseIdentifier, for: indexPath) as! FilterChoiceTableViewCell
-        cell.setup(model: viewModel.getTableViewListItem(position: indexPath.row))
+        cell.setup(model: viewModel.getTableViewListItem(position: indexPath.row), isCheckBox: viewModel.isMultipleChoice)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let indexPath = viewModel.selectedIndexPath {
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
-        viewModel.selectedIndexPath = indexPath
-        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRow(position: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        viewModel.didDeselectRow(position: indexPath.row)
     }
 }

@@ -18,23 +18,28 @@ class FilterVariationTableViewCell: UITableViewCell {
         selectionLabel.textColor = .textPCaption
     }
     
-    func setup(model: VariationGroupsItem) {
-        titleLabel.textColor = .textPrimary
+    func setup(model: VariationGroupsItem, selectionLabel: String) {
         titleLabel.text = model.name
+        setSelectionLabel(selectionLabel: selectionLabel)
     }
     
-    func setupCategory(selectedLabel: String) {
+    func setupCategory(selectionLabel: String) {
         titleLabel.text = "filter_category".localized
-        if(selectedLabel.isEmpty) {
-            selectionLabel.isHidden = true
-        }else {
-            selectionLabel.isHidden = false
-            selectionLabel.text = selectedLabel
-        }
+        setSelectionLabel(selectionLabel: selectionLabel)
     }
     
-    func setupBrand() {
+    func setupBrand(selectionLabel: String) {
         titleLabel.text = "filter_brand".localized
+        setSelectionLabel(selectionLabel: selectionLabel)
+    }
+    
+    private func setSelectionLabel(selectionLabel: String) {
+        if(selectionLabel.isEmpty) {
+            self.selectionLabel.isHidden = true
+        }else {
+            self.selectionLabel.isHidden = false
+            self.selectionLabel.text = selectionLabel
+        }
     }
  
 }
