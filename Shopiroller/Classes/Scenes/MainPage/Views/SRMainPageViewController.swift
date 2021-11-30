@@ -24,6 +24,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private var refreshControl = UIRefreshControl()
     
+    private let badgeView  = SRBadgeButton()
+    
     public init(viewModel: SRMainPageViewModel) {
         super.init("explore-page-title".localized, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
@@ -31,7 +33,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func setup() {
         super.setup()
         view.backgroundColor = .white
-        getCount()
 
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
@@ -50,17 +51,21 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getCount()
-        
+        getCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard , true))
+        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
-        
         updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cardButton])
+        cardButton.customView?.addSubview(badgeView)
+    }
+    
+    @objc func updateBadgeCount() {
+        badgeView.badge = SRAppContext.shoppingCartCount
     }
     
     func configureRefreshControl () {
@@ -125,7 +130,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func configureEmptyView() {
-        getCount()
         if viewModel.productItemCount() == 0 {
             shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())

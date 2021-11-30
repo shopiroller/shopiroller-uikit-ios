@@ -9,37 +9,6 @@ import UIKit
 import Kingfisher
 import LinkPresentation
 
-struct Constants {
-    
-    static var quantityTitle: String { return "quantity-title".localized }
-    
-    static var descriptionTitle: String { return "description-title".localized }
-    
-    static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
-    
-    static var deliveryTitle: String { return "delivery-terms-title".localized }
-    
-    static var freeShippingText: String { return "free-shipping-text".localized }
-    
-    static var soldOutText: String { return "sold-out-text".localized }
-    
-    static var addToCartText: String { return "add-to-cart".localized }
-    
-    static var shippingPriceText: String { return "shipping-price-text".localized }
-    
-    static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
-    
-    static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
-    
-    static var outOfStockTitle: String { return "product-detail-out-of-stock-title".localized }
-    
-    static var outOfStockDescription: String { return "product-detail-out-of-stock-description".localized }
-    
-    static var maxQuantityTitle: String { return "product-detail-maximum-product-quantity-title".localized  }
-    
-    static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
-    
-}
 private var lastContentOffset: CGFloat = 0
 
 public struct ImageSlideModel {
@@ -134,13 +103,14 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     
+    private let badgeView  = SRBadgeButton()
+    
     public init(viewModel: ProductDetailViewModel) {
         super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
     }
     
     public override func setup() {
         super.setup()
-        getCount()
         view.backgroundColor = .white
         
         checkmarkImage.tintColor = .white
@@ -240,11 +210,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard , true))
+        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
-        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cartButton],isBackButtonActive: true)
+        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cardButton],isBackButtonActive: true)
+        cardButton.customView?.addSubview(badgeView)
+
     }
     
     @objc func shareProduct() {
@@ -257,9 +229,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.getCount()
-        }
+        getCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+    }
+    
+    @objc func updateBadgeCount() {
+        badgeView.badge = SRAppContext.shoppingCartCount
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){

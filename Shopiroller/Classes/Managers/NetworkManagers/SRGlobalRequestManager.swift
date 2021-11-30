@@ -13,8 +13,15 @@ class SRGlobalRequestManager {
             (result) in
             switch result{
             case .success(let response):
-                SRAppContext.shoppingCartCount = response.data ?? 0
+                if let count = response.data {
+                    if count >= 10 {
+                        SRAppContext.shoppingCartCount = "\(9)" + "+"
+                    } else {
+                        SRAppContext.shoppingCartCount = "\(count)"
+                    }
+                }
                 DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
                     success?()
                 }
             case .failure(let err):
