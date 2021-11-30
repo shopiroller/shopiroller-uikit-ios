@@ -64,11 +64,11 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cardButton],isBackButtonActive: true)
-        cardButton.customView?.addSubview(badgeView)
+        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cartButton],isBackButtonActive: true)
+        cartButton.customView?.addSubview(badgeView)
     }
     
     private func getCount() {

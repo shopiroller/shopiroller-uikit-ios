@@ -67,11 +67,11 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cardButton],isBackButtonActive: true)
-        cardButton.customView?.addSubview(badgeView)
+        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton],isBackButtonActive: true)
+        cartButton.customView?.addSubview(badgeView)
     }
     
     private func configureEmptyView() {

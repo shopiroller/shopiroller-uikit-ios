@@ -57,11 +57,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cardButton])
-        cardButton.customView?.addSubview(badgeView)
+        updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cartButton])
+        cartButton.customView?.addSubview(badgeView)
     }
     
     @objc func updateBadgeCount() {
