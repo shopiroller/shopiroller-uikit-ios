@@ -25,6 +25,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private var refreshControl = UIRefreshControl()
     
     private let badgeView = SRBadgeButton()
+
     private var group : DispatchGroup? = nil
 
     public init(viewModel: SRMainPageViewModel) {
