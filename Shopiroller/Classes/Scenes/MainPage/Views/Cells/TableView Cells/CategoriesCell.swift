@@ -45,7 +45,7 @@ class CategoriesCell: UICollectionViewCell {
         seeAllContainer.addGestureRecognizer(seeAllTapGesture)
         seeAllTitle.text = Constants.seeAllTitle
         sectionTitleLabel.text = Constants.sectiontitle
-        sectionTitleLabel.font = .headTwo
+        sectionTitleLabel.font = .bold18
         seeAllImage.image = .rightArrow
         seeAllTitle.font = .regular12
         seeAllTitle.textColor = .textPCaption

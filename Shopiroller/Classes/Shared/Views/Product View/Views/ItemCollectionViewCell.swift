@@ -42,7 +42,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productImageContainer.makeCardView()
         productImageContainer.clipsToBounds = true
         
-        productNewPrice.font = .headTwoSemiBold
+        productNewPrice.font = .semiBold14
         
         productDiscountLabel.font = .semiBold12
     }

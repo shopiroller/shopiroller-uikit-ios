@@ -48,7 +48,10 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
-        getProducts()
+        getSliders(showProgress: true)
+        getCategories(showProgress: true)
+        getShowCase(showProgress: true)
+        getProducts(showProgress: true)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +118,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getProducts() {
-        viewModel.getProducts(succes: {
+    private func getProducts(showProgress: Bool) {
+        viewModel.getProducts(showProgress: showProgress, succes: {
             [weak self] in
             guard let self = self else { return }
             if self.group != nil {
@@ -173,9 +176,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
             configureRefreshControl()
-            getSliders(showProgress: true)
-            getCategories(showProgress: true)
-            getShowCase(showProgress: true)
         }
     }
     
@@ -345,7 +345,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == viewModel.productItemCount() - 2){
-            getProducts()
+            getProducts(showProgress: true)
         }
     }
     

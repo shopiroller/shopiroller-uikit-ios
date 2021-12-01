@@ -77,17 +77,13 @@ extension UIFont {
 
 extension UIFont {
     
-    static let headOne: UIFont = SRFont.bold.font(ofSize: 24.0)
-    
-    static let headTwo: UIFont = SRFont.bold.font(ofSize: 18.0)
-    
-    static let headTwoSemiBold: UIFont = SRFont.semiBold.font(ofSize: 14.0)
-    
     static let textStyle: UIFont = SRFont.regular.font(ofSize: 24.0)
     
     static let regular12: UIFont = SRFont.regular.font(ofSize: 12.0)
     
     static let regular14: UIFont = SRFont.medium.font(ofSize: 14.0)
+    
+    static let regular24: UIFont = SRFont.medium.font(ofSize: 24.0)
     
     static let medium12: UIFont = SRFont.medium.font(ofSize: 12.0)
     
