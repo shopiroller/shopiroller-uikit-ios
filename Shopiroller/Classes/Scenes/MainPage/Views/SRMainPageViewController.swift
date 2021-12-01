@@ -24,6 +24,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private var refreshControl = UIRefreshControl()
     
+    private let badgeView  = SRBadgeButton()
+    private var group : DispatchGroup? = nil
+
     public init(viewModel: SRMainPageViewModel) {
         super.init("explore-page-title".localized, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
@@ -31,7 +34,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func setup() {
         super.setup()
         view.backgroundColor = .white
-        getCount()
 
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
@@ -53,35 +55,40 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getCount()
-        
+        getCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard , true))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
         let optionsButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon, .openOptions))
-        
-        updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cardButton])
+        updateNavigationBar(rightBarButtonItems:  [optionsButton,searchButton,cartButton])
+        cartButton.customView?.addSubview(badgeView)
+    }
+    
+    @objc func updateBadgeCount() {
+        badgeView.badge = SRAppContext.shoppingCartCount
     }
     
     func configureRefreshControl () {
-        // Add the refresh control to your UIScrollView object.
         mainCollectionView.refreshControl = UIRefreshControl()
         mainCollectionView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
     @objc func didPullToRefresh(_ sender: Any) {
-        if SRAppContext.isLoading == false {
-            self.getSliders(showProgress: false)
-            self.getCategories(showProgress: false)
-            self.getShowCase(showProgress: false)
-            self.viewModel.clearProductListAndCurrentPage()
-            self.getProducts()
-            self.mainCollectionView.refreshControl?.endRefreshing()
-        }
+        group = DispatchGroup()
+        group?.enter()
+        group?.enter()
+        group?.enter()
+        group?.enter()
         
+        DispatchQueue.main.async {
+            self.viewModel.clearProductListAndCurrentPage()
+            self.mainCollectionView.reloadData()
+        }
+      
         self.getProducts(showProgress: false)
         self.getSliders(showProgress: false)
         self.getCategories(showProgress: false)
@@ -100,7 +107,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private func getSliders(showProgress: Bool) {
         viewModel.getSliders(showProgress: showProgress,success: { [weak self] in
             guard let self = self else { return }
-            self.mainCollectionView.reloadData()
+            if self.group != nil {
+                self.group?.leave()
+            } else {
+                self.mainCollectionView.reloadData()
+            }
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
         }
@@ -110,9 +121,13 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         viewModel.getProducts(showProgress: showProgress,succes: {
             [weak self] in
             guard let self = self else { return }
-            self.shimmerCollectionView.isHidden = false
-            self.configureEmptyView()
-            self.mainCollectionView.reloadData()
+            if self.group != nil {
+                self.group?.leave()
+            }else {
+                self.shimmerCollectionView.isHidden = false
+                self.configureEmptyView()
+                self.mainCollectionView.reloadData()
+            }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -123,7 +138,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         viewModel.getCategories(showProgress: showProgress,succes: {
             [weak self] in
             guard let self = self else { return }
-            self.mainCollectionView.reloadData()
+            if self.group != nil {
+                self.group?.leave()
+            }else {
+                self.mainCollectionView.reloadData()
+            }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -134,7 +153,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         viewModel.getShowCase(showProgress: showProgress,succes: {
             [weak self] in
             guard let self = self else { return }
-            self.mainCollectionView.reloadData()
+            if self.group != nil {
+                self.group?.leave()
+            }else {
+                self.mainCollectionView.reloadData()
+            }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -142,7 +165,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func configureEmptyView() {
-        getCount()
         if viewModel.productItemCount() == 0 {
             shimmerCollectionView.isHidden = true
             emptyView.setup(model: viewModel.getEmptyModel())
