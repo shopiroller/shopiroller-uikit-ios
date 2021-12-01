@@ -76,9 +76,7 @@ extension UIFont {
 }
 
 extension UIFont {
-    
-    static let textStyle: UIFont = SRFont.regular.font(ofSize: 24.0)
-    
+        
     static let regular12: UIFont = SRFont.regular.font(ofSize: 12.0)
     
     static let regular14: UIFont = SRFont.medium.font(ofSize: 14.0)
@@ -104,18 +102,15 @@ extension UIFont {
     static let semiBold16: UIFont = SRFont.semiBold.font(ofSize: 16.0)
     
     static let semiBold20: UIFont = SRFont.semiBold.font(ofSize: 20.0)
-    
-    static let subHead: UIFont = SRFont.bold.font(ofSize: 14.0)
-    
+        
     static let bold24: UIFont = SRFont.bold.font(ofSize: 24)
     
     static let bold18: UIFont = SRFont.bold.font(ofSize: 18)
     
-    static let bold10: UIFont = SRFont.bold.font(ofSize: 10)
-        
-    static let span: UIFont = SRFont.regular.font(ofSize: 12.0)
+    static let bold9: UIFont = SRFont.bold.font(ofSize: 9)
     
-    static let badgeText: UIFont = SRFont.bold.font(ofSize: 9.0)
+    static let bold10: UIFont = SRFont.bold.font(ofSize: 10)
+
     
     class func listAllFontsOnSystem(){
         let familyNames = UIFont.familyNames

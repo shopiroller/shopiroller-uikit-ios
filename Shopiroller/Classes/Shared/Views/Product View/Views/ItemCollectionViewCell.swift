@@ -89,7 +89,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageFreeShippingContainer.isHidden = false
             freeShippingLabel.textColor = .white
             freeShippingLabel.text = Constants.freeShipping
-            freeShippingLabel.font = .badgeText
+            freeShippingLabel.font = .bold9
             productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
             productImageFreeShippingContainer.layer.cornerRadius = 5
             productImageFreeShippingContainer.layer.masksToBounds = true
@@ -101,7 +101,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageSoldOutContainer.isHidden = false
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
-            soldOutLabel.font = .badgeText
+            soldOutLabel.font = .bold9
             productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
             productImageSoldOutContainer.layer.cornerRadius = 5
             productImageSoldOutContainer.layer.masksToBounds = true
