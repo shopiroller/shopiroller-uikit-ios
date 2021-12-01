@@ -48,7 +48,7 @@ open class SRAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public func applicationWillTerminate(_ application: UIApplication) {
-        SRAppContext.shoppingCartCount = 0
+        SRAppContext.shoppingCartCount = "0"
     }
     
 }
