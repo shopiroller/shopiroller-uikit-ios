@@ -192,7 +192,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func clearProductListAndCurrentPage() {
-        products = []
+        products.removeAll()
         currentPage = 0
         
     }
