@@ -67,7 +67,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         selectPaymentMethodView.backgroundColor = .buttonLight.withAlphaComponent(0.77)
         selectPaymentMethodView.layer.cornerRadius = 6
         selectMethodTitle.textColor = .textSecondary
-        selectMethodTitle.font = UIFont.systemFont(ofSize: 13)
+        selectMethodTitle.font = .medium14
         selectMethodTitle.text = Constants.selectPaymentMethodText
         
         titleUnderLineView.backgroundColor = .veryLightBlue
@@ -76,10 +76,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         selectMethodRightArrow.tintColor = .textPCaption
         
         selectedMethodTitle.textColor = .textPCaption
-        selectedMethodTitle.font = UIFont.systemFont(ofSize: 12)
+        selectedMethodTitle.font = .regular12
         
         selectedMethodViewTitle.textColor = .textPCaption
-        selectedMethodViewTitle.font = UIFont.systemFont(ofSize: 12)
+        selectedMethodViewTitle.font = .regular12
         
         creditCartHolderNameTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartHolderNameTextField.layer.cornerRadius = 6
@@ -207,7 +207,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorContainer.isHidden = false
             selectedMethodViewTitle.text = Constants.selectedPaymentMethodPayAtTheDoor.uppercased()
             selectedMethodTitle.text = Constants.selectedPaymentMethodPayAtTheDoor
-            payAtTheDoorDescription.font = UIFont.systemFont(ofSize: 14)
+            payAtTheDoorDescription.font = .regular14
             payAtTheDoorDescription.textColor = .textPCaption
             payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
         case .none:
@@ -366,7 +366,7 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
         var style = ToastStyle()
         style.backgroundColor = .veryLightPink
         style.messageColor = .textPrimary
-        style.messageFont = UIFont.systemFont(ofSize: 12)
+        style.messageFont = .semiBold12
         self.view.makeToast(String(format: "checkout-table-view-iban-copied-message".localized),position: ToastPosition.bottom,style: style)
     }
     

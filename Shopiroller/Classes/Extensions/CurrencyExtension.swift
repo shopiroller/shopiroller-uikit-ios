@@ -23,7 +23,7 @@ extension String {
         
         let range = NSRange(location: firstIndex - 1, length: lastIndex - firstIndex + 5)
 
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10)]
+        let attrs = [NSAttributedString.Key.font : UIFont.bold10]
         
         mutableAttrString.addAttributes(attrs, range: range)
 

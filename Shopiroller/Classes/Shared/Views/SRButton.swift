@@ -50,7 +50,7 @@ public struct SRButtonStyle {
          borderColor: UIColor? = .clear,
          tintColor: UIColor? = .clear,
          titleColor: UIColor? = .clear,
-         titleFont: UIFont? = UIFont.boldSystemFont(ofSize: 14)) {
+         titleFont: UIFont? = .semiBold14) {
         self.roundMultiplier = roundMultiplier
         self.gradientColors = gradientColors
         self.backgroundColor = backgroundColor

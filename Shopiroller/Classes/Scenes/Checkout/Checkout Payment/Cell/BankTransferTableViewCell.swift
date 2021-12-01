@@ -55,19 +55,19 @@ class BankTransferTableViewCell: UITableViewCell {
         ibanCopyButton.layer.backgroundColor = UIColor.buttonLight.cgColor
       
         
-        bankAccountTitle.font = UIFont.boldSystemFont(ofSize: 14)
+        bankAccountTitle.font = .semiBold14
         bankAccountTitle.textColor = .textPrimary
         
-        bankAccountDescription.font = UIFont.boldSystemFont(ofSize: 12)
+        bankAccountDescription.font = .regular12
         bankAccountDescription.textColor = .textPCaption
         
-        bankAccountIban.font = UIFont.boldSystemFont(ofSize: 12)
+        bankAccountIban.font = .regular12
         bankAccountIban.textColor = .textPCaption
         
-        bankAccountDepartment.font = UIFont.boldSystemFont(ofSize: 12)
+        bankAccountDepartment.font = .regular12
         bankAccountDescription.textColor = .textPCaption
 
-        bankAccountNumber.font = UIFont.boldSystemFont(ofSize: 12)
+        bankAccountNumber.font = .regular12
         bankAccountNumber.textColor = .textPCaption
         
         let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
