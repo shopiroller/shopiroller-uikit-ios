@@ -45,7 +45,7 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         selectionPopUpTitle.text = Constants.viewTitleLabel
         cancelButton.setTitle(Constants.cancelButtonText)
         cancelButton.setTitleColor(.textPrimary)
-        cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        cancelButton.titleLabel?.font = .semiBold16
         searchTextField.placeholder = Constants.searchText
         
         searchTextField.setBottomBorderOnlyWith(color: UIColor.darkGray.cgColor)

@@ -25,7 +25,7 @@ class ProductsTitleView: UICollectionReusableView {
      override init(frame: CGRect) {
          super.init(frame: frame)
          label.text = Constants.titleText
-         label.font = .headTwo
+         label.font = .bold18
          label.textColor = .textPrimary
          addSubview(label)
 

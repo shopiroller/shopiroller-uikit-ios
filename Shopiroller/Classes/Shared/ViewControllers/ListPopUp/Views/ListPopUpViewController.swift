@@ -44,10 +44,10 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         popUpImageView.layer.backgroundColor = UIColor.badgeSecondary.cgColor
         popUpImageView.layer.cornerRadius = popUpImageView.frame.width / 2
         
-        shoppingCartDescription.font = UIFont.systemFont(ofSize: 14)
+        shoppingCartDescription.font = .semiBold14
         shoppingCartDescription.textColor = .textPCaption
         
-        shoppingCartInformation.font = UIFont.systemFont(ofSize: 12)
+        shoppingCartInformation.font = .semiBold12
         shoppingCartInformation.textColor = .orangeyRed
         
         popUpTableView.register(cellClass: AddressSelectTableViewCell.self)
@@ -79,20 +79,20 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     private func setUpForAddress() {
         popUpImageView.image = .cargoShippingImage
         popUpTitle.text = "list-popup-select-address-title".localized
-        popUpTitle.font = UIFont.boldSystemFont(ofSize: 20)
+        popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
     }
     
     private func setUpForPayment() {
         popUpImageView.image = .emptyPaymentMethod
         popUpTitle.text = "list-popup-select-payment-title".localized
-        popUpTitle.font = UIFont.boldSystemFont(ofSize: 20)
+        popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
     }
     
     private func setUpForShoppingCart() {
         popUpTitle.text = "list-popup-shopping-cart-title".localized
-        popUpTitle.font = UIFont.boldSystemFont(ofSize: 24)
+        popUpTitle.font = .bold24
         popUpTitle.textColor = .black
         shoppingCartDescriptionContainer.isHidden = false
         shoppingCartInformationContainer.isHidden = false

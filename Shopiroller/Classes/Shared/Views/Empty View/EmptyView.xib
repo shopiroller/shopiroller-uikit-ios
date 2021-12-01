@@ -43,11 +43,12 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-Zc-FWX">
                             <rect key="frame" x="0.0" y="95" width="290" height="44"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45p-uo-rSy" userLabel="actionButton">
-                                    <rect key="frame" x="110.5" y="6.5" width="69.5" height="31"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45p-uo-rSy" userLabel="actionButton">
+                                    <rect key="frame" x="81.5" y="6.5" width="127.5" height="31"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Button">
+                                    <buttonConfiguration key="configuration" style="plain" title="Yeni Adres Ekle" buttonSize="medium">
                                         <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                                     </buttonConfiguration>
                                     <connections>

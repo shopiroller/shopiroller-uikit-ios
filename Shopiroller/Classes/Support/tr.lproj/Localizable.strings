@@ -136,6 +136,8 @@
 "shopping_cart_validate_description" = "Sepetiniz aşağıdaki nedenlerle güncellenecektir..";
 "shopping_cart_validate_warning" = "%@ ürünün stoğu değişti, %@ ürünün stoğu kalmadı";
 "shopping_cart_validate_ready_checkout" = "Hazır";
+"shopping_cart_validate_proceed_checkout" = "Ödemeye Devam Et";
+
 
 //MARK: - Cart Message Key
 "NotEnoughStock" = "%@ ürün kaldı";
@@ -144,7 +146,7 @@
 "ProductNotFound" = "Sepet Temizlendi";
 
 // MARK: - Shopping Cell
-"shopping_cell_cargo_warning" = "%@ özel kargo ücreti uygulandı.";
+"shopping_cell_cargo_warning" = "%@ özel kargo ücreti uygulanır.";
 "shopping_cell_maximum_product_message" = "
 Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 

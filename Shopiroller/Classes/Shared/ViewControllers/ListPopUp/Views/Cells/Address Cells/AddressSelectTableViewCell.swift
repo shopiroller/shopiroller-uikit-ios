@@ -27,19 +27,19 @@ class AddressSelectTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         addressTitle.textColor = .textPrimary
-        addressTitle.font = UIFont.boldSystemFont(ofSize: 14)
+        addressTitle.font = .semiBold14
         
         addressFirstLine.textColor = .textPCaption
-        addressFirstLine.font = UIFont.systemFont(ofSize: 12)
+        addressFirstLine.font = .regular12
         addressFirstLine.lineBreakMode = .byTruncatingTail
     
         addressSecondLine.textColor = .textPCaption
-        addressSecondLine.font = UIFont.systemFont(ofSize: 12)
+        addressSecondLine.font = .regular12
         addressSecondLine.adjustsFontSizeToFitWidth = false
         addressSecondLine.lineBreakMode = .byTruncatingTail
         
         addressThirdLine.textColor = .textPCaption
-        addressThirdLine.font = UIFont.systemFont(ofSize: 12)
+        addressThirdLine.font = .regular12
         addressThirdLine.adjustsFontSizeToFitWidth = false
         addressThirdLine.lineBreakMode = .byTruncatingTail
         

@@ -133,16 +133,30 @@ extension UIViewController {
     }
     
     @objc func openOptions() {
-        prompt(UserAddressViewController(viewModel: UserAddressViewModel())
-               , animated: true, completion: nil)
+        let actionSheetController = UIAlertController(title: "Select", message: "Select An Action", preferredStyle: .actionSheet)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }
+        actionSheetController.addAction(cancelAction)
+
+        let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { action -> Void in
+            let orderListVC = OrderListViewController(viewModel: OrderListViewModel())
+            self.prompt(orderListVC, animated: true, completion: nil)
+        }
+        actionSheetController.addAction(chooseOrderAction)
+        
+        let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { action -> Void in
+            let addressListVC = UserAddressViewController(viewModel: UserAddressViewModel())
+            self.prompt(addressListVC, animated: true, completion: nil)
+        }
+        actionSheetController.addAction(chooseAddressAction)
+
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     @objc func openMenu() {
-        //        prompt(OrderListViewController(viewModel: OrderListViewModel())
-        //               , animated: true, completion: nil)
-        let vc = CheckOutViewController(viewModel: CheckOutViewModel())
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+    
     }
     
     @objc func goBack() {
@@ -150,7 +164,7 @@ extension UIViewController {
     }
     
     func initializeNavigationBar() {
-        navigationItem.backButtonTitle = " "
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
     }
     

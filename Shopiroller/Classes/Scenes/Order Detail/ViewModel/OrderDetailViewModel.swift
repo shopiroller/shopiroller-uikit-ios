@@ -95,7 +95,7 @@ class OrderDetailViewModel: BaseViewModel {
             label.attributedText = attributedText
         } else {
             label.text = text
-            label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            label.font = .regular12
         }
         return label
     }
