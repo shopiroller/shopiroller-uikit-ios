@@ -33,7 +33,7 @@ public class BaseViewController<T>: UIViewController {
     
     internal func setup() {
     }
-    
+
     internal func setupNavigationBar(){}
     
     public override func viewWillAppear(_ animated: Bool) {

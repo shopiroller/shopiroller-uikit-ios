@@ -100,7 +100,7 @@ extension UIViewController {
         
     }
     
-    func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil , _ isCartButton: Bool? = false ) -> UIButton {
+    func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
         button.tintColor = .black
@@ -120,11 +120,6 @@ extension UIViewController {
         case .none:
             break
         }
-        
-        if isCartButton == true {
-            button.createBadge()
-        }
-        
         return button
     }
     
