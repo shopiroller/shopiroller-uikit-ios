@@ -43,13 +43,13 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getProducts(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getProducts(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         
-        SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
+        SRNetworkManagerRequests.getProducts(showProgress: false, urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):

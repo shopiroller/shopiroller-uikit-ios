@@ -45,10 +45,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
        
-        getProducts(showProgress: true)
-        getSliders(showProgress: true)
-        getCategories(showProgress: true)
-        getShowCase(showProgress: true)
+        getProducts()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -81,20 +78,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             self.getProducts()
             self.mainCollectionView.refreshControl?.endRefreshing()
         }
-        
-        self.getProducts(showProgress: false)
-        self.getSliders(showProgress: false)
-        self.getCategories(showProgress: false)
-        self.getShowCase(showProgress: false)
-        
-        group?.notify(queue: .main, execute: {
-            self.group = nil
-            if self.mainCollectionView.hasActiveDrag == false {
-                self.mainCollectionView.refreshControl?.endRefreshing()
-                self.mainCollectionView.reloadData()
-                self.configureEmptyView()
-            }
-        })
     }
     
     private func getSliders(showProgress: Bool) {
@@ -106,8 +89,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getProducts(showProgress: Bool) {
-        viewModel.getProducts(showProgress: showProgress,succes: {
+    private func getProducts() {
+        viewModel.getProducts(succes: {
             [weak self] in
             guard let self = self else { return }
             self.shimmerCollectionView.isHidden = false
@@ -153,6 +136,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
             configureRefreshControl()
+            getSliders(showProgress: true)
+            getCategories(showProgress: true)
+            getShowCase(showProgress: true)
         }
     }
     
@@ -322,7 +308,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == viewModel.productItemCount() - 2){
-            getProducts(showProgress: true)
+            getProducts()
         }
     }
     
