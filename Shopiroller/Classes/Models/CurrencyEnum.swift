@@ -8,7 +8,6 @@
 import Foundation
 
 enum CurrencyEnum: String, EnumDecodable, Encodable {
-    
     static var `default`: CurrencyEnum {
         return .TRY
     }
