@@ -19,15 +19,21 @@ class ProductListViewModel : BaseViewModel {
         
     }
     
-    var categoryId: String?
+    private var categoryId: String?
+    
+    private var title : String?
+    
+    private var categoryTitle: String?
     
     private var currentPage = 0
     
     private var productList: [ProductListModel]?
 
     
-    init(categoryId: String? = String()) {
+    init(categoryId: String? = nil , title: String? = nil, categoryTitle: String? = nil) {
         self.categoryId = categoryId
+        self.title = title
+        self.categoryTitle = categoryTitle
     }
     
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -49,7 +55,12 @@ class ProductListViewModel : BaseViewModel {
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: self.categoryId))
+        
+        if let categoryId = categoryId {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId))
+        } else {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: self.title))
+        }
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
             (result) in
@@ -90,6 +101,10 @@ class ProductListViewModel : BaseViewModel {
     
     func getProductId(position: Int) -> String {
         return productList?[position].id ?? ""
+    }
+    
+    func getPageTitle() -> String? {
+        return categoryTitle
     }
     
     

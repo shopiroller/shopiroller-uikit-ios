@@ -358,7 +358,7 @@ extension SRMainPageViewController : CategoriesCellDelegate {
             let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoryName(position: position),categoryId: viewModel.getCategoryId(position: position)))
             self.prompt(vc, animated: true, completion: nil)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoriesViewModel()?[position].categoryId))
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(position: position),categoryTitle: viewModel.getCategoryName(position: position)))
             prompt(vc, animated: true, completion: nil)
         }
         

@@ -110,6 +110,5 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId))
             prompt(vc, animated: true, completion: nil)
         }
-        
     }
 }

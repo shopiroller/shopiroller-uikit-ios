@@ -129,7 +129,8 @@ extension UIViewController {
     }
     
     @objc func searchProduct() {
-        
+        let searchVC = SearchViewController(viewModel: SearchViewModel())
+        self.prompt(searchVC, animated: true, completion: nil)
     }
     
     @objc func openOptions() {
