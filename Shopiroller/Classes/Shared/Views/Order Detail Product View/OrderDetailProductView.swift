@@ -30,7 +30,7 @@ class OrderDetailProductView: BaseView {
         
         let calculatedPrice: Double? = (model.campaignPrice == 0) ? model.paidPrice : model.campaignPrice
         
-        orderPrice.text = ECommerceUtil.getFormattedPrice(price:(calculatedPrice ?? 0 * Double(model.quantity ?? 0)), currency: ECommerceUtil.getCurrencySymbol(currency: model.currency))
+        orderPrice.text = ECommerceUtil.getFormattedPrice(price:(calculatedPrice ?? 0 * Double(model.quantity ?? 0)), currency: model.currency?.currencySymbol)
     }
     
 }

@@ -51,11 +51,7 @@ class ProductViewModel {
     }
     
     func getCurrency() -> String {
-        if productListModel?.currency == "TRY" || (productDetailModel?.currency == "TRY") {
-            return "TL"
-        }else {
-            return "$"
-        }
+        return productDetailModel?.currency?.rawValue ?? ""
     }
     
     func getCampaignPrice() -> String {

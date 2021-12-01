@@ -73,7 +73,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .priceRange:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterPriceRangeTableViewCell.reuseIdentifier, for: indexPath) as! FilterPriceRangeTableViewCell
-            cell.setup()
+            cell.setup(currency: viewModel.getCurrency())
             return cell
         case .filterSwitch(type: let type):
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterSwitchTableViewCell.reuseIdentifier, for: indexPath) as! FilterSwitchTableViewCell

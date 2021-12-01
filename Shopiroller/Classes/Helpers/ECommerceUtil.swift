@@ -13,6 +13,8 @@ class ECommerceUtil {
     public static let ddMMMMyyy: String  = "dd MMMM yyyy"
     public static let EEEEhhmm: String  = "EEEE, HH:mm"
     
+    public static let currencyTRY: String  = "TRY"
+    
     static func convertServerDate(date: String?, toFormat: String) -> String? {
         
         let dateFormatterGet = DateFormatter()
@@ -23,18 +25,6 @@ class ECommerceUtil {
         dateFormatterPrint.dateFormat = toFormat
         
         return dateFormatterPrint.string(from: date ?? Date())
-    }
-    
-    static func getCurrencySymbol(currency: String?) -> String {
-        guard let currency = currency else {return ""}
-        if (currency.caseInsensitiveCompare("TRY") == .orderedSame){return "₺"}
-        else if (currency.caseInsensitiveCompare("EUR") == .orderedSame){return "€"}
-        else if (currency.caseInsensitiveCompare("USD") == .orderedSame){return "$"}
-        else if (currency.caseInsensitiveCompare("GBP") == .orderedSame){return "£"}
-        else if (currency.caseInsensitiveCompare("IRR") == .orderedSame){return "﷼"}
-        else if (currency.caseInsensitiveCompare("NOK") == .orderedSame){return "kr"}
-        else if (currency.caseInsensitiveCompare("RUB") == .orderedSame){return "\u{20BD}"}
-        return currency
     }
     
     static func getFormattedPrice(price: Double?, currency: String?) -> String {

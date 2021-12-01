@@ -63,16 +63,16 @@ class ShoppingCartTableViewCell: UITableViewCell {
            let quantity = model.quantity {
             
             if(campaignPrice != 0) {
-                price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: ECommerceUtil.getCurrencySymbol(currency: model.product?.currency))
+                price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 
-                let campaignPrice = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: ECommerceUtil.getCurrencySymbol(currency: model.product?.currency))
+                let campaignPrice = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: campaignPrice)
                 attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
                 
                 discount.attributedText = attributeString
             } else {
                 discount.isHidden = true
-                price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: ECommerceUtil.getCurrencySymbol(currency: model.product?.currency))
+                price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
             }
         }
         
@@ -86,7 +86,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
             warningView.isHidden = false
-            warningLabel.text = String(format: "shopping_cell_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency))
+            warningLabel.text = String(format: "shopping_cell_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
             productImageToStackView.constant = 10
         }
         

@@ -114,11 +114,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getCurrency() -> String {
-        if productDetailModel?.currency == "TRY" {
-            return "TL"
-        }else {
-            return "$"
-        }
+        return productDetailModel?.currency?.rawValue ?? ""
     }
     
     func hasSituation() -> Bool {

@@ -86,6 +86,10 @@ class FilterViewModel: BaseViewModel {
         return filterOptions?.variationGroups?[position]
     }
     
+    func getCurrency() -> CurrencyEnum {
+        return CurrencyEnum.TRY
+    }
+    
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {
         switch getFilterListSelector(position: selectedIndexPath.row) {
         case .category:

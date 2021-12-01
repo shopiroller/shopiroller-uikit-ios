@@ -27,8 +27,14 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
     }
     
-    func setup() {
+    func setup(currency: CurrencyEnum) {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.textColor = .textSecondary
+        label.text = currency.rawValue
         
+        minPriceTextField.rightView = label
+        maxPriceTextField.rightView = label
     }
     
 }
