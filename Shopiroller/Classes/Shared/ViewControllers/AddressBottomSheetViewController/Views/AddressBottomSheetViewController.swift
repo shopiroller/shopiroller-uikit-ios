@@ -362,7 +362,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         addressTitleTextField.resignFirstResponder()
         self.viewModel.selectionType = .country
         statesTextField.isEnabled = true
-        statesTextField.text = ""
         citiesContainerView.isHidden = true
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getCountries(), type: .country))
         vc.delegate = self
@@ -382,7 +381,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         addressTitleTextField.resignFirstResponder()
         self.viewModel.selectionType = .state
         citiesTextField.isEnabled = true
-        citiesTextField.text = ""
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getStates(), type: .state))
         vc.delegate = self
         popUp(vc)
@@ -421,6 +419,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             if self?.viewModel.getStates().count != 0 {
                 self?.statesContainerView.isHidden = false
             } else {
+                self?.statesTextField.text = self?.countryTextField.text
+                self?.citiesTextField.text = self?.countryTextField.text
                 self?.statesContainerView.isHidden = true
             }
             guard let self = self else { return }
@@ -440,6 +440,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                     self?.citiesTextField.isEnabled = true
                 }
             }else {
+                self?.citiesTextField.text = self?.countryTextField.text
                 self?.citiesContainerView.isHidden = true
             }
             guard let self = self else { return }
@@ -847,16 +848,9 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .country:
             self.viewModel.countryId = id ?? ""
             getStateList()
-            if viewModel.getStates().count == 0 {
-                statesTextField.text = viewModel.addAddressModel.country
-                citiesTextField.text = viewModel.addAddressModel.country
-            }
         case .state:
             self.viewModel.stateId = id ?? ""
             getCitiesList()
-            if viewModel.getCities().count == 0 {
-                citiesTextField.text = viewModel.addAddressModel.country
-            }
         case .city:
             break
         case .none:
@@ -869,11 +863,7 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .country:
             countryTextField.text = name
         case .city:
-            if viewModel.getCities().count == 0 {
-                viewModel.addAddressModel.city = viewModel.addAddressModel.state
-            }else {
-                citiesTextField.text = name
-            }
+           citiesTextField.text = name
         case .state:
             statesTextField.text = name
         case .none:

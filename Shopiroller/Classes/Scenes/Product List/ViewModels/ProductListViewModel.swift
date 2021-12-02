@@ -91,6 +91,4 @@ class ProductListViewModel : BaseViewModel {
     func getProductId(position: Int) -> String {
         return productList?[position].id ?? ""
     }
-    
-    
 }
