@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol SearchTableViewCellDelegate : AnyObject {
+    func deleteButtonTapped(title : String?)
+}
+
 class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var searchTextLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     
     private var title: String? = nil
+    
+    var delegate : SearchTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +28,12 @@ class SearchTableViewCell: UITableViewCell {
     }
 
     @IBAction func deleteButtonTapped() {
-        print(title)
+        delegate?.deleteButtonTapped(title: self.title)
     }
     
     func configureCell(title : String?){
         self.title = title
+        searchTextLabel.text = title
     }
     
 }

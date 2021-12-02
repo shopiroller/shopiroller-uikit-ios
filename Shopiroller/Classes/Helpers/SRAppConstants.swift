@@ -78,6 +78,10 @@ public struct SRAppConstants {
         public static var badgeCount = "badgeCount"
     }
     
+    struct History {
+        static let searchHistory = "searchHistory"
+    }
+    
     enum NavigationItemSelectorType {
         case goToCard
         case searchProduct

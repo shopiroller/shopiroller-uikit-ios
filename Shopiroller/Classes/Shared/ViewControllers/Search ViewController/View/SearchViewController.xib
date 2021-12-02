@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="krh-Xy-3TV" id="G8h-di-sZC"/>
                 <outlet property="searchBar" destination="D6J-Ce-dUU" id="Pma-CO-Zay"/>
                 <outlet property="searchTableView" destination="aBd-ky-em8" id="FrQ-zu-bOc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,9 +36,12 @@
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                    <connections>
+                                        <action selector="backButtonTapped" destination="-1" eventType="touchUpInside" id="LcJ-ZI-FmO"/>
+                                    </connections>
                                 </button>
                                 <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="D6J-Ce-dUU">
-                                    <rect key="frame" x="30" y="5" width="354" height="51"/>
+                                    <rect key="frame" x="30" y="4.5" width="354" height="51"/>
                                     <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <scopeButtonTitles>
