@@ -37,10 +37,10 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         super.setup()
         
         resultTitle.textColor = .textPrimary
-        resultTitle.font = UIFont.bold24
+        resultTitle.font = .bold24
         
         resultDescription.textColor = .textPCaption
-        resultDescription.font = UIFont.regular14
+        resultDescription.font = .regular14
         
         resultFirstButton.layer.cornerRadius = 6
         resultSecondButton.layer.cornerRadius = 6
@@ -70,7 +70,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.failUpdatePaymentMethodButtonText)
         resultFirstButton.setTitleColor(.white)
-        resultFirstButton.titleLabel?.font = UIFont.semiBold14
+        resultFirstButton.titleLabel?.font = .semiBold14
         resultDetailDescription.isHidden = true
         resultSecondButton.isHidden = true
     }

@@ -133,6 +133,8 @@
 "shopping_cart_validate_description" = "Your basket will be updated for the reasons below.";
 "shopping_cart_validate_warning" = "%@ product’s stock changed, %@ products are out of stock.";
 "shopping_cart_validate_ready_checkout" = "Ready to Checkout";
+"shopping_cart_validate_proceed_checkout" = "Proceed to Checkout";
+
 
 //MARK: - Cart Message Key
 "NotEnoughStock" = "%@ product left";
@@ -141,7 +143,7 @@
 "ProductNotFound" = "Removed basket";
 
 // MARK: - Shopping Cell
-"shopping_cell_cargo_warning" = "%@ special cargo fee applied.";
+"shopping_cell_cargo_warning" = "%@ special cargo fee apply.";
 "shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
 
 //MARK: - Checkout Progress

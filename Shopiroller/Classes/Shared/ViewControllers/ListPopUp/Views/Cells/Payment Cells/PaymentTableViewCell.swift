@@ -24,7 +24,7 @@ class PaymentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         paymentTypeText.textColor = .textPrimary
-        paymentTypeText.font = UIFont.boldSystemFont(ofSize: 14)
+        paymentTypeText.font = .semiBold20
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         self.addGestureRecognizer(tapGesture)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,21 +35,18 @@
                             <rect key="frame" x="156.5" y="-36" width="76" height="76"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hqJ-Zb-n4x">
-                                    <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                    <rect key="frame" x="3" y="0.0" width="70" height="70"/>
                                     <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="KZU-kz-LcL"/>
                                         <constraint firstAttribute="width" secondItem="hqJ-Zb-n4x" secondAttribute="height" multiplier="1:1" id="hnI-Pk-nII"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="hqJ-Zb-n4x" firstAttribute="leading" secondItem="ff9-Z9-iyB" secondAttribute="leading" constant="8" id="7iH-x5-JDe"/>
-                                <constraint firstItem="hqJ-Zb-n4x" firstAttribute="top" secondItem="ff9-Z9-iyB" secondAttribute="top" constant="8" id="8Kc-Ga-f6b"/>
+                                <constraint firstItem="hqJ-Zb-n4x" firstAttribute="top" secondItem="ff9-Z9-iyB" secondAttribute="top" id="8Kc-Ga-f6b"/>
                                 <constraint firstItem="hqJ-Zb-n4x" firstAttribute="centerX" secondItem="ff9-Z9-iyB" secondAttribute="centerX" id="LyW-S0-Oup"/>
-                                <constraint firstAttribute="trailing" secondItem="hqJ-Zb-n4x" secondAttribute="trailing" constant="8" id="NAR-nG-mP7"/>
-                                <constraint firstItem="hqJ-Zb-n4x" firstAttribute="centerY" secondItem="ff9-Z9-iyB" secondAttribute="centerY" id="SMr-cb-MuQ"/>
                                 <constraint firstAttribute="height" constant="76" id="aS4-X3-1sW"/>
-                                <constraint firstAttribute="bottom" secondItem="hqJ-Zb-n4x" secondAttribute="bottom" constant="8" id="mwO-1m-Y5S"/>
                                 <constraint firstAttribute="width" secondItem="ff9-Z9-iyB" secondAttribute="height" id="wy6-5X-iXn"/>
                             </constraints>
                         </view>
@@ -59,7 +56,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT7-0T-1br">
                                     <rect key="frame" x="0.0" y="0.0" width="389" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50O-og-hbp">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50O-og-hbp">
                                             <rect key="frame" x="45" y="0.0" width="299" height="0.0"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <nil key="textColor"/>

@@ -70,8 +70,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         shoppingCardViewContainer.layer.cornerRadius = 6
         shoppingCardViewContainer.backgroundColor = .buttonLight
         shoppingCardViewTitle.text = Constants.shoppingCardViewTitle
-        shoppingCardViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
-        shoppingCardViewDescription.font = UIFont.systemFont(ofSize: 12)
+        shoppingCardViewTitle.font = .semiBold14
+        shoppingCardViewDescription.font = .regular12
         shoppingCardViewDescription.textColor = .textPCaption
         shoppingCardViewEditButton.setImage(UIImage(systemName: "pencil"))
         shoppingCardViewEditButton.tintColor = .textPCaption
@@ -80,8 +80,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         paymentCardViewContainer.layer.cornerRadius = 6
         paymentCardViewContainer.backgroundColor = .buttonLight
         paymentCardViewTitle.text = Constants.paymentCardViewTitle
-        paymentCardViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
-        paymentCardViewDescription.font = UIFont.systemFont(ofSize: 12)
+        paymentCardViewTitle.font = .semiBold14
+        paymentCardViewDescription.font = .regular12
         paymentCardViewDescription.textColor = .textPCaption
         paymentCardViewEditButton.setImage(UIImage(systemName: "pencil"))
         paymentCardViewEditButton.tintColor = .textPCaption
@@ -90,8 +90,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         billingAddressCardViewContainer.layer.cornerRadius = 6
         billingAddressCardViewContainer.backgroundColor = .buttonLight
         billingAddressViewTitle.text = Constants.billingAddressCardViewTitle
-        billingAddressViewTitle.font = UIFont.boldSystemFont(ofSize: 14)
-        billingAddressViewDescription.font = UIFont.systemFont(ofSize: 12)
+        billingAddressViewTitle.font = .semiBold14
+        billingAddressViewDescription.font = .regular12
         billingAddressViewDescription.textColor = .textPCaption
         billingAddressCardViewEditButton.setImage(UIImage(systemName: "pencil"))
         billingAddressCardViewEditButton.tintColor = .textPCaption
@@ -100,8 +100,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         deliveryAddressCardViewContainer.layer.cornerRadius = 6
         deliveryAddressCardViewContainer.backgroundColor = .buttonLight
         deliveryAddressCardTitle.text = Constants.deliveryAddressCardViewTitle
-        deliveryAddressCardTitle.font = UIFont.boldSystemFont(ofSize: 14)
-        deliveryAddressCardDescription.font = UIFont.systemFont(ofSize: 12)
+        deliveryAddressCardTitle.font = .semiBold14
+        deliveryAddressCardDescription.font = .regular12
         deliveryAddressCardDescription.textColor = .textPCaption
         deliveryAddressCardEditButton.setImage(UIImage(systemName: "pencil"))
         deliveryAddressCardEditButton.tintColor = .textPCaption
@@ -111,7 +111,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         agreeTermsButton.imageView?.tintColor = .veryLightPink
         
         agreeTermsTitle.attributedText = Constants.agreeTermsAndConditionsText.convertHtml()
-        agreeTermsTitle.font = UIFont.systemFont(ofSize: 12)
+        agreeTermsTitle.font = .regular12
         agreeTermsTitle.textColor = .textPCaption
         let agreeTapGesture = UITapGestureRecognizer(target: self, action: #selector(getTerms))
         agreeTermsTitleContainer.addGestureRecognizer(agreeTapGesture)

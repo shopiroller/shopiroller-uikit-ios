@@ -39,15 +39,23 @@ class AddressTableViewCell: UITableViewCell {
         informationView.layer.cornerRadius = 6
         
         confirmCancelButton.setTitle("address_cell_cancel".localized)
+        confirmCancelButton.setTitleColor(.textPrimary)
+        confirmCancelButton.titleLabel?.font = .semiBold14
+        
         confirmDeleteButton.setTitle("address_cell_delete".localized)
+        confirmDeleteButton.setTitleColor(.white)
         confirmDeleteButton.layer.cornerRadius = 6
         confirmDeleteButton.backgroundColor = .textPrimary
-        confirmCancelButton.setTitleColor(.textPrimary)
-        confirmDeleteButton.setTitleColor(.white)
+        confirmDeleteButton.titleLabel?.font = .semiBold14
+        
         confirmTitle.textColor = .textPCaption
+        confirmTitle.font = .regular12
+        
+        informationTitle.textColor = .textPrimary
+        informationTitle.font = .semiBold14
         
         informationAddress.textColor = .textPCaption
-        
+        informationAddress.font = .regular12
     }
     
     func setup(model: UserBillingAdressModel, indexPathRow: Int) {

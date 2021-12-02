@@ -109,7 +109,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         titleLabel.text = Constants.titleText
         titleLabel.textColor = .textPrimary
-        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.font = .semiBold16
         
         saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
         saveAsBillingAddressButton.imageView?.tintColor = .black
@@ -121,10 +121,10 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         saveAsBillingAddressTitle.text = Constants.saveAsBillingAddressText
         saveAsBillingAddressTitle.textColor = .black
-        saveAsBillingAddressTitle.font = UIFont.systemFont(ofSize: 14)
+        saveAsBillingAddressTitle.font = .semiBold14
         
         saveButton.setTitle(Constants.saveButtonText)
-        saveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        saveButton.titleLabel?.font = .semiBold15
         saveButton.backgroundColor = .black
         saveButton.tintColor = .white
         

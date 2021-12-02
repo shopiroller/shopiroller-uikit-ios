@@ -31,6 +31,7 @@ public struct SRAppConstants {
             static let orderInnerResponseObserve = "OrderResponseInnerObserve"
             static let updatePaymentMethodObserve = "updatePaymentMethodObserve"
             static let updateAddressMethodObserve = "updateAddressMethodObserve"
+            static let updateShoppighCartObserve = "updateShoppingCartObserve"
         }
         
     }

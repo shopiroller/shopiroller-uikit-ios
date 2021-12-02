@@ -21,6 +21,9 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var productsCollectionView: UICollectionView!
     @IBOutlet private weak var emptyView: EmptyView!
+    @IBOutlet private weak var collectionViewContainer: UIView!
+    
+    private let badgeView  = SRBadgeButton()
     
     init(viewModel: ProductListViewModel){
         super.init(viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
@@ -48,12 +51,23 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         getProducts(pagination: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+    }
+    
+    @objc func updateBadgeCount() {
+        badgeView.badge = SRAppContext.shoppingCartCount
+    }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard , true))
+        let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
         let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
         updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton],isBackButtonActive: true)
+        cartButton.customView?.addSubview(badgeView)
     }
     
     private func configureEmptyView() {

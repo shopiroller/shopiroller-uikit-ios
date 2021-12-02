@@ -44,19 +44,19 @@ public class GeneralAddressView: BaseView {
                 
         selectOtherAddressButton.setTitle(Constants.selectOtherAdressButtonText)
         selectOtherAddressButton.tintColor = .textPrimary
-        selectOtherAddressButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        selectOtherAddressButton.titleLabel?.font = .medium12
         
         titleLabel.textColor = .textPrimary
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        titleLabel.font = .semiBold14
     
         addressLine.textColor = .textPCaption
-        addressLine.font = UIFont.systemFont(ofSize: 12)
-        addressLine.adjustsFontSizeToFitWidth = false;
+        addressLine.font = .regular12
+        addressLine.adjustsFontSizeToFitWidth = false
         addressLine.lineBreakMode = NSLineBreakMode.byTruncatingTail
 
         descriptionArea.textColor = .textPCaption
-        descriptionArea.font = UIFont.systemFont(ofSize: 12)
-        descriptionArea.adjustsFontSizeToFitWidth = false;
+        descriptionArea.font = .regular12
+        descriptionArea.adjustsFontSizeToFitWidth = false
         descriptionArea.lineBreakMode = NSLineBreakMode.byTruncatingTail
 
         

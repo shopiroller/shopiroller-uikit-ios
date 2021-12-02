@@ -19,9 +19,13 @@ class BottomPriceView: BaseView {
         super.setup()
         
         subTotal.textColor = .textSecondary
+        subTotal.font = .regular14
         shipping.textColor = .textSecondary
+        shipping.font = .regular14
         total.textColor = .textSecondary
+        total.font = .regular12
         price.textColor = .textPrimary
+        price.font = .bold24
  
         subTotal.text = "bottom_price_view_subtotal".localized + ECommerceUtil.getFormattedPrice(price: model.subTotalPrice, currency: model.currency)
         

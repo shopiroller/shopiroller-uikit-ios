@@ -33,11 +33,9 @@ public class EmptyView: BaseView {
     func setup(model: EmptyModel) {
         super.setup()
         
-        actionButton.layer.cornerRadius = 6
-        
         imageView.image = model.image
         titleLabel.text = model.title
-        titleLabel.font = UIFont.bold18
+        titleLabel.font = .bold18
         descriptionLabel.textColor = .textPCaption
         
         if model.image == .emptyShippingAddresses {
@@ -52,7 +50,9 @@ public class EmptyView: BaseView {
         }
         
         if let button = model.button {
-            actionButton.titleLabel?.font = UIFont.semiBold13
+            actionButton.layer.cornerRadius = 6
+            actionButton.titleLabel?.font = .semiBold13
+            actionButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
             buttonContainer.isHidden = false
             actionButton.setTitle(button.title)
             actionButton.setTitleColor(.white)

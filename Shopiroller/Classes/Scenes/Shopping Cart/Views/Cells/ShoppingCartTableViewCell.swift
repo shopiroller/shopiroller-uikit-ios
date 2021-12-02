@@ -38,12 +38,21 @@ class ShoppingCartTableViewCell: UITableViewCell {
         warningView.backgroundColor = .badgeWarningInfo
         warningView.layer.cornerRadius = 6
         warningLabel.textColor = .textSecondary
+        warningLabel.font = .regular12
         
         productImage.layer.cornerRadius = 6
+        
         title.textColor = .textPrimary
+        title.font = .regular12
+        
         count.textColor = .textPrimary
+        count.font = .semiBold14
+        
         discount.textColor = .textPCaption
+        discount.font = .regular12
+        
         price.textColor = .textPrimary
+        price.font = .semiBold14
         
         controlView.layer.cornerRadius = 6
     }

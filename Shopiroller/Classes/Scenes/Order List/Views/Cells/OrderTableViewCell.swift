@@ -30,6 +30,18 @@ class OrderTableViewCell: UITableViewCell {
         
         statusView.layer.cornerRadius = 15
         
+        orderNo.font = .semiBold14
+        orderNo.textColor = .textPrimary
+        
+        date.font = .regular12
+        date.textColor = .textPCaption
+        
+        price.font = .semiBold14
+        price.textColor = .textPrimary
+        
+        status.font = .regular12
+        status.textColor = .textPrimary
+        
         containerView.layer.cornerRadius = 6
         containerView.layer.borderWidth = 1.0
         containerView.layer.borderColor = UIColor.textSecondary10.cgColor

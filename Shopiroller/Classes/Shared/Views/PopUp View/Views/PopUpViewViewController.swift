@@ -43,15 +43,21 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         circleImage.layer.cornerRadius = circleImage.frame.width / 2
         
         containerView.makeCardView()
-        descriptionLabel.textColor = .textPCaption
         
+        descriptionLabel.textColor = .textPCaption
+        descriptionLabel.font = .regular14
+        
+        titleLabel.textColor = .textPrimary
+        titleLabel.font = .bold24
         titleLabel.text = viewModel.getTitle()
+        
         circleImage.image = viewModel.getImage()
         
         if(viewModel.hasFirstButton()) {
             firstButtonContainerView.isHidden = false
             firstButton.type = viewModel.getFirstButtonType()
             firstButton.setTitle(viewModel.getFirstButtonTitle())
+            firstButton.titleLabel?.font = .semiBold14
         }else {
             firstButtonContainerView.isHidden = true
         }
