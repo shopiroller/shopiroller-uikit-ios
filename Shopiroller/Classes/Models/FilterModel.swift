@@ -11,8 +11,8 @@ struct FilterModel {
     var categoryIds: [String] = []
     var brandIds: [String] = []
     var variationGroups: [VariationIds] = []
-    var minimumPrice: Double = 0.0
-    var maximumPrice: Double = 0.0
+    var minimumPrice: Double?
+    var maximumPrice: Double?
     var showCaseId: String? = nil
 }
 

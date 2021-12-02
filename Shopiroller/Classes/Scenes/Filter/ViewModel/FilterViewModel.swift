@@ -87,7 +87,7 @@ class FilterViewModel: BaseViewModel {
     }
     
     func getCurrency() -> CurrencyEnum {
-        return CurrencyEnum.TRY
+        return CurrencyEnum.default
     }
     
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {

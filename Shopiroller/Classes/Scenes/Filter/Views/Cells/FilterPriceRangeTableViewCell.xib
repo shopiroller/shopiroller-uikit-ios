@@ -31,13 +31,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="54"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-YH-vXN" userLabel="Max Price TextField">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-O5-Hyt" userLabel="Max Price TextField">
                                 <rect key="frame" x="130" y="0.0" width="120" height="54"/>
-                                <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                             </textField>
                         </subviews>
                     </stackView>
@@ -53,7 +53,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="maxPriceTextField" destination="mVc-YH-vXN" id="v0z-9B-u6V"/>
+                <outlet property="maxPriceTextField" destination="kYO-O5-Hyt" id="3wr-Nm-G7l"/>
                 <outlet property="minPriceTextField" destination="t1H-Ti-9xM" id="8x2-Qq-fJ8"/>
                 <outlet property="priceRangeLabel" destination="f1R-RM-aES" id="hTQ-iV-N4P"/>
             </connections>

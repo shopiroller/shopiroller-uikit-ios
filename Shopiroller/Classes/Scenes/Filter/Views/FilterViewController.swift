@@ -73,7 +73,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .priceRange:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterPriceRangeTableViewCell.reuseIdentifier, for: indexPath) as! FilterPriceRangeTableViewCell
-            cell.setup(currency: viewModel.getCurrency())
+            cell.setup(delegate: self, currency: viewModel.getCurrency())
             return cell
         case .filterSwitch(type: let type):
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterSwitchTableViewCell.reuseIdentifier, for: indexPath) as! FilterSwitchTableViewCell
@@ -91,13 +91,23 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate {
+extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate, FilterPriceRangeTableViewCellDelegate {
+    
     func choiceConfirmed(selectedIds: [String], selectionLabel: String){
         viewModel.choiceConfirmed(selectedIds: selectedIds, selectionLabel: selectionLabel)
         filterTableView.reloadRows(at: [viewModel.selectedIndexPath], with: .automatic)
     }
     
+    func minPriceDidEndEditing(amount: Double?) {
+        viewModel.selectedModel.minimumPrice = amount
+    }
+    
+    func maxPriceDidEndEditing(amount: Double?) {
+        viewModel.selectedModel.maximumPrice = amount
+    }
+    
     func checkedChanged(type: FilterSwitchType, checked: Bool) {
         
     }
+    
 }
