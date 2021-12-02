@@ -13,7 +13,6 @@ class FilterChoiceViewModel: BaseViewModel {
     let isMultipleChoice: Bool
     private var originalList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
     private var filteredList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
-    private var selectionNameLabel = String()
     
     init(dataList: [CategoriesItem], selectedIds: [String] = []) {
         title = "filter_category".localized
@@ -68,7 +67,8 @@ class FilterChoiceViewModel: BaseViewModel {
         }
     }
     
-    func getSelectedIds() -> [String] {
+    func getSelectedIds() -> SelectionIds {
+        var selectionNameLabel = String()
         var selectedIds: [String] = []
         for item in originalList {
             if(item.isSelected) {
@@ -76,13 +76,7 @@ class FilterChoiceViewModel: BaseViewModel {
                 selectionNameLabel += item.data.name + ", "
             }
         }
-        let ss = String(selectionNameLabel.dropLast(2))
-        selectionNameLabel = ss
-        return selectedIds
-    }
-    
-    func getSelectionNameLabel() -> String {
-        return selectionNameLabel
+        return SelectionIds(selectedIds: selectedIds, selectionNameLabel: String(selectionNameLabel.dropLast(2)))
     }
     
     func searchList(text: String?) {

@@ -14,6 +14,8 @@ class ProductListViewModel : BaseViewModel {
     let categoryId: String?
     private var currentPage = 0
     private var productList: [ProductListModel]?
+    
+    private var filterModel: FilterModel = FilterModel()
 
     init(categoryId: String? = String()) {
         self.categoryId = categoryId
@@ -39,6 +41,10 @@ class ProductListViewModel : BaseViewModel {
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: self.categoryId))
+        let filterQueryItems = filterModel.getQueryArray()
+        if(filterQueryItems.isEmpty) {
+            urlQueryItems.append(contentsOf: filterQueryItems)
+        }
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
             (result) in
@@ -83,6 +89,10 @@ class ProductListViewModel : BaseViewModel {
     
     func getFilterViewModel() -> FilterViewModel {
         return FilterViewModel(categoryId: categoryId)
+    }
+    
+    func setFilterModel(_ filterModel: FilterModel) {
+        self.filterModel = filterModel
     }
     
 }

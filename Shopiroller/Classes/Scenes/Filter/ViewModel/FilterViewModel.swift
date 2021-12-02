@@ -18,12 +18,11 @@ class FilterViewModel: BaseViewModel {
     private var filterListSelector: [FilterTableViewSelector] = []
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
-    private var selectionLabel = String()
     var selectedModel: FilterModel = FilterModel()
     
     init(searchText: String? = nil, categoryId: String? = nil, showcaseId: String? = nil) {
         self.searchText = searchText
-        self.categoryId = nil
+        self.categoryId = categoryId
         self.showcaseId = showcaseId
     }
     
@@ -47,7 +46,6 @@ class FilterViewModel: BaseViewModel {
                 }
             }
         }
-        
     }
     
     func configureTableList() {
@@ -58,11 +56,12 @@ class FilterViewModel: BaseViewModel {
             filterListSelector.append(.brand)
         }
         
-        if let arr = filterOptions?.variationGroups?.enumerated() {
+        // TODO: VariationGroups removed in filter section until next phase
+        /*if let arr = filterOptions?.variationGroups?.enumerated() {
             for (index, _) in arr {
                 filterListSelector.append(.variationGroups(position: index))
             }
-        }
+        }*/
         
         filterListSelector.append(.priceRange)
         filterListSelector.append(.filterSwitch(type: .stockSwitch))
@@ -71,7 +70,17 @@ class FilterViewModel: BaseViewModel {
     }
     
     func getSelectionLabel() -> String {
-        return selectionLabel
+        switch getFilterListSelector(position: selectedIndexPath.row) {
+        case .category:
+            return selectedModel.categoryIds.selectionNameLabel
+        case .brand:
+            return selectedModel.brandIds.selectionNameLabel
+        case .variationGroups(position: let position):
+            guard let variationGroup = getVariationGroupsItem(position: position), let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) else {return String()}
+            return selectedModel.variationGroups[index].variationIds.selectionNameLabel
+        default:
+            return String()
+        }
     }
     
     func getFilterListSelectorCount() -> Int {
@@ -93,13 +102,13 @@ class FilterViewModel: BaseViewModel {
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {
         switch getFilterListSelector(position: selectedIndexPath.row) {
         case .category:
-            return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [], selectedIds: selectedModel.categoryIds)
+            return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [], selectedIds: selectedModel.categoryIds.selectedIds)
         case .brand:
-            return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds)
+            return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds.selectedIds)
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
             if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                return FilterChoiceViewModel(dataList: variationGroup, selectedIds:  selectedModel.variationGroups[index].variationIds)
+                return FilterChoiceViewModel(dataList: variationGroup, selectedIds:  selectedModel.variationGroups[index].variationIds.selectedIds)
             } else {
                 return FilterChoiceViewModel(dataList: variationGroup)
             }
@@ -108,8 +117,7 @@ class FilterViewModel: BaseViewModel {
         }
     }
     
-    func choiceConfirmed(selectedIds: [String], selectionLabel: String) {
-        self.selectionLabel = selectionLabel
+    func choiceConfirmed(selectedIds: SelectionIds) {
         switch getFilterListSelector(position: selectedIndexPath.row) {
         case .category:
             selectedModel.categoryIds = selectedIds
@@ -126,6 +134,8 @@ class FilterViewModel: BaseViewModel {
             break
         }
     }
+    
+    
    
 }
 

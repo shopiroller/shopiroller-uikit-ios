@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol FilterChoiceViewControllerDelegate {
-    func choiceConfirmed(selectedIds: [String], selectionLabel: String)
+    func choiceConfirmed(selectedIds: SelectionIds)
 }
 class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
@@ -48,7 +48,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds(), selectionLabel: viewModel.getSelectionNameLabel())
+        delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds())
         pop(animated: true, completion: nil)
     }
     

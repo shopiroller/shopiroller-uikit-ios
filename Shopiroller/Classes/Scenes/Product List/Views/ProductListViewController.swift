@@ -95,7 +95,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        prompt(FilterViewController(viewModel: viewModel.getFilterViewModel()), animated: true, completion: nil)
+        prompt(FilterViewController(viewModel: viewModel.getFilterViewModel(), delegate: self), animated: true, completion: nil)
     }
     
 }
@@ -135,5 +135,12 @@ extension ProductListViewController: UICollectionViewDelegateFlowLayout {
         prompt(vc, animated: true, completion: nil)
     }
     
+}
+
+extension ProductListViewController: FilterViewControllerDelegate {
+    func confirmedFilter(model: FilterModel) {
+        viewModel.setFilterModel(model)
+        getProducts(pagination: false)
+    }
 }
 

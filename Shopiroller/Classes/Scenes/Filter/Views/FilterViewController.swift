@@ -7,12 +7,19 @@
 
 import UIKit
 
+protocol FilterViewControllerDelegate {
+    func confirmedFilter(model: FilterModel)
+}
+
 class FilterViewController: BaseViewController<FilterViewModel> {
 
     @IBOutlet weak var filterTableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     
-    init(viewModel: FilterViewModel) {
+    private let delegate: FilterViewControllerDelegate
+    
+    init(viewModel: FilterViewModel, delegate: FilterViewControllerDelegate) {
+        self.delegate = delegate
         super.init("filter_title".localized, viewModel: viewModel, nibName: FilterViewController.nibName, bundle: Bundle(for: FilterViewController.self))
     }
     
@@ -46,6 +53,8 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     }
 
     @IBAction func confirmButtonTapped(_ sender: Any) {
+        delegate.confirmedFilter(model: viewModel.selectedModel)
+        pop(animated: true, completion: nil)
     }
 }
 
@@ -93,8 +102,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceViewControllerDelegate, FilterPriceRangeTableViewCellDelegate {
     
-    func choiceConfirmed(selectedIds: [String], selectionLabel: String){
-        viewModel.choiceConfirmed(selectedIds: selectedIds, selectionLabel: selectionLabel)
+    func choiceConfirmed(selectedIds: SelectionIds){
+        viewModel.choiceConfirmed(selectedIds: selectedIds)
         filterTableView.reloadRows(at: [viewModel.selectedIndexPath], with: .automatic)
     }
     
