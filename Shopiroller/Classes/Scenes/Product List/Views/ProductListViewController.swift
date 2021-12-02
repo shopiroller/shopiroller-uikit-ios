@@ -21,7 +21,6 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var productsCollectionView: UICollectionView!
     @IBOutlet private weak var emptyView: EmptyView!
-    @IBOutlet private weak var collectionViewContainer: UIView!
     
     private let badgeView  = SRBadgeButton()
     
@@ -72,11 +71,13 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private func configureEmptyView() {
         if viewModel.getProductCount() == 0 {
-            contentStackView.isHidden = true
+            sortFilterContainerView.isHidden = !viewModel.hasFilter()
+            productsCollectionView.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
-            contentStackView.isHidden = false
+            sortFilterContainerView.isHidden = false
+            productsCollectionView.isHidden = false
             emptyView.isHidden = true
         }
     }

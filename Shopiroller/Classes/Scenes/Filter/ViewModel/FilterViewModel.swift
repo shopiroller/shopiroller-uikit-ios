@@ -18,12 +18,13 @@ class FilterViewModel: BaseViewModel {
     private var filterListSelector: [FilterTableViewSelector] = []
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
-    var selectedModel: FilterModel = FilterModel()
+    var selectedModel: FilterModel
     
-    init(searchText: String? = nil, categoryId: String? = nil, showcaseId: String? = nil) {
+    init(searchText: String? = nil, categoryId: String? = nil, showcaseId: String? = nil, filterModel: FilterModel) {
         self.searchText = searchText
         self.categoryId = categoryId
         self.showcaseId = showcaseId
+        self.selectedModel = filterModel
     }
     
     func getFilterOptions(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -93,6 +94,36 @@ class FilterViewModel: BaseViewModel {
     
     func getVariationGroupsItem(position: Int) -> VariationGroupsItem? {
         return filterOptions?.variationGroups?[position]
+    }
+    
+    func getMinPrice() -> Double? {
+        return selectedModel.minimumPrice
+    }
+    
+    func getMaxPrice() -> Double? {
+        return selectedModel.maximumPrice
+    }
+    
+    func getSelectedSwitchState(type: FilterSwitchType) -> Bool {
+        switch type {
+        case .stockSwitch:
+            return selectedModel.stockSwitch
+        case .discountedProductsSwitch:
+            return selectedModel.discountedProductsSwitch
+        case .freeShippingSwitch:
+            return selectedModel.freeShippingSwitch
+        }
+    }
+    
+    func setSelectedSwitchState(type: FilterSwitchType, isOn: Bool) {
+        switch type {
+        case .stockSwitch:
+            selectedModel.stockSwitch = isOn
+        case .discountedProductsSwitch:
+            selectedModel.discountedProductsSwitch = isOn
+        case .freeShippingSwitch:
+            selectedModel.freeShippingSwitch = isOn
+        }
     }
     
     func getCurrency() -> CurrencyEnum {

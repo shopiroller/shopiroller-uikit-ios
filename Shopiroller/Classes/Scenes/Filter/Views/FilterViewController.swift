@@ -82,11 +82,11 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .priceRange:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterPriceRangeTableViewCell.reuseIdentifier, for: indexPath) as! FilterPriceRangeTableViewCell
-            cell.setup(delegate: self, currency: viewModel.getCurrency())
+            cell.setup(delegate: self, currency: viewModel.getCurrency(), minPrice: viewModel.getMinPrice(), maxPrice: viewModel.getMaxPrice())
             return cell
         case .filterSwitch(type: let type):
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterSwitchTableViewCell.reuseIdentifier, for: indexPath) as! FilterSwitchTableViewCell
-            cell.setup(type: type, delegate: self)
+            cell.setup(type: type, delegate: self, isOn: viewModel.getSelectedSwitchState(type: type))
             return cell
         }
     }
@@ -115,8 +115,8 @@ extension FilterViewController: FilterSwitchTableViewCellDelegate, FilterChoiceV
         viewModel.selectedModel.maximumPrice = amount
     }
     
-    func checkedChanged(type: FilterSwitchType, checked: Bool) {
-        
+    func checkedChanged(type: FilterSwitchType, isOn: Bool) {
+        viewModel.setSelectedSwitchState(type: type, isOn: isOn)
     }
     
 }

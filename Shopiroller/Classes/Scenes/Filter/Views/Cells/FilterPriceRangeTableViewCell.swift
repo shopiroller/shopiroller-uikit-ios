@@ -41,10 +41,16 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
     }
     
-    func setup(delegate: FilterPriceRangeTableViewCellDelegate, currency: CurrencyEnum) {
+    func setup(delegate: FilterPriceRangeTableViewCellDelegate, currency: CurrencyEnum, minPrice: Double?, maxPrice: Double?) {
         self.delegate = delegate
         minPriceTextField.rightView = getCurrencyLabel(currency: currency)
         maxPriceTextField.rightView = getCurrencyLabel(currency: currency)
+        if let minPrice = minPrice {
+            minPriceTextField.text = String(minPrice)
+        }
+        if let maxPrice = maxPrice {
+            maxPriceTextField.text = String(maxPrice)
+        }
     }
     
     private func getCurrencyLabel(currency: CurrencyEnum) -> UILabel {

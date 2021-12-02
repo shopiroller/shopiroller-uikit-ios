@@ -14,7 +14,6 @@ class ProductListViewModel : BaseViewModel {
     let categoryId: String?
     private var currentPage = 0
     private var productList: [ProductListModel]?
-    
     private var filterModel: FilterModel = FilterModel()
 
     init(categoryId: String? = String()) {
@@ -24,10 +23,14 @@ class ProductListViewModel : BaseViewModel {
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
+        if(hasFilter()) {
+            urlQueryItems.append(contentsOf: filterModel.getQueryArray())
+        }
+        
         if productList?.count ?? 0 == 0 {
             currentPage = 0
         }else{
-            if (productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+            if ((productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) && !hasFilter() {
                 return
             }
             if pagination {
@@ -35,16 +38,12 @@ class ProductListViewModel : BaseViewModel {
             }else {
                 currentPage = 0
             }
-            
         }
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: self.categoryId))
-        let filterQueryItems = filterModel.getQueryArray()
-        if(filterQueryItems.isEmpty) {
-            urlQueryItems.append(contentsOf: filterQueryItems)
-        }
+     
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
             (result) in
@@ -88,11 +87,15 @@ class ProductListViewModel : BaseViewModel {
     }
     
     func getFilterViewModel() -> FilterViewModel {
-        return FilterViewModel(categoryId: categoryId)
+        return FilterViewModel(categoryId: categoryId, filterModel: filterModel)
     }
     
     func setFilterModel(_ filterModel: FilterModel) {
         self.filterModel = filterModel
+    }
+    
+    func hasFilter() -> Bool {
+        return filterModel.hasFilter()
     }
     
 }

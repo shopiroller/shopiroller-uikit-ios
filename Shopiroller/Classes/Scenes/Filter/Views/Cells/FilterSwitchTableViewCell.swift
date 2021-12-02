@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FilterSwitchTableViewCellDelegate {
-    func checkedChanged(type: FilterSwitchType, checked: Bool)
+    func checkedChanged(type: FilterSwitchType, isOn: Bool)
 }
 
 class FilterSwitchTableViewCell: UITableViewCell {
@@ -26,10 +26,11 @@ class FilterSwitchTableViewCell: UITableViewCell {
         cellSwitch.tintColor = .textPrimary
     }
     
-    func setup(type: FilterSwitchType, delegate: FilterSwitchTableViewCellDelegate) {
+    func setup(type: FilterSwitchType, delegate: FilterSwitchTableViewCellDelegate, isOn: Bool) {
         self.type = type
         self.delegate = delegate
         titleLabel.text = getTitleLabel()
+        cellSwitch.setOn(isOn, animated: false)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,7 +41,7 @@ class FilterSwitchTableViewCell: UITableViewCell {
         guard let type = type else {
             return
         }
-        delegate?.checkedChanged(type: type, checked: cellSwitch.isOn)
+        delegate?.checkedChanged(type: type, isOn: cellSwitch.isOn)
     }
     
     private func getTitleLabel() -> String? {

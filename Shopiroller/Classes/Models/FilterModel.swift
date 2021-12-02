@@ -13,7 +13,6 @@ struct FilterModel {
     var variationGroups: [VariationIds] = []
     var minimumPrice: Double?
     var maximumPrice: Double?
-    var showCaseId: String? = nil
     var stockSwitch: Bool = false
     var discountedProductsSwitch: Bool = false
     var freeShippingSwitch: Bool = false
@@ -38,9 +37,6 @@ struct FilterModel {
         if let maximumPrice = maximumPrice {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.priceMax, value: String(maximumPrice)))
         }
-        if let showCaseId = showCaseId {
-            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.showcaseId, value: showCaseId))
-        }
         if(stockSwitch) {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.stockMin, value: String(1)))
         }
@@ -48,13 +44,13 @@ struct FilterModel {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.isThereCampaign, value: String(discountedProductsSwitch)))
         }
         if(freeShippingSwitch) {
-            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.shippingPrice, value: String(0)))
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.shippingPrice, value: String(0.0)))
         }
         return urlQueryItems
     }
     
-    func hasQueryItem(urlQueryItems: [URLQueryItem]) -> Bool {
-        return urlQueryItems.isEmpty
+    func hasFilter() -> Bool {
+        return !categoryIds.selectedIds.isEmpty || !brandIds.selectedIds.isEmpty || !variationGroups.isEmpty || minimumPrice != nil || maximumPrice != nil || stockSwitch || discountedProductsSwitch || freeShippingSwitch
     }
 }
 
