@@ -93,12 +93,16 @@ class FilterViewModel: BaseViewModel {
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {
         switch getFilterListSelector(position: selectedIndexPath.row) {
         case .category:
-            return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [])
+            return FilterChoiceViewModel(dataList: filterOptions?.categories ?? [], selectedIds: selectedModel.categoryIds)
         case .brand:
-            return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [])
+            return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds)
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
-            return FilterChoiceViewModel(dataList: variationGroup)
+            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
+                return FilterChoiceViewModel(dataList: variationGroup, selectedIds:  selectedModel.variationGroups[index].variationIds)
+            } else {
+                return FilterChoiceViewModel(dataList: variationGroup)
+            }
         default:
             return nil
         }

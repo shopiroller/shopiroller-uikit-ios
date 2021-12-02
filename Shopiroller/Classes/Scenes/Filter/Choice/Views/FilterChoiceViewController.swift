@@ -36,6 +36,17 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         selectionTableView.reloadData()
     }
     
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        if(viewModel.isMultipleChoice) {
+            let searchController = UISearchController(searchResultsController: nil)
+            searchController.searchBar.delegate = self
+            searchController.hidesNavigationBarDuringPresentation = false
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
+    }
+    
     @IBAction func confirmButtonTapped(_ sender: Any) {
         delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds(), selectionLabel: viewModel.getSelectionNameLabel())
         pop(animated: true, completion: nil)
@@ -43,16 +54,34 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
 }
 
+extension FilterChoiceViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.searchList(text: searchBar.text)
+        selectionTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.refreshList()
+        selectionTableView.reloadData()
+    }
+}
+
 extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getTableViewListCount()
+        return viewModel.getFilteredListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterChoiceTableViewCell.reuseIdentifier, for: indexPath) as! FilterChoiceTableViewCell
-        cell.setup(model: viewModel.getTableViewListItem(position: indexPath.row), isCheckBox: viewModel.isMultipleChoice)
+        cell.setup(model: viewModel.getFilteredListData(position: indexPath.row), isCheckBox: viewModel.isMultipleChoice)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(viewModel.isFilteredListSelected(position: indexPath.row)) {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

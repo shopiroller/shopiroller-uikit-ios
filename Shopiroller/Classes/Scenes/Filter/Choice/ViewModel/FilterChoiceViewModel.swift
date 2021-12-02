@@ -11,93 +11,137 @@ class FilterChoiceViewModel: BaseViewModel {
     
     let title: String?
     let isMultipleChoice: Bool
-    private var tableViewList: [FilterChoiceTableViewModel] = []
-    private var selectedItemPositions: [Int] = []
+    private var originalList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
+    private var filteredList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
     private var selectionNameLabel = String()
     
-    init(dataList: [CategoriesItem]) {
+    init(dataList: [CategoriesItem], selectedIds: [String] = []) {
         title = "filter_category".localized
         isMultipleChoice = false
         super.init()
-        var temp = dataList
-        temp[0].subCategories = dataList
-        temp[0].subCategories?[0].subCategories = dataList
-        configureDataList(dataList: temp, depth: 1)
+        configureDataList(dataList: dataList, depth: 1, selectedIds: selectedIds)
     }
     
-    init(dataList: [BrandsItem]) {
+    init(dataList: [BrandsItem], selectedIds: [String] = []) {
         title = "filter_brand".localized
         isMultipleChoice = true
         super.init()
-        configureDataList(dataList: dataList)
+        configureDataList(dataList: dataList, selectedIds: selectedIds)
     }
     
-    init(dataList: VariationGroupsItem) {
+    init(dataList: VariationGroupsItem, selectedIds: [String] = []) {
         title = dataList.name
         isMultipleChoice = true
         super.init()
-        configureDataList(dataList: dataList.variations ?? [])
+        configureDataList(dataList: dataList.variations ?? [], selectedIds: selectedIds)
     }
     
-    func getTableViewListCount() -> Int {
-        return tableViewList.count
+    func getFilteredListCount() -> Int {
+        return filteredList.count
     }
     
-    func getTableViewListItem(position: Int) -> FilterChoiceTableViewModel {
-        return tableViewList[position]
+    func getFilteredListData(position: Int) -> FilterChoiceTableViewModel {
+        return filteredList[position].data
+    }
+    
+    func isFilteredListSelected(position: Int) -> Bool {
+        return filteredList[position].isSelected
     }
     
     func didSelectRow(position: Int) {
-        selectedItemPositions.append(position)
+        filteredList[position].isSelected = true
+        for (index, item) in originalList.enumerated() {
+            if(item.data.id == filteredList[position].data.id) {
+                originalList[index].isSelected = true
+                break
+            }
+        }
     }
     
     func didDeselectRow(position: Int) {
-        if let index = selectedItemPositions.firstIndex(of: position) {
-            selectedItemPositions.remove(at: index)
+        filteredList[position].isSelected = false
+        for (index, item) in originalList.enumerated() {
+            if(item.data.id == filteredList[position].data.id) {
+                originalList[index].isSelected = false
+                break
+            }
         }
     }
     
     func getSelectedIds() -> [String] {
-        var idArr: [String] = []
-        for (index, item) in selectedItemPositions.enumerated() {
-            idArr.append(tableViewList[item].id)
-            selectionNameLabel += tableViewList[item].name
-            if index != selectedItemPositions.count - 1 {
-                selectionNameLabel += ", "
+        var selectedIds: [String] = []
+        for item in originalList {
+            if(item.isSelected) {
+                selectedIds.append(item.data.id)
+                selectionNameLabel += item.data.name + ", "
             }
         }
-        return idArr
+        let ss = String(selectionNameLabel.dropLast(2))
+        selectionNameLabel = ss
+        return selectedIds
     }
     
     func getSelectionNameLabel() -> String {
         return selectionNameLabel
     }
     
-    private func configureDataList(dataList: [CategoriesItem], depth: Int) {
+    func searchList(text: String?) {
+        guard let text = text else {
+            refreshList()
+            return
+        }
+        filteredList.removeAll()
+        for item in originalList {
+            if(item.data.name.localizedCaseInsensitiveContains(text)) {
+                filteredList.append(item)
+            }
+        }
+    }
+    
+    func refreshList() {
+        filteredList = originalList
+    }
+    
+    private func configureDataList(dataList: [CategoriesItem], depth: Int, selectedIds: [String]) {
         for item in dataList {
             if let id = item.categoryId, let name = item.name?["en"] {
-                tableViewList.append(FilterChoiceTableViewModel(id: id, name: name, depth: depth))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: depth), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
             if let subCategories = item.subCategories, !subCategories.isEmpty {
-                configureDataList(dataList: subCategories, depth: depth + 1)
+                configureDataList(dataList: subCategories, depth: depth + 1, selectedIds: selectedIds)
             }
         }
+        filteredList = originalList
     }
     
-    private func configureDataList(dataList: [BrandsItem]) {
+    private func configureDataList(dataList: [BrandsItem], selectedIds: [String]) {
         for item in dataList {
             if let id = item.id, let name = item.name {
-                tableViewList.append(FilterChoiceTableViewModel(id: id, name: name, depth: 1))
+                
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
         }
+        filteredList = originalList
     }
     
-    private func configureDataList(dataList: [VariationsItem]) {
+    private func configureDataList(dataList: [VariationsItem], selectedIds: [String]) {
         for item in dataList {
             if let id = item.id, let name = item.value {
-                tableViewList.append(FilterChoiceTableViewModel(id: id, name: name, depth: 1))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
         }
+        filteredList = originalList
+    }
+    
+    private func isSelectedId(id: String, selectedIds: [String]) -> Bool {
+        if(!selectedIds.isEmpty) {
+            for item in selectedIds {
+                if(id == item) {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
 }
