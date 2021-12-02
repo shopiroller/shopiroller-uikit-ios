@@ -25,7 +25,7 @@ struct FilterModel {
         if(!brandIds.selectedIds.isEmpty) {
             urlQueryItems.append(contentsOf: brandIds.selectedIds.map{URLQueryItem(name: SRAppConstants.Query.Keys.brandId, value: $0) })
         }
-        // TODO: VariationGroups removed in filter section until next phase
+        // MARK: VariationGroups removed in filter section until next phase
         /*if(!variationGroups.isEmpty) {
             for item in variationGroups {
                 urlQueryItems.append(contentsOf: brandIds.selectedIds.map{URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: $0) })

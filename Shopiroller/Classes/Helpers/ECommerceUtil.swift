@@ -13,8 +13,6 @@ class ECommerceUtil {
     public static let ddMMMMyyy: String  = "dd MMMM yyyy"
     public static let EEEEhhmm: String  = "EEEE, HH:mm"
     
-    public static let currencyTRY: String  = "TRY"
-    
     static func convertServerDate(date: String?, toFormat: String) -> String? {
         
         let dateFormatterGet = DateFormatter()

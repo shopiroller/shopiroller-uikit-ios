@@ -39,7 +39,7 @@ class FilterChoiceTableViewCell: UITableViewCell {
         }
     }
     
-    func setup(model: FilterChoiceTableViewModel, isCheckBox: Bool) {
+    func setup(model: FilterChoiceTableModel, isCheckBox: Bool) {
         self.isCheckBox = isCheckBox
         titleLabel.text = model.name
         titleLeadingConstraint.constant = 20 + CGFloat((model.depth * 10))
@@ -47,7 +47,7 @@ class FilterChoiceTableViewCell: UITableViewCell {
     
 }
 
-struct FilterChoiceTableViewModel {
+struct FilterChoiceTableModel {
     let id: String
     let name: String
     let depth: Int

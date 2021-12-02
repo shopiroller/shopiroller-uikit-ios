@@ -11,8 +11,8 @@ class FilterChoiceViewModel: BaseViewModel {
     
     let title: String?
     let isMultipleChoice: Bool
-    private var originalList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
-    private var filteredList: [GenericSelectionModel<FilterChoiceTableViewModel>] = []
+    private var originalList: [GenericSelectionModel<FilterChoiceTableModel>] = []
+    private var filteredList: [GenericSelectionModel<FilterChoiceTableModel>] = []
     
     init(dataList: [CategoriesItem], selectedIds: [String] = []) {
         title = "filter_category".localized
@@ -39,7 +39,7 @@ class FilterChoiceViewModel: BaseViewModel {
         return filteredList.count
     }
     
-    func getFilteredListData(position: Int) -> FilterChoiceTableViewModel {
+    func getFilteredListData(position: Int) -> FilterChoiceTableModel {
         return filteredList[position].data
     }
     
@@ -99,7 +99,7 @@ class FilterChoiceViewModel: BaseViewModel {
     private func configureDataList(dataList: [CategoriesItem], depth: Int, selectedIds: [String]) {
         for item in dataList {
             if let id = item.categoryId, let name = item.name?["en"] {
-                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: depth), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: depth), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
             if let subCategories = item.subCategories, !subCategories.isEmpty {
                 configureDataList(dataList: subCategories, depth: depth + 1, selectedIds: selectedIds)
@@ -112,7 +112,7 @@ class FilterChoiceViewModel: BaseViewModel {
         for item in dataList {
             if let id = item.id, let name = item.name {
                 
-                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
         }
         filteredList = originalList
@@ -121,7 +121,7 @@ class FilterChoiceViewModel: BaseViewModel {
     private func configureDataList(dataList: [VariationsItem], selectedIds: [String]) {
         for item in dataList {
             if let id = item.id, let name = item.value {
-                originalList.append(GenericSelectionModel(data: FilterChoiceTableViewModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
         }
         filteredList = originalList

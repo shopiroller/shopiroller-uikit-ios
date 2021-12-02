@@ -57,7 +57,7 @@ class FilterViewModel: BaseViewModel {
             filterListSelector.append(.brand)
         }
         
-        // TODO: VariationGroups removed in filter section until next phase
+        // MARK: VariationGroups removed in filter section until next phase
         /*if let arr = filterOptions?.variationGroups?.enumerated() {
             for (index, _) in arr {
                 filterListSelector.append(.variationGroups(position: index))
@@ -165,9 +165,7 @@ class FilterViewModel: BaseViewModel {
             break
         }
     }
-    
-    
-   
+ 
 }
 
 enum FilterTableViewSelector {
