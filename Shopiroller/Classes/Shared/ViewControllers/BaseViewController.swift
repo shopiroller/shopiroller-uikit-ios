@@ -38,7 +38,6 @@ public class BaseViewController<T>: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBar()
     }
     
     public func viewHeight() -> CGFloat {
