@@ -19,12 +19,14 @@ public class SRMainPageViewModel: BaseViewModel {
     
     private var sliderModel: [SRSliderDataModel]?
     private var categories: [SRCategoryResponseModel]?
-    private var products: [ProductListModel] = []
+    private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel : SRCategoryResponseModel?
     
     private var currentPage: Int = 0
+    
+    private var total: Int? = nil
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getSliders(showProgress: showProgress ?? true).response() {
@@ -48,13 +50,25 @@ public class SRMainPageViewModel: BaseViewModel {
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
+
+        if products?.count ?? 0 == 0 {
+            currentPage = 0
+        } else {
+            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+                return
+            }
+            currentPage = currentPage + 1
+        }
         
         SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):
-                self.products.append(contentsOf: response.data ?? [])
-                self.currentPage += 1
+                if self.currentPage != 0 {
+                    self.products = self.products! + (response.data ?? [])
+                }else{
+                    self.products = response.data
+                }
                 DispatchQueue.main.async {
                     succes?()
                 }
@@ -130,7 +144,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func productItemCount() -> Int {
-        products.count
+        products?.count ?? 0
     }
     
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
@@ -171,7 +185,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func getProductId(position: Int) -> String? {
-        return products[position].id
+        return products?[position].id
     }
     
     func getshowCaseProductDetail(position: Int) -> [ProductDetailResponseModel] {
@@ -190,13 +204,6 @@ public class SRMainPageViewModel: BaseViewModel {
     func getEmptyModel() -> EmptyModel {
         EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
     }
-    
-    func clearProductListAndCurrentPage() {
-        products.removeAll()
-        currentPage = 0
-        
-    }
-    
 }
 
 enum CellType {
