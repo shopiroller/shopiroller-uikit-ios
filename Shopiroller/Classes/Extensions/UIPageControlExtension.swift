@@ -13,7 +13,7 @@ extension UIPageControl {
         self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         self.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.4)
         pageControlContainer.backgroundColor = .sliderBackground
-        pageControlContainer.clipsToBounds = true
+        pageControlContainer.clipsToBounds = false
         pageControlContainer.layer.cornerRadius = self.frame.height / 2
         if #available(iOS 14.0, *) {
             self.backgroundStyle = .minimal
