@@ -28,12 +28,11 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     private let badgeView  = SRBadgeButton()
     
     init(viewModel: ProductListViewModel){
-        super.init(viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
+        super.init(viewModel.getPageTitle(),viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
     }
     
     public override func setup() {
-        super.setup()
-        getCount()
+        super.setup()        
         filterProductsContainer.layer.cornerRadius = 10
         filterProductsContainer.backgroundColor = .buttonLight
         filterProductsContainer.layer.masksToBounds = true
