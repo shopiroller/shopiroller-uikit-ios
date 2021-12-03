@@ -23,14 +23,14 @@ class FilterChoiceTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if(selected) {
-            titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            titleLabel.font = .semiBold14
             if(isCheckBox) {
                 doneIcon.image = .checkBoxChecked
             } else {
                 doneIcon.isHidden = false
             }
         } else {
-            titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            titleLabel.font = .regular14
             if(isCheckBox) {
                 doneIcon.image = .checkBoxUnchecked
             } else {

@@ -86,9 +86,6 @@ extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(position: indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        viewModel.didDeselectRow(position: indexPath.row)
+        selectionTableView.reloadData()
     }
 }

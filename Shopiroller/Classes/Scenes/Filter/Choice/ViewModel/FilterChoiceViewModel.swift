@@ -48,20 +48,10 @@ class FilterChoiceViewModel: BaseViewModel {
     }
     
     func didSelectRow(position: Int) {
-        filteredList[position].isSelected = true
+        filteredList[position].isSelected = !filteredList[position].isSelected
         for (index, item) in originalList.enumerated() {
             if(item.data.id == filteredList[position].data.id) {
-                originalList[index].isSelected = true
-                break
-            }
-        }
-    }
-    
-    func didDeselectRow(position: Int) {
-        filteredList[position].isSelected = false
-        for (index, item) in originalList.enumerated() {
-            if(item.data.id == filteredList[position].data.id) {
-                originalList[index].isSelected = false
+                originalList[index].isSelected = !originalList[index].isSelected
                 break
             }
         }

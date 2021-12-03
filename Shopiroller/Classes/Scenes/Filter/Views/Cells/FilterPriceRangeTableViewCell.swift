@@ -55,18 +55,14 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
     
     private func getCurrencyLabel(currency: CurrencyEnum) -> UILabel {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 79, height: 22))
-        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.font = .bold13
         label.textColor = .textSecondary
         label.text = currency.rawValue + "      "
         label.textAlignment = .center
         return label
     }
     
-}
-
-extension FilterPriceRangeTableViewCell: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @IBAction func textFieldEditingChanged(_ textField: UITextField) {
         switch textField {
         case minPriceTextField:
             delegate?.minPriceDidEndEditing(amount: Double(minPriceTextField.text ?? ""))
@@ -76,6 +72,10 @@ extension FilterPriceRangeTableViewCell: UITextFieldDelegate {
             break
         }
     }
+    
+}
+
+extension FilterPriceRangeTableViewCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
