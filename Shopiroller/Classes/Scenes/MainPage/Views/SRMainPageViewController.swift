@@ -114,6 +114,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func getProducts(showProgress: Bool) {
+        if viewModel.isTotalExceed() {
+           return
+        }
         viewModel.getProducts(showProgress: showProgress, succes: {
             [weak self] in
             guard let self = self else { return }

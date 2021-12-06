@@ -45,6 +45,10 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
+    func isTotalExceed() -> Bool {
+        return products?.count == total
+    }
+    
     func getProducts(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         
@@ -69,6 +73,7 @@ public class SRMainPageViewModel: BaseViewModel {
                 }else{
                     self.products = response.data
                 }
+                print(response.meta)
                 DispatchQueue.main.async {
                     succes?()
                 }

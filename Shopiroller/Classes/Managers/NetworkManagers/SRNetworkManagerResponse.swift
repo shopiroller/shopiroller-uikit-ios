@@ -14,6 +14,7 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
     var key: String?
     var message: String?
     var errors: [String]?
+    var meta: Meta?
     
     //Only For Orders
     var order : SROrderModel?
@@ -28,6 +29,16 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
         case errors = "errors"
         case order = "order"
         case paymentResult = "paymentResult"
+        case meta = "meta"
     }
     
+}
+
+struct Meta : Codable {
+    
+    var count: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case count = "count"
+    }
 }
