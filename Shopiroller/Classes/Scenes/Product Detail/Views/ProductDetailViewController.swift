@@ -385,8 +385,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
             productOldPrice.textColor = .textPCaption
-            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: ECommerceUtil.getCurrencySymbol(currency: viewModel.getCurrency()))
-            productNewPrice.text = "\(viewModel.getCampaignPrice())" + " " + ECommerceUtil.getCurrencySymbol(currency: viewModel.getCurrency())
+            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
+            productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
         }else{
             discountContainer.isHidden = true
             productNewPrice.isHidden = true
