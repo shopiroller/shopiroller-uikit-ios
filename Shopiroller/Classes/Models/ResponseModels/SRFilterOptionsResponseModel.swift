@@ -7,81 +7,102 @@
 
 import Foundation
 
-struct VariationItems: Codable {
+
+struct SRFilterOptionsResponseModel: Codable {
+    var variationGroups: [VariationGroupsItem]?
+    var brands: [BrandsItem]?
+    var categories: [CategoriesItem]?
+    
+    enum CodingKeys: String,CodingKey {
+        case variationGroups = "variationGroups"
+        case brands = "brands"
+        case categories = "categories"
+    }
+}
+
+struct VariationGroupsItem: Codable {
+    
+    var updateDate: String?
+    var variations: [VariationsItem]?
+    var name : String?
+    var id: String?
+    var isActive: Bool?
+    var createDate: String?
+    
+    enum CodingKeys: String,CodingKey {
+        case updateDate = "updateDate"
+        case variations = "variations"
+        case name = "name"
+        case id = "id"
+        case isActive = "isActive"
+        case createDate = "createDate"
+    }
+}
+
+struct VariationsItem: Codable {
     
     var id: String?
     var value: String?
-    var isChecked: Bool?
-    
-}
-
-struct SRFilterOptionsResponseModel: Codable {
-    var variationGroups: [VariationGroupItems]?
-    var brands: [BrandItems]?
-    var categories: [CategoryItems]?
-}
-
-struct VariationGroupItems: Codable {
-    
-    var updatedDate: String?
-    var icon: String?
-    var name : Dictionary<String,String>?
-    var totalProduct: Int?
-    var orderIndex: Int?
-    var parentCategoryId: Int?
-    var isActive: Bool?
-    var categoryId: String?
-    var subCategories: [CategoryItems]?
-    var createdDate: String?
-    var isSelected: Bool?
     
     enum CodingKeys: String,CodingKey {
-        case updatedDate = "updateDate"
-        case createdDate = "createDate"
+        case id = "id"
+        case value = "value"
     }
 }
 
-struct CategoryItems: Codable {
+struct BrandsItem: Codable {
     
-    var updatedDate: String?
+    var updateDate: String?
+    var name: String?
     var icon: String?
-    var name: Dictionary<String,String>?
-    var totalProduct: Int?
-    var orderIndex: Int?
-    var parentCategoryId: Int?
+    var id: String?
     var isActive: Bool?
-    var categoryId: String?
-    var subCategories: [CategoryItems]?
-    var createdDate: String?
-    var isSelected: Bool?
+    var createDate: String?
     
-    enum CodingKeys: String,CodingKey {
-        case updatedDate = "updateDate"
-        case createdDate = "createDate"
+    enum CodingKeys: String,CodingKey  {
+        case updateDate = "updateDate"
+        case name = "name"
+        case icon = "icon"
+        case id = "id"
+        case isActive = "isActive"
+        case createDate = "createDate"
     }
-    
 }
 
-struct BrandItems: Codable {
+struct CategoriesItem: Codable {
     
-    var updatedDate: String?
-    var createdDate: String?
+    var updateDate: String?
     var name: Dictionary<String,String>?
     var icon: String?
     var totalProduct: Int?
     var orderIndex: Int?
     var parentCategoryId: String?
     var isActive: Bool?
-    var isChecked: Bool?
+    var categoryId: String?
+    var subCategories: [CategoriesItem]?
+    var createDate: String?
     
-    enum CodingKeys: String,CodingKey  {
-        case updatedDate = "updateDate"
-        case createdDate = "createDate"
+    enum CodingKeys: String,CodingKey {
+        case updateDate = "updateDate"
+        case name = "name"
+        case icon = "icon"
+        case totalProduct = "totalProduct"
+        case orderIndex = "orderIndex"
+        case parentCategoryId = "parentCategoryId"
+        case isActive = "isActive"
+        case categoryId = "categoryId"
+        case subCategories = "subCategories"
+        case createDate = "createDate"
     }
+    
 }
 
 struct MultiChoiceItem: Codable {
     var name: String?
     var id: String?
-    var isChecked: Bool?
+    
+    enum CodingKeys: String,CodingKey {
+        case name = "name"
+        case id = "id"
+    }
 }

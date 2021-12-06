@@ -25,18 +25,6 @@ class ECommerceUtil {
         return dateFormatterPrint.string(from: date ?? Date())
     }
     
-    static func getCurrencySymbol(currency: String?) -> String {
-        guard let currency = currency else {return ""}
-        if (currency.caseInsensitiveCompare("TRY") == .orderedSame){return "₺"}
-        else if (currency.caseInsensitiveCompare("EUR") == .orderedSame){return "€"}
-        else if (currency.caseInsensitiveCompare("USD") == .orderedSame){return "$"}
-        else if (currency.caseInsensitiveCompare("GBP") == .orderedSame){return "£"}
-        else if (currency.caseInsensitiveCompare("IRR") == .orderedSame){return "﷼"}
-        else if (currency.caseInsensitiveCompare("NOK") == .orderedSame){return "kr"}
-        else if (currency.caseInsensitiveCompare("RUB") == .orderedSame){return "\u{20BD}"}
-        return currency
-    }
-    
     static func getFormattedPrice(price: Double?, currency: String?) -> String {
         guard let price = price, let currency = currency else { return "" }
         return String(format: "%.2f", price) + " " + currency

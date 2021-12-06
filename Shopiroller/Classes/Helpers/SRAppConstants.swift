@@ -61,9 +61,17 @@ public struct SRAppConstants {
             static let page = "page"
             static let perPage = "perPage"
             static let categoryId = "categoryId"
+            static let brandId = "brandId"
             static let title = "title"
             static let countryId = "countryId"
             static let stateId = "stateId"
+            static let searchText = "searchText"
+            static let showcaseId = "showcaseId"
+            static let priceMin = "price.Min"
+            static let priceMax = "price.Max"
+            static let stockMin = "stock.Min"
+            static let shippingPrice = "shippingPrice"
+            static let isThereCampaign = "isThereCampaign"
         }
         
         struct Values {

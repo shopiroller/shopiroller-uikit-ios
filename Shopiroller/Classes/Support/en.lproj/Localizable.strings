@@ -255,5 +255,16 @@
 "checkout-result-info-success-continue-shopping-button-text" = "Continue Shopping";
 "checkout-result-info-fail-update-payment-method-button-text" = "Update Payment Method";
 
+//MARK: - Filter
 
-
+"filter_title" = "Filter";
+"filter_confirm" = "List Products";
+"filter_category" = "Category";
+"filter_brand" = "Brand";
+"filter_price_range" = "Price Range";
+"filter_only_stock" = "Only Stock";
+"filter_discounted_products" = "Discounted Products";
+"filter_free_shipping" = "Free Shipping";
+"filter_choice_apply" = "Apply";
+"filter_price_range_lowest" = "En Düşük";
+"filter_price_range_highest" = "En Yüksek";

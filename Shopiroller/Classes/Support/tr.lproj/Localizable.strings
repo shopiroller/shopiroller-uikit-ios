@@ -259,6 +259,16 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
 "checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
 
+//MARK: - Filter
 
-
-
+"filter_title" = "Filtrele";
+"filter_confirm" = "Ürünleri Listele";
+"filter_category" = "Kategori";
+"filter_brand" = "Marka";
+"filter_price_range" = "Fiyat Aralığı";
+"filter_only_stock" = "Sadece Stoktakiler";
+"filter_discounted_products" = "İndirimli Ürünler";
+"filter_free_shipping" = "Ücretsiz Kargo";
+"filter_choice_apply" = "Uygula";
+"filter_price_range_lowest" = "Lowest";
+"filter_price_range_highest" = "Highest";

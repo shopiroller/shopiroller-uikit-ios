@@ -48,8 +48,6 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         checkoutButton.setTitleColor(.white)
         
         tableView.tableFooterView = UIView()
-
-        
     }
     
     override func setupNavigationBar() {

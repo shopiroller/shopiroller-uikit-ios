@@ -14,16 +14,13 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         static var sortByTitle: String { return "sort-title-text".localized }
     }
     
-    @IBOutlet private weak var sortyByTitleLabel: UILabel!
-    @IBOutlet private weak var sortByImage: UIImageView!
-    @IBOutlet private weak var filterTitleLabel: UILabel!
-    @IBOutlet private weak var filterImage: UIImageView!
+    @IBOutlet private weak var contentStackView: UIStackView!
+    @IBOutlet private weak var sortFilterContainerView: UIView!
     @IBOutlet private weak var lineView: UIView!
+    @IBOutlet private weak var sortButton: UIButton!
+    @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var productsCollectionView: UICollectionView!
-    @IBOutlet private weak var filterProductsContainer: UIView!
-    @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var emptyView: EmptyView!
-    @IBOutlet private weak var collectionViewContainer: UIView!
     
     private let badgeView  = SRBadgeButton()
     
@@ -32,11 +29,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     public override func setup() {
-        super.setup()        
-        filterProductsContainer.layer.cornerRadius = 10
-        filterProductsContainer.backgroundColor = .buttonLight
-        filterProductsContainer.layer.masksToBounds = true
-        filterProductsContainer.clipsToBounds = true
+        super.setup()
+        getCount()
+        sortFilterContainerView.layer.cornerRadius = 10
+        sortFilterContainerView.backgroundColor = .buttonLight
+        sortFilterContainerView.layer.masksToBounds = true
+        sortFilterContainerView.clipsToBounds = true
         
         lineView.backgroundColor = UIColor.textPrimary.withAlphaComponent(0.2)
         
@@ -44,14 +42,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         productsCollectionView.dataSource = self
         productsCollectionView.register(cellClass: ItemCollectionViewCell.self)
         
-        filterTitleLabel.text = Constants.filterTitle
-        filterImage.image = .filterIcon
-    
-        sortyByTitleLabel.text = Constants.sortByTitle
-        sortByImage.image = .sortIcon
+        sortButton.setTitle("sort-title-text".localized)
+        sortButton.setTitleColor(.textPrimary)
+        filterButton.setTitle("filter-title-text".localized)
+        filterButton.setTitleColor(.textPrimary)
     
         getProducts(pagination: true)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,14 +71,14 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private func configureEmptyView() {
         if viewModel.getProductCount() == 0 {
-            filterProductsContainer.isHidden = true
-            collectionViewContainer.isHidden = true
-            emptyViewContainer.isHidden = false
+            sortFilterContainerView.isHidden = !viewModel.hasFilter()
+            productsCollectionView.isHidden = true
+            emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
-            filterProductsContainer.isHidden = false
-            collectionViewContainer.isHidden = false
-            emptyViewContainer.isHidden = true
+            sortFilterContainerView.isHidden = false
+            productsCollectionView.isHidden = false
+            emptyView.isHidden = true
         }
     }
     
@@ -110,6 +106,13 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         }
     }
     
+    @IBAction func sortButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        prompt(FilterViewController(viewModel: viewModel.getFilterViewModel(), delegate: self), animated: true, completion: nil)
+    }
+    
 }
 
 extension ProductListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -118,7 +121,7 @@ extension ProductListViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellModel = viewModel.getProductModel()
+        let cellModel = viewModel.getProductModelList()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
         cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
         return cell
@@ -147,5 +150,12 @@ extension ProductListViewController: UICollectionViewDelegateFlowLayout {
         prompt(vc, animated: true, completion: nil)
     }
     
+}
+
+extension ProductListViewController: FilterViewControllerDelegate {
+    func confirmedFilter(model: FilterModel) {
+        viewModel.setFilterModel(model)
+        getProducts(pagination: false)
+    }
 }
 
