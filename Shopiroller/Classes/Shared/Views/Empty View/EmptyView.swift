@@ -45,6 +45,7 @@ public class EmptyView: BaseView {
         }
         
         if let description = model.description {
+            titleLabel.font = .bold24
             descriptionLabel.isHidden = false
             descriptionLabel.text = description
         }
