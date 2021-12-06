@@ -32,7 +32,9 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         selectionTableView.register(cellClass: FilterChoiceTableViewCell.self)
         selectionTableView.delegate = self
         selectionTableView.dataSource = self
-        selectionTableView.allowsMultipleSelection = viewModel.isMultipleChoice
+        if viewModel.isMultipleChoice {
+            selectionTableView.allowsMultipleSelection = true
+        }
         selectionTableView.reloadData()
     }
     
