@@ -365,7 +365,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         self.pageControl.numberOfPages = viewModel.getItemCount() ?? 0
         
-        if viewModel.getItemCount() != 1 {
+        if viewModel.getItemCount() != 1 , viewModel.getItemCount() != 0 {
             pageControl.customizePageControl(pageControlContainer)
         } else {
             pageControl.isHidden = true
@@ -385,8 +385,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
             productOldPrice.textColor = .textPCaption
-            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(viewModel.getPrice(), currency: viewModel.getCurrency())
-            productNewPrice.text = "\(viewModel.getCampaignPrice())" + " " + viewModel.getCurrency()
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: ECommerceUtil.getCurrencySymbol(currency: viewModel.getCurrency()))
+            productNewPrice.text = "\(viewModel.getCampaignPrice())" + " " + ECommerceUtil.getCurrencySymbol(currency: viewModel.getCurrency())
         }else{
             discountContainer.isHidden = true
             productNewPrice.isHidden = true

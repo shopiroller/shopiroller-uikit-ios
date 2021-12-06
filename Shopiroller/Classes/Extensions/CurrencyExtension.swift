@@ -30,8 +30,8 @@ extension String {
         return mutableAttrString
     }
     
-    func makeStrokeCurrency(_ price: String , currency: String) -> NSMutableAttributedString {
-        let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: price)
+    func makeStrokeCurrency(currency: String) -> NSMutableAttributedString {
+        let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: self)
         
         attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
         
