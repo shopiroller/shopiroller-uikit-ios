@@ -58,7 +58,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     }
     
     @objc func showAllProducts() {
-        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId()))
+        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(), categoryTitle: viewModel.getPageTitle()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -107,7 +107,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId))
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, categoryTitle: viewModel.categoryList?[indexPath.row].name))
             prompt(vc, animated: true, completion: nil)
         }
     }

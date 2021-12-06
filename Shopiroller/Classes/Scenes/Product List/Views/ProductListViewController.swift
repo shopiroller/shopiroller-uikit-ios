@@ -26,6 +26,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     init(viewModel: ProductListViewModel){
         super.init(viewModel.getPageTitle(),viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
+        title = viewModel.getPageTitle()
     }
     
     public override func setup() {
