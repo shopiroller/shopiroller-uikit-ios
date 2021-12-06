@@ -22,7 +22,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         self.delegate = delegate
         super.init(viewModel.title, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
     }
-
+    
     override func setup() {
         super.setup()
         confirmButton.setTitleColor(.white)
@@ -86,6 +86,11 @@ extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(position: indexPath.row)
+        selectionTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        viewModel.didDeselectRow(position: indexPath.row)
         selectionTableView.reloadData()
     }
 }

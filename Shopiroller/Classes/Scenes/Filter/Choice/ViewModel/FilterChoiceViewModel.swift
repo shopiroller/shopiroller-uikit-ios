@@ -25,7 +25,9 @@ class FilterChoiceViewModel: BaseViewModel {
         title = "filter_brand".localized
         isMultipleChoice = true
         super.init()
-        configureDataList(dataList: dataList, selectedIds: selectedIds)
+        var data = dataList
+        data.append(BrandsItem(updateDate: nil, name: "sadasd", icon: nil, id: "1231231231", isActive: true, createDate: "qwdqwdwq"))
+        configureDataList(dataList: data, selectedIds: selectedIds)
     }
     
     init(dataList: VariationGroupsItem, selectedIds: [String] = []) {
@@ -48,15 +50,26 @@ class FilterChoiceViewModel: BaseViewModel {
     }
     
     func didSelectRow(position: Int) {
-        filteredList[position].isSelected = !filteredList[position].isSelected
+        filteredList[position].isSelected = true
         for (index, item) in originalList.enumerated() {
             if(item.data.id == filteredList[position].data.id) {
-                originalList[index].isSelected = !originalList[index].isSelected
+                originalList[index].isSelected = true
                 break
             }
         }
     }
     
+    func didDeselectRow(position: Int) {
+        filteredList[position].isSelected = false
+        for (index, item) in originalList.enumerated() {
+            if(item.data.id == filteredList[position].data.id) {
+                originalList[index].isSelected = false
+                originalList[index].isSelected = !originalList[index].isSelected
+                break
+            }
+        }
+    }
+        
     func getSelectedIds() -> SelectionIds {
         var selectionNameLabel = String()
         var selectedIds: [String] = []
