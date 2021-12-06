@@ -16,7 +16,7 @@ public enum ShopirollerError: Error, Equatable {
     public var description: String {
         switch self {
         case .network:
-            return NSLocalizedString("Network Error", comment: "network_error")
+            return NSLocalizedString("Network Error".localized, comment: "network_error")
         case .parseObject:
             return NSLocalizedString("Parse Object Error", comment: "parse_object_error")
         case .parseJSON:

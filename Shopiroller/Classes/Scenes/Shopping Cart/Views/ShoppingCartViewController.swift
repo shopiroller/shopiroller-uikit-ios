@@ -90,7 +90,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             self.configure()
             self.isInvalid()
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -98,7 +98,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         viewModel.clearShoppingCart(success: {
             self.configure()
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -106,7 +106,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         viewModel.removeItemFromShoppingCart(itemId: itemId, success: {
             self.configure()
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -114,7 +114,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         viewModel.updateItemQuantity(itemId: itemId, quantity: quantity, success: {
             self.configure()
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -122,7 +122,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         viewModel.validateShoppingCart(success: {
             self.configure()
         }) { (errorViewModel) in
-            self.view.makeToast(errorViewModel)
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     

@@ -71,7 +71,12 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultFirstButton.setTitle(Constants.failUpdatePaymentMethodButtonText)
         resultFirstButton.setTitleColor(.white)
         resultFirstButton.titleLabel?.font = .semiBold14
-        resultDetailDescription.isHidden = true
+        resultDetailDescription.isHidden = false
+        if let errorMessage = viewModel.geterrorMessage() {
+            resultDetailDescription.attributedText = String().makeBoldAfterString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-detail-description".localized + "(" + errorMessage.replacingOccurrences(of: "checkout-result-info-fail-detail-description-will-replace".localized, with: "checkout-result-info-fail-detail-description-to-replace".localized) + ")"))
+        } else {
+            resultDetailDescription.attributedText = String().makeBoldAfterString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-detail-description".localized))
+        }
         resultSecondButton.isHidden = true
     }
     
@@ -93,6 +98,9 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         if viewModel.getType() == .success {
             let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
             self.prompt(orderDetailVC, animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
         }
     }
     

@@ -140,7 +140,23 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setDefaultAddresses()
         getPaymentSettings()
+    }
+    
+    private func setDefaultAddresses() {
+        viewModel.setDefaultShippingAddress(success: {
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+        }
+        viewModel.setDefaultBillingAddress(success: {
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+        }
     }
     
     private func getPaymentSettings() {
@@ -149,6 +165,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     

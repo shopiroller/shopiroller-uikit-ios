@@ -254,10 +254,12 @@ Bu üründen en fazla %@ ürün satın alabilirsiniz.";
 "checkout-result-info-success-order-number" = "Order Number %@";
 "checkout-result-info-fail-title" = "Ödeme Başarısız";
 "checkout-result-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
-"checkout-result-info-fail-message" = "Hata Mesajı %@ Ödeme yönteminiz reddedildi. (%@)";
+"checkout-result-info-fail-message" = "Hata Mesajı %@";
 "checkout-result-info-success-check-order-button-text" = "Siparişi Kontrol Et";
 "checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
 "checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
+"checkout-result-info-fail-detail-description-will-replace" = "status=";
+"checkout-result-info-fail-detail-description-to-replace" = "Hata Kodu  ";
 
 //MARK: - Filter
 

@@ -12,8 +12,8 @@ import SVProgressHUD
 
 
 protocol ThreeDSModalDelegate {
-    func onPaymentSuccess(transactionId: String)
-    func onPaymentFailed(message: String)
+    func onPaymentSuccess()
+    func onPaymentFailed(message: String?)
 }
 
 class ThreeDSModalViewController: BaseViewController<ThreeDSModalViewModel> {
@@ -56,14 +56,23 @@ extension ThreeDSModalViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let _ = webView.url else { return }
-        guard let url = URLComponents(string: webView.url!.absoluteString) else { return }
-        if viewModel.isPageFinished(url: url.string!){
+        guard let url = navigationAction.request.url else {
+                        decisionHandler(.allow)
+                        return
+                    }
+        if viewModel.isPageFinished(url: url.absoluteString) {
             webView.removeFromSuperview()
-            dismiss(animated: true, completion: nil)
+            self.pop(animated: true, completion: nil)
+            if ((SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess ?? false) == true) {
+                delegate?.onPaymentSuccess()
+            } else {
+                delegate?.onPaymentFailed(message: viewModel.getErrorMessage())
+            }
             decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
         }
         SVProgressHUD.dismiss()
-        decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

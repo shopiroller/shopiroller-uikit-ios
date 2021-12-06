@@ -17,6 +17,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         static var addAddressButtonText: String { return "add-address-button-text".localized }
     }
     
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var shippingAddressAddButton: UIButton!
     @IBOutlet private weak var shippingAddressViewLabel: UILabel!
     @IBOutlet private weak var billingAddressViewTitle: UILabel!
@@ -72,11 +73,13 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             self.view.layoutIfNeeded()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
     
     private func configureViews() {
+        containerView.isHidden = false
         if viewModel.isBillingAddressEmpty() {
             billingAddressEmptyView.isHidden = false
             billingAddressAddButton.isHidden = true

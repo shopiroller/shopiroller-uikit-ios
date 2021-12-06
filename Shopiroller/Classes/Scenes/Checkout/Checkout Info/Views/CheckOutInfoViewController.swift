@@ -244,7 +244,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             viewModel.makeOrder?.shippingAddress?.description = SRSessionManager.shared.userDeliveryAddress?.addressLine
             viewModel.makeOrder?.paymentType = SRSessionManager.shared.orderEvent.paymentType
             viewModel.makeOrder?.creditCard = SRSessionManager.shared.orderEvent.orderCard
-            if viewModel.makeOrder?.tryAgain == true {
+            if SRSessionManager.shared.makeOrder?.tryAgain == true {
                 tryAgainOrder()
             } else {
                 sendOrder()
@@ -298,6 +298,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     private func sendOrder() {
         viewModel.sendOrder(success: {
+            SRSessionManager.shared.makeOrder = self.viewModel.makeOrder
             var delay = 0
             let responseTime = Date().timeIntervalSince1970 - self.timeInSeconds
             if (responseTime < 1500) {
@@ -395,17 +396,19 @@ extension CheckOutInfoViewController : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if orderNote.textColor == UIColor.lightGray {
-            viewModel.makeOrder?.userNote = textView.text
             orderNote.textColor = UIColor.black
         }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if orderNote.text.isEmpty {
-            orderNote.text = "checkout-info-order-note-text-view-placeholder".localized
-            orderNote.textColor = UIColor.lightGray
+        if viewModel.isOrderNoteChanged {
+            viewModel.makeOrder?.userNote = textView.text
+        } else {
+            viewModel.makeOrder?.userNote = ""
         }
     }
+   
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.isOrderNoteChanged = true
+    }
+    
 }
 
 extension CheckOutInfoViewController : SFSafariViewControllerDelegate {

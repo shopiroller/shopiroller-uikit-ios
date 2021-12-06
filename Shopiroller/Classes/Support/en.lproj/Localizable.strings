@@ -250,10 +250,13 @@
 "checkout-result-info-success-order-number" = "Order Number %@";
 "checkout-result-info-fail-title" = "Payment Failed";
 "checkout-result-info-fail-description" = "Sorry' payment failed. You can change the payment method and try again.";
-"checkout-result-info-fail-message" = "Error Message %@ Your payment method was declined. (%@)";
+"checkout-result-info-fail-message" = "Error Message %@";
+"checkout-result-info-fail-detail-description" = "Your payment method was declined.";
 "checkout-result-info-success-check-order-button-text" = "Check Order";
 "checkout-result-info-success-continue-shopping-button-text" = "Continue Shopping";
 "checkout-result-info-fail-update-payment-method-button-text" = "Update Payment Method";
+"checkout-result-info-fail-detail-description-will-replace" = "status=";
+"checkout-result-info-fail-detail-description-to-replace" = "Error Code ";
 
 //MARK: - Filter
 

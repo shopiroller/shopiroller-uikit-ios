@@ -33,6 +33,16 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     override func setup() {
         super.setup()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
         addChild(checkOutPageViewController)
         checkOutPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,13 +58,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         self.viewControllerTitle.text = "delivery-information-page-title".localized
         
         self.checkOutPageViewController = checkOutPageViewController
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
     }
     
     @objc func loadPayment() {
@@ -78,6 +81,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         
         if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.payment != nil && orderResponse?.payment?._3DSecureHtml != nil) {
             let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.payment?._3DSecureHtml))
+            threeDSViewController.delegate = self
             threeDSViewController.modalPresentationStyle = .overCurrentContext
             present(threeDSViewController, animated: true, completion: nil)
         } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
@@ -184,4 +188,17 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
         print(currentIndex)
     }
     
+}
+
+extension CheckOutViewController: ThreeDSModalDelegate {
+    func onPaymentSuccess() {
+        let resultVC = SRResultViewController(viewModel: SRResultViewControllerViewModel(type: .success, orderResponse: SRSessionManager.shared.orderResponseInnerModel))
+        prompt(resultVC, animated: true, completion: nil)
+    }
+    
+    func onPaymentFailed(message: String?) {
+        SRSessionManager.shared.makeOrder?.tryAgain = true
+        let resultVC = SRResultViewController(viewModel: SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel,errorMessage: message))
+        prompt(resultVC, animated: true, completion: nil)
+    }
 }

@@ -128,6 +128,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showAlertError(viewModel: errorViewModel)
+            self.shimmerCollectionView.isHidden = true
         }
     }
     
@@ -143,6 +144,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -158,6 +160,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -214,6 +217,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
