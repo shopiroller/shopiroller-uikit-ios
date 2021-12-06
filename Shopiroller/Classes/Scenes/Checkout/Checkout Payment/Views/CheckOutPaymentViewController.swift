@@ -146,14 +146,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private func setDefaultAddresses() {
         viewModel.setDefaultShippingAddress(success: {
-            self.configureEmptyView()
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showAlertError(viewModel: errorViewModel)
         }
         viewModel.setDefaultBillingAddress(success: {
-            self.configureEmptyView()
         })
         { [weak self] (errorViewModel) in
             guard let self = self else { return }
