@@ -195,7 +195,11 @@ public class SRMainPageViewModel: BaseViewModel {
     func getHeight(type: CellType) -> Float {
         switch type {
         case .slider:
-            return 250
+            if let sliderModel = sliderModel, sliderModel.count > 1 {
+                return 250
+            } else {
+                return 220
+            }
         case .categories:
             return 150
         }
