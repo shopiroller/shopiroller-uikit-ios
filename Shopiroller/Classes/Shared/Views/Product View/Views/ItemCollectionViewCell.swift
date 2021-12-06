@@ -75,8 +75,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
             productOldPrice.text = viewModel.getPrice()
+            productOldPrice.font = .semiBold14
             productOldPrice.textColor = .black
-            productNewPrice.font = .semiBold14
         }
             
         if let image = viewModel.getImage() { 
