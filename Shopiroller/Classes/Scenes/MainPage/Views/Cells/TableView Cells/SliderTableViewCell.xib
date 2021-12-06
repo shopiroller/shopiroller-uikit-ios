@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,58 +11,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nlx-0S-0IB" userLabel="Slider Collection View Cell" customClass="SliderTableViewCell" customModule="Shopiroller" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="379" height="370"/>
+            <rect key="frame" x="0.0" y="0.0" width="462" height="309"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IXM-5M-8ea">
-                <rect key="frame" x="0.0" y="0.0" width="379" height="370"/>
+                <rect key="frame" x="0.0" y="0.0" width="462" height="309"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vlP-aB-c2Y">
-                        <rect key="frame" x="0.0" y="0.0" width="379" height="330"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="I78-YF-R7v">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
-                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4EM-k2-qhn">
-                        <rect key="frame" x="112" y="340" width="155.5" height="20"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHi-qz-MWU">
+                        <rect key="frame" x="0.0" y="0.0" width="462" height="299"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="huQ-Ue-o4G">
-                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="20"/>
-                            </pageControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vlP-aB-c2Y">
+                                <rect key="frame" x="0.0" y="0.0" width="462" height="269"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="I78-YF-R7v">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4EM-k2-qhn">
+                                <rect key="frame" x="0.0" y="279" width="462" height="20"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="huQ-Ue-o4G">
+                                        <rect key="frame" x="0.0" y="0.0" width="462" height="20"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="huQ-Ue-o4G" secondAttribute="trailing" id="HXm-ej-Enp"/>
+                                    <constraint firstItem="huQ-Ue-o4G" firstAttribute="top" secondItem="4EM-k2-qhn" secondAttribute="top" id="QcG-Ux-Rff"/>
+                                    <constraint firstItem="huQ-Ue-o4G" firstAttribute="leading" secondItem="4EM-k2-qhn" secondAttribute="leading" id="ZeF-a6-Dbu"/>
+                                    <constraint firstAttribute="trailing" secondItem="huQ-Ue-o4G" secondAttribute="trailing" id="ctF-Uj-DSF"/>
+                                    <constraint firstAttribute="height" constant="20" id="fVc-Cb-W4H"/>
+                                    <constraint firstAttribute="bottom" secondItem="huQ-Ue-o4G" secondAttribute="bottom" id="hmO-RR-7Xh"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="huQ-Ue-o4G" secondAttribute="trailing" id="HXm-ej-Enp"/>
-                            <constraint firstItem="huQ-Ue-o4G" firstAttribute="top" secondItem="4EM-k2-qhn" secondAttribute="top" id="QcG-Ux-Rff"/>
-                            <constraint firstItem="huQ-Ue-o4G" firstAttribute="leading" secondItem="4EM-k2-qhn" secondAttribute="leading" id="ZeF-a6-Dbu"/>
-                            <constraint firstAttribute="trailing" secondItem="huQ-Ue-o4G" secondAttribute="trailing" id="ctF-Uj-DSF"/>
-                            <constraint firstAttribute="height" constant="20" id="fVc-Cb-W4H"/>
-                            <constraint firstAttribute="bottom" secondItem="huQ-Ue-o4G" secondAttribute="bottom" id="hmO-RR-7Xh"/>
-                        </constraints>
-                    </view>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="vlP-aB-c2Y" firstAttribute="top" secondItem="IXM-5M-8ea" secondAttribute="top" id="6Cb-ol-eqh"/>
-                    <constraint firstItem="vlP-aB-c2Y" firstAttribute="leading" secondItem="IXM-5M-8ea" secondAttribute="leading" id="GcR-lM-Qtu"/>
-                    <constraint firstItem="4EM-k2-qhn" firstAttribute="top" secondItem="vlP-aB-c2Y" secondAttribute="bottom" constant="10" id="JLL-G1-80Z"/>
-                    <constraint firstAttribute="trailing" secondItem="vlP-aB-c2Y" secondAttribute="trailing" id="LPt-YA-ZfQ"/>
-                    <constraint firstAttribute="bottom" secondItem="4EM-k2-qhn" secondAttribute="bottom" constant="10" id="Svl-eB-eym"/>
-                    <constraint firstItem="4EM-k2-qhn" firstAttribute="centerX" secondItem="IXM-5M-8ea" secondAttribute="centerX" id="m59-hZ-fAq"/>
+                    <constraint firstAttribute="trailing" secondItem="sHi-qz-MWU" secondAttribute="trailing" id="6Ug-fC-xc1"/>
+                    <constraint firstAttribute="bottom" secondItem="sHi-qz-MWU" secondAttribute="bottom" constant="10" id="LUo-f2-2NF"/>
+                    <constraint firstItem="sHi-qz-MWU" firstAttribute="top" secondItem="IXM-5M-8ea" secondAttribute="top" id="TfR-2U-3BN"/>
+                    <constraint firstItem="sHi-qz-MWU" firstAttribute="leading" secondItem="IXM-5M-8ea" secondAttribute="leading" id="xI5-9D-WjO"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="379" height="370"/>
+            <size key="customSize" width="462" height="309"/>
             <connections>
                 <outlet property="collectionView" destination="vlP-aB-c2Y" id="0ym-g3-dNU"/>
                 <outlet property="pageControl" destination="huQ-Ue-o4G" id="V1q-9J-R4U"/>
                 <outlet property="pageControlContainer" destination="4EM-k2-qhn" id="fML-Bb-iuJ"/>
             </connections>
-            <point key="canvasLocation" x="-742.75362318840587" y="-252.45535714285714"/>
+            <point key="canvasLocation" x="-682.60869565217399" y="-272.87946428571428"/>
         </collectionViewCell>
     </objects>
 </document>

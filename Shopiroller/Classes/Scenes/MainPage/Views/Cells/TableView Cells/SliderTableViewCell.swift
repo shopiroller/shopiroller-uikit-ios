@@ -48,6 +48,7 @@ public class SliderTableViewCell: UICollectionViewCell {
     func setup(viewModel : [SliderSlidesModel]?) {
         self.viewModel = viewModel
         pageControl.numberOfPages = viewModel?.count ?? 0
+        pageControlContainer.isHidden = (viewModel?.count == 1)
         collectionView.reloadData()
     }
     
