@@ -84,20 +84,15 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         group?.enter()
         group?.enter()
         group?.enter()
-        
-        DispatchQueue.main.async {
-            self.viewModel.clearProductListAndCurrentPage()
-            self.mainCollectionView.reloadData()
-        }
-      
-        self.getProducts(showProgress: false)
+                
         self.getSliders(showProgress: false)
         self.getCategories(showProgress: false)
         self.getShowCase(showProgress: false)
+        self.getProducts(showProgress: false)
         
         group?.notify(queue: .main, execute: {
             self.group = nil
-            if self.mainCollectionView.hasActiveDrag == false {
+            if self.mainCollectionView.isDragging == false {
                 self.mainCollectionView.refreshControl?.endRefreshing()
                 self.mainCollectionView.reloadData()
                 self.configureEmptyView()
@@ -124,7 +119,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             guard let self = self else { return }
             if self.group != nil {
                 self.group?.leave()
-            }else {
+            } else {
                 self.shimmerCollectionView.isHidden = false
                 self.configureEmptyView()
                 self.mainCollectionView.reloadData()
@@ -132,6 +127,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -344,7 +340,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == viewModel.productItemCount() - 2){
+        if indexPath.row == viewModel.productItemCount() - 2{
             getProducts(showProgress: true)
         }
     }
@@ -359,7 +355,7 @@ extension SRMainPageViewController : CategoriesCellDelegate {
             let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoryName(position: position),categoryId: viewModel.getCategoryId(position: position)))
             self.prompt(vc, animated: true, completion: nil)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoriesViewModel()?[position].categoryId))
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(position: position),categoryTitle: viewModel.getCategoryName(position: position)))
             prompt(vc, animated: true, completion: nil)
         }
         

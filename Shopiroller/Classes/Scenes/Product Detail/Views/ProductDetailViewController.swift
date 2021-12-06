@@ -200,8 +200,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
-        pageControl.customizePageControl(pageControlContainer)
-        
         getProductDetail()
         
         getPaymentSettings()
@@ -271,7 +269,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         viewModel.getProductDetail(success: {
             [weak self] in
             guard let self = self else { return }
-            self.pageControl.numberOfPages = self.viewModel.getItemCount() ?? 0
             self.setUI()
             self.collectionView.reloadData()
         }) {
@@ -365,6 +362,14 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         productTitleLabel.textColor = .textPrimary
         productTitleLabel.font = .bold24
         productTitleLabel.text = viewModel.getTitle()
+        
+        self.pageControl.numberOfPages = viewModel.getItemCount() ?? 0
+        
+        if viewModel.getItemCount() != 1 {
+            pageControl.customizePageControl(pageControlContainer)
+        } else {
+            pageControl.isHidden = true
+        }
         
         if let brandImage = viewModel.getBrandImage() {
             productBrandImage.kf.setImage(with: URL(string: brandImage))

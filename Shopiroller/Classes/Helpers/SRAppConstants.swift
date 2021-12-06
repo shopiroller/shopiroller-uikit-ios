@@ -62,6 +62,7 @@ public struct SRAppConstants {
             static let perPage = "perPage"
             static let categoryId = "categoryId"
             static let brandId = "brandId"
+            static let title = "title"
             static let countryId = "countryId"
             static let stateId = "stateId"
             static let searchText = "searchText"
@@ -83,6 +84,10 @@ public struct SRAppConstants {
     public struct ShoppingCart {
         
         public static var badgeCount = "badgeCount"
+    }
+    
+    struct History {
+        static let searchHistory = "searchHistory"
     }
     
     enum NavigationItemSelectorType {

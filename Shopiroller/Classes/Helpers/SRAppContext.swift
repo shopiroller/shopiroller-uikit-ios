@@ -76,5 +76,14 @@ extension SRAppContext {
         }
     }
     
+    static var searchHistory: [String] {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.History.searchHistory) as? [String] ?? []
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.History.searchHistory)
+        }
+    }
+    
 }
 

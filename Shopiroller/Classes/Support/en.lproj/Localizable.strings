@@ -20,6 +20,7 @@
 "error-general-title" = "Error";
 "keyboard-next-action-text" = "Next";
 "keyboard-done-action-text" = "Done";
+"search-bar-search-text" = "Search";
 
 //MARK: - Products Empty View
 "empty-view-title" = "No Products added.";
@@ -221,7 +222,7 @@
 "checkout-info-update-order-pop-up-title" = "Update your order!";
 "checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
 "checkout-info-update-order-pop-up-button-text" = "Update My Cart";
-"checkout-info-card-description-text" = "%@ items %@ %@ ";
+"checkout-info-card-description-text" = "%@ items %@ %@";
 "checkout-info-bank-transfer-description-text" = "Bank Transfer %@ %@";
 "checkout-info-credit-card-description-text" = "Credit Card %@ **** %@";
 "checkout-info-agreement-is-not-checked-title" = "You have to agree the terms.";
