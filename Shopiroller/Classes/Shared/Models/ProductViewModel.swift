@@ -22,9 +22,11 @@ class ProductViewModel {
     }
     
     func hasDiscount() -> Bool {
-        if(productDetailModel?.campaignPrice != 0) {
+        if let campaingPrice = productDetailModel?.campaignPrice, campaingPrice != 0 {
             return true
-        }else{
+        } else if let campaignPrice = productListModel?.campaignPrice, campaignPrice != 0 {
+            return true
+        } else {
             return false
         }
     }
