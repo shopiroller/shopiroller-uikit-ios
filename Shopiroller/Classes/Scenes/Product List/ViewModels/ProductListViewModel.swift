@@ -86,7 +86,7 @@ class ProductListViewModel : BaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+        EmptyModel(image: .noProductsIcon, title: "empty-view-title".localized, description: "empty-view-description".localized, button: nil)
     }
     
     func getProductId(position: Int) -> String {
