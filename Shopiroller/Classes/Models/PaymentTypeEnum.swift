@@ -20,19 +20,19 @@ enum PaymentTypeEnum: String, Codable {
     var title: String {
         switch self {
         case .PayAtDoor:
-            return "CashOnDelivery".localized
+            return "CashOnDelivery"
         case .Online:
-            return "CreditCard".localized
+            return "CreditCard"
         case .Online3DS:
-            return "CreditCard".localized
+            return "CreditCard"
         case .Transfer:
-            return "Transfer".localized
+            return "Transfer"
         case .PayPal:
-            return "Paypal".localized
+            return "Paypal"
         case .Stripe:
-            return "Stripe".localized
+            return "Stripe"
         case .Stripe3DS:
-            return "Stripe3DS".localized
+            return "Stripe3DS"
         }
     }
 

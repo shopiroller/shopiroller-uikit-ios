@@ -13,6 +13,8 @@ class CheckOutInfoViewModel: BaseViewModel {
         
     var makeOrder: SRMakeOrderResponse? = SRMakeOrderResponse()
     
+    var isOrderNoteChanged: Bool = false
+    
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in

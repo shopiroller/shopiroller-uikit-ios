@@ -48,7 +48,7 @@ struct SRMakeOrderResponse: Codable {
     
     func getCompleteOrderModel() -> CompleteOrderModel {
         if (paymentType?.lowercased() == PaymentTypeEnum.Online3DS.rawValue.lowercased() || paymentType?.lowercased() == PaymentTypeEnum.Online.rawValue.lowercased()) {
-            return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, card: creditCard)
+            return CompleteOrderModel(orderId: SRSessionManager.shared.orderResponseInnerModel?.order?.id, userNote: userNote, paymentType: paymentType, card: creditCard)
         } else if (paymentType?.lowercased() == PaymentTypeEnum.Transfer.rawValue.lowercased()) {
             return CompleteOrderModel(orderId: orderId, userNote: userNote, paymentType: paymentType, bankAccount: bankAccount, paymentAccount: paymentAccount)
         } else {

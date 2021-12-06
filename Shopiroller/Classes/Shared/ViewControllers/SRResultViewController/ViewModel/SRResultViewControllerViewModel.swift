@@ -13,9 +13,12 @@ class SRResultViewControllerViewModel : BaseViewModel {
     
     private let type: OrderResultType?
     
-    init (type: OrderResultType? = nil, orderResponse: SROrderResponseInnerModel?) {
+    private let errorMessage: String?
+    
+    init (type: OrderResultType? = nil, orderResponse: SROrderResponseInnerModel?,errorMessage: String? = nil) {
         self.type = type
         self.orderResponse = orderResponse
+        self.errorMessage = errorMessage
     }
     
     func getType() -> OrderResultType? {
@@ -24,6 +27,10 @@ class SRResultViewControllerViewModel : BaseViewModel {
     
     func getOrderNumber() -> String {
         return orderResponse?.order?.orderCode ?? ""
+    }
+    
+    func geterrorMessage() -> String? {
+        return errorMessage
     }
     
 }

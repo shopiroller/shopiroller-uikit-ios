@@ -72,6 +72,18 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath, resourceType: String.self, httpBody: products.data, ignoreParse: true)
     }
     
+    static func setDefaultBillingAddress(_ userId: String,addressId: String,userBillingAddress: SRSetDefaultAddressRequest?) ->
+    SRNetworkRequestManager<SuccessResponse> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)\(addressId)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self, httpBody: userBillingAddress.data, ignoreParse: true)
+    }
+    
+    static func setDefaultShippingaddress(_ userId: String,addressId: String, userShippingAddress: SRSetDefaultAddressRequest) ->
+    SRNetworkRequestManager<SuccessResponse> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)\(addressId)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self, httpBody: userShippingAddress.data, ignoreParse: true)
+    }
+    
     static func clearShoppingCart(userId: String) -> SRNetworkRequestManager<SuccessResponse> {
         let subPath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)"
         return SRNetworkRequestManager(httpMethod: .delete, path: .users, subpath: subPath , resourceType: SuccessResponse.self)

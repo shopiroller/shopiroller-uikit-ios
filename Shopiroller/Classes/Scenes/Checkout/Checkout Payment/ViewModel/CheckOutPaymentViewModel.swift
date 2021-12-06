@@ -41,6 +41,38 @@ class CheckOutPaymentViewModel: BaseViewModel {
         }
     }
     
+    func setDefaultBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.setDefaultBillingAddress(SRAppConstants.Query.Values.userId, addressId: SRSessionManager.shared.userBillingAddress?.id ?? "", userBillingAddress: SRSetDefaultAddressRequest()).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func setDefaultShippingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.setDefaultShippingaddress(SRAppConstants.Query.Values.userId, addressId: SRSessionManager.shared.userDeliveryAddress?.id ?? "", userShippingAddress: SRSetDefaultAddressRequest()).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
     func getSupportedPaymentList() -> [SupportedPaymentType]? {
         return paymentSettings?.supportedPaymentTypes
     }

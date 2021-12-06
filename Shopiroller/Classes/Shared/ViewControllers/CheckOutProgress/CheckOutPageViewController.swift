@@ -48,8 +48,9 @@ class CheckOutPageViewController: UIPageViewController {
     }
     
     @objc func loadPayment() {
-        setViewControllers([items[1]],
+        setViewControllers([checkOutPaymentVC!],
                            direction: .reverse, animated: true, completion: nil)
+        
     }
     
     @objc func loadAddress() {
@@ -57,13 +58,15 @@ class CheckOutPageViewController: UIPageViewController {
                            direction: .reverse, animated: true, completion: nil)
     }
     
+    var checkOutPaymentVC: CheckOutPaymentViewController?
+    
     private func createViewControllers() {
         let checkOutAdressVC = CheckOutAddressViewController(viewModel: CheckOutAddressViewModel())
         checkOutAdressVC.delegate = checkOutPageDelegate
         items.append(checkOutAdressVC)
-        let checkOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
-        checkOutPaymentVC.delegate = checkOutPageDelegate
-        items.append(checkOutPaymentVC)
+        checkOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
+        checkOutPaymentVC!.delegate = checkOutPageDelegate
+        items.append(checkOutPaymentVC!)
         let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
         checkOutInfoVC.delegate = checkOutPageDelegate
         items.append(checkOutInfoVC)
