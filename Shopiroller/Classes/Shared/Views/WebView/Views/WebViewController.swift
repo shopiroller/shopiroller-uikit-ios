@@ -41,8 +41,9 @@ class WebViewController: BaseViewController<WebViewViewModel> {
     }
     
     private func loadWebView() {
-        if viewModel.webViewHtml != ""{
-            webView.loadHTMLString(viewModel.webViewHtml ?? "", baseURL: nil)
+        if let url = viewModel.webViewHtml {
+            let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
+            webView.loadHTMLString(headerString + url, baseURL: nil)
         }
     }
 
