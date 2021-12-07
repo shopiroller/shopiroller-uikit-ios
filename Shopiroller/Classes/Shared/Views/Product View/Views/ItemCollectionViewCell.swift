@@ -71,10 +71,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             productNewPrice.font = .semiBold14
             productNewPrice.text = viewModel.getCampaignPrice() + " " + viewModel.getCurrency()
-        }else{
+        } else {
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = viewModel.getPrice()
+            productOldPrice.text = viewModel.getPrice() + " " + viewModel.getCurrency()
             productOldPrice.font = .semiBold14
             productOldPrice.textColor = .black
         }
