@@ -316,6 +316,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            if errorViewModel.message == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
+                self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
+            } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
+                self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
+            }
         }
     }
     

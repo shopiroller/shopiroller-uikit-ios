@@ -176,7 +176,9 @@ final public class SRNetworkManager {
                         }
                         var value = try decoder.decode(obj, from: data)
                         
-                        if let error = value.message {
+                        if let isUserFriendlyMessage = value.isUserFriendlyMessage, !isUserFriendlyMessage {
+                            resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: value.key ?? "")))
+                        } else if let error = value.message {
                             resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: error)))
                             return
                         } else if let errors = value.errors {

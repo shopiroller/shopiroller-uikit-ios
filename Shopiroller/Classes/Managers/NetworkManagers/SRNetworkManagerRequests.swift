@@ -69,7 +69,7 @@ struct SRNetworkManagerRequests {
     static func addProductToShoppingCart(products: SRAddProductModel,userId: String) ->
     SRNetworkRequestManager<String> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)"
-        return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath, resourceType: String.self, httpBody: products.data, ignoreParse: true)
+        return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath, resourceType: String.self, httpBody: products.data)
     }
     
     static func setDefaultBillingAddress(_ userId: String,addressId: String,userBillingAddress: SRSetDefaultAddressRequest?) ->
