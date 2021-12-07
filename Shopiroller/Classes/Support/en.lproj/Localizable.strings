@@ -49,7 +49,7 @@
 "product-detail-out-of-stock-title" = "Out of Stock";
 "product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
 "product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
-"product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %s products in shopping cart";
+"product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %@ products in shopping cart";
 
 //MARK: - Order List
 "order-list-page-title" = "My Orders";

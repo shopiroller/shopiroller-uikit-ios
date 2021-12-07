@@ -49,7 +49,7 @@
 "product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
 "product-detail-maximum-product-quantity-title" = "Daha fazla miktarda ürün ekleyemezsiniz.";
-"product-detail-maximum-product-quantity-description" = "Sepetinize eklenebilecek en fazla miktarda ürünü eklediniz , bu üründen fazla XX adet satın alabilirsiniz.";
+"product-detail-maximum-product-quantity-description" = "Sepetinize eklenebilecek en fazla miktarda ürünü eklediniz , bu üründen fazla %@ adet satın alabilirsiniz.";
 
 //MARK: - Order List
 "order-list-page-title" = "Siparişlerim";
@@ -149,7 +149,7 @@
 // MARK: - Shopping Cell
 "shopping_cell_cargo_warning" = "%@ özel kargo ücreti uygulanır.";
 "shopping_cell_maximum_product_message" = "
-Bu üründen en fazla %@ ürün satın alabilirsiniz.";
+Bu üründen en fazla %@ adet satın alabilirsiniz.";
 
 //MARK: - Checkout Progress
 "delivery-information-page-title" = "Teslimat Bilgileri";
