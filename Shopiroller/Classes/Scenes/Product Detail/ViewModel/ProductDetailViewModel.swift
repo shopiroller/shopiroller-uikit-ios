@@ -181,7 +181,7 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func getMaxQuantityPopUpViewModel() -> PopUpViewModel {
         popUpState = .maxQuantity
-        return PopUpViewModel(image: .backIcon, title: "product-detail-maximum-product-quantity-title".localized, description: "product-detail-maximum-product-quantity-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "product-detail-maximum-product-quantity-title".localized, description: "product-detail-maximum-product-quantity-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
     }
     
     func isStateSoldOut() -> Bool {

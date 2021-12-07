@@ -302,17 +302,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         viewModel.addProductToCart(success: {
             [weak self] in
             guard let self = self else { return }
-            if self.viewModel.isOutofStock() {
-                self.showSoldOutPopUp()
-            }else if self.viewModel.isQuantityMax() {
-                self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
-            }else {
-                self.soldOutContainer.isHidden = true
-                self.quantityContainer.isHidden = false
-                self.showAddProductAnimation()
-                self.getCount()
-                self.navigationController?.viewWillLayoutSubviews()
-            }
+            self.soldOutContainer.isHidden = true
+            self.quantityContainer.isHidden = false
+            self.showAddProductAnimation()
+            self.getCount()
+            self.navigationController?.viewWillLayoutSubviews()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
