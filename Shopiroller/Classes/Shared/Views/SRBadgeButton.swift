@@ -20,7 +20,7 @@ class SRBadgeButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addBadgeToButon(badge: nil)
+        addBadgeToButon(badge: badge)
     }
     
     func addBadgeToButon(badge: String?) {
@@ -31,9 +31,8 @@ class SRBadgeButton: UIButton {
         badgeLabel.font = UIFont.boldSystemFont(ofSize: 10)
         badgeLabel.backgroundColor = UIColor(red: 221/255, green: 55/255, blue: 95/255, alpha: 1)
         let badgeSize = badgeLabel.frame.size
-        DispatchQueue.main.async {
-            self.badgeLabel.text = badge
-        }
+        self.badgeLabel.text = badge
+        
         let height = max(15, Double(badgeSize.height) + 2.0)
         let width = max(height, Double(badgeSize.width) + 5.0)
         
@@ -53,8 +52,12 @@ class SRBadgeButton: UIButton {
             
         badgeLabel.layer.cornerRadius = badgeLabel.frame.height/2
         badgeLabel.layer.masksToBounds = true
+        if badge == "0" || badge == nil {
+            badgeLabel.isHidden = true
+        } else {
+            badgeLabel.isHidden = false
+        }
         addSubview(badgeLabel)
-        badgeLabel.isHidden = badge != "0" ? false : true
     }
     
     required init?(coder aDecoder: NSCoder) {
