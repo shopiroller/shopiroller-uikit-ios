@@ -394,9 +394,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
         }
-        
-        situationContainer.isHidden = !viewModel.isShippingFree() || !viewModel.isOutofStock()
-        
+                
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
             shippingPriceContainer.isHidden = true
@@ -423,7 +421,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             soldOutLabel.textColor = .black
             soldOutLabel.text = Constants.soldOutText
             quantityContainer.isHidden = true
-            
             showSoldOutPopUp()
         } else {
             soldOutContainer.isHidden = true
