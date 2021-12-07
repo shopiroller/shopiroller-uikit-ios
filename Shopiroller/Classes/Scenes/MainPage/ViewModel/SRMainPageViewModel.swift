@@ -45,14 +45,14 @@ public class SRMainPageViewModel: BaseViewModel {
         }
     }
     
-    func getProducts(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        var urlQueryItems: [URLQueryItem] = []
+    func getProducts(showProgress: Bool?, isPagination: Bool = false,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
+        if !isPagination {
+            products = nil
+        }
 
         if products?.count ?? 0 == 0 {
-            currentPage = 0
+            currentPage = 1
         } else {
             if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
                 return
@@ -60,17 +60,22 @@ public class SRMainPageViewModel: BaseViewModel {
             currentPage = currentPage + 1
         }
         
+        var urlQueryItems: [URLQueryItem] = []
+        
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(currentPage)))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
+        
         SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result{
             case .success(let response):
-                if self.currentPage != 0 {
+                if self.currentPage != 1 {
                     self.products = self.products! + (response.data ?? [])
                 }else{
                     self.products = response.data
                 }
                 DispatchQueue.main.async {
-                    succes?()
+                    success?()
                 }
             case.failure(let err):
                 DispatchQueue.main.async {
@@ -81,18 +86,18 @@ public class SRMainPageViewModel: BaseViewModel {
         
     }
     
-    func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
+    func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
     }
     
-    func getCategories(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getCategories(showProgress: Bool?,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getCategories(showProgress: showProgress ?? true).response() {
             (result) in
             switch result{
             case .success(let response):
                 self.categories = response.data
                 DispatchQueue.main.async {
-                    succes?()
+                    success?()
                 }
             case.failure(let err):
                 DispatchQueue.main.async {
@@ -104,7 +109,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     
-    func getShowCase(showProgress: Bool?,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+    func getShowCase(showProgress: Bool?,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
         SRNetworkManagerRequests.getShowCase(showProgress: showProgress ?? true).response() {
             (result) in
@@ -112,7 +117,7 @@ public class SRMainPageViewModel: BaseViewModel {
             case .success(let response):
                 self.showcase = response.data
                 DispatchQueue.main.async {
-                    succes?()
+                    success?()
                 }
             case.failure(let err):
                 DispatchQueue.main.async {

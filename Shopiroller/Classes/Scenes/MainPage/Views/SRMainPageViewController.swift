@@ -51,7 +51,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         getSliders(showProgress: true)
         getCategories(showProgress: true)
         getShowCase(showProgress: true)
-        getProducts(showProgress: true)
+        getProducts(showProgress: true, isPagination: false)
+        
+        configureRefreshControl()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -88,15 +90,13 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         self.getSliders(showProgress: false)
         self.getCategories(showProgress: false)
         self.getShowCase(showProgress: false)
-        self.getProducts(showProgress: false)
+        self.getProducts(showProgress: false, isPagination: false)
         
         group?.notify(queue: .main, execute: {
             self.group = nil
-            if self.mainCollectionView.isDragging == false {
-                self.mainCollectionView.refreshControl?.endRefreshing()
-                self.mainCollectionView.reloadData()
-                self.configureEmptyView()
-            }
+            self.mainCollectionView.refreshControl?.endRefreshing()
+            self.mainCollectionView.reloadData()
+            self.configureEmptyView()
         })
     }
     
@@ -113,11 +113,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    private func getProducts(showProgress: Bool) {
-        viewModel.getProducts(showProgress: showProgress, succes: {
+    private func getProducts(showProgress: Bool, isPagination: Bool = false) {
+        viewModel.getProducts(showProgress: showProgress, isPagination: isPagination, success: {
             [weak self] in
             guard let self = self else { return }
-            if self.group != nil {
+            if self.group != nil && !isPagination {
                 self.group?.leave()
             } else {
                 self.shimmerCollectionView.isHidden = false
@@ -133,7 +133,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func getCategories(showProgress: Bool) {
-        viewModel.getCategories(showProgress: showProgress,succes: {
+        viewModel.getCategories(showProgress: showProgress,success: {
             [weak self] in
             guard let self = self else { return }
             if self.group != nil {
@@ -149,7 +149,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     private func getShowCase(showProgress: Bool) {
-        viewModel.getShowCase(showProgress: showProgress,succes: {
+        viewModel.getShowCase(showProgress: showProgress,success: {
             [weak self] in
             guard let self = self else { return }
             if self.group != nil {
@@ -174,7 +174,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }else{
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
-            configureRefreshControl()
         }
     }
     
@@ -210,7 +209,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     private func getCount() {
-        viewModel.getShoppingCartCount(succes: {
+        viewModel.getShoppingCartCount(success: {
             [weak self] in
             guard let self = self else { return }
             
@@ -344,8 +343,8 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.productItemCount() - 2{
-            getProducts(showProgress: true)
+        if indexPath.row == viewModel.productItemCount() - 2 {
+            getProducts(showProgress: true, isPagination: true)
         }
     }
     
