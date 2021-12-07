@@ -70,11 +70,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
             
             productNewPrice.font = .semiBold14
-            productNewPrice.text = viewModel.getCampaignPrice() + " " + viewModel.getCurrency()
+            productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
         } else {
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = viewModel.getPrice() + " " + viewModel.getCurrency()
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
             productOldPrice.font = .semiBold14
             productOldPrice.textColor = .black
         }
