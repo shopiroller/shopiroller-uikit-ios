@@ -305,7 +305,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             self.soldOutContainer.isHidden = true
             self.quantityContainer.isHidden = false
             self.showAddProductAnimation()
-            self.getCount()
             self.navigationController?.viewWillLayoutSubviews()
         }) {
             [weak self] (errorViewModel) in
@@ -385,9 +384,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.layer.masksToBounds = true
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
+            discountLabel.font = .bold24
             productOldPrice.textColor = .textPCaption
+            productOldPrice.font = .medium14
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
             productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
+            productNewPrice.font = .semiBold20
         }else{
             discountContainer.isHidden = true
             productNewPrice.isHidden = true

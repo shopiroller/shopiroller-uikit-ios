@@ -79,19 +79,18 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             description.addAttributes([.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
             
             descriptionLabel.attributedText = description
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
-                    let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
-                    self.popUpHeightContstraint.constant += difference
-                    
-                    if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
-                        self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
-                    }
-                }
-            }
-            
         } else {
             descriptionLabel.text = viewModel.getDescription()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
+                let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
+                self.popUpHeightContstraint.constant += difference
+                
+                if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
+                    self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
+                }
+            }
         }
     }
   

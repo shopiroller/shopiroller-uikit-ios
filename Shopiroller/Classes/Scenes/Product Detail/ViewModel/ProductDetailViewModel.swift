@@ -61,9 +61,17 @@ public class ProductDetailViewModel: BaseViewModel {
         SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
             switch result {
-            case.success(let _):
+            case.success(let response):
+                if let count = response.data?.shoppingCardCount {
+                    if count >= 10 {
+                        SRAppContext.shoppingCartCount = "\(9)" + "+"
+                    } else {
+                        SRAppContext.shoppingCartCount = "\(count)"
+                    }
+                }
                 DispatchQueue.main.async {
-                   success?()
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+                    success?()
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
@@ -181,7 +189,7 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func getMaxQuantityPopUpViewModel() -> PopUpViewModel {
         popUpState = .maxQuantity
-        return PopUpViewModel(image: .outOfStock, title: "product-detail-maximum-product-quantity-title".localized, description: String(format: "product-detail-maximum-product-quantity-description".localized, "\(quantityCount)") , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "product-detail-maximum-product-quantity-title".localized, description: String(format: "product-detail-maximum-product-quantity-description".localized, "\(productDetailModel?.maxQuantityPerOrder ?? 0)") , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
     }
     
     func isStateSoldOut() -> Bool {
