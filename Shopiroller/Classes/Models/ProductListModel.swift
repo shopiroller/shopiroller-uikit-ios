@@ -16,7 +16,7 @@ struct ProductListModel : Codable {
     var price : Double?
     var campaignPrice : Double?
     var shippingPrice: Double?
-    var currency: String?
+    var currency: CurrencyEnum?
     var featuredImage: ProductImageModel?
     
     enum CodingKeys : String, CodingKey {

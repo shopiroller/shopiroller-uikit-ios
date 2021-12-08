@@ -78,7 +78,7 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .post, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self, httpBody: userBillingAddress.data, ignoreParse: true)
     }
     
-    static func setDefaultShippingaddress(_ userId: String,addressId: String, userShippingAddress: SRSetDefaultAddressRequest) ->
+    static func setDefaultShippingaddress(_ userId: String,addressId: String, userShippingAddress: SRSetDefaultAddressRequest?) ->
     SRNetworkRequestManager<SuccessResponse> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)\(addressId)"
         return SRNetworkRequestManager(httpMethod: .post, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self, httpBody: userShippingAddress.data, ignoreParse: true)

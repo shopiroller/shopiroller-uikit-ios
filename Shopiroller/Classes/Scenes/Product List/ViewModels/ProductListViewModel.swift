@@ -49,8 +49,11 @@ class ProductListViewModel : BaseViewModel {
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: self.categoryId))
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: self.title))
+        if let title = title {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: title))
+        } else if let categoryId = categoryId {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId))
+        }
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
             (result) in

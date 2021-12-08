@@ -389,13 +389,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }else{
             discountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = "\(viewModel.getPrice())"
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
             productOldPrice.textColor = .black
-            productOldPrice.font.withSize(17)
+            productOldPrice.font = .semiBold20
         }
-        
-        situationContainer.isHidden = !viewModel.isShippingFree() || !viewModel.isOutofStock()
-        
+                
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
             shippingPriceContainer.isHidden = true
@@ -404,7 +402,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             freeShippingContainer.backgroundColor = .black
             freeShippingLabel.textColor = .white
             freeShippingLabel.text = Constants.freeShippingText
-        }else {
+        } else {
             freeShippingContainer.isHidden = true
             shippingPriceContainer.isHidden = false
             let attributedShippingPrice = Constants.shippingPriceText.replacingOccurrences(of: "XX", with: "#\(viewModel.getShippingPrice())#").makeShippingPriceBold(viewModel.getCurrency()).stringWithString(stringToReplace: "#", replacedWithString: "")
@@ -422,9 +420,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             soldOutLabel.textColor = .black
             soldOutLabel.text = Constants.soldOutText
             quantityContainer.isHidden = true
-            
             showSoldOutPopUp()
-        }else{
+        } else {
             soldOutContainer.isHidden = true
             quantityContainer.isHidden = false
         }

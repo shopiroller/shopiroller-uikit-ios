@@ -27,6 +27,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var secondButtonContainerView: UIView!
     @IBOutlet private weak var buttonContainer: UIView!
     @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var popUpHeightContstraint: NSLayoutConstraint!
+    @IBOutlet private weak var descriptionContainerView: UIView!
     
     var delegate: PopUpViewViewControllerDelegate?
     
@@ -71,7 +73,23 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         }
         
         if let htmlDescription = viewModel.getHtmlDescription() {
-            descriptionLabel.attributedText = htmlDescription
+            let description = NSMutableAttributedString(attributedString: htmlDescription)
+            let myParagraphStyle = NSMutableParagraphStyle()
+            myParagraphStyle.alignment = .center
+            description.addAttributes([.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
+            
+            descriptionLabel.attributedText = description
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
+                    let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
+                    self.popUpHeightContstraint.constant += difference
+                    
+                    if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
+                        self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
+                    }
+                }
+            }
+            
         } else {
             descriptionLabel.text = viewModel.getDescription()
         }

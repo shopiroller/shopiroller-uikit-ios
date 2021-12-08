@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -84,9 +84,8 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5m-dJ-oKq" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="202" width="414" height="491"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5m-dJ-oKq" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="213" width="414" height="480"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -98,8 +97,12 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qgN-SV-lwp" secondAttribute="bottom" constant="10" id="Ctg-AT-CwL"/>
                 <constraint firstItem="4gC-Qf-1iB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="JgX-Ew-nJD"/>
                 <constraint firstItem="4gC-Qf-1iB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="LOP-Zc-K7G"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RrE-TW-gZ0"/>
                 <constraint firstItem="qgN-SV-lwp" firstAttribute="top" secondItem="4gC-Qf-1iB" secondAttribute="bottom" constant="15" id="otq-Dz-jUh"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="qlL-ao-AB2"/>
                 <constraint firstAttribute="trailing" secondItem="qgN-SV-lwp" secondAttribute="trailing" constant="15" id="sVR-Qs-dRm"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="twO-o9-IUy"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yi1-pB-8g4"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="82.366071428571431"/>
         </view>
