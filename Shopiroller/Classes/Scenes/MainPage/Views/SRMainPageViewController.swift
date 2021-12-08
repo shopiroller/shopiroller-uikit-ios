@@ -324,7 +324,6 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             default:
                 break
             }
-        case shimmerCollectionView: break
         default:
             break
         }
