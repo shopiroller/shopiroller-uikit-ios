@@ -302,20 +302,20 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         viewModel.addProductToCart(success: {
             [weak self] in
             guard let self = self else { return }
-            if self.viewModel.isOutofStock() {
-                self.showSoldOutPopUp()
-            }else if self.viewModel.isQuantityMax() {
-                self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
-            }else {
-                self.soldOutContainer.isHidden = true
-                self.quantityContainer.isHidden = false
-                self.showAddProductAnimation()
-                self.getCount()
-                self.navigationController?.viewWillLayoutSubviews()
-            }
+            self.soldOutContainer.isHidden = true
+            self.quantityContainer.isHidden = false
+            self.showAddProductAnimation()
+            self.navigationController?.viewWillLayoutSubviews()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            if errorViewModel.message == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
+                self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
+            } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
+                self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
+            } else  {
+                self.view.makeToast(errorViewModel.message)
+            }
         }
     }
     
@@ -384,9 +384,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.layer.masksToBounds = true
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
+            discountLabel.font = .bold24
             productOldPrice.textColor = .textPCaption
+            productOldPrice.font = .medium14
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
             productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
+            productNewPrice.font = .semiBold20
         }else{
             discountContainer.isHidden = true
             productNewPrice.isHidden = true

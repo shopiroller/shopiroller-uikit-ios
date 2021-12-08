@@ -52,6 +52,8 @@ public struct SRAppConstants {
         static let paymentFailed = "http://applyze-ecommerce-service/v1/paymentFailure"
         static let paymentFailed1 = "https://ecommerce.applyze.com/v2.0/paymentFailure"
         static let paymentFailed2 = "/paymentFailure"
+        static let productMaxQuantityPerOrderExceeded = "MaxQuantityPerOrderExceeded"
+        static let productMaxStockExceeded = "MaxStockExceeded"
     }
     
     struct Query {
