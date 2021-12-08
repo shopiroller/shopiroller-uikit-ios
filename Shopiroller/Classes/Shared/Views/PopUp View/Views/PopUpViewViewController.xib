@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,10 +56,10 @@
                             <rect key="frame" x="0.0" y="64" width="352" height="262"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT7-0T-1br">
-                                    <rect key="frame" x="0.0" y="0.0" width="352" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="352" height="29"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50O-og-hbp">
-                                            <rect key="frame" x="30" y="0.0" width="292" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50O-og-hbp">
+                                            <rect key="frame" x="30" y="0.0" width="292" height="29"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -67,21 +67,21 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="50O-og-hbp" firstAttribute="top" secondItem="TT7-0T-1br" secondAttribute="top" id="GSB-WA-joT"/>
-                                        <constraint firstAttribute="bottom" secondItem="50O-og-hbp" secondAttribute="bottom" id="KrI-QY-s5x"/>
+                                        <constraint firstItem="50O-og-hbp" firstAttribute="top" secondItem="TT7-0T-1br" secondAttribute="top" id="2KE-r5-Yej"/>
                                         <constraint firstAttribute="trailing" secondItem="50O-og-hbp" secondAttribute="trailing" constant="30" id="NrN-m9-3yE"/>
                                         <constraint firstItem="50O-og-hbp" firstAttribute="centerX" secondItem="TT7-0T-1br" secondAttribute="centerX" id="WoA-pm-H72"/>
+                                        <constraint firstAttribute="bottom" secondItem="50O-og-hbp" secondAttribute="bottom" id="dxf-tH-8Lm"/>
                                         <constraint firstItem="50O-og-hbp" firstAttribute="leading" secondItem="TT7-0T-1br" secondAttribute="leading" constant="30" id="lyI-QY-cJb"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELe-PF-KRx">
-                                    <rect key="frame" x="0.0" y="60" width="352" height="128"/>
+                                    <rect key="frame" x="0.0" y="39" width="352" height="89"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JON-Yy-2qB">
-                                            <rect key="frame" x="0.0" y="0.0" width="352" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="352" height="89"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="90n-QM-lc7">
-                                                    <rect key="frame" x="0.0" y="15" width="352" height="158.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="352" height="158.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yR5-VU-q3D">
                                                             <rect key="frame" x="0.0" y="0.0" width="352" height="158.5"/>
@@ -102,7 +102,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                              </stackView>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="90n-QM-lc7" secondAttribute="trailing" id="0zX-fo-MkW"/>
@@ -122,7 +122,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-4A-vy4">
-                                    <rect key="frame" x="0.0" y="198" width="352" height="64"/>
+                                    <rect key="frame" x="0.0" y="138" width="352" height="64"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yUD-Qk-igc">
                                             <rect key="frame" x="0.0" y="0.0" width="352" height="64"/>
@@ -184,16 +184,18 @@
                                         <constraint firstItem="yUD-Qk-igc" firstAttribute="leading" secondItem="FRz-4A-vy4" secondAttribute="leading" id="tGX-ob-TGF"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEt-B2-VOy">
+                                    <rect key="frame" x="0.0" y="212" width="352" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="Vms-uu-UHK" secondAttribute="trailing" id="1AZ-I9-Qn1"/>
-                                <constraint firstItem="Vms-uu-UHK" firstAttribute="leading" secondItem="0Ox-xc-T5H" secondAttribute="leading" id="2Bh-t8-O7i"/>
-                                <constraint firstItem="TT7-0T-1br" firstAttribute="top" secondItem="0Ox-xc-T5H" secondAttribute="top" id="BeC-wG-mXo"/>
+                                <constraint firstAttribute="leading" secondItem="0Ox-xc-T5H" secondAttribute="leading" id="2Bh-t8-O7i"/>
                                 <constraint firstAttribute="trailing" secondItem="ELe-PF-KRx" secondAttribute="trailing" id="DDO-Hx-yQb"/>
-                                <constraint firstItem="ELe-PF-KRx" firstAttribute="top" secondItem="Vms-uu-UHK" secondAttribute="bottom" id="EoR-7e-28Q"/>
                                 <constraint firstAttribute="trailing" secondItem="TT7-0T-1br" secondAttribute="trailing" id="OJP-ei-EkO"/>
                                 <constraint firstItem="TT7-0T-1br" firstAttribute="leading" secondItem="0Ox-xc-T5H" secondAttribute="leading" id="Tm1-8n-U08"/>
-                                <constraint firstItem="Vms-uu-UHK" firstAttribute="top" secondItem="TT7-0T-1br" secondAttribute="bottom" id="qcx-ud-ra7"/>
                             </constraints>
                         </stackView>
                     </subviews>
