@@ -315,6 +315,22 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch collectionView {
+        case mainCollectionView:
+            switch section {
+            case 3:
+                return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+            default:
+                break
+            }
+        case shimmerCollectionView: break
+        default:
+            break
+        }
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+       }
+    
 }
 
 extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
@@ -330,7 +346,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
             case 2:
                 return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2)  * 135 / 170 )
             case 3:
-                return CGSize(width: ((collectionView.frame.width / 2) - 5), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
+                return CGSize(width: ((collectionView.frame.width / 2) - 30), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 195)
             default:
                 break
             }
