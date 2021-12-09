@@ -77,7 +77,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     func configureRefreshControl () {
         mainCollectionView.refreshControl = UIRefreshControl()
-        mainCollectionView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        if !(self.navigationController?.isNavigationBarHidden ?? false) {
+            mainCollectionView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        }
     }
     
     @objc func didPullToRefresh(_ sender: Any) {
@@ -177,6 +179,31 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
+    
+    private func getCount() {
+        viewModel.getShoppingCartCount(success: {
+            [weak self] in
+            guard let self = self else { return }
+            
+        }) {
+            [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+        }
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(scrollView.contentOffset.y > 0) {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                scrollView.isScrollEnabled = true
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            }, completion: nil)
+        }
+    }
 }
 
 extension SRMainPageViewController : ShowCaseProductIdProtocol {
@@ -205,18 +232,6 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             return 1
         }else {
             return 15
-        }
-    }
-    
-    private func getCount() {
-        viewModel.getShoppingCartCount(success: {
-            [weak self] in
-            guard let self = self else { return }
-            
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
-            self.showAlertError(viewModel: errorViewModel)
         }
     }
     

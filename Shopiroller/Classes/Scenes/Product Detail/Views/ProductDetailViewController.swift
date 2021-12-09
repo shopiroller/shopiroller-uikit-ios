@@ -52,7 +52,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
         
     }
-
+    
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -215,7 +215,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cardButton],isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
-
+        setTransparentNavigationBar()
     }
     
     @objc func shareProduct() {
@@ -397,7 +397,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
         }
-                
+        
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
             shippingPriceContainer.isHidden = true
@@ -506,20 +506,6 @@ extension ProductDetailViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        
-        if scrollView.contentOffset.y > 70 {
-            appearance.backgroundColor = .buttonLight
-            self.navigationController?.navigationBar.standardAppearance = appearance;
-            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-        }else {
-            appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = .clear
-            self.navigationController?.navigationBar.standardAppearance = appearance;
-            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-        }
-    }
 }
+
 
