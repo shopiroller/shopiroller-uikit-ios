@@ -170,10 +170,18 @@ extension UIViewController {
     }
     
     func setTransparentNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController!.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.isTranslucent = true
+            appearance.configureWithTransparentBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        self.navigationController?.navigationBar.setGradientBackground()
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
@@ -222,4 +230,5 @@ extension UIViewController {
     func showNoConnectionAlert() {
         showAlert(title: "no-internet-connection-title".localized, message: "no-internet-connection-description".localized)
     }
+
 }

@@ -184,7 +184,6 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         viewModel.getShoppingCartCount(success: {
             [weak self] in
             guard let self = self else { return }
-            
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }

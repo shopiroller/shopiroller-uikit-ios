@@ -192,14 +192,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.clipsToBounds = false
-        
-        if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
-            self.scrollView.contentInsetAdjustmentBehavior = .never
-        }else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
-        
+                
         getProductDetail()
         
         getPaymentSettings()
@@ -215,7 +208,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cardButton],isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
-        setTransparentNavigationBar()
     }
     
     @objc func shareProduct() {
@@ -230,6 +222,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        setTransparentNavigationBar()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        scrollView.translatesAutoresizingMaskIntoConstraints = true
     }
     
     @objc func updateBadgeCount() {
@@ -384,7 +382,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.layer.masksToBounds = true
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
-            discountLabel.font = .bold24
+            discountLabel.font = .bold14
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium14
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
