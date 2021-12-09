@@ -122,7 +122,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getCurrency() -> String {
-        return productDetailModel?.currency?.rawValue ?? ""
+        return productDetailModel?.currency?.currencySymbol ?? ""
     }
     
     func hasSituation() -> Bool {

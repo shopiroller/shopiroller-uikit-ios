@@ -53,7 +53,7 @@ class ProductViewModel {
     }
     
     func getCurrency() -> String {
-        return productListModel?.currency?.rawValue ?? (productDetailModel?.currency?.rawValue ?? "")
+        return productListModel?.currency?.currencySymbol ?? (productDetailModel?.currency?.currencySymbol ) as! String
     }
     
     func getCampaignPrice() -> String {

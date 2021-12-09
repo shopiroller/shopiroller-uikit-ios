@@ -43,17 +43,20 @@ extension String {
         return "%\(discountedPercenteage)"
     }
     
-    func makeBoldAfterString(boldText: String? , normalText: String?) -> NSMutableAttributedString {
+    func makeBoldString(boldText: String? , normalText: String?,isReverse: Bool = false) -> NSMutableAttributedString {
+        
         let firstText = NSMutableAttributedString.init(string: boldText ?? "")
-        firstText.setAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12),
-                                NSAttributedString.Key.foregroundColor: UIColor.textPCaption], range: NSMakeRange(0, firstText.length))
+        firstText.setAttributes([NSAttributedString.Key.font: isReverse ? UIFont.semiBold10 : UIFont.boldSystemFont(ofSize: 12),
+                                 NSAttributedString.Key.foregroundColor: isReverse ? UIColor.textSecondary : UIColor.textPCaption], range: NSMakeRange(0, firstText.length))
         let secondText = NSMutableAttributedString.init(string: normalText ?? "")
-        secondText.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
-                                NSAttributedString.Key.foregroundColor: UIColor.textPCaption], range: NSMakeRange(0, secondText.length))
+        secondText.setAttributes([NSAttributedString.Key.font: isReverse ? UIFont.regular10 : UIFont.systemFont(ofSize: 12),
+                                  NSAttributedString.Key.foregroundColor: isReverse ? UIColor.textSecondary :
+                                    UIColor.textPCaption], range: NSMakeRange(0, secondText.length))
         
         let finalText = NSMutableAttributedString()
-        finalText.append(firstText)
-        finalText.append(secondText)
+        
+        finalText.append(isReverse ? secondText : firstText)
+        finalText.append(isReverse ? firstText : secondText)
         
         return finalText
     }
@@ -88,7 +91,7 @@ extension String {
     var isValidIban: Bool {
         return 1...50 ~= count && rangeOfCharacter(from: CharacterSet.fullname.inverted) == nil
     }
-
+    
     var isValidCreditCardNumber: Bool {
         return 12...19 ~= count && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
@@ -98,7 +101,7 @@ extension String {
     }
     
     func convertHtml() -> NSAttributedString{
-            guard let data = data(using: String.Encoding.utf8) else { return NSAttributedString() }
+        guard let data = data(using: String.Encoding.utf8) else { return NSAttributedString() }
         var attributedString: NSAttributedString = NSAttributedString()
         do {
             attributedString = try NSAttributedString(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html,NSAttributedString.DocumentReadingOptionKey.characterEncoding:NSNumber(value: String.Encoding.utf8.rawValue)], documentAttributes: nil)
@@ -108,6 +111,6 @@ extension String {
             print("error")
         }
         return attributedString
-        }
+    }
 }
 

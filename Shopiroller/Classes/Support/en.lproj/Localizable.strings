@@ -40,7 +40,7 @@
 "return-exchange-terms-title" = "Return / Exchange Terms";
 "delivery-terms-title" = "Delivery Terms";
 "add-to-cart" = "Add To Cart";
-"shipping-price-text" = "Shipping Price XX";
+"shipping-price-text" = "Shipping Price ";
 "product-detail-description-title-text" = "Description";
 "product-detail-return-exchange-title-text" = "Return/Exchange Terms";
 "product-detail-delivery-title-text" = "Delivery Terms";
