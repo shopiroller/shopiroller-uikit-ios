@@ -74,6 +74,7 @@ public struct SRAppConstants {
             static let stockMin = "stock.Min"
             static let shippingPrice = "shippingPrice"
             static let isThereCampaign = "isThereCampaign"
+            static let showCaseId = "showCaseId"
         }
         
         struct Values {

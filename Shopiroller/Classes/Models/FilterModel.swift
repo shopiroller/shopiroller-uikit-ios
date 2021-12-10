@@ -11,6 +11,7 @@ struct FilterModel {
     var categoryIds: SelectionIds = SelectionIds()
     var brandIds: SelectionIds = SelectionIds()
     var variationGroups: [VariationIds] = []
+    var showCaseId: String?
     var minimumPrice: Double?
     var maximumPrice: Double?
     var stockSwitch: Bool = false
@@ -46,11 +47,14 @@ struct FilterModel {
         if(freeShippingSwitch) {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.shippingPrice, value: String(0.0)))
         }
+        if let showCaseId = showCaseId {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.showCaseId, value: showCaseId))
+        }
         return urlQueryItems
     }
     
     func hasFilter() -> Bool {
-        return !categoryIds.selectedIds.isEmpty || !brandIds.selectedIds.isEmpty || !variationGroups.isEmpty || minimumPrice != nil || maximumPrice != nil || stockSwitch || discountedProductsSwitch || freeShippingSwitch
+        return !categoryIds.selectedIds.isEmpty || !brandIds.selectedIds.isEmpty || !variationGroups.isEmpty || minimumPrice != nil || maximumPrice != nil || stockSwitch || discountedProductsSwitch || freeShippingSwitch || showCaseId != nil
     }
 }
 

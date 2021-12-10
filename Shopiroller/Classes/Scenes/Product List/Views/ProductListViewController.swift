@@ -48,7 +48,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         filterButton.setTitle("filter-title-text".localized)
         filterButton.setTitleColor(.textPrimary)
     
-        getProducts(pagination: true)
+        getProducts(pagination: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
