@@ -215,8 +215,8 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
 }
 
 extension SRMainPageViewController : ShowCaseCellDelegate {
-    func getShowCaseInfo(showCaseId: String?, title: String?) {
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel(pageTitle: title,showCaseId: showCaseId))
+    func getShowCaseInfo(showcaseId: String?, title: String?) {
+        let productListVC = ProductListViewController(viewModel: ProductListViewModel(pageTitle: title,showcaseId: showcaseId))
         self.prompt(productListVC, animated: true)
     }
     

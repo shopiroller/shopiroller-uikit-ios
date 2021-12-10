@@ -68,13 +68,12 @@ public struct SRAppConstants {
             static let countryId = "countryId"
             static let stateId = "stateId"
             static let searchText = "searchText"
-            static let showcaseId = "showcaseId"
+            static let showcaseId = "showCaseId"
             static let priceMin = "price.Min"
             static let priceMax = "price.Max"
             static let stockMin = "stock.Min"
             static let shippingPrice = "shippingPrice"
             static let isThereCampaign = "isThereCampaign"
-            static let showCaseId = "showCaseId"
         }
         
         struct Values {

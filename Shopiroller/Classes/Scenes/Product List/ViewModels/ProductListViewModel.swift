@@ -20,13 +20,13 @@ class ProductListViewModel : BaseViewModel {
     private var currentPage = 0
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
-    private var showCaseId: String?
+    private var showcaseId: String?
     
-    init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showCaseId: String? = nil) {
+    init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showcaseId: String? = nil) {
         self.categoryId = categoryId
         self.title = title
         self.pageTitle = pageTitle
-        self.showCaseId = showCaseId
+        self.showcaseId = showcaseId
     }
     
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -55,8 +55,8 @@ class ProductListViewModel : BaseViewModel {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: title))
         } else if let categoryId = categoryId {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId))
-        } else if let showCaseId = showCaseId {
-            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.showCaseId, value: showCaseId))
+        } else if let showcaseId = showcaseId {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.showcaseId, value: showcaseId))
         }
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
@@ -101,7 +101,7 @@ class ProductListViewModel : BaseViewModel {
     }
     
     func getFilterViewModel() -> FilterViewModel {
-        return FilterViewModel(categoryId: categoryId, showcaseId: showCaseId, filterModel: filterModel)
+        return FilterViewModel(categoryId: categoryId, showcaseId: showcaseId, filterModel: filterModel)
     }
     
     func setFilterModel(_ filterModel: FilterModel) {
