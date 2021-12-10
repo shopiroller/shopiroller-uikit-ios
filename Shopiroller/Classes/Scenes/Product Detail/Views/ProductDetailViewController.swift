@@ -222,12 +222,14 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        scrollView.translatesAutoresizingMaskIntoConstraints = true
         setTransparentNavigationBar()
     }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        scrollView.translatesAutoresizingMaskIntoConstraints = true
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
     
     @objc func updateBadgeCount() {
@@ -261,6 +263,21 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             }
         })
         
+    }
+    
+    private func setTransparentNavigationBar() {
+        navigationController!.navigationBar.backgroundColor = UIColor.clear
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.isTranslucent = true
+            appearance.configureWithTransparentBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        navigationController?.navigationBar.setGradientBackground()
     }
     
     private func getProductDetail() {
