@@ -130,9 +130,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getShippingPrice() -> String {
-        let fmt = NumberFormatter()
-        fmt.numberStyle = .decimal
-        return fmt.string(from: NSNumber(value: Double(productDetailModel?.shippingPrice ?? 0.0))) ?? ""
+        return String(productDetailModel?.shippingPrice ?? 0.0)
     }
     
     func getPrice() -> String {

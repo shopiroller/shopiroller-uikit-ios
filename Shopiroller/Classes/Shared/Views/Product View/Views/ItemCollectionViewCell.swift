@@ -67,7 +67,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium12
-            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
+            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency() ?? "")
             
             productNewPrice.font = .semiBold14
             productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
