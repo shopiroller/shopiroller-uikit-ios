@@ -8,8 +8,9 @@
 import UIKit
 import Kingfisher
 
-protocol ShowCaseProductIdProtocol : AnyObject {
+protocol ShowCaseCellDelegate : AnyObject {
     func getProductId(productId: String)
+    func getShowCaseInfo(showcaseId : String?,title: String?)
 }
 
 public class ShowCaseCell: UICollectionViewCell  {
@@ -26,13 +27,17 @@ public class ShowCaseCell: UICollectionViewCell  {
     
     var viewModel: SRShowcaseResponseModel?
     
-    var delegate: ShowCaseProductIdProtocol?
+    var delegate: ShowCaseCellDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         
         seeAllTitle.text = Constants.seeAllTitle
+        seeAllTitle.font = .regular12
+        seeAllTitle.textColor = .textPCaption
         seeAllImage.image = .rightArrow
+        
+        titleLabel.font = .bold18
         
         collectionView.register(cellClass: ItemCollectionViewCell.self)
         collectionView.delegate = self
@@ -49,9 +54,8 @@ public class ShowCaseCell: UICollectionViewCell  {
         
     }
     
-    
     @objc func seeAllProducts(_ sender: UITapGestureRecognizer? = nil) {
-        //TODO Show All Products
+        delegate?.getShowCaseInfo(showcaseId: viewModel?.showcase?.id,title: viewModel?.showcase?.name)
     }
     
 }

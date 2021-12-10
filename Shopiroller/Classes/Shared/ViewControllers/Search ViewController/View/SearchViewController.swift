@@ -45,7 +45,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
 extension SearchViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: viewModel.searchedKeyword, categoryTitle: viewModel.searchedKeyword))
+        let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: viewModel.searchedKeyword, pageTitle: viewModel.searchedKeyword))
         prompt(productListVC, animated: true, completion: nil)
     }
     
@@ -78,7 +78,7 @@ extension SearchViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: SRAppContext.searchHistory[indexPath.row], categoryTitle: SRAppContext.searchHistory[indexPath.row]))
+        let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: SRAppContext.searchHistory[indexPath.row], pageTitle: SRAppContext.searchHistory[indexPath.row]))
         prompt(productListVC, animated: true, completion: nil)
     }
     

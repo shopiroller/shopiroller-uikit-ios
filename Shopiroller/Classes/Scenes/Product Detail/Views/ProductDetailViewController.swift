@@ -52,7 +52,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
         
     }
-
+    
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -192,14 +192,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.clipsToBounds = false
-        
-        if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
-            self.scrollView.contentInsetAdjustmentBehavior = .never
-        }else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
-        
+                
         getProductDetail()
         
         getPaymentSettings()
@@ -215,7 +208,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cardButton],isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
-
     }
     
     @objc func shareProduct() {
@@ -230,6 +222,14 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        scrollView.translatesAutoresizingMaskIntoConstraints = true
+        setTransparentNavigationBar()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
     
     @objc func updateBadgeCount() {
@@ -263,6 +263,21 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             }
         })
         
+    }
+    
+    private func setTransparentNavigationBar() {
+        navigationController!.navigationBar.backgroundColor = UIColor.clear
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.isTranslucent = true
+            appearance.configureWithTransparentBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        navigationController?.navigationBar.setGradientBackground()
     }
     
     private func getProductDetail() {
@@ -384,7 +399,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             discountContainer.layer.masksToBounds = true
             discountContainer.backgroundColor = .badgeSecondary
             discountLabel.text = viewModel.discount
-            discountLabel.font = .bold24
+            discountLabel.font = .bold14
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium14
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
@@ -397,7 +412,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
         }
-                
+        
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
             shippingPriceContainer.isHidden = true
@@ -506,20 +521,6 @@ extension ProductDetailViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        
-        if scrollView.contentOffset.y > 70 {
-            appearance.backgroundColor = .buttonLight
-            self.navigationController?.navigationBar.standardAppearance = appearance;
-            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-        }else {
-            appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = .clear
-            self.navigationController?.navigationBar.standardAppearance = appearance;
-            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-        }
-    }
 }
+
 

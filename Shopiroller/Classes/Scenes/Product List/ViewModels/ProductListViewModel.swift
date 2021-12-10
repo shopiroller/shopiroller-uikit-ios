@@ -15,20 +15,26 @@ class ProductListViewModel : BaseViewModel {
   
     private var title : String?
     
-    private var categoryTitle: String?
+    private var pageTitle: String?
     
     private var currentPage = 0
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
+    private var showcaseId: String?
     
-    init(categoryId: String? = nil , title: String? = nil, categoryTitle: String? = nil) {
+    init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showcaseId: String? = nil) {
         self.categoryId = categoryId
         self.title = title
-        self.categoryTitle = categoryTitle
+        self.pageTitle = pageTitle
+        self.showcaseId = showcaseId
     }
     
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
+        
+        if !pagination {
+            productList = nil
+        }
         
         if(hasFilter()) {
             urlQueryItems.append(contentsOf: filterModel.getQueryArray())
@@ -36,15 +42,11 @@ class ProductListViewModel : BaseViewModel {
         
         if productList?.count ?? 0 == 0 {
             currentPage = 0
-        }else{
-            if ((productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) && !hasFilter() {
+        } else {
+            if ((productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) {
                 return
             }
-            if pagination {
                 currentPage = currentPage + 1
-            }else {
-                currentPage = 0
-            }
         }
         
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
@@ -53,6 +55,8 @@ class ProductListViewModel : BaseViewModel {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: title))
         } else if let categoryId = categoryId {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: categoryId))
+        } else if let showcaseId = showcaseId {
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.showcaseId, value: showcaseId))
         }
         
         SRNetworkManagerRequests.getProductsWithAdvancedFiltered(urlQueryItems: urlQueryItems).response() {
@@ -97,7 +101,7 @@ class ProductListViewModel : BaseViewModel {
     }
     
     func getFilterViewModel() -> FilterViewModel {
-        return FilterViewModel(categoryId: categoryId, filterModel: filterModel)
+        return FilterViewModel(categoryId: categoryId, showcaseId: showcaseId, filterModel: filterModel)
     }
     
     func setFilterModel(_ filterModel: FilterModel) {
@@ -109,7 +113,7 @@ class ProductListViewModel : BaseViewModel {
     }
   
     func getPageTitle() -> String? {
-        return categoryTitle
+        return pageTitle
     }
  
     

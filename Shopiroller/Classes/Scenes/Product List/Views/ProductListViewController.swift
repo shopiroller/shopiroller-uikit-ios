@@ -45,10 +45,12 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         
         sortButton.setTitle("sort-title-text".localized)
         sortButton.setTitleColor(.textPrimary)
+        sortButton.tintColor = .textPrimary
         filterButton.setTitle("filter-title-text".localized)
         filterButton.setTitleColor(.textPrimary)
+        filterButton.tintColor = .textPrimary
     
-        getProducts(pagination: true)
+        getProducts(pagination: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -52,6 +52,7 @@ struct FilterModel {
     func hasFilter() -> Bool {
         return !categoryIds.selectedIds.isEmpty || !brandIds.selectedIds.isEmpty || !variationGroups.isEmpty || minimumPrice != nil || maximumPrice != nil || stockSwitch || discountedProductsSwitch || freeShippingSwitch
     }
+
 }
 
 struct VariationIds {

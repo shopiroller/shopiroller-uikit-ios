@@ -44,7 +44,6 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
             showAllSubCategoriesContainer.isHidden = true
         }
         navigationController?.isNavigationBarHidden = false
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +57,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     }
     
     @objc func showAllProducts() {
-        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(), categoryTitle: viewModel.getPageTitle()))
+        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(), pageTitle: viewModel.getPageTitle()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -107,7 +106,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, categoryTitle: viewModel.categoryList?[indexPath.row].name))
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, pageTitle: viewModel.categoryList?[indexPath.row].name))
             prompt(vc, animated: true, completion: nil)
         }
     }

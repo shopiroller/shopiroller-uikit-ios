@@ -145,11 +145,15 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        return showcaseModel?.showcase?.productCount ?? 0
+        if let showcase = showcase?.filter({$0.productCount ?? 0 > 0}) , showcase.count > 0 {
+            return 1
+        } else {
+            return 0
+        }
     }
     
     func productItemCount() -> Int {
-        products?.count ?? 0
+        return products?.count ?? 0
     }
     
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
@@ -212,6 +216,23 @@ public class SRMainPageViewModel: BaseViewModel {
     
     func getEmptyModel() -> EmptyModel {
         EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+    }
+    
+    func getSectionCount() -> Int {
+        var count = 0
+        if sliderItemCount() != 0 {
+            count += 1
+        }
+        if productItemCount() != 0 {
+            count += 1
+        }
+        if categoryItemCount() != 0 {
+            count += 1
+        }
+        if showcaseItemCount() != 0 {
+            count += 1
+        }
+        return count
     }
 }
 

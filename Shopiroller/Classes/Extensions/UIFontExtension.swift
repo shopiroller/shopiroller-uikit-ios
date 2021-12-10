@@ -112,6 +112,9 @@ extension UIFont {
     static let bold10: UIFont = SRFont.bold.font(ofSize: 10)
     
     static let bold13: UIFont = SRFont.bold.font(ofSize: 13)
+    
+    static let bold14: UIFont = SRFont.bold.font(ofSize: 14)
+
 
     
     class func listAllFontsOnSystem(){
