@@ -68,7 +68,7 @@ public struct SRAppConstants {
             static let countryId = "countryId"
             static let stateId = "stateId"
             static let searchText = "searchText"
-            static let showcaseId = "showCaseId"
+            static let showcaseId = "showcaseId"
             static let priceMin = "price.Min"
             static let priceMax = "price.Max"
             static let stockMin = "stock.Min"
