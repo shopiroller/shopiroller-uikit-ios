@@ -9,27 +9,6 @@ import Foundation
 
 extension String {
     
-    func makeShippingPriceBold(_ currency: String? ) -> NSMutableAttributedString {
-              
-        let mutableAttrString = NSMutableAttributedString(string: self)
-        
-        mutableAttrString.appendSpace()
-        
-        mutableAttrString.append(NSMutableAttributedString(string: currency ?? ""))
-        
-        let firstIndex = firstIndex(of: "#")?.utf16Offset(in: self) ?? 0
-        
-        let lastIndex = lastIndex(of: "#")?.utf16Offset(in: self) ?? 0
-        
-        let range = NSRange(location: firstIndex - 1, length: lastIndex - firstIndex + 5)
-
-        let attrs = [NSAttributedString.Key.font : UIFont.bold10]
-        
-        mutableAttrString.addAttributes(attrs, range: range)
-
-        return mutableAttrString
-    }
-    
     func makeStrokeCurrency(currency: String) -> NSMutableAttributedString {
         let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: self)
         

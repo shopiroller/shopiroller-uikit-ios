@@ -424,8 +424,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         } else {
             freeShippingContainer.isHidden = true
             shippingPriceContainer.isHidden = false
-            let attributedShippingPrice = Constants.shippingPriceText.replacingOccurrences(of: "XX", with: "#\(viewModel.getShippingPrice())#").makeShippingPriceBold(viewModel.getCurrency()).stringWithString(stringToReplace: "#", replacedWithString: "")
-            shippingPriceLabel.attributedText = attributedShippingPrice
+            shippingPriceLabel.attributedText = String().makeBoldString(boldText: ECommerceUtil.getFormattedPrice(price: Double(viewModel.getShippingPrice()), currency: viewModel.getCurrency()), normalText: Constants.shippingPriceText,isReverse: true)
             shippingImage.image = .cargoShippingImage
             shippingImage.tintColor = .pinkishTan
         }
