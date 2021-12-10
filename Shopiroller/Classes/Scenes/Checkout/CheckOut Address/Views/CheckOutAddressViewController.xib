@@ -82,7 +82,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="384" height="250"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="250" id="Had-oi-yGy"/>
+                                                                <constraint firstAttribute="height" constant="250" id="tPf-Te-Paa"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fry-Jm-H4g" customClass="GeneralAddressView" customModule="Shopiroller" customModuleProvider="target">
@@ -93,6 +93,11 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="bM5-LH-8iY" secondAttribute="trailing" id="Cmf-kk-nNC"/>
+                                                        <constraint firstItem="bM5-LH-8iY" firstAttribute="leading" secondItem="F75-lf-Cea" secondAttribute="leading" id="dtj-Xi-Z3I"/>
+                                                        <constraint firstItem="bM5-LH-8iY" firstAttribute="top" secondItem="F75-lf-Cea" secondAttribute="top" id="zrY-O4-Tmq"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
