@@ -35,9 +35,6 @@ public class SliderTableViewCell: UICollectionViewCell {
         collectionView.dataSource = self
         pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.4)
-        pageControlContainer.backgroundColor = .sliderBackground
-        pageControlContainer.clipsToBounds = true
-        pageControlContainer.layer.cornerRadius = pageControl.frame.height / 2
         if #available(iOS 14.0, *) {
             pageControl.backgroundStyle = .minimal
             pageControl.allowsContinuousInteraction = false
@@ -48,7 +45,11 @@ public class SliderTableViewCell: UICollectionViewCell {
     func setup(viewModel : [SliderSlidesModel]?) {
         self.viewModel = viewModel
         pageControl.numberOfPages = viewModel?.count ?? 0
-        pageControlContainer.isHidden = (viewModel?.count == 1)
+        if viewModel?.count != 1 , viewModel?.count != 0 {
+            pageControl.customizePageControl(pageControlContainer)
+        } else {
+            pageControl.isHidden = true
+        }
         collectionView.reloadData()
     }
     
