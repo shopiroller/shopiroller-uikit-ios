@@ -14,7 +14,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         
         static var productsTitleIdentifier: String { return "products-identifier".localized }
     }
-
+    
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var emptyViewContainer: UIView!
     @IBOutlet private weak var collectionViewContainer: UIView!
@@ -25,9 +25,9 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private var refreshControl = UIRefreshControl()
     
     private let badgeView = SRBadgeButton()
-
+    
     private var group : DispatchGroup? = nil
-
+    
     public init(viewModel: SRMainPageViewModel) {
         super.init("explore-page-title".localized, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
@@ -35,7 +35,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func setup() {
         super.setup()
         view.backgroundColor = .white
-
+        
         shimmerCollectionView.delegate = self
         shimmerCollectionView.dataSource = self
         shimmerCollectionView.register(cellClass: ItemCollectionViewCell.self)
@@ -47,7 +47,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ItemCollectionViewCell.self)
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
-       
+        
         getSliders(showProgress: true)
         getCategories(showProgress: true)
         getShowCase(showProgress: true)
@@ -60,6 +60,11 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func setupNavigationBar() {
@@ -88,7 +93,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         group?.enter()
         group?.enter()
         group?.enter()
-                
+        
         self.getSliders(showProgress: false)
         self.getCategories(showProgress: false)
         self.getShowCase(showProgress: false)
@@ -109,6 +114,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             } else {
                 self.mainCollectionView.reloadData()
+                self.view.layoutIfNeeded()
             }
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -125,6 +131,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.shimmerCollectionView.isHidden = false
                 self.configureEmptyView()
                 self.mainCollectionView.reloadData()
+                self.view.layoutIfNeeded()
             }
         }) {
             [weak self] (errorViewModel) in
@@ -142,6 +149,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             }else {
                 self.mainCollectionView.reloadData()
+                self.view.layoutIfNeeded()
             }
         }) {
             [weak self] (errorViewModel) in
@@ -158,6 +166,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             }else {
                 self.mainCollectionView.reloadData()
+                self.view.layoutIfNeeded()
             }
         }) {
             [weak self] (errorViewModel) in
@@ -193,7 +202,7 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(scrollView.contentOffset.y > 0) {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 scrollView.isScrollEnabled = true
             }, completion: nil)
@@ -205,10 +214,15 @@ public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
 }
 
-extension SRMainPageViewController : ShowCaseProductIdProtocol {
+extension SRMainPageViewController : ShowCaseCellDelegate {
+    func getShowCaseInfo(showCaseId: String?, title: String?) {
+        let productListVC = ProductListViewController(viewModel: ProductListViewModel(pageTitle: title,showCaseId: showCaseId))
+        self.prompt(productListVC, animated: true)
+    }
+    
     func getProductId(productId: String) {
-        let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: productId))
-        self.prompt(vc, animated: true)
+        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: productId))
+        self.prompt(productDetailVC, animated: true)
     }
 }
 
@@ -237,7 +251,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch collectionView{
         case mainCollectionView:
-            return 4
+            return viewModel.getSectionCount()
         case shimmerCollectionView:
             return 1
         default:
@@ -250,48 +264,28 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
         case mainCollectionView:
             switch indexPath.section {
             case 0:
-                if viewModel.sliderItemCount() == 0 {
-                    mainCollectionView.deleteSections(IndexSet.init(integer: 0))
-                } else {
-                    let cellModel = viewModel.getTableSliderVieWModel(position: indexPath.row)
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderTableViewCell.reuseIdentifier, for: indexPath) as! SliderTableViewCell
-                    cell.setup(viewModel: cellModel)
-                    cell.delegate = self
-                    return cell
-                }
-                mainCollectionView.reloadData()
+                let cellModel = viewModel.getTableSliderVieWModel(position: indexPath.row)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderTableViewCell.reuseIdentifier, for: indexPath) as! SliderTableViewCell
+                cell.setup(viewModel: cellModel)
+                cell.delegate = self
+                return cell
             case 1:
-                if viewModel.categoryItemCount() == 0 {
-                    mainCollectionView.deleteSections(IndexSet.init(integer: 1))
-                } else {
-                    let cellModel = viewModel.getCategoriesViewModel()
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseIdentifier, for: indexPath) as! CategoriesCell
-                    cell.configureCell(model: cellModel)
-                    cell.delegate = self
-                    return cell
-                }
-                mainCollectionView.reloadData()
+                let cellModel = viewModel.getCategoriesViewModel()
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseIdentifier, for: indexPath) as! CategoriesCell
+                cell.configureCell(model: cellModel)
+                cell.delegate = self
+                return cell
             case 2:
-                if viewModel.showcaseItemCount() == 0 {
-                    mainCollectionView.deleteSections(IndexSet.init(integer: 2))
-                } else {
-                    let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
-                    cell.delegate = self
-                    cell.configureCell(viewModel: cellModel)
-                    return cell
-                }
-                mainCollectionView.reloadData()
+                let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
+                cell.delegate = self
+                cell.configureCell(viewModel: cellModel)
+                return cell
             case 3:
-                if viewModel.productItemCount() == 0 {
-                    mainCollectionView.deleteSections(IndexSet.init(integer: 3))
-                } else {
-                    let cellModel = viewModel.getTableProductVieWModel()
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
-                    cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
-                    return cell
-                }
-                mainCollectionView.reloadData()
+                let cellModel = viewModel.getTableProductVieWModel()
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
+                cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
+                return cell
             default:
                 break
             }
@@ -342,7 +336,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             break
         }
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-       }
+    }
     
 }
 
@@ -368,7 +362,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
         default:
             break
         }
-       return CGSize(width: 200, height: 200)
+        return CGSize(width: 200, height: 200)
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -380,14 +374,14 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension SRMainPageViewController : CategoriesCellDelegate {
-   
+    
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position){
             let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoryName(position: position),categoryId: viewModel.getCategoryId(position: position)))
             self.prompt(vc, animated: true, completion: nil)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(position: position),categoryTitle: viewModel.getCategoryName(position: position)))
+            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(position: position),pageTitle: viewModel.getCategoryName(position: position)))
             prompt(vc, animated: true, completion: nil)
         }
         
@@ -414,7 +408,4 @@ extension SRMainPageViewController: SliderClickDelegate {
         let vc = WebViewController(viewModel: WebViewViewModel(webViewUrl: link))
         self.prompt(vc, animated: false, completion: nil)
     }
-    
-    
-    
 }

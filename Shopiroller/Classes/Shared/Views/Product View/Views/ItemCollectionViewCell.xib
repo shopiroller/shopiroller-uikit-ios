@@ -29,14 +29,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="279" height="287"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Zq-Bv-rS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="279" height="214.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="210"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk5-4P-N9O">
-                                                <rect key="frame" x="0.0" y="0.0" width="279" height="214.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="210"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FxW-5A-E6b">
-                                                <rect key="frame" x="30" y="189.5" width="219" height="20"/>
+                                                <rect key="frame" x="30" y="185" width="219" height="20"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-Ed-d2s">
                                                         <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
@@ -102,13 +102,16 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoU-9C-wqF">
-                                        <rect key="frame" x="0.0" y="214.5" width="279" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="210" width="279" height="5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5" id="aKc-z7-Rc6"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="0.0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-8l-eUB">
-                                        <rect key="frame" x="0.0" y="214.5" width="279" height="32"/>
+                                        <rect key="frame" x="0.0" y="215" width="279" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdasdasdasdasda" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV4-sW-37K">
                                                 <rect key="frame" x="0.0" y="0.0" width="279" height="32"/>
@@ -128,7 +131,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feM-qh-DEt">
-                                        <rect key="frame" x="0.0" y="246.5" width="279" height="30"/>
+                                        <rect key="frame" x="0.0" y="247" width="279" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="A9z-1A-mrM">
                                                 <rect key="frame" x="0.0" y="0.0" width="279" height="30"/>
@@ -218,7 +221,10 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-PZ-Hbs">
-                                        <rect key="frame" x="0.0" y="276.5" width="279" height="10.5"/>
+                                        <rect key="frame" x="0.0" y="277" width="279" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="Kqb-g0-3ns"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

@@ -169,21 +169,6 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     
-    func setTransparentNavigationBar() {
-        self.navigationController!.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        if #available(iOS 15, *) {
-            let appearance = UINavigationBarAppearance()
-            navigationController?.navigationBar.isTranslucent = true
-            appearance.configureWithTransparentBackground()
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        }
-        self.navigationController?.navigationBar.setGradientBackground()
-    }
-    
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
         initializeNavigationBar()
         let menuButton = createNavigationItem(.menuIcon)

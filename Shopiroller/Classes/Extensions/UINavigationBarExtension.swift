@@ -22,7 +22,8 @@ extension UINavigationBar {
         gradientLayer.startPoint = CGPoint(x: 0, y: 1)
         gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
         UIGraphicsBeginImageContext(gradientLayer.bounds.size)
-        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        guard let render = UIGraphicsGetCurrentContext() else { return }
+        gradientLayer.render(in: render)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         setBackgroundImage(image, for: UIBarMetrics.default)
