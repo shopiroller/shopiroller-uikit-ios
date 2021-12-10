@@ -45,8 +45,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         
         sortButton.setTitle("sort-title-text".localized)
         sortButton.setTitleColor(.textPrimary)
+        sortButton.tintColor = .textPrimary
         filterButton.setTitle("filter-title-text".localized)
         filterButton.setTitleColor(.textPrimary)
+        filterButton.tintColor = .textPrimary
     
         getProducts(pagination: false)
     }
