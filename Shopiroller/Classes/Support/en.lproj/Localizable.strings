@@ -262,6 +262,7 @@
 
 "filter_title" = "Filter";
 "filter_confirm" = "List Products";
+"filter_remove" = "Remove Filters";
 "filter_category" = "Category";
 "filter_brand" = "Brand";
 "filter_price_range" = "Price Range";
@@ -269,5 +270,5 @@
 "filter_discounted_products" = "Discounted Products";
 "filter_free_shipping" = "Free Shipping";
 "filter_choice_apply" = "Apply";
-"filter_price_range_lowest" = "En Düşük";
-"filter_price_range_highest" = "En Yüksek";
+"filter_price_range_lowest" = "Lowest Price";
+"filter_price_range_highest" = "Highest Price";

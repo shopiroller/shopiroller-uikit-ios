@@ -25,9 +25,7 @@ class FilterChoiceViewModel: BaseViewModel {
         title = "filter_brand".localized
         isMultipleChoice = true
         super.init()
-        var data = dataList
-        data.append(BrandsItem(updateDate: nil, name: "sadasd", icon: nil, id: "1231231231", isActive: true, createDate: "qwdqwdwq"))
-        configureDataList(dataList: data, selectedIds: selectedIds)
+        configureDataList(dataList: dataList, selectedIds: selectedIds)
     }
     
     init(dataList: VariationGroupsItem, selectedIds: [String] = []) {

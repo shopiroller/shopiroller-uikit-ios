@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="confirmButton" destination="Yah-M6-Pmi" id="Lc2-N8-1VY"/>
                 <outlet property="filterTableView" destination="KON-d9-yR7" id="i4B-rd-GuU"/>
+                <outlet property="removeFilterButton" destination="rYE-a0-4Dy" id="Cg9-Tb-OFT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,6 +40,17 @@
                         <action selector="confirmButtonTapped:" destination="-1" eventType="touchUpInside" id="Nse-dn-91g"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYE-a0-4Dy">
+                    <rect key="frame" x="0.0" y="807" width="414" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="PNP-52-un1"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="removeButtonTapped:" destination="-1" eventType="touchUpInside" id="GQI-um-VaD"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,8 +60,14 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KON-d9-yR7" secondAttribute="trailing" id="IJs-2B-TqC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Yah-M6-Pmi" secondAttribute="bottom" id="JHd-1V-s6J"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yah-M6-Pmi" secondAttribute="trailing" id="Q2C-03-ecI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rYE-a0-4Dy" secondAttribute="bottom" id="Rgp-Od-O4h"/>
+                <constraint firstItem="rYE-a0-4Dy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aDT-6f-npS"/>
+                <constraint firstItem="rYE-a0-4Dy" firstAttribute="centerY" secondItem="Yah-M6-Pmi" secondAttribute="centerY" id="e1C-8P-0xt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rYE-a0-4Dy" secondAttribute="trailing" id="fLM-KW-eJz"/>
                 <constraint firstItem="Yah-M6-Pmi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lkq-pi-MlB"/>
+                <constraint firstItem="rYE-a0-4Dy" firstAttribute="top" secondItem="KON-d9-yR7" secondAttribute="bottom" id="pbm-dA-wcO"/>
                 <constraint firstItem="KON-d9-yR7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ydN-Zh-exP"/>
+                <constraint firstItem="rYE-a0-4Dy" firstAttribute="centerX" secondItem="Yah-M6-Pmi" secondAttribute="centerX" id="zsf-A9-Q6r"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
         </view>

@@ -13,8 +13,9 @@ protocol FilterViewControllerDelegate {
 
 class FilterViewController: BaseViewController<FilterViewModel> {
 
-    @IBOutlet weak var filterTableView: UITableView!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var filterTableView: UITableView!
+    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var removeFilterButton: UIButton!
     
     private let delegate: FilterViewControllerDelegate
     
@@ -30,6 +31,20 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
         confirmButton.setTitle("filter_confirm".localized)
+        confirmButton.titleLabel?.font = .semiBold16
+        
+        removeFilterButton.setTitleColor(.white)
+        removeFilterButton.backgroundColor = .buttonPrimary
+        removeFilterButton.setTitle("filter_remove".localized)
+        removeFilterButton.titleLabel?.font = .semiBold16
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(viewModel.selectedModel.hasFilter()) {
+            removeFilterButton.isHidden = false
+            confirmButton.isHidden = true
+        }
     }
     
     private func configureUI() {
@@ -51,11 +66,19 @@ class FilterViewController: BaseViewController<FilterViewModel> {
             self.view.makeToast(errorViewModel)
         }
     }
+    
 
     @IBAction func confirmButtonTapped(_ sender: Any) {
         delegate.confirmedFilter(model: viewModel.selectedModel)
         pop(animated: true, completion: nil)
     }
+    
+    @IBAction func removeButtonTapped(_ sender: Any) {
+        viewModel.clearFilter()
+        delegate.confirmedFilter(model: viewModel.selectedModel)
+        pop(animated: true, completion: nil)
+    }
+
 }
 
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
