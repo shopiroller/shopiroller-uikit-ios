@@ -18,6 +18,7 @@ protocol ListPopUpPaymentDelegate {
 
 class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
+    @IBOutlet private weak var popUpHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var popUpTitle: UILabel!
     @IBOutlet private weak var popUpImageView: UIImageView!
     @IBOutlet private weak var popUpImageViewBackground: UIView!
@@ -70,6 +71,18 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         case .shoppingCart:
             setUpForAddress()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
+            if self.popUpTableView.frame.size.height > self.view.frame.size.height {
+                let heightDifference = self.popUpTableView.frame.size.height - self.view.frame.size.height
+                self.popUpHeightConstraint.constant += heightDifference
+                
+                if self.popUpHeightConstraint.constant > self.view.frame.height / 10 * 65 {
+                    self.popUpHeightConstraint.constant = self.view.frame.height / 10 * 65
+                }
+            }
+        }
+        
     }
     
     init(viewModel: ListPopUpViewModel){
