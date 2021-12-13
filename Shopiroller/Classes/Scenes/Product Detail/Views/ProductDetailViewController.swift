@@ -241,12 +241,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func showAddProductAnimation() {
-        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
             self.addToCardButton.frame.origin.y += 70
             self.checkmarkImage.isHidden = false
             self.checkmarkImage.frame.origin.y += 70
         }, completion: {_ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.hideAddProductAnimation()
             }
         })
@@ -254,11 +254,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     
     private func hideAddProductAnimation() {
-        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
             self.addToCardButton.frame.origin.y = 0
             self.checkmarkImage.frame.origin.y = self.checkmarkImage.frame.origin.y - 70
         }, completion: {_ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.checkmarkImage.isHidden = true
             }
         })
