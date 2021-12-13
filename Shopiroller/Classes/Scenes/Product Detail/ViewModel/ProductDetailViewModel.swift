@@ -106,11 +106,27 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func isOutofStock() -> Bool {
-        return productDetailModel?.stock == 0
+        if (productDetailModel?.stock == 0) {
+            return true
+        } else {
+            return false
+        }
     }
     
     func isShippingFree() -> Bool {
-        return productDetailModel?.shippingPrice == 0.0
+        if (productDetailModel?.shippingPrice == 0.0){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isUseFixPrice() -> Bool {
+        if (productDetailModel?.useFixPrice == true) {
+            return true
+        } else {
+            return false
+        }
     }
     
     func hasDiscount() -> Bool {
@@ -126,7 +142,11 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func hasSituation() -> Bool {
-        return isShippingFree() || isOutofStock()
+        if ((isShippingFree() || isOutofStock()) && !isUseFixPrice()) {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getShippingPrice() -> String {
