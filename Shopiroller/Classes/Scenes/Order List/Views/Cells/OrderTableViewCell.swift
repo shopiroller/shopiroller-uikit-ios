@@ -17,13 +17,13 @@ class OrderTableViewCell: UITableViewCell {
         
         static var orderNo: String { return "order-no".localized}
     }
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var orderNo: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var statusView: UIView!
-    @IBOutlet weak var status: UILabel!
-    @IBOutlet weak var time: UILabel!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var orderNo: UILabel!
+    @IBOutlet private weak var date: UILabel!
+    @IBOutlet private weak var price: UILabel!
+    @IBOutlet private weak var statusView: UIView!
+    @IBOutlet private weak var status: UILabel!
+    @IBOutlet private weak var time: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

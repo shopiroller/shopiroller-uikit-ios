@@ -9,9 +9,9 @@ import UIKit
 
 class AddressView: BaseView {
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var addressImageView: UIImageView!
+    @IBOutlet private weak var title: UILabel!
+    @IBOutlet private weak var address: UILabel!
+    @IBOutlet private weak var addressImageView: UIImageView!
 
     private var type: AddressType?
     

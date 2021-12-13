@@ -12,7 +12,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet weak var addButton: MDCFloatingButton!
+    @IBOutlet private weak var addButton: MDCFloatingButton!
     
     
     private var pageVC: AddressListPageViewController?
