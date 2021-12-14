@@ -265,7 +265,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 
 "filter_title" = "Filtrele";
 "filter_confirm" = "Ürünleri Listele";
-"filter_remove" = "Filtreleri Temizle";
+"filter_remove" = "Temizle";
 "filter_category" = "Kategori";
 "filter_brand" = "Marka";
 "filter_price_range" = "Fiyat Aralığı";

@@ -262,7 +262,7 @@
 
 "filter_title" = "Filter";
 "filter_confirm" = "List Products";
-"filter_remove" = "Remove Filters";
+"filter_remove" = "Clean";
 "filter_category" = "Category";
 "filter_brand" = "Brand";
 "filter_price_range" = "Price Range";

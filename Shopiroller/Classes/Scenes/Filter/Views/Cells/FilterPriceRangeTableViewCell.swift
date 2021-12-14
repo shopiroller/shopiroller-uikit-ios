@@ -45,11 +45,17 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
         self.delegate = delegate
         minPriceTextField.rightView = getCurrencyLabel(currency: currency)
         maxPriceTextField.rightView = getCurrencyLabel(currency: currency)
+        
         if let minPrice = minPrice {
             minPriceTextField.text = String(minPrice)
+        } else {
+            minPriceTextField.text = ""
         }
+        
         if let maxPrice = maxPrice {
             maxPriceTextField.text = String(maxPrice)
+        } else {
+            maxPriceTextField.text = ""
         }
     }
     

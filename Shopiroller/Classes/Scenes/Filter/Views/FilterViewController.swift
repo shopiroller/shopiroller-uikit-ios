@@ -15,7 +15,6 @@ class FilterViewController: BaseViewController<FilterViewModel> {
 
     @IBOutlet private weak var filterTableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
-    @IBOutlet private weak var removeFilterButton: UIButton!
     
     private let delegate: FilterViewControllerDelegate
     
@@ -32,19 +31,12 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         confirmButton.backgroundColor = .buttonPrimary
         confirmButton.setTitle("filter_confirm".localized)
         confirmButton.titleLabel?.font = .semiBold16
-        
-        removeFilterButton.setTitleColor(.white)
-        removeFilterButton.backgroundColor = .buttonPrimary
-        removeFilterButton.setTitle("filter_remove".localized)
-        removeFilterButton.titleLabel?.font = .semiBold16
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if(viewModel.selectedModel.hasFilter()) {
-            removeFilterButton.isHidden = false
-            confirmButton.isHidden = true
-        }
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        let clearButton = UIBarButtonItem.init(title: "filter_remove".localized, style: .done, target: self, action: #selector(clearButtonTapped))
+        updateNavigationBar(rightBarButtonItems: [clearButton], isBackButtonActive: true)
     }
     
     private func configureUI() {
@@ -73,10 +65,10 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         pop(animated: true, completion: nil)
     }
     
-    @IBAction func removeButtonTapped(_ sender: Any) {
+    @objc func clearButtonTapped() {
         viewModel.clearFilter()
+        filterTableView.reloadData()
         delegate.confirmedFilter(model: viewModel.selectedModel)
-        pop(animated: true, completion: nil)
     }
 
 }
