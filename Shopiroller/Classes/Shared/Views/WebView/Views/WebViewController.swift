@@ -15,7 +15,7 @@ private struct Constans {
 }
 class WebViewController: BaseViewController<WebViewViewModel> {
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet private weak var webView: WKWebView!
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var dismissButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!

@@ -39,7 +39,7 @@ public class ProductDetailViewModel: BaseViewModel {
         }
     }
     
-
+    
     func getProductDetail(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
             (result) in
@@ -86,7 +86,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getTitle() -> String? {
-       return productDetailModel?.title
+        return productDetailModel?.title
     }
     
     func getItemCount() -> Int? {
@@ -113,12 +113,12 @@ public class ProductDetailViewModel: BaseViewModel {
         return productDetailModel?.shippingPrice == 0.0
     }
     
+    func isUseFixPrice() -> Bool {
+        return productDetailModel?.useFixPrice == true
+    }
+    
     func hasDiscount() -> Bool {
-        if(productDetailModel?.campaignPrice != 0) {
-            return true
-        }else{
-            return false
-        }
+        return productDetailModel?.campaignPrice != 0
     }
     
     func getCurrency() -> String {
@@ -126,7 +126,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func hasSituation() -> Bool {
-        return isShippingFree() || isOutofStock()
+        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
     }
     
     func getShippingPrice() -> String {
@@ -174,12 +174,12 @@ public class ProductDetailViewModel: BaseViewModel {
         popUpState = .returnExchange
         return PopUpViewModel(image: .deliveryTerms, title: "return-exchange-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
     }
-
+    
     func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
         popUpState = .deliveryTerms
         return PopUpViewModel(image: .deliveryTerms, title: "delivery-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
     }
-
+    
     func getSoldOutPopUpViewModel() -> PopUpViewModel {
         popUpState = .soldOut
         return PopUpViewModel(image: .outOfStock, title: "product-detail-out-of-stock-title".localized, description: "product-detail-out-of-stock-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-list-button-text".localized, type: .lightButton), secondButton: nil)

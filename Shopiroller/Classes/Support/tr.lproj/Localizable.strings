@@ -265,6 +265,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 
 "filter_title" = "Filtrele";
 "filter_confirm" = "Ürünleri Listele";
+"filter_remove" = "Temizle";
 "filter_category" = "Kategori";
 "filter_brand" = "Marka";
 "filter_price_range" = "Fiyat Aralığı";
@@ -272,5 +273,5 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "filter_discounted_products" = "İndirimli Ürünler";
 "filter_free_shipping" = "Ücretsiz Kargo";
 "filter_choice_apply" = "Uygula";
-"filter_price_range_lowest" = "Lowest";
-"filter_price_range_highest" = "Highest";
+"filter_price_range_lowest" = "En Düşük";
+"filter_price_range_highest" = "En Yüksek";
