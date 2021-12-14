@@ -33,6 +33,19 @@ extension UIView {
         
     }
     
+    func makeGradientLayer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [UIColor.navigationBackGroundEndColor.cgColor,
+                                    UIColor.navigationBackGroundMidColor.cgColor,
+                                    UIColor.navigationBackGroundStartColor.cgColor]
+            gradientLayer.frame = self.bounds
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
+            self.layer.insertSublayer(gradientLayer, at:0)
+        }
+    }
+    
     func add(_ subview: UIView) {
         addSubview(subview)
         subview.translatesAutoresizingMaskIntoConstraints = false

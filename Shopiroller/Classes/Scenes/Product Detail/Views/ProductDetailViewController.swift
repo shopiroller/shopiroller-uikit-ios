@@ -54,6 +54,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     
+    @IBOutlet private weak var topViewGradient: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
@@ -198,6 +199,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         getPaymentSettings()
         
         quantityCountLabel.text = "1"
+        
     }
     
     override func setupNavigationBar() {
@@ -222,7 +224,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
-        scrollView.translatesAutoresizingMaskIntoConstraints = true
         setTransparentNavigationBar()
     }
     
@@ -241,12 +242,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func showAddProductAnimation() {
-        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
             self.addToCardButton.frame.origin.y += 70
             self.checkmarkImage.isHidden = false
             self.checkmarkImage.frame.origin.y += 70
         }, completion: {_ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.hideAddProductAnimation()
             }
         })
@@ -254,11 +255,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     
     private func hideAddProductAnimation() {
-        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
             self.addToCardButton.frame.origin.y = 0
             self.checkmarkImage.frame.origin.y = self.checkmarkImage.frame.origin.y - 70
         }, completion: {_ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.checkmarkImage.isHidden = true
             }
         })
@@ -277,7 +278,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
-        navigationController?.navigationBar.setGradientBackground()
+        topViewGradient.makeGradientLayer()
     }
     
     private func getProductDetail() {
