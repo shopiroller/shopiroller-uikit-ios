@@ -17,8 +17,7 @@ public class ProductImageSliderCollectionViewCell: UICollectionViewCell {
     }
     
     func configurecell(images: ProductImageModel?) {
-        self.productImage.kf.setImage(with: URL(string: images?.normal ?? ""))
+        productImage.setImages(url: images?.normal ?? "")
     }
     
-  
 }

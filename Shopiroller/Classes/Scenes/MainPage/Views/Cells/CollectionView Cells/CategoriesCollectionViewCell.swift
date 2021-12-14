@@ -33,7 +33,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     func configureCell(model: SRCategoryResponseModel?){
         categoryTitle.text = model?.name
         categoryImage.backgroundColor = .clear
-        categoryImage.kf.setImage(with: URL(string: model?.icon ?? ""))
+        categoryImage.setImages(url: model?.icon ?? "")
     }    
     
 }
