@@ -14,7 +14,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageContainer: UIView!
     @IBOutlet private weak var categoryImage: UIImageView!
     @IBOutlet private weak var categoryTitleContainer: UIView!
-    @IBOutlet weak var categoryTitle: UILabel!
+    @IBOutlet private weak var categoryTitle: UILabel!
     @IBOutlet private weak var imageViewBackGround: UIImageView!
     
     

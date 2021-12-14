@@ -10,10 +10,10 @@ import UIKit
 
 class BottomPriceView: BaseView {
 
-    @IBOutlet weak var subTotal: UILabel!
-    @IBOutlet weak var shipping: UILabel!
-    @IBOutlet weak var total: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet private weak var subTotal: UILabel!
+    @IBOutlet private weak var shipping: UILabel!
+    @IBOutlet private weak var total: UILabel!
+    @IBOutlet private weak var price: UILabel!
     
     func setup(model: BottomPriceModel) {
         super.setup()

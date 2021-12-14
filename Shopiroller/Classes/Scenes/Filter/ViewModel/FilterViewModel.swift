@@ -104,6 +104,17 @@ class FilterViewModel: BaseViewModel {
         return selectedModel.maximumPrice
     }
     
+    func clearFilter() {
+        selectedModel.categoryIds = SelectionIds()
+        selectedModel.brandIds = SelectionIds()
+        selectedModel.variationGroups = []
+        selectedModel.maximumPrice = nil
+        selectedModel.minimumPrice = nil
+        selectedModel.stockSwitch = false
+        selectedModel.freeShippingSwitch = false
+        selectedModel.discountedProductsSwitch = false
+    }
+    
     func getSelectedSwitchState(type: FilterSwitchType) -> Bool {
         switch type {
         case .stockSwitch:
