@@ -68,7 +68,6 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     @objc func clearButtonTapped() {
         viewModel.clearFilter()
         filterTableView.reloadData()
-        delegate.confirmedFilter(model: viewModel.selectedModel)
     }
 
 }
