@@ -54,6 +54,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     
+    @IBOutlet private weak var topViewGradient: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
@@ -192,12 +193,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.clipsToBounds = false
-                
+        
         getProductDetail()
         
         getPaymentSettings()
         
         quantityCountLabel.text = "1"
+        
     }
     
     override func setupNavigationBar() {
@@ -222,7 +224,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
-        scrollView.translatesAutoresizingMaskIntoConstraints = true
         setTransparentNavigationBar()
     }
     
@@ -277,7 +278,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
-        navigationController?.navigationBar.setGradientBackground()
+        topViewGradient.makeGradientLayer()
     }
     
     private func getProductDetail() {
