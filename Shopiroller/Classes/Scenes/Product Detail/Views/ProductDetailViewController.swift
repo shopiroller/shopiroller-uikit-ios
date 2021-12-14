@@ -191,9 +191,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         collectionView.register(cellClass: ProductImageSliderCollectionViewCell.self)
         collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.clipsToBounds = false
-        
+        collectionView.dataSource = self        
+        collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+                
         getProductDetail()
         
         getPaymentSettings()
@@ -392,6 +392,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }else{
             productBrandImage.isHidden = true
         }
+        
+        situationContainer.isHidden = !viewModel.hasSituation()
         
         if viewModel.hasDiscount() {
             discountContainer.isHidden = false

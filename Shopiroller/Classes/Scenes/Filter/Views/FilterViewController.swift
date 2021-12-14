@@ -13,8 +13,8 @@ protocol FilterViewControllerDelegate {
 
 class FilterViewController: BaseViewController<FilterViewModel> {
 
-    @IBOutlet weak var filterTableView: UITableView!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var filterTableView: UITableView!
+    @IBOutlet private weak var confirmButton: UIButton!
     
     private let delegate: FilterViewControllerDelegate
     
@@ -30,6 +30,13 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
         confirmButton.setTitle("filter_confirm".localized)
+        confirmButton.titleLabel?.font = .semiBold16
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        let clearButton = UIBarButtonItem.init(title: "filter_remove".localized, style: .done, target: self, action: #selector(clearButtonTapped))
+        updateNavigationBar(rightBarButtonItems: [clearButton], isBackButtonActive: true)
     }
     
     private func configureUI() {
@@ -51,11 +58,18 @@ class FilterViewController: BaseViewController<FilterViewModel> {
             self.view.makeToast(errorViewModel)
         }
     }
+    
 
     @IBAction func confirmButtonTapped(_ sender: Any) {
         delegate.confirmedFilter(model: viewModel.selectedModel)
         pop(animated: true, completion: nil)
     }
+    
+    @objc func clearButtonTapped() {
+        viewModel.clearFilter()
+        filterTableView.reloadData()
+    }
+
 }
 
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {

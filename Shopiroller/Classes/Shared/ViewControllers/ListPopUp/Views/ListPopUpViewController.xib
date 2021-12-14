@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="button" destination="6zG-dy-vjm" id="KA9-fm-zuR"/>
                 <outlet property="buttonContainer" destination="5Zh-Xl-9z7" id="ymy-7F-7KW"/>
+                <outlet property="popUpHeightConstraint" destination="Gz5-Mz-R82" id="ege-Q3-SN1"/>
                 <outlet property="popUpImageView" destination="Sm5-aa-h9N" id="1nY-OJ-YS7"/>
                 <outlet property="popUpImageViewBackground" destination="RdW-B7-QGq" id="tlm-VW-fDR"/>
                 <outlet property="popUpTableView" destination="Y0d-wD-NFR" id="gqW-bR-E9N"/>
@@ -31,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCc-zs-vyl">
-                    <rect key="frame" x="12.5" y="228" width="389" height="450"/>
+                    <rect key="frame" x="12.5" y="310" width="389" height="286"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-B7-QGq">
                             <rect key="frame" x="156.5" y="-36" width="76" height="76"/>
@@ -56,7 +57,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-pQ-geL">
-                            <rect key="frame" x="0.0" y="60" width="389" height="390"/>
+                            <rect key="frame" x="0.0" y="60" width="389" height="226"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6y-Ub-xfm">
                                     <rect key="frame" x="0.0" y="0.0" width="389" height="30"/>
@@ -110,10 +111,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob8-O4-hrS">
-                                    <rect key="frame" x="0.0" y="45" width="389" height="345"/>
+                                    <rect key="frame" x="0.0" y="45" width="389" height="181"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-wD-NFR">
-                                            <rect key="frame" x="0.0" y="0.0" width="389" height="345"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="389" height="181"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
                                     </subviews>
@@ -126,7 +127,7 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-Xl-9z7">
-                                    <rect key="frame" x="0.0" y="390" width="389" height="50"/>
+                                    <rect key="frame" x="0.0" y="226" width="389" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-dy-vjm">
                                             <rect key="frame" x="161" y="9.5" width="67" height="31"/>
@@ -158,7 +159,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pCc-zs-vyl" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.55" id="Gz5-Mz-R82"/>
+                <constraint firstItem="pCc-zs-vyl" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.35" id="Gz5-Mz-R82"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.939614" id="QKG-AN-hqp"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="eX0-G9-m22"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="lsX-3L-5Ry"/>

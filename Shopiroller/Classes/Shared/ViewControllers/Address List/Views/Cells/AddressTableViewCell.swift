@@ -23,7 +23,7 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet private weak var confirmDeleteButton: UIButton!
     
     @IBOutlet private weak var informationTitle: UILabel!
-    @IBOutlet weak var informationAddress: UILabel!
+    @IBOutlet private weak var informationAddress: UILabel!
     
     @IBOutlet private weak var informationDeleteButton: UIButton!
     @IBOutlet private weak var informationEditButton: UIButton!

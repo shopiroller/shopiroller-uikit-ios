@@ -10,21 +10,21 @@ import UIKit
 
 class OrderDetailProductView: BaseView {
     
-    @IBOutlet weak var orderImage: UIImageView!
-    @IBOutlet weak var orderTitle: UILabel!
-    @IBOutlet weak var orderPiece: UILabel!
-    @IBOutlet weak var orderPrice: UILabel!
+    @IBOutlet private weak var orderImage: UIImageView!
+    @IBOutlet private weak var orderTitle: UILabel!
+    @IBOutlet private weak var orderPiece: UILabel!
+    @IBOutlet private weak var orderPrice: UILabel!
     
     func setup(model: SROrderProductModel) {
         super.setup()
         
-        
-        
         if let url = model.featuredImage?.thumbnail {
             orderImage.kf.setImage(with: URL(string: url))
         }
+        
         orderTitle.textColor = .textPCaption
         orderTitle.text = model.title
+        
         if let quantity = model.quantity {
             orderPiece.textColor = .textPCaption
             orderPiece.attributedText = ECommerceUtil.getBoldNormal("order_details_quantity".localized, String(quantity))
