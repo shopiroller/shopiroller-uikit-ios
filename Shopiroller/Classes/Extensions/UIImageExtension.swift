@@ -17,7 +17,7 @@ extension UIImage {
     static let backIcon: UIImage = UIImage(systemName: "chevron.left")!
     
     // MARK: Project Images
- 
+    
     static let billingAddress: UIImage = UIImage(named: "billingAddress", in: .shopiroller, with: nil)!
     
     static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!
@@ -86,34 +86,51 @@ extension UIImage {
     static let emptyPaymentMethod: UIImage = UIImage(named: "emptyPaymentMethod", in: .shopiroller, with: nil)!
     
     static let creditCartIcon : UIImage = UIImage(named: "creditCartIcon", in: .shopiroller, with: nil)!
-
+    
     static let bankIcon : UIImage = UIImage(named: "bankIcon", in: .shopiroller, with: nil)!
-
+    
     static let paypalIcon : UIImage = UIImage(named: "paypalIcon", in: .shopiroller, with: nil)!
-
+    
     static let payAtTheDoorIcon : UIImage = UIImage(named: "payAtTheDoorIcon", in: .shopiroller, with: nil)!
     
     static let masterCardIcon : UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
-
+    
     static let visaIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
     
     static let copyIcon : UIImage = UIImage(systemName: "doc.on.doc.fill")!
     
     static let cartIcon : UIImage = UIImage(named: "cartIcon", in: .shopiroller, with: nil)!
-
+    
     static let paymentIcon : UIImage = UIImage(named: "paymentIcon", in: .shopiroller, with: nil)!
-
+    
     static let billingAddressIcon : UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
-
+    
     static let deliveryAddressIcon : UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
     
     static let paymentSuccess : UIImage = UIImage(named: "paymentSuccess",in: .shopiroller , with: nil)!
     
     static let noProductsIcon : UIImage = UIImage(named: "noProductsIcon",in: .shopiroller , with: nil)!
-
+    
     static let checkBoxChecked : UIImage = UIImage(named: "checkBoxChecked",in: .shopiroller , with: nil)!
-
+    
     static let checkBoxUnchecked : UIImage = UIImage(named: "checkBoxUnchecked",in: .shopiroller , with: nil)!
+    
+    
+}
 
-
+extension UIImageView {
+    
+    func setImages(url:String) {
+        let activityIndicator = UIActivityIndicatorView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+            activityIndicator.frame = CGRect(x: (self.frame.width / 2) - 30, y: (self.frame.height / 2) - 30, width: 60, height: 60)
+            activityIndicator.style = .medium
+            activityIndicator.color = .textPrimary
+            self.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            self.kf.setImage(with: URL(string: url), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img, err, cache, url) in
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
 }

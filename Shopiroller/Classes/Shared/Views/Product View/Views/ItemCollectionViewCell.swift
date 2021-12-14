@@ -79,8 +79,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productOldPrice.textColor = .black
         }
             
-        if let image = viewModel.getImage() { 
-            productImage.kf.setImage(with: URL(string: image))
+        if let image = viewModel.getImage() {
+            productImage.setImages(url: image)
         }else{
             productImage.image = .emptyProduct
         }

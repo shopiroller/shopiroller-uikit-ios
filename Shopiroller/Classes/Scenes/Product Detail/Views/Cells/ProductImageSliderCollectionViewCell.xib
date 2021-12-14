@@ -31,6 +31,7 @@
                             <constraint firstItem="R4U-q6-y1x" firstAttribute="centerX" secondItem="m8G-eK-5T5" secondAttribute="centerX" id="kaL-Js-DPp"/>
                             <constraint firstItem="R4U-q6-y1x" firstAttribute="leading" secondItem="m8G-eK-5T5" secondAttribute="leading" id="ouz-ow-xbC"/>
                             <constraint firstAttribute="trailing" secondItem="R4U-q6-y1x" secondAttribute="trailing" id="qdS-L3-0LJ"/>
+                            <constraint firstItem="R4U-q6-y1x" firstAttribute="centerY" secondItem="m8G-eK-5T5" secondAttribute="centerY" id="xzO-Gt-cA1"/>
                         </constraints>
                     </view>
                 </subviews>
