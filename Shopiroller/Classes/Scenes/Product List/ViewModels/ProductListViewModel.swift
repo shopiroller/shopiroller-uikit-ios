@@ -35,7 +35,7 @@ class ProductListViewModel : BaseViewModel {
     
     func getSortQueryItems() -> [URLQueryItem] {
         var urlQueryItems: [URLQueryItem] = []
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionOrientation.string))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sortBy, value: orderOptionOrientation.string))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionType.string))
         return urlQueryItems
     }
