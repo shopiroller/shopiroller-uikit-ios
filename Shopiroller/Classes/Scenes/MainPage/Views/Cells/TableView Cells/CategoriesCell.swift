@@ -88,6 +88,6 @@ extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
 extension CategoriesCell: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: collectionView.frame.height)
+        return CGSize(width: 70, height: collectionView.frame.height)
     }
 }    
