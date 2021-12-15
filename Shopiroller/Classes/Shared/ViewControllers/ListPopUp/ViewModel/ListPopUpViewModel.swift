@@ -14,14 +14,18 @@ class ListPopUpViewModel: BaseViewModel {
     private var userBillingAddressList : [UserBillingAdressModel]?
     private var addressType: GeneralAddressType?
     private var supportedPaymentMethods: [SupportedPaymentType]?
+    private var sortTitles : [String] = ["sort_dialog_most_shipped".localized,"sort_dialog_price_increasing".localized,"sort_dialog_price_decreasing".localized,"sort_dialog_most_recent_added".localized]
+    var selectedIndex: Int? = 0
+    
     
     init(listType: ListType, userShippingAddressList : [UserShippingAddressModel]? = nil, userBillingAddressList: [UserBillingAdressModel]? = nil,
-         addressType: GeneralAddressType? = nil,supportedPaymentMethods: [SupportedPaymentType]? = nil){
+         addressType: GeneralAddressType? = nil,supportedPaymentMethods: [SupportedPaymentType]? = nil, selectedSortIndex: Int? = 0){
         self.listType = listType
         self.userShippingAddressList = userShippingAddressList
         self.userBillingAddressList = userBillingAddressList
         self.addressType = addressType
         self.supportedPaymentMethods = supportedPaymentMethods
+        self.selectedIndex = selectedSortIndex
     }
     
     func getListType() -> ListType {
@@ -59,6 +63,8 @@ class ListPopUpViewModel: BaseViewModel {
             case .none:
                 return 0
             }
+        case .sortList:
+            return sortTitles.count
         }
     }
     
@@ -108,10 +114,15 @@ class ListPopUpViewModel: BaseViewModel {
         }
     }
     
+    func getSortListModel(position: Int?) -> String {
+        return sortTitles[position ?? 0]
+    }
+    
 }
 
 enum ListType {
     case payment
     case shoppingCart
     case address
+    case sortList
 }

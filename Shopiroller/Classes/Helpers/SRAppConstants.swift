@@ -63,6 +63,8 @@ public struct SRAppConstants {
             static let page = "page"
             static let perPage = "perPage"
             static let categoryId = "categoryId"
+            static let sort = "sort"
+            static let sortyBy = "sortBy"
             static let brandId = "brandId"
             static let title = "title"
             static let countryId = "countryId"

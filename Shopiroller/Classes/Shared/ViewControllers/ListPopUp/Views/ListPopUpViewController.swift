@@ -16,6 +16,10 @@ protocol ListPopUpPaymentDelegate {
     func getSelectedPayment(payment: PaymentTypeEnum)
 }
 
+protocol ListPopUpSortDelegate {
+    func getSelectedSortIndex(index: Int)
+}
+
 class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
     @IBOutlet private weak var popUpHeightConstraint: NSLayoutConstraint!
@@ -35,6 +39,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
     var paymentDelegate: ListPopUpPaymentDelegate?
     
+    var sortDelegate: ListPopUpSortDelegate?
+    
     override func setup() {
         super.setup()
         
@@ -53,6 +59,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         
         popUpTableView.register(cellClass: AddressSelectTableViewCell.self)
         popUpTableView.register(cellClass: PaymentTableViewCell.self)
+        popUpTableView.register(cellClass: SortProductTableViewCell.self)
         popUpTableView.separatorInset = UIEdgeInsets.zero
         popUpTableView.delegate = self
         popUpTableView.dataSource = self
@@ -70,6 +77,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
             setUpForPayment()
         case .shoppingCart:
             setUpForAddress()
+        case .sortList:
+            setUpForSort()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
@@ -109,6 +118,13 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         popUpTitle.textColor = .black
         shoppingCartDescriptionContainer.isHidden = false
         shoppingCartInformationContainer.isHidden = false
+    }
+    
+    private func setUpForSort() {
+        popUpImageView.image = .sortIcon
+        popUpTitle.text = "sort_dialog_title".localized
+        popUpTitle.font = .semiBold20
+        popUpTitle.textColor = .black
     }
     
     private func getAddressList() {
@@ -157,6 +173,12 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             cell.setupCell(model: model,index: indexPath.row)
             cell.delegate = self
             return cell
+        case .sortList :
+            let title = viewModel.getSortListModel(position: indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: SortProductTableViewCell.reuseIdentifier, for: indexPath) as! SortProductTableViewCell
+            cell.setup(title: title, isChecked: viewModel.selectedIndex == indexPath.row,index: indexPath.row)
+            cell.delegate = self
+            return cell
         }
         return UITableViewCell()
     }
@@ -182,6 +204,14 @@ extension ListPopUpViewController: PaymentTableViewCellDelegate {
             self.popView()
         }
       
+    }
+}
+
+extension ListPopUpViewController: SortProductCellDelegate {
+    func getTappedIndex(index: Int) {
+        viewModel.selectedIndex = index
+        sortDelegate?.getSelectedSortIndex(index: viewModel.selectedIndex ?? 0)
+        pop(animated: false, completion: nil)
     }
 }
 

@@ -21,6 +21,10 @@ class ProductListViewModel : BaseViewModel {
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
     private var showcaseId: String?
+    private var orderOptionType: OrderOptionType?
+    private var orderOptionOrientation: OrderOptionOrientation?
+    
+    private var selectedSortIndex: Int? = 0
     
     init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showcaseId: String? = nil) {
         self.categoryId = categoryId
@@ -38,6 +42,15 @@ class ProductListViewModel : BaseViewModel {
         
         if(hasFilter()) {
             urlQueryItems.append(contentsOf: filterModel.getQueryArray())
+        }
+        
+        if(selectedSortIndex != 0){
+            if let orderOptionType = orderOptionType, orderOptionType != .noOption {
+                urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionType.title))
+            }
+            if let orderOptionOrientation = orderOptionOrientation, orderOptionOrientation != .noAssigned {
+                urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionOrientation.title))
+            }
         }
         
         if productList?.count ?? 0 == 0 {
@@ -115,6 +128,35 @@ class ProductListViewModel : BaseViewModel {
     func getPageTitle() -> String? {
         return pageTitle
     }
- 
+    
+    func setSelectedSortIndex(index: Int) {
+        selectedSortIndex = index
+        setOrderOptionType()
+    }
+    
+    func getSelectedSortIndex() -> Int {
+        return selectedSortIndex ?? 0
+    }
+    
+    func setOrderOptionType() {
+        switch selectedSortIndex {
+        case 0:
+            orderOptionType = .statsOrderCount
+            orderOptionOrientation = .descending
+        case 1:
+            orderOptionType = .campaignPrice
+            orderOptionOrientation = .ascending
+        case 2:
+            orderOptionType = .campaignPrice
+            orderOptionOrientation = .descending
+        case 3:
+            orderOptionType = .publishmentDate
+            orderOptionOrientation = .descending
+        case .none:
+            break
+        default:
+            break
+    }
+}
     
 }

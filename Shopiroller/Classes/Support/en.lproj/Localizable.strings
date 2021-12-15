@@ -272,3 +272,10 @@
 "filter_choice_apply" = "Apply";
 "filter_price_range_lowest" = "Lowest Price";
 "filter_price_range_highest" = "Highest Price";
+
+//MARK: = Sort
+"sort_dialog_title" = "Order";
+"sort_dialog_most_shipped" = "Best Sellers";
+"sort_dialog_price_increasing" = "Price Increasing";
+"sort_dialog_price_decreasing" = "Price Decreasing";
+"sort_dialog_most_recent_added" = "Most Recent Added";

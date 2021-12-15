@@ -275,3 +275,10 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "filter_choice_apply" = "Uygula";
 "filter_price_range_lowest" = "En Düşük";
 "filter_price_range_highest" = "En Yüksek";
+
+//MARK: = Sort
+"sort_dialog_title" = "Sırala";
+"sort_dialog_most_shipped" = "En Çok Satanlar";
+"sort_dialog_price_increasing" = "Fiyat Artan";
+"sort_dialog_price_decreasing" = "Fiyat Azalan";
+"sort_dialog_most_recent_added" = "En Yeniler";
