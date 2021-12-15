@@ -26,7 +26,6 @@ class SortProductTableViewCell: UITableViewCell {
         sortByTitle.textColor = .textPrimary
         
         sortCheckedImage.tintColor = .textPrimary
-        sortCheckedImage.image = .strokedCheckmark
         
         let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         self.isUserInteractionEnabled = true

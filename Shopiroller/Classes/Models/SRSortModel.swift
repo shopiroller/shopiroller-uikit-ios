@@ -12,25 +12,24 @@ struct SRSortModel {
     var orderOrientation: OrderOptionOrientation?
 }
 
-enum OrderOptionType: String {
-    case noOption = "NoOption"
-    case title = "Title"
-    case stockCode = "StockCode"
-    case price = "Price"
-    case currency = "Currency"
-    case stock = "Stock"
-    case shippingPrice = "ShippingPrice"
-    case campaignPrice = "CampaignPrice"
-    case maxQuantityPerOrder = "MaxQuantityPerOrder"
-    case orderIndex = "OrderIndex"
-    case publishmentDate = "PublishmentDate"
-    case endDate = "EndDate"
-    case statsOrderCount = "Starts.OrderCount"
+enum OrderOptionType {
     
-    var title: String {
+    case title
+    case stockCode
+    case price
+    case currency
+    case stock
+    case shippingPrice
+    case campaignPrice
+    case maxQuantityPerOrder
+    case orderIndex
+    case publishmentDate
+    case endDate
+    case statsOrderCount
+    
+    var string: String {
+        
         switch self {
-        case .noOption:
-            return "NoOption"
         case .title:
             return "Title"
         case .stockCode:
@@ -60,19 +59,17 @@ enum OrderOptionType: String {
     
 }
 
-enum OrderOptionOrientation: String {
-    case noAssigned = "NoAssigned"
-    case ascending = "Ascending"
-    case descending = "Descending"
+enum OrderOptionOrientation {
     
-    var title: String {
+    case ascending
+    case descending
+    
+    var string: String {
         switch self {
-        case .noAssigned:
-            return "NoAssigned"
         case .ascending:
-            return "ascending"
+            return "Ascending"
         case .descending:
-            return "descending"
+            return "Descending"
         }
     }
 

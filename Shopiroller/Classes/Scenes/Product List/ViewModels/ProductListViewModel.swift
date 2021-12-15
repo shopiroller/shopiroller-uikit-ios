@@ -21,16 +21,23 @@ class ProductListViewModel : BaseViewModel {
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
     private var showcaseId: String?
-    private var orderOptionType: OrderOptionType?
-    private var orderOptionOrientation: OrderOptionOrientation?
+    private var orderOptionType: OrderOptionType = .statsOrderCount
+    private var orderOptionOrientation: OrderOptionOrientation = .descending
     
-    private var selectedSortIndex: Int? = 0
+    private var selectedSortIndex: Int = 0
     
     init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showcaseId: String? = nil) {
         self.categoryId = categoryId
         self.title = title
         self.pageTitle = pageTitle
         self.showcaseId = showcaseId
+    }
+    
+    func getSortQueryItems() -> [URLQueryItem] {
+        var urlQueryItems: [URLQueryItem] = []
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionOrientation.string))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionType.string))
+        return urlQueryItems
     }
     
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -43,15 +50,7 @@ class ProductListViewModel : BaseViewModel {
         if(hasFilter()) {
             urlQueryItems.append(contentsOf: filterModel.getQueryArray())
         }
-        
-        if(selectedSortIndex != 0){
-            if let orderOptionType = orderOptionType, orderOptionType != .noOption {
-                urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionType.title))
-            }
-            if let orderOptionOrientation = orderOptionOrientation, orderOptionOrientation != .noAssigned {
-                urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionOrientation.title))
-            }
-        }
+        urlQueryItems.append(contentsOf: getSortQueryItems())
         
         if productList?.count ?? 0 == 0 {
             currentPage = 0
@@ -134,11 +133,7 @@ class ProductListViewModel : BaseViewModel {
         setOrderOptionType()
     }
     
-    func getSelectedSortIndex() -> Int {
-        return selectedSortIndex ?? 0
-    }
-    
-    func setOrderOptionType() {
+    private func setOrderOptionType() {
         switch selectedSortIndex {
         case 0:
             orderOptionType = .statsOrderCount
@@ -152,11 +147,14 @@ class ProductListViewModel : BaseViewModel {
         case 3:
             orderOptionType = .publishmentDate
             orderOptionOrientation = .descending
-        case .none:
-            break
         default:
             break
+        }
     }
-}
+    
+    func getSelectedSortIndex() -> Int {
+        return selectedSortIndex
+    }
+
     
 }
