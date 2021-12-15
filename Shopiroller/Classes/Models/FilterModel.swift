@@ -44,7 +44,7 @@ struct FilterModel {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.isThereCampaign, value: String(discountedProductsSwitch)))
         }
         if(freeShippingSwitch) {
-            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.shippingPrice, value: String(0.0)))
+            urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.shippingPrice, value: String(0)))
         }
         return urlQueryItems
     }
