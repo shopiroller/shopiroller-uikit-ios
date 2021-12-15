@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qi3-Tq-6nu">
-                        <rect key="frame" x="0.0" y="15" width="241" height="209"/>
+                        <rect key="frame" x="0.0" y="15" width="241" height="239"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-GU-Yub">
                                 <rect key="frame" x="0.0" y="0.0" width="241" height="32"/>
@@ -94,10 +94,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6i-ZT-vHF">
-                                <rect key="frame" x="0.0" y="40" width="241" height="169"/>
+                                <rect key="frame" x="0.0" y="40" width="241" height="199"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VrC-vT-JQp">
-                                        <rect key="frame" x="15" y="0.0" width="226" height="169"/>
+                                        <rect key="frame" x="15" y="0.0" width="226" height="199"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hXr-Z9-Lyp">
                                             <size key="itemSize" width="128" height="128"/>
@@ -120,7 +120,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="qi3-Tq-6nu" firstAttribute="leading" secondItem="MKE-44-smS" secondAttribute="leading" id="C2W-9c-7h0"/>
-                    <constraint firstAttribute="bottom" secondItem="qi3-Tq-6nu" secondAttribute="bottom" constant="30" id="Xaa-jZ-HvE"/>
+                    <constraint firstAttribute="bottom" secondItem="qi3-Tq-6nu" secondAttribute="bottom" id="Xaa-jZ-HvE"/>
                     <constraint firstItem="qi3-Tq-6nu" firstAttribute="top" secondItem="MKE-44-smS" secondAttribute="top" constant="15" id="kdN-VS-mHI"/>
                     <constraint firstAttribute="trailing" secondItem="qi3-Tq-6nu" secondAttribute="trailing" id="l4A-ck-zkY"/>
                 </constraints>
