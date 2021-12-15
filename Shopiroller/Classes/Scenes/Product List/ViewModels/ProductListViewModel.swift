@@ -21,12 +21,23 @@ class ProductListViewModel : BaseViewModel {
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
     private var showcaseId: String?
+    private var orderOptionType: OrderOptionType = .statsOrderCount
+    private var orderOptionOrientation: OrderOptionOrientation = .descending
+    
+    private var selectedSortIndex: Int = 0
     
     init(categoryId: String? = nil , title: String? = nil, pageTitle: String? = nil,showcaseId: String? = nil) {
         self.categoryId = categoryId
         self.title = title
         self.pageTitle = pageTitle
         self.showcaseId = showcaseId
+    }
+    
+    func getSortQueryItems() -> [URLQueryItem] {
+        var urlQueryItems: [URLQueryItem] = []
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sortBy, value: orderOptionOrientation.string))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.sort, value: orderOptionType.string))
+        return urlQueryItems
     }
     
     func getProducts(pagination: Bool,succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -39,6 +50,7 @@ class ProductListViewModel : BaseViewModel {
         if(hasFilter()) {
             urlQueryItems.append(contentsOf: filterModel.getQueryArray())
         }
+        urlQueryItems.append(contentsOf: getSortQueryItems())
         
         if productList?.count ?? 0 == 0 {
             currentPage = 0
@@ -115,6 +127,34 @@ class ProductListViewModel : BaseViewModel {
     func getPageTitle() -> String? {
         return pageTitle
     }
- 
+    
+    func setSelectedSortIndex(index: Int) {
+        selectedSortIndex = index
+        setOrderOptionType()
+    }
+    
+    private func setOrderOptionType() {
+        switch selectedSortIndex {
+        case 0:
+            orderOptionType = .statsOrderCount
+            orderOptionOrientation = .descending
+        case 1:
+            orderOptionType = .campaignPrice
+            orderOptionOrientation = .ascending
+        case 2:
+            orderOptionType = .campaignPrice
+            orderOptionOrientation = .descending
+        case 3:
+            orderOptionType = .publishmentDate
+            orderOptionOrientation = .descending
+        default:
+            break
+        }
+    }
+    
+    func getSelectedSortIndex() -> Int {
+        return selectedSortIndex
+    }
+
     
 }

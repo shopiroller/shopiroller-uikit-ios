@@ -23,7 +23,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     @IBOutlet private weak var emptyView: EmptyView!
     
     private let badgeView  = SRBadgeButton()
-    
+        
     init(viewModel: ProductListViewModel){
         super.init(viewModel.getPageTitle(),viewModel: viewModel, nibName: ProductListViewController.nibName, bundle: Bundle(for: ProductListViewController.self))
         title = viewModel.getPageTitle()
@@ -110,6 +110,9 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     @IBAction func sortButtonTapped(_ sender: Any) {
+        let sortPopUpVC = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .sortList, selectedSortIndex: viewModel.getSelectedSortIndex()))
+        sortPopUpVC.sortDelegate = self
+        popUp(sortPopUpVC, completion: nil)
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
@@ -158,6 +161,13 @@ extension ProductListViewController: UICollectionViewDelegateFlowLayout {
 extension ProductListViewController: FilterViewControllerDelegate {
     func confirmedFilter(model: FilterModel) {
         viewModel.setFilterModel(model)
+        getProducts(pagination: false)
+    }
+}
+
+extension ProductListViewController: ListPopUpSortDelegate {
+    func getSelectedSortIndex(index: Int) {
+        viewModel.setSelectedSortIndex(index: index)
         getProducts(pagination: false)
     }
 }
