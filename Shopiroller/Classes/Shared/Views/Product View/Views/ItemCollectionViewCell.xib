@@ -29,14 +29,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="279" height="287"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Zq-Bv-rS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="279" height="210"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="202"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk5-4P-N9O">
-                                                <rect key="frame" x="0.0" y="0.0" width="279" height="210"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="202"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FxW-5A-E6b">
-                                                <rect key="frame" x="30" y="185" width="219" height="20"/>
+                                                <rect key="frame" x="30" y="177" width="219" height="20"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-Ed-d2s">
                                                         <rect key="frame" x="0.0" y="0.0" width="219" height="20"/>
@@ -102,7 +102,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoU-9C-wqF">
-                                        <rect key="frame" x="0.0" y="210" width="279" height="5"/>
+                                        <rect key="frame" x="0.0" y="202" width="279" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="aKc-z7-Rc6"/>
                                         </constraints>
@@ -111,10 +111,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMY-8l-eUB">
-                                        <rect key="frame" x="0.0" y="215" width="279" height="32"/>
+                                        <rect key="frame" x="0.0" y="207" width="279" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdasdasdasdasda" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV4-sW-37K">
-                                                <rect key="frame" x="0.0" y="0.0" width="279" height="32"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV4-sW-37K">
+                                                <rect key="frame" x="0.0" y="0.0" width="239" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -123,10 +123,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="vV4-sW-37K" firstAttribute="top" secondItem="UMY-8l-eUB" secondAttribute="top" id="7WY-jG-dcY"/>
-                                            <constraint firstAttribute="trailing" secondItem="vV4-sW-37K" secondAttribute="trailing" id="ATx-Gf-mhN"/>
                                             <constraint firstAttribute="bottom" secondItem="vV4-sW-37K" secondAttribute="bottom" id="JNA-wg-AOG"/>
-                                            <constraint firstAttribute="height" constant="32" id="aMM-5P-UAe"/>
-                                            <constraint firstAttribute="trailing" secondItem="vV4-sW-37K" secondAttribute="trailing" id="eK5-2k-eUf"/>
+                                            <constraint firstAttribute="height" constant="40" id="aMM-5P-UAe"/>
+                                            <constraint firstAttribute="trailing" secondItem="vV4-sW-37K" secondAttribute="trailing" constant="40" id="eK5-2k-eUf"/>
                                             <constraint firstItem="vV4-sW-37K" firstAttribute="leading" secondItem="UMY-8l-eUB" secondAttribute="leading" id="o9o-aU-Suj"/>
                                         </constraints>
                                     </view>
