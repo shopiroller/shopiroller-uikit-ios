@@ -81,9 +81,9 @@ extension UIFont {
     
     static let regular12: UIFont = SRFont.regular.font(ofSize: 12.0)
     
-    static let regular14: UIFont = SRFont.medium.font(ofSize: 14.0)
+    static let regular14: UIFont = SRFont.regular.font(ofSize: 14.0)
     
-    static let regular24: UIFont = SRFont.medium.font(ofSize: 24.0)
+    static let regular24: UIFont = SRFont.regular.font(ofSize: 24.0)
     
     static let medium12: UIFont = SRFont.medium.font(ofSize: 12.0)
     
