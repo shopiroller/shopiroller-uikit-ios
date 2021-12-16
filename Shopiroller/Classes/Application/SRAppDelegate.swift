@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import  UIKit
+import UIKit
 
 
 @UIApplicationMain
@@ -36,6 +36,7 @@ open class SRAppDelegate: UIResponder, UIApplicationDelegate {
             bundle: .shopiroller
         )
 
+        
 
         UIFont.listAllFontsOnSystem()
         SRAppContext.fontFamily = .poppins

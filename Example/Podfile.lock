@@ -1,4 +1,35 @@
 PODS:
+  - Braintree (5.5.0):
+    - Braintree/Card (= 5.5.0)
+    - Braintree/Core (= 5.5.0)
+    - Braintree/PayPal (= 5.5.0)
+  - Braintree/ApplePay (5.5.0):
+    - Braintree/Core
+  - Braintree/Card (5.5.0):
+    - Braintree/Core
+  - Braintree/Core (5.5.0)
+  - Braintree/PaymentFlow (5.5.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPal (5.5.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.5.0)
+  - Braintree/ThreeDSecure (5.5.0):
+    - Braintree/Card
+    - Braintree/PaymentFlow
+  - Braintree/UnionPay (5.5.0):
+    - Braintree/Card
+  - Braintree/Venmo (5.5.0):
+    - Braintree/Core
+  - BraintreeDropIn (9.3.0):
+    - Braintree/ApplePay (~> 5.5)
+    - Braintree/Card (~> 5.5)
+    - Braintree/Core (~> 5.5)
+    - Braintree/PayPal (~> 5.5)
+    - Braintree/ThreeDSecure (~> 5.5)
+    - Braintree/UnionPay (~> 5.5)
+    - Braintree/Venmo (~> 5.5)
   - FittedSheets (2.4.2)
   - InputMask (6.1.0)
   - IQKeyboardManagerSwift (6.5.6)
@@ -55,6 +86,8 @@ PODS:
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
   - Shopiroller (0.1.0):
+    - Braintree
+    - BraintreeDropIn
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
@@ -69,6 +102,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Braintree
+    - BraintreeDropIn
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
@@ -84,6 +119,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Braintree: acd5dd18b4aff8858346d6b6f6f3b5bc059332fb
+  BraintreeDropIn: ed7292064dca8738cfbb8445c6984f144328ffa9
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
@@ -92,9 +129,9 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Shopiroller: 12d52b03c9385eb6fa2d8f1863755e1a63fc6bb6
+  Shopiroller: bd5c46567d9d6de81de1d7ecc7e102cf3b126f0d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1

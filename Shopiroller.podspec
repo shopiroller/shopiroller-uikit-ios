@@ -29,14 +29,14 @@ TODO: Add long description of the pod here.
     'Shopiroller' => ['Shopiroller/Assets/**/*', 'Shopiroller/Classes/**/*.xib','Shopiroller/Assests/Fonts/*.{ttf}','Shopiroller/Assests/Animations/*.{json}']
   }
 
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'SVProgressHUD'
-  #s.dependency 'ImageSlideshow', '~> 1.9.1'
-  #s.dependency 'ImageSlideshow/Kingfisher'
   s.dependency 'MaterialComponents/Buttons'
   s.dependency 'FittedSheets'
   s.dependency 'Kingfisher'
   s.dependency 'InputMask'
   s.dependency 'lottie-ios'
   s.dependency 'IQKeyboardManagerSwift'
+  s.dependency 'Braintree'
+  s.dependency 'BraintreeDropIn'
+  
 end
