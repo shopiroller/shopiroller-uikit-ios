@@ -81,9 +81,14 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
             setUpForSort()
         }
         
+        var estimatedHeight = CGFloat(100 + (viewModel.getItemCount() * Int(viewModel.getItemHeight())))
+        
+        if estimatedHeight < 250 {
+            estimatedHeight = 250
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
-            if self.popUpTableView.frame.size.height > self.view.frame.size.height {
-                let heightDifference = self.popUpTableView.frame.size.height - self.view.frame.size.height
+            if estimatedHeight > self.popUpView.frame.size.height {
+                let heightDifference = estimatedHeight - self.popUpView.frame.size.height
                 self.popUpHeightConstraint.constant += heightDifference
                 
                 if self.popUpHeightConstraint.constant > self.view.frame.height / 10 * 65 {

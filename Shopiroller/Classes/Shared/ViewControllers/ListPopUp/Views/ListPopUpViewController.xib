@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="button" destination="6zG-dy-vjm" id="KA9-fm-zuR"/>
                 <outlet property="buttonContainer" destination="5Zh-Xl-9z7" id="ymy-7F-7KW"/>
-                <outlet property="popUpHeightConstraint" destination="Gz5-Mz-R82" id="ege-Q3-SN1"/>
+                <outlet property="popUpHeightConstraint" destination="xzX-Wk-NsX" id="65n-E8-MTG"/>
                 <outlet property="popUpImageView" destination="Sm5-aa-h9N" id="1nY-OJ-YS7"/>
                 <outlet property="popUpImageViewBackground" destination="RdW-B7-QGq" id="tlm-VW-fDR"/>
                 <outlet property="popUpTableView" destination="Y0d-wD-NFR" id="gqW-bR-E9N"/>
@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCc-zs-vyl">
-                    <rect key="frame" x="12.5" y="310" width="389" height="286"/>
+                    <rect key="frame" x="12.5" y="353" width="389" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-B7-QGq">
                             <rect key="frame" x="156.5" y="-36" width="76" height="76"/>
@@ -57,7 +57,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-pQ-geL">
-                            <rect key="frame" x="0.0" y="60" width="389" height="226"/>
+                            <rect key="frame" x="0.0" y="60" width="389" height="140"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6y-Ub-xfm">
                                     <rect key="frame" x="0.0" y="0.0" width="389" height="30"/>
@@ -111,10 +111,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob8-O4-hrS">
-                                    <rect key="frame" x="0.0" y="45" width="389" height="181"/>
+                                    <rect key="frame" x="0.0" y="45" width="389" height="95"/>
                                     <subviews>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-wD-NFR">
-                                            <rect key="frame" x="0.0" y="0.0" width="389" height="181"/>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-wD-NFR">
+                                            <rect key="frame" x="0.0" y="0.0" width="389" height="95"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
                                     </subviews>
@@ -127,7 +127,7 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-Xl-9z7">
-                                    <rect key="frame" x="0.0" y="226" width="389" height="50"/>
+                                    <rect key="frame" x="0.0" y="140" width="389" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-dy-vjm">
                                             <rect key="frame" x="161" y="9.5" width="67" height="31"/>
@@ -153,13 +153,13 @@
                         <constraint firstItem="RdW-B7-QGq" firstAttribute="centerX" secondItem="pCc-zs-vyl" secondAttribute="centerX" id="c5D-jo-oAG"/>
                         <constraint firstAttribute="bottom" secondItem="uMH-pQ-geL" secondAttribute="bottom" id="oc7-fS-iVo"/>
                         <constraint firstItem="uMH-pQ-geL" firstAttribute="leading" secondItem="pCc-zs-vyl" secondAttribute="leading" id="pg1-iH-Cdv"/>
+                        <constraint firstAttribute="height" constant="200" id="xzX-Wk-NsX"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pCc-zs-vyl" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.35" id="Gz5-Mz-R82"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.939614" id="QKG-AN-hqp"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="eX0-G9-m22"/>
                 <constraint firstItem="pCc-zs-vyl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="lsX-3L-5Ry"/>

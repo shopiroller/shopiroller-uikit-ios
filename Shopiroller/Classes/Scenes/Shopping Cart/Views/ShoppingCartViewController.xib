@@ -144,18 +144,26 @@
                         <constraint firstItem="Zoh-OH-8i5" firstAttribute="leading" secondItem="jcM-vH-C2R" secondAttribute="leading" id="s6V-zE-B6M"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnm-Y0-Msj">
+                    <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="jcM-vH-C2R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="94S-l4-fRU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0ID-l1-U7a" secondAttribute="bottom" id="Bvn-0r-Hor"/>
+                <constraint firstAttribute="trailing" secondItem="Vnm-Y0-Msj" secondAttribute="trailing" id="FjR-ru-enA"/>
                 <constraint firstItem="jcM-vH-C2R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="G1f-7F-8ZO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jcM-vH-C2R" secondAttribute="bottom" id="UFR-Ya-DuS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jcM-vH-C2R" secondAttribute="trailing" id="UUa-Hf-xci"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0ID-l1-U7a" secondAttribute="trailing" id="WaP-3B-a4A"/>
+                <constraint firstAttribute="bottom" secondItem="Vnm-Y0-Msj" secondAttribute="bottom" id="Xiu-bK-0U9"/>
                 <constraint firstItem="0ID-l1-U7a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fSg-Ng-GdQ"/>
+                <constraint firstItem="Vnm-Y0-Msj" firstAttribute="top" secondItem="0ID-l1-U7a" secondAttribute="bottom" id="kt4-2S-u2S"/>
                 <constraint firstItem="0ID-l1-U7a" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="q32-nq-Igr"/>
+                <constraint firstItem="Vnm-Y0-Msj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vl9-KN-L8c"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
         </view>

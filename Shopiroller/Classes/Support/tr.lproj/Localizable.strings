@@ -160,7 +160,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
 "billing-address-title" = "Fatura Adresi";
-"add-address-button-text" = "Yeni Adress Ekle";
+"add-address-button-text" = "Yeni Adres Ekle";
 "select-other-address-button-text" = "Başka Bir Adres Seç";
 
 //MARK: - AddressBottomView

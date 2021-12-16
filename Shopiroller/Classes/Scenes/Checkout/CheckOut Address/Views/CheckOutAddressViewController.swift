@@ -49,11 +49,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
         shippingAddressAddButton.tintColor = .black
         shippingAddressAddButton.tintColor = .textSecondary
-        shippingAddressAddButton.titleLabel?.font = .semiBold14
+        shippingAddressAddButton.titleLabel?.font = .medium12
         
         billingAddressAddButton.tintColor = .black
         billingAddressAddButton.tintColor = .textSecondary
-        billingAddressAddButton.titleLabel?.font = .semiBold14
+        billingAddressAddButton.titleLabel?.font = .medium12
         
     }
     

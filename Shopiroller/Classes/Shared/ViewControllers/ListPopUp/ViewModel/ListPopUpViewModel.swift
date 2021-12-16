@@ -68,6 +68,19 @@ class ListPopUpViewModel: BaseViewModel {
         }
     }
     
+    func getItemHeight() -> Float {
+        switch listType {
+        case .payment:
+            return 65
+        case .shoppingCart:
+            return 75
+        case .address:
+            return 101
+        case .sortList:
+            return 65
+        }
+    }
+    
     func getShippingAddress(position: Int) -> UserShippingAddressModel? {
         return userShippingAddressList?[position]
     }
