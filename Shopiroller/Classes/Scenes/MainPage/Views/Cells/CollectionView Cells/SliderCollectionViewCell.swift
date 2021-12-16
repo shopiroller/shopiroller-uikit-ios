@@ -24,7 +24,7 @@ class SliderCollectionViewCell: UICollectionViewCell {
 
     
     public func configureUI(model: SliderSlidesModel?) {
-        sliderImage.setImages(url:  model?.imageUrl ?? "")
+        sliderImage.setImages(url:  model?.imageUrl?.normal ?? "")
     }
 }
 
