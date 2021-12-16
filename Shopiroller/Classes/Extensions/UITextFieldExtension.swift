@@ -12,7 +12,7 @@ import UIKit
 extension UITextField {
     
     func setBottomBorderOnlyWith(color: CGColor) {
-        self.borderStyle = .none
+        self.borderStyle = .line
         let border = CALayer()
         let width = CGFloat(0.5)
         border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
@@ -22,44 +22,32 @@ extension UITextField {
         
     }
     
-    func isError(baseColor: CGColor, numberOfShakes shakes: Float, revert: Bool) {
-        let animation: CABasicAnimation = CABasicAnimation(keyPath: "shadowColor")
-        animation.fromValue = baseColor
-        animation.toValue = UIColor.yellow.cgColor
-        animation.duration = 0.4
-        if revert { animation.autoreverses = true } else { animation.autoreverses = false }
-        self.layer.add(animation, forKey: "")
-        
-        let shake: CABasicAnimation = CABasicAnimation(keyPath: "position")
-        shake.duration = 0.07
-        shake.repeatCount = shakes
-        if revert { shake.autoreverses = true  } else { shake.autoreverses = false }
-        shake.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
-        shake.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
-        self.layer.add(shake, forKey: "position")
+    func setErrowView(baseColor: CGColor, errorMessage: String){
+        let color = CABasicAnimation(keyPath: "borderColor")
+        color.fromValue = UIColor.black.cgColor
+        color.toValue = UIColor.red.cgColor
+        color.duration = 3
+        color.repeatCount = 1
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.red.cgColor
+        self.layer.add(color, forKey: "borderColor")
+        let messageVw = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.maxY + 3, width: self.frame.width, height: self.frame.height / 2))
+        messageVw.backgroundColor = UIColor.clear
+        let errorLbl = UILabel(frame: CGRect(x: 0, y: 2, width: messageVw.frame.size.width, height: messageVw.frame.size.height))
+        errorLbl.backgroundColor = .clear
+        errorLbl.numberOfLines = 2
+        errorLbl.text = errorMessage
+        errorLbl.textColor = .red
+        errorLbl.textAlignment = .left
+        errorLbl.font = UIFont.systemFont(ofSize: 9)
+        messageVw.addSubview(errorLbl)
+        self.addSubview(messageVw)
     }
     
-    func showErrorView(message: String) {
-        
-        
-        let messageVw = UIView(frame: CGRect(x: self.frame.origin.x, y: self.frame.maxY - 2, width: self.frame.width, height: 30))
-        messageVw.backgroundColor = UIColor.red
-        
-        let errorMessage = UILabel()
-        errorMessage.autoresizesSubviews = false
-        errorMessage.text = message
-        errorMessage.textColor = .red
-        errorMessage.isHidden = true
-        
-        NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 10.0)
-        ])
-        messageVw.addSubview(errorMessage)
-        
-        
-        
-        self.addSubview(messageVw)
+    func removeSubViews() {
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
     }
     
     var rightViewImage: UIImage? {
