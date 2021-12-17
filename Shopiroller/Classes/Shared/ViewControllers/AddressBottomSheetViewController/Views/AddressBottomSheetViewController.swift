@@ -526,7 +526,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                     identityNumberTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
                     isValid = false;
                 }
-            }else {
+            } else {
                 if (companyNameTextField.text == "") {
                     companyNameTextField.isError(baseColor: UIColor.red.cgColor, numberOfShakes: 3, revert: true)
                     isValid = false;
