@@ -22,28 +22,6 @@ extension UITextField {
         
     }
     
-    func setErrowView(baseColor: CGColor, errorMessage: String){
-        let color = CABasicAnimation(keyPath: "borderColor")
-        color.fromValue = UIColor.black.cgColor
-        color.toValue = UIColor.red.cgColor
-        color.duration = 3
-        color.repeatCount = 1
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.red.cgColor
-        self.layer.add(color, forKey: "borderColor")
-        let messageVw = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.maxY + 3, width: self.frame.width, height: self.frame.height / 2))
-        messageVw.backgroundColor = UIColor.clear
-        let errorLbl = UILabel(frame: CGRect(x: 0, y: 2, width: messageVw.frame.size.width, height: messageVw.frame.size.height))
-        errorLbl.backgroundColor = .clear
-        errorLbl.numberOfLines = 2
-        errorLbl.text = errorMessage
-        errorLbl.textColor = .red
-        errorLbl.textAlignment = .left
-        errorLbl.font = UIFont.systemFont(ofSize: 9)
-        messageVw.addSubview(errorLbl)
-        self.addSubview(messageVw)
-    }
-    
     func removeSubViews() {
         for view in self.subviews {
             view.removeFromSuperview()

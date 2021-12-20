@@ -210,7 +210,7 @@ public class SRMainPageViewModel: BaseViewModel {
                 return 220
             }
         case .categories:
-            return 150
+            return 165
         }
     }
     
