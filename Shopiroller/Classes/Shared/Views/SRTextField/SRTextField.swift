@@ -9,17 +9,23 @@ import UIKit
 
 class SRTextField: BaseView {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var errorLabelContainer: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private weak var errorLabel: UILabel!
     
     
     func setup(rightViewImage: UIImage?){
         super.setup()
-        
         guard let rightImage = rightViewImage else { return }
         textField.rightViewImage = rightImage
-        
+    }
+    
+    func getTextField() -> UITextField {
+        return textField
+    }
+    
+    func getErrorLabelText() -> String? {
+        return errorLabel.text ?? ""
     }
     
     func setError(errorMessage: String?) {
@@ -41,17 +47,17 @@ class SRTextField: BaseView {
         errorLabel.font = UIFont.systemFont(ofSize: 9)
     }
     
-    func removeError(){
+    func removeError() {
         textField.layer.borderWidth = 0
         textField.layer.borderColor = UIColor.clear.cgColor
         errorLabelContainer.isHidden = true
         errorLabel.text = ""
     }
     
-    func setInfoLabel() {
+    func setInfoLabel(infoText: String?) {
         textField.layer.borderColor = UIColor.clear.cgColor
         textField.layer.borderWidth = 0
-        errorLabel.text = ""
+        errorLabel.text = infoText
     }
 
 }

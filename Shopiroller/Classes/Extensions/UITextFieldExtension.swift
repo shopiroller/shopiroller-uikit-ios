@@ -35,6 +35,7 @@ extension UITextField {
             button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: bounds.size.height)
             button.setImage(newValue)
             self.rightView = button
+            self.tintColor = .textPrimary
             self.rightViewMode = .always
             
             translatesAutoresizingMaskIntoConstraints = false

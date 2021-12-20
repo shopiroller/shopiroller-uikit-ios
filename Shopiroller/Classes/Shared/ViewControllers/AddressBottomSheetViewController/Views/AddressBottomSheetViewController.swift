@@ -169,102 +169,102 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveButton.backgroundColor = .black
         saveButton.tintColor = .white
         
-        nameView.textField.placeholder = Constants.nameTextFieldText
-        nameView.textField.returnKeyType = .next
-        nameView.textField.delegate = self
-        nameView.textField.keyboardType = .alphabet
-        nameView.textField.addNextAction(target: self, selector: #selector(nextActionNameTextField))
+        nameView.getTextField().placeholder = Constants.nameTextFieldText
+        nameView.getTextField().returnKeyType = .next
+        nameView.getTextField().delegate = self
+        nameView.getTextField().keyboardType = .alphabet
+        nameView.getTextField().addNextAction(target: self, selector: #selector(nextActionNameTextField))
         
-        surnameView.textField.placeholder = Constants.surNameTextFieldText
-        surnameView.textField.returnKeyType = .next
-        surnameView.textField.delegate = self
-        surnameView.textField.keyboardType = .alphabet
-        surnameView.textField.addNextAction(target: self, selector: #selector(nextActionSurnameTextField))
+        surnameView.getTextField().placeholder = Constants.surNameTextFieldText
+        surnameView.getTextField().returnKeyType = .next
+        surnameView.getTextField().delegate = self
+        surnameView.getTextField().keyboardType = .alphabet
+        surnameView.getTextField().addNextAction(target: self, selector: #selector(nextActionSurnameTextField))
         
-        phoneNumberView.textField.placeholder = Constants.phoneTextFieldText
-        phoneNumberView.textField.returnKeyType = .next
-        phoneNumberView.textField.delegate = self
-        phoneNumberView.textField.keyboardType = .numberPad
-        phoneNumberView.textField.addNextAction(target: self, selector: #selector(nextActionPhoneNumberTextField))
+        phoneNumberView.getTextField().placeholder = Constants.phoneTextFieldText
+        phoneNumberView.getTextField().returnKeyType = .next
+        phoneNumberView.getTextField().delegate = self
+        phoneNumberView.getTextField().keyboardType = .numberPad
+        phoneNumberView.getTextField().addNextAction(target: self, selector: #selector(nextActionPhoneNumberTextField))
         
-        countryView.textField.placeholder = Constants.countryTextFieldText
-        countryView.setup(rightViewImage: .arrowDown)
-        countryView.textField.returnKeyType = .done
-        countryView.textField.keyboardType = .alphabet
-        countryView.textField.delegate = self
-        countryView.textField.addCustomTextAction(title: Constants.statesTextFieldText, target: self, selector: #selector(nextActionCountryTextField))
+        countryView.getTextField().placeholder = Constants.countryTextFieldText
+        countryView.setup(rightViewImage: .dropdownIcon)
+        countryView.getTextField().returnKeyType = .done
+        countryView.getTextField().keyboardType = .alphabet
+        countryView.getTextField().delegate = self
+        countryView.getTextField().addCustomTextAction(title: Constants.statesTextFieldText, target: self, selector: #selector(nextActionCountryTextField))
         
-        statesView.textField.placeholder = Constants.statesTextFieldText
-        statesView.setup(rightViewImage: .arrowDown)
-        statesView.textField.returnKeyType = .done
-        statesView.textField.keyboardType = .alphabet
-        statesView.textField.delegate = self
-        statesView.textField.addCustomTextAction(title: Constants.districtTextFieldText, target: self, selector: #selector(nextActionStateTextField))
+        statesView.getTextField().placeholder = Constants.statesTextFieldText
+        statesView.setup(rightViewImage: .dropdownIcon)
+        statesView.getTextField().returnKeyType = .done
+        statesView.getTextField().keyboardType = .alphabet
+        statesView.getTextField().delegate = self
+        statesView.getTextField().addCustomTextAction(title: Constants.districtTextFieldText, target: self, selector: #selector(nextActionStateTextField))
         
-        districtView.textField.placeholder = Constants.districtTextFieldText
-        districtView.setup(rightViewImage: .arrowDown)
-        districtView.textField.returnKeyType = .done
-        districtView.textField.keyboardType = .numberPad
-        districtView.textField.delegate = self
-        districtView.textField.addCustomTextAction(title: Constants.addressTextFieldText, target: self, selector: #selector(nextActionCitiesTextField))
+        districtView.getTextField().placeholder = Constants.districtTextFieldText
+        districtView.setup(rightViewImage: .dropdownIcon)
+        districtView.getTextField().returnKeyType = .done
+        districtView.getTextField().keyboardType = .numberPad
+        districtView.getTextField().delegate = self
+        districtView.getTextField().addCustomTextAction(title: Constants.addressTextFieldText, target: self, selector: #selector(nextActionCitiesTextField))
         
-        addressView.textField.placeholder = Constants.addressTextFieldText
-        addressView.textField.returnKeyType = .next
-        addressView.textField.delegate = self
-        addressView.textField.keyboardType = .alphabet
-        addressView.textField.addNextAction(target: self, selector: #selector(nextActionAddressTextField))
+        addressView.getTextField().placeholder = Constants.addressTextFieldText
+        addressView.getTextField().returnKeyType = .next
+        addressView.getTextField().delegate = self
+        addressView.getTextField().keyboardType = .alphabet
+        addressView.getTextField().addNextAction(target: self, selector: #selector(nextActionAddressTextField))
         
-        zipCodeView.textField.placeholder = Constants.zipCodeTextFieldText
-        zipCodeView.textField.returnKeyType = .next
-        zipCodeView.textField.delegate = self
-        zipCodeView.textField.keyboardType = .numberPad
-        zipCodeView.textField.addNextAction(target: self, selector: #selector(nextActionZipCodeTextField))
+        zipCodeView.getTextField().placeholder = Constants.zipCodeTextFieldText
+        zipCodeView.getTextField().returnKeyType = .next
+        zipCodeView.getTextField().delegate = self
+        zipCodeView.getTextField().keyboardType = .numberPad
+        zipCodeView.getTextField().addNextAction(target: self, selector: #selector(nextActionZipCodeTextField))
         
-        addressTitleView.textField.placeholder = Constants.addressTitleTextFieldText
-        addressTitleView.textField.returnKeyType = .next
-        addressTitleView.textField.delegate = self
-        addressTitleView.textField.keyboardType = .alphabet
-        addressTitleView.textField.addNextAction(target: self, selector: #selector(nextActionAddressTitleTextField))
+        addressTitleView.getTextField().placeholder = Constants.addressTitleTextFieldText
+        addressTitleView.getTextField().returnKeyType = .next
+        addressTitleView.getTextField().delegate = self
+        addressTitleView.getTextField().keyboardType = .alphabet
+        addressTitleView.getTextField().addNextAction(target: self, selector: #selector(nextActionAddressTitleTextField))
         
-        identityNumberView.textField.placeholder = Constants.identityNumberTextFieldText
-        identityNumberView.textField.returnKeyType = .done
-        identityNumberView.textField.delegate = self
-        identityNumberView.textField.keyboardType = .numberPad
-        identityNumberView.textField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        identityNumberView.getTextField().placeholder = Constants.identityNumberTextFieldText
+        identityNumberView.getTextField().returnKeyType = .done
+        identityNumberView.getTextField().delegate = self
+        identityNumberView.getTextField().keyboardType = .numberPad
+        identityNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
 
         
-        companyNameView.textField.placeholder = Constants.companyNameTextFieldText
-        companyNameView.textField.returnKeyType = .next
-        companyNameView.textField.delegate = self
-        companyNameView.textField.keyboardType = .alphabet
-        companyNameView.textField.addNextAction(target: self, selector: #selector(nextActionCompanyNameTextField))
+        companyNameView.getTextField().placeholder = Constants.companyNameTextFieldText
+        companyNameView.getTextField().returnKeyType = .next
+        companyNameView.getTextField().delegate = self
+        companyNameView.getTextField().keyboardType = .alphabet
+        companyNameView.getTextField().addNextAction(target: self, selector: #selector(nextActionCompanyNameTextField))
         
-        taxOfficeView.textField.placeholder = Constants.corporateTaxOfficeTextFieldText
-        taxOfficeView.textField.returnKeyType = .next
-        taxOfficeView.textField.delegate = self
-        taxOfficeView.textField.keyboardType = .alphabet
-        taxOfficeView.textField.addNextAction(target: self, selector: #selector(nextActionTaxOfficeTextField))
+        taxOfficeView.getTextField().placeholder = Constants.corporateTaxOfficeTextFieldText
+        taxOfficeView.getTextField().returnKeyType = .next
+        taxOfficeView.getTextField().delegate = self
+        taxOfficeView.getTextField().keyboardType = .alphabet
+        taxOfficeView.getTextField().addNextAction(target: self, selector: #selector(nextActionTaxOfficeTextField))
         
-        taxNumberView.textField.placeholder = Constants.corporateTaxNumberTextFieldText
-        taxNumberView.textField.returnKeyType = .done
-        taxNumberView.textField.delegate = self
-        taxNumberView.textField.keyboardType = .numberPad
-        taxNumberView.textField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        taxNumberView.getTextField().placeholder = Constants.corporateTaxNumberTextFieldText
+        taxNumberView.getTextField().returnKeyType = .done
+        taxNumberView.getTextField().delegate = self
+        taxNumberView.getTextField().keyboardType = .numberPad
+        taxNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         let tapCountryTextField = UITapGestureRecognizer(target: self, action: #selector(countryViewTapped))
-        countryView.textField.backgroundColor = .clear
-        countryView.textField.isUserInteractionEnabled = true
-        countryView.textField.addGestureRecognizer(tapCountryTextField)
+        countryView.getTextField().backgroundColor = .clear
+        countryView.getTextField().isUserInteractionEnabled = true
+        countryView.getTextField().addGestureRecognizer(tapCountryTextField)
         
         let tapStatesTextField = UITapGestureRecognizer(target: self, action: #selector(statesViewTapped))
-        statesView.textField.backgroundColor = .clear
-        statesView.textField.isUserInteractionEnabled = true
-        statesView.textField.addGestureRecognizer(tapStatesTextField)
+        statesView.getTextField().backgroundColor = .clear
+        statesView.getTextField().isUserInteractionEnabled = true
+        statesView.getTextField().addGestureRecognizer(tapStatesTextField)
         
         let tapCitiesTextField = UITapGestureRecognizer(target: self, action: #selector(citiesViewTapped))
-        districtView.textField.backgroundColor = .clear
-        districtView.textField.isUserInteractionEnabled = true
-        districtView.textField.addGestureRecognizer(tapCitiesTextField)
+        districtView.getTextField().backgroundColor = .clear
+        districtView.getTextField().isUserInteractionEnabled = true
+        districtView.getTextField().addGestureRecognizer(tapCitiesTextField)
         
         topViewContainer.backgroundColor = .iceBlue
         
@@ -281,47 +281,47 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     //MARK: - Actions
     
     @objc func nextActionNameTextField() {
-        _ = textFieldShouldReturn(nameView.textField)
+        _ = textFieldShouldReturn(nameView.getTextField())
     }
     
     @objc func nextActionSurnameTextField() {
-        _ = textFieldShouldReturn(surnameView.textField)
+        _ = textFieldShouldReturn(surnameView.getTextField())
     }
     
     @objc func nextActionPhoneNumberTextField() {
-        _ = textFieldShouldReturn(phoneNumberView.textField)
+        _ = textFieldShouldReturn(phoneNumberView.getTextField())
     }
     
     @objc func nextActionCountryTextField() {
-        _ = textFieldShouldReturn(countryView.textField)
+        _ = textFieldShouldReturn(countryView.getTextField())
     }
     
     @objc func nextActionStateTextField() {
-        _ = textFieldShouldReturn(statesView.textField)
+        _ = textFieldShouldReturn(statesView.getTextField())
     }
     
     @objc func nextActionCitiesTextField() {
-        _ = textFieldShouldReturn(districtView.textField)
+        _ = textFieldShouldReturn(districtView.getTextField())
     }
     
     @objc func nextActionAddressTextField() {
-        _ = textFieldShouldReturn(addressView.textField)
+        _ = textFieldShouldReturn(addressView.getTextField())
     }
     
     @objc func nextActionZipCodeTextField() {
-        _ = textFieldShouldReturn(zipCodeView.textField)
+        _ = textFieldShouldReturn(zipCodeView.getTextField())
     }
     
     @objc func nextActionAddressTitleTextField() {
-        _ = textFieldShouldReturn(addressTitleView.textField)
+        _ = textFieldShouldReturn(addressTitleView.getTextField())
     }
     
     @objc func nextActionCompanyNameTextField() {
-        _ = textFieldShouldReturn(companyNameView.textField)
+        _ = textFieldShouldReturn(companyNameView.getTextField())
     }
     
     @objc func nextActionTaxOfficeTextField() {
-        _ = textFieldShouldReturn(taxOfficeView.textField)
+        _ = textFieldShouldReturn(taxOfficeView.getTextField())
     }
     
     @objc func toolbarDoneButtonClicked() {
@@ -405,8 +405,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
         self.viewModel.selectionType = .country
-        statesView.textField.isEnabled = true
-        statesView.textField.placeholder = Constants.statesTextFieldText
+        statesView.getTextField().isEnabled = true
+        statesView.getTextField().placeholder = Constants.statesTextFieldText
         citiesContainerView.isHidden = true
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getCountries(), type: .country))
         vc.delegate = self
@@ -425,8 +425,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
         self.viewModel.selectionType = .state
-        districtView.textField.isEnabled = true
-        districtView.textField.text = ""
+        districtView.getTextField().isEnabled = true
+        districtView.getTextField().text = ""
         let vc = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getStates(), type: .state))
         vc.delegate = self
         popUp(vc)
@@ -480,8 +480,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             if self?.viewModel.getCities().count != 0 {
                 self?.citiesContainerView.isHidden = false
                 if self?.viewModel.getCities().count == 1 {
-                    self?.districtView.textField.text = self?.viewModel.getCities()[0].name
-                    self?.districtView.textField.isEnabled = true
+                    self?.districtView.getTextField().text = self?.viewModel.getCities()[0].name
+                    self?.districtView.getTextField().isEnabled = true
                 }
             }else {
                 self?.citiesContainerView.isHidden = true
@@ -495,41 +495,41 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     private func isValid() -> Bool {
         var isValid : Bool = true
-        if (nameView.textField.text == "") {
+        if (nameView.getTextField().text == "") {
             nameView.setError(errorMessage: ErrorConstants.nameEmptyError)
             isValid = false;
-        } else if (nameView.textField.text?.count ?? 0 < 3) {
+        } else if (nameView.getTextField().text?.count ?? 0 < 3) {
             nameView.setError(errorMessage: ErrorConstants.nameValidationError)
             isValid = false;
         } else {
-            nameView.errorLabel != nil ? nameView.setInfoLabel() : nameView.removeError()
+            nameView.getErrorLabelText() != nil ? nameView.setInfoLabel(infoText: "") : nameView.removeError()
         }
-        if (surnameView.textField.text == "") {
+        if (surnameView.getTextField().text == "") {
             surnameView.setError(errorMessage: ErrorConstants.surnameEmptyError)
             isValid = false
-        } else if (surnameView.textField.text?.count ?? 0 < 3) {
+        } else if (surnameView.getTextField().text?.count ?? 0 < 3) {
             surnameView.setError(errorMessage: ErrorConstants.surnameValidationError)
             isValid = false
         } else {
-            surnameView.errorLabel != nil ? surnameView.setInfoLabel() : surnameView.removeError()
+            surnameView.getErrorLabelText() != nil ? surnameView.setInfoLabel(infoText: "") : surnameView.removeError()
         }
-        if (phoneNumberView.textField.text == "") {
+        if (phoneNumberView.getTextField().text == "") {
             phoneNumberView.setError(errorMessage: ErrorConstants.phoneEmptyError)
             isValid = false
-        } else if (phoneNumberView.textField.text?.count ?? 0 < 11) {
+        } else if (phoneNumberView.getTextField().text?.count ?? 0 < 11) {
             phoneNumberView.setError(errorMessage: ErrorConstants.phoneValidationError)
             isValid = false
         } else {
             phoneNumberView.removeError()
         }
-        if ((countryView.textField.text == "" && countryView.textField.placeholder != "") && !viewModel.isEditAvailable()) {
+        if ((countryView.getTextField().text == "" && countryView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
             countryView.setError(errorMessage: ErrorConstants.countryError)
             isValid = false
         } else {
             countryView.removeError()
         }
         if (statesContainerView.isHidden == false) {
-            if((statesView.textField.text == "" && statesView.textField.placeholder != "") && !viewModel.isEditAvailable()) {
+            if((statesView.getTextField().text == "" && statesView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
                 statesView.setError(errorMessage: ErrorConstants.stateError)
                 isValid = false
             } else {
@@ -537,39 +537,39 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             }
         }
         if (citiesContainerView.isHidden == false) {
-            if((districtView.textField.text == "" && districtView.textField.placeholder != "") && !viewModel.isEditAvailable()) {
+            if((districtView.getTextField().text == "" && districtView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
                 districtView.setError(errorMessage: ErrorConstants.districtError)
                 isValid = false
             } else {
                 districtView.removeError()
             }
         }
-        if (addressView.textField.text == "") {
+        if (addressView.getTextField().text == "") {
             addressView.setError(errorMessage: ErrorConstants.addressEmptyError)
             isValid = false
-        } else if (addressView.textField.text?.count ?? 0 < 3) {
+        } else if (addressView.getTextField().text?.count ?? 0 < 3) {
             addressView.setError(errorMessage: ErrorConstants.addressValidationError)
             isValid = false
         } else {
             addressView.removeError()
         }
-        if (zipCodeView.textField.text == "") {
+        if (zipCodeView.getTextField().text == "") {
             zipCodeView.setError(errorMessage: ErrorConstants.zipCodeEmptyError)
             isValid = false
-        } else if (zipCodeView.textField.text?.count ?? 0 < 3) {
+        } else if (zipCodeView.getTextField().text?.count ?? 0 < 3) {
             zipCodeView.setError(errorMessage: ErrorConstants.zipCodeValidationError)
             isValid = false
         } else {
-            zipCodeView.removeError()
+            zipCodeView.getErrorLabelText() != nil ? zipCodeView.setInfoLabel(infoText: "") : zipCodeView.removeError()
         }
-        if (addressView.textField.text == "") {
+        if (addressTitleView.getTextField().text == "") {
             addressTitleView.setError(errorMessage: ErrorConstants.addressTitleEmptyError)
             isValid = false
-        } else if (addressView.textField.text?.count ?? 0 < 2) {
-            addressView.setError(errorMessage: ErrorConstants.addressTitleValidationError)
+        } else if (addressTitleView.getTextField().text?.count ?? 0 < 2) {
+            addressTitleView.setError(errorMessage: ErrorConstants.addressTitleValidationError)
             isValid = false
         } else {
-            addressView.removeError()
+            addressTitleView.getErrorLabelText() != nil ? addressTitleView.setInfoLabel(infoText: "") : addressTitleView.removeError()
         }
         
         if (viewModel.isEditAvailable() && viewModel.userShippingAddress != nil) {
@@ -581,23 +581,23 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         if billingAddressContainer.isHidden == false {
             if isIndividualButtonTapped {
-                if (identityNumberView.textField.text == "") {
+                if (identityNumberView.getTextField().text == "") {
                     identityNumberView.setError(errorMessage: ErrorConstants.identityNumberEmptyError)
                     isValid = false;
-                } else if (identityNumberView.textField.text?.count ?? 0 < 11) {
+                } else if (identityNumberView.getTextField().text?.count ?? 0 < 11) {
                     identityNumberView.setError(errorMessage: ErrorConstants.identityNumberValidationError)
                     isValid = false;
                 }
             }else {
-                if (companyNameView.textField.text == "") {
+                if (companyNameView.getTextField().text == "") {
                     companyNameView.setError(errorMessage: ErrorConstants.companyNameEmptyError)
                     isValid = false;
                 }
-                if (taxOfficeView.textField.text == "") {
+                if (taxOfficeView.getTextField().text == "") {
                     taxOfficeView.setError(errorMessage: ErrorConstants.taxOfficeEmptyError)
                     isValid = false;
                 }
-                if (taxNumberView.textField.text == "") {
+                if (taxNumberView.getTextField().text == "") {
                     taxNumberView.setError(errorMessage: ErrorConstants.taxNumberEmptyError)
                     isValid = false;
                 }
@@ -614,23 +614,23 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 var editBillingAddress: EditAddressModel? = EditAddressModel()
                 editBillingAddress?.apiKey = SRNetworkContext.apiKey
                 editBillingAddress?.appKey = SRNetworkContext.appKey
-                editBillingAddress?.addressLine = addressView.textField.text
-                editBillingAddress?.country = countryView.textField.text
-                editBillingAddress?.state = statesView.textField.placeholder
-                editBillingAddress?.city = districtView.textField.placeholder
-                editBillingAddress?.phone = phoneNumberView.textField.text
-                editBillingAddress?.zipCode = zipCodeView.textField.text
-                editBillingAddress?.title = addressTitleView.textField.text
-                editBillingAddress?.nameSurname = (nameView.textField.text ?? "") + " " + (surnameView.textField.text ?? "")
+                editBillingAddress?.addressLine = addressView.getTextField().text
+                editBillingAddress?.country = countryView.getTextField().text
+                editBillingAddress?.state = statesView.getTextField().placeholder
+                editBillingAddress?.city = districtView.getTextField().placeholder
+                editBillingAddress?.phone = phoneNumberView.getTextField().text
+                editBillingAddress?.zipCode = zipCodeView.getTextField().text
+                editBillingAddress?.title = addressTitleView.getTextField().text
+                editBillingAddress?.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
                 editBillingAddress?.id = userBillingAddress.id
                 if isIndividualButtonTapped {
                     editBillingAddress?.type = "Individual"
-                    editBillingAddress?.identityNumber = identityNumberView.textField.text
+                    editBillingAddress?.identityNumber = identityNumberView.getTextField().text
                 }else {
                     editBillingAddress?.type = "Corporate"
-                    editBillingAddress?.companyName = companyNameView.textField.text
-                    editBillingAddress?.taxNumber = taxNumberView.textField.text
-                    editBillingAddress?.taxOffice = taxOfficeView.textField.text
+                    editBillingAddress?.companyName = companyNameView.getTextField().text
+                    editBillingAddress?.taxNumber = taxNumberView.getTextField().text
+                    editBillingAddress?.taxOffice = taxOfficeView.getTextField().text
                 }
                 viewModel.editAddressModel = editBillingAddress ?? EditAddressModel()
                 saveBillingAddress(isEditing: true)
@@ -641,23 +641,23 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 var editShippingAddress: EditAddressModel? = EditAddressModel()
                 editShippingAddress?.apiKey = SRNetworkContext.apiKey
                 editShippingAddress?.appKey = SRNetworkContext.appKey
-                editShippingAddress?.addressLine = addressView.textField.text
-                editShippingAddress?.country = countryView.textField.text
-                editShippingAddress?.state = statesView.textField.placeholder
-                editShippingAddress?.city = districtView.textField.placeholder
-                editShippingAddress?.phone = phoneNumberView.textField.text
-                editShippingAddress?.zipCode = zipCodeView.textField.text
-                editShippingAddress?.title = addressTitleView.textField.text
-                editShippingAddress?.nameSurname = (nameView.textField.text ?? "") + " " + (surnameView.textField.text ?? "")
+                editShippingAddress?.addressLine = addressView.getTextField().text
+                editShippingAddress?.country = countryView.getTextField().text
+                editShippingAddress?.state = statesView.getTextField().placeholder
+                editShippingAddress?.city = districtView.getTextField().placeholder
+                editShippingAddress?.phone = phoneNumberView.getTextField().text
+                editShippingAddress?.zipCode = zipCodeView.getTextField().text
+                editShippingAddress?.title = addressTitleView.getTextField().text
+                editShippingAddress?.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
                 editShippingAddress?.id = userShippingAddress.id
                 if isIndividualButtonTapped {
                     editShippingAddress?.type = "Individual"
-                    editShippingAddress?.identityNumber = identityNumberView.textField.text
+                    editShippingAddress?.identityNumber = identityNumberView.getTextField().text
                 }else {
                     editShippingAddress?.type = "Corporate"
-                    editShippingAddress?.companyName = companyNameView.textField.text
-                    editShippingAddress?.taxNumber = taxNumberView.textField.text
-                    editShippingAddress?.taxOffice = taxOfficeView.textField.text
+                    editShippingAddress?.companyName = companyNameView.getTextField().text
+                    editShippingAddress?.taxNumber = taxNumberView.getTextField().text
+                    editShippingAddress?.taxOffice = taxOfficeView.getTextField().text
                 }
                 viewModel.editAddressModel = editShippingAddress ?? EditAddressModel()
                 saveShippingAddress(isEditing: true)
@@ -672,21 +672,21 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 saveAsBillingContainer.isHidden = true
                 billingAddressContainer.isHidden = true
                 let names : [String] = userShippingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
-                surnameView.textField.text = names[names.count - 1]
+                surnameView.getTextField().text = names[names.count - 1]
                 for i in 0..<(names.count - 1){
                     if i == 0 {
-                        nameView.textField.text = names[0]
+                        nameView.getTextField().text = names[0]
                     }else {
-                        nameView.textField.text = nameView.textField.text ?? "" + names[i]
+                        nameView.getTextField().text = nameView.getTextField().text ?? "" + names[i]
                     }
                 }
-                phoneNumberView.textField.text = userShippingAddress.contact?.phoneNumber
-                addressView.textField.text = userShippingAddress.addressLine
-                countryView.textField.text = userShippingAddress.country
-                districtView.textField.placeholder = userShippingAddress.city
-                statesView.textField.placeholder = userShippingAddress.state
-                zipCodeView.textField.text = userShippingAddress.zipCode
-                addressTitleView.textField.text = userShippingAddress.title
+                phoneNumberView.getTextField().text = userShippingAddress.contact?.phoneNumber
+                addressView.getTextField().text = userShippingAddress.addressLine
+                countryView.getTextField().text = userShippingAddress.country
+                districtView.getTextField().placeholder = userShippingAddress.city
+                statesView.getTextField().placeholder = userShippingAddress.state
+                zipCodeView.getTextField().text = userShippingAddress.zipCode
+                addressTitleView.getTextField().text = userShippingAddress.title
             }
             
         case .billing:
@@ -694,35 +694,35 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 saveAsBillingContainer.isHidden = true
                 billingAddressContainer.isHidden = false
                 let names : [String] = userBillingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
-                surnameView.textField.text = names[names.count - 1]
+                surnameView.getTextField().text = names[names.count - 1]
                 for i in 0..<(names.count - 1){
                     if i == 0 {
-                        nameView.textField.text = names[0]
+                        nameView.getTextField().text = names[0]
                     }else {
-                        nameView.textField.text = nameView.textField.text ?? "" + names[i]
+                        nameView.getTextField().text = nameView.getTextField().text ?? "" + names[i]
                     }
                 }
-                phoneNumberView.textField.text = userBillingAddress.contact?.phoneNumber
-                addressView.textField.text = userBillingAddress.addressLine
-                countryView.textField.text = userBillingAddress.country
-                districtView.textField.placeholder = userBillingAddress.city
-                statesView.textField.placeholder = userBillingAddress.state
-                zipCodeView.textField.text = userBillingAddress.zipCode
-                addressTitleView.textField.text = userBillingAddress.title
+                phoneNumberView.getTextField().text = userBillingAddress.contact?.phoneNumber
+                addressView.getTextField().text = userBillingAddress.addressLine
+                countryView.getTextField().text = userBillingAddress.country
+                districtView.getTextField().placeholder = userBillingAddress.city
+                statesView.getTextField().placeholder = userBillingAddress.state
+                zipCodeView.getTextField().text = userBillingAddress.zipCode
+                addressTitleView.getTextField().text = userBillingAddress.title
                 if userBillingAddress.type != nil && userBillingAddress.type?.lowercased() == "corporate"{
                     isIndividualButtonTapped = false
-                    companyNameView.textField.text = userBillingAddress.companyName
-                    taxOfficeView.textField.text = userBillingAddress.taxOffice
-                    taxNumberView.textField.text = userBillingAddress.taxNumber
+                    companyNameView.getTextField().text = userBillingAddress.companyName
+                    taxOfficeView.getTextField().text = userBillingAddress.taxOffice
+                    taxNumberView.getTextField().text = userBillingAddress.taxNumber
                 }
                 else {
                     self.isIndividualButtonTapped = true
-                    identityNumberView.textField.text = userBillingAddress.identityNumber
+                    identityNumberView.getTextField().text = userBillingAddress.identityNumber
                 }
             }
         }
-        districtView.textField.isEnabled = false
-        statesView.textField.isEnabled = false
+        districtView.getTextField().isEnabled = false
+        statesView.getTextField().isEnabled = false
     }
     
     private func saveAddress() {
@@ -730,23 +730,23 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .shipping:
             viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
             viewModel.addAddressModel.appKey = SRNetworkContext.appKey
-            viewModel.addAddressModel.addressLine = addressView.textField.text
-            viewModel.addAddressModel.country = countryView.textField.text
-            viewModel.addAddressModel.state = statesView.textField.text
-            viewModel.addAddressModel.city = districtView.textField.text
-            viewModel.addAddressModel.phone = phoneNumberView.textField.text
-            viewModel.addAddressModel.zipCode = zipCodeView.textField.text
-            viewModel.addAddressModel.title = addressTitleView.textField.text
-            viewModel.addAddressModel.nameSurname = (nameView.textField.text ?? "") + " " + (surnameView.textField.text ?? "")
+            viewModel.addAddressModel.addressLine = addressView.getTextField().text
+            viewModel.addAddressModel.country = countryView.getTextField().text
+            viewModel.addAddressModel.state = statesView.getTextField().text
+            viewModel.addAddressModel.city = districtView.getTextField().text
+            viewModel.addAddressModel.phone = phoneNumberView.getTextField().text
+            viewModel.addAddressModel.zipCode = zipCodeView.getTextField().text
+            viewModel.addAddressModel.title = addressTitleView.getTextField().text
+            viewModel.addAddressModel.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
             viewModel.addAddressModel.addBoth = isBillingAddressChecked
             if isIndividualButtonTapped {
                 viewModel.addAddressModel.type = "Individual"
-                viewModel.addAddressModel.identityNumber = identityNumberView.textField.text
+                viewModel.addAddressModel.identityNumber = identityNumberView.getTextField().text
             }else {
                 viewModel.addAddressModel.type = "Corporate"
-                viewModel.addAddressModel.companyName = companyNameView.textField.text
-                viewModel.addAddressModel.taxNumber = taxNumberView.textField.text
-                viewModel.addAddressModel.taxOffice = taxOfficeView.textField.text
+                viewModel.addAddressModel.companyName = companyNameView.getTextField().text
+                viewModel.addAddressModel.taxNumber = taxNumberView.getTextField().text
+                viewModel.addAddressModel.taxOffice = taxOfficeView.getTextField().text
             }
             if viewModel.addAddressModel.addBoth == true {
                 addAddress()
@@ -756,22 +756,22 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .billing:
             viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
             viewModel.addAddressModel.appKey = SRNetworkContext.appKey
-            viewModel.addAddressModel.addressLine = addressView.textField.text
-            viewModel.addAddressModel.city = districtView.textField.text
-            viewModel.addAddressModel.country = countryView.textField.text
-            viewModel.addAddressModel.state = statesView.textField.text
-            viewModel.addAddressModel.zipCode = zipCodeView.textField.text
-            viewModel.addAddressModel.phone = phoneNumberView.textField.text
-            viewModel.addAddressModel.nameSurname = (nameView.textField.text ?? "") + " " + (surnameView.textField.text ?? "")
-            viewModel.addAddressModel.title = addressTitleView.textField.text
+            viewModel.addAddressModel.addressLine = addressView.getTextField().text
+            viewModel.addAddressModel.city = districtView.getTextField().text
+            viewModel.addAddressModel.country = countryView.getTextField().text
+            viewModel.addAddressModel.state = statesView.getTextField().text
+            viewModel.addAddressModel.zipCode = zipCodeView.getTextField().text
+            viewModel.addAddressModel.phone = phoneNumberView.getTextField().text
+            viewModel.addAddressModel.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
+            viewModel.addAddressModel.title = addressTitleView.getTextField().text
             if isIndividualButtonTapped {
                 viewModel.addAddressModel.type = "Individual"
-                viewModel.addAddressModel.identityNumber = identityNumberView.textField.text
+                viewModel.addAddressModel.identityNumber = identityNumberView.getTextField().text
             }else {
                 viewModel.addAddressModel.type = "Corporate"
-                viewModel.addAddressModel.companyName = companyNameView.textField.text
-                viewModel.addAddressModel.taxNumber = taxNumberView.textField.text
-                viewModel.addAddressModel.taxOffice = taxOfficeView.textField.text
+                viewModel.addAddressModel.companyName = companyNameView.getTextField().text
+                viewModel.addAddressModel.taxNumber = taxNumberView.getTextField().text
+                viewModel.addAddressModel.taxOffice = taxOfficeView.getTextField().text
             }
             saveBillingAddress(isEditing: false)
         }
@@ -910,14 +910,14 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
             self.viewModel.countryId = id ?? ""
             getStateList()
             if viewModel.getStates().count == 0 {
-                statesView.textField.text = viewModel.addAddressModel.country
-                districtView.textField.text = viewModel.addAddressModel.country
+                statesView.getTextField().text = viewModel.addAddressModel.country
+                districtView.getTextField().text = viewModel.addAddressModel.country
             }
         case .state:
             self.viewModel.stateId = id ?? ""
             getCitiesList()
             if viewModel.getCities().count == 0 {
-                districtView.textField.text = viewModel.addAddressModel.country
+                districtView.getTextField().text = viewModel.addAddressModel.country
             }
         case .city:
             break
@@ -929,15 +929,15 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
     func getCountryName(name: String?, type: SelectionType?) {
         switch type {
         case .country:
-            countryView.textField.text = name
+            countryView.getTextField().text = name
         case .city:
             if viewModel.getCities().count == 0 {
                 viewModel.addAddressModel.city = viewModel.addAddressModel.state
             }else {
-                districtView.textField.text = name
+                districtView.getTextField().text = name
             }
         case .state:
-            statesView.textField.text = name
+            statesView.getTextField().text = name
         case .none:
             break
         }

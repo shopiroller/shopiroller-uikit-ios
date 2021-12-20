@@ -115,7 +115,7 @@ extension UIImage {
     
     static let checkBoxUnchecked : UIImage = UIImage(named: "checkBoxUnchecked",in: .shopiroller , with: nil)!
     
-    static let arrowDown : UIImage = UIImage(systemName: "arrow.down")!
+    static let dropdownIcon : UIImage = UIImage(systemName: "chevron.down.square")!
     
 }
 
