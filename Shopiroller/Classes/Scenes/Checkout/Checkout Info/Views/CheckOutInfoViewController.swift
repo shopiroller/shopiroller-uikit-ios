@@ -249,7 +249,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             } else {
                 sendOrder()
             }
-        } else{
+        } else {
             showNoConnectionAlert()
         }
     }

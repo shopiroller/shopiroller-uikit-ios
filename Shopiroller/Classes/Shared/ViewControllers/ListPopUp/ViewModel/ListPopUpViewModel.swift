@@ -36,18 +36,6 @@ class ListPopUpViewModel: BaseViewModel {
         return addressType ?? .shipping
     }
     
-    func getAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        switch addressType {
-        case .shipping:
-            getShippingAddressList(success: success, error: error)
-        case .billing:
-            getBillingAddressList(success: success, error: error)
-        case .none:
-            break
-        }
-    }
- 
-    
     func getItemCount() -> Int {
         switch listType {
         case .payment:
@@ -91,40 +79,6 @@ class ListPopUpViewModel: BaseViewModel {
     
     func getSupportedMethods(position: Int) -> SupportedPaymentType? {
         return supportedPaymentMethods?[position]
-    }
-    
-    private func getShippingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
-            (result) in
-            switch result{
-            case .success(let response):
-                self.userShippingAddressList = response.data
-                DispatchQueue.main.async {
-                    success?()
-                }
-            case.failure(let err):
-                DispatchQueue.main.async {
-                    error?(ErrorViewModel(error: err))
-                }
-            }
-        }
-    }
-    
-    private func getBillingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
-            (result) in
-            switch result{
-            case .success(let response):
-                self.userBillingAddressList = response.data
-                DispatchQueue.main.async {
-                    success?()
-                }
-            case.failure(let err):
-                DispatchQueue.main.async {
-                    error?(ErrorViewModel(error: err))
-                }
-            }
-        }
     }
     
     func getSortListModel(position: Int?) -> String {
