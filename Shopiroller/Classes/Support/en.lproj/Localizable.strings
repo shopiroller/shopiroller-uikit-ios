@@ -21,6 +21,7 @@
 "keyboard-next-action-text" = "Next";
 "keyboard-done-action-text" = "Done";
 "search-bar-search-text" = "Search";
+"general-error-description" = "Sorry, something went wrong. Please try again later";
 
 //MARK: - Products Empty View
 "empty-view-title" = "No Products added.";
