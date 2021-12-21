@@ -28,7 +28,7 @@ struct SRSliderDataModel: Codable {
 
 struct SliderSlidesModel: Codable {
     
-    var imageUrl: String?
+    var imageUrl: ProductImageModel?
     var id: String?
     var orderIndex: Int?
     var createdDate: String?
