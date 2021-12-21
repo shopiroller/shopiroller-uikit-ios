@@ -207,9 +207,10 @@ extension UIViewController {
     
     func showAlertError(viewModel: ErrorViewModel?) {
         if viewModel?.error == .network {
-            showNoConnectionAlert()
+            self.view.makeToast("no-internet-connection-description".localized)
+        } else {
+            self.view.makeToast("general-error-description".localized)
         }
-        showAlert(title: viewModel?.title, message: viewModel?.message)
     }
     
     func showNoConnectionAlert() {
