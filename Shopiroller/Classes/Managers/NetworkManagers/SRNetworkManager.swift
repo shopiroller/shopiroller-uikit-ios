@@ -179,7 +179,7 @@ final public class SRNetworkManager {
                             if !isUserFriendlyMessage {
                                 resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: value.key ?? "")))
                             } else if isUserFriendlyMessage {
-                                resourceResult(.failure(ShopirollerError.other(title: nil,description: value.message,isUserFriendlyMessage: true)))
+                                resourceResult(.failure(ShopirollerError.other(title: nil,description: value.message ?? "",isUserFriendlyMessage: true)))
                             }
                             
                         } else if let error = value.message {
