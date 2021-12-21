@@ -72,7 +72,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         
         switch viewModel.getListType(){
         case .address:
-            getAddressList()
+            setUpForAddress()
         case .payment:
             setUpForPayment()
         case .shoppingCart:
@@ -83,9 +83,10 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         
         var estimatedHeight = CGFloat(100 + (viewModel.getItemCount() * Int(viewModel.getItemHeight())))
         
-        if estimatedHeight < 250 {
-            estimatedHeight = 250
+        if estimatedHeight < 220 {
+            estimatedHeight = 220
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
             if estimatedHeight > self.popUpView.frame.size.height {
                 let heightDifference = estimatedHeight - self.popUpView.frame.size.height
@@ -132,15 +133,6 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         popUpTitle.textColor = .black
     }
     
-    private func getAddressList() {
-        viewModel.getAddressList(success: {
-            self.setUpForAddress()
-            self.popUpTableView.reloadData()
-        }) { [weak self] (errorViewModel) in
-            guard let self = self else { return }
-        }
-    }
-    
     @objc func popView() {
         pop(animated: false)
     }
@@ -156,17 +148,22 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch viewModel.getListType() {
         case .address:
+            tableView.tableFooterView = UIView()
+            tableView.separatorStyle = .none
             switch viewModel.getAddressType() {
             case .shipping:
-                let  model = viewModel.getShippingAddress(position: indexPath.row)
+                let model = viewModel.getShippingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupShippingCell(model: model,index: indexPath.row)
+                cell.setupShippingCell(model: model,index: indexPath.row,showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 cell.delegate = self
+                if indexPath.row == viewModel.getItemCount() - 1 {
+                    cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
+                }
                 return cell
             case .billing:
                 let model = viewModel.getBillingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupBillingCell(model: model,index: indexPath.row)
+                cell.setupBillingCell(model: model,index: indexPath.row, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 cell.delegate = self
                 return cell
             }

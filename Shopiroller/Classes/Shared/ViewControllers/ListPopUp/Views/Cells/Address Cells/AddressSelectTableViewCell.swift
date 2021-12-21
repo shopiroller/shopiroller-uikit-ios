@@ -17,6 +17,7 @@ class AddressSelectTableViewCell: UITableViewCell {
     @IBOutlet private weak var addressSecondLine: UILabel!
     @IBOutlet private weak var addressThirdLine: UILabel!
     @IBOutlet private weak var rightArrowImage: UIImageView!
+    @IBOutlet private weak var divider: UIView!
     
     private var billingAddressIndex : Int?
     private var shippingAddressIndex: Int?
@@ -43,6 +44,8 @@ class AddressSelectTableViewCell: UITableViewCell {
         addressThirdLine.adjustsFontSizeToFitWidth = false
         addressThirdLine.lineBreakMode = .byTruncatingTail
         
+        divider.backgroundColor = .textPrimary.withAlphaComponent(0.5)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapGesture)
@@ -51,20 +54,22 @@ class AddressSelectTableViewCell: UITableViewCell {
         
     }
 
-    func setupBillingCell(model: UserBillingAdressModel?, index: Int){
+    func setupBillingCell(model: UserBillingAdressModel?, index: Int,showDivider: Bool){
         addressTitle.text = model?.title
         addressFirstLine.text = model?.getPopupAddressFirstLine()
         addressSecondLine.text = model?.getPopupAddressSecondLine()
         addressThirdLine.text = model?.getPopupAddressThirdLine()
         billingAddressIndex = index
+        divider.isHidden = !showDivider
     }
     
-    func setupShippingCell(model: UserShippingAddressModel?, index: Int){
+    func setupShippingCell(model: UserShippingAddressModel?, index: Int,showDivider: Bool){
         addressTitle.text = model?.title
         addressFirstLine.text = model?.getPopupAddressFirstLine()
         addressSecondLine.text = model?.getPopupAddressSecondLine()
         addressThirdLine.text = model?.getPopupAddressThirdLine()
         shippingAddressIndex = index
+        divider.isHidden = !showDivider
     }
     
     @objc func cellTapped() {

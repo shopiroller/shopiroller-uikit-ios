@@ -329,7 +329,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
             } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
                 self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
-            } else  {
+            } else if self.viewModel.isUserFriendlyMessage() {
                 self.view.makeToast(errorViewModel.message)
             }
         }

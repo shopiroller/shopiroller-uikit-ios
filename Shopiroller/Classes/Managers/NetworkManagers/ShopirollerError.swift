@@ -11,7 +11,7 @@ import Foundation
 public enum ShopirollerError: Error, Equatable {
     case network, url, parseObject, parseJSON, general, encode, createJSON, download, expiredToken, checkUidUserExists(userMessage: String)
     case validation(description: String)
-    case other(title: String?, description: String)
+    case other(title: String?, description: String, isUserFriendlyMessage: Bool? = nil)
     
     public var description: String {
         switch self {
@@ -31,7 +31,7 @@ public enum ShopirollerError: Error, Equatable {
             return NSLocalizedString("Oturum Süresi Dolmuştur.", comment: "auth_error")
         case .checkUidUserExists(let userMessage):
             return userMessage
-        case .other(_, let description):
+        case .other(_, let description, _):
             return description
         case .validation(let description):
             return description
@@ -44,9 +44,18 @@ public enum ShopirollerError: Error, Equatable {
         return description
     }
     
+    public var isUserFriendlyMessage: Bool? {
+        switch self {
+        case .other(_,_,let isUserFriendlyMessage):
+            return isUserFriendlyMessage
+        default:
+            return false
+        }
+    }
+    
     public var title: String {
         switch self {
-        case .other(let title, _):
+        case .other(_,let title, _):
             return title ?? "generic-error-title"
         default:
             return "generic-error-title"
@@ -65,8 +74,8 @@ public enum ShopirollerError: Error, Equatable {
             (.expiredToken, .expiredToken):
             return true
             
-        case (.other(let leftTitle, let leftDescription), .other(let rightTitle, let rightDescription)):
-            return leftDescription == rightDescription && leftTitle == rightTitle
+        case (.other(let leftTitle, let leftDescription , let leftIsUserFriendlyMessage), .other(let rightTitle, let rightDescription, let rightIsUserFriendlyMessage)):
+            return leftDescription == rightDescription && leftIsUserFriendlyMessage == rightIsUserFriendlyMessage && leftTitle == rightTitle
         default:
             return false
         }

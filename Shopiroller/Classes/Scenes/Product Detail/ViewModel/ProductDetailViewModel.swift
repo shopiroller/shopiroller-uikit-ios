@@ -17,6 +17,7 @@ public class ProductDetailViewModel: BaseViewModel {
     
     var quantityCount = 1
     private var popUpState: PopUpState = .deliveryTerms
+    private var isUserFriendly: Bool = false
     
     init (productId: String = String()) {
         self.productId = productId
@@ -76,6 +77,7 @@ public class ProductDetailViewModel: BaseViewModel {
             case .failure(let err):
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
+                    self.isUserFriendly = err.isUserFriendlyMessage ?? false
                 }
             }
         }
@@ -192,6 +194,10 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func isStateSoldOut() -> Bool {
         return popUpState == .soldOut
+    }
+    
+    func isUserFriendlyMessage() -> Bool {
+        return self.isUserFriendly
     }
 }
 

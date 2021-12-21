@@ -16,6 +16,10 @@ class CheckOutAddressViewModel: BaseViewModel {
     
     private var _selectedBillingAddress: UserBillingAdressModel?
     
+    private var userShippingAddressList : [UserShippingAddressModel]?
+    
+    private var userBillingAddressList : [UserBillingAdressModel]?
+    
     func getDefaultAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getDefaultAddress(userId: SRAppConstants.Query.Values.userId).response() {
             (result) in
@@ -91,4 +95,51 @@ class CheckOutAddressViewModel: BaseViewModel {
         }
     }
     
+    func getAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        getShippingAddressList(success: success, error: error)
+        getBillingAddressList(success: success, error: error)
+        
+    }
+    
+    private func getShippingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+            (result) in
+            switch result{
+            case .success(let response):
+                self.userShippingAddressList = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case.failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    private func getBillingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+            (result) in
+            switch result{
+            case .success(let response):
+                self.userBillingAddressList = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case.failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func getUserBillingAddressList() -> [UserBillingAdressModel]? {
+        return userBillingAddressList
+    }
+    
+    func getUserShippingAddressList() -> [UserShippingAddressModel]? {
+        return userShippingAddressList
+    }
 }
