@@ -49,11 +49,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
         shippingAddressAddButton.tintColor = .black
         shippingAddressAddButton.tintColor = .textSecondary
-        shippingAddressAddButton.titleLabel?.font = .semiBold14
+        shippingAddressAddButton.titleLabel?.font = .medium12
         
         billingAddressAddButton.tintColor = .black
         billingAddressAddButton.tintColor = .textSecondary
-        billingAddressAddButton.titleLabel?.font = .semiBold14
+        billingAddressAddButton.titleLabel?.font = .medium12
         
     }
     
@@ -65,12 +65,22 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         super.viewWillAppear(animated)
         delegate?.isHidingNextButton(hide: false)
         getDefaultAddress()
+        getAddressList()
     }
     
     private func getDefaultAddress() {
         viewModel.getDefaultAddress(success: {
             self.configureViews()
             self.view.layoutIfNeeded()
+        }) { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+        }
+    }
+    
+    private func getAddressList() {
+        viewModel.getAddressList(success: {
+            self.configureViews()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showAlertError(viewModel: errorViewModel)
@@ -143,9 +153,18 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     
     
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
-        let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .address,addressType: type ?? .shipping ))
-        vc.addressDelegate = self
-        popUp(vc, completion: nil)
+        var listPopUpViewModel : ListPopUpViewModel = ListPopUpViewModel(listType: .address)
+        switch type {
+        case .billing:
+            listPopUpViewModel = ListPopUpViewModel(listType: .address, userBillingAddressList: viewModel.getUserBillingAddressList(),addressType: .billing)
+        case .shipping:
+            listPopUpViewModel = ListPopUpViewModel(listType: .address, userShippingAddressList: viewModel.getUserShippingAddressList(),addressType: .shipping)
+        case .none:
+            break
+        }
+        let listPopUpVC = ListPopUpViewController(viewModel: listPopUpViewModel)
+        listPopUpVC.addressDelegate = self
+        popUp(listPopUpVC, completion: nil)
     }
 }
 

@@ -21,6 +21,7 @@
 "keyboard-next-action-text" = "Sonraki";
 "keyboard-done-action-text" = "Bitti";
 "search-bar-search-text" = "Ara";
+"general-error-description" = "Üzgünüz, bir hata oluştu. Lütfen daha sonra tekrar deneyin";
 
 //MARK: - Products Empty View
 "empty-view-title" = "Ürün Bulunamadı.";
@@ -41,10 +42,10 @@
 "delivery-terms-title" = "Teslimat Koşulları";
 "add-to-cart" = "Sepete Ekle";
 "shipping-price-text" = "Kargo Ücreti ";
-"product-detail-description-title-text" = "Description";
+"product-detail-description-title-text" = "Açıklama";
 "product-detail-return-exchange-title-text" = "İade/Değişim Koşulları";
 "product-detail-delivery-title-text" = "Teslimat Koşulları";
-"product-detail-back-to-product-button-text" = "Ürüne dön";
+"product-detail-back-to-product-button-text" = "Ürüne Dön";
 "product-detail-back-to-product-list-button-text" = "Ürünlere dön";
 "product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
@@ -160,7 +161,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
 "billing-address-title" = "Fatura Adresi";
-"add-address-button-text" = "Yeni Adress Ekle";
+"add-address-button-text" = "Yeni Adres Ekle";
 "select-other-address-button-text" = "Başka Bir Adres Seç";
 
 //MARK: - AddressBottomView

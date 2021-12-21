@@ -145,7 +145,7 @@ public class SRMainPageViewModel: BaseViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        if let showcase = showcase?.filter({$0.productCount ?? 0 > 0}) , showcase.count > 0 {
+        if let showcase = showcase?.filter({($0.productCount ?? 0 > 0) && ($0.products?.count ?? 0 > 0)}) , showcase.count > 0 {
             return showcase.count
         } else {
             return 0
