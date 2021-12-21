@@ -77,7 +77,7 @@ public class ProductDetailViewModel: BaseViewModel {
             case .failure(let err):
                 DispatchQueue.main.async {
                     error?(ErrorViewModel(error: err))
-                    self.isUserFriendly = err.isUserFriendlyMessage
+                    self.isUserFriendly = err.isUserFriendlyMessage ?? false
                 }
             }
         }
