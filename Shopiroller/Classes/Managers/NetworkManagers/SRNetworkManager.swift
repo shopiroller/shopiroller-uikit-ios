@@ -102,7 +102,6 @@ final public class SRNetworkManager {
                 if error?.isConnectivityError ?? true {
                     handler(.error(ShopirollerError.network))
                 } else {
-                    
                     handler(.error(ShopirollerError.other(title: nil, description: error?.localizedDescription ?? "")))
                 }
             }
@@ -176,8 +175,13 @@ final public class SRNetworkManager {
                         }
                         var value = try decoder.decode(obj, from: data)
                         
-                        if let isUserFriendlyMessage = value.isUserFriendlyMessage, !isUserFriendlyMessage {
-                            resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: value.key ?? "")))
+                        if let isUserFriendlyMessage = value.isUserFriendlyMessage {
+                            if !isUserFriendlyMessage {
+                                resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: value.key ?? "")))
+                            } else if isUserFriendlyMessage {
+                                resourceResult(.failure(ShopirollerError.isUserFriendlyMessage(isUserFriendlyMessage: true)))
+                            }
+                            
                         } else if let error = value.message {
                             resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: error)))
                             return

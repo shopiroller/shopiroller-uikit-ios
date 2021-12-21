@@ -12,6 +12,7 @@ public enum ShopirollerError: Error, Equatable {
     case network, url, parseObject, parseJSON, general, encode, createJSON, download, expiredToken, checkUidUserExists(userMessage: String)
     case validation(description: String)
     case other(title: String?, description: String)
+    case isUserFriendlyMessage(isUserFriendlyMessage: Bool)
     
     public var description: String {
         switch self {
@@ -42,6 +43,15 @@ public enum ShopirollerError: Error, Equatable {
     
     public var localizedDescription: String {
         return description
+    }
+    
+    public var isUserFriendlyMessage: Bool {
+        switch self {
+        case .isUserFriendlyMessage(let isUserFriendlyMessage):
+            return isUserFriendlyMessage
+        default:
+            return false
+        }
     }
     
     public var title: String {
