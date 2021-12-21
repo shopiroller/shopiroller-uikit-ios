@@ -21,6 +21,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var productsCollectionView: UICollectionView!
     @IBOutlet private weak var emptyView: EmptyView!
+    @IBOutlet private weak var filterIconRedDot: UIView!
     
     private let badgeView  = SRBadgeButton()
         
@@ -49,6 +50,9 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         filterButton.setTitle("filter-title-text".localized)
         filterButton.setTitleColor(.textPrimary)
         filterButton.tintColor = .textPrimary
+        
+        filterIconRedDot.layer.cornerRadius = filterIconRedDot.frame.width / 2
+        filterIconRedDot.backgroundColor = .red
     
         getProducts(pagination: false)
     }
@@ -56,6 +60,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCount()
+        filterIconRedDot.isHidden = !viewModel.hasFilter()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
     }
     

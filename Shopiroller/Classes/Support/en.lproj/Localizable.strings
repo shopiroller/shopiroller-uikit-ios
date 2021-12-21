@@ -82,7 +82,7 @@
 "sub-category-container-text" = "All XX Items ";
 
 //MARK: - Product List
-"sort-title-text" = "Sorty By";
+"sort-title-text" = "Sort By";
 "filter-title-text" = "Filter";
 
 // MARK: - Payment Method
