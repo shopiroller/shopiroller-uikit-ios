@@ -52,15 +52,16 @@ extension SearchViewController : UISearchBarDelegate {
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            viewModel.searchedKeyword = ""
-        } else {
-            viewModel.searchedKeyword = searchText
-        }
-        if !SRAppContext.searchHistory.contains(searchText) {
-            SRAppContext.searchHistory.append(searchText)
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let keyword = searchBar.searchTextField.text , !keyword.isEmpty {
+            viewModel.searchedKeyword = keyword
+            if !SRAppContext.searchHistory.contains(keyword) {
+                SRAppContext.searchHistory.append(keyword)
+            }
             searchTableView.reloadData()
+        } else {
+            viewModel.searchedKeyword = ""
         }
     }
     
