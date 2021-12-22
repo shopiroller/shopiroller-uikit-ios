@@ -60,6 +60,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             firstButton.type = viewModel.getFirstButtonType()
             firstButton.setTitle(viewModel.getFirstButtonTitle())
             firstButton.titleLabel?.font = .semiBold14
+            popUpHeightContstraint.constant += (firstButtonContainerView.frame.height)
         }else {
             firstButtonContainerView.isHidden = true
         }
@@ -68,6 +69,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             secondButtonContainerView.isHidden = false
             secondButton.type = viewModel.getSecondButtonType()
             secondButton.setTitle(viewModel.getSecondButtonTitle())
+            popUpHeightContstraint.constant += (firstButtonContainerView.frame.height * 2)
         }else {
             secondButtonContainerView.isHidden = true
         }
