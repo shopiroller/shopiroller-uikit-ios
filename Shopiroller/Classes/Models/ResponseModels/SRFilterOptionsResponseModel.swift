@@ -73,7 +73,7 @@ struct CategoriesItem: Codable {
     
     var updateDate: String?
     var name: Dictionary<String,String>?
-    var icon: String?
+    var icon: ProductImageModel?
     var totalProduct: Int?
     var orderIndex: Int?
     var parentCategoryId: String?
