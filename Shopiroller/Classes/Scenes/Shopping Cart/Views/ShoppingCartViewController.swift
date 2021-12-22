@@ -61,7 +61,6 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-//        self.title = "shopping_cart_title".localized
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
