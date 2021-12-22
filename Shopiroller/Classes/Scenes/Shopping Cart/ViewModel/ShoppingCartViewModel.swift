@@ -12,6 +12,7 @@ class ShoppingCartViewModel: BaseViewModel {
     
     private var shoppingCart: SRShoppingCartResponseModel?
     var campaignMessage: String?
+    var indexAtRow: Int?
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {

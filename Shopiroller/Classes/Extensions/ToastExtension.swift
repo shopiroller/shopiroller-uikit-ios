@@ -496,9 +496,9 @@ public extension UIView {
         
         if let messageLabel = messageLabel {
             messageRect.origin.x = imageRect.origin.x + imageRect.size.width + style.horizontalPadding
-            messageRect.origin.y = style.verticalPadding
+            messageRect.origin.y = style.verticalPadding - 8
             messageRect.size.width = messageLabel.bounds.size.width
-            messageRect.size.height = messageLabel.bounds.size.height
+            messageRect.size.height = messageLabel.bounds.size.height + 20
         }
         
         let longerWidth = max(titleRect.size.width, messageRect.size.width)
@@ -597,7 +597,7 @@ public struct ToastStyle {
     /**
      The corner radius. Default is 10.0.
      */
-    public var cornerRadius: CGFloat = 10.0;
+    public var cornerRadius: CGFloat = 6.0;
     
     /**
      The title font. Default is `.boldSystemFont(16.0)`.

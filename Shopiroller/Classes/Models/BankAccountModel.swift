@@ -10,7 +10,7 @@ import Foundation
 
 struct BankAccountModel: Codable {
     
-    var accountAdress: String?
+    var accountAddress: String?
     var accountNumber: String?
     var accountCode: String?
     var accountName: String?
@@ -24,7 +24,7 @@ struct BankAccountModel: Codable {
     }
     
     enum CodingKeys: String,CodingKey {
-        case accountAdress = "accountAdress"
+        case accountAddress = "accountAddress"
         case accountNumber = "accountNumber"
         case accountCode = "accountCode"
         case accountName = "accountName"

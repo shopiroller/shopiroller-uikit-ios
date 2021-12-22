@@ -156,10 +156,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         shippingPriceContainer.backgroundColor = .badgeWarningInfo
         
         addToCardContainer.backgroundColor = .black
-        addToCardButton.setTitle(Constants.addToCartText)
-        addToCardButton.setTitleColor(.white)
-        addToCardButton.setImage(UIImage(systemName: "cart"))
         addToCardButton.tintColor = .white
+        addToCardButton.setTitleColor(.white)
         addToCardButton.titleLabel?.font = .semiBold16
         if #available(iOS 15.0, *) {
             addToCardButton.configuration?.imagePadding = 15
@@ -239,18 +237,21 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
         addProductToCart()
+        addToCardButton.isUserInteractionEnabled = false
     }
     
     private func showAddProductAnimation() {
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
-            self.addToCardButton.frame.origin.y += 70
-            self.checkmarkImage.isHidden = false
-            self.checkmarkImage.frame.origin.y += 70
-        }, completion: {_ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.hideAddProductAnimation()
-            }
-        })
+        if checkmarkImage.isHidden == true {
+            UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
+                self.addToCardButton.frame.origin.y += 70
+                self.checkmarkImage.isHidden = false
+                self.checkmarkImage.frame.origin.y += 70
+            }, completion: {_ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.hideAddProductAnimation()
+                }
+            })
+        }
     }
     
     
@@ -261,6 +262,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }, completion: {_ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.checkmarkImage.isHidden = true
+                self.addToCardButton.isUserInteractionEnabled = true
             }
         })
         
@@ -318,8 +320,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         viewModel.addProductToCart(success: {
             [weak self] in
             guard let self = self else { return }
-            self.soldOutContainer.isHidden = true
-            self.quantityContainer.isHidden = false
             self.showAddProductAnimation()
             self.navigationController?.viewWillLayoutSubviews()
         }) {
@@ -395,6 +395,55 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         situationContainer.isHidden = !viewModel.hasSituation()
         
+        setOutOfStockUI()
+        setFreeShippingUI()
+        setDiscountUI()
+        
+    }
+    
+    private func setOutOfStockUI() {
+        
+        if viewModel.isOutofStock() {
+            addToCardButton.isUserInteractionEnabled = false
+            addToCardButton.setImage(nil)
+            addToCardButton.setTitle(Constants.soldOutText)
+            addToCardButton.titleLabel?.text = Constants.soldOutText
+            soldOutContainer.isHidden = false
+            soldOutContainer.makeCardView()
+            soldOutContainer.backgroundColor = .badgeWarningInfo
+            soldOutLabel.textColor = .black
+            soldOutLabel.text = Constants.soldOutText
+            quantityContainer.isHidden = true
+        } else {
+            addToCardButton.isUserInteractionEnabled = true
+            addToCardButton.setTitle(Constants.addToCartText)
+            addToCardButton.setImage(UIImage(systemName: "cart"))
+            soldOutContainer.isHidden = true
+            quantityContainer.isHidden = false
+        }
+    }
+    
+    private func setFreeShippingUI() {
+        
+        if viewModel.isShippingFree() {
+            freeShippingContainer.isHidden = false
+            shippingPriceContainer.isHidden = true
+            shippingPriceContainerConstraint.constant = 0
+            freeShippingContainer.makeCardView()
+            freeShippingContainer.backgroundColor = .black
+            freeShippingLabel.textColor = .white
+            freeShippingLabel.text = Constants.freeShippingText
+        } else {
+            freeShippingContainer.isHidden = true
+            shippingPriceContainer.isHidden = false
+            shippingPriceLabel.attributedText = String().makeBoldString(boldText: ECommerceUtil.getFormattedPrice(price: Double(viewModel.getShippingPrice()), currency: viewModel.getCurrency()), normalText: Constants.shippingPriceText,isReverse: true)
+            shippingImage.image = .cargoShippingImage
+            shippingImage.tintColor = .pinkishTan
+        }
+    }
+    
+    private func setDiscountUI() {
+        
         if viewModel.hasDiscount() {
             discountContainer.isHidden = false
             productNewPrice.isHidden = false
@@ -414,37 +463,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
-        }
-        
-        if viewModel.isShippingFree() {
-            freeShippingContainer.isHidden = false
-            shippingPriceContainer.isHidden = true
-            shippingPriceContainerConstraint.constant = 0
-            freeShippingContainer.makeCardView()
-            freeShippingContainer.backgroundColor = .black
-            freeShippingLabel.textColor = .white
-            freeShippingLabel.text = Constants.freeShippingText
-        } else {
-            freeShippingContainer.isHidden = true
-            shippingPriceContainer.isHidden = false
-            shippingPriceLabel.attributedText = String().makeBoldString(boldText: ECommerceUtil.getFormattedPrice(price: Double(viewModel.getShippingPrice()), currency: viewModel.getCurrency()), normalText: Constants.shippingPriceText,isReverse: true)
-            shippingImage.image = .cargoShippingImage
-            shippingImage.tintColor = .pinkishTan
-        }
-        
-        if viewModel.isOutofStock() {
-            addToCardButton.setImage(nil)
-            addToCardButton.titleLabel?.text = Constants.soldOutText
-            soldOutContainer.isHidden = false
-            soldOutContainer.makeCardView()
-            soldOutContainer.backgroundColor = .badgeWarningInfo
-            soldOutLabel.textColor = .black
-            soldOutLabel.text = Constants.soldOutText
-            quantityContainer.isHidden = true
-            showSoldOutPopUp()
-        } else {
-            soldOutContainer.isHidden = true
-            quantityContainer.isHidden = false
         }
     }
     

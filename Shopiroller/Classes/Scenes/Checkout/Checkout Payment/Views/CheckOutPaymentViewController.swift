@@ -383,7 +383,7 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
         var style = ToastStyle()
         style.backgroundColor = .veryLightPink
         style.messageColor = .textPrimary
-        style.messageFont = .semiBold12
+        style.messageFont = .regular12
         self.view.makeToast(String(format: "checkout-table-view-iban-copied-message".localized),position: ToastPosition.bottom,style: style)
     }
     

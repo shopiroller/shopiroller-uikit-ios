@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelegate {
-    func deleteClicked(itemId: String?)
+    func deleteClicked(itemId: String?,index:Int?)
 }
 
 class ShoppingCartTableViewCell: UITableViewCell {
@@ -31,6 +31,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     private var model: ShoppingCartItem?
     private var delegate: ShoppingCartTableViewCellDelegate?
+    private var cellIndexAtRow: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,9 +58,10 @@ class ShoppingCartTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil) {
+    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil, index: Int?) {
         self.model = model
         self.delegate = delegate
+        self.cellIndexAtRow = index
         
         if let imageUrl = model.product?.featuredImage?.thumbnail {
             productImage.kf.setImage(with: URL(string: imageUrl))
@@ -102,7 +104,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
-        delegate?.deleteClicked(itemId: model?.id)
+        delegate?.deleteClicked(itemId: model?.id,index: cellIndexAtRow)
     }
     
     @IBAction func minusButtonClicked(_ sender: Any) {
