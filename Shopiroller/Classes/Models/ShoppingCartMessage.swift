@@ -27,6 +27,8 @@ enum CartMessageKeyEnum: String, Codable {
     case OutOfStock = "OutOfStock"
     case OverPublishmentDate = "OverPublishmentDate"
     case ProductNotFound = "ProductNotFound"
+    case FreeShippingCampaign = "FreeShippingCampaign"
+    
     
     var text: String {
         switch self {
@@ -40,6 +42,8 @@ enum CartMessageKeyEnum: String, Codable {
             return "OverPublishmentDate".localized
         case .ProductNotFound:
             return "ProductNotFound".localized
+        case .FreeShippingCampaign:
+            return "FreeShippingCampaign".localized
         }
     }
 }

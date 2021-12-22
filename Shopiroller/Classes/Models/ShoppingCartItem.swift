@@ -17,7 +17,7 @@ struct ShoppingCartItem: Codable {
     var isValid: Bool?
     var createdDate: String?
     var updatedDate: String?
-    var messages: [ShoppingCartMessage]?
+    var messages: [ShoppingCartMessage]? = []
     
     enum CodingKeys: String,CodingKey {
         case id = "id"
