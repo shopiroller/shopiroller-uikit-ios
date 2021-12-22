@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EBX-bs-sTu">
-                    <rect key="frame" x="62" y="311" width="290" height="145"/>
+                    <rect key="frame" x="62" y="319" width="290" height="129"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ny2-fd-DJy">
                             <rect key="frame" x="0.0" y="0.0" width="290" height="90"/>
@@ -45,22 +45,19 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-cK-1uA">
-                            <rect key="frame" x="0.0" y="100" width="290" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="Ubx-jC-PJw"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="100" width="290" height="29"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKZ-ot-oyV">
-                            <rect key="frame" x="0.0" y="145" width="290" height="0.0"/>
+                            <rect key="frame" x="0.0" y="129" width="290" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-Zc-FWX">
-                            <rect key="frame" x="0.0" y="145" width="290" height="44"/>
+                            <rect key="frame" x="0.0" y="129" width="290" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45p-uo-rSy" userLabel="actionButton">
                                     <rect key="frame" x="81.5" y="6.5" width="127.5" height="31"/>
