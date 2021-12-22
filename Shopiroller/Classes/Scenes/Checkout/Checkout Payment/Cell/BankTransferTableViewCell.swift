@@ -87,12 +87,7 @@ class BankTransferTableViewCell: UITableViewCell {
         } else {
             bankAccountDescription.isHidden = true
         }
-        if let iban = model?.accountAdress {
-            bankAccountIban.attributedText = String().makeBoldString(boldText: Constants.accountIbanText, normalText: iban,isReverse: false)
-            self.bankAccountIbanText = iban
-        } else {
-            bankAccountIban.isHidden = true
-        }
+        bankAccountIban.attributedText = String().makeBoldString(boldText: Constants.accountIbanText, normalText: model?.accountAddress,isReverse: false)
         bankAccountDepartment.attributedText = String().makeBoldString(boldText: Constants.accountDepartmentText, normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),isReverse: false)
         bankAccountDepartment.lineBreakMode = .byTruncatingTail
         bankAccountNumber.attributedText = String().makeBoldString(boldText: Constants.accountNumberText, normalText: model?.accountNumber,isReverse: false)
@@ -122,9 +117,7 @@ class BankTransferTableViewCell: UITableViewCell {
     }
     
     @IBAction func ibanCopyButtonTapped() {
-        if let iban = model?.accountAdress , !iban.isEmpty {
-            UIPasteboard.general.string = model?.accountAdress
-            delegate?.tappedCopyIbanButton()
-        }
+        UIPasteboard.general.string = model?.accountAddress
+        delegate?.tappedCopyIbanButton()
     }
 }

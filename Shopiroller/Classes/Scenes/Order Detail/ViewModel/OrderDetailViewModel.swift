@@ -74,7 +74,7 @@ class OrderDetailViewModel: BaseViewModel {
                 if let value = detail?.paymentAccount?.accountNumber {
                     labelArr.append(getLabel(attributedText: ECommerceUtil.getBoldNormal("order_details_bank_account".localized, value)))
                 }
-                if let value = detail?.paymentAccount?.accountAdress {
+                if let value = detail?.paymentAccount?.accountAddress {
                     let label = getLabel(attributedText: ECommerceUtil.getBoldNormal("order_details_bank_iban".localized, value))
                     let tap = UITapGestureRecognizer(target: self, action: #selector(OrderDetailViewModel.onClickIbanText))
                     label.isUserInteractionEnabled = true
@@ -117,7 +117,7 @@ class OrderDetailViewModel: BaseViewModel {
     
     @objc
     func onClickIbanText(sender:UITapGestureRecognizer) {
-        UIPasteboard.general.string = detail?.paymentAccount?.accountAdress
+        UIPasteboard.general.string = detail?.paymentAccount?.accountAddress
     }
     
     func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {

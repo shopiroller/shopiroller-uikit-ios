@@ -127,7 +127,8 @@
 "shopping_cart_empty_description" = "You have no items in your shopping cart";
 "shopping_cart_empty_button_title" = "Start Shopping";
 "shopping_cart_item_count" = "%@ items";
-"shopping_cart_clear_cart_title" = "Are you sure to clear cart?";
+"shopping_cart_clear_cart_title" = "Are you sure to clear cart ?";
+"shopping_cart_clear_cart_button_text" = "Clear Cart";
 "shopping_cart_clear_cart_description" = "You are clearing all  products in shopping cart now.";
 "shopping_cart_clear_cart_not_now" = "No, not now";
 "shopping_cart_clear_cart_clear_cart" = "Yes, clear my cart";

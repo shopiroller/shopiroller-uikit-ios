@@ -130,10 +130,11 @@
 "shopping_cart_empty_description" = "Sepetinizde ürün bulunmuyor..";
 "shopping_cart_empty_button_title" = "Alışverişe Başla";
 "shopping_cart_item_count" = "%@ ürün";
-"shopping_cart_clear_cart_title" = "Sepetinizi temizlemek istediğinize emin misiniz?";
-"shopping_cart_clear_cart_description" = "Şu anda alışveriş sepetindeki tüm ürünleri temizliyorsunuz.";
+"shopping_cart_clear_cart_title" = "Sepetinizi temizlemek istediğinize emin misiniz ?";
+"shopping_cart_clear_cart_button_text" = "Sepeti Temizle";
+"shopping_cart_clear_cart_description" = "Sepetinizdeki bütün ürünler temizlenecek.";
 "shopping_cart_clear_cart_not_now" = "Hayır, Şimdi Değil";
-"shopping_cart_clear_cart_clear_cart" = "Evet, Sepeti Temizle";
+"shopping_cart_clear_cart_clear_cart" = "Evet, Sepetimi Temizle";
 "shopping_cart_validate_title" = "Sepet Güncelleniyor";
 "shopping_cart_validate_description" = "Sepetiniz aşağıdaki nedenlerle güncellenecektir..";
 "shopping_cart_validate_warning" = "%@ ürünün stoğu değişti, %@ ürünün stoğu kalmadı";
