@@ -31,13 +31,14 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        searchBar.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
 }
@@ -45,16 +46,20 @@ class SearchViewController: BaseViewController<SearchViewModel> {
 extension SearchViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: viewModel.searchedKeyword, pageTitle: viewModel.searchedKeyword))
-        prompt(productListVC, animated: true, completion: nil)
+        if viewModel.searchedKeyword != nil , viewModel.searchedKeyword != "" {
+            let productListVC = ProductListViewController(viewModel: ProductListViewModel( title: viewModel.searchedKeyword, pageTitle: viewModel.searchedKeyword))
+            prompt(productListVC, animated: true, completion: nil)
+        }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if let keyword = searchBar.searchTextField.text , keyword != "" {
-            viewModel.searchedKeyword = keyword
-            if !SRAppContext.searchHistory.contains(keyword) {
-                SRAppContext.searchHistory.append(keyword)
-            }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            viewModel.searchedKeyword = ""
+        } else {
+            viewModel.searchedKeyword = searchText
+        }
+        if !SRAppContext.searchHistory.contains(searchText) {
+            SRAppContext.searchHistory.append(searchText)
             searchTableView.reloadData()
         }
     }
