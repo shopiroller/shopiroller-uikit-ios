@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,11 +48,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDJ-S5-6Ib">
-                                            <rect key="frame" x="326" y="0.0" width="58" height="27"/>
+                                            <rect key="frame" x="354" y="0.0" width="30" height="27"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Clear Cart"/>
                                             <connections>
                                                 <action selector="clearCartButtonClicked:" destination="-1" eventType="touchUpInside" id="0wx-yz-gtM"/>
                                             </connections>
@@ -152,17 +151,18 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="0ID-l1-U7a" firstAttribute="top" secondItem="jcM-vH-C2R" secondAttribute="top" id="79f-gb-yeu"/>
                 <constraint firstItem="jcM-vH-C2R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="94S-l4-fRU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0ID-l1-U7a" secondAttribute="bottom" id="Bvn-0r-Hor"/>
                 <constraint firstAttribute="trailing" secondItem="Vnm-Y0-Msj" secondAttribute="trailing" id="FjR-ru-enA"/>
                 <constraint firstItem="jcM-vH-C2R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="G1f-7F-8ZO"/>
+                <constraint firstItem="Vnm-Y0-Msj" firstAttribute="top" secondItem="0ID-l1-U7a" secondAttribute="bottom" id="IQH-RQ-4ks"/>
+                <constraint firstItem="0ID-l1-U7a" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="SrO-Gh-UOc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jcM-vH-C2R" secondAttribute="bottom" id="UFR-Ya-DuS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jcM-vH-C2R" secondAttribute="trailing" id="UUa-Hf-xci"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0ID-l1-U7a" secondAttribute="trailing" id="WaP-3B-a4A"/>
                 <constraint firstAttribute="bottom" secondItem="Vnm-Y0-Msj" secondAttribute="bottom" id="Xiu-bK-0U9"/>
                 <constraint firstItem="0ID-l1-U7a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fSg-Ng-GdQ"/>
-                <constraint firstItem="Vnm-Y0-Msj" firstAttribute="top" secondItem="0ID-l1-U7a" secondAttribute="bottom" id="kt4-2S-u2S"/>
-                <constraint firstItem="0ID-l1-U7a" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="q32-nq-Igr"/>
+                <constraint firstItem="0ID-l1-U7a" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="j8y-Hy-Y4J"/>
                 <constraint firstItem="Vnm-Y0-Msj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vl9-KN-L8c"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>

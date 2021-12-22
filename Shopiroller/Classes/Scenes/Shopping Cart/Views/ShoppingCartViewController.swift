@@ -9,6 +9,14 @@ import UIKit
 
 class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, EmptyViewDelegate {
     
+    private struct Constants {
+        static var clearCartButtonText : String { return "shopping_cart_clear_cart_button_text".localized }
+        
+        static var pageTitle: String { return "shopping_cart_title".localized }
+        
+        static var checkOutButtonText: String { return "shopping_cart_validate_proceed_checkout".localized }
+    }
+    
 
     @IBOutlet private weak var emptyView: EmptyView!
     
@@ -26,7 +34,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
 
     init(viewModel: ShoppingCartViewModel){
-        super.init("shopping_cart_title".localized, viewModel: viewModel, nibName: ShoppingCartViewController.nibName, bundle: Bundle(for: ShoppingCartViewController.self))
+        super.init(Constants.pageTitle, viewModel: viewModel, nibName: ShoppingCartViewController.nibName, bundle: Bundle(for: ShoppingCartViewController.self))
     }
     
     override func setup() {
@@ -37,13 +45,14 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         itemCountLabel.font = .regular12
         
         clearCartButton.tintColor = .textSecondary
+        clearCartButton.setTitle(Constants.clearCartButtonText)
         clearCartButton.titleLabel?.font = .regular12
         
         campaignView.backgroundColor = .buttonLight
         campaignLabel.textColor = .textPrimary
         campaignLabel.font = .regular12
         
-        checkoutButton.setTitle("shopping_cart_validate_proceed_checkout".localized)
+        checkoutButton.setTitle(Constants.checkOutButtonText)
         checkoutButton.titleLabel?.font = .semiBold15
         checkoutButton.setTitleColor(.white)
         
@@ -52,7 +61,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        self.title = "shopping_cart_title".localized
+//        self.title = "shopping_cart_title".localized
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
@@ -104,6 +113,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     private func removeItemFromShoppingCart(itemId: String?) {
         viewModel.removeItemFromShoppingCart(itemId: itemId, success: {
+            self.tableView.deleteRows(at: [IndexPath(row: self.viewModel.indexAtRow ?? 0, section: 0)], with: .left)
             self.configure()
         }) { (errorViewModel) in
             self.showAlertError(viewModel: errorViewModel)
@@ -163,10 +173,8 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
-        
         guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
-        cell.setup(model: model, self)
-        
+        cell.setup(model: model, self,index: indexPath.row)
         return cell
     }
 }
@@ -181,7 +189,8 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, Shoppin
         updateItemQuantity(itemId: itemId, quantity: quantity)
     }
     
-    func deleteClicked(itemId: String?) {
+    func deleteClicked(itemId: String?,index: Int?) {
+        viewModel.indexAtRow = index
         removeItemFromShoppingCart(itemId: itemId)
     }
     
