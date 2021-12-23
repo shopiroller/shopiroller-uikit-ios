@@ -1,9 +1,9 @@
 PODS:
   - FittedSheets (2.4.2)
   - InputMask (6.1.0)
-  - IQKeyboardManagerSwift (6.5.6)
-  - Kingfisher (4.10.1)
-  - lottie-ios (3.2.3)
+  - IQKeyboardManagerSwift (6.5.9)
+  - Kingfisher (7.1.2)
+  - lottie-ios (3.3.0)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
   - MaterialComponents/Buttons (124.2.0):
@@ -58,7 +58,7 @@ PODS:
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
-    - Kingfisher
+    - Kingfisher (~> 7.1.2)
     - lottie-ios
     - MaterialComponents/Buttons
     - SVProgressHUD
@@ -86,13 +86,13 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Shopiroller: a75756efb29e001e616637dc070b028d489dcab3
+  Shopiroller: e92f329e7b5d4ca1c3353e0bb7de31e47be25145
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
