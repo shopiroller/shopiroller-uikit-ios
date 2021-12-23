@@ -709,7 +709,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 statesView.getTextField().placeholder = userBillingAddress.state
                 zipCodeView.getTextField().text = userBillingAddress.zipCode
                 addressTitleView.getTextField().text = userBillingAddress.title
-                if userBillingAddress.type != nil && userBillingAddress.type?.lowercased() == "corporate"{
+                if userBillingAddress.type != nil && userBillingAddress.type == 1{
                     isIndividualButtonTapped = false
                     companyNameView.getTextField().text = userBillingAddress.companyName
                     taxOfficeView.getTextField().text = userBillingAddress.taxOffice
@@ -909,16 +909,9 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         case .country:
             self.viewModel.countryId = id ?? ""
             getStateList()
-            if viewModel.getStates().count == 0 {
-                statesView.getTextField().text = viewModel.addAddressModel.country
-                districtView.getTextField().text = viewModel.addAddressModel.country
-            }
         case .state:
             self.viewModel.stateId = id ?? ""
             getCitiesList()
-            if viewModel.getCities().count == 0 {
-                districtView.getTextField().text = viewModel.addAddressModel.country
-            }
         case .city:
             break
         case .none:
@@ -930,14 +923,21 @@ extension AddressBottomSheetViewController: SelectionPopoUpDelegate {
         switch type {
         case .country:
             countryView.getTextField().text = name
+            if viewModel.getStates().count == 0 {
+                statesView.getTextField().text = countryView.getTextField().text
+                districtView.getTextField().text = countryView.getTextField().text
+            }
         case .city:
             if viewModel.getCities().count == 0 {
-                viewModel.addAddressModel.city = viewModel.addAddressModel.state
+                viewModel.addAddressModel.city = statesView.getTextField().text
             }else {
                 districtView.getTextField().text = name
             }
         case .state:
             statesView.getTextField().text = name
+            if viewModel.getCities().count == 0 {
+                districtView.getTextField().text = countryView.getTextField().text
+            }
         case .none:
             break
         }

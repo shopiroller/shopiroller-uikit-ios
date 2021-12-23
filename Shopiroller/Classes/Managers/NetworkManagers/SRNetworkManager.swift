@@ -53,6 +53,19 @@ final public class SRNetworkManager {
         return urlComponents.url
     }
     
+    
+    private func userUrl<T>(for request: SRNetworkRequestManager<T>) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = environment.scheme
+        urlComponents.host = environment.userBaseUrl
+        urlComponents.port = environment.port
+        urlComponents.path = request.path.name + (request.subpath ?? "")
+        if let queryItems = request.urlQueryItems, !queryItems.isEmpty {
+            urlComponents.queryItems = queryItems
+        }
+        return urlComponents.url
+    }
+    
     private func urlRequest<T>(for request: SRNetworkRequestManager<T>) -> URLRequest? {
         guard let url = url(for: request) else {
             return nil
@@ -73,6 +86,25 @@ final public class SRNetworkManager {
     }
     
     
+    private func userUrlRequest<T>(for request: SRNetworkRequestManager<T>) -> URLRequest? {
+        guard let url = userUrl(for: request) else {
+            return nil
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.httpMethod?.rawValue
+        urlRequest.httpBody = request.httpBody
+        
+        urlRequest.setValue(request.contentType.value, forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "accept")
+        
+        SRNetworkManager.additionalUserHeaders.forEach { (element) in
+            urlRequest.setValue(element.value, forHTTPHeaderField: element.key)
+        }
+        
+        return urlRequest
+    }
+    
     static var additionalHeaders: [String: String?] {
         var headers: [String: String] = [:]
         headers[SRAppConstants.Header.apiKey] = SRNetworkContext.apiKey
@@ -86,6 +118,21 @@ final public class SRNetworkManager {
         headers[SRAppConstants.Header.fallbackLanguage] = "tr"
         return headers
     }
+    
+    static var additionalUserHeaders: [String: String?] {
+        var headers: [String: String] = [:]
+        headers[SRAppConstants.Header.apiKey] = SRNetworkContext.userApiKey
+        headers[SRAppConstants.Header.appKey] = SRNetworkContext.userAppKey
+        //        headers[AppConstants.Header.appVersion] = AppInfo.appVersion
+        //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
+        //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName
+        //        headers[AppConstants.Header.osVersion] = AppInfo.systemVersion
+        headers[SRAppConstants.Header.language] = "tr"
+        headers[SRAppConstants.Header.acceptLanguage] = "tr-TR"
+        headers[SRAppConstants.Header.fallbackLanguage] = "tr"
+        return headers
+    }
+    
     
     private func uploadData(for request: URLRequest, data: Data, handler: @escaping handler) {
         urlSession.uploadTask(with: request, from: data, completionHandler: { data, response, error in
@@ -130,11 +177,24 @@ final public class SRNetworkManager {
     }
     
     func response<T: Decodable>(for request: SRNetworkRequestManager<T>, response resourceResult: @escaping ((SRResponseResult<SRNetworkManagerResponse<T>>) -> Void)) {
-        guard let urlRequest = urlRequest(for: request) else {
-            resourceResult(.failure(ShopirollerError.url))
-            return
+         
+        var urlRequestObject: URLRequest?
+        
+        if request.isUser {
+            guard let urlRequest = userUrlRequest(for: request) else {
+                resourceResult(.failure(ShopirollerError.url))
+                return
+            }
+            urlRequestObject = urlRequest
+        } else {
+            guard let urlRequest = urlRequest(for: request) else {
+                resourceResult(.failure(ShopirollerError.url))
+                return
+            }
+            urlRequestObject = urlRequest
         }
-        self.fetchData(for: urlRequest) { (result) in
+        
+        self.fetchData(for: urlRequestObject!) { (result) in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
 //                MTProgress.sharedInstance.dismiss()

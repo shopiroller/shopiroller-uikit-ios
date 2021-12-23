@@ -17,13 +17,22 @@ public enum SREndpointType {
     var baseURL: String {
         switch self {
         case .dev:
-            return "dev.applyze.com"
+            return "api.shopiroller.com"
 //        case .dev:
 //            return "qaapi.shopiroller.com"
 //        case .dev:
 //            return "api.shopiroller.com"
 //        case .dev:
 //            return "sandboxapi.shopiroller.com"
+        case .custom(let url, _):
+            return url
+        }
+    }
+    
+    var userBaseUrl: String {
+        switch self {
+        case .dev:
+            return "mobiroller.api.applyze.com"
         case .custom(let url, _):
             return url
         }
