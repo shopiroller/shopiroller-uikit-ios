@@ -129,7 +129,7 @@ extension UIImageView {
             activityIndicator.color = .textPrimary
             self.addSubview(activityIndicator)
             activityIndicator.startAnimating()
-            self.kf.setImage(with: URL(string: url), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img, err, cache, url) in
+            self.kf.setImage(with: URL(string: "\(url)?width=\(self.frame.width)"), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img, err, cache, url) in
                 activityIndicator.stopAnimating()
             }
         }

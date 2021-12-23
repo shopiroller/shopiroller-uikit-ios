@@ -19,8 +19,9 @@ struct SRNetworkRequestManager<T: Decodable> {
     var otpTokenRequired: Bool
     var ignoreParse: Bool
     var ignoreBaseModel: Bool
+    var isUser: Bool
 
-    init(httpMethod: SRNetworkManagerHttpMethods? = nil, path: SRNetworkManagerPaths, contentType: SRNetworkManagerContentType = .json, subpath: String? = nil, resourceType: T.Type, urlQueryItems: [URLQueryItem]? = nil, httpBody: Data? = nil, shouldShowProgressHUD: Bool = true, shouldBlockUI: Bool = true, otpTokenRequired: Bool = false, ignoreParse: Bool = false, ignoreBaseModel : Bool = false) {
+    init(httpMethod: SRNetworkManagerHttpMethods? = nil, path: SRNetworkManagerPaths, contentType: SRNetworkManagerContentType = .json, subpath: String? = nil, resourceType: T.Type, urlQueryItems: [URLQueryItem]? = nil, httpBody: Data? = nil, shouldShowProgressHUD: Bool = true, shouldBlockUI: Bool = true, otpTokenRequired: Bool = false, ignoreParse: Bool = false, ignoreBaseModel : Bool = false, isUser :Bool = false) {
         self.httpMethod = httpMethod
         self.path = path
         self.contentType = contentType
@@ -32,29 +33,18 @@ struct SRNetworkRequestManager<T: Decodable> {
         self.otpTokenRequired = otpTokenRequired
         self.ignoreParse = ignoreParse
         self.ignoreBaseModel = ignoreBaseModel
+        self.isUser = isUser
     }
 }
 
 extension SRNetworkRequestManager {
     func response(response: @escaping ((SRResponseResult<SRNetworkManagerResponse<T>>) -> Void)) {
-//        api.response(for: self, response: response)
         BaseViewModel.networkManager.response(for: self) { result in
             switch result {
             case .success:
                 response(result)
             case .failure(let err):
-//                if err == .expiredToken {
-//                    AuthorizationManager.refreshToken(success: {
-//                        self.response(using: api, response: response)
-//                    }, error: { (error) in
-//                        DispatchQueue.main.async {
-                ////                            Notification.logoutUser(errorTitle: error.title, errorMessage: error.message)
-//                        }
-//                    })
-//                    break
-//                } else {
                 response(result)
-//                }
             }
         }
     }

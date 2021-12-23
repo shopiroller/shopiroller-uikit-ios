@@ -104,7 +104,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getBrandImage() -> String? {
-        productDetailModel?.brand?.icon
+        productDetailModel?.brand?.icon?.normal
     }
     
     func isOutofStock() -> Bool {
@@ -120,7 +120,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func hasDiscount() -> Bool {
-        return productDetailModel?.campaignPrice != 0
+        return productDetailModel?.campaignPrice != nil && productDetailModel?.campaignPrice != 0
     }
     
     func getCurrency() -> String {

@@ -37,7 +37,7 @@ class ProductViewModel {
     }
 
     func getImage() -> String? {
-        return productListModel?.featuredImage?.thumbnail ?? (productDetailModel?.featuredImage?.thumbnail)
+        return productListModel?.featuredImage?.normal ?? (productDetailModel?.featuredImage?.normal)
     }
     
     func isShippingFree() -> Bool {

@@ -46,7 +46,7 @@ enum SRNetworkManagerPaths: String {
 //        case .authorizationServer:
 //            return rawValue
         default:
-            return "/ecommerce/v2\(rawValue)"
+            return "/v2\(rawValue)"
         }
     }
     
