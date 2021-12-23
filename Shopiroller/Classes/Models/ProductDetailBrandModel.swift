@@ -11,7 +11,7 @@ import Foundation
 struct ProductDetailBrandModel : Codable {
     var id : String?
     var name : String?
-    var icon : String?
+    var icon : ProductImageModel?
     var isActive : Bool?
     var createDate : String?
     var updateDate : String?
