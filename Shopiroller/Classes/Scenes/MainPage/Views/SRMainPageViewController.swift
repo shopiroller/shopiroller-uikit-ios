@@ -329,7 +329,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch section {
         case 3:
-            return CGSize(width: collectionView.frame.width, height: 40)
+            return CGSize(width: collectionView.frame.width, height: 55)
         default:
             return CGSize(width: 0, height: 0)
         }
