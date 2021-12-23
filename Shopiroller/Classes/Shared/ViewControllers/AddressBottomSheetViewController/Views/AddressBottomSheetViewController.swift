@@ -709,7 +709,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 statesView.getTextField().placeholder = userBillingAddress.state
                 zipCodeView.getTextField().text = userBillingAddress.zipCode
                 addressTitleView.getTextField().text = userBillingAddress.title
-                if userBillingAddress.type != nil && userBillingAddress.type?.lowercased() == "corporate"{
+                if userBillingAddress.type != nil && userBillingAddress.type == 1{
                     isIndividualButtonTapped = false
                     companyNameView.getTextField().text = userBillingAddress.companyName
                     taxOfficeView.getTextField().text = userBillingAddress.taxOffice
