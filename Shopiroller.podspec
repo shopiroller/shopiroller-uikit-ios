@@ -15,24 +15,17 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
   s.source           = { :git => 'https://github.com/ealtaca/shopiroller_ios.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '13.0'
 
-  s.source_files = 'Shopiroller/**/*'
+  s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}", "Shopiroller/Animations/*.{json}"
   
-  s.resource_bundles = {
-    'Shopiroller' => ['Shopiroller/Assets/**/*', 'Shopiroller/Classes/**/*.xib','Shopiroller/Assests/Fonts/*.{ttf}','Shopiroller/Assests/Animations/*.{json}']
-  }
+  s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Fonts/*.{ttf}'
 
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'SVProgressHUD'
-  #s.dependency 'ImageSlideshow', '~> 1.9.1'
-  #s.dependency 'ImageSlideshow/Kingfisher'
   s.dependency 'MaterialComponents/Buttons'
   s.dependency 'FittedSheets'
   s.dependency 'Kingfisher'

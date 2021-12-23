@@ -17,22 +17,22 @@ public class ShopirollerApp {
         
         
         UIFont.jbs_registerFont(
-            withFilenameString: "Fonts/Poppins-Bold.ttf",
+            withFilenameString: "Poppins-Bold.ttf",
             bundle: .shopiroller
         )
         
         UIFont.jbs_registerFont(
-            withFilenameString: "Fonts/Poppins-SemiBold.ttf",
+            withFilenameString: "Poppins-SemiBold.ttf",
             bundle: .shopiroller
         )
 
         UIFont.jbs_registerFont(
-            withFilenameString: "Fonts/Poppins-Regular.ttf",
+            withFilenameString: "Poppins-Regular.ttf",
             bundle: .shopiroller
         )
         
         UIFont.jbs_registerFont(
-            withFilenameString: "Fonts/Poppins-Medium.ttf",
+            withFilenameString: "Poppins-Medium.ttf",
             bundle: .shopiroller
         )
 
