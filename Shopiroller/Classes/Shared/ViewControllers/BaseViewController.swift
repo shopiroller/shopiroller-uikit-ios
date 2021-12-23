@@ -10,7 +10,7 @@ import UIKit
 
 extension BaseViewController : NibLoadable { }
 
-public class BaseViewController<T>: UIViewController {
+open class BaseViewController<T>: UIViewController {
     
     internal let viewModel: T
     
@@ -20,7 +20,7 @@ public class BaseViewController<T>: UIViewController {
         self.title = title
     }
     
-    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable) required public init?(coder aDecoder: NSCoder) {
         fatalError("disabled init")
     }
     

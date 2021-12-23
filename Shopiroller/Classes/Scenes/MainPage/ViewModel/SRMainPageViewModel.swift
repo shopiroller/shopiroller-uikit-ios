@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SRMainPageViewModel: BaseViewModel {
+open class SRMainPageViewModel: BaseViewModel {
     
     private struct Constants {
         

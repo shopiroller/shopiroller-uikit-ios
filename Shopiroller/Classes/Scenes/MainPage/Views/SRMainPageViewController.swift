@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-public class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
+open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private struct Constants {
         
