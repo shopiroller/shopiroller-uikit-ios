@@ -461,17 +461,17 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYf-qf-rDK">
-                            <rect key="frame" x="16" y="698" width="382" height="120"/>
+                            <rect key="frame" x="0.0" y="698" width="414" height="120"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="57R-3i-H1Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="382" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZW-Zq-Er6" customClass="BottomPriceView" customModule="Shopiroller" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsQ-Is-A11">
-                                            <rect key="frame" x="0.0" y="80" width="382" height="40"/>
+                                            <rect key="frame" x="0.0" y="80" width="414" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxp-H1-bm2">
                                                     <rect key="frame" x="20" y="3" width="30" height="34"/>
@@ -481,10 +481,10 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-JS-hLP">
-                                                    <rect key="frame" x="60" y="0.0" width="322" height="40"/>
+                                                    <rect key="frame" x="60" y="0.0" width="354" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYl-71-NJ3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="322" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -529,9 +529,9 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="5Yc-c7-irg" firstAttribute="top" secondItem="v2u-cP-21o" secondAttribute="top" constant="10" id="5Xg-KO-No6"/>
-                        <constraint firstItem="pYf-qf-rDK" firstAttribute="leading" secondItem="v2u-cP-21o" secondAttribute="leading" constant="16" id="698-BY-mqi"/>
+                        <constraint firstItem="pYf-qf-rDK" firstAttribute="leading" secondItem="v2u-cP-21o" secondAttribute="leading" id="698-BY-mqi"/>
                         <constraint firstAttribute="trailing" secondItem="5Yc-c7-irg" secondAttribute="trailing" id="E4Z-zu-6js"/>
-                        <constraint firstAttribute="trailing" secondItem="pYf-qf-rDK" secondAttribute="trailing" constant="16" id="Gfm-nE-Xvo"/>
+                        <constraint firstAttribute="trailing" secondItem="pYf-qf-rDK" secondAttribute="trailing" id="Gfm-nE-Xvo"/>
                         <constraint firstAttribute="bottom" secondItem="pYf-qf-rDK" secondAttribute="bottom" id="QjF-ec-3vx"/>
                         <constraint firstItem="5Yc-c7-irg" firstAttribute="leading" secondItem="v2u-cP-21o" secondAttribute="leading" id="Yqz-Nk-CYh"/>
                         <constraint firstItem="pYf-qf-rDK" firstAttribute="top" secondItem="5Yc-c7-irg" secondAttribute="bottom" id="zu4-Hp-v55"/>

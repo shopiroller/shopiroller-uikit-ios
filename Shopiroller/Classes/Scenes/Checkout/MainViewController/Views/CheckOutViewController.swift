@@ -21,6 +21,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var viewControllerTitle: UILabel!
     @IBOutlet private weak var confirmOrderButtonContainer: UIView!
     @IBOutlet private weak var confirmOrderButton: UIButton!
+    @IBOutlet private weak var bottomSafeAreaLayout: UIView!
+    
     
     var index = 0
     
@@ -132,6 +134,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     
     private func setButton() {
+        bottomSafeAreaLayout.isHidden = !nextPageButton.isHidden
         confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
         confirmOrderButtonContainer.backgroundColor = .textPrimary
         confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
