@@ -37,6 +37,8 @@ extension UIColor {
     
     static let dangerBadge: UIColor = #colorLiteral(red: 0.9622779489, green: 0.848692596, blue: 0.847093761, alpha: 1)
     
+    static let badgeDanger: UIColor = #colorLiteral(red: 0.9615475535, green: 0.8469256759, blue: 0.8453296423, alpha: 1)
+    
     static let textSecondary: UIColor = #colorLiteral(red: 0.2695193887, green: 0.3161548376, blue: 0.3300221562, alpha: 1)
     
     static let skeletonDarkColor: UIColor = #colorLiteral(red: 25.0, green: 30.0, blue: 255.0, alpha: 1.0)
