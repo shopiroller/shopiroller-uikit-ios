@@ -61,7 +61,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             productDiscountContainer.makeCardView()
             productDiscountContainer.layer.masksToBounds = true
-            productDiscountContainer.backgroundColor = .badgeSecondary
+            productDiscountContainer.backgroundColor = .badgeDanger
             productDiscountLabel.text = viewModel.discount
             productDiscountLabel.font = .semiBold12
             
@@ -88,7 +88,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         if viewModel.isShippingFree() {
             productImageFreeShippingContainer.isHidden = false
             freeShippingLabel.textColor = .white
-            freeShippingLabel.text = Constants.freeShipping
+            freeShippingLabel.text = Constants.freeShipping.uppercased()
             freeShippingLabel.font = .bold9
             productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
             productImageFreeShippingContainer.layer.cornerRadius = 5
