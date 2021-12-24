@@ -9,7 +9,7 @@ import Foundation
 
 struct SROrderResponseInnerModel: Codable {
     
-    var order : SROrderModel?
+    var order : OrderDetailModel?
     var payment : SROrderPaymentResultModel?
     var key : String?
     var message : String?

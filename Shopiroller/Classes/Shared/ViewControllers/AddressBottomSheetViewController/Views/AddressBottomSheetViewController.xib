@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressBottomSheetViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="addressTitleView" destination="1Vx-Wr-ap4" id="zCG-fY-nlx"/>
-                <outlet property="addressView" destination="ple-ZJ-xoa" id="rDS-MR-n9r"/>
                 <outlet property="billingAddressContainer" destination="lSv-84-b6d" id="ERx-tM-GL1"/>
                 <outlet property="citiesContainerView" destination="hpb-py-7bu" id="GTg-1V-zaR"/>
                 <outlet property="closeButton" destination="2Ex-de-gTj" id="d57-ug-G1j"/>
@@ -39,6 +36,7 @@
                 <outlet property="taxOfficeView" destination="A65-rJ-fpz" id="mzx-Y3-TGO"/>
                 <outlet property="titleLabel" destination="das-Nz-2us" id="tTL-9H-cGs"/>
                 <outlet property="topViewContainer" destination="8FI-ZP-1qE" id="idu-Xo-9to"/>
+                <outlet property="userAddressView" destination="ple-ZJ-xoa" id="rDS-MR-n9r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="zipCodeView" destination="HfS-dJ-lLV" id="4Wd-aV-Hon"/>
             </connections>
@@ -49,7 +47,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxg-w5-1ma">
-                    <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FI-ZP-1qE">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
@@ -506,7 +504,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhu-k8-u2C">
-                    <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="846" width="414" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-0T-cJc">
                             <rect key="frame" x="15" y="0.0" width="384" height="50"/>

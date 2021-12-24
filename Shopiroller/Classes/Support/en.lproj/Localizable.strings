@@ -96,7 +96,7 @@
 "order_details_bank_account" = "Account: ";
 "order_details_bank_iban" = "Iban: ";
 "order_details_address_delivery" = "Delivery Address";
-"order_details_address_shipping" = "Billing Address";
+"order_details_address_billing" = "Billing Address";
 "order_details_quantity" = "Piece: ";
 
 // MARK: - Address List

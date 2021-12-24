@@ -159,6 +159,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         addToCardButton.tintColor = .white
         addToCardButton.setTitleColor(.white)
         addToCardButton.titleLabel?.font = .semiBold16
+        
         if #available(iOS 15.0, *) {
             addToCardButton.configuration?.imagePadding = 15
         } else {
@@ -167,13 +168,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         let sumQuantityRecognizer = UITapGestureRecognizer(target: self, action: #selector(sumImageTapped(_:)))
         sumImage.addGestureRecognizer(sumQuantityRecognizer)
-        sumImage.image = UIImage(systemName: "plus.circle")
+        
         sumImage.tintColor = .black
         sumImage.isUserInteractionEnabled = true
         
         let minusQuantityRecognizer = UITapGestureRecognizer(target: self, action: #selector(minusImageTapped(_:)))
         minusImage.addGestureRecognizer(minusQuantityRecognizer)
-        minusImage.image = UIImage(systemName: "minus.circle")
         minusImage.tintColor = .black
         minusImage.isUserInteractionEnabled = true
         
@@ -197,6 +197,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         getPaymentSettings()
         
         quantityCountLabel.text = "1"
+        quantityCountLabel.font = .semiBold14
+        quantityCountLabel.textColor = .textPrimary
         
     }
     
@@ -432,7 +434,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             freeShippingContainer.makeCardView()
             freeShippingContainer.backgroundColor = .black
             freeShippingLabel.textColor = .white
-            freeShippingLabel.text = Constants.freeShippingText
+            freeShippingLabel.font = .bold10
+            freeShippingLabel.text = Constants.freeShippingText.uppercased()
+            
         } else {
             freeShippingContainer.isHidden = true
             shippingPriceContainer.isHidden = false

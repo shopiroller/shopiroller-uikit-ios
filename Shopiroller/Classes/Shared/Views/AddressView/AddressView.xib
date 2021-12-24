@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressView" customModule="Shopiroller" customModuleProvider="target">
             <connections>
-                <outlet property="address" destination="2Vf-8t-LjH" id="CYT-lg-2aC"/>
-                <outlet property="addressImageView" destination="y90-tx-1Ja" id="jxX-fJ-6Fu"/>
-                <outlet property="title" destination="ehw-nr-ihg" id="CHP-Zj-MS6"/>
+                <outlet property="addressImageView" destination="y90-tx-1Ja" id="O1f-qC-Nar"/>
+                <outlet property="addressLabel" destination="2Vf-8t-LjH" id="Di6-HC-q5Y"/>
+                <outlet property="addressTitle" destination="ehw-nr-ihg" id="jSV-pr-hew"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

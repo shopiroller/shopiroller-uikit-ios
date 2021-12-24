@@ -42,6 +42,9 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var addressHeight: NSLayoutConstraint!
     @IBOutlet private weak var productsHeight: NSLayoutConstraint!
     
+    @IBOutlet private weak var userShippingAddressView: AddressView!
+    @IBOutlet private weak var userBillingAddressView: AddressView!
+    
     
     init(viewModel: OrderDetailViewModel){
         super.init("order-detail-page-title".localized, viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
@@ -109,17 +112,8 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         
         bottomPriceView.setup(model: viewModel.getBottomPriceModel())
       
-        for item in viewModel.getAddressList() {
-            let view = AddressView()
-            view.setup(model: item)
-            addressDataStackView.addArrangedSubview(view)
-            NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalToConstant: 100),
-                view.heightAnchor.constraint(equalToConstant: 100),
-            ])
-        }
-        
-        addressHeight.constant = 222
+        userShippingAddressView.configure(model: viewModel.getUserShippingAddressModel())
+        userBillingAddressView.configure(model: viewModel.getUserBillingAddressModel())
         
         if let list = viewModel.getProductList() {
             

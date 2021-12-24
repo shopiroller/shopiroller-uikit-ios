@@ -104,11 +104,12 @@ class OrderDetailViewModel: BaseViewModel {
         return BottomPriceModel(subTotalPrice: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), shippingPrice: detail?.shippingPrice, totalPrice: detail?.totalPrice, currency: detail?.currency)
     }
     
-    func getAddressList() -> [AddressCellModel] {
-        var arr: [AddressCellModel] = []
-        arr.append(AddressCellModel(type: .delivery, address: String(format: detail?.shippingAdress?.getDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .deliveryAddress))
-        arr.append(AddressCellModel(type: .shipping, address: String(format: detail?.shippingAdress?.getBillingDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .billingAddress))
-        return arr
+    func getUserShippingAddressModel() -> AddressCellModel {
+        return AddressCellModel(type: .shipping, address: detail?.shippingAddress?.getDescriptionArea() ?? "", image: .deliveryAddress)
+    }
+    
+    func getUserBillingAddressModel() -> AddressCellModel {
+        return AddressCellModel(type: .billing, address: detail?.billingAddress?.getBillingDescriptionArea() ?? "", image: .billingAddress)
     }
     
     func getProductList() -> [SROrderProductModel]? {

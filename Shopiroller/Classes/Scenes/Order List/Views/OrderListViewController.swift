@@ -65,14 +65,8 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
     }
     
     private func getOrderDetail() {
-        viewModel.getOrderDetail(success: {
-            DispatchQueue.main.async {
-                guard let viewController = self.viewModel.selectedOrderDetailViewController else { return }
-                self.prompt(viewController, animated: true, completion: nil)
-            }
-        }) { [weak self] (errorViewModel) in
-            guard let self = self else { return }
-        }
+        let viewController = OrderDetailViewController(viewModel: OrderDetailViewModel(detail: self.viewModel.getOrderDetailModel()))
+        self.prompt(viewController, animated: true, completion: nil)
     }
     
     func actionButtonClicked(_ sender: Any) {

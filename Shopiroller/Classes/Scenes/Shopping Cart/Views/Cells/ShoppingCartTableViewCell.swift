@@ -63,28 +63,28 @@ class ShoppingCartTableViewCell: UITableViewCell {
         self.delegate = delegate
         self.cellIndexAtRow = index
         
-        if let imageUrl = model.product?.featuredImage?.thumbnail {
-            productImage.kf.setImage(with: URL(string: imageUrl))
+        if let imageUrl = model.product?.featuredImage?.normal {
+            productImage.setImages(url: imageUrl)
         }
       
         title.text = model.product?.title
         
         if let campaignPrice = model.product?.campaignPrice,
-            let productPrice = model.product?.price,
            let quantity = model.quantity {
             
             if(campaignPrice != 0) {
                 price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 
-                let campaignPrice = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
+                let campaignPrice = ECommerceUtil.getFormattedPrice(price: (model.product?.price ?? 0) * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: campaignPrice)
                 attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
                 
                 discount.attributedText = attributeString
-            } else {
-                discount.isHidden = true
-                price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
+                
             }
+        } else if let productPrice = model.product?.price {
+            discount.isHidden = true
+            price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(model.quantity ?? 1), currency: model.product?.currency?.currencySymbol)
         }
         
         count.text = String(model.quantity ?? 0)
@@ -100,7 +100,6 @@ class ShoppingCartTableViewCell: UITableViewCell {
             warningLabel.text = String(format: "shopping_cell_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
             productImageToStackView.constant = 10
         }
-        
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
@@ -125,3 +124,4 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     
 }
+

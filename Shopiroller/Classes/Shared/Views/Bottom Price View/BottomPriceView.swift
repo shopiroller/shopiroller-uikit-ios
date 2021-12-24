@@ -29,7 +29,7 @@ class BottomPriceView: BaseView {
  
         subTotal.text = "bottom_price_view_subtotal".localized + ECommerceUtil.getFormattedPrice(price: model.subTotalPrice, currency: model.currency)
         
-        let shippingPrice = (model.shippingPrice == 0.0) ? "bottom_price_view_free".localized  : ECommerceUtil.getFormattedPrice(price: model.shippingPrice, currency: model.currency)
+        let shippingPrice = ECommerceUtil.getFormattedPrice(price: model.shippingPrice, currency: model.currency)
         
         shipping.text = "bottom_price_view_shipping".localized + shippingPrice
         

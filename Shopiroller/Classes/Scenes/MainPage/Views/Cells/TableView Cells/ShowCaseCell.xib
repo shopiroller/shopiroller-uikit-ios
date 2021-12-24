@@ -13,7 +13,7 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nxn-7P-FfL" customClass="ShowCaseCell" customModule="Shopiroller" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="241" height="254"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKE-44-smS">
+            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKE-44-smS">
                 <rect key="frame" x="0.0" y="0.0" width="241" height="254"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -30,7 +30,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="32"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-mL-uwF">
-                                                        <rect key="frame" x="0.0" y="9" width="30" height="14"/>
+                                                        <rect key="frame" x="0.0" y="16" width="30" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -39,10 +39,8 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Wal-mL-uwF" firstAttribute="centerY" secondItem="odE-cm-DvQ" secondAttribute="centerY" id="86q-WZ-fxA"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Wal-mL-uwF" secondAttribute="bottom" constant="9" id="O7x-8z-W20"/>
                                                     <constraint firstAttribute="trailing" secondItem="Wal-mL-uwF" secondAttribute="trailing" id="Ytp-s6-mmo"/>
                                                     <constraint firstItem="Wal-mL-uwF" firstAttribute="leading" secondItem="odE-cm-DvQ" secondAttribute="leading" id="prh-rd-R2J"/>
-                                                    <constraint firstItem="Wal-mL-uwF" firstAttribute="top" secondItem="odE-cm-DvQ" secondAttribute="top" constant="9" id="swR-sS-Wg2"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="8Ca-1m-Dc0">
@@ -96,7 +94,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6i-ZT-vHF">
                                 <rect key="frame" x="0.0" y="40" width="241" height="199"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VrC-vT-JQp">
+                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VrC-vT-JQp">
                                         <rect key="frame" x="15" y="0.0" width="226" height="199"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hXr-Z9-Lyp">
