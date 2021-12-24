@@ -32,7 +32,7 @@ public class BaseView: UIView {
     }
     
     private func getNib() -> UINib {
-        let bundle = Bundle(for: Self.self)
+        let bundle = Bundle.shopiroller
         return UINib(nibName: nibName(), bundle: bundle)
     }
     
