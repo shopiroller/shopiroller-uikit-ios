@@ -29,7 +29,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private var group : DispatchGroup? = nil
     
     public init(viewModel: SRMainPageViewModel) {
-        super.init("explore-page-title".localized, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
+        super.init(nil, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
     
     public override func setup() {

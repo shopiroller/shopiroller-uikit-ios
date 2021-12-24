@@ -103,7 +103,7 @@ extension UIViewController {
     func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
-        button.tintColor = .black
+        button.tintColor = .white
         button.setImage(image)
         button.translatesAutoresizingMaskIntoConstraints = true
         button.layer.masksToBounds = false
@@ -166,7 +166,7 @@ extension UIViewController {
     
     func initializeNavigationBar() {
         navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = ShopirollerApp.shared.navigationBarColor
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
@@ -178,8 +178,6 @@ extension UIViewController {
         
         if isBackButtonActive == true {
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        }else {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         }
         
         navigationItem.rightBarButtonItems = rightBarButtonItems

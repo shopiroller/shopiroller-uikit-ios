@@ -6,15 +6,19 @@
 //
 
 import Foundation
+import UIKit
 
 public class ShopirollerApp {
     
     public static var shared = ShopirollerApp()
     
-    public func initiliaze(appKey: String, apiKey: String, baseUrl: String) {
+    public var navigationBarColor: UIColor? = .black
+    
+    public func initiliaze(appKey: String, apiKey: String, baseUrl: String, color: UIColor) {
         
         print(Bundle(for: ShopirollerApp.self).bundleIdentifier)
         
+        self.navigationBarColor = color
         
         UIFont.jbs_registerFont(
             withFilenameString: "Poppins-Bold.ttf",
