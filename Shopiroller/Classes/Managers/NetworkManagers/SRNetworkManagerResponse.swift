@@ -16,7 +16,6 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
     var errors: [String]?
     
     //Only For Orders
-    var order : SROrderModel?
     var paymentResult: SROrderPaymentResultModel?
 
     enum CodingKeys: String, CodingKey {
@@ -26,7 +25,6 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
         case key = "key"
         case message = "message"
         case errors = "errors"
-        case order = "order"
         case paymentResult = "paymentResult"
     }
     

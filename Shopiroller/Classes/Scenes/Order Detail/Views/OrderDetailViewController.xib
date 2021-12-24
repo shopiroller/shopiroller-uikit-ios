@@ -36,6 +36,8 @@
                 <outlet property="productsSeparator" destination="r9Y-Lh-bey" id="Hdr-Zg-6tZ"/>
                 <outlet property="productsStackView" destination="NlO-F9-NIk" id="KHB-Ad-TNL"/>
                 <outlet property="productsTitleLabel" destination="c0t-IC-Gy0" id="00H-D0-6jl"/>
+                <outlet property="userBillingAddressView" destination="mgi-NM-gpO" id="SWa-nu-dUg"/>
+                <outlet property="userShippingAddressView" destination="1lK-tu-zuK" id="qNB-4r-5uu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,7 +50,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="748"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="LCF-O5-liO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="449.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="671.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wec-lO-qyd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
@@ -82,7 +84,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="successOrder.png" translatesAutoresizingMaskIntoConstraints="NO" id="XDf-wR-KAz">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDf-wR-KAz">
                                             <rect key="frame" x="339" y="20" width="60" height="74"/>
                                         </imageView>
                                     </subviews>
@@ -159,7 +161,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M0w-mp-ajw" userLabel="addressStackView">
-                                    <rect key="frame" x="0.0" y="347.5" width="414" height="31.5"/>
+                                    <rect key="frame" x="0.0" y="347.5" width="414" height="253.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-Fz-d2k">
                                             <rect key="frame" x="15" y="0.0" width="384" height="21.5"/>
@@ -168,23 +170,34 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XFm-yQ-1ea" userLabel="addressDataStackView">
-                                            <rect key="frame" x="15" y="31.5" width="384" height="0.0"/>
+                                            <rect key="frame" x="15" y="31.5" width="384" height="222"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lK-tu-zuK" customClass="AddressView" customModule="Shopiroller" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="106"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgi-NM-gpO" customClass="AddressView" customModule="Shopiroller" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="116" width="384" height="106"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" id="Oi9-j7-cSw"/>
+                                                <constraint firstItem="mgi-NM-gpO" firstAttribute="height" secondItem="1lK-tu-zuK" secondAttribute="height" id="Exf-Nk-enF"/>
+                                                <constraint firstAttribute="height" constant="222" id="Oi9-j7-cSw"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
                                 </stackView>
                                 <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9Y-Lh-bey" userLabel="productsSeparator">
-                                    <rect key="frame" x="0.0" y="398" width="414" height="1"/>
+                                    <rect key="frame" x="0.0" y="620" width="414" height="1"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="PjB-ed-CAf"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NlO-F9-NIk" userLabel="productsStackView">
-                                    <rect key="frame" x="0.0" y="418" width="414" height="31.5"/>
+                                    <rect key="frame" x="0.0" y="640" width="414" height="31.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0t-IC-Gy0">
                                             <rect key="frame" x="15" y="0.0" width="384" height="21.5"/>
@@ -237,7 +250,6 @@
         </view>
     </objects>
     <resources>
-        <image name="successOrder.png" width="60" height="74"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

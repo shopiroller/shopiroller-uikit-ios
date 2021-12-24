@@ -47,7 +47,7 @@ class OrderTableViewCell: UITableViewCell {
         containerView.layer.borderColor = UIColor.textSecondary10.cgColor
     }
     
-    func setup(model: SROrderModel) {
+    func setup(model: OrderDetailModel) {
         orderNo.text = Constants.orderNo + (model.orderCode ?? "")
         date.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.ddMMMMyyy)
         time.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.EEEEhhmm)

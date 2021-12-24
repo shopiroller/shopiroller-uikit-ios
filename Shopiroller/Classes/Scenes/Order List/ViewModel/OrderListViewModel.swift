@@ -22,9 +22,8 @@ class OrderListViewModel: BaseViewModel {
         self.isOpenedFromResult = isOpenedFromResult
     }
     
-    var orderList: [SROrderModel]?
+    var orderList: [OrderDetailModel]?
     var selectedPosition: Int?
-    var selectedOrderDetailViewController: OrderDetailViewController?
     
     func getOrderList(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppConstants.Query.Values.userId), URLQueryItem(name: "perPage", value: "50"),
@@ -35,24 +34,6 @@ class OrderListViewModel: BaseViewModel {
             switch result {
             case .success(let result):
                 self.orderList = result.data
-                DispatchQueue.main.async {
-                    success?()
-                }
-            case .failure(let err):
-                DispatchQueue.main.async {
-                    error?(ErrorViewModel(error: err))
-                }
-            }
-        }
-    }
-    
-    func getOrderDetail(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        guard let position = selectedPosition, let id = orderList?[position].id else { return }
-        SRNetworkManagerRequests.getOrder(orderId: id).response() {
-            (result) in
-            switch result {
-            case .success(let result):
-                self.selectedOrderDetailViewController = OrderDetailViewController(viewModel: OrderDetailViewModel(detail: result.data))
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -76,7 +57,7 @@ class OrderListViewModel: BaseViewModel {
         return orderList?.count ?? 0
     }
     
-    func getOrder(position: Int) -> SROrderModel? {
+    func getOrder(position: Int) -> OrderDetailModel? {
         return orderList?[position]
     }
     
@@ -84,7 +65,6 @@ class OrderListViewModel: BaseViewModel {
         return orderList?[position].id
     }
     
-    //TODO: CHange image
     func getEmptyModel() -> EmptyModel {
         return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: nil))
     }
@@ -93,6 +73,11 @@ class OrderListViewModel: BaseViewModel {
         return isOpenedFromResult
     }
     
-    
+    func getOrderDetailModel() -> OrderDetailModel? {
+        guard let selectedPosition = selectedPosition else {
+            return nil
+        }
+        return orderList?[selectedPosition]
+    }
     
 }
