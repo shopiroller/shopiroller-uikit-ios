@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -124,14 +125,25 @@
                             <constraint firstItem="6zQ-Su-pNM" firstAttribute="centerY" secondItem="shk-3Z-WWD" secondAttribute="centerY" id="z4R-8Z-qh4"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqL-8j-ArW">
+                        <rect key="frame" x="0.0" y="124" width="320" height="1"/>
+                        <viewLayoutGuide key="safeArea" id="gQf-03-N0W"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="dv9-hB-Zaz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5Sb-tf-O80" firstAttribute="leading" secondItem="MZf-8y-p5O" secondAttribute="trailing" constant="8" symbolic="YES" id="2WK-lc-VdW"/>
+                    <constraint firstAttribute="trailing" secondItem="WqL-8j-ArW" secondAttribute="trailing" id="5Xi-4c-NW7"/>
                     <constraint firstItem="9hM-qD-bBj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="9bs-qU-q0O"/>
+                    <constraint firstItem="WqL-8j-ArW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jzi-gj-IZy"/>
                     <constraint firstAttribute="trailing" secondItem="tLC-ih-w9p" secondAttribute="trailing" id="Ma7-oN-X3c"/>
                     <constraint firstItem="tLC-ih-w9p" firstAttribute="top" secondItem="Uam-Nr-WsI" secondAttribute="bottom" constant="11" id="NAy-Mr-wrg"/>
                     <constraint firstItem="TiU-SS-6Ze" firstAttribute="top" secondItem="tLC-ih-w9p" secondAttribute="bottom" constant="1" id="NK1-TG-nSb"/>
                     <constraint firstAttribute="trailing" secondItem="M6L-Ys-VrD" secondAttribute="trailing" constant="42" id="NZq-eL-s2D"/>
+                    <constraint firstAttribute="bottom" secondItem="WqL-8j-ArW" secondAttribute="bottom" id="cWD-75-NOG"/>
                     <constraint firstAttribute="bottom" secondItem="MZf-8y-p5O" secondAttribute="bottom" constant="20" id="dxr-yZ-uZ4"/>
                     <constraint firstItem="MZf-8y-p5O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="htk-Va-uSD"/>
                     <constraint firstItem="9hM-qD-bBj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iBq-j7-6Hb"/>
@@ -149,6 +161,7 @@
                 <outlet property="count" destination="nsd-lW-DEl" id="Xg6-tQ-e5B"/>
                 <outlet property="deleteButton" destination="Uam-Nr-WsI" id="kiZ-32-0W4"/>
                 <outlet property="discount" destination="tLC-ih-w9p" id="7Lp-XU-nLe"/>
+                <outlet property="divider" destination="WqL-8j-ArW" id="syq-sM-Ojr"/>
                 <outlet property="minusButton" destination="shk-3Z-WWD" id="c1L-ZQ-yo0"/>
                 <outlet property="plusButton" destination="6zQ-Su-pNM" id="bXy-Zs-BdV"/>
                 <outlet property="price" destination="TiU-SS-6Ze" id="b5e-6e-6X6"/>
@@ -169,6 +182,9 @@
         <image name="trash.png" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

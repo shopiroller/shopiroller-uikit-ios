@@ -27,6 +27,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet private weak var count: UILabel!
     @IBOutlet private weak var plusButton: UIButton!
     
+    @IBOutlet private weak var divider: UIView!
+    
     @IBOutlet private weak var productImageToStackView: NSLayoutConstraint!
     
     private var model: ShoppingCartItem?
@@ -58,10 +60,12 @@ class ShoppingCartTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil, index: Int?) {
+    func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil, index: Int?,isLast: Bool) {
         self.model = model
         self.delegate = delegate
         self.cellIndexAtRow = index
+        
+        divider.isHidden = isLast
         
         if let imageUrl = model.product?.featuredImage?.normal {
             productImage.setImages(url: imageUrl)
