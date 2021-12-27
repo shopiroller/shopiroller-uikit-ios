@@ -9,7 +9,6 @@ import Foundation
 
 struct SROrderProductModel: Codable {
     
-    
     var id : String?
     var title : String?
     var featuredImage : ProductImageModel?
