@@ -35,5 +35,24 @@ enum PaymentTypeEnum: String, Codable {
             return "Stripe3DS"
         }
     }
+    
+    var description: String {
+        switch self {
+        case .PayAtDoor:
+            return "checkout-payment-selected-payment-method-pay-at-the-door-placeholder".localized
+        case .Online:
+            return "checkout-payment-selected-payment-method-credit-cart-placeholder".localized
+        case .Online3DS:
+            return "checkout-payment-selected-payment-method-credit-cart-placeholder".localized
+        case .Transfer:
+            return "checkout-payment-selected-payment-method-transfer-bank-placeholder".localized
+        case .PayPal:
+            return "checkout-payment-selected-payment-method-paypal-placeholder".localized
+        case .Stripe:
+            return "checkout-payment-selected-payment-method-stripe-placeholder".localized
+        case .Stripe3DS:
+            return "checkout-payment-selected-payment-method-stripe-placeholder".localized
+        }
+    }
 
 }
