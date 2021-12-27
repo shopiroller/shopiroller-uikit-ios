@@ -186,19 +186,13 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         case .Online3DS , .Online:
             creditCartContainerView.isHidden = false
             creditCartNumberLabel.text = viewModel.getCreditCartNumber()
-        case .PayAtDoor:
-            break
-        case .PayPal:
-            break
-        case .Stripe , .Stripe3DS:
-            break
         case .Transfer:
             bankTransferContainerView.isHidden = false
             bankAccountIban.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_iban".localized, viewModel.getBankAccountIban() ?? "")
             bankAccountName.text = viewModel.getBankName()
             bankAccountUserName.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_receiver".localized, viewModel.getBankAccountHolderNameSurname() ?? "")
             bankAccountNumber.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_account".localized, viewModel.getBankAccountNumber() ?? "")
-        case .none:
+        default:
             break
         }
     }
