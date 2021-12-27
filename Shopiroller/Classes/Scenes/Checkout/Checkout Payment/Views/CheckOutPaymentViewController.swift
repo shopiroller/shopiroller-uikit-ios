@@ -20,8 +20,9 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         static var creditCartNumberPlaceholder : String { return "checkout-payment-credit-card-number-placeholder".localized }
         static var creditCartExpireDatePlaceholder : String { return "checkout-payment-credit-card-expire-date-placeholer".localized }
         static var creditCartCvvPlaceholder : String { return "checkout-payment-credit-card-cvv-placeholder".localized }
-        static var payAtTheDoorDescription: String {
-            return "checkout-payment-pay-at-the-door-description".localized
+        static var payAtTheDoorDescription: String { return "checkout-payment-pay-at-the-door-description".localized }
+        static var payWithStripeDescription: String { return "checkout-payment-selected-payment-method-stripe-placeholder".localized }
+        static var payWithPaypalDescription: String { return "checkout-payment-selected-payment-method-paypal-placeholder".localized
         }
     }
     
@@ -216,8 +217,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
-            selectedMethodViewTitle.text = PaymentTypeEnum.PayPal.rawValue.uppercased().localized
-            selectedMethodTitle.text = PaymentTypeEnum.PayPal.rawValue
+            selectedMethodViewTitle.text = Constants.payWithPaypalDescription.uppercased()
+            selectedMethodTitle.text = Constants.payWithPaypalDescription
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
@@ -230,9 +231,11 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         case .none:
             break
         case .Stripe:
-            print("Stripe")
+            selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
+            selectedMethodTitle.text = Constants.payWithStripeDescription
         case .Stripe3DS:
-            print("Stripe3DS")
+            selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
+            selectedMethodTitle.text = Constants.payWithStripeDescription
         }
     }
     

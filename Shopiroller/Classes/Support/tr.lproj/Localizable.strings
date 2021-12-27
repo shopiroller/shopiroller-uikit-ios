@@ -92,14 +92,17 @@
 "Paypal" = "PayPal ile Ödeme";
 
 // MARK: - Order Details
+"order_details_order_info_title" = "Sipariş Bilgisi";
+"order_details_payment_info_title" = "Ödeme Bilgisi";
+"order_details_address_info_title" = "Adres Bilgisi";
+"order_details_products_info_title" = "Ürünler";
 "order_details_bank_receiver" = "Alıcı İsmi: ";
-"order_details_bank_account" = "Hesap : ";
+"order_details_bank_account" = "Hesap Numarası : ";
 "order_details_bank_iban" = "Iban Numarası: ";
-"order_details_bank_subtotal" = "Toplam Tutar: ";
-"order_details_bank_shipping" = "Kargolama: ";
 "order_details_address_delivery" = "Teslimat Adresi";
 "order_details_address_billing" = "Fatura Adresi";
-"order_details_quantity" = "Parça: ";
+"order_details_quantity" = "Adet: ";
+"order_details_iban_text_copied" = "Panoya Kopyalandı.";
 
 // MARK: - Address List
 "address_list_page_title" = "Adreslerim";
@@ -223,6 +226,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-payment-selected-payment-method-credit-cart-placeholder" = "Kredi Kartı";
 "checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Banka Transferi";
 "checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Kapıda Ödeme";
+"checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
 "checkout-payment-credit-card-holder-placeholder" = "Kart Sahibinin Adı";
 "checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
 "checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";

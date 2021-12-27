@@ -52,7 +52,7 @@ enum AddressType: String {
         case .billing:
             return "order_details_address_billing".localized
         case .shipping:
-            return "order_details_address_shipping".localized
+            return "order_details_address_delivery".localized
         }
     }
 }

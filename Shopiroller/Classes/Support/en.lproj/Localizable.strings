@@ -92,12 +92,17 @@
 "Paypal" = "PayPal";
 
 // MARK: - Order Details
+"order_details_order_info_title" = "Order Informatıon";
+"order_details_payment_info_title" = "Payment Information";
+"order_details_address_info_title" = "Address Information";
+"order_details_products_info_title" = "Products";
 "order_details_bank_receiver" = "Receiver Name: ";
 "order_details_bank_account" = "Account: ";
 "order_details_bank_iban" = "Iban: ";
 "order_details_address_delivery" = "Delivery Address";
 "order_details_address_billing" = "Billing Address";
 "order_details_quantity" = "Piece: ";
+"order_details_iban_text_copied" = "Copied The Clipboard.";
 
 // MARK: - Address List
 "address_list_page_title" = "My Addresses";
@@ -220,6 +225,8 @@
 "checkout-payment-selected-payment-method-credit-cart-placeholder" = "Credit Cart";
 "checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Bank Transfer";
 "checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Pay At The Door";
+"checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
 "checkout-payment-credit-card-holder-placeholder" = "Card Holder Name";
 "checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
 "checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
