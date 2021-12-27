@@ -84,7 +84,7 @@ class OrderDetailViewModel: BaseViewModel {
     }
     
     func getCreditCartNumber() -> String? {
-        return detail?.cardNumber != nil ? detail?.cardNumber : ""
+       return  "**** **** **** \(detail?.cardNumber?.suffix(4) ?? "")" 
     }
     
     func getPaymentType() -> PaymentTypeEnum? {
