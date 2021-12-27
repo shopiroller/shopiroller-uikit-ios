@@ -506,7 +506,7 @@ public extension UIView {
         let wrapperWidth = max((imageRect.size.width + (style.horizontalPadding * 2.0)), (longerX + longerWidth + style.horizontalPadding))
         let wrapperHeight = max((messageRect.origin.y + messageRect.size.height), (imageRect.size.height + (style.verticalPadding * 2.0)))
         
-        wrapperView.frame = CGRect(x: 0.0, y: 0.0, width: wrapperWidth, height: wrapperHeight)
+        wrapperView.frame = CGRect(x: 0.0, y: 350.0, width: wrapperWidth, height: wrapperHeight)
         
         if let titleLabel = titleLabel {
             titleRect.size.width = longerWidth
@@ -546,7 +546,7 @@ public struct ToastStyle {
     /**
      The background color. Default is `.black` at 80% opacity.
      */
-    public var backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.8)
+    public var backgroundColor: UIColor = UIColor.textPrimary.withAlphaComponent(0.75)
     
     /**
      The title color. Default is `UIColor.whiteColor()`.

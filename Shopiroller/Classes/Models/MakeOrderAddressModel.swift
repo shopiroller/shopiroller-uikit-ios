@@ -56,7 +56,7 @@ struct MakeOrderAddressModel: Codable {
             , city
             , " / " , state , " / " , country
             , String.NEW_LINE
-            , "%s"
+            , "%@"
             , " - "
             , phoneNumber
             , String.NEW_LINE
@@ -68,7 +68,7 @@ struct MakeOrderAddressModel: Codable {
             , city
             , " / " , state , " / " , country
             , String.NEW_LINE
-            , "%s"
+            , "%@"
             , " - "
             , phoneNumber
             , String.NEW_LINE
