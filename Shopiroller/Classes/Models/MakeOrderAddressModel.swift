@@ -38,7 +38,7 @@ struct MakeOrderAddressModel: Codable {
     }
     
     func getDescriptionArea() -> String {
-        return [description
+        return [ description
                 , String.NEW_LINE
                 , city
                 , " / " , state , " / " , country
@@ -51,7 +51,7 @@ struct MakeOrderAddressModel: Codable {
     
     func getBillingDescriptionArea() -> String {
         if (taxOffice != nil && taxOffice != ""){
-            return [description
+            return [ description
             , String.NEW_LINE
             , city
             , " / " , state , " / " , country
@@ -63,7 +63,7 @@ struct MakeOrderAddressModel: Codable {
             , taxOffice , " - " , taxNumber].compactMap { $0 }
             .joined(separator: " ")}
         else{
-            return [description
+            return [ description
             , String.NEW_LINE
             , city
             , " / " , state , " / " , country

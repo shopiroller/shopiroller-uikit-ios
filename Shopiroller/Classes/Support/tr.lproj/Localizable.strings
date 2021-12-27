@@ -109,9 +109,9 @@
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
 "address_list_empty_shipping_title" = "Teslimat Adresi Bulunamadı";
-"address_list_empty_shipping_description" = "İlk adresinizi ekleyerek alışverişe başlayabilirsiniz.";
+"address_list_empty_shipping_description" = "Kayıtlı Teslimat adres bulunamadı. Lütfen yeni bir adres ekleyin.";
 "address_list_empty_billing_title" = "Fatura Adresi Bulunamadı";
-"address_list_empty_billing_description" = "Fatura adresinizi ekleyerek alışverişe başlayabilirsiniz";
+"address_list_empty_billing_description" = "Kayıtlı Fatura adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
 "address_list_delivery_address_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
 "address_list_billing_address_delete_success" = "Fatura adresi başarıyla silinmiştir.";
 

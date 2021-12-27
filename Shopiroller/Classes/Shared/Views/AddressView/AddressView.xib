@@ -27,14 +27,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vf-8t-LjH">
-                    <rect key="frame" x="15" y="42" width="180" height="0.0"/>
+                    <rect key="frame" x="15" y="37" width="190" height="0.0"/>
                     <attributedString key="attributedText"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y90-tx-1Ja" userLabel="addressImageView">
-                    <rect key="frame" x="275" y="50" width="40" height="40"/>
+                    <rect key="frame" x="285" y="55" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="DvL-BR-SSa"/>
+                        <constraint firstAttribute="height" constant="30" id="DvL-BR-SSa"/>
                         <constraint firstAttribute="width" secondItem="y90-tx-1Ja" secondAttribute="height" multiplier="1:1" id="F44-3l-Al7"/>
                     </constraints>
                 </imageView>
@@ -42,9 +42,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="y90-tx-1Ja" firstAttribute="centerY" secondItem="io3-Ky-Ot9" secondAttribute="centerY" id="4BG-ZW-6Cb"/>
-                <constraint firstItem="ehw-nr-ihg" firstAttribute="bottom" secondItem="2Vf-8t-LjH" secondAttribute="top" constant="-10" id="8jR-eU-5w3"/>
                 <constraint firstItem="ehw-nr-ihg" firstAttribute="leading" secondItem="io3-Ky-Ot9" secondAttribute="leading" constant="15" id="Cat-Ht-ami"/>
                 <constraint firstAttribute="trailing" secondItem="y90-tx-1Ja" secondAttribute="trailing" constant="15" id="NRm-Tg-NkT"/>
+                <constraint firstItem="2Vf-8t-LjH" firstAttribute="top" secondItem="ehw-nr-ihg" secondAttribute="bottom" constant="5" id="Zff-yw-Sxc"/>
                 <constraint firstItem="y90-tx-1Ja" firstAttribute="leading" secondItem="2Vf-8t-LjH" secondAttribute="trailing" constant="80" id="k0e-D9-paB"/>
                 <constraint firstItem="ehw-nr-ihg" firstAttribute="top" secondItem="io3-Ky-Ot9" secondAttribute="top" constant="15" id="y9x-yG-CQH"/>
                 <constraint firstItem="2Vf-8t-LjH" firstAttribute="leading" secondItem="io3-Ky-Ot9" secondAttribute="leading" constant="15" id="yDL-my-Yk1"/>
