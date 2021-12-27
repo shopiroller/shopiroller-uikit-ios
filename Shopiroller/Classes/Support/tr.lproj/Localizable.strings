@@ -97,7 +97,7 @@
 "order_details_address_info_title" = "Adres Bilgisi";
 "order_details_products_info_title" = "Ürünler";
 "order_details_bank_receiver" = "Alıcı İsmi: ";
-"order_details_bank_account" = "Hesap Numarası : ";
+"order_details_bank_account" = "Hesap Numarası: ";
 "order_details_bank_iban" = "Iban Numarası: ";
 "order_details_address_delivery" = "Teslimat Adresi";
 "order_details_address_billing" = "Fatura Adresi";
