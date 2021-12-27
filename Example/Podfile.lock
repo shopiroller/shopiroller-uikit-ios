@@ -54,7 +54,7 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
-  - Shopiroller (0.1.1):
+  - Shopiroller (0.1.2):
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
@@ -92,7 +92,7 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Shopiroller: bb42359991ce1079d4a0048d5b2a79b48b421883
+  Shopiroller: 5768aabae5d0f32aade4c09a3da0d9af258da0c5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
