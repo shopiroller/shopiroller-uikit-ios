@@ -167,13 +167,13 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.shopingItemCount()
+        return viewModel.shoppingItemCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
         guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
-        cell.setup(model: model, self,index: indexPath.row)
+        cell.setup(model: model, self,index: indexPath.row,isLast: self.viewModel.shoppingItemCount() - 1 == indexPath.row)
         return cell
     }
 }

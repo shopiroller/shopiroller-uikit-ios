@@ -11,6 +11,8 @@ public class BaseView: UIView {
     
     init() {
         super.init(frame: .zero)
+        setupFromNib()
+        setup()
     }
     
     override init(frame: CGRect) {

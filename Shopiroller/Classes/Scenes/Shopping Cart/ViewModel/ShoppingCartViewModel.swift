@@ -123,7 +123,7 @@ class ShoppingCartViewModel: BaseViewModel {
         return false
     }
     
-    func shopingItemCount() -> Int {
+    func shoppingItemCount() -> Int {
         return shoppingCart?.items?.count ?? 0
     }
     

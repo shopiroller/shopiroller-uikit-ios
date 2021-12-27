@@ -12,6 +12,8 @@ class OrderDetailViewModel: BaseViewModel {
     
     private let detail: OrderDetailModel?
     
+    private var addressList : [AddressCellModel] = []
+    
     init(detail: OrderDetailModel?) {
         self.detail = detail
     }
@@ -51,74 +53,56 @@ class OrderDetailViewModel: BaseViewModel {
     }
     
     func getPaymentMethodTitle() -> String? {
-        return detail?.paymentType?.title
+        return detail?.paymentType?.description
     }
    
     func isOnlineOrOnline3DS() -> Bool {
         return detail?.paymentType == .Online || detail?.paymentType == .Online3DS
     }
     
-    func getPaymentLabels() -> [UILabel] {
-        var labelArr: [UILabel] = []
-        if((detail?.paymentType == .Online || detail?.paymentType == .Online3DS) && detail?.cardNumber != nil){
-            labelArr.append(getLabel(text: detail?.cardNumber))
-        }else if(detail?.paymentType == .Transfer){
-            if(detail?.paymentAccount != nil) {
-                let bankName = [detail?.paymentAccount?.name, " - ", detail?.paymentAccount?.accountName, " / ", detail?.paymentAccount?.accountCode]
-                    .compactMap { $0 }
-                    .joined(separator: " ")
-                labelArr.append(getLabel(text: bankName))
-                if let value = detail?.paymentAccount?.nameSurname {
-                    labelArr.append(getLabel(attributedText: ECommerceUtil.getBoldNormal("order_details_bank_receiver".localized, value)))
-                }
-                if let value = detail?.paymentAccount?.accountNumber {
-                    labelArr.append(getLabel(attributedText: ECommerceUtil.getBoldNormal("order_details_bank_account".localized, value)))
-                }
-                if let value = detail?.paymentAccount?.accountAddress {
-                    let label = getLabel(attributedText: ECommerceUtil.getBoldNormal("order_details_bank_iban".localized, value))
-                    let tap = UITapGestureRecognizer(target: self, action: #selector(OrderDetailViewModel.onClickIbanText))
-                    label.isUserInteractionEnabled = true
-                    label.addGestureRecognizer(tap)
-                    labelArr.append(label)
-                }
-            }else if(detail?.bankAccount != nil){
-                labelArr.append(getLabel(text: detail?.bankAccount))
-            }
-        }
-        return labelArr
+    func getBankName() -> String {
+        let bankName = [detail?.paymentAccount?.name, " - ", detail?.paymentAccount?.accountName, " / ", detail?.paymentAccount?.accountCode]
+            .compactMap { $0 }
+            .joined(separator: " ")
+        return bankName
     }
     
-    private func getLabel(text: String? = nil, attributedText: NSMutableAttributedString? = nil) -> UILabel {
-        let label = UILabel()
-        label.textColor = .textPCaption
-        if attributedText != nil {
-            label.attributedText = attributedText
-        } else {
-            label.text = text
-            label.font = .regular12
-        }
-        return label
+    func getBankAccountCode() -> String? {
+        return detail?.paymentAccount?.accountCode
+    }
+    
+    func getBankAccountHolderNameSurname() -> String? {
+        return detail?.paymentAccount?.nameSurname
+    }
+    
+    func getBankAccountIban() -> String? {
+        return detail?.paymentAccount?.accountAddress
+    }
+    
+    func getBankAccountNumber() -> String? {
+        return detail?.paymentAccount?.accountNumber
+    }
+    
+    func getCreditCartNumber() -> String? {
+       return  "**** **** **** \(detail?.cardNumber?.suffix(4) ?? "")" 
+    }
+    
+    func getPaymentType() -> PaymentTypeEnum? {
+        return detail?.paymentType
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
         return BottomPriceModel(subTotalPrice: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), shippingPrice: detail?.shippingPrice, totalPrice: detail?.totalPrice, currency: detail?.currency)
     }
     
-    func getUserShippingAddressModel() -> AddressCellModel {
-        return AddressCellModel(type: .shipping, address: detail?.shippingAddress?.getDescriptionArea() ?? "", image: .deliveryAddress)
-    }
-    
-    func getUserBillingAddressModel() -> AddressCellModel {
-        return AddressCellModel(type: .billing, address: detail?.billingAddress?.getBillingDescriptionArea() ?? "", image: .billingAddress)
+    func getAddressList() -> [AddressCellModel] {
+        addressList.append(AddressCellModel(type: .shipping, address: String(format: detail?.shippingAddress?.getDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .deliveryAddress))
+        addressList.append(AddressCellModel(type: .billing, address: String(format: detail?.billingAddress?.getBillingDescriptionArea() ?? "", detail?.getFullName() ?? ""), image: .billingAddress))
+        return addressList
     }
     
     func getProductList() -> [SROrderProductModel]? {
         return detail?.productList
-    }
-    
-    @objc
-    func onClickIbanText(sender:UITapGestureRecognizer) {
-        UIPasteboard.general.string = detail?.paymentAccount?.accountAddress
     }
     
     func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {

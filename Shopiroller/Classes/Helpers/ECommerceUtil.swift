@@ -27,7 +27,17 @@ class ECommerceUtil {
     
     static func getFormattedPrice(price: Double?, currency: String?) -> String {
         guard let price = price, let currency = currency else { return "" }
-        return String(format: "%.2f", price) + " " + currency
+        let formatter = NumberFormatter()
+        if (currency == "TRY" || currency == "₺") {
+            formatter.decimalSeparator = ","
+        } else {
+            formatter.decimalSeparator = "."
+        }
+        let number = NSNumber(value: price)
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return "\(formatter.string(from: number) ?? "0.0") \(currency)"
     }
     
    static func getBoldNormal(_ bold: String, _ normal: String) -> NSMutableAttributedString {

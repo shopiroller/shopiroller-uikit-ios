@@ -51,7 +51,7 @@ class OrderDetailModel: Codable {
     }
     
     func getFullName() -> String? {
-          return  (buyer?.name ?? "") +  (buyer?.surname ?? "")
+        return (buyer?.name ?? "") + " " +  (buyer?.surname ?? "")
     }
     
 }

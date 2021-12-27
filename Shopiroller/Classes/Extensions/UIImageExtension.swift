@@ -18,7 +18,7 @@ extension UIImage {
     
     // MARK: Project Images
     
-    static let billingAddress: UIImage = UIImage(named: "billingAddress", in: .shopiroller, with: nil)!
+    static let billingAddress: UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
     
     static let cargoShippingImage: UIImage = UIImage(named: "cargoShippingImage", in: .shopiroller, with: nil)!
     

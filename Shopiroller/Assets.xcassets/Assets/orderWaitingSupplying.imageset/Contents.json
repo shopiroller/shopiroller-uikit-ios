@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "orderWaitingSupplying@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "orderWaitingSupplying@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

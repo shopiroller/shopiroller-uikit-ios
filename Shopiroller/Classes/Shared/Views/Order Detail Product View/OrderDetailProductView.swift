@@ -14,13 +14,15 @@ class OrderDetailProductView: BaseView {
     @IBOutlet private weak var orderTitle: UILabel!
     @IBOutlet private weak var orderPiece: UILabel!
     @IBOutlet private weak var orderPrice: UILabel!
+    @IBOutlet private weak var divider: UIView!
     
-    func setup(model: SROrderProductModel) {
-        super.setup()
+    func configure(model: SROrderProductModel,isLast: Bool) {
         
         if let url = model.featuredImage?.thumbnail {
             orderImage.kf.setImage(with: URL(string: url))
         }
+        
+        divider.isHidden = isLast
         
         orderTitle.textColor = .textPCaption
         orderTitle.text = model.title
@@ -30,7 +32,7 @@ class OrderDetailProductView: BaseView {
             orderPiece.attributedText = ECommerceUtil.getBoldNormal("order_details_quantity".localized, String(quantity))
         }
         
-        let calculatedPrice: Double? = (model.campaignPrice == 0) ? model.paidPrice : model.campaignPrice
+        let calculatedPrice: Double? = (model.paidPrice == 0) ? model.campaignPrice : model.paidPrice
         
         orderPrice.text = ECommerceUtil.getFormattedPrice(price:(calculatedPrice ?? 0 * Double(model.quantity ?? 0)), currency: model.currency?.currencySymbol)
     }
