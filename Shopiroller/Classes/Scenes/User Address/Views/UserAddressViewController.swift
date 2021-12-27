@@ -33,8 +33,7 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
         addChild(pageVC)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         
-        let font : UIFont = .medium14
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.medium14], for: .normal)
         
         containerView.addSubview(pageVC.view)
         
