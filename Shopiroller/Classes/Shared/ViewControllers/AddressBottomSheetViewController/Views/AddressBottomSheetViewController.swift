@@ -106,7 +106,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     @IBOutlet private weak var surnameView: SRTextField!
     @IBOutlet private weak var phoneNumberView: SRTextField!
     @IBOutlet private weak var countryView: SRTextField!
-    @IBOutlet private weak var addressView: SRTextField!
+    @IBOutlet private weak var userAddressView: SRTextField!
     @IBOutlet private weak var zipCodeView: SRTextField!
     @IBOutlet private weak var addressTitleView: SRTextField!
     @IBOutlet private weak var individualCheckBoxButton: UIButton!
@@ -208,11 +208,11 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         districtView.getTextField().delegate = self
         districtView.getTextField().addCustomTextAction(title: Constants.addressTextFieldText, target: self, selector: #selector(nextActionCitiesTextField))
         
-        addressView.getTextField().placeholder = Constants.addressTextFieldText
-        addressView.getTextField().returnKeyType = .next
-        addressView.getTextField().delegate = self
-        addressView.getTextField().keyboardType = .alphabet
-        addressView.getTextField().addNextAction(target: self, selector: #selector(nextActionAddressTextField))
+        userAddressView.getTextField().placeholder = Constants.addressTextFieldText
+        userAddressView.getTextField().returnKeyType = .next
+        userAddressView.getTextField().delegate = self
+        userAddressView.getTextField().keyboardType = .alphabet
+        userAddressView.getTextField().addNextAction(target: self, selector: #selector(nextActionAddressTextField))
         
         zipCodeView.getTextField().placeholder = Constants.zipCodeTextFieldText
         zipCodeView.getTextField().returnKeyType = .next
@@ -305,7 +305,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func nextActionAddressTextField() {
-        _ = textFieldShouldReturn(addressView.getTextField())
+        _ = textFieldShouldReturn(userAddressView.getTextField())
     }
     
     @objc func nextActionZipCodeTextField() {
@@ -397,7 +397,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         nameView.resignFirstResponder()
         surnameView.resignFirstResponder()
         phoneNumberView.resignFirstResponder()
-        addressView.resignFirstResponder()
+        userAddressView.resignFirstResponder()
         zipCodeView.resignFirstResponder()
         identityNumberView.resignFirstResponder()
         companyNameView.resignFirstResponder()
@@ -417,7 +417,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         nameView.resignFirstResponder()
         surnameView.resignFirstResponder()
         phoneNumberView.resignFirstResponder()
-        addressView.resignFirstResponder()
+        userAddressView.resignFirstResponder()
         zipCodeView.resignFirstResponder()
         identityNumberContainer.resignFirstResponder()
         companyNameView.resignFirstResponder()
@@ -436,7 +436,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         nameView.resignFirstResponder()
         surnameView.resignFirstResponder()
         phoneNumberView.resignFirstResponder()
-        addressView.resignFirstResponder()
+        userAddressView.resignFirstResponder()
         zipCodeView.resignFirstResponder()
         companyNameView.resignFirstResponder()
         taxNumberView.resignFirstResponder()
@@ -544,14 +544,14 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 districtView.removeError()
             }
         }
-        if (addressView.getTextField().text == "") {
-            addressView.setError(errorMessage: ErrorConstants.addressEmptyError)
+        if (userAddressView.getTextField().text == "") {
+            userAddressView.setError(errorMessage: ErrorConstants.addressEmptyError)
             isValid = false
-        } else if (addressView.getTextField().text?.count ?? 0 < 3) {
-            addressView.setError(errorMessage: ErrorConstants.addressValidationError)
+        } else if (userAddressView.getTextField().text?.count ?? 0 < 3) {
+            userAddressView.setError(errorMessage: ErrorConstants.addressValidationError)
             isValid = false
         } else {
-            addressView.removeError()
+            userAddressView.removeError()
         }
         if (zipCodeView.getTextField().text == "") {
             zipCodeView.setError(errorMessage: ErrorConstants.zipCodeEmptyError)
@@ -614,7 +614,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 var editBillingAddress: EditAddressModel? = EditAddressModel()
                 editBillingAddress?.apiKey = SRNetworkContext.apiKey
                 editBillingAddress?.appKey = SRNetworkContext.appKey
-                editBillingAddress?.addressLine = addressView.getTextField().text
+                editBillingAddress?.addressLine = userAddressView.getTextField().text
                 editBillingAddress?.country = countryView.getTextField().text
                 editBillingAddress?.state = statesView.getTextField().placeholder
                 editBillingAddress?.city = districtView.getTextField().placeholder
@@ -641,7 +641,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 var editShippingAddress: EditAddressModel? = EditAddressModel()
                 editShippingAddress?.apiKey = SRNetworkContext.apiKey
                 editShippingAddress?.appKey = SRNetworkContext.appKey
-                editShippingAddress?.addressLine = addressView.getTextField().text
+                editShippingAddress?.addressLine = userAddressView.getTextField().text
                 editShippingAddress?.country = countryView.getTextField().text
                 editShippingAddress?.state = statesView.getTextField().placeholder
                 editShippingAddress?.city = districtView.getTextField().placeholder
@@ -681,7 +681,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                     }
                 }
                 phoneNumberView.getTextField().text = userShippingAddress.contact?.phoneNumber
-                addressView.getTextField().text = userShippingAddress.addressLine
+                userAddressView.getTextField().text = userShippingAddress.addressLine
                 countryView.getTextField().text = userShippingAddress.country
                 districtView.getTextField().placeholder = userShippingAddress.city
                 statesView.getTextField().placeholder = userShippingAddress.state
@@ -703,7 +703,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                     }
                 }
                 phoneNumberView.getTextField().text = userBillingAddress.contact?.phoneNumber
-                addressView.getTextField().text = userBillingAddress.addressLine
+                userAddressView.getTextField().text = userBillingAddress.addressLine
                 countryView.getTextField().text = userBillingAddress.country
                 districtView.getTextField().placeholder = userBillingAddress.city
                 statesView.getTextField().placeholder = userBillingAddress.state
@@ -730,7 +730,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .shipping:
             viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
             viewModel.addAddressModel.appKey = SRNetworkContext.appKey
-            viewModel.addAddressModel.addressLine = addressView.getTextField().text
+            viewModel.addAddressModel.addressLine = userAddressView.getTextField().text
             viewModel.addAddressModel.country = countryView.getTextField().text
             viewModel.addAddressModel.state = statesView.getTextField().text
             viewModel.addAddressModel.city = districtView.getTextField().text
@@ -756,7 +756,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .billing:
             viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
             viewModel.addAddressModel.appKey = SRNetworkContext.appKey
-            viewModel.addAddressModel.addressLine = addressView.getTextField().text
+            viewModel.addAddressModel.addressLine = userAddressView.getTextField().text
             viewModel.addAddressModel.city = districtView.getTextField().text
             viewModel.addAddressModel.country = countryView.getTextField().text
             viewModel.addAddressModel.state = statesView.getTextField().text
@@ -881,8 +881,8 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
         case statesView:
             districtView.becomeFirstResponder()
         case districtView:
-            addressView.becomeFirstResponder()
-        case addressView:
+            userAddressView.becomeFirstResponder()
+        case userAddressView:
             zipCodeView.becomeFirstResponder()
         case zipCodeView:
             addressTitleView.becomeFirstResponder()
