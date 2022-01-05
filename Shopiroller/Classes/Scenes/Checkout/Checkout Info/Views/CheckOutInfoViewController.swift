@@ -231,8 +231,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                     }
                 }
             }
-            viewModel.makeOrder?.buyer.email = "gorkemgur@mobiroller.com"
-            viewModel.makeOrder?.userId = SRAppConstants.Query.Values.userId
+            viewModel.makeOrder?.buyer.email = SRAppContext.userEmail
+            viewModel.makeOrder?.userId = SRAppContext.userId
             viewModel.makeOrder?.bankAccount = SRSessionManager.shared.orderEvent.bankAccount?.accountToString
             viewModel.makeOrder?.paymentAccount = SRSessionManager.shared.orderEvent.bankAccount
             viewModel.makeOrder?.bankAccountModel = SRSessionManager.shared.orderEvent.bankAccount

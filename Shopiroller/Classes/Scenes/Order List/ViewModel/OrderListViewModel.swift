@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class OrderListViewModel: BaseViewModel {
+public class OrderListViewModel: BaseViewModel {
     
     private struct Constants {
         static var emptyOrdersTitle: String { return "empty-orders-title".localized }
@@ -26,7 +26,7 @@ class OrderListViewModel: BaseViewModel {
     var selectedPosition: Int?
     
     func getOrderList(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppConstants.Query.Values.userId), URLQueryItem(name: "perPage", value: "50"),
+        let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppContext.userId), URLQueryItem(name: "perPage", value: "50"),
                              URLQueryItem(name: "orderBy", value: "OrderByDescending"),]
         
         SRNetworkManagerRequests.getOrderList(urlQueryItems: urlQueryItems).response() {

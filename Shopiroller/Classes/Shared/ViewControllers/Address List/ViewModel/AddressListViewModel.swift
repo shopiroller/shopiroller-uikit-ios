@@ -29,7 +29,7 @@ class AddressListViewModel: BaseViewModel {
     }
     
     private func getShippingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppContext.userId).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -46,7 +46,7 @@ class AddressListViewModel: BaseViewModel {
     }
     
     private func getBillingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppContext.userId).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -74,7 +74,7 @@ class AddressListViewModel: BaseViewModel {
     private func deleteShippingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         guard let index = selectedIndexPathRow, let addressId = shippingAddressList?[index].id else { return }
         
-        SRNetworkManagerRequests.deleteShippingAddress(userId: SRAppConstants.Query.Values.userId, addressId: addressId).response() {
+        SRNetworkManagerRequests.deleteShippingAddress(userId: SRAppContext.userId, addressId: addressId).response() {
             (result) in
             switch result{
             case .success(_):
@@ -93,7 +93,7 @@ class AddressListViewModel: BaseViewModel {
     private func deleteBillingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         guard let index = selectedIndexPathRow, let addressId = billingAddressList?[index].id else { return }
         
-        SRNetworkManagerRequests.deleteBillingAddress(userId: SRAppConstants.Query.Values.userId, addressId: addressId).response() {
+        SRNetworkManagerRequests.deleteBillingAddress(userId: SRAppContext.userId, addressId: addressId).response() {
             (result) in
             switch result{
             case .success(_):

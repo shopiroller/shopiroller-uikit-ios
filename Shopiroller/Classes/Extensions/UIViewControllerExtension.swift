@@ -103,7 +103,7 @@ extension UIViewController {
     func createNavigationItem(_ image: UIImage? ,_ selector: SRAppConstants.NavigationItemSelectorType? = nil) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
-        button.tintColor = .black
+        button.tintColor = ShopirollerApp.shared.theme.navigationIconsTintColor
         button.setImage(image)
         button.translatesAutoresizingMaskIntoConstraints = true
         button.layer.masksToBounds = false
@@ -124,8 +124,12 @@ extension UIViewController {
     }
     
     @objc func goToCard() {
-        prompt(ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+        if ShopirollerApp.shared.isUserLoggedIn() {
+            prompt(ShoppingCartViewController(viewModel: ShoppingCartViewModel())
                , animated: true, completion: nil)
+        } else {
+            ShopirollerApp.shared.delegate?.userLoginNeeded()
+        }
     }
     
     @objc func searchProduct() {
@@ -156,23 +160,22 @@ extension UIViewController {
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
-    @objc func openMenu() {
-    
-    }
-    
     @objc func goBack() {
         pop(animated: true, completion: nil)
     }
     
     func initializeNavigationBar() {
         navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = ShopirollerApp.shared.navigationBarColor
+        navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
+//        navigationController?.navigationBar.barTintColor = ShopirollerApp.shared.theme.navigationBarTintColor
+        
+        let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+        
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
         initializeNavigationBar()
-        let menuButton = createNavigationItem(.menuIcon)
-        menuButton.addTarget(self, action: #selector(openMenu), for: .touchUpInside)
         
         let backButton = createNavigationItem(.backIcon , .goBack)
         

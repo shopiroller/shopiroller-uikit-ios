@@ -15,7 +15,7 @@ class ShoppingCartViewModel: BaseViewModel {
     var indexAtRow: Int?
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getShoppingCart(userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(let result):
@@ -32,7 +32,7 @@ class ShoppingCartViewModel: BaseViewModel {
     }
     
     func clearShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.clearShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.clearShoppingCart(userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(_):
@@ -50,7 +50,7 @@ class ShoppingCartViewModel: BaseViewModel {
     
     func removeItemFromShoppingCart(itemId: String?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         guard let id = itemId else { return }
-        SRNetworkManagerRequests.removeItemFromShoppingCart(userId: SRAppConstants.Query.Values.userId, cartItemId: id).response() {
+        SRNetworkManagerRequests.removeItemFromShoppingCart(userId: SRAppContext.userId, cartItemId: id).response() {
             (result) in
             switch result {
             case .success(_):
@@ -65,7 +65,7 @@ class ShoppingCartViewModel: BaseViewModel {
     
     func updateItemQuantity(itemId: String?, quantity: Int?, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         guard let id = itemId else { return }
-        SRNetworkManagerRequests.updateItemQuantity(userId: SRAppConstants.Query.Values.userId, cartItemId: id, body: UpdateCartItemQuantity(amount: quantity)).response() {
+        SRNetworkManagerRequests.updateItemQuantity(userId: SRAppContext.userId, cartItemId: id, body: UpdateCartItemQuantity(amount: quantity)).response() {
             (result) in
             switch result {
             case .success(_):
@@ -79,7 +79,7 @@ class ShoppingCartViewModel: BaseViewModel {
     }
     
     func validateShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.validateShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.validateShoppingCart(userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(let result):

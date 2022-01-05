@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyViewDelegate {
+open class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyViewDelegate {
     
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
@@ -16,20 +16,20 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
         super.init("order-list-page-title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
-    override func setup() {
+    public override func setup() {
         super.setup()
         getCount()
         getOrderList()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if viewModel.isOpenedFromResultPage() == true {
             goBack()
         }
     }
     
-    override func goBack() {
+    public override func goBack() {
         let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
         self.prompt(mainPageVC, animated: true, completion: nil)
     }
@@ -51,7 +51,7 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
         }
     }
     
-    override func setupNavigationBar() {
+    public override func setupNavigationBar() {
         super.setupNavigationBar()
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
@@ -87,11 +87,11 @@ class OrderListViewController: BaseViewController<OrderListViewModel>, EmptyView
 
 extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return viewModel.orderListCount()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.reuseIdentifier, for: indexPath) as! OrderTableViewCell
         
         if indexPath.row == 0 {
@@ -107,7 +107,7 @@ extension OrderListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedPosition = indexPath.row
         self.getOrderDetail()
         tableView.deselectRow(at: indexPath, animated: true)

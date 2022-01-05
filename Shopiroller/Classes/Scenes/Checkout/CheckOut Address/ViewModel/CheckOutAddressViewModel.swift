@@ -21,7 +21,7 @@ class CheckOutAddressViewModel: BaseViewModel {
     private var userBillingAddressList : [UserBillingAdressModel]?
     
     func getDefaultAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getDefaultAddress(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getDefaultAddress(userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(let response):
@@ -102,7 +102,7 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     private func getShippingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getShippingAddresses(userId: SRAppContext.userId).response() {
             (result) in
             switch result{
             case .success(let response):
@@ -119,7 +119,7 @@ class CheckOutAddressViewModel: BaseViewModel {
     }
     
     private func getBillingAddressList(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getBillingAddresses(userId: SRAppContext.userId).response() {
             (result) in
             switch result{
             case .success(let response):

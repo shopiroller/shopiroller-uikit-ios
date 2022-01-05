@@ -206,9 +206,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
-        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
-        updateNavigationBar(rightBarButtonItems: [UIBarButtonItem(customView: shareButton),searchButton,cardButton],isBackButtonActive: true)
+//        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
+//        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
+        updateNavigationBar(rightBarButtonItems: [searchButton, cardButton], isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
     }
     
@@ -229,8 +229,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
+        initializeNavigationBar()
     }
     
     @objc func updateBadgeCount() {
@@ -269,6 +268,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         })
         
     }
+    
+    
     
     private func setTransparentNavigationBar() {
         navigationController!.navigationBar.backgroundColor = UIColor.clear

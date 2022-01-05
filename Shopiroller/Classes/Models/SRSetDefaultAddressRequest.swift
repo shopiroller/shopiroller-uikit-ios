@@ -8,8 +8,8 @@
 import Foundation
 
 struct SRSetDefaultAddressRequest: Codable{
-    var appKey: String = SRNetworkContext.appKey
-    var apiKey: String = SRNetworkContext.apiKey
+    var appKey: String = SRAppContext.appUserAppKey
+    var apiKey: String = SRAppContext.appUserApiKey
     var isDefault: Bool = true
     
     enum CodingKeys: String,CodingKey {

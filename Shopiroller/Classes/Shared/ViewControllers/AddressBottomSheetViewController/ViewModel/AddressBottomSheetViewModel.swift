@@ -45,7 +45,7 @@ class AddressBottomSheetViewModel : BaseViewModel {
     
     func addShippingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         
-        SRNetworkManagerRequests.addShippingAddress(addAddressModel,userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.addShippingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(_):
@@ -61,7 +61,7 @@ class AddressBottomSheetViewModel : BaseViewModel {
     }
     
     func addBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.addBillingAddress(addAddressModel,userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.addBillingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(_):
@@ -77,7 +77,7 @@ class AddressBottomSheetViewModel : BaseViewModel {
     }
     
     func addAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.addAddress(userId: SRAppConstants.Query.Values.userId, address: addAddressModel).response() {
+        SRNetworkManagerRequests.addAddress(userId: SRAppContext.userId, address: addAddressModel).response() {
             (result) in
             switch result {
             case .success(_):
@@ -148,7 +148,7 @@ class AddressBottomSheetViewModel : BaseViewModel {
     }
     
     func saveEdittedShippingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.editShippingAddress(editAddressModel, userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.editShippingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(_):
@@ -164,7 +164,7 @@ class AddressBottomSheetViewModel : BaseViewModel {
     }
     
     func saveEdittedBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.editBillingAddress(editAddressModel, userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.editBillingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(_):

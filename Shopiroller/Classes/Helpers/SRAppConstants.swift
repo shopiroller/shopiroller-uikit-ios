@@ -23,6 +23,12 @@ public struct SRAppConstants {
         
         struct Key {
             static let fontFamily = "font_family"
+            static let userId = "userId"
+            static let userEmail = "userEmail"
+            static let appKey = "appKey"
+            static let apiKey = "apiKey"
+            static let appUserAppKey = "appUserAppKey"
+            static let appUserApiKey = "appUserApiKey"
         }
         
         struct Notifications {

@@ -59,7 +59,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case.success(let response):
@@ -169,7 +169,7 @@ public class ProductDetailViewModel: BaseViewModel {
     }
     
     func getAppId() -> String? {
-        return SRNetworkContext.appKey
+        return SRAppContext.appKey
     }
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {

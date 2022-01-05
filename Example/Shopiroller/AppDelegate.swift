@@ -10,7 +10,12 @@ import Shopiroller
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
+    
+    func userLoginNeeded() {
+        
+    }
+    
     
     var window: UIWindow?
     
@@ -18,7 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        ShopirollerApp.shared.initiliaze(appKey: "", apiKey: "", baseUrl: "", color: .black)
+        var theme = ShopirollerTheme()
+        theme.navigationTitleTintColor = .green
+        theme.navigationBarTintColor = .red
+        theme.navigationIconsTintColor = .blue
+        
+        var ecommerce = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
+        var appUser = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "mobiroller.api.applyze.com")
+        
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
+        
+        ShopirollerApp.shared.setUserId("61c4168a2c630dd87543d153")
+        ShopirollerApp.shared.setUserEmail("gorkem@mobiroller.com")
+        ShopirollerApp.shared.delegate = self
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
         
         window?.rootViewController = navigationController

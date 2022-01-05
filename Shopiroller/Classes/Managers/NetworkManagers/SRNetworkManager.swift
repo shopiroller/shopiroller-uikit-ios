@@ -107,8 +107,8 @@ final public class SRNetworkManager {
     
     static var additionalHeaders: [String: String?] {
         var headers: [String: String] = [:]
-        headers[SRAppConstants.Header.apiKey] = SRNetworkContext.apiKey
-        headers[SRAppConstants.Header.appKey] = SRNetworkContext.appKey
+        headers[SRAppConstants.Header.apiKey] = SRAppContext.apiKey
+        headers[SRAppConstants.Header.appKey] = SRAppContext.appKey
         //        headers[AppConstants.Header.appVersion] = AppInfo.appVersion
         //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
         //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName
@@ -121,8 +121,8 @@ final public class SRNetworkManager {
     
     static var additionalUserHeaders: [String: String?] {
         var headers: [String: String] = [:]
-        headers[SRAppConstants.Header.apiKey] = SRNetworkContext.userApiKey
-        headers[SRAppConstants.Header.appKey] = SRNetworkContext.userAppKey
+        headers[SRAppConstants.Header.apiKey] = SRAppContext.appUserApiKey
+        headers[SRAppConstants.Header.appKey] = SRAppContext.appUserAppKey
         //        headers[AppConstants.Header.appVersion] = AppInfo.appVersion
         //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
         //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName

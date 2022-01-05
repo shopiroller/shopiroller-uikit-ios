@@ -16,7 +16,7 @@ class CheckOutInfoViewModel: BaseViewModel {
     var isOrderNoteChanged: Bool = false
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getShoppingCart(userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.getShoppingCart(userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(let result):
@@ -88,7 +88,7 @@ class CheckOutInfoViewModel: BaseViewModel {
     }
     
     func sendOrder(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.makeOrder(makeOrder ?? SRMakeOrderResponse(), userId: SRAppConstants.Query.Values.userId).response() {
+        SRNetworkManagerRequests.makeOrder(makeOrder ?? SRMakeOrderResponse(), userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case .success(let response):

@@ -8,7 +8,7 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 
-class UserAddressViewController: BaseViewController<UserAddressViewModel> {
+open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var containerView: UIView!
@@ -17,16 +17,16 @@ class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     private var pageVC: AddressListPageViewController?
     
-    init(viewModel: UserAddressViewModel){
+    public init(viewModel: UserAddressViewModel){
         super.init("address_list_page_title".localized, viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
     }
     
-    override func setupNavigationBar() {
+    public override func setupNavigationBar() {
         super.setupNavigationBar()
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
-    override func setup() {
+    public override func setup() {
         super.setup()
         getCount()
         let pageVC = AddressListPageViewController(addressDelegate: self)

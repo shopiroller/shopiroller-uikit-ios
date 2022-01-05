@@ -612,8 +612,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .billing:
             if let userBillingAddress = viewModel.getBillingAddress(){
                 var editBillingAddress: EditAddressModel? = EditAddressModel()
-                editBillingAddress?.apiKey = SRNetworkContext.apiKey
-                editBillingAddress?.appKey = SRNetworkContext.appKey
+                editBillingAddress?.apiKey = SRAppContext.appUserApiKey
+                editBillingAddress?.appKey = SRAppContext.appUserAppKey
                 editBillingAddress?.addressLine = userAddressView.getTextField().text
                 editBillingAddress?.country = countryView.getTextField().text
                 editBillingAddress?.state = statesView.getTextField().placeholder
@@ -639,8 +639,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         case .shipping:
             if let userShippingAddress = viewModel.getShippingAddress() {
                 var editShippingAddress: EditAddressModel? = EditAddressModel()
-                editShippingAddress?.apiKey = SRNetworkContext.apiKey
-                editShippingAddress?.appKey = SRNetworkContext.appKey
+                editShippingAddress?.apiKey = SRAppContext.appUserApiKey
+                editShippingAddress?.appKey = SRAppContext.appUserAppKey
                 editShippingAddress?.addressLine = userAddressView.getTextField().text
                 editShippingAddress?.country = countryView.getTextField().text
                 editShippingAddress?.state = statesView.getTextField().placeholder
@@ -728,8 +728,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func saveAddress() {
         switch viewModel.getAddressType() {
         case .shipping:
-            viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
-            viewModel.addAddressModel.appKey = SRNetworkContext.appKey
+            viewModel.addAddressModel.apiKey = SRAppContext.appUserApiKey
+            viewModel.addAddressModel.appKey = SRAppContext.appUserAppKey
             viewModel.addAddressModel.addressLine = userAddressView.getTextField().text
             viewModel.addAddressModel.country = countryView.getTextField().text
             viewModel.addAddressModel.state = statesView.getTextField().text
@@ -754,8 +754,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 saveShippingAddress(isEditing: false)
             }
         case .billing:
-            viewModel.addAddressModel.apiKey = SRNetworkContext.apiKey
-            viewModel.addAddressModel.appKey = SRNetworkContext.appKey
+            viewModel.addAddressModel.apiKey = SRAppContext.appUserApiKey
+            viewModel.addAddressModel.appKey = SRAppContext.appUserAppKey
             viewModel.addAddressModel.addressLine = userAddressView.getTextField().text
             viewModel.addAddressModel.city = districtView.getTextField().text
             viewModel.addAddressModel.country = countryView.getTextField().text
