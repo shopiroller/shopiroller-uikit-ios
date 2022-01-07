@@ -237,8 +237,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
-        addProductToCart()
-        addToCardButton.isUserInteractionEnabled = false
+        if ShopirollerApp.shared.isUserLoggedIn() {
+            addProductToCart()
+            addToCardButton.isUserInteractionEnabled = false
+        } else {
+            ShopirollerApp.shared.delegate?.userLoginNeeded()
+        }
     }
     
     private func showAddProductAnimation() {
