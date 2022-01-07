@@ -9,6 +9,13 @@ import Foundation
 
 class SRGlobalRequestManager {
     static func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        
+        if !ShopirollerApp.shared.isUserLoggedIn() {
+            SRAppContext.shoppingCartCount = "0"
+            NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+            return
+        }
+        
         SRNetworkManagerRequests.getShoppingCartCount(userId: SRAppContext.userId).response() {
             (result) in
             switch result{
