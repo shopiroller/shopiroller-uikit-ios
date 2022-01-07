@@ -9,7 +9,7 @@ import Foundation
 
 struct UserBillingAdressModel: Codable {
     
-    var type: Int?
+    var type: String?
     var identityNumber: String?
     var companyName: String?
     var taxNumber: String?
@@ -61,7 +61,7 @@ struct UserBillingAdressModel: Codable {
     }
     
     func getListBillingDescriptionArea() -> String {
-        if(type == 1) {
+        if(type == "Corporate") {
             return [contact?.nameSurname
                     , String.NEW_LINE
                     , addressLine

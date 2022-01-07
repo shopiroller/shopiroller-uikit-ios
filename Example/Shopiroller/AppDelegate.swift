@@ -29,11 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         theme.navigationIconsTintColor = .blue
         
         var ecommerce = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
-        var appUser = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "mobiroller.api.applyze.com")
+        var appUser = ShopirollerCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "mobiroller.api.applyze.com")
         
         ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
         
-        ShopirollerApp.shared.setUserId("61c4168a2c630dd87543d153")
+        ShopirollerApp.shared.setUserId("61cc73512c630dd8754409d3")
         ShopirollerApp.shared.setUserEmail("gorkem@mobiroller.com")
         ShopirollerApp.shared.delegate = self
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
