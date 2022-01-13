@@ -23,13 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        var theme = ShopirollerTheme()
-        theme.navigationTitleTintColor = .green
-        theme.navigationBarTintColor = .red
-        theme.navigationIconsTintColor = .blue
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithOpaqueBackground()
+        coloredAppearance.backgroundColor = .red
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+               
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
-        var ecommerce = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
-        var appUser = ShopirollerCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "mobiroller.api.applyze.com")
+        var theme = ShopirollerTheme()
+        theme.navigationTitleTintColor = .white
+        theme.navigationBarTintColor = .red
+        theme.navigationIconsTintColor = .white
+        
+        
+        let ecommerce = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
+        let appUser = ShopirollerCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "mobiroller.api.applyze.com")
         
         ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
         

@@ -230,6 +230,15 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         initializeNavigationBar()
+        
+        navigationController!.navigationBar.setBackgroundImage(backgroundImage, for: .default)
+        navigationController?.navigationBar.isTranslucent = false
+        if let apperance = appearance {
+            navigationController?.navigationBar.standardAppearance = apperance
+            navigationController?.navigationBar.scrollEdgeAppearance = apperance
+        }
+        
+        navigationController!.navigationBar.backgroundColor = backgroundColor
     }
     
     @objc func updateBadgeCount() {
@@ -273,13 +282,20 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
     }
     
-    
+    var backgroundImage: UIImage?
+    var backgroundColor: UIColor?
+    var appearance: UINavigationBarAppearance?
     
     private func setTransparentNavigationBar() {
+        backgroundColor = navigationController!.navigationBar.backgroundColor
         navigationController!.navigationBar.backgroundColor = UIColor.clear
+        backgroundImage = navigationController!.navigationBar.backgroundImage(for: .default)
         navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        
+        appearance = navigationController?.navigationBar.standardAppearance
+        
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.isTranslucent = true
