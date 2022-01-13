@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class OrderListViewModel: BaseViewModel {
+open class OrderListViewModel: BaseViewModel {
     
     private struct Constants {
         static var emptyOrdersTitle: String { return "empty-orders-title".localized }
