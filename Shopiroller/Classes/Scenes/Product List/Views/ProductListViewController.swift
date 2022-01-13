@@ -76,8 +76,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
-        let moreButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [moreButton,searchButton,cartButton],isBackButtonActive: true)
+        updateNavigationBar(rightBarButtonItems:  [searchButton, cartButton],isBackButtonActive: true)
         cartButton.customView?.addSubview(badgeView)
     }
     

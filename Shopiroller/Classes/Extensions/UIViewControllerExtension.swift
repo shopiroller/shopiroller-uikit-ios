@@ -182,7 +182,9 @@ extension UIViewController {
         if isBackButtonActive == true {
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         }
-        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     
@@ -218,4 +220,5 @@ extension UIViewController {
         showAlert(title: "no-internet-connection-title".localized, message: "no-internet-connection-description".localized)
     }
 
+    
 }

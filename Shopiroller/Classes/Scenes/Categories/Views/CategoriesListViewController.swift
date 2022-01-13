@@ -65,8 +65,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
-        let shareButton = UIBarButtonItem(customView: createNavigationItem(.moreIcon , .openOptions))
-        updateNavigationBar(rightBarButtonItems: [shareButton,searchButton,cartButton],isBackButtonActive: true)
+        updateNavigationBar(rightBarButtonItems: [searchButton, cartButton],isBackButtonActive: true)
         cartButton.customView?.addSubview(badgeView)
     }
     
