@@ -284,8 +284,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.isTranslucent = true
             appearance.configureWithTransparentBackground()
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
         }
         topViewGradient.makeGradientLayer()
     }

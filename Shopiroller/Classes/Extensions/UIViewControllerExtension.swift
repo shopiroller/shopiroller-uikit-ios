@@ -167,8 +167,6 @@ extension UIViewController {
     func initializeNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
-//        navigationController?.navigationBar.barTintColor = ShopirollerApp.shared.theme.navigationBarTintColor
-        
         let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
         navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
         
