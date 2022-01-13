@@ -18,7 +18,7 @@ open class OrderListViewModel: BaseViewModel {
     
     private var isOpenedFromResult: Bool? = false
     
-    init(isOpenedFromResult: Bool? = false) {
+    public init(isOpenedFromResult: Bool? = false) {
         self.isOpenedFromResult = isOpenedFromResult
     }
     

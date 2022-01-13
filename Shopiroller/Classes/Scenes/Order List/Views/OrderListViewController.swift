@@ -12,7 +12,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
     
-    init(viewModel: OrderListViewModel){
+    public init(viewModel: OrderListViewModel){
         super.init("order-list-page-title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
