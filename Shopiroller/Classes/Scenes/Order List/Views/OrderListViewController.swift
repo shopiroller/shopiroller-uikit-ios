@@ -30,8 +30,12 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     }
     
     public override func goBack() {
-        let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-        self.prompt(mainPageVC, animated: true, completion: nil)
+        if viewModel.isOpenedFromResultPage() == true {
+            let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
+            self.prompt(mainPageVC, animated: true, completion: nil)
+        } else {
+            pop(animated: true, completion: nil)
+        }
     }
     
     private func configure(){
