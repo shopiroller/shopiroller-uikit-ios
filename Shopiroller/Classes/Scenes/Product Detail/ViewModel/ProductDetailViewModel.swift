@@ -156,6 +156,10 @@ public class ProductDetailViewModel: BaseViewModel {
         return productDetailModel?.maxQuantityPerOrder == quantityCount || productDetailModel?.stock == quantityCount
     }
     
+    func getMaxQuantityCount() -> String {
+        return productDetailModel?.maxQuantityPerOrder?.description ?? ""
+    }
+    
     func getReturnExchangeTerms() -> String? {
         return paymentSettings?.cancellationProcedure
     }
@@ -174,12 +178,12 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {
         popUpState = .returnExchange
-        return PopUpViewModel(image: .deliveryTerms, title: "return-exchange-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
+        return PopUpViewModel(image: .deliveryTerms, title: getCancellatioProdecureTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
     }
     
     func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
         popUpState = .deliveryTerms
-        return PopUpViewModel(image: .deliveryTerms, title: "delivery-terms-title".localized, description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
+        return PopUpViewModel(image: .deliveryTerms, title: getDeliveryConditionsTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
     }
     
     func getSoldOutPopUpViewModel() -> PopUpViewModel {
@@ -199,6 +203,15 @@ public class ProductDetailViewModel: BaseViewModel {
     func isUserFriendlyMessage() -> Bool {
         return self.isUserFriendly
     }
+    
+    func getDeliveryConditionsTitle() -> String {
+        return paymentSettings?.deliveryConditionsTitle ?? "delivery-terms-title".localized
+    }
+    
+    func getCancellatioProdecureTitle() -> String {
+        return paymentSettings?.cancellationProcedureTitle ?? "return-exchange-terms-title".localized
+    }
+    
 }
 
 enum PopUpState {

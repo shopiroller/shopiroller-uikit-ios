@@ -16,6 +16,8 @@ struct PaymentSettingsResponeModel: Codable {
     var distanceSalesContract : String?
     var paymentAccounts : [BankAccountModel]?
     var supportedPaymentTypes : [SupportedPaymentType]?
+    var deliveryConditionsTitle: String?
+    var cancellationProcedureTitle: String?
     
     enum CodingKeys: String, CodingKey {
         case description = "description"
@@ -24,6 +26,8 @@ struct PaymentSettingsResponeModel: Codable {
         case distanceSalesContract = "distanceSalesContract"
         case paymentAccounts = "paymentAccounts"
         case supportedPaymentTypes = "supportedPaymentTypes"
+        case deliveryConditionsTitle = "deliveryConditionsTitle"
+        case cancellationProcedureTitle = "cancellationProcedureTitle"
     }
 }
 

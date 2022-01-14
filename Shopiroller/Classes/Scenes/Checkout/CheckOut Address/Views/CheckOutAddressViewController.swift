@@ -171,7 +171,7 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
     func saveButtonTapped() {
         DispatchQueue.main.async {
-            self.getDefaultAddress()
+            self.getAddressList()
             self.view.layoutIfNeeded()
         }
         delegate?.showSuccessfullToastMessage()

@@ -100,7 +100,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBOutlet private weak var shippingPriceLabel: UILabel!
     @IBOutlet private weak var shippingImage: UIImageView!
     
-    @IBOutlet private weak var quantityCountLabel: UILabel!
+    @IBOutlet private weak var quantityTextField: UITextField!
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     
@@ -133,7 +133,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         returnExchangeContainer.clipsToBounds = true
         returnExchangeImage.image = UIImage(systemName: "chevron.right")
         returnExchangeImage.tintColor = .black
-        returnExchangeTitleLabel.text = Constants.returnExchangeTitle
         returnExchangeTitleLabel.font = .semiBold14
         
         deliveryTermsContainer.makeCardView()
@@ -141,7 +140,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         deliveryTermsContainer.clipsToBounds = true
         deliveryContainerImage.image = UIImage(systemName: "chevron.right")
         deliveryContainerImage.tintColor = .black
-        deliveryTermsTitleLabel.text = Constants.deliveryTitle
         deliveryTermsTitleLabel.font = .semiBold14
         
         quantityContainer.makeCardView()
@@ -196,9 +194,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         getPaymentSettings()
         
-        quantityCountLabel.text = "1"
-        quantityCountLabel.font = .semiBold14
-        quantityCountLabel.textColor = .textPrimary
+        quantityTextField.text = "1"
+        quantityTextField.font = .semiBold14
+        quantityTextField.textColor = .textPrimary
         
     }
     
@@ -350,6 +348,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             guard let self = self else { return }
             if errorViewModel.message == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
+                self.addToCardButton.isUserInteractionEnabled = true
             } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
                 self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
             } else if self.viewModel.isUserFriendlyMessage() {
@@ -361,25 +360,46 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @objc private func sumImageTapped(_ sender: Any) {
         sumImage.makeAnimation()
         if viewModel.isQuantityMax() {
-            sumImage.isUserInteractionEnabled = false
-            self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.quantityCount)))
+            setMaxItemQuantitySituation()
         } else {
             viewModel.quantityCount += 1
             minusImage.isUserInteractionEnabled = true
             sumImage.isUserInteractionEnabled = true
-            quantityCountLabel.text = "\(viewModel.quantityCount)"
+            quantityTextField.text = "\(viewModel.quantityCount)"
         }
+    }
+    
+    private func setMaxItemQuantitySituation() {
+        sumImage.isUserInteractionEnabled = false
+        self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.getMaxQuantity())))
     }
     
     @objc private func minusImageTapped(_ sender: Any) {
         minusImage.makeAnimation()
-        if quantityCountLabel.text == "1" {
+        if quantityTextField.text == "1" {
             return
         }else {
             viewModel.quantityCount -= 1
-            quantityCountLabel.text = "\(viewModel.quantityCount)"
+            quantityTextField.text = "\(viewModel.quantityCount)"
         }
     }
+    
+    @IBAction func textFieldEndEditing(_ textField: UITextField) {
+        switch textField {
+        case quantityTextField:
+            if(textField.text == "" || textField.text == nil) {
+                quantityTextField.text = "1"
+            }
+            else if (textField.text?.count ?? 0 > viewModel.getMaxQuantityCount().count) {
+                setMaxItemQuantitySituation()
+                quantityTextField.text = "\(viewModel.getMaxQuantity())"
+                viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
+            }
+        default:
+            break
+        }
+    }
+    
     
     @objc private func descriptionContainerTapped(_ sender: Any) {
         let vc = WebViewController(viewModel: WebViewViewModel(webViewHtml: viewModel.getDescription() ?? ""))
@@ -397,6 +417,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func setUI() {
+        
+        returnExchangeTitleLabel.text = viewModel.getCancellatioProdecureTitle()
+        deliveryTermsTitleLabel.text = viewModel.getDeliveryConditionsTitle()
         
         productTitleLabel.textColor = .textPrimary
         productTitleLabel.font = .bold24
@@ -567,5 +590,4 @@ extension ProductDetailViewController: UIScrollViewDelegate {
     }
     
 }
-
 
