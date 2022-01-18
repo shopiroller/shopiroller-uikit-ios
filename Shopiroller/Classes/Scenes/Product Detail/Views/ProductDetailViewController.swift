@@ -421,7 +421,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     private func setUI() {
         
-        returnExchangeTitleLabel.text = viewModel.getCancellatioProdecureTitle()
+        returnExchangeTitleLabel.text = viewModel.getCancellationProdecureTitle()
         deliveryTermsTitleLabel.text = viewModel.getDeliveryConditionsTitle()
         
         productTitleLabel.textColor = .textPrimary

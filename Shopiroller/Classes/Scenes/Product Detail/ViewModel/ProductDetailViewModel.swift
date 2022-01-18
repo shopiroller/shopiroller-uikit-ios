@@ -208,7 +208,7 @@ public class ProductDetailViewModel: BaseViewModel {
         return paymentSettings?.deliveryConditionsTitle ?? "delivery-terms-title".localized
     }
     
-    func getCancellatioProdecureTitle() -> String {
+    func getCancellationProdecureTitle() -> String {
         return paymentSettings?.cancellationProcedureTitle ?? "return-exchange-terms-title".localized
     }
     
