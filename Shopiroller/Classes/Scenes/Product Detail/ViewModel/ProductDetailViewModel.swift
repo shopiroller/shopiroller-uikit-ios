@@ -178,7 +178,7 @@ public class ProductDetailViewModel: BaseViewModel {
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {
         popUpState = .returnExchange
-        return PopUpViewModel(image: .deliveryTerms, title: getCancellatioProdecureTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
+        return PopUpViewModel(image: .deliveryTerms, title: getCancellationProdecureTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
     }
     
     func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
