@@ -540,6 +540,9 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-HS-kG0" customClass="AnimationView" customModule="Lottie">
                     <rect key="frame" x="0.0" y="207.5" width="414" height="491"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="progress_bar"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -557,9 +560,6 @@
             <point key="canvasLocation" x="131.8840579710145" y="79.6875"/>
         </view>
     </objects>
-    <designables>
-        <designable name="RHp-HS-kG0"/>
-    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

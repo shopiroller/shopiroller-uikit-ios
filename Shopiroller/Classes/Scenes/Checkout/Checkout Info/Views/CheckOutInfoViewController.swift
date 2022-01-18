@@ -211,9 +211,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     private func makeOrder() {
         if SRNetworkCheckHelper.isConnectedToNetwork(){
-            bottomPriceView.isHidden = true
-            if (!animationView.isAnimationPlaying){
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if (!self.animationView.isAnimationPlaying){
                     self.showAnimation()
                 }
             }
@@ -255,10 +254,20 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     private func showAnimation() {
-        animationView.isHidden = false
+        self.animationView.isHidden = false
+        self.bottomPriceView.isHidden = true
+        self.mainContainerView.isHidden = true
+        self.mainContainerView.backgroundColor = .white
         animationView.animation = Animation.named("progress_bar",bundle: .shopiroller)
+        animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFit
         animationView.play()
+    }
+    
+    private func stopAnimation() {
+        self.animationView.isHidden = true
+        self.animationView.stop()
+        self.bottomPriceView.isHidden = false
     }
     
     
@@ -270,11 +279,10 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 delay = Int(1500 - responseTime)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
-                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
-                    self.animationView.isHidden = true
-                    self.animationView.stop()
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
+                    self.stopAnimation()
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
                 }
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
             
         })
@@ -286,11 +294,11 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 delay = Int(1500 - responseTime)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
-                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
-                    self.animationView.isHidden = true
-                    self.animationView.stop()
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
+                    self.stopAnimation()
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
                 }
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+                
             }
             self.showAlertError(viewModel: errorViewModel)
         }
@@ -305,11 +313,11 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 delay = Int(1500 - responseTime)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
-                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
-                    self.animationView.isHidden = true
-                    self.animationView.stop()
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
+                    self.stopAnimation()
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
                 }
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+              
             }
             
         })
@@ -321,11 +329,10 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 delay = Int(1500 - responseTime)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
-                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType == .PayPal) {
-                    self.animationView.isHidden = true
-                    self.animationView.stop()
+                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
+                    self.stopAnimation()
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
                 }
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
             }
             self.showAlertError(viewModel: errorViewModel)
         }
@@ -404,7 +411,7 @@ extension CheckOutInfoViewController : UITextViewDelegate {
             viewModel.makeOrder?.userNote = ""
         }
     }
-   
+    
     func textViewDidChange(_ textView: UITextView) {
         viewModel.isOrderNoteChanged = true
     }
