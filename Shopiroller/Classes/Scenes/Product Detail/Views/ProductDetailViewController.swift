@@ -387,12 +387,15 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBAction func textFieldEndEditing(_ textField: UITextField) {
         switch textField {
         case quantityTextField:
+    
             if(textField.text == "" || textField.text == nil) {
                 quantityTextField.text = "1"
             }
-            else if (textField.text?.count ?? 0 > viewModel.getMaxQuantityCount().count) {
+            else if ((textField.text?.count ?? 0 > viewModel.getMaxQuantityCount().count) || textField.text ?? "1" > "\(viewModel.getMaxQuantity())" ) {
                 setMaxItemQuantitySituation()
                 quantityTextField.text = "\(viewModel.getMaxQuantity())"
+                viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
+            } else {
                 viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
             }
         default:
