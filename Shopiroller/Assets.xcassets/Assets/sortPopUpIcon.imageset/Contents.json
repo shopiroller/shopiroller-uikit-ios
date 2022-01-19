@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ıpdateCart.png",
+      "filename" : "sortPopUpIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ıpdateCart@2x.png",
+      "filename" : "sortPopUpIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ıpdateCart@3x.png",
+      "filename" : "sortPopUpIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

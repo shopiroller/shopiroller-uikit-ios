@@ -52,6 +52,8 @@ extension UIImage {
     
     static let sortIcon: UIImage = UIImage(named: "sortIcon", in: .shopiroller, with: nil)!
     
+    static let sortPopUpIcon: UIImage = UIImage(named: "sortPopUpIcon", in: .shopiroller, with: nil)!
+    
     static let validateCart: UIImage = UIImage(named: "updateCart", in: .shopiroller, with: nil)!
     
     // MARK: Order Statusses
