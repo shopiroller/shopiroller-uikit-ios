@@ -112,5 +112,6 @@ extension String {
         }
         return attributedString
     }
+
 }
 

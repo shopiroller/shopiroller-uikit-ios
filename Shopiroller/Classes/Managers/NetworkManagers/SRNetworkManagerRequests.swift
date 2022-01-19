@@ -28,9 +28,9 @@ struct SRNetworkManagerRequests {
                                        , resourceType: PaymentSettingsResponeModel.self)
     }
     
-    static func makeOrder(_ makeOrder: SRMakeOrderResponse,userId: String) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
+    static func makeOrder(_ makeOrder: SRMakeOrderResponse,userId: String,showProgress: Bool? = nil) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
         return SRNetworkRequestManager(httpMethod: .post, path: .makeOrder, subpath:
-                                        "/\(userId)", resourceType: SROrderResponseInnerModel.self, httpBody: makeOrder.data)
+                                        "/\(userId)", resourceType: SROrderResponseInnerModel.self, httpBody: makeOrder.data,shouldShowProgressHUD: showProgress ?? true)
     }
     
     static func tryAgain(_ completeOrder: CompleteOrderModel) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
@@ -45,10 +45,10 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .getOrder, subpath: "\(orderId)", resourceType: OrderDetailModel.self)
     }
     
-    static func getShoppingCart(userId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+    static func getShoppingCart(userId: String,showProgress: Bool? = nil) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
         let subPath = "\(userId)\(SRNetworkManagerPaths.shoppingCart.rawValue)"
         
-        return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subPath, resourceType: SRShoppingCartResponseModel.self)
+        return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subPath, resourceType: SRShoppingCartResponseModel.self,shouldShowProgressHUD: showProgress ?? true)
     }
     
     static func validateShoppingCart(userId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
