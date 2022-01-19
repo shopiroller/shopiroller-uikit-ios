@@ -26,7 +26,7 @@ class CheckOutViewModel {
             return "info-information-page-title".localized
         case .address:
             return "delivery-information-page-title".localized
-       
+            
         }
     }
     
@@ -34,17 +34,20 @@ class CheckOutViewModel {
         return currentStage
     }
     
-    func getResultPageModel(isCreditCard: Bool) -> SRResultViewControllerViewModel {
-        if isCreditCard {
-            if SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess == true {
-                return getResultPageSuccessModel()
-            } else {
-                return getResultPageFailModel()
-            }
+    func getResultPageModel(isCreditCard: Bool? = nil) -> SRResultViewControllerViewModel {
+        if isCreditCard == nil {
+            return getResultPageFailModel()
         } else {
-            return getResultPageSuccessModel()
+            if isCreditCard == true {
+                if SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess == true {
+                    return getResultPageSuccessModel()
+                } else {
+                    return getResultPageFailModel()
+                }
+            } else {
+                return getResultPageSuccessModel()
+            }
         }
-        
     }
     
     private func getResultPageFailModel() -> SRResultViewControllerViewModel {
