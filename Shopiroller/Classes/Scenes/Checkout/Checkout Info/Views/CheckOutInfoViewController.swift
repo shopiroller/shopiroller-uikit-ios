@@ -155,10 +155,12 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     private func openTermsLink() {
-        if let url = viewModel.getTermsLink() {
-            let controller = SFSafariViewController(url: URL(string: url)!)
+        if let url = URL(string: viewModel.getTermsLink()) , url != nil {
+            let controller = SFSafariViewController(url: url)
             prompt(controller, animated: true, completion: nil)
             controller.delegate = self
+        } else {
+            agreeTermsTitleContainer.isUserInteractionEnabled = false
         }
     }
     
