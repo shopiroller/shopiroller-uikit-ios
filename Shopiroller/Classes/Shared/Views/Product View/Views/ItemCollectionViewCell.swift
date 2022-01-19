@@ -32,6 +32,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var productPriceContainer: UIView!
     @IBOutlet private weak var freeShippingLabel: UILabel!
     @IBOutlet private weak var soldOutLabel: UILabel!
+    @IBOutlet private weak var situationContainer: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +55,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
         
+        situationContainer.isHidden = !viewModel.hasSituation()
         
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
@@ -97,7 +99,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageFreeShippingContainer.isHidden = true
         }
         
-        if viewModel.isStockOut() {
+        if viewModel.isOutofStock() {
             productImageSoldOutContainer.isHidden = false
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
