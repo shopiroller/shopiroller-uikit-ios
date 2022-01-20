@@ -139,10 +139,10 @@ class ProductListViewModel : BaseViewModel {
             orderOptionType = .statsOrderCount
             orderOptionOrientation = .descending
         case 1:
-            orderOptionType = .campaignPrice
+            orderOptionType = .calculatedPrice
             orderOptionOrientation = .ascending
         case 2:
-            orderOptionType = .campaignPrice
+            orderOptionType = .calculatedPrice
             orderOptionOrientation = .descending
         case 3:
             orderOptionType = .publishmentDate
