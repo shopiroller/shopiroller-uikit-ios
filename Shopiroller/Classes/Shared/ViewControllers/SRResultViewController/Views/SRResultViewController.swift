@@ -72,11 +72,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultFirstButton.setTitleColor(.white)
         resultFirstButton.titleLabel?.font = .semiBold14
         resultDetailDescription.isHidden = false
-        if let errorMessage = viewModel.geterrorMessage() {
-            resultDetailDescription.attributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-description".localized + "(" + errorMessage.replacingOccurrences(of: "checkout-result-info-fail-detail-description-will-replace".localized, with: "checkout-result-info-fail-detail-description-to-replace".localized) + ")"),isReverse: false)
-        } else {
-            resultDetailDescription.attributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-detail-description".localized),isReverse: false)
-        }
+        resultDetailDescription.attributedText = viewModel.getFormattedErrorMesage()
         resultSecondButton.isHidden = true
     }
     
