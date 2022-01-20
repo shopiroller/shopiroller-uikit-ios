@@ -127,7 +127,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     }
     
     private func setUpForSort() {
-        popUpImageView.image = .sortIcon
+        popUpImageView.image = .sortPopUpIcon
         popUpTitle.text = "sort_dialog_title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
