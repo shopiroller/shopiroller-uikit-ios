@@ -22,8 +22,8 @@ open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     }
     
     public override func setupNavigationBar() {
-        super.setupNavigationBar()
-        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
+//        super.setupNavigationBar()
+//        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
     public override func setup() {
