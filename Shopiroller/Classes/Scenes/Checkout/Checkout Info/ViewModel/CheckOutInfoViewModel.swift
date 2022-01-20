@@ -83,8 +83,8 @@ class CheckOutInfoViewModel: BaseViewModel {
         }
     }
     
-    func getTermsLink() -> String? {
-        return SRSessionManager.shared.paymentSettings?.distanceSalesContract
+    func getTermsLink() -> String {
+        return SRSessionManager.shared.paymentSettings?.distanceSalesContract ?? ""
     }
     
     func sendOrder(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {

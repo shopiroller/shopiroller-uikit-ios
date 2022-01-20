@@ -81,12 +81,21 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
             setUpForSort()
         }
         
+    }
+    
+    init(viewModel: ListPopUpViewModel){
+        super.init(viewModel: viewModel, nibName: ListPopUpViewController.nibName, bundle: Bundle(for: ListPopUpViewController.self))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         var estimatedHeight = CGFloat(100 + (viewModel.getItemCount() * Int(viewModel.getItemHeight())))
         
         if estimatedHeight < 220 {
             estimatedHeight = 220
         }
-        
+                
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
             if estimatedHeight > self.popUpView.frame.size.height {
                 let heightDifference = estimatedHeight - self.popUpView.frame.size.height
@@ -97,15 +106,15 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
                 }
             }
         }
-        
-    }
-    
-    init(viewModel: ListPopUpViewModel){
-        super.init(viewModel: viewModel, nibName: ListPopUpViewController.nibName, bundle: Bundle(for: ListPopUpViewController.self))
     }
     
     private func setUpForAddress() {
-        popUpImageView.image = .cargoShippingImage
+        switch viewModel.getAddressType() {
+        case .billing:
+            popUpImageView.image = .deliveryAddress
+        case .shipping:
+            popUpImageView.image = .billingAddressIcon
+        }
         popUpTitle.text = "list-popup-select-address-title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
@@ -127,10 +136,11 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     }
     
     private func setUpForSort() {
-        popUpImageView.image = .sortIcon
+        popUpImageView.image = .sortPopUpIcon
         popUpTitle.text = "sort_dialog_title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
+        popUpTableView.rowHeight = 60
     }
     
     @objc func popView() {
@@ -179,6 +189,9 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             let title = viewModel.getSortListModel(position: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: SortProductTableViewCell.reuseIdentifier, for: indexPath) as! SortProductTableViewCell
             cell.setup(title: title, isChecked: viewModel.selectedIndex == indexPath.row,index: indexPath.row)
+            if indexPath.row == viewModel.getItemCount() - 1 {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
+            }
             cell.delegate = self
             return cell
         }

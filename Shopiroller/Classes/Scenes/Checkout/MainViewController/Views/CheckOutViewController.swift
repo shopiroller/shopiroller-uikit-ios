@@ -90,10 +90,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
         } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
             loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(), isCreditCard: false)
+        } else {
+            loadOrderResultSuccess(orderResponse: nil, isCreditCard: nil)
         }
     }
     
-    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel , isCreditCard : Bool) {
+    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel?, isCreditCard : Bool?) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isCreditCard : isCreditCard))
         self.prompt(resultVC, animated: true, completion: nil)
     }
