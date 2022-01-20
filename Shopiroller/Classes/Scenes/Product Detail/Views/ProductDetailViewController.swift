@@ -483,7 +483,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             freeShippingLabel.textColor = .white
             freeShippingLabel.font = .bold10
             freeShippingLabel.text = Constants.freeShippingText.uppercased()
-            
         } else {
             freeShippingContainer.isHidden = true
             shippingPriceContainer.isHidden = false

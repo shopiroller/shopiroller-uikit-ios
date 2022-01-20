@@ -44,7 +44,15 @@ class ProductViewModel {
         return productListModel?.shippingPrice == 0.0 || (productDetailModel?.shippingPrice == 0.0)
     }
     
-    func isStockOut() -> Bool {
+    func hasSituation() -> Bool {
+        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
+    }
+    
+    func isUseFixPrice() -> Bool {
+        return productDetailModel?.useFixPrice == true
+    }
+    
+    func isOutofStock() -> Bool {
         return productListModel?.stock == 0 || (productDetailModel?.stock == 0)
     }
     

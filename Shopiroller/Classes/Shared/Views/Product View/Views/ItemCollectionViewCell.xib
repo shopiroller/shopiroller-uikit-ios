@@ -263,6 +263,7 @@
                 <outlet property="productOldPrice" destination="W2u-3b-kI6" id="2lK-7l-Lq6"/>
                 <outlet property="productPriceContainer" destination="qer-Wn-3d4" id="m1A-Zt-hcq"/>
                 <outlet property="productTitleLabel" destination="vV4-sW-37K" id="Y3E-Pa-52k"/>
+                <outlet property="situationContainer" destination="FxW-5A-E6b" id="dAu-vy-SjL"/>
                 <outlet property="soldOutLabel" destination="noB-7k-keT" id="Yzf-rL-LqF"/>
                 <outlet property="stackView" destination="NTI-fM-m7y" id="SLE-g4-CiX"/>
             </connections>
