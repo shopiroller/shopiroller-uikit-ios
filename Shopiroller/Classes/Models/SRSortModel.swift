@@ -26,6 +26,7 @@ enum OrderOptionType {
     case publishmentDate
     case endDate
     case statsOrderCount
+    case calculatedPrice
     
     var string: String {
         
@@ -54,6 +55,8 @@ enum OrderOptionType {
             return "EndDate"
         case .statsOrderCount:
             return "Starts.OrderCount"
+        case .calculatedPrice:
+            return "CalculatedPrice"
         }
     }
     
