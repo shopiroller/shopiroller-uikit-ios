@@ -54,6 +54,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private var isValid: Bool = false
     
+    
     init(viewModel: CheckOutPaymentViewModel){
         super.init(viewModel: viewModel, nibName: CheckOutPaymentViewController.nibName, bundle: Bundle(for:  CheckOutPaymentViewController.self))
     }
@@ -230,10 +231,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
         case .none:
             break
-        case .Stripe:
-            selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
-            selectedMethodTitle.text = Constants.payWithStripeDescription
-        case .Stripe3DS:
+        case .Stripe , .Stripe3DS:
+            bankTransferContainer.isHidden = true
+            creditCartContainer.isHidden = true
+            payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
             selectedMethodTitle.text = Constants.payWithStripeDescription
         }
@@ -261,10 +262,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 self.delegate?.isEnabledNextButton(enabled: true)
             case .none:
                 break
-            case .Stripe:
-                print("Stripe")
-            case .Stripe3DS:
-                print("Stripe3DS")
+            case .Stripe , .Stripe3DS:
+                SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Stripe.rawValue
             }
         }
     }

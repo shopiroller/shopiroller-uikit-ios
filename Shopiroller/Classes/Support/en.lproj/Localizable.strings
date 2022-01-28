@@ -218,6 +218,7 @@
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Bank Transfer";
 "list-pop-up-pay-at-the-door-text" = "Pay At The Door";
+"list-pop-up-stripe-text" = "Stripe";
 
 //MARK: - CheckOutPayment
 

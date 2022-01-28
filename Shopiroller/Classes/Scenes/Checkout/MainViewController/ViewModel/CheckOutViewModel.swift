@@ -18,6 +18,8 @@ class CheckOutViewModel {
     
     private var progressStage: ProgressStageEnum = .address
     
+    var errorMessage: String?
+    
     func getPageTitle() -> String? {
         switch progressStage {
         case .payment:
@@ -34,24 +36,16 @@ class CheckOutViewModel {
         return currentStage
     }
     
-    func getResultPageModel(isCreditCard: Bool? = nil) -> SRResultViewControllerViewModel {
-        if isCreditCard == nil {
-            return getResultPageFailModel()
+    func getResultPageModel(isSuccess: Bool) -> SRResultViewControllerViewModel {
+        if (isSuccess){
+            return getResultPageSuccessModel()
         } else {
-            if isCreditCard == true {
-                if SRSessionManager.shared.orderResponseInnerModel?.payment?.isSuccess == true {
-                    return getResultPageSuccessModel()
-                } else {
-                    return getResultPageFailModel()
-                }
-            } else {
-                return getResultPageSuccessModel()
-            }
+            return getResultPageFailModel()
         }
     }
     
     private func getResultPageFailModel() -> SRResultViewControllerViewModel {
-        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel)
+        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel,errorMessage: errorMessage != nil ? errorMessage : "")
     }
     
     private func getResultPageSuccessModel() -> SRResultViewControllerViewModel {

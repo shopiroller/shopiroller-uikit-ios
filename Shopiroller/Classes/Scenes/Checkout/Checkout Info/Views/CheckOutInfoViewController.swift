@@ -363,6 +363,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             billingAddressViewTitle.text = "checkout-info-billing-address-card-view-title".localized
             deliveryAddressCardTitle.text = "checkout-info-delivery-addresss-card-view-title".localized
             paymentCardViewDescription.text = viewModel.getTrasnferToBankDescriptonText()
+        case PaymentTypeEnum.Stripe.rawValue , PaymentTypeEnum.Stripe3DS.rawValue :
+            paymentCardViewDescription.text = "list-pop-up-stripe-text".localized
         default:
             break
         }
