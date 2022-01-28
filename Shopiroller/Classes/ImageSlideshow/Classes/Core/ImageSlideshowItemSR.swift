@@ -9,16 +9,16 @@ import UIKit
 
 /// Used to wrap a single slideshow item and allow zooming on it
 @objcMembers
-open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
+open class ImageSlideshowItemSR: UIScrollView, UIScrollViewDelegate {
 
     /// Image view to hold the image
     public let imageView = UIImageView()
 
     /// Activity indicator shown during image loading, when nil there won't be shown any
-    public let activityIndicator: ActivityIndicatorView?
+    public let activityIndicator: SRActivityIndicatorView?
 
     /// Input Source for the item
-    public let image: InputSource
+    public let image: InputSourceSR
 
     /// Guesture recognizer to detect double tap to zoom
     open var gestureRecognizer: UITapGestureRecognizer?
@@ -53,7 +53,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
         - parameter image: Input Source to load the image
         - parameter zoomEnabled: holds if it should be possible to zoom-in the image
     */
-    init(image: InputSource, zoomEnabled: Bool, activityIndicator: ActivityIndicatorView? = nil, maximumScale: CGFloat = 2.0) {
+    init(image: InputSourceSR, zoomEnabled: Bool, activityIndicator: SRActivityIndicatorView? = nil, maximumScale: CGFloat = 2.0) {
         self.zoomEnabled = zoomEnabled
         self.image = image
         self.activityIndicator = activityIndicator
@@ -90,7 +90,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
         }
 
         // tap gesture recognizer
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageSlideshowItem.tapZoom))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageSlideshowItemSR.tapZoom))
         tapRecognizer.numberOfTapsRequired = 2
         imageViewWrapper.addGestureRecognizer(tapRecognizer)
         gestureRecognizer = tapRecognizer

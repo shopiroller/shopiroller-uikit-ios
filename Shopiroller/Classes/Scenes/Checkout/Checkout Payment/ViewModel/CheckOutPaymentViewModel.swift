@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CheckOutPaymentViewModel: BaseViewModel {
+class CheckOutPaymentViewModel: SRBaseViewModel {
     
     private struct Constants {
         static var creditCardNumberErrorText: String { return "credit-card-number-error-text".localized }

@@ -9,14 +9,14 @@
 import UIKit
 
 @objcMembers
-open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+open class SRZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     /// parent image view used for animated transition
     open var referenceImageView: UIImageView?
     /// parent slideshow view used for animated transition
-    open weak var referenceSlideshowView: ImageSlideshow?
+    open weak var referenceSlideshowView: SRImageSlideshow?
 
     // must be weak because FullScreenSlideshowViewController has strong reference to its transitioning delegate
-    weak var referenceSlideshowController: FullScreenSlideshowViewController?
+    weak var referenceSlideshowController: SRFullScreenSlideshowViewController?
 
     var referenceSlideshowViewFrame: CGRect?
     var gestureRecognizer: UIPanGestureRecognizer!
@@ -30,7 +30,7 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
         - parameter slideshowView: ImageSlideshow instance to animate the transition from
         - parameter slideshowController: FullScreenViewController instance to animate the transition to
      */
-    public init(slideshowView: ImageSlideshow, slideshowController: FullScreenSlideshowViewController) {
+    public init(slideshowView: SRImageSlideshow, slideshowController: SRFullScreenSlideshowViewController) {
         self.referenceSlideshowView = slideshowView
         self.referenceSlideshowController = slideshowController
 
@@ -44,7 +44,7 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
         - parameter imageView: UIImageView instance to animate the transition from
         - parameter slideshowController: FullScreenViewController instance to animate the transition to
      */
-    public init(imageView: UIImageView, slideshowController: FullScreenSlideshowViewController) {
+    public init(imageView: UIImageView, slideshowController: SRFullScreenSlideshowViewController) {
         self.referenceImageView = imageView
         self.referenceSlideshowController = slideshowController
 
@@ -55,7 +55,7 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     func initialize() {
         // Pan gesture recognizer for interactive dismiss
-        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
+        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SRZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
         gestureRecognizer.delegate = self
         // Append it to a window otherwise it will be canceled during the transition
         UIApplication.shared.keyWindow?.addGestureRecognizer(gestureRecognizer)
@@ -98,9 +98,9 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let reference = referenceSlideshowView {
-            return ZoomInAnimator(referenceSlideshowView: reference, parent: self)
+            return SRZoomInAnimator(referenceSlideshowView: reference, parent: self)
         } else if let reference = referenceImageView {
-            return ZoomInAnimator(referenceImageView: reference, parent: self)
+            return SRZoomInAnimator(referenceImageView: reference, parent: self)
         } else {
             return nil
         }
@@ -108,9 +108,9 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let reference = referenceSlideshowView {
-            return ZoomOutAnimator(referenceSlideshowView: reference, parent: self)
+            return SRZoomOutAnimator(referenceSlideshowView: reference, parent: self)
         } else if let reference = referenceImageView {
-            return ZoomOutAnimator(referenceImageView: reference, parent: self)
+            return SRZoomOutAnimator(referenceImageView: reference, parent: self)
         } else {
             return nil
         }
@@ -125,18 +125,18 @@ open class ZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransiti
     }
 
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presentedViewController: presented, presenting: presenting)
+        return SRPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
 
-private class PresentationController: UIPresentationController {
+private class SRPresentationController: UIPresentationController {
     // Needed for interactive dismiss to keep the presenter View Controller visible
     override var shouldRemovePresentersView: Bool {
         return false
     }
 }
 
-extension ZoomAnimatedTransitioningDelegate: UIGestureRecognizerDelegate {
+extension SRZoomAnimatedTransitioningDelegate: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else {
             return false
@@ -163,17 +163,17 @@ extension ZoomAnimatedTransitioningDelegate: UIGestureRecognizerDelegate {
 class ZoomAnimator: NSObject {
 
     var referenceImageView: UIImageView?
-    var referenceSlideshowView: ImageSlideshow?
-    var parent: ZoomAnimatedTransitioningDelegate
+    var referenceSlideshowView: SRImageSlideshow?
+    var parent: SRZoomAnimatedTransitioningDelegate
 
-    init(referenceSlideshowView: ImageSlideshow, parent: ZoomAnimatedTransitioningDelegate) {
+    init(referenceSlideshowView: SRImageSlideshow, parent: SRZoomAnimatedTransitioningDelegate) {
         self.referenceSlideshowView = referenceSlideshowView
         self.referenceImageView = referenceSlideshowView.currentSlideshowItem?.imageView
         self.parent = parent
         super.init()
     }
 
-    init(referenceImageView: UIImageView, parent: ZoomAnimatedTransitioningDelegate) {
+    init(referenceImageView: UIImageView, parent: SRZoomAnimatedTransitioningDelegate) {
         self.referenceImageView = referenceImageView
         self.parent = parent
         super.init()
@@ -181,7 +181,7 @@ class ZoomAnimator: NSObject {
 }
 
 @objcMembers
-class ZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
+class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
@@ -194,7 +194,7 @@ class ZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
         let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
 
-        guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? FullScreenSlideshowViewController else {
+        guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? SRFullScreenSlideshowViewController else {
             return
         }
 
@@ -225,7 +225,7 @@ class ZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
             referenceImageView.alpha = 0
 
             if let image = referenceImageView.image {
-                transitionViewFinalFrame = image.tgr_aspectFitRectForSize(finalFrame.size)
+                transitionViewFinalFrame = image.tgr_aspectFitRectForSizeSR(finalFrame.size)
             }
         }
 
@@ -250,7 +250,7 @@ class ZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
     }
 }
 
-class ZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
+class SRZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
 
     private var animatorForCurrentTransition: UIViewImplicitlyAnimating?
 
@@ -277,7 +277,7 @@ class ZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
     private func animationParams(using transitionContext: UIViewControllerContextTransitioning) -> (TimeInterval, () -> Void, (Any) -> Void) {
         let toViewController: UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
 
-        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? FullScreenSlideshowViewController else {
+        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? SRFullScreenSlideshowViewController else {
             fatalError("Transition not used with FullScreenSlideshowViewController")
         }
 
@@ -286,7 +286,7 @@ class ZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
         var transitionViewInitialFrame: CGRect
         if let currentSlideshowItem = fromViewController.slideshow.currentSlideshowItem {
             if let image = currentSlideshowItem.imageView.image {
-                transitionViewInitialFrame = image.tgr_aspectFitRectForSize(currentSlideshowItem.imageView.frame.size)
+                transitionViewInitialFrame = image.tgr_aspectFitRectForSizeSR(currentSlideshowItem.imageView.frame.size)
             } else {
                 transitionViewInitialFrame = currentSlideshowItem.imageView.frame
             }
@@ -304,7 +304,7 @@ class ZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
 
             // do a frame scaling when AspectFit content mode enabled
             if fromViewController.slideshow.currentSlideshowItem?.imageView.image != nil && referenceImageView.contentMode == UIViewContentMode.scaleAspectFit {
-                transitionViewFinalFrame = containerView.convert(referenceImageView.aspectToFitFrame(), from: referenceImageView)
+                transitionViewFinalFrame = containerView.convert(referenceImageView.aspectToFitFrameSR(), from: referenceImageView)
             }
 
             // fixes the problem when the referenceSlideshowViewFrame was shifted during change of the status bar hidden state

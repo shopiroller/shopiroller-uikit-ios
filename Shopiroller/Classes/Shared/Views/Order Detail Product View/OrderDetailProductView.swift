@@ -8,7 +8,7 @@
 import UIKit
 
 
-class OrderDetailProductView: BaseView {
+class OrderDetailProductView: SRBaseView {
     
     @IBOutlet private weak var orderImage: UIImageView!
     @IBOutlet private weak var orderTitle: UILabel!

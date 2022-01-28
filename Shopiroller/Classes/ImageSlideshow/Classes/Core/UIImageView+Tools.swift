@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImageView {
 
-    func aspectToFitFrame() -> CGRect {
+    func aspectToFitFrameSR() -> CGRect {
 
         guard let image = image else {
             assertionFailure("No image found!")

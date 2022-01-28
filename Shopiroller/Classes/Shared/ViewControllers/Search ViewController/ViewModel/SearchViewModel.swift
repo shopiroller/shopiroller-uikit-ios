@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchViewModel : BaseViewModel {
+class SearchViewModel : SRBaseViewModel {
     
     private var _searchedKeyword: String? = nil
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SRResultViewControllerViewModel : BaseViewModel {
+class SRResultViewControllerViewModel : SRBaseViewModel {
     
     private let orderResponse: SROrderResponseInnerModel?
     

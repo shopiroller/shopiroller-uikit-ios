@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BottomPriceView: BaseView {
+class BottomPriceView: SRBaseView {
 
     @IBOutlet private weak var subTotalPriceLabel: UILabel!
     @IBOutlet private weak var shippingPriceLabel: UILabel!

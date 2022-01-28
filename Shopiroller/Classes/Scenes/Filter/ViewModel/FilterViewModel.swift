@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class FilterViewModel: BaseViewModel {
+class FilterViewModel: SRBaseViewModel {
     
     private let searchText: String?
     private let categoryId: String?

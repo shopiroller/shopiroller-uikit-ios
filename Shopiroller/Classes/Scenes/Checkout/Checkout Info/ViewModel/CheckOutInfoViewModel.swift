@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CheckOutInfoViewModel: BaseViewModel {
+class CheckOutInfoViewModel: SRBaseViewModel {
     
     private var shoppingCart: SRShoppingCartResponseModel?
         

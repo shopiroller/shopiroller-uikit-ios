@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class ProductListViewModel : BaseViewModel {
+class ProductListViewModel : SRBaseViewModel {
     
     let categoryId: String?
   

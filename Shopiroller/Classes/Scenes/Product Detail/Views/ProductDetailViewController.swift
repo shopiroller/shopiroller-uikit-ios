@@ -14,8 +14,8 @@ private var lastContentOffset: CGFloat = 0
 public struct ImageSlideModel {
     public let url: URL
     
-    public var inputSource: InputSource {
-        return KingfisherSource(url: url)
+    public var inputSource: InputSourceSR {
+        return SRKingfisherSource(url: url)
     }
 }
 
@@ -560,7 +560,7 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let fullScreenController = FullScreenSlideshowViewController()
+        let fullScreenController = SRFullScreenSlideshowViewController()
         var imagesArray : [ImageSlideModel] = [ImageSlideModel]()
         let images = viewModel.getImageArray()
         fullScreenController.slideshow.pageIndicator?.view.tintColor = .white

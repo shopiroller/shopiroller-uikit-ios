@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
 
-    func tgr_aspectFitRectForSize(_ size: CGSize) -> CGRect {
+    func tgr_aspectFitRectForSizeSR(_ size: CGSize) -> CGRect {
         let targetAspect: CGFloat = size.width / size.height
         let sourceAspect: CGFloat = self.size.width / self.size.height
         var rect: CGRect = CGRect.zero

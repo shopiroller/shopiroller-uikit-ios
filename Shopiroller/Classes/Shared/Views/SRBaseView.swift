@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseView: UIView {
+public class SRBaseView: UIView {
     
     init() {
         super.init(frame: .zero)

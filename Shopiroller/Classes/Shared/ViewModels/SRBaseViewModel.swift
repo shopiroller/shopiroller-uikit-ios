@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class BaseViewModel {
+open class SRBaseViewModel {
     
     internal static let networkManager =  SRNetworkManager()
     

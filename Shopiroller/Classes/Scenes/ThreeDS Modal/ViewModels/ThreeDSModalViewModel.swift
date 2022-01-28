@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ThreeDSModalViewModel : BaseViewModel {
+class ThreeDSModalViewModel : SRBaseViewModel {
     
     private var urlToOpen: String?
     

@@ -39,7 +39,7 @@ struct SRNetworkRequestManager<T: Decodable> {
 
 extension SRNetworkRequestManager {
     func response(response: @escaping ((SRResponseResult<SRNetworkManagerResponse<T>>) -> Void)) {
-        BaseViewModel.networkManager.response(for: self) { result in
+        SRBaseViewModel.networkManager.response(for: self) { result in
             switch result {
             case .success:
                 response(result)

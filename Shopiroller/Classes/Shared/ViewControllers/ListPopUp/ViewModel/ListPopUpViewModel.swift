@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ListPopUpViewModel: BaseViewModel {
+class ListPopUpViewModel: SRBaseViewModel {
     private var listType: ListType
     private var userShippingAddressList : [UserShippingAddressModel]?
     private var userBillingAddressList : [UserBillingAdressModel]?

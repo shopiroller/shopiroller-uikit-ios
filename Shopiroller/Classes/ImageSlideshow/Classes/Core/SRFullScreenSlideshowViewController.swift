@@ -8,13 +8,13 @@
 import UIKit
 
 @objcMembers
-open class FullScreenSlideshowViewController: UIViewController {
+open class SRFullScreenSlideshowViewController: UIViewController {
 
-    open var slideshow: ImageSlideshow = {
-        let slideshow = ImageSlideshow()
+    open var slideshow: SRImageSlideshow = {
+        let slideshow = SRImageSlideshow()
         slideshow.zoomEnabled = true
         slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
-        slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
+        slideshow.pageIndicatorPosition = SRPageIndicatorPosition(horizontal: .center, vertical: .bottom)
         // turns off the timer
         slideshow.slideshowInterval = 0
         slideshow.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
@@ -35,7 +35,7 @@ open class FullScreenSlideshowViewController: UIViewController {
     open var initialPage: Int = 0
 
     /// Input sources to 
-    open var inputs: [InputSource]?
+    open var inputs: [InputSourceSR]?
 
     /// Background color
     open var backgroundColor = UIColor.black
@@ -73,7 +73,7 @@ open class FullScreenSlideshowViewController: UIViewController {
 
         // close button configuration
         closeButton.setImage(UIImage(named: "ic_cross_white", in: .module, compatibleWith: nil), for: UIControlState())
-        closeButton.addTarget(self, action: #selector(FullScreenSlideshowViewController.close), for: UIControlEvents.touchUpInside)
+        closeButton.addTarget(self, action: #selector(SRFullScreenSlideshowViewController.close), for: UIControlEvents.touchUpInside)
         view.addSubview(closeButton)
     }
 

@@ -9,23 +9,23 @@ import UIKit
 
 @objc
 /// The delegate protocol informing about image slideshow state changes
-public protocol ImageSlideshowDelegate: class {
+public protocol SRImageSlideshowDelegate: class {
     /// Tells the delegate that the current page has changed
     ///
     /// - Parameters:
     ///   - imageSlideshow: image slideshow instance
     ///   - page: new page
-    @objc optional func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int)
+    @objc optional func imageSlideshow(_ imageSlideshow: SRImageSlideshow, didChangeCurrentPageTo page: Int)
 
     /// Tells the delegate that the slideshow will begin dragging
     ///
     /// - Parameter imageSlideshow: image slideshow instance
-    @objc optional func imageSlideshowWillBeginDragging(_ imageSlideshow: ImageSlideshow)
+    @objc optional func imageSlideshowWillBeginDragging(_ imageSlideshow: SRImageSlideshow)
 
     /// Tells the delegate that the slideshow did end decelerating
     ///
     /// - Parameter imageSlideshow: image slideshow instance
-    @objc optional func imageSlideshowDidEndDecelerating(_ imageSlideshow: ImageSlideshow)
+    @objc optional func imageSlideshowDidEndDecelerating(_ imageSlideshow: SRImageSlideshow)
 }
 
 /** 
@@ -35,7 +35,7 @@ public protocol ImageSlideshowDelegate: class {
     - underScrollView: Page Control is under image slideshow
     - custom: Custom vertical padding, relative to "insideScrollView" position
  */
-public enum PageControlPosition {
+public enum SRPageControlPosition {
     case hidden
     case insideScrollView
     case underScrollView
@@ -46,14 +46,14 @@ public enum PageControlPosition {
 ///
 /// - fixed: preload only fixed number of images before and after the current image
 /// - all: preload all images in the slideshow
-public enum ImagePreload {
+public enum SRImagePreload {
     case fixed(offset: Int)
     case all
 }
 
 /// Main view containing the Image Slideshow
 @objcMembers
-open class ImageSlideshow: UIView {
+open class SRImageSlideshow: UIView {
 
     /// Scroll View to wrap the slideshow
     public let scrollView = UIScrollView()
@@ -74,7 +74,7 @@ open class ImageSlideshow: UIView {
         }
     }
 
-    open var pageIndicator: PageIndicatorView? {
+    open var pageIndicator: SRPageIndicatorView? {
         didSet {
             oldValue?.view.removeFromSuperview()
             if let pageIndicator = pageIndicator {
@@ -87,7 +87,7 @@ open class ImageSlideshow: UIView {
         }
     }
 
-    open var pageIndicatorPosition: PageIndicatorPosition = PageIndicatorPosition() {
+    open var pageIndicatorPosition: SRPageIndicatorPosition = SRPageIndicatorPosition() {
         didSet {
             setNeedsLayout()
         }
@@ -97,18 +97,18 @@ open class ImageSlideshow: UIView {
 
     /// Page control position
     @available(*, deprecated, message: "Use pageIndicatorPosition instead")
-    open var pageControlPosition = PageControlPosition.insideScrollView {
+    open var pageControlPosition = SRPageControlPosition.insideScrollView {
         didSet {
             pageIndicator = UIPageControl()
             switch pageControlPosition {
             case .hidden:
                 pageIndicator = nil
             case .insideScrollView:
-                pageIndicatorPosition = PageIndicatorPosition(vertical: .bottom)
+                pageIndicatorPosition = SRPageIndicatorPosition(vertical: .bottom)
             case .underScrollView:
-                pageIndicatorPosition = PageIndicatorPosition(vertical: .under)
+                pageIndicatorPosition = SRPageIndicatorPosition(vertical: .under)
             case .custom(let padding):
-                pageIndicatorPosition = PageIndicatorPosition(vertical: .customUnder(padding: padding-30))
+                pageIndicatorPosition = SRPageIndicatorPosition(vertical: .customUnder(padding: padding-30))
             }
         }
     }
@@ -125,7 +125,7 @@ open class ImageSlideshow: UIView {
     }
 
     /// Delegate called on image slideshow state change
-    open weak var delegate: ImageSlideshowDelegate?
+    open weak var delegate: SRImageSlideshowDelegate?
 
     /// Called on each currentPage change
     open var currentPageChanged: ((_ page: Int) -> Void)?
@@ -137,7 +137,7 @@ open class ImageSlideshow: UIView {
     open var didEndDecelerating: (() -> Void)?
 
     /// Currenlty displayed slideshow item
-    open var currentSlideshowItem: ImageSlideshowItem? {
+    open var currentSlideshowItem: ImageSlideshowItemSR? {
         if slideshowItems.count > scrollViewPage {
             return slideshowItems[scrollViewPage]
         } else {
@@ -149,10 +149,10 @@ open class ImageSlideshow: UIView {
     open fileprivate(set) var scrollViewPage: Int = 0
 
     /// Input Sources loaded to slideshow
-    open fileprivate(set) var images = [InputSource]()
+    open fileprivate(set) var images = [InputSourceSR]()
 
     /// Image Slideshow Items loaded to slideshow
-    open fileprivate(set) var slideshowItems = [ImageSlideshowItem]()
+    open fileprivate(set) var slideshowItems = [ImageSlideshowItemSR]()
 
     // MARK: - Preferences
 
@@ -196,7 +196,7 @@ open class ImageSlideshow: UIView {
     }
 
     /// Image preload configuration, can be sed to .fixed to enable lazy load or .all
-    open var preload = ImagePreload.all
+    open var preload = SRImagePreload.all
 
     /// Content mode of each image in the slideshow
     open var contentScaleMode: UIViewContentMode = UIViewContentMode.scaleAspectFit {
@@ -208,11 +208,11 @@ open class ImageSlideshow: UIView {
     }
 
     fileprivate var slideshowTimer: Timer?
-    fileprivate var scrollViewImages = [InputSource]()
+    fileprivate var scrollViewImages = [InputSourceSR]()
     fileprivate var isAnimating: Bool = false
 
     /// Transitioning delegate to manage the transition to full screen controller
-    open fileprivate(set) var slideshowTransitioningDelegate: ZoomAnimatedTransitioningDelegate? // swiftlint:disable:this weak_delegate
+    open fileprivate(set) var slideshowTransitioningDelegate: SRZoomAnimatedTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
     private var primaryVisiblePage: Int {
         return scrollView.frame.size.width > 0 ? Int(scrollView.contentOffset.x + scrollView.frame.size.width / 2) / Int(scrollView.frame.size.width) : 0
@@ -323,7 +323,7 @@ open class ImageSlideshow: UIView {
 
         var i = 0
         for image in scrollViewImages {
-            let item = ImageSlideshowItem(image: image, zoomEnabled: zoomEnabled, activityIndicator: activityIndicator?.create(), maximumScale: maximumScale)
+            let item = ImageSlideshowItemSR(image: image, zoomEnabled: zoomEnabled, activityIndicator: activityIndicator?.create(), maximumScale: maximumScale)
             item.imageView.contentMode = contentScaleMode
             slideshowItems.append(item)
             scrollView.addSubview(item)
@@ -365,13 +365,13 @@ open class ImageSlideshow: UIView {
      Set image inputs into the image slideshow
      - parameter inputs: Array of InputSource instances.
      */
-    open func setImageInputs(_ inputs: [InputSource]) {
+    open func setImageInputs(_ inputs: [InputSourceSR]) {
         images = inputs
         pageIndicator?.numberOfPages = inputs.count
 
         // in circular mode we add dummy first and last image to enable smooth scrolling
         if circular && images.count > 1 {
-            var scImages = [InputSource]()
+            var scImages = [InputSourceSR]()
 
             if let last = images.last {
                 scImages.append(last)
@@ -425,7 +425,7 @@ open class ImageSlideshow: UIView {
 
     fileprivate func setTimerIfNeeded() {
         if slideshowInterval > 0 && scrollViewImages.count > 1 && slideshowTimer == nil {
-            slideshowTimer = Timer.scheduledTimer(timeInterval: slideshowInterval, target: self, selector: #selector(ImageSlideshow.slideshowTick(_:)), userInfo: nil, repeats: true)
+            slideshowTimer = Timer.scheduledTimer(timeInterval: slideshowInterval, target: self, selector: #selector(SRImageSlideshow.slideshowTick(_:)), userInfo: nil, repeats: true)
         }
     }
 
@@ -540,15 +540,15 @@ open class ImageSlideshow: UIView {
      - returns: FullScreenSlideshowViewController instance
      */
     @discardableResult
-    open func presentFullScreenController(from controller: UIViewController, completion: (() -> Void)? = nil) -> FullScreenSlideshowViewController {
-        let fullscreen = FullScreenSlideshowViewController()
+    open func presentFullScreenController(from controller: UIViewController, completion: (() -> Void)? = nil) -> SRFullScreenSlideshowViewController {
+        let fullscreen = SRFullScreenSlideshowViewController()
         fullscreen.pageSelected = {[weak self] (page: Int) in
             self?.setCurrentPage(page, animated: false)
         }
 
         fullscreen.initialPage = currentPage
         fullscreen.inputs = images
-        slideshowTransitioningDelegate = ZoomAnimatedTransitioningDelegate(slideshowView: self, slideshowController: fullscreen)
+        slideshowTransitioningDelegate = SRZoomAnimatedTransitioningDelegate(slideshowView: self, slideshowController: fullscreen)
         fullscreen.transitioningDelegate = slideshowTransitioningDelegate
         fullscreen.modalPresentationStyle = .custom
         controller.present(fullscreen, animated: true, completion: completion)
@@ -563,7 +563,7 @@ open class ImageSlideshow: UIView {
     }
 }
 
-extension ImageSlideshow: UIScrollViewDelegate {
+extension SRImageSlideshow: UIScrollViewDelegate {
 
     open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         restartTimer()
