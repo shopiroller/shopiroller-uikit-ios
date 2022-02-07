@@ -17,10 +17,13 @@ struct SROrderPaymentResultModel: Codable {
     var transactionId: String?
     var conversationId: String?
     var message: String?
-    var _3DSecureHtml : String?
+    var _3DSecureHtml: String?
     
-    //Only PayPal
+    //Stripe && PayPal
     var token: String?
+    
+    //Stripe
+    var publishableKey: String?
     
     enum CodingKeys: String,CodingKey {
         case isSuccess = "isSuccess"
@@ -33,5 +36,6 @@ struct SROrderPaymentResultModel: Codable {
         case message = "message"
         case _3DSecureHtml = "_3DSecureHtml"
         case token = "token"
+        case publishableKey = "publishableKey"
     }
 }

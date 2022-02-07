@@ -229,14 +229,14 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorDescription.font = .regular14
             payAtTheDoorDescription.textColor = .textPCaption
             payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
-        case .none:
-            break
         case .Stripe , .Stripe3DS:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
             selectedMethodTitle.text = Constants.payWithStripeDescription
+        case .none:
+            break
         }
     }
     

@@ -18,6 +18,8 @@ class CheckOutViewModel {
     
     private var progressStage: ProgressStageEnum = .address
     
+    var stripeOrderStatusModel = SRStripeOrderStatusModel()
+    
     var errorMessage: String?
     
     func getPageTitle() -> String? {
@@ -41,6 +43,41 @@ class CheckOutViewModel {
             return getResultPageSuccessModel()
         } else {
             return getResultPageFailModel()
+        }
+    }
+    
+    
+    func setStripeFailRequest(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.failurePayment(stripeOrderModel: stripeOrderStatusModel).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                print(response)
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func setStripeSuccessRequest(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.completePayment(stripeOrderModel: stripeOrderStatusModel).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                print(response)
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
         }
     }
     
