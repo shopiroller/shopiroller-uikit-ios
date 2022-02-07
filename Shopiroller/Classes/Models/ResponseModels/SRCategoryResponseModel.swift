@@ -17,7 +17,7 @@ struct SRCategoryResponseModel: Codable {
     var orderIndex: Int?
     var createdDate: String?
     var updatedDate: String?
-    var totalProduct: Int?
+    var totalProducts: Int?
     var isActive: Bool?
     var subCategories: [SRCategoryResponseModel]?
     
@@ -28,7 +28,7 @@ struct SRCategoryResponseModel: Codable {
         case icon = "icon"
         case parentCategoryId = "parentCategoryId"
         case orderIndex = "orderIndex"
-        case totalProduct = "totalProduct"
+        case totalProducts = "totalProducts"
         case isActive = "isActive"
         case createdDate = "createDate"
         case updatedDate = "updateDate"
