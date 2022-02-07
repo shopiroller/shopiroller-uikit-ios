@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SRResultViewControllerViewModel : BaseViewModel {
+class SRResultViewControllerViewModel : SRBaseViewModel {
     
     private let orderResponse: SROrderResponseInnerModel?
     
@@ -34,7 +34,7 @@ class SRResultViewControllerViewModel : BaseViewModel {
         if let errorMessage = errorMessage , errorMessage != "" {
             errorMessageAttributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-description".localized + "(" + errorMessage.replacingOccurrences(of: "checkout-result-info-fail-detail-description-will-replace".localized, with: "checkout-result-info-fail-detail-description-to-replace".localized) + ")"),isReverse: false)
         } else {
-            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-detail-description".localized),isReverse: false)
+            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-message".localized),isReverse: false)
         }
         return errorMessageAttributedText
     }

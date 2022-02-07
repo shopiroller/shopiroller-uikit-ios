@@ -14,7 +14,7 @@ protocol GeneralAddressDelegate {
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
 }
 
-public class GeneralAddressView: BaseView {
+public class GeneralAddressView: SRBaseView {
     
     private struct Constants {
         

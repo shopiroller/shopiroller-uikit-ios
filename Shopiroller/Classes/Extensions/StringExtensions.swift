@@ -63,13 +63,11 @@ extension String {
     
     var creditCardBrand: UIImage? {
         let numberOnly = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        
         for card in CardType.allCards {
             if (matchesRegex(regex: card.regex, text: numberOnly)) {
                 return card.image
             }
         }
-        
         return nil
     }
     

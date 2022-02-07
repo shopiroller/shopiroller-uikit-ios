@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ShoppingCartPopUpViewModel: BaseViewModel {
+class ShoppingCartPopUpViewModel: SRBaseViewModel {
     
     private let productList: [ShoppingCartItem]?
     

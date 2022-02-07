@@ -8,7 +8,7 @@
 import UIKit
 
 /// Describes the configuration of the page indicator position
-public struct PageIndicatorPosition {
+public struct SRPageIndicatorPosition {
     public enum Horizontal {
         case left(padding: CGFloat), center, right(padding: CGFloat)
     }

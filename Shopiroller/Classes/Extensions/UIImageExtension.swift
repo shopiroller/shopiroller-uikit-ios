@@ -95,9 +95,9 @@ extension UIImage {
     
     static let payAtTheDoorIcon : UIImage = UIImage(named: "payAtTheDoorIcon", in: .shopiroller, with: nil)!
     
-    static let masterCardIcon : UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
+    static let masterCardIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
     
-    static let visaIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
+    static let visaIcon : UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
     
     static let copyIcon : UIImage = UIImage(systemName: "doc.on.doc.fill")!
     

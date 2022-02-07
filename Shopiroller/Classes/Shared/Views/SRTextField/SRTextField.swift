@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SRTextField: BaseView {
+class SRTextField: SRBaseView {
 
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var errorLabelContainer: UIView!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddressView: BaseView {
+class AddressView: SRBaseView {
     
     @IBOutlet private weak var addressTitle: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!

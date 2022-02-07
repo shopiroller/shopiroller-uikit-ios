@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-public class ProductDetailViewModel: BaseViewModel {
+public class ProductDetailViewModel: SRBaseViewModel {
     
     private var productId: String?
     private var productDetailModel: ProductDetailResponseModel?

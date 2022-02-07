@@ -8,7 +8,7 @@
 import Foundation
 
 
-class AddressBottomSheetViewModel : BaseViewModel {
+class AddressBottomSheetViewModel : SRBaseViewModel {
     
     private var type: GeneralAddressType
     private var isEditing: Bool

@@ -191,7 +191,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         default:
             break
         }
-        
         validateCreditCardFields()
     }
     
@@ -306,7 +305,7 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
     open func textField( _ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         if textField == creditCartNumberTextField {
             self.viewModel.creditCardNumber = value
-            creditCartNumberTextField.rightViewImage = textField.text?.creditCardBrand
+            creditCartImageView.image = textField.text?.creditCardBrand
         }
         if textField == creditCartExpireDateTextField {
             if let expireDate = creditCartExpireDateTextField.text , expireDate.count == 5 {
@@ -319,6 +318,7 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
         }
         validateCreditCardFields()
     }
+    
 }
 
 extension CheckOutPaymentViewController: UITextFieldDelegate {

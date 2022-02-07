@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ShoppingCartViewModel: BaseViewModel {
+class ShoppingCartViewModel: SRBaseViewModel {
     
     private var shoppingCart: SRShoppingCartResponseModel?
     var campaignMessage: String?

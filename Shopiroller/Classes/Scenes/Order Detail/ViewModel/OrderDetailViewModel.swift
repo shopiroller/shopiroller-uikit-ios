@@ -8,7 +8,7 @@
 import Foundation
 
 
-class OrderDetailViewModel: BaseViewModel {
+class OrderDetailViewModel: SRBaseViewModel {
     
     private let detail: OrderDetailModel?
     

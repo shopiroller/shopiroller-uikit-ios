@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class UserAddressViewModel: BaseViewModel {
+public class UserAddressViewModel: SRBaseViewModel {
     
     func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AddressListViewModel: BaseViewModel {
+class AddressListViewModel: SRBaseViewModel {
     
     let state: AddressStateEnum
     private var shippingAddressList: [UserShippingAddressModel]?

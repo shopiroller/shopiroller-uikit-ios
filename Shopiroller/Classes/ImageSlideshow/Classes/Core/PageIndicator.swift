@@ -8,7 +8,7 @@
 import UIKit
 
 /// Cusotm Page Indicator can be used by implementing this protocol
-public protocol PageIndicatorView: class {
+public protocol SRPageIndicatorView: class {
     /// View of the page indicator
     var view: UIView { get }
 
@@ -19,7 +19,7 @@ public protocol PageIndicatorView: class {
     var numberOfPages: Int { get set}
 }
 
-extension UIPageControl: PageIndicatorView {
+extension UIPageControl: SRPageIndicatorView {
     public var view: UIView {
         return self
     }
@@ -64,7 +64,7 @@ extension UIPageControl: PageIndicatorView {
 }
 
 /// Page indicator that shows page in numeric style, eg. "5/21"
-public class LabelPageIndicator: UILabel, PageIndicatorView {
+public class SRLabelPageIndicator: UILabel, SRPageIndicatorView {
     public var view: UIView {
         return self
     }

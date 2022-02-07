@@ -8,7 +8,7 @@
 import Foundation
 
 
-class SelectionPopUpViewModel: BaseViewModel {
+class SelectionPopUpViewModel: SRBaseViewModel {
     
     var isSearching : Bool = false
     private var selectionList: [CountryModel]

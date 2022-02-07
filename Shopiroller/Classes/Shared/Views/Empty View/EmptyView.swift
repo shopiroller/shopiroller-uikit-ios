@@ -16,7 +16,7 @@ protocol EmptyViewAddressDelegate {
     func addAddressButtonClicked(type: GeneralAddressType?)
 }
 
-public class EmptyView: BaseView {
+public class EmptyView: SRBaseView {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!

@@ -102,7 +102,7 @@ public extension String {
 
 // MARK: Language Setting Functions
 
-open class Localize: NSObject {
+open class LocalizeSR: NSObject {
     
     /**
      List available languages

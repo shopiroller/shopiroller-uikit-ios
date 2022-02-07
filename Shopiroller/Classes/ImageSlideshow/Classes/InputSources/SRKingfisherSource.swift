@@ -2,7 +2,7 @@ import Kingfisher
 import AVFoundation
 
 /// Input Source to image using Kingfisher
-public class KingfisherSource: NSObject, InputSource {
+public class SRKingfisherSource: NSObject, InputSourceSR {
     /// url to load
     public var url: URL
 

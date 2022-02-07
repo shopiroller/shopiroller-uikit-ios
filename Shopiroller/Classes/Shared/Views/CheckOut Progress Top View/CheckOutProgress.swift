@@ -8,7 +8,7 @@
 import Foundation
 
 
-class CheckOutProgress : BaseView {
+class CheckOutProgress : SRBaseView {
 
     private struct Constants {
         static var adressText: String { return "address-text".localized }

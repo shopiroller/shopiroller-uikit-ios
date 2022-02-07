@@ -8,7 +8,7 @@
 import Foundation
 
 
-class CheckOutAddressViewModel: BaseViewModel {
+class CheckOutAddressViewModel: SRBaseViewModel {
     
     private var defaultAdressList: SRDefaultAddressModel?
     

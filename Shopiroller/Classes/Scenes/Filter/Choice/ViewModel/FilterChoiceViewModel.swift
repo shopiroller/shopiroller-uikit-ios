@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FilterChoiceViewModel: BaseViewModel {
+class FilterChoiceViewModel: SRBaseViewModel {
     
     let title: String?
     let isMultipleChoice: Bool
