@@ -34,4 +34,5 @@ TODO: Add long description of the pod here.
   s.dependency 'InputMask'
   s.dependency 'lottie-ios'
   s.dependency 'IQKeyboardManagerSwift'
+  s.dependency 'Stripe'
 end

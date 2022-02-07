@@ -218,6 +218,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Banka Hesabına Transfer";
 "list-pop-up-pay-at-the-door-text" = "Kapıda Ödeme";
+"list-pop-up-stripe-text" = "Stripe";
 
 
 //MARK: - CheckOutPayment
@@ -284,6 +285,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-result-info-success-check-order-button-text" = "Siparişi Kontrol Et";
 "checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
 "checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
+"checkout-result-info-fail-detail-description" = "Ödeme Yönteminiz Kabul Edilmedi.";
 "checkout-result-info-fail-detail-description-will-replace" = "status=";
 "checkout-result-info-fail-detail-description-to-replace" = "Hata Kodu  ";
 

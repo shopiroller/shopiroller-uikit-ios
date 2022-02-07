@@ -93,6 +93,7 @@ class CheckOutInfoViewModel: SRBaseViewModel {
             switch result {
             case .success(let response):
                 SRSessionManager.shared.orderResponseInnerModel = response.data
+                SRSessionManager.shared.makeOrder?.orderId = response.data?.order?.id
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -105,7 +106,7 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func tryAgainOrder(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.tryAgain(makeOrder?.getCompleteOrderModel() ?? CompleteOrderModel()).response() {
+        SRNetworkManagerRequests.tryAgain(SRSessionManager.shared.makeOrder?.getCompleteOrderModel() ?? CompleteOrderModel()).response() {
             (result) in
             switch result {
             case .success(let response):

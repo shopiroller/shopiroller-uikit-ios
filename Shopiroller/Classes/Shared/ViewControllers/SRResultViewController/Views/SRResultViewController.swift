@@ -102,7 +102,9 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     
     @IBAction func secondButtonTapped() {
         let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-        navigationController?.setViewControllers([mainPageVC], animated: true)
+        if (self.navigationController?.viewControllers.first != mainPageVC) {
+            self.navigationController?.setViewControllers([mainPageVC], animated: true)
+        }
         self.prompt(mainPageVC, animated: true, completion: nil)
     }
     

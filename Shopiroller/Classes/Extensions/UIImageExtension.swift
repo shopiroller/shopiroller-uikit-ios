@@ -119,6 +119,8 @@ extension UIImage {
     
     static let dropdownIcon : UIImage = UIImage(systemName: "chevron.down.square")!
     
+    static let stripeIcon : UIImage = UIImage(named: "stripeIcon", in: .shopiroller, with: nil)!
+    
 }
 
 extension UIImageView {

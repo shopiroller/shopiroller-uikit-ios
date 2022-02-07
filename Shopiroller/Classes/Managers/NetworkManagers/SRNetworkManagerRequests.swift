@@ -80,7 +80,7 @@ struct SRNetworkManagerRequests {
     
     static func setDefaultShippingaddress(_ userId: String,addressId: String, userShippingAddress: SRSetDefaultAddressRequest?) ->
     SRNetworkRequestManager<SuccessResponse> {
-        let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)\(addressId)"
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)/\(addressId)"
         return SRNetworkRequestManager(httpMethod: .post, path: .addresses, subpath: subpath, resourceType: SuccessResponse.self, httpBody: userShippingAddress.data, ignoreParse: true, isUser: true)
     }
     
@@ -94,8 +94,12 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subpath, resourceType: Int.self)
     }
     
-    static func failurePayment(orderId: String) -> SRNetworkRequestManager<SuccessResponse> {
-        return SRNetworkRequestManager(httpMethod: .post, path: .failurePayment, subpath: "/\(orderId)", resourceType: SuccessResponse.self)
+    static func failurePayment(stripeOrderModel: SRStripeOrderStatusModel?) -> SRNetworkRequestManager<SuccessResponse> {
+        return SRNetworkRequestManager(httpMethod: .post, path: .failurePayment , resourceType: SuccessResponse.self, httpBody: stripeOrderModel.data)
+    }
+    
+    static func completePayment(stripeOrderModel: SRStripeOrderStatusModel) -> SRNetworkRequestManager<SuccessResponse> {
+        return SRNetworkRequestManager(httpMethod: .post, path: .completePayment , resourceType: SuccessResponse.self, httpBody: stripeOrderModel.data)
     }
     
     static func getSliders(showProgress: Bool) -> SRNetworkRequestManager<[SRSliderDataModel]> {

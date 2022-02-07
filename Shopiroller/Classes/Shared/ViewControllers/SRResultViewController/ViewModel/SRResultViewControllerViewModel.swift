@@ -15,7 +15,7 @@ class SRResultViewControllerViewModel : SRBaseViewModel {
     
     private let errorMessage: String?
     
-    init (type: OrderResultType? = nil, orderResponse: SROrderResponseInnerModel?,errorMessage: String? = nil) {
+    init (type: OrderResultType? = nil, orderResponse: SROrderResponseInnerModel? = nil,errorMessage: String? = nil) {
         self.type = type
         self.orderResponse = orderResponse
         self.errorMessage = errorMessage

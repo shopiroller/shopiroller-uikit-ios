@@ -26,7 +26,6 @@ extension UIViewController {
     
     func push(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController(rootViewController: viewController)
-        
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import MaterialComponents.MaterialButtons
+import Stripe
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
@@ -27,7 +28,11 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     var index = 0
     
     private var checkOutPageViewController: CheckOutPageViewController?
-    
+    private var paymentSheet: PaymentSheet?
+    private var customerConfig = PaymentSheet.Configuration()
+    private var paymentIntentClientSecret: String?
+    private var paymentIntentPaymentId: String?
+
     init(viewModel: CheckOutViewModel){
         super.init(viewModel.getPageTitle()?.localized, viewModel: viewModel, nibName: CheckOutViewController.nibName, bundle: Bundle(for: CheckOutViewController.self))
     }
@@ -60,6 +65,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         self.viewControllerTitle.text = "delivery-information-page-title".localized
         
         self.checkOutPageViewController = checkOutPageViewController
+        
     }
     
     @objc func loadPayment() {
@@ -79,24 +85,80 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     @objc func onResultEvent() {
-        let orderResponse = SRSessionManager.shared.orderResponseInnerModel
-        
-        if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse?.payment != nil && orderResponse?.payment?._3DSecureHtml != nil) {
-            let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse?.payment?._3DSecureHtml))
-            threeDSViewController.delegate = self
-            threeDSViewController.modalPresentationStyle = .overCurrentContext
-            present(threeDSViewController, animated: true, completion: nil)
-        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.Transfer) {
-            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
-        } else if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
-            loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(), isCreditCard: false)
+        if let orderResponse = SRSessionManager.shared.orderResponseInnerModel , orderResponse != nil {
+            if (orderResponse.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse.payment != nil && orderResponse.payment?._3DSecureHtml != nil) {
+                let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse.payment?._3DSecureHtml))
+                threeDSViewController.delegate = self
+                threeDSViewController.modalPresentationStyle = .overCurrentContext
+                present(threeDSViewController, animated: true, completion: nil)
+            } else if (orderResponse.order?.paymentType == PaymentTypeEnum.Transfer) {
+                loadOrderResultPage(isSuccess: true)
+            } else if (orderResponse.order?.paymentType == PaymentTypeEnum.PayAtDoor) {
+                loadOrderResultPage(isSuccess: true)
+            } else if (orderResponse.order?.paymentType == PaymentTypeEnum.Stripe) {
+                self.paymentIntentClientSecret = orderResponse.payment?.token ?? ""
+                self.paymentIntentPaymentId = paymentIntentClientSecret?.substring(toIndex: 27)
+                StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
+                viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
+                loadPaymentSheet()
+            }
         } else {
-            loadOrderResultSuccess(orderResponse: nil, isCreditCard: nil)
+            loadOrderResultPage(isSuccess: false)
+        }
+     
+    }
+    
+    private func loadPaymentSheet() {
+        guard let paymentIntentClientSecret = self.paymentIntentClientSecret else {
+                    return
+                }
+        customerConfig.allowsDelayedPaymentMethods = true
+        self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret , configuration: customerConfig)
+        handlePaymentResult()
+    }
+    
+    private func handlePaymentResult() {
+        paymentSheet?.present(from: self) { paymentResult in
+            switch paymentResult {
+            case .completed:
+                self.setSuccessRequest()
+                self.loadOrderResultPage(isSuccess: true)
+            case .canceled:
+                self.loadOrderResultPage(isSuccess: false)
+                self.setFailRequest()
+            case .failed(let error):
+                self.setFailRequest()
+                self.loadOrderResultPage(isSuccess: false)
+            }
         }
     }
     
-    private func loadOrderResultSuccess(orderResponse : SROrderResponseInnerModel?, isCreditCard : Bool?) {
-        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isCreditCard : isCreditCard))
+    private func setSuccessRequest() {
+        viewModel.setStripeSuccessRequest(success: {
+            SRSessionManager.shared.makeOrder?.tryAgain = false
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+            self.loadOrderResultPage(isSuccess: false)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        }
+    }
+    
+    private func setFailRequest() {
+        viewModel.setStripeFailRequest(success: {
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+            self.loadOrderResultPage(isSuccess: false)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        }
+    }
+    
+    private func loadOrderResultPage(isSuccess : Bool) {
+        let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isSuccess: isSuccess))
         self.prompt(resultVC, animated: true, completion: nil)
     }
     
@@ -190,20 +252,20 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
     
     func currentPageIndex(currentIndex: Int) {
         self.index = currentIndex
-        print(currentIndex)
     }
     
 }
 
 extension CheckOutViewController: ThreeDSModalDelegate {
     func onPaymentSuccess() {
-        let resultVC = SRResultViewController(viewModel: SRResultViewControllerViewModel(type: .success, orderResponse: SRSessionManager.shared.orderResponseInnerModel))
-        prompt(resultVC, animated: true, completion: nil)
+        self.loadOrderResultPage(isSuccess: true)
     }
     
     func onPaymentFailed(message: String?) {
+        DispatchQueue.main.async {
+            self.viewModel.errorMessage = message
+        }
         SRSessionManager.shared.makeOrder?.tryAgain = true
-        let resultVC = SRResultViewController(viewModel: SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel,errorMessage: message))
-        prompt(resultVC, animated: true, completion: nil)
+        self.loadOrderResultPage(isSuccess: false)
     }
 }

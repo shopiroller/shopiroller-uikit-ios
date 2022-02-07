@@ -140,7 +140,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             paymentTypeDescription.textColor = .textPCaption
             paymentTypeDescription.text = viewModel.getPaymentMethodTitle()
             setPaymentView()
-        }else {
+        } else {
             paymentSeparator.isHidden = true
             paymentStackView.isHidden = true
         }
@@ -177,7 +177,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             NSLayoutConstraint.activate([
                 addressView.heightAnchor.constraint(equalToConstant: 106),
             ])
-            addressHeight.constant = addressHeight.constant + 126
+            addressHeight.constant = addressHeight.constant + 121
         }
     }
     
