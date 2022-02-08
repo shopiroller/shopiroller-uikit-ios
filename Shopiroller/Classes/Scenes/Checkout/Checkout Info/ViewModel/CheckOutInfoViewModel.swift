@@ -15,6 +15,8 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     
     var isOrderNoteChanged: Bool = false
     
+    private var _isAgreeTermsButtonChecked : Bool = false
+    
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCart(userId: SRAppContext.userId,showProgress: false).response() {
             (result) in
@@ -122,5 +124,17 @@ class CheckOutInfoViewModel: SRBaseViewModel {
         }
     }
     
+    
+    var isAgreeTermsButtonChecked: Bool {
+        set {
+            _isAgreeTermsButtonChecked = newValue
+        } get {
+            return _isAgreeTermsButtonChecked
+        }
+    }
+    
+    func isValid() -> Bool {
+        return isAgreeTermsButtonChecked
+    }
     
 }

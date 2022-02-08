@@ -45,28 +45,29 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadInfo), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
+            self.addChild(checkOutPageViewController)
+            checkOutPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.containerView.addSubview(checkOutPageViewController.view)
+            
+            checkOutPageViewController.view.frame = self.containerView.frame
+            
+            self.navigationController?.navigationBar.isHidden = true
+            
+            checkOutPageViewController.didMove(toParent: self)
+            
+            self.viewControllerTitle.text = "delivery-information-page-title".localized
+            
+            self.checkOutPageViewController = checkOutPageViewController
+        }
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
-        addChild(checkOutPageViewController)
-        checkOutPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerView.addSubview(checkOutPageViewController.view)
-        
-        checkOutPageViewController.view.frame = containerView.frame
-        
-        self.navigationController?.navigationBar.isHidden = true
-        
-        checkOutPageViewController.didMove(toParent: self)
-        
-        self.viewControllerTitle.text = "delivery-information-page-title".localized
-        
-        self.checkOutPageViewController = checkOutPageViewController
-        
-    }
     
     @objc func loadPayment() {
         checkOutProgress.configureView(stage: .payment)
@@ -80,6 +81,14 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkOutProgress.configureView(stage: .address)
         setTitle(stage: .address)
         isHidingNextButton(hide: false)
+        setButton()
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func loadInfo() {
+        checkOutProgress.configureView(stage: .info)
+        setTitle(stage: .info)
+        isHidingNextButton(hide: true)
         setButton()
         self.view.layoutIfNeeded()
     }
@@ -118,14 +127,23 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     private func handlePaymentResult() {
+        if presentedViewController != nil {
+            presentedViewController?.dismiss(animated: false, completion: {
+                self.presentStripe()
+            })
+        } else {
+            self.presentStripe()
+        }
+    }
+    
+    private func presentStripe() {
         paymentSheet?.present(from: self) { paymentResult in
             switch paymentResult {
             case .completed:
                 self.setSuccessRequest()
                 self.loadOrderResultPage(isSuccess: true)
             case .canceled:
-                self.loadOrderResultPage(isSuccess: false)
-                self.setFailRequest()
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
             case .failed(let error):
                 self.setFailRequest()
                 self.loadOrderResultPage(isSuccess: false)
@@ -166,16 +184,11 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkOutPageViewController?.goToNextPage()
         switch index {
         case 1:
-            checkOutProgress.configureView(stage: .payment)
-            setTitle(stage: .payment)
+            loadPayment()
         case 2:
-            checkOutProgress.configureView(stage: .info)
-            setTitle(stage: .info)
-            isHidingNextButton(hide: true)
-            setButton()
+            loadInfo()
         default:
-            checkOutProgress.configureView(stage: .address)
-            setTitle(stage: .address)
+            loadAddress()
         }
     }
     
@@ -223,6 +236,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
 }
 
 extension CheckOutViewController : CheckOutProgressPageDelegate {
+    
     func isEnabledNextButton(enabled: Bool?) {
         if enabled == true {
             self.nextPageButton.isUserInteractionEnabled = true
