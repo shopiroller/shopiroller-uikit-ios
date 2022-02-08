@@ -85,6 +85,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImage.setImages(url: image)
         }else{
             productImage.image = .emptyProduct
+            productImage.contentMode = .scaleAspectFill
         }
         
         if viewModel.isShippingFree() {
