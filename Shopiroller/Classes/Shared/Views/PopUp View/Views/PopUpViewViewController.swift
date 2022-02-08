@@ -10,8 +10,8 @@ import Kingfisher
 
 
 protocol PopUpViewViewControllerDelegate {
-    func firstButtonClicked(_ sender: Any)
-    func secondButtonClicked(_ sender: Any)
+    func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
+    func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
 }
 
 class PopUpViewViewController: BaseViewController<PopUpViewModel> {
@@ -97,13 +97,15 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     }
   
     @IBAction private func firstButtonTapped(_ sender: Any) {
-        delegate?.firstButtonClicked(sender)
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false, completion: {
+            self.delegate?.firstButtonClicked(sender, popUpViewController: self)
+        })
     }
     
     @IBAction func secondButtonTapped(_ sender: Any) {
-        delegate?.secondButtonClicked(sender)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.delegate?.secondButtonClicked(sender, popUpViewController: self)
+        })
     }
     
 }
