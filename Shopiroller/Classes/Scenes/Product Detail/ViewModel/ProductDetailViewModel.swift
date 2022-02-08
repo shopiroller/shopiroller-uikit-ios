@@ -205,11 +205,21 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getDeliveryConditionsTitle() -> String {
-        return paymentSettings?.deliveryConditionsTitle ?? "delivery-terms-title".localized
+        if let deliveryConditionTitle = paymentSettings?.deliveryConditionsTitle ,
+        deliveryConditionTitle != "" {
+            return deliveryConditionTitle
+        } else {
+            return "delivery-terms-title".localized
+        }
     }
     
     func getCancellationProdecureTitle() -> String {
-        return paymentSettings?.cancellationProcedureTitle ?? "return-exchange-terms-title".localized
+        if let cancellationProdecureTitle = paymentSettings?.cancellationProcedureTitle ,
+        cancellationProdecureTitle != "" {
+            return cancellationProdecureTitle
+        } else {
+            return "return-exchange-terms-title".localized
+        }
     }
     
 }
