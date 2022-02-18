@@ -100,9 +100,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
             if estimatedHeight > self.popUpView.frame.size.height {
                 let heightDifference = estimatedHeight - self.popUpView.frame.size.height
                 self.popUpHeightConstraint.constant += heightDifference
-                
-                if self.popUpHeightConstraint.constant > self.view.frame.height / 10 * 65 {
-                    self.popUpHeightConstraint.constant = self.view.frame.height / 10 * 65
+                if self.popUpHeightConstraint.constant > self.popUpView.frame.size.height / 10 * 30 {
+                    self.popUpHeightConstraint.constant = self.popUpView.frame.size.height / 10 * 20
                 }
             }
         }
