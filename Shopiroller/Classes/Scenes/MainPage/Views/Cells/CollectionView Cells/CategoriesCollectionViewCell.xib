@@ -24,10 +24,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-yc-hat" userLabel="CategoryImage Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="116.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="110.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-fG-0Tr">
-                                                <rect key="frame" x="20.5" y="28.5" width="60" height="60"/>
+                                                <rect key="frame" x="20.5" y="25" width="60" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="0VR-kt-sad"/>
@@ -35,7 +35,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="xB2-TE-jj0" userLabel="CategoryImage">
-                                                <rect key="frame" x="33" y="41" width="35" height="35"/>
+                                                <rect key="frame" x="33" y="37.5" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="hkQ-lo-lw0"/>
                                                     <constraint firstAttribute="height" constant="35" id="nPO-a3-1Ic"/>
@@ -51,10 +51,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6h-TD-8Ak" userLabel="Category Title Container">
-                                        <rect key="frame" x="0.0" y="121.5" width="101" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="115.5" width="101" height="30.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elektronik" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-qh-G5c" userLabel="Category Title">
-                                                <rect key="frame" x="20.5" y="7" width="60" height="11"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TH category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-qh-G5c" userLabel="Category Title">
+                                                <rect key="frame" x="20.5" y="0.0" width="60" height="11"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
@@ -63,7 +63,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="xy0-qh-G5c" firstAttribute="centerY" secondItem="M6h-TD-8Ak" secondAttribute="centerY" id="4H2-Yj-0hc"/>
+                                            <constraint firstItem="xy0-qh-G5c" firstAttribute="top" secondItem="M6h-TD-8Ak" secondAttribute="top" id="M6m-Xf-v0x"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="centerX" secondItem="M6h-TD-8Ak" secondAttribute="centerX" id="WVk-ed-A4n"/>
                                         </constraints>
                                     </view>
@@ -91,7 +91,7 @@
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c92-y9-tlR"/>
                 <constraint firstAttribute="bottom" secondItem="SqV-5M-6aR" secondAttribute="bottom" id="f2W-JD-fWn"/>
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lE8-Kf-fSx"/>
-                <constraint firstItem="M6h-TD-8Ak" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.24" id="nca-Ys-DtI"/>
+                <constraint firstItem="M6h-TD-8Ak" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.3" id="nca-Ys-DtI"/>
             </constraints>
             <size key="customSize" width="264" height="376"/>
             <userDefinedRuntimeAttributes>

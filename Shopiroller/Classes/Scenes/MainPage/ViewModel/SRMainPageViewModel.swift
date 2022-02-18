@@ -210,7 +210,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
                 return 220
             }
         case .categories:
-            return 165
+            return 190
         }
     }
     
