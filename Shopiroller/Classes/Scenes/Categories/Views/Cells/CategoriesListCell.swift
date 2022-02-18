@@ -38,7 +38,8 @@ class CategoriesListCell: UITableViewCell {
     func setupCategories(model : SRCategoryResponseModel) {
         categoryImage.kf.setImage(with: URL(string: model.icon ?? ""))
         categoryNameTitle.text = model.name
-        categoryItemCountLabel.text = Constants.categoryItemText.replacingOccurrences(of: "XX", with: String(model.totalProduct ?? 0))
+        categoryItemCountLabel.text = Constants.categoryItemText.replacingOccurrences(of: "XX", with: String(model.totalProducts ?? 0))
+        print(model)
     }
     
 }
