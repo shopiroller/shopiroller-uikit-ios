@@ -61,8 +61,8 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         super.init(viewModel: viewModel, nibName: CheckOutAddressViewController.nibName, bundle: Bundle(for: CheckOutAddressViewController.self))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         delegate?.isHidingNextButton(hide: false)
         getDefaultAddress()
         getAddressList()

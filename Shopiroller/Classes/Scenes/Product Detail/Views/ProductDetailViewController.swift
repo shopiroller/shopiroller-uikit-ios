@@ -235,8 +235,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             navigationController?.navigationBar.standardAppearance = apperance
             navigationController?.navigationBar.scrollEdgeAppearance = apperance
         }
-        
         navigationController!.navigationBar.backgroundColor = backgroundColor
+        
+        
     }
     
     @objc func updateBadgeCount() {
@@ -528,7 +529,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
 }
 
 extension ProductDetailViewController : PopUpViewViewControllerDelegate {
-    func firstButtonClicked(_ sender: Any) {
+    func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         if(viewModel.isStateSoldOut()) {
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
@@ -537,7 +538,7 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
         }
     }
     
-    func secondButtonClicked(_ sender: Any) {
+    func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         
     }
 }

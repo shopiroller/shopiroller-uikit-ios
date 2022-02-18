@@ -51,8 +51,6 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     @IBOutlet private weak var animationView: AnimationView!
     
     
-    private var isAgreeTermsButtonChecked: Bool = false
-    
     private var isShoppingCartPopUp : Bool = true
     
     private let timeInSeconds: TimeInterval = Date().timeIntervalSince1970
@@ -66,7 +64,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     override func setup() {
         super.setup()
-        
+                
         shoppingCardViewContainer.layer.cornerRadius = 6
         shoppingCardViewContainer.backgroundColor = .buttonLight
         shoppingCardViewTitle.text = Constants.shoppingCardViewTitle
@@ -128,12 +126,14 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         self.animationView.frame = self.view.frame
         self.view.addSubview(animationView)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonTapped), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         getShoppingCart(isCheckOut: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonTapped), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
+        setUpAgreeTermsButton()
     }
     
     @objc func getTerms() {
@@ -183,14 +183,14 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     
     @objc func confirmButtonTapped() {
-        if isAgreeTermsButtonChecked {
-            getShoppingCart(isCheckOut: true)
-        } else {
-            isShoppingCartPopUp = false
-            let agreementPopUp = PopUpViewViewController(viewModel: viewModel.getAgreementCheckPopUpModel())
-            agreementPopUp.delegate = self
-            popUp(agreementPopUp, completion: nil)
-        }
+            if self.viewModel.isAgreeTermsButtonChecked {
+                self.getShoppingCart(isCheckOut: true)
+            } else {
+                self.isShoppingCartPopUp = false
+                let agreementPopUp = PopUpViewViewController(viewModel: self.viewModel.getAgreementCheckPopUpModel())
+                agreementPopUp.delegate = self
+                self.popUp(agreementPopUp, completion: nil)
+            }
     }
     
     private func getShoppingCart(isCheckOut: Bool){
@@ -319,7 +319,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                     self.stopAnimation()
                     NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
                 }
-              
+                
             }
             
         })
@@ -346,7 +346,8 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         popUp(popUpVc, completion: nil)
     }
     
-    private func setUpLayout() {
+    @objc func setUpLayout() {
+        self.mainContainerView.isHidden = false
         billingAddressViewDescription.text = SRSessionManager.shared.userBillingAddress?.getSummaryDescriptionArea()
         deliveryAddressCardDescription.text = SRSessionManager.shared.userDeliveryAddress?.getSummaryDescriptionArea()
         shoppingCardViewDescription.text = viewModel.getCardDescription()
@@ -371,15 +372,15 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     @IBAction func agreeTermsButtonTapped() {
-        isAgreeTermsButtonChecked = !isAgreeTermsButtonChecked
+        viewModel.isAgreeTermsButtonChecked = !viewModel.isAgreeTermsButtonChecked
         setUpAgreeTermsButton()
     }
     
     private func setUpAgreeTermsButton() {
-        if isAgreeTermsButtonChecked {
+        if viewModel.isAgreeTermsButtonChecked {
             agreeTermsButton.setImage(UIImage(systemName: "checkmark.circle"))
             agreeTermsButton.imageView?.tintColor = .textPrimary
-        }else {
+        } else {
             agreeTermsButton.setImage(UIImage(systemName: "circle"))
             agreeTermsButton.imageView?.tintColor = .veryLightPink
         }
@@ -388,17 +389,19 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
 
 
 extension CheckOutInfoViewController : PopUpViewViewControllerDelegate {
-    func firstButtonClicked(_ sender: Any) {
-        if isShoppingCartPopUp {
-            let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
-            popUp(shoppingCartVC, completion: nil)
-        } else {
-            self.isAgreeTermsButtonChecked = true
-            self.setUpAgreeTermsButton()
-        }
+    func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
+        popUpViewController.dismiss(animated: true, completion: {
+            if self.isShoppingCartPopUp {
+                let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+                self.popUp(shoppingCartVC, completion: nil)
+            } else {
+                self.viewModel.isAgreeTermsButtonChecked = true
+                self.setUpAgreeTermsButton()
+            }
+        })
     }
     
-    func secondButtonClicked(_ sender: Any) {
+    func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         
     }
 }

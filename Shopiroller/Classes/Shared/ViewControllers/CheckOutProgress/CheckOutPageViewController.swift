@@ -19,6 +19,8 @@ class CheckOutPageViewController: UIPageViewController {
 
     private var items: [UIViewController] = []
     internal let checkOutPageDelegate : CheckOutProgressPageDelegate
+    var checkOutPaymentVC: CheckOutPaymentViewController?
+    var checkOutInfoVC: CheckOutInfoViewController?
     
     init(checkOutPageDelegate: CheckOutProgressPageDelegate){
         self.checkOutPageDelegate = checkOutPageDelegate
@@ -29,21 +31,28 @@ class CheckOutPageViewController: UIPageViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        dataSource = self
-        createViewControllers()
-        if let firstViewController = items.first{
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let firstViewController = self.items.first {
+                self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+            }
         }
         
+        dataSource = self
+        
+        self.createViewControllers()
+                
         if let scrollView = self.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
             scrollView.isScrollEnabled = false
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadInfo), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
         
     }
     
@@ -58,8 +67,12 @@ class CheckOutPageViewController: UIPageViewController {
                            direction: .reverse, animated: true, completion: nil)
     }
     
-    var checkOutPaymentVC: CheckOutPaymentViewController?
+    @objc func loadInfo() {
+        setViewControllers([checkOutInfoVC!],
+                           direction: .reverse, animated: true, completion: nil)
+    }
     
+        
     private func createViewControllers() {
         let checkOutAdressVC = CheckOutAddressViewController(viewModel: CheckOutAddressViewModel())
         checkOutAdressVC.delegate = checkOutPageDelegate
@@ -67,9 +80,9 @@ class CheckOutPageViewController: UIPageViewController {
         checkOutPaymentVC = CheckOutPaymentViewController(viewModel: CheckOutPaymentViewModel())
         checkOutPaymentVC!.delegate = checkOutPageDelegate
         items.append(checkOutPaymentVC!)
-        let checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
-        checkOutInfoVC.delegate = checkOutPageDelegate
-        items.append(checkOutInfoVC)
+        checkOutInfoVC = CheckOutInfoViewController(viewModel: CheckOutInfoViewModel())
+        checkOutInfoVC!.delegate = checkOutPageDelegate
+        items.append(checkOutInfoVC!)
     }
 }
 

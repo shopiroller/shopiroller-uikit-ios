@@ -197,9 +197,9 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, Shoppin
 
 
 extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
-    func firstButtonClicked(_ sender: Any) {}
+    func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {}
     
-    func secondButtonClicked(_ sender: Any) {
+    func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         clearShoppingCart()
     }
     
