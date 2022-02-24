@@ -624,10 +624,10 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 editBillingAddress?.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
                 editBillingAddress?.id = userBillingAddress.id
                 if isIndividualButtonTapped {
-                    editBillingAddress?.type = SRAppConstants.AddressType.individual
+                    editBillingAddress?.type = SRAppConstants.AddressType.Individual
                     editBillingAddress?.identityNumber = identityNumberView.getTextField().text
                 }else {
-                    editBillingAddress?.type = SRAppConstants.AddressType.corporate
+                    editBillingAddress?.type = SRAppConstants.AddressType.Corporate
                     editBillingAddress?.companyName = companyNameView.getTextField().text
                     editBillingAddress?.taxNumber = taxNumberView.getTextField().text
                     editBillingAddress?.taxOffice = taxOfficeView.getTextField().text
@@ -651,10 +651,10 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 editShippingAddress?.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
                 editShippingAddress?.id = userShippingAddress.id
                 if isIndividualButtonTapped {
-                    editShippingAddress?.type = SRAppConstants.AddressType.individual
+                    editShippingAddress?.type = SRAppConstants.AddressType.Individual
                     editShippingAddress?.identityNumber = identityNumberView.getTextField().text
                 }else {
-                    editShippingAddress?.type = SRAppConstants.AddressType.corporate
+                    editShippingAddress?.type = SRAppConstants.AddressType.Corporate
                     editShippingAddress?.companyName = companyNameView.getTextField().text
                     editShippingAddress?.taxNumber = taxNumberView.getTextField().text
                     editShippingAddress?.taxOffice = taxOfficeView.getTextField().text
@@ -709,7 +709,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 statesView.getTextField().placeholder = userBillingAddress.state
                 zipCodeView.getTextField().text = userBillingAddress.zipCode
                 addressTitleView.getTextField().text = userBillingAddress.title
-                if userBillingAddress.type != nil && userBillingAddress.type == SRAppConstants.AddressType.corporate {
+                if userBillingAddress.type != nil && userBillingAddress.type == SRAppConstants.AddressType.Corporate {
                     isIndividualButtonTapped = false
                     companyNameView.getTextField().text = userBillingAddress.companyName
                     taxOfficeView.getTextField().text = userBillingAddress.taxOffice
@@ -740,10 +740,10 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.addAddressModel.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
             viewModel.addAddressModel.addBoth = isBillingAddressChecked
             if isIndividualButtonTapped {
-                viewModel.addAddressModel.type = SRAppConstants.AddressType.individual
+                viewModel.addAddressModel.type = SRAppConstants.AddressType.Individual
                 viewModel.addAddressModel.identityNumber = identityNumberView.getTextField().text
             }else {
-                viewModel.addAddressModel.type = SRAppConstants.AddressType.corporate
+                viewModel.addAddressModel.type = SRAppConstants.AddressType.Corporate
                 viewModel.addAddressModel.companyName = companyNameView.getTextField().text
                 viewModel.addAddressModel.taxNumber = taxNumberView.getTextField().text
                 viewModel.addAddressModel.taxOffice = taxOfficeView.getTextField().text
@@ -765,10 +765,10 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             viewModel.addAddressModel.nameSurname = (nameView.getTextField().text ?? "") + " " + (surnameView.getTextField().text ?? "")
             viewModel.addAddressModel.title = addressTitleView.getTextField().text
             if isIndividualButtonTapped {
-                viewModel.addAddressModel.type = SRAppConstants.AddressType.individual
+                viewModel.addAddressModel.type = SRAppConstants.AddressType.Individual
                 viewModel.addAddressModel.identityNumber = identityNumberView.getTextField().text
             }else {
-                viewModel.addAddressModel.type = SRAppConstants.AddressType.corporate
+                viewModel.addAddressModel.type = SRAppConstants.AddressType.Corporate
                 viewModel.addAddressModel.companyName = companyNameView.getTextField().text
                 viewModel.addAddressModel.taxNumber = taxNumberView.getTextField().text
                 viewModel.addAddressModel.taxOffice = taxOfficeView.getTextField().text

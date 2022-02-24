@@ -101,6 +101,11 @@ public struct SRAppConstants {
         static let searchHistory = "searchHistory"
     }
     
+    struct AddressType {
+        static let Corporate = "Corporate"
+        static let Individual = "Individual"
+    }
+    
     enum NavigationItemSelectorType {
         case goToCard
         case searchProduct

@@ -61,7 +61,7 @@ struct UserBillingAdressModel: Codable {
     }
     
     func getListBillingDescriptionArea() -> String {
-        if(type == SRAppConstants.AddressType.corporate) {
+        if(type == SRAppConstants.AddressType.Corporate) {
             return [contact?.nameSurname
                     , String.NEW_LINE
                     , addressLine
