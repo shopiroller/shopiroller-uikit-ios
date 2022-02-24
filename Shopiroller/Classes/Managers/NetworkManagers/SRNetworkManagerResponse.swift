@@ -27,5 +27,4 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
         case errors = "errors"
         case paymentResult = "paymentResult"
     }
-    
 }

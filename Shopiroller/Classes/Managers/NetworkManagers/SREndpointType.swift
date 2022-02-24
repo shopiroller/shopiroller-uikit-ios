@@ -17,7 +17,7 @@ public enum SREndpointType {
     var baseURL: String {
         switch self {
         case .dev:
-            return "api.shopiroller.com"
+            return "dev.applyze.com"
 //        case .dev:
 //            return "qaapi.shopiroller.com"
 //        case .dev:
@@ -32,7 +32,7 @@ public enum SREndpointType {
     var userBaseUrl: String {
         switch self {
         case .dev:
-            return "mobiroller.api.applyze.com"
+            return "dev.applyze.com"
         case .custom(let url, _):
             return url
         }

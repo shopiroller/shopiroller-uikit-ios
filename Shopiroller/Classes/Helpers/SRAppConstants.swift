@@ -18,7 +18,6 @@ public struct SRAppConstants {
         static let acceptLanguage = "Accept-Language"
     }
     
-    
     struct UserDefaults {
         
         struct Key {
@@ -106,6 +105,12 @@ public struct SRAppConstants {
         case searchProduct
         case goBack
         case openOptions
+    }
+    
+    struct AddressType {
+        static let individual = "Individual"
+        static let corporate = "Corporate"
+        
     }
 }
 

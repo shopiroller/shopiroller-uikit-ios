@@ -221,7 +221,7 @@ final public class SRNetworkManager {
                         return
                     }
                     let decoder = JSONDecoder()
-                   
+                    
 
                     let obj = SRNetworkManagerResponse<T>.self
                     do {

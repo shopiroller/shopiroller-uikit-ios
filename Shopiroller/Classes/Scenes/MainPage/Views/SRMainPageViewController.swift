@@ -71,7 +71,8 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-        updateNavigationBar(rightBarButtonItems:  [searchButton,cartButton])
+        let menuButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
+        updateNavigationBar(rightBarButtonItems:[searchButton,cartButton,menuButton])
         cartButton.customView?.addSubview(badgeView)
     }
     
