@@ -11,10 +11,11 @@ import Kingfisher
 protocol FilterChoiceViewControllerDelegate {
     func choiceConfirmed(selectedIds: SelectionIds)
 }
+
 class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
-    @IBOutlet weak var selectionTableView: UITableView!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var selectionTableView: UITableView!
+    @IBOutlet private weak var confirmButton: UIButton!
     
     private let delegate: FilterChoiceViewControllerDelegate
     
@@ -25,6 +26,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
     override func setup() {
         super.setup()
+        
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
         confirmButton.setTitle("filter_choice_apply".localized)
@@ -32,9 +34,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         selectionTableView.register(cellClass: FilterChoiceTableViewCell.self)
         selectionTableView.delegate = self
         selectionTableView.dataSource = self
-        if viewModel.isMultipleChoice {
-            selectionTableView.allowsMultipleSelection = true
-        }
+        selectionTableView.allowsMultipleSelection = viewModel.isMultipleChoice
         selectionTableView.reloadData()
     }
     

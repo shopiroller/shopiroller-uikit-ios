@@ -10,6 +10,7 @@ import UIKit
 
 
 protocol GeneralAddressDelegate {
+    
     func editButtonTapped(type: GeneralAddressType)
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
 }

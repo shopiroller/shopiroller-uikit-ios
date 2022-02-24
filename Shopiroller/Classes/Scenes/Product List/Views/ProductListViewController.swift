@@ -10,7 +10,9 @@ import UIKit
 class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private struct Constants {
+        
         static var filterTitle: String { return "filter-title-text".localized }
+        
         static var sortByTitle: String { return "sort-title-text".localized }
     }
     
@@ -56,7 +58,6 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         filterRedDotView.backgroundColor = .red
         filterRedDotView.layer.cornerRadius = filterRedDotView.frame.height / 2
         filterButton.imageView!.addSubview(filterRedDotView)
-        
     
         getProducts(pagination: false)
     }
@@ -96,10 +97,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     private func getCount() {
         viewModel.getShoppingCartCount(succes: {
             [weak self] in
-            guard let self = self else { return }
+            guard self != nil else { return }
         }) {
             [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            guard self != nil else { return }
         }
     }
     
@@ -113,7 +114,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
             }
         }) {
             [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            guard self != nil else { return }
         }
     }
     

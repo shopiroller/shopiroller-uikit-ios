@@ -41,6 +41,10 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
     var sortDelegate: ListPopUpSortDelegate?
     
+    init(viewModel: ListPopUpViewModel) {
+        super.init(viewModel: viewModel, nibName: ListPopUpViewController.nibName, bundle: Bundle(for: ListPopUpViewController.self))
+    }
+    
     override func setup() {
         super.setup()
         
@@ -80,15 +84,6 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         case .sortList:
             setUpForSort()
         }
-        
-    }
-    
-    init(viewModel: ListPopUpViewModel){
-        super.init(viewModel: viewModel, nibName: ListPopUpViewController.nibName, bundle: Bundle(for: ListPopUpViewController.self))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         var estimatedHeight = CGFloat(100 + (viewModel.getItemCount() * Int(viewModel.getItemHeight())))
         
@@ -199,6 +194,7 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ListPopUpViewController: AddressPopUpSelectedDelegate {
+    
     func getIndex(shippingAddressIndex: Int?, billingAddressIndex: Int?) {
         if let shippingAddressIndex = shippingAddressIndex {
             addressDelegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: shippingAddressIndex))
@@ -212,6 +208,7 @@ extension ListPopUpViewController: AddressPopUpSelectedDelegate {
 }
 
 extension ListPopUpViewController: PaymentTableViewCellDelegate {
+    
     func getPaymentIndex(index: Int?) {
         if let paymentType = viewModel.getSupportedMethods(position: index ?? 0)?.paymentType {
             paymentDelegate?.getSelectedPayment(payment: paymentType)
@@ -222,6 +219,7 @@ extension ListPopUpViewController: PaymentTableViewCellDelegate {
 }
 
 extension ListPopUpViewController: SortProductCellDelegate {
+    
     func getTappedIndex(index: Int) {
         viewModel.selectedIndex = index
         sortDelegate?.getSelectedSortIndex(index: viewModel.selectedIndex ?? 0)

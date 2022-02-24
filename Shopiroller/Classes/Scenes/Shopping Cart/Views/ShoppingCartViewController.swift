@@ -10,6 +10,7 @@ import UIKit
 class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, EmptyViewDelegate {
     
     private struct Constants {
+        
         static var clearCartButtonText : String { return "shopping_cart_clear_cart_button_text".localized }
         
         static var pageTitle: String { return "shopping_cart_title".localized }
@@ -65,12 +66,12 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     }
     
     func configure() {
-        if(viewModel.isShoppingCartEmpty()){
+        if(viewModel.isShoppingCartEmpty()) {
             containerView.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
             emptyView.delegate = self
-        }else {
+        } else {
             containerView.isHidden = false
             emptyView.isHidden = true
             
@@ -89,14 +90,14 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             tableView.dataSource = self
             tableView.reloadData()
             
-            isInvalid()
+            showIfHasInvalidItem()
         }
     }
     
     private func getShoppingCart() {
         viewModel.getShoppingCart(success: {
             self.configure()
-            self.isInvalid()
+            self.showIfHasInvalidItem()
         }) { (errorViewModel) in
             self.showAlertError(viewModel: errorViewModel)
         }
@@ -135,13 +136,11 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         }
     }
     
-    private func isInvalid() -> Bool {
+    private func showIfHasInvalidItem() {
         if(viewModel.hasInvalidItems()){
             let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel(), delegate: self)
             popUp(vc, completion: nil)
-            return true
         }
-        return false
     }
     
     func actionButtonClicked(_ sender: Any) {
@@ -155,10 +154,12 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     }
     
     @IBAction func proceedToCheckoutClicked(_ sender: Any) {
-        if(!isInvalid()){
+        if(!viewModel.hasInvalidItems()){
             let checkOutViewController = CheckOutViewController(viewModel: CheckOutViewModel())
             checkOutViewController.modalPresentationStyle = .fullScreen
             present(checkOutViewController, animated: true, completion: nil)
+        } else {
+            showIfHasInvalidItem()
         }
     }
     
@@ -197,6 +198,7 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, Shoppin
 
 
 extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
+    
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {}
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {

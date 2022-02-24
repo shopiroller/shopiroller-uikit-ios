@@ -10,9 +10,13 @@ import Foundation
 class CheckOutPaymentViewModel: SRBaseViewModel {
     
     private struct Constants {
+        
         static var creditCardNumberErrorText: String { return "credit-card-number-error-text".localized }
+        
         static var creditCardHolderErrorText: String { return "credit-card-holder-error-text".localized }
+        
         static var creditCardExpireDateErrorText: String { return "credit-card-expire-date-error-text".localized }
+        
         static var creditCardCvvText: String { return "credit-card-cvv-error-text".localized }
     }
     
@@ -45,7 +49,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         SRNetworkManagerRequests.setDefaultBillingAddress(SRAppContext.userId, addressId: SRSessionManager.shared.userBillingAddress?.id ?? "", userBillingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
-            case .success(let response):
+            case .success(_):
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -61,7 +65,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         SRNetworkManagerRequests.setDefaultShippingaddress(SRAppContext.userId, addressId: SRSessionManager.shared.userDeliveryAddress?.id ?? "", userShippingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
-            case .success(let response):
+            case .success(_):
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -187,8 +191,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     private func isValidCreditCardNumber(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
-        if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true)  {
-            print("card n umber Tamam")
+        if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true) {
             return true
         }
         error?(ErrorViewModel.validationError(message: Constants.creditCardNumberErrorText))

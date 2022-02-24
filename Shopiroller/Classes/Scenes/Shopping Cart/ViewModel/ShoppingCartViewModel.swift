@@ -100,7 +100,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShoppingCart, title: "shopping_cart_empty_title".localized, description: "shopping_cart_empty_description".localized, button: ButtonModel(title:     "shopping_cart_empty_button_title".localized, color: .textPrimary))
+        return EmptyModel(image: .emptyShoppingCart, title: "shopping_cart_empty_title".localized, description: "shopping_cart_empty_description".localized, button: ButtonModel(title: "shopping_cart_empty_button_title".localized, color: .textPrimary))
     }
     
     func getItemCountText() -> String {
@@ -132,7 +132,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getClearCartPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .clearCart, title:  "shopping_cart_clear_cart_title".localized, description: "shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title:     "shopping_cart_clear_cart_not_now".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "shopping_cart_clear_cart_clear_cart".localized, type: .lightButton))
+        return PopUpViewModel(image: .clearCart, title: "shopping_cart_clear_cart_title".localized, description: "shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title: "shopping_cart_clear_cart_not_now".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "shopping_cart_clear_cart_clear_cart".localized, type: .lightButton))
     }
     
     func hasInvalidItems() -> Bool {

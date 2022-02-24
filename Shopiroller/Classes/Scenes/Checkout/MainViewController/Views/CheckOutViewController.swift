@@ -48,6 +48,10 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadInfo), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
         
+        viewControllerTitle.font = viewControllerTitle.font.withSize(17)
+        viewControllerTitle.textColor = .black
+        viewControllerTitle.text = "delivery-information-page-title".localized
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
             self.addChild(checkOutPageViewController)
@@ -60,8 +64,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             self.navigationController?.navigationBar.isHidden = true
             
             checkOutPageViewController.didMove(toParent: self)
-            
-            self.viewControllerTitle.text = "delivery-information-page-title".localized
             
             self.checkOutPageViewController = checkOutPageViewController
         }
@@ -94,7 +96,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     @objc func onResultEvent() {
-        if let orderResponse = SRSessionManager.shared.orderResponseInnerModel , orderResponse != nil {
+        if let orderResponse = SRSessionManager.shared.orderResponseInnerModel {
             if (orderResponse.order?.paymentType == PaymentTypeEnum.Online3DS) && (orderResponse.payment != nil && orderResponse.payment?._3DSecureHtml != nil) {
                 let threeDSViewController = ThreeDSModalViewController(viewModel: ThreeDSModalViewModel(urlToOpen: orderResponse.payment?._3DSecureHtml))
                 threeDSViewController.delegate = self
@@ -144,7 +146,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 self.loadOrderResultPage(isSuccess: true)
             case .canceled:
                 NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
-            case .failed(let error):
+            case .failed(_):
                 self.setFailRequest()
                 self.loadOrderResultPage(isSuccess: false)
             }

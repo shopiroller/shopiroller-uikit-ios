@@ -8,15 +8,20 @@
 import UIKit
 
 protocol BankTransferCellDelegate {
+    
     func tappedCopyIbanButton()
+    
     func setSelectedBankIndex(index: Int?)
 }
 
 class BankTransferTableViewCell: UITableViewCell {
    
     private struct Constants {
+        
         static var accountIbanText: String { return "checkout-table-view-account-iban-text".localized }
+        
         static var accountDepartmentText: String { return "checkout-table-view-account-department-text".localized }
+        
         static var accountNumberText: String { return "checkout-table-view-account-number-text".localized }
     }
     

@@ -268,17 +268,13 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     }
     
     private func setBankTransferUI() {
-        if viewModel.isSelected  {
-            delegate?.isEnabledNextButton(enabled: true)
-        } else {
-            delegate?.isEnabledNextButton(enabled: false)
-        }
+        delegate?.isEnabledNextButton(enabled: viewModel.isSelected)
     }
     
     @objc func openPaymentList() {
-        let vc = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .payment, supportedPaymentMethods: viewModel.getSupportedPaymentList()))
-        vc.paymentDelegate = self
-        popUp(vc)
+        let listPopupViewController = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .payment, supportedPaymentMethods: viewModel.getSupportedPaymentList()))
+        listPopupViewController.paymentDelegate = self
+        popUp(listPopupViewController)
     }
     
     private func validateCreditCardFields() {
@@ -288,8 +284,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             self?.delegate?.isEnabledNextButton(enabled: false)
         }
     }
-    
-    
     
 }
 
@@ -322,21 +316,6 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
 }
 
 extension CheckOutPaymentViewController: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField {
-        default:
-            guard let textField = textField as? UITextField else { break }
-        }
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        switch textField {
-        default:
-            guard let textField = textField as? UITextField else { break }
-        }
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
