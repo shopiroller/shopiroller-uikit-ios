@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         theme.navigationBarTintColor = .red
         theme.navigationIconsTintColor = .white
         
-        
         let ecommerce = ShopirollerCredentials(appKey: "9SSNWXWo7pzR1X4xnh0HYlSpMhc=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "stg.api.shopiroller.com")
         let appUser = ShopirollerCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "mobiroller.api.applyze.com")
         
