@@ -140,10 +140,14 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         validateCreditCardFields()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getPaymentSettings()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultAddresses()
-        getPaymentSettings()
     }
     
     private func setDefaultAddresses() {
@@ -178,6 +182,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             paymentEmptyView.setup(model: viewModel.getEmptyViewModel())
             delegate?.isHidingNextButton(hide: true)
         } else {
+            contentContainerView.isHidden = false
+            paymentEmptyView.isHidden = true
             delegate?.isHidingNextButton(hide: false)
             configureView()
             checkIsValid()

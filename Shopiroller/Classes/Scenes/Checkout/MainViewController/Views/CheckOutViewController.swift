@@ -74,6 +74,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @objc func loadPayment() {
         checkOutProgress.configureView(stage: .payment)
         setTitle(stage: .payment)
+        isEnabledNextButton(enabled: false)
         isHidingNextButton(hide: false)
         setButton()
         self.view.layoutIfNeeded()
@@ -204,6 +205,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             setButton()
         case 0:
             checkOutProgress.configureView(stage: .address)
+            isHidingNextButton(hide: false)
             setTitle(stage: .address)
         default:
             break

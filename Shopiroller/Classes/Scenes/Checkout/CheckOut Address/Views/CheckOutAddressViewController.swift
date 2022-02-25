@@ -57,6 +57,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.isHidingNextButton(hide: false)
