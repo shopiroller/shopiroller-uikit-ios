@@ -130,6 +130,11 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getShoppingCart(isCheckOut: false)

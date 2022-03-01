@@ -57,6 +57,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.isHidingNextButton(hide: false)
@@ -67,7 +72,6 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     private func getDefaultAddress() {
         viewModel.getDefaultAddress(success: {
             self.configureViews()
-            self.view.layoutIfNeeded()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showAlertError(viewModel: errorViewModel)
@@ -114,6 +118,8 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             SRSessionManager.shared.userDeliveryAddress = viewModel.selectedShippingAddress
         }
         
+        self.view.layoutIfNeeded()
+
         delegate?.isEnabledNextButton(enabled: !isShippingAddressEmpty && !isBillingAddressEmpty)
         
     }
@@ -164,8 +170,10 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
     func saveButtonTapped() {
         DispatchQueue.main.async {
+            self.viewModel.selectedBillingAddress = nil
+            self.viewModel.selectedShippingAddress = nil
+            self.getDefaultAddress()
             self.getAddressList()
-            self.view.layoutIfNeeded()
         }
         delegate?.showSuccessfullToastMessage()
         dismiss(animated: true, completion: nil)
