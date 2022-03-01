@@ -268,6 +268,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             switch viewModel.getDefaultPaymentMethod() {
             case .PayPal:
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
+                self.delegate?.isEnabledNextButton(enabled: true)
             case .Transfer:
                 setBankTransferUI()
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
