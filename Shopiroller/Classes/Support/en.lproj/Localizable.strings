@@ -159,6 +159,8 @@
 "payment-information-page-title" = "Payment";
 "info-information-page-title" = "Info";
 "confirm-order-button-text" = "Confirm Order";
+"checkout-address-next-step-title" = "Next Step: Payment Method";
+"checkout-payment-next-step-title" = "Next Step: Order Info";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";

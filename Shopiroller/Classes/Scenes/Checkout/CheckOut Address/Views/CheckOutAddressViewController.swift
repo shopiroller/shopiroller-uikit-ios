@@ -72,6 +72,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     private func getDefaultAddress() {
         viewModel.getDefaultAddress(success: {
             self.configureViews()
+            self.containerView.isHidden = false
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showAlertError(viewModel: errorViewModel)
@@ -88,8 +89,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     }
     
     private func configureViews() {
-        containerView.isHidden = false
-        
+                
         let isBillingAddressEmpty = viewModel.isBillingAddressEmpty()
         
         billingAddressEmptyView.isHidden = !isBillingAddressEmpty

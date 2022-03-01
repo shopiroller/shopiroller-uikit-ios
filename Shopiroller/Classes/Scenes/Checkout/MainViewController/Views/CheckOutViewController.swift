@@ -13,6 +13,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     private struct Constants {
         static var confirmOrderButtonText: String { "confirm-order-button-text".localized }
+        static var checkoutAdressNextStepText: String { "checkout-address-next-step-title".localized }
+        static var checkoutPaymentNextStepText: String { "checkout-payment-next-step-title".localized }
     }
     
     @IBOutlet private weak var checkOutProgress: CheckOutProgress!
@@ -23,6 +25,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var confirmOrderButtonContainer: UIView!
     @IBOutlet private weak var confirmOrderButton: UIButton!
     @IBOutlet private weak var bottomSafeAreaLayout: UIView!
+    @IBOutlet private weak var nextPageContainer: UIView!
+    @IBOutlet private weak var nextPageTitleLabel: UILabel!
     
     
     var index = 0
@@ -52,6 +56,10 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         viewControllerTitle.textColor = .black
         viewControllerTitle.text = "delivery-information-page-title".localized
         
+        nextPageTitleLabel.font = .regular12    
+        nextPageTitleLabel.text = Constants.checkoutAdressNextStepText
+
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
             self.addChild(checkOutPageViewController)
@@ -76,6 +84,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         setTitle(stage: .payment)
         isEnabledNextButton(enabled: false)
         isHidingNextButton(hide: false)
+        nextPageTitleLabel.text = Constants.checkoutPaymentNextStepText
         setButton()
         self.view.layoutIfNeeded()
     }
@@ -84,6 +93,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkOutProgress.configureView(stage: .address)
         setTitle(stage: .address)
         isHidingNextButton(hide: false)
+        nextPageTitleLabel.text = Constants.checkoutAdressNextStepText
         setButton()
         self.view.layoutIfNeeded()
     }
@@ -202,10 +212,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             checkOutProgress.configureView(stage: .payment)
             setTitle(stage: .payment)
             isHidingNextButton(hide: false)
+            nextPageTitleLabel.text = Constants.checkoutPaymentNextStepText
             setButton()
         case 0:
             checkOutProgress.configureView(stage: .address)
             isHidingNextButton(hide: false)
+            nextPageTitleLabel.text = Constants.checkoutAdressNextStepText
             setTitle(stage: .address)
         default:
             break
@@ -215,8 +227,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     
     private func setButton() {
-        bottomSafeAreaLayout.isHidden = !nextPageButton.isHidden
-        confirmOrderButtonContainer.isHidden = !nextPageButton.isHidden
+        bottomSafeAreaLayout.isHidden = !nextPageContainer.isHidden
+        confirmOrderButtonContainer.isHidden = !nextPageContainer.isHidden
         confirmOrderButtonContainer.backgroundColor = .textPrimary
         confirmOrderButton.setTitle(Constants.confirmOrderButtonText)
         confirmOrderButton.setTitleColor(.white)
@@ -243,19 +255,21 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
     
     func isEnabledNextButton(enabled: Bool?) {
         if enabled == true {
+            nextPageTitleLabel.textColor = .textPrimary.withAlphaComponent(0.7)
             self.nextPageButton.isUserInteractionEnabled = true
             self.nextPageButton.backgroundColor = .black
         } else {
             self.nextPageButton.isUserInteractionEnabled = false
             self.nextPageButton.backgroundColor = .black.withAlphaComponent(0.35)
+            nextPageTitleLabel.textColor = .textPrimary.withAlphaComponent(0.35)
         }
     }
     
     func isHidingNextButton(hide: Bool?) {
         if hide == true {
-            self.nextPageButton.isHidden = true
+            self.nextPageContainer.isHidden = true
         } else {
-            self.nextPageButton.isHidden = false
+            self.nextPageContainer.isHidden = false
         }
     }
     
