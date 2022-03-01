@@ -55,22 +55,22 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         
         circleImage.image = viewModel.getImage()
         
-        if(viewModel.hasFirstButton()) {
+        if (viewModel.hasFirstButton()) {
             firstButtonContainerView.isHidden = false
             firstButton.type = viewModel.getFirstButtonType()
             firstButton.setTitle(viewModel.getFirstButtonTitle())
             firstButton.titleLabel?.font = .semiBold14
             popUpHeightContstraint.constant += (firstButtonContainerView.frame.height)
-        }else {
+        } else {
             firstButtonContainerView.isHidden = true
         }
         
-        if(viewModel.hasSecondButton()) {
+        if (viewModel.hasSecondButton()) {
             secondButtonContainerView.isHidden = false
             secondButton.type = viewModel.getSecondButtonType()
             secondButton.setTitle(viewModel.getSecondButtonTitle())
             popUpHeightContstraint.constant += (firstButtonContainerView.frame.height * 2)
-        }else {
+        } else {
             secondButtonContainerView.isHidden = true
         }
         
@@ -84,6 +84,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         } else {
             descriptionLabel.text = viewModel.getDescription()
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
                 let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
