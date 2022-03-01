@@ -89,6 +89,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCartHolderNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: creditCartHolderNameTextField.frame.height))
         creditCartHolderNameTextField.leftViewMode = .always
         creditCartHolderNameTextField.placeholder = Constants.creditCartHolderNamePlaceholder
+        creditCartHolderNameTextField.addNextAction(target: self, selector: #selector(nextActionCreditCartHolderNameTextField))
 
         creditCartNumberTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartNumberTextField.layer.cornerRadius = 6
@@ -102,6 +103,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                      "[0000] [0000] [0000] [0000]"
         creditCardNumberListener.affinityCalculationStrategy = .prefix
         creditCartNumberTextField.placeholder = Constants.creditCartNumberPlaceholder
+        creditCartNumberTextField.addNextAction(target: self, selector: #selector(nextActionCreditCartNumberTextField))
         
         creditCartExpireDateTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartExpireDateTextField.layer.cornerRadius = 6
@@ -114,6 +116,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             "[00]{/}[00]"
         creditCardExpireDateListener.affinityCalculationStrategy = .prefix
         creditCartExpireDateTextField.placeholder = Constants.creditCartExpireDatePlaceholder
+        creditCartExpireDateTextField.addNextAction(target: self, selector: #selector(nextActionCreditCartExpireDateTextField))
         
         
         creditCartCvvTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
@@ -136,8 +139,21 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         
     }
     
+    @objc func nextActionCreditCartHolderNameTextField() {
+        _ = textFieldShouldReturn(creditCartHolderNameTextField)
+    }
+    
+    @objc func nextActionCreditCartNumberTextField() {
+        _ = textFieldShouldReturn(creditCartNumberTextField)
+    }
+    
+    @objc func nextActionCreditCartExpireDateTextField() {
+        _ = textFieldShouldReturn(creditCartExpireDateTextField)
+    }
+    
     @objc func toolbarDoneButtonClicked() {
         validateCreditCardFields()
+        _ = textFieldShouldReturn(creditCartCvvTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -869,37 +869,7 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        switch textField {
-        case nameView:
-            surnameView.becomeFirstResponder()
-        case surnameView:
-            phoneNumberView.becomeFirstResponder()
-        case phoneNumberView:
-            countryView.becomeFirstResponder()
-        case countryView:
-            statesView.becomeFirstResponder()
-        case statesView:
-            districtView.becomeFirstResponder()
-        case districtView:
-            userAddressView.becomeFirstResponder()
-        case userAddressView:
-            zipCodeView.becomeFirstResponder()
-        case zipCodeView:
-            addressTitleView.becomeFirstResponder()
-        case addressTitleView:
-            identityNumberView.becomeFirstResponder()
-        case identityNumberContainer:
-            return true
-        case companyNameView:
-            taxOfficeView.becomeFirstResponder()
-        case taxOfficeView:
-            taxNumberView.becomeFirstResponder()
-        case taxNumberView:
-            return true
-        default:
-            break
-        }
-        return true
+        return textField.delegate?.textFieldShouldReturn?(textField) ?? true
     }
 }
 
