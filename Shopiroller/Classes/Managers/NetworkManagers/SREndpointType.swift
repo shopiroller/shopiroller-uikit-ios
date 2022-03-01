@@ -17,7 +17,7 @@ public enum SREndpointType {
     var baseURL: String {
         switch self {
         case .dev:
-            return "dev.applyze.com"
+            return "stg.api.shopiroller.com"
 //        case .dev:
 //            return "qaapi.shopiroller.com"
 //        case .dev:
