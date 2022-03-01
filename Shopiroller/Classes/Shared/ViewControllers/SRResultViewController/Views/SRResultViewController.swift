@@ -71,7 +71,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
         resultFirstButton.setTitle(Constants.failUpdatePaymentMethodButtonText)
         resultFirstButton.setTitleColor(.white)
         resultFirstButton.titleLabel?.font = .semiBold14
-        resultDetailDescription.isHidden = false
+        resultDetailDescription.isHidden = viewModel.isErrorMessageEmpty()
         resultDetailDescription.attributedText = viewModel.getFormattedErrorMesage()
         resultSecondButton.isHidden = true
     }
@@ -103,7 +103,6 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     @IBAction func secondButtonTapped() {
         let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
         navigationController?.setViewControllers([mainPageVC], animated: true)
-        //navigationController?.pushViewController(mainPageVC, animated: true)
     }
     
 }

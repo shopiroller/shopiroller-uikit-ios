@@ -39,6 +39,10 @@ class SRResultViewControllerViewModel : SRBaseViewModel {
         return errorMessageAttributedText
     }
     
+    func isErrorMessageEmpty() -> Bool {
+        return errorMessage?.isEmpty ?? true
+    }
+    
 }
 
 enum OrderResultType {

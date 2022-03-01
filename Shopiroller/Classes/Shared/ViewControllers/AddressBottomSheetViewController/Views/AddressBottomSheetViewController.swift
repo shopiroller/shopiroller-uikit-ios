@@ -293,15 +293,15 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func nextActionCountryTextField() {
-        _ = textFieldShouldReturn(countryView.getTextField())
+        countryViewTapped()
     }
     
     @objc func nextActionStateTextField() {
-        _ = textFieldShouldReturn(statesView.getTextField())
+       statesViewTapped()
     }
     
     @objc func nextActionCitiesTextField() {
-        _ = textFieldShouldReturn(districtView.getTextField())
+       citiesViewTapped()
     }
     
     @objc func nextActionAddressTextField() {
@@ -496,41 +496,41 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func isValid() -> Bool {
         var isValid : Bool = true
         if (nameView.getTextField().text == "") {
-            nameView.setError(errorMessage: ErrorConstants.nameEmptyError)
+            setTextFieldError(textFieldView: nameView, errorMessage: ErrorConstants.nameEmptyError)
             isValid = false;
         } else if (nameView.getTextField().text?.count ?? 0 < 3) {
-            nameView.setError(errorMessage: ErrorConstants.nameValidationError)
+            setTextFieldError(textFieldView: nameView, errorMessage: ErrorConstants.nameValidationError)
             isValid = false;
         } else {
             nameView.getErrorLabelText() != nil ? nameView.setInfoLabel(infoText: "") : nameView.removeError()
         }
         if (surnameView.getTextField().text == "") {
-            surnameView.setError(errorMessage: ErrorConstants.surnameEmptyError)
+            setTextFieldError(textFieldView: surnameView, errorMessage: ErrorConstants.surnameEmptyError)
             isValid = false
         } else if (surnameView.getTextField().text?.count ?? 0 < 3) {
-            surnameView.setError(errorMessage: ErrorConstants.surnameValidationError)
+            setTextFieldError(textFieldView: surnameView, errorMessage: ErrorConstants.surnameValidationError)
             isValid = false
         } else {
             surnameView.getErrorLabelText() != nil ? surnameView.setInfoLabel(infoText: "") : surnameView.removeError()
         }
         if (phoneNumberView.getTextField().text == "") {
-            phoneNumberView.setError(errorMessage: ErrorConstants.phoneEmptyError)
+            setTextFieldError(textFieldView: phoneNumberView, errorMessage: ErrorConstants.phoneEmptyError)
             isValid = false
         } else if (phoneNumberView.getTextField().text?.count ?? 0 < 11) {
-            phoneNumberView.setError(errorMessage: ErrorConstants.phoneValidationError)
+            setTextFieldError(textFieldView: phoneNumberView, errorMessage: ErrorConstants.phoneValidationError)
             isValid = false
         } else {
             phoneNumberView.removeError()
         }
         if ((countryView.getTextField().text == "" && countryView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
-            countryView.setError(errorMessage: ErrorConstants.countryError)
+            setTextFieldError(textFieldView: countryView, errorMessage: ErrorConstants.countryError)
             isValid = false
         } else {
             countryView.removeError()
         }
         if (statesContainerView.isHidden == false) {
             if((statesView.getTextField().text == "" && statesView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
-                statesView.setError(errorMessage: ErrorConstants.stateError)
+                setTextFieldError(textFieldView: statesView, errorMessage: ErrorConstants.stateError)
                 isValid = false
             } else {
                 statesView.removeError()
@@ -538,35 +538,36 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         }
         if (citiesContainerView.isHidden == false) {
             if((districtView.getTextField().text == "" && districtView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
-                districtView.setError(errorMessage: ErrorConstants.districtError)
+                setTextFieldError(textFieldView: districtView, errorMessage: ErrorConstants.districtError)
                 isValid = false
             } else {
                 districtView.removeError()
             }
         }
         if (userAddressView.getTextField().text == "") {
-            userAddressView.setError(errorMessage: ErrorConstants.addressEmptyError)
+            setTextFieldError(textFieldView: userAddressView, errorMessage: ErrorConstants.addressEmptyError)
             isValid = false
         } else if (userAddressView.getTextField().text?.count ?? 0 < 3) {
-            userAddressView.setError(errorMessage: ErrorConstants.addressValidationError)
+            setTextFieldError(textFieldView: userAddressView, errorMessage: ErrorConstants.addressValidationError)
             isValid = false
         } else {
             userAddressView.removeError()
         }
+        
         if (zipCodeView.getTextField().text == "") {
-            zipCodeView.setError(errorMessage: ErrorConstants.zipCodeEmptyError)
+            setTextFieldError(textFieldView: zipCodeView, errorMessage: ErrorConstants.zipCodeEmptyError)
             isValid = false
         } else if (zipCodeView.getTextField().text?.count ?? 0 < 3) {
-            zipCodeView.setError(errorMessage: ErrorConstants.zipCodeValidationError)
+            setTextFieldError(textFieldView: zipCodeView, errorMessage: ErrorConstants.zipCodeValidationError)
             isValid = false
         } else {
             zipCodeView.getErrorLabelText() != nil ? zipCodeView.setInfoLabel(infoText: "") : zipCodeView.removeError()
         }
         if (addressTitleView.getTextField().text == "") {
-            addressTitleView.setError(errorMessage: ErrorConstants.addressTitleEmptyError)
+            setTextFieldError(textFieldView: addressTitleView, errorMessage: ErrorConstants.addressTitleEmptyError)
             isValid = false
         } else if (addressTitleView.getTextField().text?.count ?? 0 < 2) {
-            addressTitleView.setError(errorMessage: ErrorConstants.addressTitleValidationError)
+            setTextFieldError(textFieldView: addressTitleView, errorMessage: ErrorConstants.addressTitleValidationError)
             isValid = false
         } else {
             addressTitleView.getErrorLabelText() != nil ? addressTitleView.setInfoLabel(infoText: "") : addressTitleView.removeError()
@@ -582,29 +583,44 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         if billingAddressContainer.isHidden == false {
             if isIndividualButtonTapped {
                 if (identityNumberView.getTextField().text == "") {
-                    identityNumberView.setError(errorMessage: ErrorConstants.identityNumberEmptyError)
+                    setTextFieldError(textFieldView: identityNumberView, errorMessage: ErrorConstants.identityNumberEmptyError)
                     isValid = false;
                 } else if (identityNumberView.getTextField().text?.count ?? 0 < 11) {
-                    identityNumberView.setError(errorMessage: ErrorConstants.identityNumberValidationError)
+                    setTextFieldError(textFieldView: identityNumberView, errorMessage: ErrorConstants.identityNumberValidationError)
                     isValid = false;
+                } else {
+                    identityNumberView.getErrorLabelText() != nil ? identityNumberView.setInfoLabel(infoText: "") : identityNumberView.removeError()
                 }
             }else {
                 if (companyNameView.getTextField().text == "") {
-                    companyNameView.setError(errorMessage: ErrorConstants.companyNameEmptyError)
+                    setTextFieldError(textFieldView: companyNameView, errorMessage: ErrorConstants.companyNameEmptyError)
                     isValid = false;
+                } else {
+                    companyNameView.getErrorLabelText() != nil ? companyNameView.setInfoLabel(infoText: "") : companyNameView.removeError()
                 }
+                
                 if (taxOfficeView.getTextField().text == "") {
-                    taxOfficeView.setError(errorMessage: ErrorConstants.taxOfficeEmptyError)
+                    setTextFieldError(textFieldView: taxOfficeView, errorMessage: ErrorConstants.taxOfficeEmptyError)
                     isValid = false;
+                } else {
+                    taxOfficeView.getErrorLabelText() != nil ? taxOfficeView.setInfoLabel(infoText: "") : taxOfficeView.removeError()
                 }
+                
                 if (taxNumberView.getTextField().text == "") {
-                    taxNumberView.setError(errorMessage: ErrorConstants.taxNumberEmptyError)
+                    setTextFieldError(textFieldView: taxNumberView, errorMessage: ErrorConstants.taxNumberEmptyError)
                     isValid = false;
+                } else {
+                    taxNumberView.getErrorLabelText() != nil ? taxNumberView.setInfoLabel(infoText: "") : taxNumberView.removeError()
                 }
                 }
 
     }
         return isValid
+    }
+    
+    private func setTextFieldError(textFieldView: SRTextField,errorMessage: String) {
+        textFieldView.setError(errorMessage: errorMessage)
+        textFieldView.getTextField().becomeFirstResponder()
     }
     
     private func editAddress() {
@@ -868,8 +884,33 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return textField.delegate?.textFieldShouldReturn?(textField) ?? true
+        switch textField {
+        case nameView.getTextField():
+            surnameView.getTextField().becomeFirstResponder()
+        case surnameView.getTextField():
+            phoneNumberView.getTextField().becomeFirstResponder()
+        case phoneNumberView.getTextField():
+            self.countryViewTapped()
+        case countryView.getTextField():
+            self.statesViewTapped()
+        case statesView.getTextField():
+            self.citiesViewTapped()
+        case districtView.getTextField():
+            userAddressView.getTextField().becomeFirstResponder()
+        case userAddressView.getTextField():
+            zipCodeView.getTextField().becomeFirstResponder()
+        case zipCodeView.getTextField():
+            addressTitleView.getTextField().becomeFirstResponder()
+        case addressTitleView.getTextField():
+            identityNumberView.getTextField().becomeFirstResponder()
+        case companyNameView.getTextField():
+            taxOfficeView.getTextField().becomeFirstResponder()
+        case taxOfficeView.getTextField():
+            taxNumberView.getTextField().becomeFirstResponder()
+        default:
+            break
+        }
+        return true
     }
 }
 

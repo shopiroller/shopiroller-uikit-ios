@@ -82,7 +82,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @objc func loadPayment() {
         checkOutProgress.configureView(stage: .payment)
         setTitle(stage: .payment)
-        isEnabledNextButton(enabled: false)
+        isEnabledNextButton(enabled: true)
         isHidingNextButton(hide: false)
         nextPageTitleLabel.text = Constants.checkoutPaymentNextStepText
         setButton()
@@ -197,9 +197,17 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkOutPageViewController?.goToNextPage()
         switch index {
         case 1:
-            loadPayment()
+            checkOutProgress.configureView(stage: .payment)
+            setTitle(stage: .payment)
+            isHidingNextButton(hide: false)
+            nextPageTitleLabel.text = Constants.checkoutPaymentNextStepText
+            setButton()
         case 2:
-            loadInfo()
+            checkOutProgress.configureView(stage: .info)
+            setTitle(stage: .info)
+            isHidingNextButton(hide: true)
+            setButton()
+            self.view.layoutIfNeeded()
         default:
             loadAddress()
         }
