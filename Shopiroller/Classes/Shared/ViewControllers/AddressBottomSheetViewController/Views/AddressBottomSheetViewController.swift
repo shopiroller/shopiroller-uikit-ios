@@ -903,14 +903,10 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
             addressTitleView.getTextField().becomeFirstResponder()
         case addressTitleView.getTextField():
             identityNumberView.getTextField().becomeFirstResponder()
-        case identityNumberContainer:
-            return true
         case companyNameView.getTextField():
             taxOfficeView.getTextField().becomeFirstResponder()
         case taxOfficeView.getTextField():
             taxNumberView.getTextField().becomeFirstResponder()
-        case taxNumberView.getTextField():
-            return true
         default:
             break
         }
