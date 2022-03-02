@@ -27,6 +27,8 @@ public struct SRAppConstants {
             static let userEmail = "userEmail"
             static let appKey = "appKey"
             static let apiKey = "apiKey"
+            static let baseUrl = "baseUrl"
+            static let appUserBaseUrl = "appUserBaseUrl"
             static let appUserAppKey = "appUserAppKey"
             static let appUserApiKey = "appUserApiKey"
         }

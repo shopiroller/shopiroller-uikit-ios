@@ -44,7 +44,7 @@ final public class SRNetworkManager {
     private func url<T>(for request: SRNetworkRequestManager<T>) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = environment.scheme
-        urlComponents.host = environment.baseURL
+        urlComponents.host = SRAppContext.baseUrl
         urlComponents.port = environment.port
         urlComponents.path = request.path.name + (request.subpath ?? "")
         if let queryItems = request.urlQueryItems, !queryItems.isEmpty {
@@ -57,7 +57,7 @@ final public class SRNetworkManager {
     private func userUrl<T>(for request: SRNetworkRequestManager<T>) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = environment.scheme
-        urlComponents.host = environment.userBaseUrl
+        urlComponents.host = SRAppContext.appUserBaseUrl
         urlComponents.port = environment.port
         urlComponents.path = request.path.name + (request.subpath ?? "")
         if let queryItems = request.urlQueryItems, !queryItems.isEmpty {
