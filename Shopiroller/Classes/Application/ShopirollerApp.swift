@@ -23,9 +23,11 @@ public class ShopirollerApp {
         self.theme = theme
         SRAppContext.apiKey = eCommerceCredentials.apiKey
         SRAppContext.appKey = eCommerceCredentials.appKey
+        SRAppContext.baseUrl = eCommerceCredentials.baseUrl
         
         SRAppContext.appUserApiKey = appUserCredentials.apiKey
         SRAppContext.appUserAppKey = appUserCredentials.appKey
+        SRAppContext.appUserBaseUrl = appUserCredentials.baseUrl
         
         UIFont.jbs_registerFont(
             withFilenameString: "Poppins-Bold.ttf",

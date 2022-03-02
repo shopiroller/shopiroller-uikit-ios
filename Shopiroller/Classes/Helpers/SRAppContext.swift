@@ -144,6 +144,24 @@ extension SRAppContext {
         }
     }
     
+    static var baseUrl: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.baseUrl) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.baseUrl)
+        }
+    }
+    
+    static var appUserBaseUrl: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appUserBaseUrl) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appUserBaseUrl)
+        }
+    }
+    
     
 }
 
