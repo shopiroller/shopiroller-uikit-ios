@@ -16,13 +16,13 @@ public class ShopirollerApp {
     
     public var delegate: ShopirollerDelegate?
     
-    public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerCredentials, baseUrl: String, theme: ShopirollerTheme) {
+    public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerAppUserCredentials, baseUrl: String, theme: ShopirollerTheme) {
         
         print(Bundle(for: ShopirollerApp.self).bundleIdentifier)
         
         self.theme = theme
         SRAppContext.apiKey = eCommerceCredentials.apiKey
-        SRAppContext.appKey = eCommerceCredentials.appKey
+        SRAppContext.aliasKey = eCommerceCredentials.aliasKey
         SRAppContext.baseUrl = eCommerceCredentials.baseUrl
         
         SRAppContext.appUserApiKey = appUserCredentials.apiKey
@@ -83,6 +83,23 @@ public struct ShopirollerTheme {
 
 
 public struct ShopirollerCredentials {
+    
+    public var aliasKey: String
+    
+    public var apiKey: String
+    
+    public var baseUrl: String
+    
+    public init(aliasKey: String, apiKey: String, baseUrl: String) {
+        self.aliasKey = aliasKey
+        self.apiKey = apiKey
+        self.baseUrl = baseUrl
+    }
+    
+    
+}
+
+public struct ShopirollerAppUserCredentials {
     
     public var appKey: String
     

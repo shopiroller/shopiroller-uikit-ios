@@ -152,6 +152,10 @@ public class ProductDetailViewModel: SRBaseViewModel {
         return productDetailModel?.maxQuantityPerOrder ?? 0
     }
     
+    func getStockCount() -> Int {
+        return productDetailModel?.stock ?? 0
+    }
+    
     func isQuantityMax() -> Bool {
         return productDetailModel?.maxQuantityPerOrder == quantityCount || productDetailModel?.stock == quantityCount
     }
@@ -173,7 +177,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getAppId() -> String? {
-        return SRAppContext.appKey
+        return SRAppContext.aliasKey
     }
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {
