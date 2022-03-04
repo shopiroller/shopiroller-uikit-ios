@@ -362,6 +362,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         sumImage.makeAnimation()
         if viewModel.isQuantityMax() {
             setMaxItemQuantitySituation()
+        } else if viewModel.isOutofStock() {
+            setStockCountMessage()
         } else {
             viewModel.quantityCount += 1
             minusImage.isUserInteractionEnabled = true
@@ -373,6 +375,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     private func setMaxItemQuantitySituation() {
         sumImage.isUserInteractionEnabled = false
         self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.getMaxQuantity())))
+    }
+    
+    private func setStockCountMessage() {
+        sumImage.isUserInteractionEnabled = false
+        self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.getStockCount())))
     }
     
     @objc private func minusImageTapped(_ sender: Any) {
