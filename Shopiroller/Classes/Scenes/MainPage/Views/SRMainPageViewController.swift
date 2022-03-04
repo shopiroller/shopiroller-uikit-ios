@@ -284,7 +284,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             case 1:
                 let cellModel = viewModel.getCategoriesViewModel()
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseIdentifier, for: indexPath) as! CategoriesCell
-                cell.configureCell(model: cellModel)
+                cell.configureCell(model: cellModel, categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum())
                 cell.delegate = self
                 return cell
             case 2:
@@ -390,16 +390,16 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position){
-            let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getSubCategories(position: position), isSubCategory: true,selectedRowName: viewModel.getCategoryName(position: position),categoryId: viewModel.getCategoryId(position: position)))
+            let vc = CategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
             self.prompt(vc, animated: true, completion: nil)
         }else {
-            let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.getCategoryId(position: position),pageTitle: viewModel.getCategoryName(position: position)))
+            let vc = ProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
             prompt(vc, animated: true, completion: nil)
         }
         
     }
     func getCategories(position: Int) {
-        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false))
+        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
         self.prompt(vc, animated: true, completion: nil)
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,23 +11,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoriesCollectionViewCell" id="gTV-IL-0wX" customClass="CategoriesCollectionViewCell" customModule="Shopiroller" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
+            <rect key="frame" x="0.0" y="0.0" width="101" height="143"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
+                <rect key="frame" x="0.0" y="0.0" width="101" height="143"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqV-5M-6aR">
-                        <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
+                        <rect key="frame" x="0.0" y="0.0" width="101" height="143"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-ls-Rjg">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="146"/>
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="143"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-yc-hat" userLabel="CategoryImage Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="110.5"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-yc-hat" userLabel="CategoryImage Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="98"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-fG-0Tr">
-                                                <rect key="frame" x="20.5" y="25" width="60" height="60"/>
+                                                <rect key="frame" x="20.5" y="19" width="60" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="0VR-kt-sad"/>
@@ -35,7 +35,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="xB2-TE-jj0" userLabel="CategoryImage">
-                                                <rect key="frame" x="33" y="37.5" width="35" height="35"/>
+                                                <rect key="frame" x="33" y="31.5" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="hkQ-lo-lw0"/>
                                                     <constraint firstAttribute="height" constant="35" id="nPO-a3-1Ic"/>
@@ -50,11 +50,11 @@
                                             <constraint firstItem="xB2-TE-jj0" firstAttribute="centerX" secondItem="NA2-yc-hat" secondAttribute="centerX" id="vD6-Qc-0jP"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6h-TD-8Ak" userLabel="Category Title Container">
-                                        <rect key="frame" x="0.0" y="115.5" width="101" height="30.5"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6h-TD-8Ak" userLabel="Category Title Container">
+                                        <rect key="frame" x="0.0" y="103" width="101" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TH category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-qh-G5c" userLabel="Category Title">
-                                                <rect key="frame" x="20.5" y="0.0" width="60" height="11"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TH category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy0-qh-G5c" userLabel="Category Title" customClass="PaddingLabel" customModule="Shopiroller" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="11"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
@@ -63,15 +63,25 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="xy0-qh-G5c" firstAttribute="leading" secondItem="M6h-TD-8Ak" secondAttribute="leading" id="AGD-Rb-uWs"/>
+                                            <constraint firstItem="xy0-qh-G5c" firstAttribute="top" secondItem="M6h-TD-8Ak" secondAttribute="top" id="JEB-0k-iG1"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="top" secondItem="M6h-TD-8Ak" secondAttribute="top" id="M6m-Xf-v0x"/>
+                                            <constraint firstAttribute="height" constant="40" id="UST-Hc-NWu"/>
                                             <constraint firstItem="xy0-qh-G5c" firstAttribute="centerX" secondItem="M6h-TD-8Ak" secondAttribute="centerX" id="WVk-ed-A4n"/>
+                                            <constraint firstAttribute="trailing" secondItem="xy0-qh-G5c" secondAttribute="trailing" id="nJz-Vp-Cjd"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="M6h-TD-8Ak" firstAttribute="top" secondItem="NA2-yc-hat" secondAttribute="bottom" constant="5" id="11q-Rh-cAS"/>
+                                    <constraint firstItem="NA2-yc-hat" firstAttribute="leading" secondItem="ywm-ls-Rjg" secondAttribute="leading" id="5YP-h2-NkD"/>
+                                    <constraint firstAttribute="trailing" secondItem="NA2-yc-hat" secondAttribute="trailing" id="FU1-dq-UP1"/>
                                     <constraint firstItem="NA2-yc-hat" firstAttribute="centerX" secondItem="ywm-ls-Rjg" secondAttribute="centerX" id="NJc-Ir-46C"/>
-                                    <constraint firstItem="xy0-qh-G5c" firstAttribute="width" secondItem="Spa-fG-0Tr" secondAttribute="width" id="zaH-4H-75D"/>
+                                    <constraint firstItem="M6h-TD-8Ak" firstAttribute="leading" secondItem="ywm-ls-Rjg" secondAttribute="leading" id="WIs-x1-B4Y"/>
+                                    <constraint firstItem="NA2-yc-hat" firstAttribute="top" secondItem="ywm-ls-Rjg" secondAttribute="top" id="aE6-SL-HO5"/>
+                                    <constraint firstAttribute="trailing" secondItem="M6h-TD-8Ak" secondAttribute="trailing" id="dLw-Ny-Kwe"/>
+                                    <constraint firstAttribute="bottom" secondItem="M6h-TD-8Ak" secondAttribute="bottom" id="eAK-RK-mSF"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -91,9 +101,8 @@
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c92-y9-tlR"/>
                 <constraint firstAttribute="bottom" secondItem="SqV-5M-6aR" secondAttribute="bottom" id="f2W-JD-fWn"/>
                 <constraint firstItem="SqV-5M-6aR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lE8-Kf-fSx"/>
-                <constraint firstItem="M6h-TD-8Ak" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.3" id="nca-Ys-DtI"/>
             </constraints>
-            <size key="customSize" width="264" height="376"/>
+            <size key="customSize" width="264" height="373"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
             </userDefinedRuntimeAttributes>
@@ -104,9 +113,14 @@
                 <outlet property="imageContainer" destination="NA2-yc-hat" id="VUZ-8b-LhK"/>
                 <outlet property="imageViewBackGround" destination="Spa-fG-0Tr" id="h9h-Vt-nae"/>
             </connections>
-            <point key="canvasLocation" x="256" y="209"/>
+            <point key="canvasLocation" x="255.79710144927537" y="206.58482142857142"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="xy0-qh-G5c">
+            <size key="intrinsicContentSize" width="54.5" height="11"/>
+        </designable>
+    </designables>
     <resources>
         <image name="orderNoResult" width="80" height="80"/>
     </resources>

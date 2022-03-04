@@ -25,7 +25,7 @@ enum SRNetworkManagerPaths: String {
     case failurePayment = "/orders/failurePayment"
     case completePayment = "/orders/completePayment"
     case getSliders = "/sliders"
-    case getCategories = "/categories"
+    case getCategories = "/categories/getWithOptions"
     case getSubCategories = "/categories/{categoryId}"
     case getShowcase = "/showcases"
     case getFilterOptions = "/filterOptions"

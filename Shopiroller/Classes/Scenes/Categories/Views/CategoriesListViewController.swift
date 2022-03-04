@@ -94,7 +94,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: CategoriesListCell.reuseIdentifier) as! CategoriesListCell
         cell.selectionStyle = .none
-        cell.setupCategories(model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel())
+        cell.setupCategories(model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel(),categoryDisplayTypeEnum: viewModel.getCategoryDisplayTypeEnum())
         return cell
         
     }

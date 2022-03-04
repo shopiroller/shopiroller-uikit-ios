@@ -16,5 +16,4 @@ class SRDefaultAddressModel: Codable {
         case shippingAddress = "shippingAddress"
         case billingAddress = "billingAddress"
     }
-    
 }
