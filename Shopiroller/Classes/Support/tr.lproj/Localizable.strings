@@ -8,7 +8,7 @@
 
 
 //MARK: - GENERAL USAGE
-"free-shipping-text" = "Ücretsız Kargo";
+"free-shipping-text" = "Ücretsiz Kargo";
 "sold-out-text" = "TÜKENDİ";
 "section-see-all-title" = "Hepsini Gör";
 "address-text" = "Kargo";
@@ -161,8 +161,6 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "payment-information-page-title" = "Ödeme";
 "info-information-page-title" = "Bilgilendirme";
 "confirm-order-button-text" = "Siparişi Onayla";
-"checkout-address-next-step-title" = "Sonraki Adım: Ödeme Yöntemi";
-"checkout-payment-next-step-title" = "Sonraki Adım: Sipariş Bilgisi";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
@@ -173,42 +171,42 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 //MARK: - AddressBottomView
 "address-bottom-view-title-text" = "Ekle";
 "address-bottom-view-name-text" = "İsim";
-"address-bottom-view-name-empty-text" = "Lütfen İsminizi Giriniz";
-"address-bottom-view-name-invalid-text" = "Lütfen Geçerli Bir İsim Giriniz";
+"address-bottom-view-name-empty-text" = "Lütfen isminizi giriniz";
+"address-bottom-view-name-invalid-text" = "Lütfen geçerli bir isim giriniz";
 "address-bottom-view-surname-text" = "Soyisim";
-"address-bottom-view-surname-empty-text" = "Lütfen Soy Isminizi Giriniz";
-"address-bottom-view-surname-invalid-text" = "Lütfen Geçerli Bir Soy İsim Giriniz";
+"address-bottom-view-surname-empty-text" = "Lütfen soyisminizi giriniz";
+"address-bottom-view-surname-invalid-text" = "Lütfen Geçerli Bir Soyisim Giriniz";
 "address-bottom-view-phone-text" = "Telefon";
-"address-bottom-view-phone-empty-text" = "Lütfen Telefon Numaranızı Giriniz";
-"address-bottom-view-phone-invalid-text" = "Lütfen Geçerli Bir Telefon Numarası Giriniz";
+"address-bottom-view-phone-empty-text" = "Lütfen telefon numaranızı giriniz";
+"address-bottom-view-phone-invalid-text" = "Lütfen geçerli bir telefon numarası giriniz";
 "address-bottom-view-country-text" = "Ülke";
-"address-bottom-view-country-error-text" = "Lütfen Ülke Seçimi Yapınız";
+"address-bottom-view-country-error-text" = "Lütfen ülke seçimi yapınız";
 "address-bottom-view-states-text" = "Şehir";
-"address-bottom-view-states-error-text" = "Lütfen Şehir Seçimi Yapınız";
+"address-bottom-view-states-error-text" = "Lütfen şehir seçimi yapınız";
 "address-bottom-view-district-text" = "İlçe";
-"address-bottom-view-district-error-text" = "Lütfen İlçe Seçimi Yapınız";
+"address-bottom-view-district-error-text" = "Lütfen ilçe seçimi yapınız";
 "address-bottom-view-address-text" = "Adres";
-"address-bottom-view-address-empty-text" = "Lütfen Adresinizi Giriniz";
-"address-bottom-view-address-invalid-text" = "Lütfen Geçerli Bir Adres Giriniz";
+"address-bottom-view-address-empty-text" = "Lütfen adresinizi giriniz";
+"address-bottom-view-address-invalid-text" = "Lütfen geçerli bir adres giriniz";
 "address-bottom-view-zipcode-text" = "Posta Kodu";
-"address-bottom-view-zipcode-empty-text" = "Lütfen Zip Kodunu Giriniz";
-"address-bottom-view-zipcode-invalid-text" = "Lütfen Geçerli Bir Zip Kodu Giriniz";
+"address-bottom-view-zipcode-empty-text" = "Lütfen posta kodunu giriniz";
+"address-bottom-view-zipcode-invalid-text" = "Lütfen geçerli bir posta kodu giriniz";
 "address-bottom-view-address-title-text" = "Adres Başlığı";
-"address-bottom-view-address-title-empty-text" = "Lütfen Adres Başlığını Giriniz";
-"address-bottom-view-address-title-invalid-text" = "Lütfen Geçerli Bir Adres Başlığı Giriniz";
+"address-bottom-view-address-title-empty-text" = "Lütfen Adres Başlığını giriniz";
+"address-bottom-view-address-title-invalid-text" = "Lütfen Geçerli Bir Adres Başlığı giriniz";
 "address-bottom-view-individual-checkbox-text" = "Bireysel";
 "address-bottom-view-corporate-checkbox-text" = "Kurumsal";
 "address-bottom-view-identitynumber-text" = "Kimlik Numarası";
-"address-bottom-view-identitynumber-error-text" = "Lütfen Kimlik Numaranızı Giriniz";
-"address-bottom-view-identitynumber-invalid-text" = "Lütfen Geçerli Bir Kimlik Numarası Giriniz";
+"address-bottom-view-identitynumber-error-text" = "Lütfen kimlik numaranızı giriniz";
+"address-bottom-view-identitynumber-invalid-text" = "Lütfen geçerli bir kimlik numarası giriniz";
 "address-bottom-view-corporate-company-name-text" = "Şirket Adı";
-"address-bottom-view-corporate-company-name-error-text" = "Lütfen Şirket Adınızı Giriniz";
+"address-bottom-view-corporate-company-name-error-text" = "Lütfen şirket adınızı giriniz";
 "address-bottom-view-corporate-tax-office-text" = "Vergi Dairesi";
-"address-bottom-view-corporate-tax-office-error-text" = "Lütfen Vergi Dairenizi Yazınız";
+"address-bottom-view-corporate-tax-office-error-text" = "Lütfen vergi dairenizi yazınız";
 "address-bottom-view-corporate-tax-number-text" = "Vergi Numarası";
-"address-bottom-view-corporate-tax-number-error-text" = "Lütfen Vergi Numaranızı Giriniz";
+"address-bottom-view-corporate-tax-number-error-text" = "Lütfen vergi numaranızı giriniz";
 "address-bottom-view-save-button-text" = "Kaydet";
-"address-bottom-view-address-saved-text" = "Adres Başarıyla Kaydedildi";
+"address-bottom-view-address-saved-text" = "Adres başarıyla kaydedildi";
 "address-bottom-view-save-as-billing-address-text" = "Fatura Adresi Olarak Kaydet";
 
 //MARK: - ListPopUp
@@ -220,7 +218,6 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Banka Hesabına Transfer";
 "list-pop-up-pay-at-the-door-text" = "Kapıda Ödeme";
-"list-pop-up-stripe-text" = "Stripe";
 
 
 //MARK: - CheckOutPayment
@@ -236,8 +233,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
 "checkout-payment-credit-card-cvv-placeholder" = "CVV";
 "checkout-payment-empty-view-title" = "Henüz bir ödeme yöntemi eklenmemiş.";
-"checkout-payment-empty-view-description" = "Mağaza Sahibi Henüz bir ödeme yöntemi eklememiş.";
-"checkout-payment-pay-at-the-door-description" = "Kapıda Kredi Kartı Veya Nakit Olarak Ödeyebilirsiniz.";
+"checkout-payment-empty-view-description" = "Mağaza sahibi henüz bir ödeme yöntemi eklememiş.";
+"checkout-payment-pay-at-the-door-description" = "Kapıda kredi kartı veya nakit olarak ödeyebilirsiniz.";
 "checkout-table-view-account-iban-text"= "Iban: ";
 "checkout-table-view-account-department-text" = "Şube: ";
 "checkout-table-view-account-number-text" = "Hesap: ";
@@ -253,13 +250,13 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-info-confirm-order-button-title" = "Ödemeyi Onayla";
 "checkout-info-terms-and-conditions-text" = "<u><b>Satış Sözleşmesi Formunu</b></u> okuduğumu, anladığımı ve kabul ettiğimi onaylıyorum.";
 "checkout-info-update-order-pop-up-title" = "Siparisinizi guncelleyin";
-"checkout-info-update-order-pop-up-description" = "Sepetinizdeki ürünleri sipariş edemezsiniz. %@ Bazı Ürünler değişti veya stokta kalmadı";
+"checkout-info-update-order-pop-up-description" = "Sepetinizdeki ürünleri sipariş edemezsiniz. %@ Bazı ürünler değişti veya stokta kalmadı";
 "checkout-info-update-order-pop-up-button-text" = "Sepetimi güncelle";
 "checkout-info-card-description-text" = "%@ ürün %@ %@ ";
 "checkout-info-bank-transfer-description-text" = "Banka Hesabına Transfer %@ %@";
 "checkout-info-credit-card-description-text" = "Kredi Kartı %@ **** %@";
 "checkout-info-agreement-is-not-checked-title" = "Şartları kabul etmelisiniz.";
-"checkout-info-agreement-is-not-checked-description" = "Koşul Şartlarını ve Gizlilik Politikasını kabul etmeniz gerekir.";
+"checkout-info-agreement-is-not-checked-description" = "Koşul şartlarını ve gizlilik politikasını kabul etmeniz gerekir.";
 "checkout-info-agreement-is-not-checked-title" = "Şimdi kabul et";
 
 //MARK: - SelectionPopUp
@@ -271,7 +268,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 //MARK: - Credit Card Validation
 
 "credit-card-number-error-text" = "Lütfen kart numaranızı kontrol edin";
-"credit-card-holder-error-text" = "Lütfen isim ve soy isim alanlarını kontrol edin.";
+"credit-card-holder-error-text" = "Lütfen isim ve soyisim alanlarını kontrol edin.";
 "credit-card-expire-date-error-text" = "Lütfen son kullanma tarihini kontrol edin.";
 "credit-card-cvv-error-text" = "Lütfen cvv alanını kontrol edin.";
 
@@ -282,12 +279,11 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-result-info-success-description" = "Siparişiniz için teşekkür ederiz, umarız bizimle alışveriş yapmaktan keyif almışsınızdır";
 "checkout-result-info-success-order-number" = "Order Number %@";
 "checkout-result-info-fail-title" = "Ödeme Başarısız";
-"checkout-result-info-fail-description" = "Üzgünüz ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
+"checkout-result-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
 "checkout-result-info-fail-message" = "Hata Mesajı %@";
 "checkout-result-info-success-check-order-button-text" = "Siparişi Kontrol Et";
 "checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
 "checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
-"checkout-result-info-fail-detail-description" = "Ödeme Yönteminiz Kabul Edilmedi.";
 "checkout-result-info-fail-detail-description-will-replace" = "status=";
 "checkout-result-info-fail-detail-description-to-replace" = "Hata Kodu  ";
 
