@@ -66,4 +66,6 @@ extension UIColor {
     static let navigationBackGroundStartColor: UIColor = #colorLiteral(red: 0.1184436157, green: 0.1254909933, blue: 0.1296819448, alpha: 0.30)
 
     static let navigationBackGroundEndColor: UIColor = #colorLiteral(red: 0.1694627106, green: 0.1764574349, blue: 0.1847772002, alpha: 0)
+    
+    static let lightGray: UIColor = #colorLiteral(red: 0.909803921568627, green: 0.909803921568627, blue: 0.909803921568627, alpha: 1)
 }

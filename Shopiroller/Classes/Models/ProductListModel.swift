@@ -8,18 +8,18 @@
 import Foundation
 
 
-struct ProductListModel : Codable {
+struct ProductListModel: Codable {
     
-    var id : String?
-    var title : String?
-    var stock : Int?
-    var price : Double?
-    var campaignPrice : Double?
+    var id: String?
+    var title: String?
+    var stock: Int?
+    var price: Double?
+    var campaignPrice: Double?
     var shippingPrice: Double?
     var currency: CurrencyEnum?
     var featuredImage: ProductImageModel?
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
         case stock = "stock"

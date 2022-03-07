@@ -18,7 +18,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     private var sliderModel: [SRSliderDataModel]?
-    private var categories: [SRCategoryResponseModel]?
+    private var categoriesWithOptions: SRCategoryResponseWithOptionsModel?
     private var products: [ProductListModel]?
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
@@ -95,7 +95,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
             (result) in
             switch result{
             case .success(let response):
-                self.categories = response.data
+                self.categoriesWithOptions = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -137,7 +137,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func categoryItemCount() -> Int {
-        if let categories = categories, categories.count > 0 {
+        if let categories = categoriesWithOptions?.categories, categories.count > 0 {
             return 1
         } else {
             return 0
@@ -165,23 +165,23 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
-        return categories
+        return categoriesWithOptions?.categories
     }
     
     func getCategoryName(position: Int) -> String {
-        return categories?[position].name ?? ""
+        return categoriesWithOptions?.categories?[position].name ?? ""
     }
     
     func getCategoryId(position: Int) -> String {
-        return categories?[position].categoryId ?? ""
+        return categoriesWithOptions?.categories?[position].categoryId ?? ""
     }
     
     func getSubCategories(position: Int) -> [SRCategoryResponseModel]? {
-        return categories?[position].subCategories
+        return categoriesWithOptions?.categories?[position].subCategories
     }
     
     func hasSubCategory(position: Int) -> Bool {
-        if categories?[position].subCategories != nil , !(categories?[position].subCategories?.isEmpty ?? false) {
+        if categoriesWithOptions?.categories?[position].subCategories != nil , !(categoriesWithOptions?.categories?[position].subCategories?.isEmpty ?? false) {
             return true
         }else {
             return false
@@ -210,7 +210,16 @@ open class SRMainPageViewModel: SRBaseViewModel {
                 return 220
             }
         case .categories:
-            return 190
+            switch categoriesWithOptions?.mobileSettings?.categoryDisplayType {
+            case .imageAndText:
+                return 160
+            case .imageOnly:
+                return 120
+            case .textOnly:
+                return 120
+            case .none:
+                return 160
+            }
         }
     }
     
@@ -233,6 +242,18 @@ open class SRMainPageViewModel: SRBaseViewModel {
             count += 1
         }
         return count
+    }
+    
+    func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {
+        return categoriesWithOptions?.mobileSettings?.categoryDisplayType ?? .imageAndText
+    }
+    
+    func getCategoriesListViewModel(position: Int) -> CategoriesListViewModel {
+        return CategoriesListViewModel(categoryList: getSubCategories(position: position), isSubCategory: true,selectedRowName: getCategoryName(position: position),categoryId: getCategoryId(position: position),categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
+    }
+    
+    func getProductListViewModel(position: Int) -> ProductListViewModel {
+        return ProductListViewModel(categoryId: getCategoryId(position: position),pageTitle: getCategoryName(position: position))
     }
 }
 

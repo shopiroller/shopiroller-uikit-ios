@@ -106,8 +106,8 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .getSliders, resourceType: [SRSliderDataModel].self,shouldShowProgressHUD: showProgress)
     }
     
-    static func getCategories(showProgress: Bool) -> SRNetworkRequestManager<[SRCategoryResponseModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getCategories, resourceType: [SRCategoryResponseModel].self,shouldShowProgressHUD: showProgress)
+    static func getCategories(showProgress: Bool) -> SRNetworkRequestManager<SRCategoryResponseWithOptionsModel> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getCategories, resourceType:SRCategoryResponseWithOptionsModel.self,shouldShowProgressHUD: showProgress)
     }
     
     static func getSubCategories(categoryId: String) -> SRNetworkRequestManager<SRCategoryResponseModel> {

@@ -30,7 +30,10 @@ class CategoriesCell: UICollectionViewCell {
     @IBOutlet private weak var seeAllTitle: UILabel!
     @IBOutlet private weak var sectionTitleLabel: UILabel!
     
-    var model: [SRCategoryResponseModel]?
+    private var model: [SRCategoryResponseModel]?
+    
+    private var categoryDisplayTypeEnum: CategoryDisplayTypeEnum?
+
     
     var delegate: CategoriesCellDelegate?
     
@@ -56,8 +59,9 @@ class CategoriesCell: UICollectionViewCell {
     }
     
     
-    func configureCell(model: [SRCategoryResponseModel]?){
+    func configureCell(model: [SRCategoryResponseModel]?, categoryDisplayTypeEnum: CategoryDisplayTypeEnum?){
         self.model = model
+        self.categoryDisplayTypeEnum = categoryDisplayTypeEnum
     }
     
     @objc func goToCategory() {
@@ -75,7 +79,7 @@ extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoriesCollectionViewCell
         self.cellPosition = indexPath.row
-        cell.configureCell(model: self.model?[indexPath.row])
+        cell.configureCell(model: self.model?[indexPath.row], categoryDisplayTypeEnum: categoryDisplayTypeEnum)
         return cell
     }
     

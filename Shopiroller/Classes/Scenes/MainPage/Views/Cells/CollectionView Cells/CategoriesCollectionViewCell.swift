@@ -14,7 +14,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageContainer: UIView!
     @IBOutlet private weak var categoryImage: UIImageView!
     @IBOutlet private weak var categoryTitleContainer: UIView!
-    @IBOutlet private weak var categoryTitle: UILabel!
+    @IBOutlet private weak var categoryTitle: PaddingLabel!
     @IBOutlet private weak var imageViewBackGround: UIImageView!
     
     
@@ -30,10 +30,39 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureCell(model: SRCategoryResponseModel?){
+    func configureCell(model: SRCategoryResponseModel?, categoryDisplayTypeEnum : CategoryDisplayTypeEnum?) {
         categoryTitle.text = model?.name
         categoryImage.backgroundColor = .clear
-        categoryImage.setImages(url: model?.icon ?? "")
-    }    
+        
+        if let categoryDisplayTypeEnum = categoryDisplayTypeEnum {
+            switch categoryDisplayTypeEnum {
+            case .imageAndText:
+                imageContainer.isHidden = false
+                categoryTitleContainer.isHidden = false
+                setCategoryImage(url: model?.icon ?? "")
+            case .textOnly:
+                categoryTitleContainer.isHidden = false
+                categoryTitle.backgroundColor = .lightGray
+                categoryTitle.layer.masksToBounds = true
+                categoryTitle.layer.cornerRadius = 6
+                imageContainer.isHidden = true
+            case .imageOnly:
+                categoryTitleContainer.isHidden = true
+                imageContainer.isHidden = false
+                setCategoryImage(url: model?.icon ?? "")
+            }
+        } else {
+            categoryTitleContainer.isHidden = false
+            imageContainer.isHidden = false
+            setCategoryImage(url: model?.icon ?? "")
+        }
+        categoryTitle.text = model?.name
+    }
+    
+    private func setCategoryImage(url: String) {
+        categoryImage.setImages(url: url)
+        imageContainer.isHidden = false
+        categoryTitleContainer.isHidden = false
+    }
     
 }

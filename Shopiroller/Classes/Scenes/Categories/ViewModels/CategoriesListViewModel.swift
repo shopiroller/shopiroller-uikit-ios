@@ -23,12 +23,15 @@ class CategoriesListViewModel : SRBaseViewModel {
     private var selectedRowName: String? = ""
     
     private var categoryId: String? = ""
+    
+    private var categoryDisplayTypeEnum: CategoryDisplayTypeEnum? = .imageAndText
          
-    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String(), categoryId: String? = String()){
+    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String(), categoryId: String? = String(), categoryDisplayTypeEnum: CategoryDisplayTypeEnum? = .imageAndText){
         self.categoryList = categoryList
         self.isSubCategory = isSubCategory
         self.selectedRowName = selectedRowName
         self.categoryId = categoryId
+        self.categoryDisplayTypeEnum = categoryDisplayTypeEnum
     }
     
     func getPageTitle() -> String? {
@@ -69,6 +72,10 @@ class CategoriesListViewModel : SRBaseViewModel {
     
     func getShoppingCartCount(succes: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRGlobalRequestManager.getShoppingCartCount(success: succes, error: error)
+    }
+    
+    func getCategoryDisplayTypeEnum() -> CategoryDisplayTypeEnum? {
+        return categoryDisplayTypeEnum ?? .imageAndText
     }
     
 }
