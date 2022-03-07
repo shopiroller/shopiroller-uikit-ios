@@ -105,12 +105,12 @@ extension SRAppContext {
     }
     
     
-    static var appKey: String {
+    static var aliasKey: String {
         get {
-            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appKey) as? String ?? ""
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.aliasKey) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appKey)
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.aliasKey)
         }
     }
     

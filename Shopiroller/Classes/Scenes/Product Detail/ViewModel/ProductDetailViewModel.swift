@@ -173,7 +173,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getAppId() -> String? {
-        return SRAppContext.appKey
+        return SRAppContext.aliasKey
     }
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {

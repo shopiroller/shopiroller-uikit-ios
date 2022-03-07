@@ -13,6 +13,7 @@ public struct SRAppConstants {
     struct Header {
         static let apiKey = "api-Key"
         static let appKey = "app-Key"
+        static let aliasKey = "alias-key"
         static let language = "language"
         static let fallbackLanguage = "X-Fallback-Language"
         static let acceptLanguage = "Accept-Language"
@@ -25,7 +26,7 @@ public struct SRAppConstants {
             static let fontFamily = "font_family"
             static let userId = "userId"
             static let userEmail = "userEmail"
-            static let appKey = "appKey"
+            static let aliasKey = "aliasKey"
             static let apiKey = "apiKey"
             static let baseUrl = "baseUrl"
             static let appUserBaseUrl = "appUserBaseUrl"
