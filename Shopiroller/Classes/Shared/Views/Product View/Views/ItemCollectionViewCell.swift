@@ -54,9 +54,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
-        
-        situationContainer.isHidden = !viewModel.hasSituation()
-        
+                
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
             productNewPrice.isHidden = false

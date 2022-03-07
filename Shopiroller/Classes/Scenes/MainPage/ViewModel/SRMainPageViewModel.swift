@@ -19,7 +19,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     
     private var sliderModel: [SRSliderDataModel]?
     private var categoriesWithOptions: SRCategoryResponseWithOptionsModel?
-    private var products: [ProductListModel]?
+    private var products: [ProductDetailResponseModel]?
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel : SRCategoryResponseModel?
@@ -160,7 +160,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         return sliderModel?[position].slides
     }
     
-    func getTableProductVieWModel() -> [ProductListModel]? {
+    func getTableProductVieWModel() -> [ProductDetailResponseModel]? {
         return products
     }
     

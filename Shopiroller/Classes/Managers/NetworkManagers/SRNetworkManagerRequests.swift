@@ -13,8 +13,8 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProductsWithAdvancedFiltered, resourceType: [ProductListModel].self,urlQueryItems: urlQueryItems)
     }
     
-    static func getProducts(showProgress: Bool,urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
-        return SRNetworkRequestManager(httpMethod: .get, path: .getProducts, resourceType: [ProductListModel].self, urlQueryItems: urlQueryItems,shouldShowProgressHUD: showProgress)
+    static func getProducts(showProgress: Bool,urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductDetailResponseModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getProducts, resourceType: [ProductDetailResponseModel].self, urlQueryItems: urlQueryItems,shouldShowProgressHUD: showProgress)
         
     }
     

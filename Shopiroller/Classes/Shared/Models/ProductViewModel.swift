@@ -41,15 +41,21 @@ class ProductViewModel {
     }
     
     func isShippingFree() -> Bool {
-        return productListModel?.shippingPrice == 0.0 || (productDetailModel?.shippingPrice == 0.0)
-    }
-    
-    func hasSituation() -> Bool {
-        return (isShippingFree() || isOutofStock())
+        if let productListModel = productListModel {
+            return productListModel.shippingPrice == 0.0
+        } else if let productDetailModel = productDetailModel {
+            return productDetailModel.shippingPrice == 0.0
+        }
+        return false
     }
     
     func isUseFixPrice() -> Bool {
-        return productDetailModel?.useFixPrice == true
+        if let productDetailModel = productDetailModel {
+            return productDetailModel.useFixPrice == true
+        } else if let productListModel = productListModel {
+            return productListModel.shippingPrice != 0
+        }
+        return false
     }
     
     func isOutofStock() -> Bool {
