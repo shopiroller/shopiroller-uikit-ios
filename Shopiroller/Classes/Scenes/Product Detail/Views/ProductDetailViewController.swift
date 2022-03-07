@@ -360,7 +360,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @objc private func sumImageTapped(_ sender: Any) {
         sumImage.makeAnimation()
-        if viewModel.isQuantityMax() {
+        if viewModel.isProductReachMaximumAddLimit() {
             setMaxItemQuantitySituation()
         } else {
             viewModel.quantityCount += 1
@@ -371,8 +371,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func setMaxItemQuantitySituation() {
-        sumImage.isUserInteractionEnabled = false
-        self.view.makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.getMaxQuantity())))
+        self.view.makeToast(String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.quantityCount)))
     }
     
     @objc private func minusImageTapped(_ sender: Any) {

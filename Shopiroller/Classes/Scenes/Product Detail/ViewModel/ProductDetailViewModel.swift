@@ -152,11 +152,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
         return productDetailModel?.maxQuantityPerOrder ?? 0
     }
     
-    func getStockCount() -> Int {
-        return productDetailModel?.stock ?? 0
-    }
-    
-    func isQuantityMax() -> Bool {
+    func isProductReachMaximumAddLimit() -> Bool {
         return productDetailModel?.maxQuantityPerOrder == quantityCount || productDetailModel?.stock == quantityCount
     }
     
