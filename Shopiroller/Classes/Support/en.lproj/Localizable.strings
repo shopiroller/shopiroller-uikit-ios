@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Pods
 
@@ -8,7 +8,7 @@
 
 
 //MARK: - GENERAL USAGE
-"free-shipping-text" = "FREE SHIPPING";
+"free-shipping-text" = "Free Shipping";
 "sold-out-text" = "SOLD OUT";
 "section-see-all-title" = "See All";
 "address-text" = "Address";
@@ -143,7 +143,6 @@
 "shopping_cart_validate_ready_checkout" = "Ready to Checkout";
 "shopping_cart_validate_proceed_checkout" = "Proceed to Checkout";
 
-
 //MARK: - Cart Message Key
 "NotEnoughStock" = "%@ product left";
 "OutOfStock" = "Out Of Stock";
@@ -159,8 +158,6 @@
 "payment-information-page-title" = "Payment";
 "info-information-page-title" = "Info";
 "confirm-order-button-text" = "Confirm Order";
-"checkout-address-next-step-title" = "Next Step: Payment Method";
-"checkout-payment-next-step-title" = "Next Step: Order Info";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";
@@ -170,49 +167,47 @@
 
 
 //MARK: - AddressBottomView
-
 "address-bottom-view-title-text" = "Add New Address";
 "address-bottom-view-name-text" = "Name";
-"address-bottom-view-name-empty-text" = "Please Enter Your Name";
-"address-bottom-view-name-invalid-text" = "Please Enter Valid Name";
+"address-bottom-view-name-empty-text" = "Please enter your name";
+"address-bottom-view-name-invalid-text" = "Please enter Valid name";
 "address-bottom-view-surname-text" = "Surname";
-"address-bottom-view-surname-empty-text" = "Please Enter Your Surname";
-"address-bottom-view-surname-invalid-text" = "Please Enter Valid Surname";
+"address-bottom-view-surname-empty-text" = "Please enter your surname";
+"address-bottom-view-surname-invalid-text" = "Please enter valid surname";
 "address-bottom-view-phone-text" = "Phone";
-"address-bottom-view-phone-empty-text" = "Please Enter Your Phone Number";
-"address-bottom-view-phone-invalid-text" = "Please Enter Valid Phone Number";
+"address-bottom-view-phone-empty-text" = "Please enter your phone number";
+"address-bottom-view-phone-invalid-text" = "Please enter Valid phone number";
 "address-bottom-view-country-text" = "Country";
-"address-bottom-view-country-error-text" = "Please Select Country";
+"address-bottom-view-country-error-text" = "Please select country";
 "address-bottom-view-states-text" = "States";
-"address-bottom-view-states-error-text" = "Please Select State";
+"address-bottom-view-states-error-text" = "Please select state";
 "address-bottom-view-district-text" = "Cities";
-"address-bottom-view-district-error-text" = "Please Select City";
+"address-bottom-view-district-error-text" = "Please select city";
 "address-bottom-view-address-text" = "Address";
-"address-bottom-view-address-empty-text" = "Please Enter Your Address";
-"address-bottom-view-address-invalid-text" = "Please Enter Valid Address";
+"address-bottom-view-address-empty-text" = "Please enter your address";
+"address-bottom-view-address-invalid-text" = "Please enter valid address";
 "address-bottom-view-zipcode-text" = "Zip Code";
-"address-bottom-view-zipcode-empty-text" = "Please Enter Your Zipcode";
-"address-bottom-view-zipcode-invalid-text" = "Please Enter Valid Zipcode";
+"address-bottom-view-zipcode-empty-text" = "Please enter your zipcode";
+"address-bottom-view-zipcode-invalid-text" = "Please enter valid zipcode";
 "address-bottom-view-address-title-text" = "Address Title";
-"address-bottom-view-address-title-empty-text" = "Please Enter Your Address Title";
-"address-bottom-view-address-title-invalid-text" = "Please Enter Valid Address Title";
+"address-bottom-view-address-title-empty-text" = "Please enter your address title";
+"address-bottom-view-address-title-invalid-text" = "Please enter valid address title";
 "address-bottom-view-individual-checkbox-text" = "Individual";
 "address-bottom-view-corporate-checkbox-text" = "Corporate";
 "address-bottom-view-identitynumber-text" = "Identity Number";
-"address-bottom-view-identitynumber-error-text" = "Please Enter Your Identity Number";
-"address-bottom-view-identitynumber-invalid-text" = "Please Enter Valid Identity Number";
+"address-bottom-view-identitynumber-error-text" = "Please enter your identity number";
+"address-bottom-view-identitynumber-invalid-text" = "Please enter valid identity number";
 "address-bottom-view-corporate-company-name-text" = "Company Name";
-"address-bottom-view-corporate-company-name-error-text" = "Please Enter Your Company Name";
+"address-bottom-view-corporate-company-name-error-text" = "Please enter your company name";
 "address-bottom-view-corporate-tax-office-text" = "Tax Office";
-"address-bottom-view-corporate-tax-office-error-text" = "Please Enter Your Tax Office";
+"address-bottom-view-corporate-tax-office-error-text" = "Please enter your tax office";
 "address-bottom-view-corporate-tax-number-text" = "Tax Number";
-"address-bottom-view-corporate-tax-number-error-text" = "Please Enter Your Tax Number";
+"address-bottom-view-corporate-tax-number-error-text" = "Please enter your tax number";
 "address-bottom-view-save-button-text" = "Save";
 "address-bottom-view-address-saved-text" = "Address Saved";
 "address-bottom-view-save-as-billing-address-text" = "Save As Billing Address";
 
 //MARK: - ListPopUp
-
 "list-popup-select-address-title" = "Select Address";
 "list-popup-select-payment-title" = "Select Payment";
 "list-popup-shopping-cart-title" = "Cart is updating";
@@ -220,10 +215,8 @@
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Bank Transfer";
 "list-pop-up-pay-at-the-door-text" = "Pay At The Door";
-"list-pop-up-stripe-text" = "Stripe";
 
 //MARK: - CheckOutPayment
-
 "checkout-payment-select-payment-method-text" = "Select Payment Method";
 "checkout-payment-selected-payment-method-credit-cart-placeholder" = "Credit Cart";
 "checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Bank Transfer";
@@ -243,7 +236,6 @@
 "checkout-table-view-iban-copied-message" = "Iban information was copied for the selected bank.";
 
 //MARK: - CheckOutInfo
-
 "checkout-info-shopping-card-view-title" = "Card";
 "checkout-info-payment-card-view-title" = "Payment";
 "checkout-info-billing-address-card-view-title" = "Billing Address";
@@ -262,20 +254,17 @@
 "checkout-info-agreement-is-not-checked-title" = "Agree Now";
 
 //MARK: - SelectionPopUp
-
 "selection-pop-up-country-text" = "Country";
 "selection-pop-up-search-placeholder" = "Search";
 "selection-pop-up-cancel-button-text" = "Cancel";
 
 //MARK: - Credit Card Validation
-
 "credit-card-number-error-text" = "Please check the credit card number";
 "credit-card-holder-error-text" = "Please check the credit card holder";
 "credit-card-expire-date-error-text" = "Please check the expire date";
 "credit-card-cvv-error-text" = "Please check the cvv";
 
 //MARK: - CheckOut Result Page
-
 "checkout-result-info-page-title" = "Order Info";
 "checkout-result-info-success-title" = "It's ordered!";
 "checkout-result-info-success-description" = "Thanks for your order , we hope you enjoyed shopping with us";
