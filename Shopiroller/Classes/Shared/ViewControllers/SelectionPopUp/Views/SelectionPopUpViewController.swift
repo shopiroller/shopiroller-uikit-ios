@@ -8,9 +8,8 @@
 import UIKit
 import Foundation
 
-protocol SelectionPopoUpDelegate {
-    func getCountryName(name: String?, type: SelectionType?)
-    func getCountryId(id: String?, type: SelectionType?)
+protocol SelectionPopUpDelegate {
+    func getCountryId(id: String?)
 }
 
 class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> {
@@ -22,11 +21,11 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     }
 
     @IBOutlet private weak var selectionPopUpTitle: UILabel!
-    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var cancelButton: UIButton!
     
-    var delegate: SelectionPopoUpDelegate?
+    var delegate: SelectionPopUpDelegate?
         
     init(viewModel: SelectionPopUpViewModel){
         super.init(viewModel: viewModel, nibName: SelectionPopUpViewController.nibName, bundle: Bundle(for: SelectionPopUpViewController.self))
@@ -46,28 +45,21 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         cancelButton.setTitle(Constants.cancelButtonText)
         cancelButton.setTitleColor(.textPrimary)
         cancelButton.titleLabel?.font = .semiBold16
-        searchTextField.placeholder = Constants.searchText
-        
-        searchTextField.setBottomBorderOnlyWith(color: UIColor.darkGray.cgColor)
+
+        searchBar.placeholder = Constants.searchText
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+
         
         self.view.layer.cornerRadius = 6
         self.view.backgroundColor = .black.withAlphaComponent(0.2)
         
-    }
-    
-    @IBAction func textFieldEditingChanged(_ textField: UITextField) {
-        if let searchText = textField.text , searchText != "" {
-            viewModel.isSearching = true
-            viewModel.filterContentForSearchText(searchText: searchText)
-        } else {
-            viewModel.isSearching = false
-        }
-        selectionTableView.reloadData()
+        viewModel.clearData()
+        
     }
     
     @IBAction func cancelButtonTapped() {
-        pop(animated: false)
-
+        dismiss(animated: false, completion: nil)
     }
     
 }
@@ -82,25 +74,26 @@ extension SelectionPopUpViewController: UITableViewDelegate, UITableViewDataSour
         let cellModel = viewModel.getCellModel(position: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionTableViewCell.reuseIdentifier, for: indexPath) as! SelectionTableViewCell
         cell.configureCell(model: cellModel)
-        cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.dismiss(animated: false, completion: {
+            self.delegate?.getCountryId(id: self.viewModel.getCountryId(position: indexPath.row))
+        })
     }
     
 }
 
-extension SelectionPopUpViewController: CellNameTapped {
-    func getId(id: String?) {
-        if let selectedId = id , id != "" {
-            delegate?.getCountryId(id: selectedId, type: viewModel.getType())
-        }
+extension SelectionPopUpViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchText = searchText
+        viewModel.filterContentForSearchText()
+        selectionTableView.reloadData()
     }
     
-    func getName(name: String?) {
-        if let name = name, name != "" {
-            delegate?.getCountryName(name: name, type: viewModel.getType())
-            pop(animated: false)
-        }
-        
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.clearData()
+        selectionTableView.reloadData()
     }
-    
 }

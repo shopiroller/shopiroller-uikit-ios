@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="addressTitleView" destination="1Vx-Wr-ap4" id="zCG-fY-nlx"/>
                 <outlet property="billingAddressContainer" destination="lSv-84-b6d" id="ERx-tM-GL1"/>
-                <outlet property="citiesContainerView" destination="hpb-py-7bu" id="GTg-1V-zaR"/>
                 <outlet property="closeButton" destination="2Ex-de-gTj" id="d57-ug-G1j"/>
                 <outlet property="companyNameView" destination="Ufg-ST-e6O" id="lH8-fs-YvT"/>
                 <outlet property="corporateCheckBoxButton" destination="MCm-1u-r2W" id="9O1-Hj-urB"/>
@@ -21,6 +20,7 @@
                 <outlet property="corporateContainer" destination="lQO-x2-724" id="Fan-nD-hXa"/>
                 <outlet property="countryView" destination="qeV-pk-uD9" id="kgx-pn-SQe"/>
                 <outlet property="districtView" destination="HZc-cy-vp0" id="lHJ-9z-Sts"/>
+                <outlet property="districtsContainerView" destination="hpb-py-7bu" id="gTL-z0-ozI"/>
                 <outlet property="identityNumberContainer" destination="Fjs-Tn-OMw" id="dZX-xe-uR0"/>
                 <outlet property="identityNumberView" destination="Ouf-eI-xF0" id="zRo-HO-g5U"/>
                 <outlet property="individualCheckBoxButton" destination="Snu-fd-Qiz" id="YgI-yw-HeZ"/>

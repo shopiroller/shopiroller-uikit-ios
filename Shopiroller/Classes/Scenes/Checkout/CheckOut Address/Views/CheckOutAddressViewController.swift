@@ -170,8 +170,6 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
     func saveButtonTapped() {
         DispatchQueue.main.async {
-            self.viewModel.selectedBillingAddress = nil
-            self.viewModel.selectedShippingAddress = nil
             self.getDefaultAddress()
             self.getAddressList()
         }
