@@ -296,7 +296,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
             case 3:
                 let cellModel = viewModel.getTableProductVieWModel()
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
-                cell.configureCell(viewModel: ProductViewModel(productListModel: cellModel?[indexPath.row]))
+                cell.configureCell(viewModel: ProductViewModel(productDetailModel: cellModel?[indexPath.row]))
                 return cell
             default:
                 break

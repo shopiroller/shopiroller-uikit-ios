@@ -54,9 +54,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
-        
-        situationContainer.isHidden = !viewModel.hasSituation()
-        
+                
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
             productNewPrice.isHidden = false
@@ -83,7 +81,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
         if let image = viewModel.getImage() {
             productImage.setImages(url: image)
-        }else{
+        } else {
             productImage.image = .emptyProduct
             productImage.contentMode = .scaleAspectFill
         }
@@ -96,7 +94,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
             productImageFreeShippingContainer.layer.cornerRadius = 5
             productImageFreeShippingContainer.layer.masksToBounds = true
-        }else{
+        } else {
             productImageFreeShippingContainer.isHidden = true
         }
         
@@ -108,10 +106,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
             productImageSoldOutContainer.layer.cornerRadius = 5
             productImageSoldOutContainer.layer.masksToBounds = true
-        }else{
+        } else {
             productImageSoldOutContainer.isHidden = true
         }
-
+        
+        productImageFreeShippingContainer.isHidden = viewModel.isUseFixPrice()
         
     }
     
