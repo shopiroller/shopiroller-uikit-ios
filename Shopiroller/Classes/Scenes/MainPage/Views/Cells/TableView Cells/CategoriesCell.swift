@@ -87,6 +87,12 @@ extension CategoriesCell: UICollectionViewDelegate, UICollectionViewDataSource {
         self.delegate?.getSubCategories(position: indexPath.row)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (self.model?.count ?? 0 - 1 != indexPath.row) {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
+        }
+    }
+    
 }
 
 extension CategoriesCell: UICollectionViewDelegateFlowLayout {
