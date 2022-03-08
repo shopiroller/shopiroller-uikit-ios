@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIImage {
     
@@ -127,14 +128,27 @@ extension UIImageView {
     
     func setImages(url:String) {
         let activityIndicator = UIActivityIndicatorView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
-            activityIndicator.frame = CGRect(x: (self.frame.width / 2) - 30, y: (self.frame.height / 2) - 30, width: 60, height: 60)
-            activityIndicator.style = .medium
-            activityIndicator.color = .textPrimary
-            self.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            self.kf.setImage(with: URL(string: "\(url)?width=\(self.frame.width)"), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img) in
-                activityIndicator.stopAnimating()
+        if ImageCache.default.isCached(forKey:url) {
+            ImageCache.default.retrieveImage(forKey: url) { result in
+                switch result {
+                case .success(let value):
+                    self.kf.setImage(with: URL(string: url), placeholder: value.image)
+                case .failure(let error):
+                    break
+                }
+            }
+        }
+        else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+                activityIndicator.frame = CGRect(x: (self.frame.width / 2) - 30, y: (self.frame.height / 2) - 30, width: 60, height: 60)
+                activityIndicator.style = .medium
+                activityIndicator.color = .textPrimary
+                self.addSubview(activityIndicator)
+                activityIndicator.startAnimating()
+                ImageCache.default.memoryStorage.config.totalCostLimit = 1 //1 in bytes
+                self.kf.setImage(with: URL(string: "\(url)?width=\(self.frame.width)"), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img) in
+                    activityIndicator.stopAnimating()
+                }
             }
         }
     }
