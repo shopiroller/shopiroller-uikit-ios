@@ -25,7 +25,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var categoriesModel : SRCategoryResponseModel?
     
     private var currentPage: Int = 0
-    
+        
     private var total: Int? = nil
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
@@ -189,7 +189,9 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
-        showcaseModel = showcase?[position]
+        if let showcase = showcase {
+            showcaseModel = showcase[position]
+        }
         return showcaseModel
     }
     
@@ -244,6 +246,40 @@ open class SRMainPageViewModel: SRBaseViewModel {
         return count
     }
     
+    func getSectionAt(position: Int) -> MainPageDisplayTypes {
+        switch position {
+        case 0:
+            if (sliderItemCount() != 0) {
+                return .slider
+            } else if (categoryItemCount() != 0) {
+                return .categories
+            } else if (showcaseItemCount() != 0) {
+                return .showcase
+            } else if (productItemCount() != 0) {
+                return .products
+            }
+        case 1:
+            if (categoryItemCount() != 0) {
+                return .categories
+            } else if (showcaseItemCount() != 0) {
+                return .showcase
+            } else if (productItemCount() != 0) {
+                return .products
+            }
+        case 2:
+            if (showcaseItemCount() != 0) {
+                return .showcase
+            } else {
+                return .products
+            }
+        case 3:
+            return .products
+        default:
+            return .products
+        }
+        return .slider
+    }
+    
     func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {
         return categoriesWithOptions?.mobileSettings?.categoryDisplayType ?? .imageAndText
     }
@@ -260,4 +296,11 @@ open class SRMainPageViewModel: SRBaseViewModel {
 enum CellType {
     case slider
     case categories
+}
+
+enum MainPageDisplayTypes {
+    case slider
+    case categories
+    case showcase
+    case products
 }

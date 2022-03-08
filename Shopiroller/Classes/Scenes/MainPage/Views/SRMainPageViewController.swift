@@ -113,9 +113,9 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             if self.group != nil {
                 self.group?.leave()
             } else {
-                self.mainCollectionView.reloadData()
                 self.view.layoutIfNeeded()
             }
+            self.mainCollectionView.reloadData()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             if self.group != nil {
@@ -133,9 +133,9 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             } else {
                 self.shimmerCollectionView.isHidden = false
                 self.configureEmptyView()
-                self.mainCollectionView.reloadData()
                 self.view.layoutIfNeeded()
             }
+            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -153,10 +153,10 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             guard let self = self else { return }
             if self.group != nil {
                 self.group?.leave()
-            }else {
-                self.mainCollectionView.reloadData()
+            } else {
                 self.view.layoutIfNeeded()
             }
+            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -173,10 +173,10 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             guard let self = self else { return }
             if self.group != nil {
                 self.group?.leave()
-            }else {
-                self.mainCollectionView.reloadData()
+            } else {
                 self.view.layoutIfNeeded()
             }
+            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -194,7 +194,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             collectionViewContainer.isHidden = true
             emptyViewContainer.isHidden = false
             scrollView.isScrollEnabled = false
-        }else{
+        } else {
             collectionViewContainer.isHidden = false
             emptyViewContainer.isHidden = true
         }
@@ -242,14 +242,14 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == mainCollectionView {
-            switch section {
-            case 0:
+            switch viewModel.getSectionAt(position: section) {
+            case .slider:
                 return viewModel.sliderItemCount()
-            case 1:
+            case .categories:
                 return viewModel.categoryItemCount()
-            case 2:
+            case .showcase:
                 return viewModel.showcaseItemCount()
-            case 3:
+            case .products:
                 return viewModel.productItemCount()
             default:
                 break
@@ -274,26 +274,26 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case mainCollectionView:
-            switch indexPath.section {
-            case 0:
+            switch viewModel.getSectionAt(position: indexPath.section) {
+            case .slider:
                 let cellModel = viewModel.getTableSliderVieWModel(position: indexPath.row)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderTableViewCell.reuseIdentifier, for: indexPath) as! SliderTableViewCell
                 cell.setup(viewModel: cellModel)
                 cell.delegate = self
                 return cell
-            case 1:
+            case .categories:
                 let cellModel = viewModel.getCategoriesViewModel()
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseIdentifier, for: indexPath) as! CategoriesCell
                 cell.configureCell(model: cellModel, categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum())
                 cell.delegate = self
                 return cell
-            case 2:
+            case .showcase:
                 let cellModel = viewModel.getShowCaseViewModel(position: indexPath.row)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowCaseCell.reuseIdentifier, for: indexPath) as! ShowCaseCell
                 cell.delegate = self
                 cell.configureCell(viewModel: cellModel)
                 return cell
-            case 3:
+            case .products:
                 let cellModel = viewModel.getTableProductVieWModel()
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
                 cell.configureCell(viewModel: ProductViewModel(productDetailModel: cellModel?[indexPath.row]))
@@ -327,8 +327,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        switch section {
-        case 3:
+        switch viewModel.getSectionAt(position: section) {
+        case .products:
             return CGSize(width: collectionView.frame.width, height: 55)
         default:
             return CGSize(width: 0, height: 0)
@@ -338,8 +338,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
         case mainCollectionView:
-            switch section {
-            case 3:
+            switch viewModel.getSectionAt(position: section) {
+            case .categories,.products:
                 return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
             default:
                 break
@@ -357,14 +357,14 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView{
         case mainCollectionView:
-            switch indexPath.section {
-            case 0:
+            switch viewModel.getSectionAt(position: indexPath.section) {
+            case .slider:
                 return CGSize(width: collectionView.frame.width, height: CGFloat(viewModel.getHeight(type: CellType.slider)))
-            case 1:
+            case .categories:
                 return CGSize(width: collectionView.frame.width, height: CGFloat(viewModel.getHeight(type: CellType.categories)))
-            case 2:
+            case .showcase:
                 return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2)  * 125 / 170 )
-            case 3:
+            case .products:
                 return CGSize(width: ((collectionView.frame.width / 2) - 30), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 195)
             default:
                 break
