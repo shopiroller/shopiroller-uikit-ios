@@ -158,6 +158,8 @@
 "payment-information-page-title" = "Payment";
 "info-information-page-title" = "Info";
 "confirm-order-button-text" = "Confirm Order";
+"checkout-address-next-step-title" = "Next Step: Payment Method";
+"checkout-payment-next-step-title" = "Next Step: Order Info";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Delivery Adress";
@@ -215,6 +217,7 @@
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Bank Transfer";
 "list-pop-up-pay-at-the-door-text" = "Pay At The Door";
+"list-pop-up-stripe-text" = "Stripe";
 
 //MARK: - CheckOutPayment
 "checkout-payment-select-payment-method-text" = "Select Payment Method";
