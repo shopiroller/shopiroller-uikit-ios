@@ -19,6 +19,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         static var deliveryAddressCardViewTitle: String { return "checkout-info-delivery-addresss-card-view-title".localized }
         static var confirmOrderButtonTitle: String { return "checkout-info-confirm-order-button-title".localized }
         static var agreeTermsAndConditionsText: String { return "checkout-info-terms-and-conditions-text".localized }
+        static var userOrderNotePlaceholderText: String { return
+            "checkout-info-order-note-text-view-placeholder".localized
+        }
     }
     
     @IBOutlet private weak var mainContainerView: UIView!
@@ -120,8 +123,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         orderNoteContainerView.layer.borderWidth = 1
         
         orderNote.delegate = self
-        orderNote.text = "checkout-info-order-note-text-view-placeholder".localized
-        orderNote.textColor = UIColor.lightGray
+        orderNote.text = Constants.userOrderNotePlaceholderText
+        orderNote.textColor = .lightGray
+        orderNote.backgroundColor = .white
         
         self.animationView.frame = self.view.frame
         self.view.addSubview(animationView)
