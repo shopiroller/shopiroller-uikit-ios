@@ -416,6 +416,7 @@ extension CheckOutInfoViewController : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if orderNote.textColor == UIColor.lightGray {
             orderNote.textColor = UIColor.black
+            orderNote.text = nil
         }
         if viewModel.isOrderNoteChanged {
             viewModel.makeOrder?.userNote = textView.text
