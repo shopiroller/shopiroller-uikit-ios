@@ -10,7 +10,8 @@ import UIKit
 
 protocol AddressBottomViewDelegate {
     func closeButtonTapped()
-    func saveButtonTapped()
+    func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel? ,
+                          userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel : SRDefaultAddressModel?)
 }
 
 class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetViewModel> {
@@ -577,7 +578,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             addressTitleView.getErrorLabelText() != nil ? addressTitleView.setInfoLabel(infoText: "") : addressTitleView.removeError()
         }
         
-        if (viewModel.isEditAvailable() && viewModel.userShippingAddress != nil) {
+        if (viewModel.isEditAvailable() && viewModel.getShippingAddress() != nil) {
             return isValid
         }
         if (viewModel.getAddressType() == .shipping && !isBillingAddressChecked) {
@@ -804,7 +805,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 [weak self] in
                 guard let self = self else { return }
                 
-                self.delegate?.saveButtonTapped()
+                self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
@@ -815,7 +816,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 [weak self] in
                 guard let self = self else { return }
                 
-                self.delegate?.saveButtonTapped()
+                self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
@@ -832,7 +833,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 [weak self] in
                 guard let self = self else { return }
                 
-                self.delegate?.saveButtonTapped()
+                self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
@@ -843,7 +844,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 [weak self] in
                 guard let self = self else { return }
                 
-                self.delegate?.saveButtonTapped()
+                self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
             }) {
                 [weak self] (errorViewModel) in
@@ -858,7 +859,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             [weak self] in
             guard let self = self else { return }
             
-            self.delegate?.saveButtonTapped()
+            self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: nil, defaultAddressModel: self.viewModel.getDefaultAddressModel())
             self.pop(animated: true, completion: nil)
         }) {
             [weak self] (errorViewModel) in

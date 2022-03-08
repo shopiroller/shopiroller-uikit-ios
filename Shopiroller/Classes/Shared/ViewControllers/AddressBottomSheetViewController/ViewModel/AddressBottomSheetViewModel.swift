@@ -22,8 +22,9 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     private var _stateId = String()
     
     
-    var userShippingAddress: UserShippingAddressModel?
-    var userBillingAddress: UserBillingAdressModel?
+    private var userShippingAddress: UserShippingAddressModel?
+    private var userBillingAddress: UserBillingAdressModel?
+    private var defaultAddressModel: SRDefaultAddressModel?
     
     var addAddressModel: AddAddressModel = AddAddressModel()
     var editAddressModel: EditAddressModel = EditAddressModel()
@@ -48,7 +49,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addShippingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userShippingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -64,7 +66,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addBillingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userBillingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -80,7 +83,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addAddress(userId: SRAppContext.userId, address: addAddressModel).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.defaultAddressModel = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -151,7 +155,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.editShippingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userShippingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -167,7 +172,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.editBillingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userBillingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -185,6 +191,10 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     
     func getShippingAddress() -> UserShippingAddressModel? {
         return userShippingAddress
+    }
+    
+    func getDefaultAddressModel() -> SRDefaultAddressModel? {
+        return defaultAddressModel
     }
     
     func getCountries() -> [CountryModel] {

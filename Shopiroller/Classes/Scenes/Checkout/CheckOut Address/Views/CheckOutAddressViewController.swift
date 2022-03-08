@@ -168,9 +168,22 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 }
 
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
-    func saveButtonTapped() {
+    func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
+        if let userShippingAddressModel = userShippingAddressModel {
+            viewModel.selectedShippingAddress = userShippingAddressModel
+        }
+        if let userBillingAddressModel = userBillingAddressModel {
+            viewModel.selectedBillingAddress = userBillingAddressModel
+        }
+        
+        if let defaultAddressModel = defaultAddressModel {
+            viewModel.selectedShippingAddress = defaultAddressModel.shippingAddress
+            viewModel.selectedBillingAddress = defaultAddressModel.billingAddress
+        } else {
+            getDefaultAddress()
+        }
+        
         DispatchQueue.main.async {
-            self.getDefaultAddress()
             self.getAddressList()
         }
         delegate?.showSuccessfullToastMessage()
