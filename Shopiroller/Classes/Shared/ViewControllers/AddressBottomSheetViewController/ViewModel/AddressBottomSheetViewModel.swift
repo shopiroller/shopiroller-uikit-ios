@@ -209,6 +209,19 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         return districtList ?? []
     }
     
+    func getSelectionModel() -> SelectionPopUpViewModel {
+        switch selectionType {
+        case .country:
+            return SelectionPopUpViewModel(selectionList: getCountries())
+        case .district:
+            return SelectionPopUpViewModel(selectionList: getDistricts())
+        case .state:
+            return SelectionPopUpViewModel(selectionList: getStates())
+        case .none:
+            return SelectionPopUpViewModel(selectionList: getCountries())
+        }
+    }
+    
     func getSelectedCountryName(selectedId : String?) -> String? {
         if let countryList = countryList {
             guard let selectedId = selectedId else { return nil }

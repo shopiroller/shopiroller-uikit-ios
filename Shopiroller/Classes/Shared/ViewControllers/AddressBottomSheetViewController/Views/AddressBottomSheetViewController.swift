@@ -262,7 +262,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         statesView.getTextField().isUserInteractionEnabled = true
         statesView.getTextField().addGestureRecognizer(tapStatesTextField)
         
-        let tapCitiesTextField = UITapGestureRecognizer(target: self, action: #selector(citiesViewTapped))
+        let tapCitiesTextField = UITapGestureRecognizer(target: self, action: #selector(districtViewTapped))
         districtView.getTextField().backgroundColor = .clear
         districtView.getTextField().isUserInteractionEnabled = true
         districtView.getTextField().addGestureRecognizer(tapCitiesTextField)
@@ -304,7 +304,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func nextActionCitiesTextField() {
-       citiesViewTapped()
+       districtViewTapped()
     }
     
     @objc func nextActionAddressTextField() {
@@ -397,53 +397,32 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     
     @objc func countryViewTapped() {
-        nameView.resignFirstResponder()
-        surnameView.resignFirstResponder()
-        phoneNumberView.resignFirstResponder()
-        userAddressView.resignFirstResponder()
-        zipCodeView.resignFirstResponder()
-        identityNumberView.resignFirstResponder()
-        companyNameView.resignFirstResponder()
-        taxNumberView.resignFirstResponder()
-        taxOfficeView.resignFirstResponder()
-        addressTitleView.resignFirstResponder()
         self.viewModel.selectionType = .country
-        let selectionPopupVC = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getCountries()))
-        selectionPopupVC.delegate = self
-        viewModel.selectionType = .country
-        popUp(selectionPopupVC)
+        showSelectionPopUp()
     }
     
     @objc func statesViewTapped() {
-        nameView.resignFirstResponder()
-        surnameView.resignFirstResponder()
-        phoneNumberView.resignFirstResponder()
-        userAddressView.resignFirstResponder()
-        zipCodeView.resignFirstResponder()
-        identityNumberContainer.resignFirstResponder()
-        companyNameView.resignFirstResponder()
-        taxNumberView.resignFirstResponder()
-        taxOfficeView.resignFirstResponder()
-        addressTitleView.resignFirstResponder()
-        let selectionPopupVC = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getStates()))
         viewModel.selectionType = .state
-        selectionPopupVC.delegate = self
-        popUp(selectionPopupVC)
+        showSelectionPopUp()
     }
     
-    @objc func citiesViewTapped() {
+    @objc func districtViewTapped() {
+        viewModel.selectionType = .district
+        showSelectionPopUp()
+    }
+    
+    private func showSelectionPopUp() {
         nameView.resignFirstResponder()
         surnameView.resignFirstResponder()
         phoneNumberView.resignFirstResponder()
         userAddressView.resignFirstResponder()
         zipCodeView.resignFirstResponder()
+        identityNumberContainer.resignFirstResponder()
         companyNameView.resignFirstResponder()
         taxNumberView.resignFirstResponder()
-        identityNumberContainer.resignFirstResponder()
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
-        let selectionPopupVC = SelectionPopUpViewController(viewModel: SelectionPopUpViewModel(selectionList: viewModel.getDistricts()))
-        viewModel.selectionType = .district
+        let selectionPopupVC = SelectionPopUpViewController(viewModel: viewModel.getSelectionModel())
         selectionPopupVC.delegate = self
         popUp(selectionPopupVC)
     }
@@ -881,7 +860,7 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
             return false
         }
         if (textField == districtView){
-            citiesViewTapped()
+            districtViewTapped()
             return false
         }
         return true;
@@ -899,7 +878,7 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
         case countryView.getTextField():
             self.statesViewTapped()
         case statesView.getTextField():
-            self.citiesViewTapped()
+            self.districtViewTapped()
         case districtView.getTextField():
             userAddressView.getTextField().becomeFirstResponder()
         case userAddressView.getTextField():
