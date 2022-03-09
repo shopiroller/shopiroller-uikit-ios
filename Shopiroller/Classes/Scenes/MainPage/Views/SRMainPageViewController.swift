@@ -47,6 +47,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ItemCollectionViewCell.self)
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
+
         
         getSliders(showProgress: true)
         getCategories(showProgress: true)
@@ -114,8 +115,8 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             } else {
                 self.view.layoutIfNeeded()
+                self.mainCollectionView.reloadData()
             }
-            self.mainCollectionView.reloadData()
         }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             if self.group != nil {
@@ -133,9 +134,9 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             } else {
                 self.shimmerCollectionView.isHidden = false
                 self.configureEmptyView()
+                self.mainCollectionView.reloadData()
                 self.view.layoutIfNeeded()
             }
-            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -155,8 +156,8 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             } else {
                 self.view.layoutIfNeeded()
+                self.mainCollectionView.reloadData()
             }
-            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -175,8 +176,8 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.group?.leave()
             } else {
                 self.view.layoutIfNeeded()
+                self.mainCollectionView.reloadData()
             }
-            self.mainCollectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
@@ -298,8 +299,6 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
                 cell.configureCell(viewModel: ProductViewModel(productDetailModel: cellModel?[indexPath.row]))
                 return cell
-            default:
-                break
             }
         case shimmerCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
@@ -312,8 +311,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 3:
+        switch viewModel.getSectionAt(position: indexPath.section) {
+        case .products:
             let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
             self.prompt(vc, animated: true)
         default:
@@ -327,11 +326,16 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        switch viewModel.getSectionAt(position: section) {
-        case .products:
-            return CGSize(width: collectionView.frame.width, height: 55)
+        switch collectionView {
+        case mainCollectionView:
+            switch viewModel.getSectionAt(position: section) {
+            case .products:
+                return CGSize(width: collectionView.frame.width, height: 55)
+            default:
+                return CGSize.zero
+            }
         default:
-            return CGSize(width: 0, height: 0)
+            return CGSize.zero
         }
     }
     
@@ -366,8 +370,6 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2)  * 125 / 170 )
             case .products:
                 return CGSize(width: ((collectionView.frame.width / 2) - 30), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 195)
-            default:
-                break
             }
         case shimmerCollectionView:
             return CGSize(width: (collectionView.frame.width / 2) - 10, height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)

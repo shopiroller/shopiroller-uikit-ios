@@ -247,37 +247,16 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getSectionAt(position: Int) -> MainPageDisplayTypes {
-        switch position {
-        case 0:
-            if (sliderItemCount() != 0) {
-                return .slider
-            } else if (categoryItemCount() != 0) {
-                return .categories
-            } else if (showcaseItemCount() != 0) {
-                return .showcase
-            } else if (productItemCount() != 0) {
-                return .products
-            }
-        case 1:
-            if (categoryItemCount() != 0) {
-                return .categories
-            } else if (showcaseItemCount() != 0) {
-                return .showcase
-            } else if (productItemCount() != 0) {
-                return .products
-            }
-        case 2:
-            if (showcaseItemCount() != 0) {
-                return .showcase
-            } else {
-                return .products
-            }
-        case 3:
-            return .products
-        default:
+        if (sliderItemCount() != 0 && position < 1) { // SLIDER CATEGORIES SHOWCASE PRODUCTS
+            return .slider
+        } else if (categoryItemCount() != 0) && position < 2 { // CATEGORIES SHOWCASE PRODUCTS
+            return .categories
+        } else if (showcaseItemCount() != 0) && position < 3 { // SHOWCASE PRODUCTS
+            return .showcase
+        } else if (productItemCount() != 0) { // PRODUCTS
             return .products
         }
-        return .slider
+        return .products
     }
     
     func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {
