@@ -42,6 +42,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 
         productNewPrice.font = .semiBold14
         
+        productImageContainer.layer.masksToBounds = true
+        
         productDiscountLabel.font = .semiBold12
     }
     
@@ -112,7 +114,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     func startShimmer() {
-        stackView.spacing = CGFloat(10)
+        stackView.spacing = CGFloat(5)
         [productImageContainer,productDiscountContainer,productTitleLabel,productPriceContainer].forEach {
             Shimmer.start(for: $0)
         }
