@@ -25,7 +25,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var categoriesModel : SRCategoryResponseModel?
     
     private var currentPage: Int = 0
-    
+        
     private var total: Int? = nil
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
@@ -189,7 +189,9 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
-        showcaseModel = showcase?[position]
+        if let showcase = showcase {
+            showcaseModel = showcase[position]
+        }
         return showcaseModel
     }
     
@@ -244,6 +246,19 @@ open class SRMainPageViewModel: SRBaseViewModel {
         return count
     }
     
+    func getSectionAt(position: Int) -> MainPageDisplayTypes {
+        if (sliderItemCount() != 0 && position < 1) { // SLIDER CATEGORIES SHOWCASE PRODUCTS
+            return .slider
+        } else if (categoryItemCount() != 0) && position < 2 { // CATEGORIES SHOWCASE PRODUCTS
+            return .categories
+        } else if (showcaseItemCount() != 0) && position < 3 { // SHOWCASE PRODUCTS
+            return .showcase
+        } else if (productItemCount() != 0) { // PRODUCTS
+            return .products
+        }
+        return .products
+    }
+    
     func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {
         return categoriesWithOptions?.mobileSettings?.categoryDisplayType ?? .imageAndText
     }
@@ -260,4 +275,11 @@ open class SRMainPageViewModel: SRBaseViewModel {
 enum CellType {
     case slider
     case categories
+}
+
+enum MainPageDisplayTypes {
+    case slider
+    case categories
+    case showcase
+    case products
 }

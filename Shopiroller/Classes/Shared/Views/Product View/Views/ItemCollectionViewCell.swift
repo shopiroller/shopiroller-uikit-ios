@@ -39,10 +39,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.font = .regular12
-        
-        productImageContainer.makeCardView()
-        productImageContainer.clipsToBounds = true
-        
+                
         productNewPrice.font = .semiBold14
         
         productDiscountLabel.font = .semiBold12
