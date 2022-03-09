@@ -7,6 +7,12 @@
 
 import UIKit
 
+private struct Constants {
+    
+    static var searchText : String { return "search-bar-search-text".localized }
+    
+}
+
 class SearchViewController: BaseViewController<SearchViewModel> {
     
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -19,9 +25,10 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     override func setup() {
         super.setup()
-        searchBar.placeholder = "search-bar-search-text".localized
-        searchBar.keyboardType = .alphabet
+        
         searchBar.delegate = self
+        searchBar.setSearchBar(placeholder: Constants.searchText)
+        
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.register(cellClass: SearchTableViewCell.self)

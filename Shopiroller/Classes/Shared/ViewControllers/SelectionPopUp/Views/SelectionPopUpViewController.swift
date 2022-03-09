@@ -24,6 +24,7 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var selectionPopUpView: UIView!
     
     var delegate: SelectionPopUpDelegate?
         
@@ -34,7 +35,8 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     override func setup() {
         super.setup()
         
-        self.view.makeCardView()
+        selectionPopUpView.makeCardView()
+        
         selectionTableView.delegate = self
         selectionTableView.dataSource = self
         selectionTableView.register(cellClass: SelectionTableViewCell.self)
@@ -46,13 +48,8 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         cancelButton.setTitleColor(.textPrimary)
         cancelButton.titleLabel?.font = .semiBold16
 
-        searchBar.placeholder = Constants.searchText
         searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
-
-        
-        self.view.layer.cornerRadius = 6
-        self.view.backgroundColor = .black.withAlphaComponent(0.2)
+        searchBar.setSearchBar(placeholder: Constants.searchText)
         
         viewModel.clearData()
         

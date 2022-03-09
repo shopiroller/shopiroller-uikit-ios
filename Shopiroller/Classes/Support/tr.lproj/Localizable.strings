@@ -264,8 +264,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 
 //MARK: - SelectionPopUp
 
-"selection-pop-up-country-text" = "Ülke";
-"selection-pop-up-search-placeholder" = "Arayın";
+"selection-pop-up-country-text" = "Ülke Seçin";
+"selection-pop-up-search-placeholder" = "Arama";
 "selection-pop-up-cancel-button-text" = "Vazgeç";
 
 //MARK: - Credit Card Validation

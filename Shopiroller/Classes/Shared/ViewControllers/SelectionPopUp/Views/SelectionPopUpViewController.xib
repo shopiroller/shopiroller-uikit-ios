@@ -14,6 +14,7 @@
                 <outlet property="cancelButton" destination="nIs-kx-HUF" id="4Mm-Ch-dcB"/>
                 <outlet property="searchBar" destination="xrQ-Oo-Da7" id="tV5-Q7-45G"/>
                 <outlet property="selectionPopUpTitle" destination="rk0-rJ-DXc" id="bDF-06-63L"/>
+                <outlet property="selectionPopUpView" destination="4GX-oK-gyv" id="ZCz-KP-O2r"/>
                 <outlet property="selectionTableView" destination="FU2-AO-jNh" id="ucq-w8-WqD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,7 +34,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="322" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk0-rJ-DXc">
-                                            <rect key="frame" x="0.0" y="20" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="5" y="20" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -42,33 +43,45 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="0pa-MA-f6V"/>
-                                        <constraint firstItem="rk0-rJ-DXc" firstAttribute="leading" secondItem="rgL-FJ-xVb" secondAttribute="leading" id="Zkm-eT-Xrd"/>
+                                        <constraint firstItem="rk0-rJ-DXc" firstAttribute="leading" secondItem="rgL-FJ-xVb" secondAttribute="leading" constant="5" id="Zkm-eT-Xrd"/>
                                         <constraint firstItem="rk0-rJ-DXc" firstAttribute="centerY" secondItem="rgL-FJ-xVb" secondAttribute="centerY" id="qdJ-cP-rsH"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhf-3u-fxo">
-                                    <rect key="frame" x="0.0" y="40" width="322" height="20"/>
+                                    <rect key="frame" x="0.0" y="40" width="322" height="10"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="Mtz-8C-XjF"/>
+                                        <constraint firstAttribute="height" constant="10" id="Mtz-8C-XjF"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Peb-6e-tmF">
-                                    <rect key="frame" x="0.0" y="60" width="322" height="40"/>
+                                    <rect key="frame" x="0.0" y="50" width="322" height="40"/>
                                     <subviews>
-                                        <searchBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-Oo-Da7">
+                                        <searchBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-Oo-Da7">
                                             <rect key="frame" x="0.0" y="0.0" width="322" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstItem="xrQ-Oo-Da7" firstAttribute="leading" secondItem="Peb-6e-tmF" secondAttribute="leading" id="1sA-yg-fIy"/>
+                                        <constraint firstItem="xrQ-Oo-Da7" firstAttribute="top" secondItem="Peb-6e-tmF" secondAttribute="top" id="3RR-Zt-wT3"/>
+                                        <constraint firstAttribute="trailing" secondItem="xrQ-Oo-Da7" secondAttribute="trailing" id="Hx5-5p-Q1H"/>
+                                        <constraint firstAttribute="bottom" secondItem="xrQ-Oo-Da7" secondAttribute="bottom" id="XJX-jK-mK1"/>
                                         <constraint firstAttribute="height" constant="40" id="ikb-rS-wTE"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRJ-Un-JEK">
+                                    <rect key="frame" x="0.0" y="90" width="322" height="10"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="10" id="xU8-6X-64i"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FU2-AO-jNh">
                                     <rect key="frame" x="0.0" y="100" width="322" height="372"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
