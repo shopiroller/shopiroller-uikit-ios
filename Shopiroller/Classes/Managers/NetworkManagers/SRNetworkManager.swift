@@ -113,9 +113,9 @@ final public class SRNetworkManager {
         //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
         //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName
         //        headers[AppConstants.Header.osVersion] = AppInfo.systemVersion
-        headers[SRAppConstants.Header.language] = "tr"
-        headers[SRAppConstants.Header.acceptLanguage] = "tr-TR"
-        headers[SRAppConstants.Header.fallbackLanguage] = "tr"
+        headers[SRAppConstants.Header.language] = SRAppContext.appLanguage
+        headers[SRAppConstants.Header.acceptLanguage] = SRAppContext.appLanguage + "-" + SRAppContext.appLanguage.uppercased()
+        headers[SRAppConstants.Header.fallbackLanguage] = SRAppContext.fallbackLanguage
         return headers
     }
     
@@ -127,9 +127,9 @@ final public class SRNetworkManager {
         //        headers[AppConstants.Header.deviceBrand] = AppInfo.deviceModel
         //        headers[AppConstants.Header.deviceModel] = AppInfo.deviceName
         //        headers[AppConstants.Header.osVersion] = AppInfo.systemVersion
-        headers[SRAppConstants.Header.language] = "tr"
-        headers[SRAppConstants.Header.acceptLanguage] = "tr-TR"
-        headers[SRAppConstants.Header.fallbackLanguage] = "tr"
+        headers[SRAppConstants.Header.language] = SRAppContext.appLanguage
+        headers[SRAppConstants.Header.acceptLanguage] = SRAppContext.appLanguage + "-" + SRAppContext.appLanguage.uppercased()
+        headers[SRAppConstants.Header.fallbackLanguage] = SRAppContext.fallbackLanguage
         return headers
     }
     

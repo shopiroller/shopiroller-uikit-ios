@@ -17,8 +17,8 @@ public class ShopirollerApp {
     public var delegate: ShopirollerDelegate?
     
     public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerAppUserCredentials, baseUrl: String, theme: ShopirollerTheme) {
-        
-        print(Bundle(for: ShopirollerApp.self).bundleIdentifier)
+                
+        SRAppContext.appLanguage = Locale.current.languageCode ?? "tr"
         
         self.theme = theme
         SRAppContext.apiKey = eCommerceCredentials.apiKey
@@ -64,6 +64,10 @@ public class ShopirollerApp {
         SRAppContext.userEmail = email
     }
     
+    public func setFallbackLanguage(_ fallbackLanguage: String) {
+        SRAppContext.fallbackLanguage = fallbackLanguage
+    }
+
     func isUserLoggedIn() -> Bool {
         return SRAppContext.userId != "" && SRAppContext.userEmail != ""
     }

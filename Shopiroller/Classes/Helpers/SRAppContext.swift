@@ -162,6 +162,26 @@ extension SRAppContext {
         }
     }
     
+    static var fallbackLanguage: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.fallbackLanguage) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.fallbackLanguage)
+        }
+    }
+    
+    
+    static var appLanguage: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appLanguage) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appLanguage)
+        }
+    }
+    
+    
     
 }
 
