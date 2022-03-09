@@ -17,12 +17,8 @@ public class ShopirollerApp {
     public var delegate: ShopirollerDelegate?
     
     public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerAppUserCredentials, baseUrl: String, theme: ShopirollerTheme) {
-        
-        print(Bundle(for: ShopirollerApp.self).bundleIdentifier)
-        
-        let languageCode: String = Locale.current.languageCode ?? "tr"
-        
-        SRAppContext.appLanguage = languageCode
+                
+        SRAppContext.appLanguage = Locale.current.languageCode ?? "tr"
         
         self.theme = theme
         SRAppContext.apiKey = eCommerceCredentials.apiKey
