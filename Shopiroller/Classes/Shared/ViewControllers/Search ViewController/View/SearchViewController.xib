@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,23 +40,21 @@
                                         <action selector="backButtonTapped" destination="-1" eventType="touchUpInside" id="LcJ-ZI-FmO"/>
                                     </connections>
                                 </button>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="D6J-Ce-dUU">
-                                    <rect key="frame" x="30" y="4.5" width="354" height="51"/>
-                                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6J-Ce-dUU">
+                                    <rect key="frame" x="30" y="10" width="354" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="ldy-YE-ByS"/>
+                                    </constraints>
                                     <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="D6J-Ce-dUU" firstAttribute="centerY" secondItem="g5S-ol-pYg" secondAttribute="centerY" id="53d-Ee-hFP"/>
+                                <constraint firstItem="D6J-Ce-dUU" firstAttribute="centerY" secondItem="g5S-ol-pYg" secondAttribute="centerY" id="3Io-j6-pnU"/>
                                 <constraint firstAttribute="height" constant="60" id="Kb9-1A-7Fj"/>
                                 <constraint firstItem="krh-Xy-3TV" firstAttribute="leading" secondItem="g5S-ol-pYg" secondAttribute="leading" constant="5" id="OqZ-BU-lim"/>
-                                <constraint firstAttribute="trailing" secondItem="D6J-Ce-dUU" secondAttribute="trailing" id="RQm-yc-d1A"/>
                                 <constraint firstItem="D6J-Ce-dUU" firstAttribute="leading" secondItem="krh-Xy-3TV" secondAttribute="trailing" id="gEW-SK-329"/>
+                                <constraint firstAttribute="trailing" secondItem="D6J-Ce-dUU" secondAttribute="trailing" id="hA3-3R-Pmy"/>
                                 <constraint firstItem="krh-Xy-3TV" firstAttribute="centerY" secondItem="g5S-ol-pYg" secondAttribute="centerY" id="raT-Ox-Xwh"/>
                             </constraints>
                         </view>

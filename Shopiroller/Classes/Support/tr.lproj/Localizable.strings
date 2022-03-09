@@ -161,6 +161,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "payment-information-page-title" = "Ödeme";
 "info-information-page-title" = "Bilgilendirme";
 "confirm-order-button-text" = "Siparişi Onayla";
+"checkout-address-next-step-title" = "Sonraki Adım: Ödeme Yöntemi";
+"checkout-payment-next-step-title" = "Sonraki Adım: Sipariş Bilgisi";
 
 //MARK: - GeneralAddressView
 "delivery-address-title" = "Teslimat Adresi";
@@ -218,6 +220,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Banka Hesabına Transfer";
 "list-pop-up-pay-at-the-door-text" = "Kapıda Ödeme";
+"list-pop-up-stripe-text" = "Stripe";
 
 
 //MARK: - CheckOutPayment
@@ -261,8 +264,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 
 //MARK: - SelectionPopUp
 
-"selection-pop-up-country-text" = "Ülke";
-"selection-pop-up-search-placeholder" = "Arayın";
+"selection-pop-up-country-text" = "Ülke Seçin";
+"selection-pop-up-search-placeholder" = "Arama";
 "selection-pop-up-cancel-button-text" = "Vazgeç";
 
 //MARK: - Credit Card Validation

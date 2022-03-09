@@ -28,6 +28,12 @@ class SRTextField: SRBaseView {
         return errorLabel.text ?? ""
     }
     
+    var isEnabled: Bool = true {
+        didSet {
+            setTextFieldSituation()
+        }
+    }
+    
     func setError(errorMessage: String?) {
         errorLabelContainer.isHidden = false
         let color = CABasicAnimation(keyPath: "borderColor")
@@ -58,6 +64,15 @@ class SRTextField: SRBaseView {
         textField.layer.borderColor = UIColor.clear.cgColor
         textField.layer.borderWidth = 0
         errorLabel.text = infoText
+    }
+    
+    private func setTextFieldSituation() {
+        textField.isEnabled = isEnabled
+        if isEnabled {
+            textField.textColor = .textPrimary
+        } else {
+            textField.textColor = .textPCaption
+        }
     }
 
 }

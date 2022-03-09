@@ -13,17 +13,18 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     private var type: GeneralAddressType
     private var isEditing: Bool
     
-    var selectionType: SelectionType? = .country
+    var selectionType: SelectionType?
     
     private var countryList: [CountryModel]?
     private var stateList: [CountryModel]?
-    private var cityList: [CountryModel]?
+    private var districtList: [CountryModel]?
     private var _countryId = String()
     private var _stateId = String()
     
     
-    var userShippingAddress: UserShippingAddressModel?
-    var userBillingAddress: UserBillingAdressModel?
+    private var userShippingAddress: UserShippingAddressModel?
+    private var userBillingAddress: UserBillingAdressModel?
+    private var defaultAddressModel: SRDefaultAddressModel?
     
     var addAddressModel: AddAddressModel = AddAddressModel()
     var editAddressModel: EditAddressModel = EditAddressModel()
@@ -48,7 +49,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addShippingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userShippingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -64,7 +66,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addBillingAddress(addAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userBillingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -80,7 +83,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.addAddress(userId: SRAppContext.userId, address: addAddressModel).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.defaultAddressModel = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -128,14 +132,14 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         }
     }
     
-    func getCityModel(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func getDistrictModel(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         var urlQueryItems: [URLQueryItem] = []
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.stateId, value: String(stateId)))
-        SRNetworkManagerRequests.getCityList(urlQueryItems: urlQueryItems).response() {
+        SRNetworkManagerRequests.getDistrictList(urlQueryItems: urlQueryItems).response() {
             (result) in
             switch result {
             case .success(let response):
-                self.cityList = response.data
+                self.districtList = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -151,7 +155,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.editShippingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userShippingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -167,7 +172,8 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         SRNetworkManagerRequests.editBillingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {
-            case .success(_):
+            case .success(let response):
+                self.userBillingAddress = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -187,6 +193,10 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         return userShippingAddress
     }
     
+    func getDefaultAddressModel() -> SRDefaultAddressModel? {
+        return defaultAddressModel
+    }
+    
     func getCountries() -> [CountryModel] {
         return countryList ?? []
     }
@@ -195,8 +205,57 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         return stateList ?? []
     }
     
-    func getCities() -> [CountryModel] {
-        return cityList ?? []
+    func getDistricts() -> [CountryModel] {
+        return districtList ?? []
+    }
+    
+    func getSelectionModel() -> SelectionPopUpViewModel {
+        switch selectionType {
+        case .country:
+            return SelectionPopUpViewModel(selectionList: getCountries())
+        case .district:
+            return SelectionPopUpViewModel(selectionList: getDistricts())
+        case .state:
+            return SelectionPopUpViewModel(selectionList: getStates())
+        case .none:
+            return SelectionPopUpViewModel(selectionList: getCountries())
+        }
+    }
+    
+    func getSelectedCountryName(selectedId : String?) -> String? {
+        if let countryList = countryList {
+            guard let selectedId = selectedId else { return nil }
+            for state in countryList {
+                if (state.id == selectedId) {
+                    return state.name
+                }
+            }
+        }
+        return ""
+    }
+    
+    func getSelectedCityName(selectedId : String?) -> String? {
+        if let cityList = districtList {
+            guard let selectedId = selectedId else { return nil }
+            for state in cityList {
+                if (state.id == selectedId) {
+                    return state.name
+                }
+            }
+        }
+        return ""
+    }
+    
+    func getSelectedStateName(selectedId : String?) -> String? {
+        if let stateList = stateList {
+            guard let selectedId = selectedId else { return nil }
+            for state in stateList {
+                if (state.id == selectedId) {
+                    return state.name
+                }
+            }
+        }
+        return ""
     }
     
     var countryId: String {
@@ -220,5 +279,5 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
 enum SelectionType {
     case country
     case state
-    case city
+    case district
 }

@@ -114,7 +114,7 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
 }
 
 extension AddressListViewController: AddressBottomViewDelegate {
-    func saveButtonTapped() {
+    func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
         DispatchQueue.main.async {
             self.getAddressList()
             self.view.layoutIfNeeded()

@@ -10,35 +10,47 @@ import Foundation
 
 class SelectionPopUpViewModel: SRBaseViewModel {
     
-    var isSearching : Bool = false
     private var selectionList: [CountryModel]
     private var filteredList: [CountryModel] = []
     
-    private var type: SelectionType?
     private var stateModel : CountryModel?
     private var countryModel: CountryModel?
     private var citiesModel: CountryModel?
     
-    init(selectionList: [CountryModel] = [CountryModel]() , type: SelectionType? = .country){
+    var searchText: String?
+    
+    init(selectionList: [CountryModel] = [CountryModel]()){
         self.selectionList = selectionList
-        self.type = type
     }
     
     func getItemCount() -> Int {
-        return isSearching ? filteredList.count : selectionList.count
+        return filteredList.count
     }
     
     func getCellModel(position: Int) -> CountryModel {
-        return isSearching ? filteredList[position] : selectionList[position]
-        
+        return filteredList[position]
     }
     
-    func getType() -> SelectionType? {
-        return type
+    func getCountryId(position: Int) -> String {
+        return getCellModel(position: position).id ?? ""
     }
     
-    func filterContentForSearchText(searchText: String) {
-        filteredList = selectionList.filter { $0.name?.lowercased().contains(searchText.lowercased()) as! Bool }
+    func filterContentForSearchText() {
+        filteredList.removeAll()
+        if let searchText = searchText , searchText != "" {
+            for item in selectionList {
+                if(item.name?.lowercased().contains(searchText.lowercased()) ?? false) {
+                    filteredList.append(item)
+                }
+            }
+        } else {
+            filteredList = selectionList
+        }
+    }
+    
+    func clearData() {
+        searchText = nil
+        filterContentForSearchText()
     }
  
 }

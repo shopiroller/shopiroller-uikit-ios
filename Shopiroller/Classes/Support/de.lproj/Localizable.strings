@@ -214,6 +214,7 @@
 "list-pop-up-paypal-text" = "Paypal";
 "list-pop-up-bank-transfer-text" = "Banküberweisung";
 "list-pop-up-pay-at-the-door-text" = "An der Tür bezahlen";
+"list-pop-up-stripe-text" = "Stripe";
 
 //MARK: - CheckOutPayment
 "checkout-payment-select-payment-method-text" = "Zahlungsmethode auswählen";

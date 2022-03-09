@@ -177,7 +177,7 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: [CountryModel].self, urlQueryItems: urlQueryItems, shouldShowProgressHUD: true,ignoreBaseModel: true, isUser: true)
     }
     
-    static func getCityList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[CountryModel]> {
+    static func getDistrictList(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[CountryModel]> {
         let subpath = "\(SRNetworkManagerPaths.cities.rawValue)"
         return SRNetworkRequestManager(httpMethod: .get, path: .addresses , subpath: subpath, resourceType: [CountryModel].self, urlQueryItems: urlQueryItems, shouldShowProgressHUD: true,ignoreBaseModel: true, isUser: true)
     }
