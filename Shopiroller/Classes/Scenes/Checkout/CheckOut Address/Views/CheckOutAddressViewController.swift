@@ -101,7 +101,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             billingAddressEmptyView.addressDelegate = self
         } else {
             defaultBillingAddress.setup(model: viewModel.getBillingAddressModel())
-            SRSessionManager.shared.userBillingAddress = viewModel.selectedBillingAddress
+            SRSessionManager.shared.userBillingAddress = viewModel.getBillingAddress()
         }
         
         let isShippingAddressEmpty = viewModel.isShippingAddressEmpty()
@@ -115,7 +115,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
             shippingAddressEmptyView.addressDelegate = self
         } else {
             defaultDeliveryAddress.setup(model: viewModel.getDeliveryAddressModel())
-            SRSessionManager.shared.userDeliveryAddress = viewModel.selectedShippingAddress
+            SRSessionManager.shared.userDeliveryAddress = viewModel.getShippingAddress()
         }
         
         self.view.layoutIfNeeded()
@@ -170,15 +170,14 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
     func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
         if let userShippingAddressModel = userShippingAddressModel {
-            viewModel.selectedShippingAddress = userShippingAddressModel
+            viewModel.setShippingAddress(shippingAddressModel: userShippingAddressModel)
         }
         if let userBillingAddressModel = userBillingAddressModel {
-            viewModel.selectedBillingAddress = userBillingAddressModel
+            viewModel.setBillingAddress(billingAddressModel: userBillingAddressModel)
         }
         
         if let defaultAddressModel = defaultAddressModel {
-            viewModel.selectedShippingAddress = defaultAddressModel.shippingAddress
-            viewModel.selectedBillingAddress = defaultAddressModel.billingAddress
+            viewModel.setDefaultAddress(defaultAddress: defaultAddressModel)
         } else {
             getDefaultAddress()
         }
@@ -198,17 +197,15 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
 extension CheckOutAddressViewController: ListPopUpAddressDelegate {
     
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
-        defaultBillingAddress.setup(model: GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: false))
-        viewModel.selectedBillingAddress = billingAddress
-        SRSessionManager.shared.userBillingAddress = viewModel.selectedBillingAddress
-        self.view.layoutIfNeeded()
+        viewModel.setBillingAddress(billingAddressModel: billingAddress ?? UserBillingAdressModel())
+        SRSessionManager.shared.userBillingAddress = viewModel.getBillingAddress()
+        configureViews()
     }
     
     func getShippingAddress(shippingAddress: UserShippingAddressModel?) {
-        defaultDeliveryAddress.setup(model: GeneralAddressModel(title: shippingAddress?.title, address: shippingAddress?.addressLine, description: shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: false))
-        viewModel.selectedShippingAddress = shippingAddress
-        SRSessionManager.shared.userDeliveryAddress = viewModel.selectedShippingAddress
-        self.view.layoutIfNeeded()
+        viewModel.setShippingAddress(shippingAddressModel: shippingAddress ?? UserShippingAddressModel())
+        SRSessionManager.shared.userDeliveryAddress = viewModel.getShippingAddress()
+        configureViews()
     }
 }
 
