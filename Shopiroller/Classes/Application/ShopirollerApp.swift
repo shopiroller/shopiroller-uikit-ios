@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import IQKeyboardManagerSwift
 
 public class ShopirollerApp {
     
@@ -54,6 +55,15 @@ public class ShopirollerApp {
         
         SRAppContext.fontFamily = .poppins
         
+        initializeIQKeyboardManager()
+    }
+    
+    private func initializeIQKeyboardManager() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "keyboard-next-action-text".localized
     }
     
     public func setUserId(_ userId: String) {
@@ -124,5 +134,5 @@ public struct ShopirollerAppUserCredentials {
 public protocol ShopirollerDelegate {
     
     func userLoginNeeded()
-    
+        
 }

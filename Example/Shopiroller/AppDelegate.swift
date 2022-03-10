@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         
     }
     
-    
     var window: UIWindow?
     
     
@@ -50,18 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "keyboard-next-action-text".localized
-        
+                
         return true
     }
     
     public func applicationWillTerminate(_ application: UIApplication) {
         SRAppConstants.ShoppingCart.badgeCount = "0"
     }
+    
 
 }
