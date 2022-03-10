@@ -16,8 +16,10 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     
     private struct Constants {
         static var searchText : String { return "selection-pop-up-search-placeholder".localized }
-        static var viewTitleLabel: String { return "selection-pop-up-country-text".localized }
         static var cancelButtonText: String { return "selection-pop-up-cancel-button-text".localized }
+        static var selectCountryTitle: String { return "selection-pop-up-country-text".localized }
+        static var selectStateTitle: String { return "selection-pop-up-states-text".localized }
+        static var selectDistrictTitle: String { return "selection-pop-up-district-text".localized }
     }
 
     @IBOutlet private weak var selectionPopUpTitle: UILabel!
@@ -43,7 +45,6 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         selectionTableView.rowHeight = 50
         selectionTableView.separatorStyle = .none
         
-        selectionPopUpTitle.text = Constants.viewTitleLabel
         cancelButton.setTitle(Constants.cancelButtonText)
         cancelButton.setTitleColor(.textPrimary)
         cancelButton.titleLabel?.font = .semiBold16
@@ -52,6 +53,18 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         searchBar.setSearchBar(placeholder: Constants.searchText)
         
         viewModel.clearData()
+        
+        switch viewModel.getSelectionType() {
+        case .COUNTRY:
+            selectionPopUpTitle.text = Constants.selectCountryTitle
+        case .STATE:
+            selectionPopUpTitle.text = Constants.selectStateTitle
+        case .DISTRICT:
+            selectionPopUpTitle.text = Constants.selectDistrictTitle
+        case .none:
+            selectionPopUpTitle.text = Constants.selectCountryTitle
+        }
+        
         
     }
     

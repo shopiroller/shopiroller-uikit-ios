@@ -397,17 +397,17 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     
     @objc func countryViewTapped() {
-        self.viewModel.selectionType = .country
+        self.viewModel.selectionType = .COUNTRY
         showSelectionPopUp()
     }
     
     @objc func statesViewTapped() {
-        viewModel.selectionType = .state
+        viewModel.selectionType = .STATE
         showSelectionPopUp()
     }
     
     @objc func districtViewTapped() {
-        viewModel.selectionType = .district
+        viewModel.selectionType = .DISTRICT
         showSelectionPopUp()
     }
     
@@ -901,20 +901,20 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
 extension AddressBottomSheetViewController: SelectionPopUpDelegate {
     func getCountryId(id: String?) {
         switch viewModel.selectionType {
-        case .country:
+        case .COUNTRY:
             viewModel.countryId = id ?? ""
             countryView.getTextField().text = viewModel.getSelectedCountryName(selectedId: id)
             statesView.getTextField().text = nil
             statesView.isEnabled = viewModel.countryId != ""
             districtView.getTextField().text = nil
             getStateList()
-        case .state:
+        case .STATE:
             self.viewModel.stateId = id ?? ""
             districtView.getTextField().text = nil
             districtView.isEnabled = true
             statesView.getTextField().text = viewModel.getSelectedStateName(selectedId: id)
             getDistrictList()
-        case .district:
+        case .DISTRICT:
             self.districtView.getTextField().text = viewModel.getSelectedCityName(selectedId: id)
         case .none:
             break
