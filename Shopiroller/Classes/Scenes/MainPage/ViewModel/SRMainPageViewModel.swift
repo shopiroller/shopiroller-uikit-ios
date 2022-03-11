@@ -214,13 +214,13 @@ open class SRMainPageViewModel: SRBaseViewModel {
         case .categories:
             switch categoriesWithOptions?.mobileSettings?.categoryDisplayType {
             case .imageAndText:
-                return 160
+                return 180
             case .imageOnly:
                 return 120
             case .textOnly:
                 return 120
             case .none:
-                return 160
+                return 180
             }
         }
     }

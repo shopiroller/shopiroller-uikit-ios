@@ -24,4 +24,16 @@ import Foundation
         return CGSize(width: size.width + leftInset + rightInset,
                       height: size.height + topInset + bottomInset)
     }
+    
+    func removeLayer() {
+        self.backgroundColor = .white
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 0
+    }
+    
+    func setLayer() {
+        self.backgroundColor = .lightGray
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 6
+    }
 }
