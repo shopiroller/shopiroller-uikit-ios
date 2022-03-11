@@ -31,11 +31,11 @@ struct PaymentSettingsResponeModel: Codable {
     }
     
     func getSupportedPaymentTypes() ->  [SupportedPaymentType]? {
-        var newList : [SupportedPaymentType]? = []
+        var newList : [SupportedPaymentType] = []
         if let supportedPaymentTypes = supportedPaymentTypes {
             supportedPaymentTypes.forEach { payments in
                 if ((payments.paymentType != .PayPal) && (payments.paymentType != .Other)) {
-                    newList?.append(payments)
+                    newList.append(payments)
                 }
             }
         }
