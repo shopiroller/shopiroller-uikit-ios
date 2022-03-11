@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,6 +29,9 @@
                 <outlet property="selectPaymentMethodView" destination="uQA-xC-rjS" id="jBV-Zc-mb7"/>
                 <outlet property="selectedMethodTitle" destination="tJ3-ZU-2xW" id="ILG-NH-iji"/>
                 <outlet property="selectedMethodViewTitle" destination="dCE-Jh-UfL" id="LrC-vy-13z"/>
+                <outlet property="stripeAndPaypalContainer" destination="e0l-yI-ZX9" id="7Dp-sK-fKk"/>
+                <outlet property="stripeAndPaypalDescriptionLabel" destination="cGs-Q3-eqL" id="cjO-cF-qbO"/>
+                <outlet property="stripeAndPaypalImage" destination="r6l-Xl-HyO" id="Rdi-4e-mSB"/>
                 <outlet property="titleUnderLineView" destination="MWf-8i-juv" id="Y00-8v-62T"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -262,6 +265,33 @@
                                                 <constraint firstAttribute="trailing" secondItem="r6Q-8b-Enb" secondAttribute="trailing" constant="24" id="amh-uZ-3bZ"/>
                                                 <constraint firstItem="r6Q-8b-Enb" firstAttribute="leading" secondItem="rFd-ts-qah" secondAttribute="leading" constant="24" id="ehl-fg-qE6"/>
                                                 <constraint firstAttribute="bottom" secondItem="r6Q-8b-Enb" secondAttribute="bottom" id="jBg-I5-mrg"/>
+                                            </constraints>
+                                        </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-yI-ZX9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r6l-Xl-HyO">
+                                                    <rect key="frame" x="169.5" y="20" width="75" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="r6l-Xl-HyO" secondAttribute="height" multiplier="1:1" id="FYM-Ce-Tnr"/>
+                                                        <constraint firstAttribute="height" constant="75" id="Oko-4M-fKU"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGs-Q3-eqL">
+                                                    <rect key="frame" x="24" y="115" width="366" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cGs-Q3-eqL" secondAttribute="trailing" constant="24" id="H4h-Qx-MEE"/>
+                                                <constraint firstItem="cGs-Q3-eqL" firstAttribute="leading" secondItem="e0l-yI-ZX9" secondAttribute="leading" constant="24" id="OAN-Vi-a4r"/>
+                                                <constraint firstAttribute="bottom" secondItem="cGs-Q3-eqL" secondAttribute="bottom" id="fZp-ct-s5l"/>
+                                                <constraint firstItem="cGs-Q3-eqL" firstAttribute="top" secondItem="r6l-Xl-HyO" secondAttribute="bottom" constant="20" id="naA-Sj-PtO"/>
+                                                <constraint firstItem="r6l-Xl-HyO" firstAttribute="centerX" secondItem="e0l-yI-ZX9" secondAttribute="centerX" id="q2i-f2-gzD"/>
+                                                <constraint firstItem="r6l-Xl-HyO" firstAttribute="centerY" secondItem="e0l-yI-ZX9" secondAttribute="centerY" id="wgW-nE-Pdb"/>
                                             </constraints>
                                         </view>
                                     </subviews>

@@ -22,8 +22,9 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         static var creditCartCvvPlaceholder : String { return "checkout-payment-credit-card-cvv-placeholder".localized }
         static var payAtTheDoorDescription: String { return "checkout-payment-pay-at-the-door-description".localized }
         static var payWithStripeDescription: String { return "checkout-payment-selected-payment-method-stripe-placeholder".localized }
-        static var payWithPaypalDescription: String { return "checkout-payment-selected-payment-method-paypal-placeholder".localized
-        }
+        static var payWithPaypalDescription: String { return "checkout-payment-selected-payment-method-paypal-placeholder".localized }
+        static var paypalContainerDescription: String { return "checkout-payment-paypal-description".localized }
+        static var stripeContainerDescription: String { return "checkout-payment-stripe-description".localized }
     }
     
     
@@ -46,6 +47,9 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     @IBOutlet private weak var bankTransferTableView: UITableView!
     @IBOutlet private weak var payAtTheDoorDescription: UILabel!
     @IBOutlet private weak var payAtTheDoorContainer: UIView!
+    @IBOutlet private weak var stripeAndPaypalContainer: UIView!
+    @IBOutlet private weak var stripeAndPaypalImage: UIImageView!
+    @IBOutlet private weak var stripeAndPaypalDescriptionLabel: UILabel!
     
     var delegate : CheckOutProgressPageDelegate?
     var creditCardNumberListener: MaskedTextFieldDelegate!
@@ -130,6 +134,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCardCvvListener.affinityCalculationStrategy = .prefix
         creditCartCvvTextField.placeholder = Constants.creditCartCvvPlaceholder
         creditCartCvvTextField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        
+        stripeAndPaypalImage.image = .stripeAndPaypalIcon
         
         
         
@@ -241,6 +247,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.payWithPaypalDescription.uppercased()
             selectedMethodTitle.text = Constants.payWithPaypalDescription
+            stripeAndPaypalContainer.isHidden = false
+            stripeAndPaypalDescriptionLabel.font = .regular14
+            stripeAndPaypalDescriptionLabel.textColor = .textPCaption
+            stripeAndPaypalDescriptionLabel.text = Constants.paypalContainerDescription
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
@@ -256,7 +266,13 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
             selectedMethodTitle.text = Constants.payWithStripeDescription
+            stripeAndPaypalContainer.isHidden = false
+            stripeAndPaypalDescriptionLabel.font = .regular14
+            stripeAndPaypalDescriptionLabel.textColor = .textPCaption
+            stripeAndPaypalDescriptionLabel.text = Constants.stripeContainerDescription
         case .none:
+            break
+        case .some(.Other):
             break
         }
     }
@@ -286,6 +302,8 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 break
             case .Stripe , .Stripe3DS:
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Stripe.rawValue
+            case .some(.Other):
+                break
             }
         }
     }

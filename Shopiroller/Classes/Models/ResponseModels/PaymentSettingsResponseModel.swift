@@ -29,6 +29,18 @@ struct PaymentSettingsResponeModel: Codable {
         case deliveryConditionsTitle = "deliveryConditionsTitle"
         case cancellationProcedureTitle = "cancellationProcedureTitle"
     }
+    
+    func getSupportedPaymentTypes() ->  [SupportedPaymentType]? {
+        var newList : [SupportedPaymentType]? = []
+        if let supportedPaymentTypes = supportedPaymentTypes {
+            supportedPaymentTypes.forEach { payments in
+                if ((payments.paymentType != .PayPal) && (payments.paymentType != .Other)) {
+                    newList?.append(payments)
+                }
+            }
+        }
+        return newList
+    }
 }
 
 struct SupportedPaymentType: Codable {
