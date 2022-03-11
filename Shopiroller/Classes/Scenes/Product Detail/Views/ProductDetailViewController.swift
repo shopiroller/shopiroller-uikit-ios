@@ -599,10 +599,9 @@ extension ProductDetailViewController: UIScrollViewDelegate {
 extension ProductDetailViewController: UITextFieldDelegate {
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if(textField == quantityTextField) {
-            if let currentText = textField.text {
-                return (currentText + string).count <= 4
-            }
+        if (textField == quantityTextField) {
+            guard let currentText = textField.text else { return true }
+            return (currentText + string).count <= 4
         }
         return true
     }
