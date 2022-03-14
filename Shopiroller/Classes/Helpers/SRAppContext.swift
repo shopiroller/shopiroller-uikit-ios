@@ -171,13 +171,21 @@ extension SRAppContext {
         }
     }
     
-    
     static var appLanguage: String {
         get {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appLanguage) as? String ?? ""
             }
         set {
             userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appLanguage)
+        }
+    }
+    
+    static var isSdk: Bool {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.SdkSettings.isSdk) as? Bool ?? true
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.SdkSettings.isSdk)
         }
     }
     

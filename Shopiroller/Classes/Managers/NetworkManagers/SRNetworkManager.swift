@@ -273,6 +273,11 @@ final public class SRNetworkManager {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             if request.shouldShowProgressHUD {
+                if request.shouldBlockUI {
+                    SVProgressHUD.setDefaultMaskType(.clear)
+                } else {
+                    SVProgressHUD.setDefaultMaskType(.none)
+                }
                 SVProgressHUD.show()
             }
         }

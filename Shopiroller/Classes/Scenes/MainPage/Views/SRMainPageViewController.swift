@@ -70,10 +70,18 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        var rightBarButtonItems : [UIBarButtonItem] = []
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-        let searchButtonmm = UIBarButtonItem(customView: createNavigationItem(.cargoShippingImage, .openOptions))
-        updateNavigationBar(rightBarButtonItems:  [searchButton,cartButton,searchButtonmm])
+        rightBarButtonItems.append(cartButton)
+        rightBarButtonItems.append(searchButton)
+        
+        if (SRAppContext.isSdk) {
+            let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
+            rightBarButtonItems.append(optionsButton)
+        }
+        
+        updateNavigationBar(rightBarButtonItems:  rightBarButtonItems)
         cartButton.customView?.addSubview(badgeView)
     }
     

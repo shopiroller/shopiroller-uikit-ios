@@ -74,6 +74,10 @@ public class ShopirollerApp {
         SRAppContext.userEmail = email
     }
     
+    public func setSdkSettings (_ isSdk: Bool) {
+        SRAppContext.isSdk = isSdk
+    }
+    
     public func setFallbackLanguage(_ fallbackLanguage: String) {
         SRAppContext.fallbackLanguage = fallbackLanguage
     }

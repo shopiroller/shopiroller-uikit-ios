@@ -118,5 +118,10 @@ public struct SRAppConstants {
         case goBack
         case openOptions
     }
+    
+    struct SdkSettings {
+        static let isSdk = "isSdk"
+    }
+    
 }
 
