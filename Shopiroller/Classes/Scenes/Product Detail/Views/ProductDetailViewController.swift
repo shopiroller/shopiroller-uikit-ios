@@ -363,7 +363,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @objc private func sumImageTapped(_ sender: Any) {
         sumImage.makeAnimation()
         if viewModel.isProductReachMaximumAddLimit() {
-            setMaxItemQuantitySituation()
+            setMaxItemQuantitySituation("\(viewModel.quantityCount)")
         } else {
             viewModel.quantityCount += 1
             minusImage.isUserInteractionEnabled = true
@@ -372,8 +372,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
     }
     
-    private func setMaxItemQuantitySituation() {
-        self.view.makeToast(String(format: "shopping_cell_maximum_product_message".localized, String(viewModel.quantityCount)))
+    private func setMaxItemQuantitySituation(_ count: String) {
+        self.view.makeToast(String(format: "shopping_cell_maximum_product_message".localized, count))
     }
     
     @objc private func minusImageTapped(_ sender: Any) {
@@ -389,17 +389,19 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBAction func textFieldEndEditing(_ textField: UITextField) {
         switch textField {
         case quantityTextField:
+            viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
             if(textField.text == "" || textField.text == nil) {
                 quantityTextField.text = "1"
-            }
-            else if ((textField.text?.count ?? 0 > viewModel.getMaxQuantityCount().count) || textField.text ?? "1" > "\(viewModel.getMaxQuantity())" ) {
-                setMaxItemQuantitySituation()
+            } else if ((Int(textField.text ?? "") ?? 0 > viewModel.getMaxQuantity())) {
+                setMaxItemQuantitySituation(viewModel.getMaxQuantityCount())
                 quantityTextField.text = "\(viewModel.getMaxQuantity())"
+                viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
+            } else if ((Int(textField.text ?? "") ?? 0 > viewModel.getStockCount())) {
+                setMaxItemQuantitySituation("\(viewModel.getStockCount())")
+                quantityTextField.text = "\(viewModel.getStockCount())"
                 viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
             } else if (textField.text?.first == "0") {
                 quantityTextField.text = "1"
-                viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
-            } else {
                 viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
             }
         default:
