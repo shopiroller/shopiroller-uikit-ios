@@ -233,18 +233,21 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             bankTransferTableView.reloadData()
             payAtTheDoorContainer.isHidden = true
             creditCartContainer.isHidden = true
+            stripeAndPaypalContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.selectedPaymentMethodBankTransfer.uppercased()
             selectedMethodTitle.text = Constants.selectedPaymentMethodBankTransfer
         case .Online , .Online3DS:
             bankTransferContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
             creditCartContainer.isHidden = false
+            stripeAndPaypalContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.selectedPaymentMethodCreditCart.uppercased()
             selectedMethodTitle.text = Constants.selectedPaymentMethodCreditCart
         case .PayPal:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
+            stripeAndPaypalContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.payWithPaypalDescription.uppercased()
             selectedMethodTitle.text = Constants.payWithPaypalDescription
             stripeAndPaypalContainer.isHidden = false
@@ -255,6 +258,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = false
+            stripeAndPaypalContainer.isHidden = true
             selectedMethodViewTitle.text = Constants.selectedPaymentMethodPayAtTheDoor.uppercased()
             selectedMethodTitle.text = Constants.selectedPaymentMethodPayAtTheDoor
             payAtTheDoorDescription.font = .regular14
@@ -281,6 +285,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         isValid = (viewModel.getDefaultPaymentMethod() == .PayAtDoor || viewModel.getDefaultPaymentMethod() == .Online || viewModel.getDefaultPaymentMethod() == .Online3DS || viewModel.getDefaultPaymentMethod() == .Stripe  || viewModel.getDefaultPaymentMethod() == .Stripe3DS || viewModel.getDefaultPaymentMethod() == .PayPal || (viewModel.getDefaultPaymentMethod() == .Transfer && viewModel.paymentType != nil))
         if isValid == true {
             SRSessionManager.shared.paymentSettings = viewModel.getPaymentSettings()
+            self.delegate?.isEnabledNextButton(enabled: true)
             switch viewModel.getDefaultPaymentMethod() {
             case .PayPal:
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayPal.rawValue
@@ -289,6 +294,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 setBankTransferUI()
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
+                self.delegate?.isEnabledNextButton(enabled: false)
                 validateCreditCardFields()
                 if viewModel.getDefaultPaymentMethod() == .Online {
                     SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
@@ -297,7 +303,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 }
             case .PayAtDoor:
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.PayAtDoor.rawValue
-                self.delegate?.isEnabledNextButton(enabled: true)
             case .none:
                 break
             case .Stripe , .Stripe3DS:
