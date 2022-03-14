@@ -52,6 +52,10 @@ class PaymentTableViewCell: UITableViewCell {
         case .Stripe,.Stripe3DS:
             paymentTypeText.text = "list-pop-up-stripe-text".localized
             paymentTypeImage.image = .stripeIcon
+        case .some(.Other):
+            break
+        case .some(.Other):
+            break
         }
     }
     

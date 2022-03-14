@@ -16,6 +16,7 @@ enum PaymentTypeEnum: String, Codable {
     case PayPal = "PayPal"
     case Stripe = "Stripe"
     case Stripe3DS = "Stripe3DS"
+    case Other
     
     var title: String {
         switch self {
@@ -33,6 +34,8 @@ enum PaymentTypeEnum: String, Codable {
             return "Stripe"
         case .Stripe3DS:
             return "Stripe3DS"
+        case .Other:
+            return "Other"
         }
     }
     
@@ -48,6 +51,8 @@ enum PaymentTypeEnum: String, Codable {
             return "checkout-payment-selected-payment-method-paypal-placeholder".localized
         case .Stripe3DS , .Stripe:
             return "checkout-payment-selected-payment-method-stripe-placeholder".localized
+        case .Other:
+            return "Other"
         }
     }
 

@@ -242,6 +242,8 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-table-view-account-department-text" = "Şube: ";
 "checkout-table-view-account-number-text" = "Hesap: ";
 "checkout-table-view-iban-copied-message" = "Seçili banka hesabına ait iban bilgisi kopyalandı.";
+"checkout-payment-paypal-description" = " \"Siparişi Tamamla\"  yı tıkladıktan sonra, satın alma işleminizi güvenli bir şekilde tamamlamak için PayPal'a yönlendirileceksiniz.";
+"checkout-payment-stripe-description" = " \"Siparişi Tamamla\"  yı tıkladıktan sonra, satın alma işleminizi güvenli bir şekilde tamamlamak için Stripe'a yönlendirileceksiniz.";
 
 //MARK: - CheckOutInfo
 

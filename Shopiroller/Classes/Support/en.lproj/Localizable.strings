@@ -237,6 +237,8 @@
 "checkout-table-view-account-department-text" = "Department: ";
 "checkout-table-view-account-number-text" = "Account: ";
 "checkout-table-view-iban-copied-message" = "Iban information was copied for the selected bank.";
+"checkout-payment-paypal-description" = "After clicking \"Complete Order\", you will be redirected to PayPal to complete your purchase securely.";
+"checkout-payment-stripe-description" = "After clicking \"Complete Order\", you will be redirected to Stripe to complete your purchase securely.";
 
 //MARK: - CheckOutInfo
 "checkout-info-shopping-card-view-title" = "Card";

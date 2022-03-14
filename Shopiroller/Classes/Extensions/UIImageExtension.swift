@@ -122,6 +122,8 @@ extension UIImage {
     
     static let stripeIcon : UIImage = UIImage(named: "stripeIcon", in: .shopiroller, with: nil)!
     
+    static let stripeAndPaypalIcon : UIImage = UIImage(named: "stripeAndPaypalDescriptionLogo", in: .shopiroller , with: nil)!
+    
 }
 
 extension UIImageView {

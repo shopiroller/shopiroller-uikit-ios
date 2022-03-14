@@ -234,6 +234,8 @@
 "checkout-table-view-account-department-text" = "Abteilung: ";
 "checkout-table-view-account-number-text" = "Konto: ";
 "checkout-table-view-iban-copied-message" = "Iban-Informationen wurden für die ausgewählte Bank kopiert.";
+"checkout-payment-paypal-description" = "Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu PayPal weitergeleitet, um Ihren Einkauf sicher abzuschließen.";
+"checkout-payment-stripe-description" = "Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu Stripe weitergeleitet, um Ihren Einkauf sicher abzuschließen.";
 
 //MARK: - CheckOutInfo
 "checkout-info-shopping-card-view-title" = "Karte";
