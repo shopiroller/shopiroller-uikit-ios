@@ -62,6 +62,8 @@ class CategoriesCell: UICollectionViewCell {
     func configureCell(model: [SRCategoryResponseModel]?, categoryDisplayTypeEnum: CategoryDisplayTypeEnum?){
         self.model = model
         self.categoryDisplayTypeEnum = categoryDisplayTypeEnum
+        self.layoutIfNeeded()
+        collectionView.reloadData()
     }
     
     @objc func goToCategory() {

@@ -39,16 +39,16 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             case .imageAndText:
                 imageContainer.isHidden = false
                 categoryTitleContainer.isHidden = false
+                categoryTitle.removeLayer()
                 setCategoryImage(url: model?.icon ?? "")
             case .textOnly:
                 categoryTitleContainer.isHidden = false
-                categoryTitle.backgroundColor = .lightGray
-                categoryTitle.layer.masksToBounds = true
-                categoryTitle.layer.cornerRadius = 6
+                categoryTitle.setLayer()
                 imageContainer.isHidden = true
             case .imageOnly:
                 categoryTitleContainer.isHidden = true
                 imageContainer.isHidden = false
+                categoryTitle.removeLayer()
                 setCategoryImage(url: model?.icon ?? "")
             }
         } else {
