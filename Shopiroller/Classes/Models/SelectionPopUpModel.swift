@@ -14,7 +14,7 @@ struct SelectionPopUpModel {
 }
 
 enum SelectionType {
-    case COUNTRY,
-         DISTRICT,
-         STATE
+    case country,
+         district,
+         state
 }

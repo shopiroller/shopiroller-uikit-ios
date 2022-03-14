@@ -211,14 +211,14 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     
     func getSelectionModel() -> SelectionPopUpViewModel {
         switch selectionType {
-        case .COUNTRY:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .COUNTRY))
-        case .DISTRICT:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .DISTRICT))
-        case .STATE:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .STATE))
+        case .country:
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
+        case .district:
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .district))
+        case .state:
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .state))
         case .none:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .COUNTRY))
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
         }
     }
     

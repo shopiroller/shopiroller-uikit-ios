@@ -55,11 +55,11 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         viewModel.clearData()
         
         switch viewModel.getSelectionType() {
-        case .COUNTRY:
+        case .country:
             selectionPopUpTitle.text = Constants.selectCountryTitle
-        case .STATE:
+        case .state:
             selectionPopUpTitle.text = Constants.selectStateTitle
-        case .DISTRICT:
+        case .district:
             selectionPopUpTitle.text = Constants.selectDistrictTitle
         case .none:
             selectionPopUpTitle.text = Constants.selectCountryTitle
