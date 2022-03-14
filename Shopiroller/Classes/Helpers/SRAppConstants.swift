@@ -120,7 +120,7 @@ public struct SRAppConstants {
     }
     
     struct SdkSettings {
-        static let isSdk = "isSdk"
+        static let developmentMode = "developmentMode"
     }
     
 }

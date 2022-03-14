@@ -180,12 +180,12 @@ extension SRAppContext {
         }
     }
     
-    static var isSdk: Bool {
+    static var developmentMode: Bool {
         get {
-            return userDefaults.object(forKey: SRAppConstants.SdkSettings.isSdk) as? Bool ?? true
+            return userDefaults.object(forKey: SRAppConstants.SdkSettings.developmentMode) as? Bool ?? true
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.SdkSettings.isSdk)
+            userDefaults.set(newValue , forKey: SRAppConstants.SdkSettings.developmentMode)
         }
     }
     

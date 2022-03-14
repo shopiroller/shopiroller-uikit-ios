@@ -76,7 +76,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         rightBarButtonItems.append(cartButton)
         rightBarButtonItems.append(searchButton)
         
-        if (SRAppContext.isSdk) {
+        if (SRAppContext.developmentMode) {
             let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
             rightBarButtonItems.append(optionsButton)
         }
