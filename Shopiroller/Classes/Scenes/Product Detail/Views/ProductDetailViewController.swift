@@ -145,7 +145,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityContainer.makeCardView()
         quantityContainer.backgroundColor = .buttonLight
         quantityContainer.clipsToBounds = true
+        quantityTextField.delegate = self
         quantityTitleLabel.text = Constants.quantityTitle
+        quantityTextField.keyboardType = .numberPad
         quantityTitleLabel.font = .semiBold14
         
         
@@ -387,13 +389,15 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBAction func textFieldEndEditing(_ textField: UITextField) {
         switch textField {
         case quantityTextField:
-    
             if(textField.text == "" || textField.text == nil) {
                 quantityTextField.text = "1"
             }
             else if ((textField.text?.count ?? 0 > viewModel.getMaxQuantityCount().count) || textField.text ?? "1" > "\(viewModel.getMaxQuantity())" ) {
                 setMaxItemQuantitySituation()
                 quantityTextField.text = "\(viewModel.getMaxQuantity())"
+                viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
+            } else if (textField.text?.first == "0") {
+                quantityTextField.text = "1"
                 viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
             } else {
                 viewModel.quantityCount = NumberFormatter().number(from: textField.text ?? "1")?.intValue ?? 1
@@ -402,7 +406,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             break
         }
     }
-    
     
     @objc private func descriptionContainerTapped(_ sender: Any) {
         let vc = WebViewController(viewModel: WebViewViewModel(webViewHtml: viewModel.getDescription() ?? ""))
@@ -591,5 +594,16 @@ extension ProductDetailViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
     
+}
+
+extension ProductDetailViewController: UITextFieldDelegate {
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField == quantityTextField) {
+            guard let currentText = textField.text else { return true }
+            return (currentText + string).count <= 4
+        }
+        return true
+    }
 }
 
