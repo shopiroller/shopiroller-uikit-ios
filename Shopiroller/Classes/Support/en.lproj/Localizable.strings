@@ -259,7 +259,9 @@
 "checkout-info-agreement-is-not-checked-title" = "Agree Now";
 
 //MARK: - SelectionPopUp
-"selection-pop-up-country-text" = "Country";
+"selection-pop-up-country-text" = "Select Country";
+"selection-pop-up-states-text" = "Select State";
+"selection-pop-up-district-text" = "Select District";
 "selection-pop-up-search-placeholder" = "Search";
 "selection-pop-up-cancel-button-text" = "Cancel";
 

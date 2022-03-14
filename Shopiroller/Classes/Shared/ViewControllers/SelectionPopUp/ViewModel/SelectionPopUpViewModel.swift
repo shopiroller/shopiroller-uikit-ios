@@ -10,17 +10,14 @@ import Foundation
 
 class SelectionPopUpViewModel: SRBaseViewModel {
     
-    private var selectionList: [CountryModel]
+    private var selectionPopUpModel: SelectionPopUpModel?
     private var filteredList: [CountryModel] = []
-    
-    private var stateModel : CountryModel?
-    private var countryModel: CountryModel?
-    private var citiesModel: CountryModel?
+    private var selectionList: [CountryModel]?
     
     var searchText: String?
     
-    init(selectionList: [CountryModel] = [CountryModel]()){
-        self.selectionList = selectionList
+    init(selectionPopUpModel: SelectionPopUpModel? = nil){
+        self.selectionPopUpModel = selectionPopUpModel
     }
     
     func getItemCount() -> Int {
@@ -37,20 +34,27 @@ class SelectionPopUpViewModel: SRBaseViewModel {
     
     func filterContentForSearchText() {
         filteredList.removeAll()
-        if let searchText = searchText , searchText != "" {
-            for item in selectionList {
-                if(item.name?.lowercased().contains(searchText.lowercased()) ?? false) {
-                    filteredList.append(item)
+        if let selectionList = selectionPopUpModel?.datalist as? [CountryModel] {
+            if let searchText = searchText , searchText != ""  {
+                for item in selectionList {
+                    if(item.name?.lowercased().contains(searchText.lowercased()) ?? false) {
+                        filteredList.append(item)
+                    }
                 }
+            } else {
+                filteredList = selectionList
             }
-        } else {
-            filteredList = selectionList
         }
+        
     }
     
     func clearData() {
         searchText = nil
         filterContentForSearchText()
+    }
+    
+    func getSelectionType() -> SelectionType? {
+        return selectionPopUpModel?.selectionType
     }
  
 }

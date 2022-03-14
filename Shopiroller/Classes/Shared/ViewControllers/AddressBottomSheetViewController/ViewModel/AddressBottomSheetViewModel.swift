@@ -212,13 +212,13 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     func getSelectionModel() -> SelectionPopUpViewModel {
         switch selectionType {
         case .country:
-            return SelectionPopUpViewModel(selectionList: getCountries())
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
         case .district:
-            return SelectionPopUpViewModel(selectionList: getDistricts())
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .district))
         case .state:
-            return SelectionPopUpViewModel(selectionList: getStates())
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .state))
         case .none:
-            return SelectionPopUpViewModel(selectionList: getCountries())
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
         }
     }
     
@@ -274,10 +274,4 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         }
     }
     
-}
-
-enum SelectionType {
-    case country
-    case state
-    case district
 }
