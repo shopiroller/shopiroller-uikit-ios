@@ -422,15 +422,19 @@ extension CheckOutInfoViewController : UITextViewDelegate {
             orderNote.textColor = UIColor.black
             orderNote.text = nil
         }
-        if viewModel.isOrderNoteChanged {
-            viewModel.makeOrder?.userNote = textView.text
-        } else {
-            viewModel.makeOrder?.userNote = ""
-        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
         viewModel.isOrderNoteChanged = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if orderNote.text != "" && orderNote.textColor == .black {
+            viewModel.makeOrder?.userNote = textView.text
+        } else {
+            orderNote.textColor = UIColor.lightGray
+            orderNote.text = Constants.userOrderNotePlaceholderText
+        }
     }
     
 }
