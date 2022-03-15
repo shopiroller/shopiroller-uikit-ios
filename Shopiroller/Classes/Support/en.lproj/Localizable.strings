@@ -16,7 +16,7 @@
 "info-text" = "Info";
 "no-internet-connection-title" = "No Internet Connection";
 "no-internet-connection-description" = "Please Check Your Internet Connection";
-"no-internet-connection-button-text" = "Ok";
+"general-ok-button-text" = "Ok";
 "error-general-title" = "Error";
 "keyboard-next-action-text" = "Next";
 "keyboard-done-action-text" = "Done";
@@ -51,6 +51,8 @@
 "product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
 "product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
 "product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %@ products in shopping cart";
+"product-detail-product-not-found-title" = "Not Found";
+"product-detail-product-not-found-description" = "The page you are looking for does not exist or may have been removed.";
 
 //MARK: - Order List
 "order-list-page-title" = "My Orders";

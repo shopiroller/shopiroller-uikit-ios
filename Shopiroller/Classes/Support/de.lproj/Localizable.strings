@@ -16,7 +16,7 @@
 "info-text" = "Info";
 "no-internet-connection-title" = "Keine Internetverbindung";
 "no-internet-connection-description" = "Bitte überprüfen Sie Ihre Internetverbindung";
-"no-internet-connection-button-text" = "Ok";
+"general-ok-button-text" = "Ausgemacht";
 "error-general-title" = "Fehler";
 "keyboard-next-action-text" = "Weiter";
 "keyboard-done-action-text" = "Fertig";
@@ -51,6 +51,8 @@
 "product-detail-out-of-stock-description" = "Sie können dieses Produkt nicht mehr bestellen und es ist nicht auf Lager.";
 "product-detail-maximum-product-quantity-title" = "Maximales Produktlimit";
 "product-detail-maximum-product-quantity-description" = "Sie haben das maximale Kauflimit für Produkte erreicht. Sie können maximal %@ Produkte in den Einkaufswagen legen";
+"product-detail-product-not-found-title" = "Nicht gefunden";
+"product-detail-product-not-found-description" = "Die gesuchte Seite existiert nicht oder wurde möglicherweise entfernt.";
 
 //MARK: - Auftragsliste
 "order-list-page-title" = "Meine Bestellungen";
@@ -280,6 +282,7 @@
 "checkout-result-info-fail-update-payment-method-button-text" = "Zahlungsmethode aktualisieren";
 "checkout-result-info-fail-detail-description-will-replace" = "status=";
 "checkout-result-info-fail-detail-description-to-replace" = "Fehlercode";
+
 
 //MARKE: - Filtern
 "filter_title" = "Filtern";
