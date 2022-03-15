@@ -316,6 +316,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
         }
     }
     
@@ -543,7 +544,7 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
     }
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
-        
+        self.popToRoot(animated: false, completion: nil)
     }
 }
 

@@ -182,7 +182,7 @@ extension SRAppContext {
     
     static var developmentMode: Bool {
         get {
-            return userDefaults.object(forKey: SRAppConstants.SdkSettings.developmentMode) as? Bool ?? true
+            return userDefaults.object(forKey: SRAppConstants.SdkSettings.developmentMode) as? Bool ?? false
             }
         set {
             userDefaults.set(newValue , forKey: SRAppConstants.SdkSettings.developmentMode)

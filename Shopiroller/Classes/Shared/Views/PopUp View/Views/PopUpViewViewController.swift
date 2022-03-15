@@ -93,6 +93,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
                 if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
                     self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
                 }
+            } else {
+                self.popUpHeightContstraint.constant = self.descriptionContainerView.frame.size.height * 3
             }
         }
     }
@@ -104,7 +106,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     }
     
     @IBAction func secondButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: {
+        dismiss(animated: false, completion: {
             self.delegate?.secondButtonClicked(sender, popUpViewController: self)
         })
     }
