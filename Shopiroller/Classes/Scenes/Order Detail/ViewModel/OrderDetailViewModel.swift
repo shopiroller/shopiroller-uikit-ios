@@ -109,10 +109,7 @@ class OrderDetailViewModel: SRBaseViewModel {
         SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
     }
     
-    func getUserNote() -> String {
-        if let userNote = detail?.userNote , userNote != "" {
-            return userNote
-        }
-        return ""
+    func getUserNote() -> String? {
+        return detail?.userNote
     }
 }

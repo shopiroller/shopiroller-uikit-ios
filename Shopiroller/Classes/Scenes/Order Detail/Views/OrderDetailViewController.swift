@@ -123,10 +123,14 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         orderDetailId.text = viewModel.getOrderCode()
         orderDetailPaymentStatus.text = viewModel.getCurrentStatus()
         orderDetailDate.text = viewModel.getCreatedDate()
-        orderNote.isHidden = viewModel.getUserNote().isEmpty ? true : false
-        orderNote.text = String(format: Constants.orderNoteText, viewModel.getUserNote())
         
-        if(viewModel.isCargoTrackingAvailable()){
+        if let userNote = viewModel.getUserNote() , userNote != "" {
+            orderNote.text = String(format: Constants.orderNoteText, userNote)
+        } else {
+            orderNote.isHidden = true
+        }
+        
+        if (viewModel.isCargoTrackingAvailable()){
             cargoTrackingId.textColor = .textPCaption
             cargoTrackingId.font = .regular12
             cargoTrackingName.textColor = .textPCaption
@@ -137,7 +141,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             let tap = UITapGestureRecognizer(target: self, action: #selector(OrderDetailViewController.onClickCargoText))
             cargoTrackingId.addGestureRecognizer(tap)
             
-        }else {
+        } else {
             cargoSeparator.isHidden = true
             cargoStackView.isHidden = true
         }
