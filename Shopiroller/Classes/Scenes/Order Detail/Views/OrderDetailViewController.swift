@@ -18,6 +18,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         static var bankAccount: String { return "order_details_bank_account".localized }
         static var bankAccountIban: String { return "order_details_bank_iban".localized }
         static var bankAccountIbanCopiedText: String { return "order_details_iban_text_copied".localized }
+        static var orderNoteText: String { return "order-details-user-note".localized  }
     }
     
     @IBOutlet weak var bottomPriceView: BottomPriceView!
@@ -36,6 +37,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     @IBOutlet private weak var orderDetailPaymentStatus: UILabel!
     @IBOutlet private weak var orderDetailDate: UILabel!
     @IBOutlet private weak var orderDetailStatusImage: UIImageView!
+    @IBOutlet private weak var orderNote: UILabel!
     
     @IBOutlet private weak var cargoTrackingTitleLabel: UILabel!
     @IBOutlet private weak var cargoTrackingName: UILabel!
@@ -115,9 +117,14 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         orderDetailDate.textColor = .textPCaption
         orderDetailDate.font = .regular12
         
+        orderNote.textColor = .textPCaption
+        orderNote.font = .regular12
+        
         orderDetailId.text = viewModel.getOrderCode()
         orderDetailPaymentStatus.text = viewModel.getCurrentStatus()
         orderDetailDate.text = viewModel.getCreatedDate()
+        orderNote.isHidden = viewModel.getUserNote().isEmpty ? true : false
+        orderNote.text = String(format: Constants.orderNoteText, viewModel.getUserNote())
         
         if(viewModel.isCargoTrackingAvailable()){
             cargoTrackingId.textColor = .textPCaption

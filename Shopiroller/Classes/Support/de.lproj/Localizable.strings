@@ -105,6 +105,7 @@
 "order_details_address_billing" = "Rechnungsadresse";
 "order_details_quantity" = "Stück: ";
 "order_details_iban_text_copied" = "Zwischenablage kopiert.";
+"order-details-user-note" = "Benutzerhinweis: %@";
 
 // MARK: - Adressliste
 "address_list_page_title" = "Meine Adressen";

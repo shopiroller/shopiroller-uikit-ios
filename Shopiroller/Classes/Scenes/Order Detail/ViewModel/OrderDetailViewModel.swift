@@ -108,4 +108,11 @@ class OrderDetailViewModel: SRBaseViewModel {
     func getShoppingCartCount(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRGlobalRequestManager.getShoppingCartCount(success: success, error: error)
     }
+    
+    func getUserNote() -> String {
+        if let userNote = detail?.userNote , userNote != "" {
+            return userNote
+        }
+        return ""
+    }
 }

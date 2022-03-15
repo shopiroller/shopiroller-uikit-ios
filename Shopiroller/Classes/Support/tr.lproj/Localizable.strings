@@ -105,6 +105,7 @@
 "order_details_address_billing" = "Fatura Adresi";
 "order_details_quantity" = "Adet: ";
 "order_details_iban_text_copied" = "Panoya Kopyalandı.";
+"order-details-user-note" = "Kullanıcı Notu: %@";
 
 // MARK: - Address List
 "address_list_page_title" = "Adreslerim";
