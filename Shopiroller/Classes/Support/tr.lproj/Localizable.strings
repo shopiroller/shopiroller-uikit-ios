@@ -239,7 +239,6 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-payment-credit-card-cvv-placeholder" = "CVV";
 "checkout-payment-empty-view-title" = "Henüz bir ödeme yöntemi eklenmemiş.";
 "checkout-payment-empty-view-description" = "Mağaza sahibi henüz bir ödeme yöntemi eklememiş.";
-"checkout-payment-pay-at-the-door-description" = "Kapıda kredi kartı veya nakit olarak ödeyebilirsiniz.";
 "checkout-table-view-account-iban-text"= "Iban: ";
 "checkout-table-view-account-department-text" = "Şube: ";
 "checkout-table-view-account-number-text" = "Hesap: ";
