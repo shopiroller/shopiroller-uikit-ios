@@ -51,11 +51,15 @@ class ProductViewModel {
     
     func isUseFixPrice() -> Bool {
         if let productDetailModel = productDetailModel {
-            return productDetailModel.useFixPrice == true
+            return (productDetailModel.useFixPrice == true && productDetailModel.shippingPrice == 0.0)
         } else if let productListModel = productListModel {
             return productListModel.shippingPrice != 0
         }
         return false
+    }
+    
+    func hasSituation() -> Bool {
+        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
     }
     
     func isOutofStock() -> Bool {
