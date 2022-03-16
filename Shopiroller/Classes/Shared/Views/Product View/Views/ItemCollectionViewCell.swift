@@ -109,7 +109,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             productImageSoldOutContainer.isHidden = true
         }
         
-        situationContainer.isHidden = !viewModel.hasSituation()
+        productImageFreeShippingContainer.isHidden = viewModel.isUseFixPrice()
         
     }
     
