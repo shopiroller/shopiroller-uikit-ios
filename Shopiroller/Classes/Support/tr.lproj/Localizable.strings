@@ -14,8 +14,8 @@
 "address-text" = "Kargo";
 "payment-text" = "Ödeme";
 "info-text" = "Sipariş";
-"no-internet-connection-title" = "İnternet Bağlantısı Yok";
-"no-internet-connection-description" = "Lütfen İnternet Bağlantınızı Kontrol Edin";
+"no-internet-connection-title" = "İnternet bağlantısı yok";
+"no-internet-connection-description" = "Lütfen internet bağlantınızı kontrol edin";
 "general-ok-button-text" = "Tamam";
 "error-general-title" = "Hata";
 "keyboard-next-action-text" = "Sonraki";
@@ -24,7 +24,7 @@
 "general-error-description" = "Üzgünüz, bir hata oluştu. Lütfen daha sonra tekrar deneyin";
 
 //MARK: - Products Empty View
-"empty-view-title" = "Ürün Bulunamadı.";
+"empty-view-title" = "Ürün bulunamadı.";
 "empty-view-description" = "Henüz ürün eklenmemiş.";
 
 // MARK: - Categories
@@ -43,29 +43,27 @@
 "add-to-cart" = "Sepete Ekle";
 "shipping-price-text" = "Kargo Ücreti ";
 "product-detail-description-title-text" = "Açıklama";
-"product-detail-return-exchange-title-text" = "İade & Değişim Koşulları";
-"product-detail-delivery-title-text" = "Teslimat Koşulları";
+"product-detail-return-exchange-title-text" = "İade & değişim koşulları";
+"product-detail-delivery-title-text" = "Teslimat koşulları";
 "product-detail-back-to-product-button-text" = "Ürüne Dön";
 "product-detail-back-to-product-list-button-text" = "Ürünlere dön";
 "product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
-"product-detail-maximum-product-quantity-title" = "Maksimum Ürün Sınırı";
+"product-detail-maximum-product-quantity-title" = "Maksimum ürün sınırı";
 "product-detail-maximum-product-quantity-description" = "Maksimum ürün satın alma sınırına ulaştınız. Sepetinize maksimum %@ ürün ekleyebilirsiniz";
-"product-detail-product-not-found-title" = "Bulunamadı";
-"product-detail-product-not-found-description" = "Aradığınız sayfa mevcut değil ya da kaldırılmış olabilir.";
 
 //MARK: - Order List
 "order-list-page-title" = "Siparişlerim";
-"empty-orders-title" = "Henüz Sipariş Yok";
-"empty-orders-description" = "Henüz Siparişiniz Yokç Sizin için herhangi bir ürün listeleyemiyoruz.";
+"empty-orders-title" = "Henüz sipariş yok";
+"empty-orders-description" = "Henüz siparişiniz Yok. Sizin için herhangi bir ürün listeleyemiyoruz.";
 "empty-orders-action-button" = "Alışverişe Başla";
 
 //MARK: - Order Cell
-"order-no" = "Sipariş Numarası ";
-"empty-orders-title" = "Henüz Sipariş Yok";
+"order-no" = "Sipariş numarası ";
+"empty-orders-title" = "Henüz sipariş yok";
 
 // MARK: - Order Detail
-"order-detail-page-title" = "Ürün Detayı";
+"order-detail-page-title" = "Ürün detayı";
 "WaitingPayment" = "Ödeme Bekleniyor";
 "WaitingApproval" = "Onay Bekliyor";
 "Approved" = "Onaylandı";
@@ -110,10 +108,10 @@
 "address_list_page_title" = "Adreslerim";
 "address_list_segmented_shipping" = "Teslimat Adresi";
 "address_list_segmented_billing" = "Fatura Adresi";
-"address_list_empty_shipping_title" = "Teslimat Adresi Bulunamadı";
-"address_list_empty_shipping_description" = "Kayıtlı Teslimat adres bulunamadı. Lütfen yeni bir adres ekleyin.";
-"address_list_empty_billing_title" = "Fatura Adresi Bulunamadı";
-"address_list_empty_billing_description" = "Kayıtlı Fatura adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
+"address_list_empty_shipping_title" = "Teslimat adresi bulunamadı";
+"address_list_empty_shipping_description" = "Kayıtlı teslimat adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
+"address_list_empty_billing_title" = "Fatura adresi bulunamadı";
+"address_list_empty_billing_description" = "Kayıtlı fatura adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
 "address_list_delivery_address_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
 "address_list_billing_address_delete_success" = "Fatura adresi başarıyla silinmiştir.";
 
@@ -124,8 +122,8 @@
 "address_cell_delete" = "Sil";
 
 // MARK: - Bottom Price View
-"bottom_price_view_subtotal" = "Ürün Tutarı  : ";
-"bottom_price_view_shipping" = "Kargo Tutarı : ";
+"bottom_price_view_subtotal" = "Ürün Tutarı: ";
+"bottom_price_view_shipping" = "Kargo Tutarı: ";
 "bottom_price_view_total" = "Toplam";
 "bottom_price_view_free" = "Ücretsiz Kargo";
 
