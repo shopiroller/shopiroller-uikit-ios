@@ -105,6 +105,7 @@
 "order_details_address_billing" = "Billing Address";
 "order_details_quantity" = "Piece: ";
 "order_details_iban_text_copied" = "Copied The Clipboard.";
+"order-details-user-note" = "User Note: %@";
 
 // MARK: - Address List
 "address_list_page_title" = "My Addresses";
