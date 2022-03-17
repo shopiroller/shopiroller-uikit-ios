@@ -205,5 +205,9 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         error?(ErrorViewModel.validationError(message: Constants.creditCardCvvText))
         return false
     }
+    
+    func getPayAtTheDoorDescription() -> String? {
+        return paymentSettings?.description
+    }
 
 }

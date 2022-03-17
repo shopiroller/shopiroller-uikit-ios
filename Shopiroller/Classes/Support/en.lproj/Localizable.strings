@@ -234,7 +234,6 @@
 "checkout-payment-credit-card-cvv-placeholder" = "CVV";
 "checkout-payment-empty-view-title" = "There is no payment method yet.";
 "checkout-payment-empty-view-description" = "The store owner has not added a payment method yet.";
-"checkout-payment-pay-at-the-door-description" = "You can pay at the door via credit card or cash easily.";
 "checkout-table-view-account-iban-text"= "Iban: ";
 "checkout-table-view-account-department-text" = "Department: ";
 "checkout-table-view-account-number-text" = "Account: ";

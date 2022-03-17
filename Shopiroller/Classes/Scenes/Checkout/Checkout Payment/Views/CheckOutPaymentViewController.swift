@@ -20,7 +20,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         static var creditCartNumberPlaceholder : String { return "checkout-payment-credit-card-number-placeholder".localized }
         static var creditCartExpireDatePlaceholder : String { return "checkout-payment-credit-card-expire-date-placeholer".localized }
         static var creditCartCvvPlaceholder : String { return "checkout-payment-credit-card-cvv-placeholder".localized }
-        static var payAtTheDoorDescription: String { return "checkout-payment-pay-at-the-door-description".localized }
         static var payWithStripeDescription: String { return "checkout-payment-selected-payment-method-stripe-placeholder".localized }
         static var payWithPaypalDescription: String { return "checkout-payment-selected-payment-method-paypal-placeholder".localized }
         static var paypalContainerDescription: String { return "checkout-payment-paypal-description".localized }
@@ -263,7 +262,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             selectedMethodTitle.text = Constants.selectedPaymentMethodPayAtTheDoor
             payAtTheDoorDescription.font = .regular14
             payAtTheDoorDescription.textColor = .textPCaption
-            payAtTheDoorDescription.text = Constants.payAtTheDoorDescription
+            payAtTheDoorDescription.text = viewModel.getPayAtTheDoorDescription()
         case .Stripe , .Stripe3DS:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true

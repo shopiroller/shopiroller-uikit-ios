@@ -231,7 +231,6 @@
 "checkout-payment-credit-card-cvv-placeholder" = "CVV";
 "checkout-payment-empty-view-title" = "Es gibt noch keine Zahlungsmethode.";
 "checkout-payment-empty-view-description" = "Der Shop-Inhaber hat noch keine Zahlungsmethode hinzugefügt.";
-"checkout-payment-pay-at-the-door-description" = "Sie können bequem per Kreditkarte oder bar an der Tür bezahlen.";
 "checkout-table-view-account-iban-text"= "IBAN: ";
 "checkout-table-view-account-department-text" = "Abteilung: ";
 "checkout-table-view-account-number-text" = "Konto: ";
