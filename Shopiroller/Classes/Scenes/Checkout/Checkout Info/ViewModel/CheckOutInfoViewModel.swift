@@ -137,4 +137,20 @@ class CheckOutInfoViewModel: SRBaseViewModel {
         return isAgreeTermsButtonChecked
     }
     
+    func setMakeOrderBuyerModel() {
+        let names : [String] = SRSessionManager.shared.userBillingAddress?.contact?.nameSurname?.components(separatedBy: " ") ?? []
+        if names.count != 0 {
+            makeOrder?.buyer.name = names[0]
+            makeOrder?.buyer.surname = ""
+            if names.count > 1 {
+                for i in 1..<(names.count) {
+                    if (i == 1) {
+                        makeOrder?.buyer.surname? += names[i]
+                    } else {
+                        makeOrder?.buyer.surname? += " " + names[i]
+                    }
+                }
+            }
+        }
+    }
 }

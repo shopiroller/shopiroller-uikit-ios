@@ -227,20 +227,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                     self.showAnimation()
                 }
             }
-            let names : [String] = SRSessionManager.shared.userBillingAddress?.contact?.nameSurname?.components(separatedBy: " ") ?? []
-            if names.count != 0 {
-                viewModel.makeOrder?.buyer.name = names[0]
-                viewModel.makeOrder?.buyer.surname = ""
-                if names.count > 1 {
-                    for i in 1..<(names.count){
-                        if i == 1 {
-                            viewModel.makeOrder?.buyer.surname = names[0]
-                        }else {
-                            viewModel.makeOrder?.buyer.surname? += " " + names[i]
-                        }
-                    }
-                }
-            }
+            viewModel.setMakeOrderBuyerModel()
             viewModel.makeOrder?.buyer.email = SRAppContext.userEmail
             viewModel.makeOrder?.userId = SRAppContext.userId
             viewModel.makeOrder?.bankAccount = SRSessionManager.shared.orderEvent.bankAccount?.accountToString
