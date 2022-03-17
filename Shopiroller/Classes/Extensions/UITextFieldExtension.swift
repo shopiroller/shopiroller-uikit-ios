@@ -50,14 +50,20 @@ extension UITextField {
 
     func addToolbar(leading: [ToolbarItem] = [], trailing: [ToolbarItem] = []) {
         let toolbar = UIToolbar()
+        var trailingButton = UIBarButtonItem()
+        var leadingButton = UIBarButtonItem()
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let leadingItems = leading.map { item in
-            return UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+        let leadingItems = leading.map { item -> UIBarButtonItem in
+            leadingButton = UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+            leadingButton.tintColor = .blue
+            return leadingButton
         }
 
-        let trailingItems = trailing.map { item in
-            return UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+        let trailingItems = trailing.map { item -> UIBarButtonItem in
+            trailingButton = UIBarButtonItem(title: item.title, style: .plain, target: item.target, action: item.selector)
+            trailingButton.tintColor = .blue
+            return trailingButton
         }
 
         var toolbarItems: [UIBarButtonItem] = leadingItems
