@@ -252,7 +252,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             stripeAndPaypalContainer.isHidden = false
             stripeAndPaypalDescriptionLabel.font = .regular14
             stripeAndPaypalDescriptionLabel.textColor = .textPCaption
-            stripeAndPaypalDescriptionLabel.text = Constants.paypalContainerDescription
+            stripeAndPaypalDescriptionLabel.text = viewModel.getPaymentDescription()
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
@@ -262,7 +262,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             selectedMethodTitle.text = Constants.selectedPaymentMethodPayAtTheDoor
             payAtTheDoorDescription.font = .regular14
             payAtTheDoorDescription.textColor = .textPCaption
-            payAtTheDoorDescription.text = viewModel.getPayAtTheDoorDescription()
+            payAtTheDoorDescription.text = viewModel.getPaymentDescription()
         case .Stripe , .Stripe3DS:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true

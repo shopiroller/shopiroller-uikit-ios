@@ -52,6 +52,7 @@ struct SupportedPaymentType: Codable {
     enum CodingKeys: String,CodingKey {
         case description = "description"
         case paymentType = "paymentType"
+        case configuration = "configuration"
     }
 }
 

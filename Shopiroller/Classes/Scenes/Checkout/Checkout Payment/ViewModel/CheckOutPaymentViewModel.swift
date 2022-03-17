@@ -206,8 +206,16 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         return false
     }
     
-    func getPayAtTheDoorDescription() -> String? {
-        return paymentSettings?.description
+    func getPaymentDescription() -> String? {
+        var description : String? = nil
+        if let paymentSettings = paymentSettings {
+            paymentSettings.supportedPaymentTypes?.forEach {
+                if ($0.paymentType == _selectedPayment) {
+                    description = $0.description
+                }
+            }
+        }
+        return description
     }
 
 }
