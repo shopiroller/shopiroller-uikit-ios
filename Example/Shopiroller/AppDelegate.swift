@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     var window: UIWindow?
     
     
+    private let connectingUrl : ConnectableUrls = .stage
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -36,8 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         theme.navigationBarTintColor = .red
         theme.navigationIconsTintColor = .white
         
-        let ecommerce = ShopirollerCredentials(aliasKey: "r4N/jWShy0aNEhn2PQYDHDOZGC4=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "stg.api.shopiroller.com")
-        let appUser = ShopirollerAppUserCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "mobiroller.api.applyze.com")
+        
+        let ecommerce = ShopirollerCredentials(aliasKey: informations(type: connectingUrl).aliasKey, apiKey: informations(type: connectingUrl).shopirollerApiKey, baseUrl: informations(type: connectingUrl).shopirollerBaseUrl)
+        let appUser = ShopirollerAppUserCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: informations(type: connectingUrl).appUserApiKey, baseUrl: informations(type: connectingUrl).appUserBaseUrl)
+        
         
         ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
         
@@ -58,5 +62,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         SRAppConstants.ShoppingCart.badgeCount = "0"
     }
     
+    private func informations(type: ConnectableUrls) -> (shopirollerBaseUrl: String , appUserBaseUrl: String , shopirollerApiKey: String, appUserApiKey: String, aliasKey: String) {
+        switch type {
+        case .prod:
+            return("api.shopiroller.com","mobiroller.api.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
+        case .stage:
+            return("stg.api.shopiroller.com","api.stg.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
+        case .dev:
+            return("dev.ecommerce.applyze.com","dev.applyze.com","ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY=","/QcOg8MuI4TZNT/eAIpLbicVqpGxkxz1YeqAilOOj4s=","ETSiz+R2jbsYnrBJO9Kz+Ils3UY=")
+        }
+    }
 
+    enum ConnectableUrls {
+        case prod
+        case stage
+        case dev
+        
+    }
 }
+
