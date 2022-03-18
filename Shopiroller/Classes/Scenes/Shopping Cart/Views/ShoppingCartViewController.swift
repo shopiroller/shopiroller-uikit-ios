@@ -63,6 +63,8 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     override func setupNavigationBar() {
         super.setupNavigationBar()
         updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
+        navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
+        navigationController?.navigationBar.barTintColor = ShopirollerApp.shared.theme.navigationBarTintColor
     }
     
     func configure() {
@@ -156,11 +158,15 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     @IBAction func proceedToCheckoutClicked(_ sender: Any) {
         if(!viewModel.hasInvalidItems()){
             let checkOutViewController = CheckOutViewController(viewModel: CheckOutViewModel())
-            checkOutViewController.modalPresentationStyle = .fullScreen
-            present(checkOutViewController, animated: true, completion: nil)
+            prompt(checkOutViewController, animated: true, completion: nil)
         } else {
             showIfHasInvalidItem()
         }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideNavigationBar(false)
     }
     
 }

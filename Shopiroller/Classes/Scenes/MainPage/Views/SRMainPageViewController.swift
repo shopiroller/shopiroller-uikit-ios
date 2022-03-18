@@ -238,12 +238,12 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
 extension SRMainPageViewController : ShowCaseCellDelegate {
     func getShowCaseInfo(showcaseId: String?, title: String?) {
         let productListVC = ProductListViewController(viewModel: ProductListViewModel(pageTitle: title,showcaseId: showcaseId))
-        self.prompt(productListVC, animated: true)
+        post(productListVC, animated: true)
     }
     
     func getProductId(productId: String) {
         let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: productId))
-        self.prompt(productDetailVC, animated: true)
+        post(productDetailVC, animated: true)
     }
 }
 
@@ -321,8 +321,8 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModel.getSectionAt(position: indexPath.section) {
         case .products:
-            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
-            self.prompt(vc, animated: true)
+            let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
+            self.post(productDetailVC, animated: true, completion: nil)
         default:
             break
         }
@@ -400,34 +400,34 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position){
-            let vc = CategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
-            self.prompt(vc, animated: true, completion: nil)
-        }else {
-            let vc = ProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
-            prompt(vc, animated: true, completion: nil)
+            let categoriesListVC = CategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
+            post(categoriesListVC, animated: true, completion: nil)
+        } else {
+            let productListVC = ProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
+            post(productListVC, animated: true, completion: nil)
         }
         
     }
     func getCategories(position: Int) {
-        let vc = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
-        self.prompt(vc, animated: true, completion: nil)
+        let categoriesListViewController = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
+        self.post(categoriesListViewController, animated: true, completion: nil)
     }
 }
 
 extension SRMainPageViewController: SliderClickDelegate {
     
     func openProductDetail(id: String?) {
-        let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: id ?? ""))
-        self.prompt(vc, animated: false, completion: nil)
+        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: id ?? ""))
+        post(productDetailVC, animated: false, completion: nil)
     }
     
     func openProductList(categoryId: String?) {
-        let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: categoryId))
-        self.prompt(vc, animated: false, completion: nil)
+        let productListVC = ProductListViewController(viewModel: ProductListViewModel(categoryId: categoryId,pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
+        post(productListVC, animated: false, completion: nil)
     }
     
     func openWebView(link: String?) {
-        let vc = WebViewController(viewModel: WebViewViewModel(webViewUrl: link))
-        self.prompt(vc, animated: false, completion: nil)
+        let webViewVC = WebViewController(viewModel: WebViewViewModel(webViewUrl: link))
+        post(webViewVC, animated: false, completion: nil)
     }
 }
