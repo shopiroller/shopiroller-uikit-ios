@@ -51,6 +51,8 @@
 "product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
 "product-detail-maximum-product-quantity-title" = "Maksimum ürün sınırı";
 "product-detail-maximum-product-quantity-description" = "Maksimum ürün satın alma sınırına ulaştınız. Sepetinize maksimum %@ ürün ekleyebilirsiniz";
+"product-detail-product-not-found-title" = "Bulunamadı";
+"product-detail-product-not-found-description" = "Aradığınız sayfa mevcut değil veya kaldırılmış olabilir.";
 
 //MARK: - Order List
 "order-list-page-title" = "Siparişlerim";
