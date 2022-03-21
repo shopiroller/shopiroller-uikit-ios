@@ -23,7 +23,8 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var showcase: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel : SRCategoryResponseModel?
-    
+    private var mainDisplayTypeList : [MainPageDisplayTypes]? = []
+
     private var currentPage: Int = 0
         
     private var total: Int? = nil
@@ -129,7 +130,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func sliderItemCount() -> Int {
-        if let sliderModel = sliderModel, sliderModel.count > 0 {
+        if let sliderModel = sliderModel?.filter({$0.slides?.count ?? 0 > 0}), sliderModel.count > 0 {
             return 1
         }else {
             return 0
@@ -247,16 +248,16 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getSectionAt(position: Int) -> MainPageDisplayTypes {
-        if (sliderItemCount() != 0 && position < 1) { // SLIDER CATEGORIES SHOWCASE PRODUCTS
-            return .slider
-        } else if (categoryItemCount() != 0) && position < 2 { // CATEGORIES SHOWCASE PRODUCTS
-            return .categories
-        } else if (showcaseItemCount() != 0) && position < 3 { // SHOWCASE PRODUCTS
-            return .showcase
-        } else if (productItemCount() != 0) { // PRODUCTS
-            return .products
+        if (sliderItemCount() != 0 && (position < 1 && !(mainDisplayTypeList?.contains(where: { $0 == .slider }) ?? false))) { // SLIDER CATEGORIES SHOWCASE PRODUCTS
+            mainDisplayTypeList?.append(.slider)
+        } else if (categoryItemCount() != 0 && (position < 2 && !(mainDisplayTypeList?.contains(where: { $0 == .categories }) ?? false))) { // CATEGORIES SHOWCASE PRODUCTS
+            mainDisplayTypeList?.append(.categories)
+        } else if (showcaseItemCount() != 0 && (position < 3 && !(mainDisplayTypeList?.contains(where: { $0 == .showcase }) ?? false))) { // SHOWCASE PRODUCTS
+            mainDisplayTypeList?.append(.showcase)
+        } else if (productItemCount() != 0 && !(mainDisplayTypeList?.contains(where: { $0 == .products }) ?? false)) { // PRODUCTS
+            mainDisplayTypeList?.append(.products)
         }
-        return .products
+        return mainDisplayTypeList?[position] ?? .products
     }
     
     func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {
