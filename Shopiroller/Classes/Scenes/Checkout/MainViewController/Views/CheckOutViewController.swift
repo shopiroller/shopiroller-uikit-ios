@@ -44,6 +44,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     override func setup() {
         super.setup()
         
+        hideNavigationBar(true)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onResultEvent), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
@@ -68,8 +70,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             self.containerView.addSubview(checkOutPageViewController.view)
             
             checkOutPageViewController.view.frame = self.containerView.frame
-            
-            self.navigationController?.navigationBar.isHidden = true
             
             checkOutPageViewController.didMove(toParent: self)
             

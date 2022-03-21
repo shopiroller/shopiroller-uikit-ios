@@ -270,6 +270,18 @@ open class SRMainPageViewModel: SRBaseViewModel {
     func getProductListViewModel(position: Int) -> ProductListViewModel {
         return ProductListViewModel(categoryId: getCategoryId(position: position),pageTitle: getCategoryName(position: position))
     }
+    
+    func getSliderCategoryName(id: String?) -> String? {
+        var categoryName : String? = ""
+        if let categories = categoriesWithOptions?.categories {
+            for category in categories {
+                if (category.categoryId == id) {
+                    categoryName = category.name
+                }
+            }
+        }
+        return categoryName
+    }
 }
 
 enum CellType {

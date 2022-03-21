@@ -224,6 +224,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        
         setTransparentNavigationBar()
     }
     
@@ -240,6 +241,16 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         navigationController!.navigationBar.backgroundColor = backgroundColor
         
         
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.isTranslucent = false
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
+            let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
+            appearance.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
     
     @objc func updateBadgeCount() {
@@ -544,7 +555,11 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
     }
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
-        self.popToRoot(animated: false, completion: nil)
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import FittedSheets
+import UIKit
 
 extension UIViewController {
     
@@ -31,6 +32,13 @@ extension UIViewController {
     }
     
     func modal(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [viewController]
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: flag, completion: completion)
+    }
+    
+    func post(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController()
         navigationController.viewControllers = [viewController]
         navigationController.modalPresentationStyle = .fullScreen
@@ -160,15 +168,20 @@ extension UIViewController {
     }
     
     @objc func goBack() {
-        pop(animated: true, completion: nil)
+        if let navigationController = navigationController, navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func initializeNavigationBar() {
+        navigationItem.hidesBackButton = true
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
         navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
-        
+
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
@@ -176,9 +189,12 @@ extension UIViewController {
         
         let backButton = createNavigationItem(.backIcon , .goBack)
         
+        navigationItem.hidesBackButton = true
+        
         if isBackButtonActive == true {
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         }
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
 
@@ -215,6 +231,11 @@ extension UIViewController {
     
     func showNoConnectionAlert() {
         showAlert(title: "no-internet-connection-title".localized, message: "no-internet-connection-description".localized)
+    }
+    
+    func hideNavigationBar(_ navigationBarisHidden: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.isHidden = navigationBarisHidden
     }
 
     
