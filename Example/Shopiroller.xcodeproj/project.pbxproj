@@ -25,6 +25,7 @@
 		EE19222627159B7500A2BD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE19222927159B7700A2BD7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EE19222A27159B8C00A2BD7A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EEA7109927E8AF1D003FCD25 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F195058C13ED7A5BDF3168D3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F7856CE408F3701C0A3B1C89 /* Shopiroller.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Shopiroller.podspec; path = ../Shopiroller.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -155,6 +156,7 @@
 				en,
 				Base,
 				tr,
+				de,
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
@@ -263,6 +265,7 @@
 				EE19222627159B7500A2BD7A /* Base */,
 				EE19222927159B7700A2BD7A /* en */,
 				EE19222A27159B8C00A2BD7A /* tr */,
+				EEA7109927E8AF1D003FCD25 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
