@@ -175,8 +175,8 @@ extension UIViewController {
         }
     }
     
-    func initializeNavigationBar() {
-        navigationItem.hidesBackButton = true
+    func initializeNavigationBar(_ isHidingBackButton: Bool? = true) {
+        navigationItem.hidesBackButton = isHidingBackButton ?? true
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
@@ -185,11 +185,11 @@ extension UIViewController {
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
-        initializeNavigationBar()
+        initializeNavigationBar(isBackButtonActive)
         
         let backButton = createNavigationItem(.backIcon , .goBack)
         
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = isBackButtonActive ?? false
         
         if isBackButtonActive == true {
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)

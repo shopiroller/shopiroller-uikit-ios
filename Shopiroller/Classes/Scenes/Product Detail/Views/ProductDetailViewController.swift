@@ -556,7 +556,7 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         if let navigationController = self.navigationController {
-            navigationController.popViewController(animated: true)
+            navigationController.dismiss(animated: true)
         } else {
             self.dismiss(animated: true, completion: nil)
         }

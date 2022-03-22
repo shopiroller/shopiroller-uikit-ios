@@ -80,8 +80,8 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
             rightBarButtonItems.append(optionsButton)
         }
-        
-        updateNavigationBar(rightBarButtonItems:  rightBarButtonItems)
+         
+        updateNavigationBar(rightBarButtonItems:  rightBarButtonItems, isBackButtonActive: false)
         cartButton.customView?.addSubview(badgeView)
     }
     
