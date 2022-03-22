@@ -109,6 +109,9 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         self.getProducts(showProgress: false, isPagination: false)
         
         group?.notify(queue: .main, execute: {
+            
+            self.viewModel.reloadSections()
+            
             self.group = nil
             self.mainCollectionView.refreshControl?.endRefreshing()
             self.mainCollectionView.reloadData()
@@ -122,6 +125,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             if self.group != nil {
                 self.group?.leave()
             } else {
+                self.viewModel.reloadSections()
                 self.view.layoutIfNeeded()
                 self.mainCollectionView.reloadData()
             }
@@ -140,6 +144,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             if self.group != nil && !isPagination {
                 self.group?.leave()
             } else {
+                self.viewModel.reloadSections()
                 self.shimmerCollectionView.isHidden = false
                 self.configureEmptyView()
                 self.mainCollectionView.reloadData()
@@ -163,6 +168,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             if self.group != nil {
                 self.group?.leave()
             } else {
+                self.viewModel.reloadSections()
                 self.view.layoutIfNeeded()
                 self.mainCollectionView.reloadData()
             }
@@ -183,6 +189,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             if self.group != nil {
                 self.group?.leave()
             } else {
+                self.viewModel.reloadSections()
                 self.view.layoutIfNeeded()
                 self.mainCollectionView.reloadData()
             }
