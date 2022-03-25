@@ -8,6 +8,8 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 import Stripe
+import Braintree
+import BraintreeDropIn
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
@@ -123,11 +125,56 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
+            } else  if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayPal) {
+                loadPaypal()
             }
         } else {
             loadOrderResultPage(isSuccess: false)
         }
      
+    }
+    
+    private func loadPaypal() {
+        showDropIn(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
+    }
+    
+    func showDropIn(clientTokenOrTokenizationKey: String) {
+        let request =  BTDropInRequest()
+        
+        let orderResponse = SRSessionManager.shared.orderResponseInnerModel
+        
+        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
+        { (controller, result, error) in
+            if (error != nil) {
+                print("ERROR")
+            } else if (result?.isCanceled == true) {
+                print("CANCELED")
+            } else if let result = result {
+                // Use the BTDropInResult properties to update your UI
+                // result.paymentMethodType
+                // result.paymentMethod
+                // result.paymentIcon
+                // result.paymentDescription
+                self.loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+        self.present(dropIn!, animated: true, completion: nil)
+    }
+    
+    private func fetchClientToken() {
+        // TODO: Switch this URL to your own authenticated API
+        let clientTokenURL = NSURL(string: "https://braintree-sample-merchant.herokuapp.com/client_token")!
+        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
+        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
+        
+        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
+            // TODO: Handle errors
+            let clientToken = String(data: data!, encoding: String.Encoding.utf8)
+            
+            // As an example, you may wish to present Drop-in at this point.
+            // Continue to the next section to learn more...
+        }.resume()
     }
     
     private func loadPaymentSheet() {
