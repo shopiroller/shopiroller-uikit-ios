@@ -78,7 +78,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func getSupportedPaymentList() -> [SupportedPaymentType]? {
-        return paymentSettings?.getSupportedPaymentTypes()
+        return paymentSettings?.supportedPaymentTypes
     }
     
     func getDefaultPaymentMethod() -> PaymentTypeEnum? {

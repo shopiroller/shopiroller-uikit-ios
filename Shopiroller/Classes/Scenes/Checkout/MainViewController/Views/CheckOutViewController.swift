@@ -8,7 +8,6 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 import Stripe
-import Braintree
 import BraintreeDropIn
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
@@ -125,7 +124,13 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
-            } else  if (orderResponse != nil && orderResponse?.order?.paymentType == PaymentTypeEnum.PayPal) {
+            } else  if (orderResponse != nil && orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
+                self.paymentIntentClientSecret = orderResponse.payment?.token ?? ""
+                self.paymentIntentPaymentId = paymentIntentClientSecret?.substring(toIndex: 27)
+                viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
+                
+                
+                
                 loadPaypal()
             }
         } else {
@@ -140,22 +145,31 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     func showDropIn(clientTokenOrTokenizationKey: String) {
         let request =  BTDropInRequest()
+        request.cardDisabled = true
+        
+        let paypalRequest = BTPayPalCheckoutRequest(amount: "2.32")
+        paypalRequest.currencyCode = "EUR"
+        paypalRequest.displayName = "Bugger Talha"
+        
+        request.payPalRequest = paypalRequest
         
         let orderResponse = SRSessionManager.shared.orderResponseInnerModel
         
         let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
         { (controller, result, error) in
             if (error != nil) {
-                print("ERROR")
+                self.setFailRequest()
+                self.loadOrderResultPage(isSuccess: false)
             } else if (result?.isCanceled == true) {
-                print("CANCELED")
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
             } else if let result = result {
                 // Use the BTDropInResult properties to update your UI
                 // result.paymentMethodType
                 // result.paymentMethod
                 // result.paymentIcon
                 // result.paymentDescription
-                self.loadOrderResultSuccess(orderResponse: orderResponse ?? SROrderResponseInnerModel(),isCreditCard : false)
+                self.setSuccessRequest()
+                self.loadOrderResultPage(isSuccess: true)
             }
             controller.dismiss(animated: true, completion: nil)
         }
