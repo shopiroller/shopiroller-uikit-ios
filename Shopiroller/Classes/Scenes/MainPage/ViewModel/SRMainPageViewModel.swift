@@ -55,7 +55,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         if products?.count ?? 0 == 0 {
             currentPage = 1
         } else {
-            if (products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0 {
+            if ((products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) {
                 return
             }
             currentPage = currentPage + 1
@@ -70,10 +70,12 @@ open class SRMainPageViewModel: SRBaseViewModel {
             (result) in
             switch result{
             case .success(let response):
-                if self.currentPage != 1 {
-                    self.products = self.products! + (response.data ?? [])
-                }else{
-                    self.products = response.data
+                if let productList = response.data , (!productList.isEmpty) {
+                    if self.currentPage != 1 {
+                        self.products = self.products! + productList
+                    } else{
+                        self.products = productList
+                    }
                 }
                 DispatchQueue.main.async {
                     success?()
