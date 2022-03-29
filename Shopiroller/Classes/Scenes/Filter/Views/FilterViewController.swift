@@ -12,7 +12,7 @@ protocol FilterViewControllerDelegate {
 }
 
 class FilterViewController: BaseViewController<FilterViewModel> {
-
+    
     @IBOutlet private weak var filterTableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
     
@@ -26,6 +26,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     override func setup() {
         super.setup()
         getFilterOptions()
+        getPaymentSettings()
         
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
@@ -59,7 +60,17 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         }
     }
     
-
+    private func getPaymentSettings() {
+        viewModel.getPaymentSettings(completion: { result in
+            switch result {
+            case .success(): break
+            case .failure(let error):
+                self.showAlertError(viewModel: error)
+            }
+        })
+    }
+    
+    
     @IBAction func confirmButtonTapped(_ sender: Any) {
         delegate.confirmedFilter(model: viewModel.selectedModel)
         pop(animated: true, completion: nil)
@@ -69,7 +80,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         viewModel.clearFilter()
         filterTableView.reloadData()
     }
-
+    
 }
 
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
