@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         ShopirollerApp.shared.setUserId("61cc73512c630dd8754409d3")
         ShopirollerApp.shared.setUserEmail("gorkem@mobiroller.com")
         ShopirollerApp.shared.setFallbackLanguage("tr")
-        ShopirollerApp.shared.setDevelopmentMode(true)
+        ShopirollerApp.shared.setDevelopmentMode(false)
         ShopirollerApp.shared.delegate = self
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
         
