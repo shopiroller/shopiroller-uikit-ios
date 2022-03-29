@@ -93,8 +93,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
                 if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
                     self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
                 }
-            } else {
-                self.popUpHeightContstraint.constant = self.descriptionContainerView.frame.size.height * 3
+            } else if (self.descriptionLabel.numberOfLines <= 2){
+                self.popUpHeightContstraint.constant = ((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4)
             }
         }
     }
