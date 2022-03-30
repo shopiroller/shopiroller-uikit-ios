@@ -8,6 +8,11 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 
+private struct Constants {
+    static var shippingTitle: String { return "address_list_segmented_shipping".localized }
+    static var billingTitle: String { return "address_list_segmented_billing".localized }
+}
+
 open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
@@ -29,6 +34,8 @@ open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     public override func setup() {
         super.setup()
         getCount()
+        segmentedControl.setTitle(Constants.shippingTitle, forSegmentAt: 0)
+        segmentedControl.setTitle(Constants.billingTitle, forSegmentAt: 1)
         let pageVC = AddressListPageViewController(addressDelegate: self)
         addChild(pageVC)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
