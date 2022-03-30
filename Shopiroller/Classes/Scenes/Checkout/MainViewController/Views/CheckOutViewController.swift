@@ -147,9 +147,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         let request =  BTDropInRequest()
         request.cardDisabled = true
         
-        let paypalRequest = BTPayPalCheckoutRequest(amount: "2.32")
-        paypalRequest.currencyCode = "EUR"
-        paypalRequest.displayName = "Bugger Talha"
+        guard let totalPrice = self.viewModel.shoppingCart?.totalPrice else { return }
+        guard let currency = self.viewModel.shoppingCart?.currency else { return }
+        
+        let paypalRequest = BTPayPalCheckoutRequest(amount: totalPrice.description)
+        paypalRequest.currencyCode = currency
+        paypalRequest.displayName = Bundle.main.infoDictionary!["CFBundleName"] as! String
         
         request.payPalRequest = paypalRequest
         
