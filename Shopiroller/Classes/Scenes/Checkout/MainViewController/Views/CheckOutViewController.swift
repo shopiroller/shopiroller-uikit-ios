@@ -140,43 +140,35 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     private func loadPaypal() {
-        showDropIn(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
+        loadDirectlyPaypal(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
     }
     
-    func showDropIn(clientTokenOrTokenizationKey: String) {
-        let request =  BTDropInRequest()
-        request.cardDisabled = true
+    func loadDirectlyPaypal(clientTokenOrTokenizationKey: String) {
+        
+        let braintreeClient = BTAPIClient(authorization: clientTokenOrTokenizationKey)!
+        
+        let payPalDriver = BTPayPalDriver(apiClient: braintreeClient)
         
         guard let totalPrice = self.viewModel.shoppingCart?.totalPrice else { return }
         guard let currency = self.viewModel.shoppingCart?.currency else { return }
         
-        let paypalRequest = BTPayPalCheckoutRequest(amount: totalPrice.description)
-        paypalRequest.currencyCode = currency
-        paypalRequest.displayName = Bundle.main.infoDictionary!["CFBundleName"] as! String
+        let checkoutRequest = BTPayPalCheckoutRequest(amount: totalPrice.description)
+        checkoutRequest.currencyCode = currency
+        checkoutRequest.displayName = Bundle.main.infoDictionary!["CFBundleName"] as! String
         
-        request.payPalRequest = paypalRequest
-        
-        let orderResponse = SRSessionManager.shared.orderResponseInnerModel
-        
-        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-        { (controller, result, error) in
-            if (error != nil) {
-                self.setFailRequest()
-                self.loadOrderResultPage(isSuccess: false)
-            } else if (result?.isCanceled == true) {
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
-            } else if let result = result {
-                // Use the BTDropInResult properties to update your UI
-                // result.paymentMethodType
-                // result.paymentMethod
-                // result.paymentIcon
-                // result.paymentDescription
-                self.setSuccessRequest()
-                self.loadOrderResultPage(isSuccess: true)
+        payPalDriver.tokenizePayPalAccount(with: checkoutRequest) { (tokenizedPayPalAccount, error) in
+            guard let tokenizedPayPalAccount = tokenizedPayPalAccount else {
+                if let error = error {
+                    self.setFailRequest()
+                    self.loadOrderResultPage(isSuccess: false)
+                } else {
+                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
+                }
+                return
             }
-            controller.dismiss(animated: true, completion: nil)
+            self.setSuccessRequest()
+            self.loadOrderResultPage(isSuccess: true)
         }
-        self.present(dropIn!, animated: true, completion: nil)
     }
     
     private func fetchClientToken() {

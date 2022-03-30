@@ -8,6 +8,7 @@
 import UIKit
 import Shopiroller
 import IQKeyboardManagerSwift
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
@@ -54,8 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
                 
         return true
+    }
+    
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.shopiroller.demo.payments") == .orderedSame {
+            return BTAppContextSwitcher.handleOpenURL(url)
+        }
+        return false
     }
     
     public func applicationWillTerminate(_ application: UIApplication) {
