@@ -14,11 +14,16 @@ class CheckOutViewModel {
     
     init(currentStage: ProgressStageEnum? = .address){
         self.currentStage = currentStage
+        self.getShoppingCart()
     }
     
     private var progressStage: ProgressStageEnum = .address
     
+    var shoppingCart: SRShoppingCartResponseModel?
+    
     var stripeOrderStatusModel = SRStripeOrderStatusModel()
+    
+    var completeOrderModel = CompleteOrderModel()
     
     var errorMessage: String?
     
@@ -46,6 +51,22 @@ class CheckOutViewModel {
         }
     }
     
+    func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getShoppingCart(userId: SRAppContext.userId,showProgress: false).response() {
+            (result) in
+            switch result {
+            case .success(let result):
+                self.shoppingCart = result.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
     
     func setStripeFailRequest(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.failurePayment(stripeOrderModel: stripeOrderStatusModel).response() {
@@ -70,6 +91,39 @@ class CheckOutViewModel {
             switch result {
             case .success(let response):
                 print(response)
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func tryAgain(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.tryAgain(completeOrderModel).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                SRSessionManager.shared.orderResponseInnerModel = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func paypalFailure(orderId: String, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.paypalFailure(orderId: orderId).response() {
+            (result) in
+            switch result {
+            case .success(_):
                 DispatchQueue.main.async {
                     success?()
                 }

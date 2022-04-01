@@ -51,6 +51,12 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subPath, resourceType: SRShoppingCartResponseModel.self,shouldShowProgressHUD: showProgress ?? true)
     }
     
+    static func paypalFailure(orderId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+        let subPath = "\(orderId)\(SRNetworkManagerPaths.paypalFailure.rawValue)"
+        
+        return SRNetworkRequestManager(httpMethod: .get, path: .getOrder, subpath: subPath, resourceType: SRShoppingCartResponseModel.self)
+    }
+    
     static func validateShoppingCart(userId: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartValidate.rawValue)"
         return SRNetworkRequestManager(httpMethod: .get, path: .users, subpath: subpath, resourceType: SRShoppingCartResponseModel.self)

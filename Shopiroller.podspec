@@ -35,4 +35,6 @@ TODO: Add long description of the pod here.
   s.dependency 'lottie-ios'
   s.dependency 'IQKeyboardManagerSwift'
   s.dependency 'Stripe'
+  s.dependency 'Braintree'
+  s.dependency 'BraintreeDropIn'
 end

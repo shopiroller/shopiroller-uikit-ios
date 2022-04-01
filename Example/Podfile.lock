@@ -1,4 +1,35 @@
 PODS:
+  - Braintree (5.6.3):
+    - Braintree/Card (= 5.6.3)
+    - Braintree/Core (= 5.6.3)
+    - Braintree/PayPal (= 5.6.3)
+  - Braintree/ApplePay (5.6.3):
+    - Braintree/Core
+  - Braintree/Card (5.6.3):
+    - Braintree/Core
+  - Braintree/Core (5.6.3)
+  - Braintree/PaymentFlow (5.6.3):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPal (5.6.3):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.6.3)
+  - Braintree/ThreeDSecure (5.6.3):
+    - Braintree/Card
+    - Braintree/PaymentFlow
+  - Braintree/UnionPay (5.6.3):
+    - Braintree/Card
+  - Braintree/Venmo (5.6.3):
+    - Braintree/Core
+  - BraintreeDropIn (9.4.0):
+    - Braintree/ApplePay (~> 5.6.1)
+    - Braintree/Card (~> 5.6.1)
+    - Braintree/Core (~> 5.6.1)
+    - Braintree/PayPal (~> 5.6.1)
+    - Braintree/ThreeDSecure (~> 5.6.1)
+    - Braintree/UnionPay (~> 5.6.1)
+    - Braintree/Venmo (~> 5.6.1)
   - FittedSheets (2.4.2)
   - InputMask (6.1.0)
   - IQKeyboardManagerSwift (6.5.9)
@@ -54,7 +85,9 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
-  - Shopiroller (0.2.20):
+  - Shopiroller (0.2.23):
+    - Braintree
+    - BraintreeDropIn
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
@@ -80,6 +113,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Braintree
+    - BraintreeDropIn
     - FittedSheets
     - InputMask
     - IQKeyboardManagerSwift
@@ -98,6 +133,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Braintree: cef7388a3647515f1e0861e52200c2f3dad0f98f
+  BraintreeDropIn: 89df35f840004affa22ebb8f06b12d20615411bf
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
@@ -106,7 +143,7 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Shopiroller: 8395a05c3289adfa456cdabf074155094ab42635
+  Shopiroller: eab14dd50ec93f28046d2eea4271d02f011fc276
   Stripe: f2bed8369154c35c8ec794704e042e05240d6f21
   StripeCore: 36571be19dae15e90c8ad47e1af45712aea93f5a
   StripeUICore: 1b32566d6a69581be786609a032872b0fb5a6823

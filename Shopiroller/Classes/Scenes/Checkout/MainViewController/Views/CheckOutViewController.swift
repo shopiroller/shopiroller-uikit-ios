@@ -8,6 +8,7 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 import Stripe
+import BraintreeDropIn
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
@@ -123,11 +124,47 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
+            } else  if (orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
+                self.viewModel.completeOrderModel.orderId = orderResponse.order?.id
+                self.viewModel.completeOrderModel.paymentType = PaymentTypeEnum.PayPal.description
+                loadPaypal()
             }
         } else {
             loadOrderResultPage(isSuccess: false)
         }
      
+    }
+    
+    private func loadPaypal() {
+        guard let token = SRSessionManager.shared.orderResponseInnerModel?.payment?.token else { return }
+        self.loadDirectlyPaypal(clientTokenOrTokenizationKey: token)
+    }
+    
+    func loadDirectlyPaypal(clientTokenOrTokenizationKey: String) {
+        
+        let braintreeClient = BTAPIClient(authorization: clientTokenOrTokenizationKey)!
+        
+        let payPalDriver = BTPayPalDriver(apiClient: braintreeClient)
+        
+        guard let totalPrice = self.viewModel.shoppingCart?.totalPrice else { return }
+        guard let currency = self.viewModel.shoppingCart?.currency else { return }
+        
+        let checkoutRequest = BTPayPalCheckoutRequest(amount: totalPrice.description)
+        checkoutRequest.currencyCode = currency
+        checkoutRequest.displayName = Bundle.main.infoDictionary!["CFBundleName"] as! String
+        
+        payPalDriver.tokenizePayPalAccount(with: checkoutRequest) { (tokenizedPayPalAccount, error) in
+            if let tokenizedPayPalAccount = tokenizedPayPalAccount {
+                self.viewModel.completeOrderModel.nonce = tokenizedPayPalAccount.nonce
+                self.setPaypalSuccessRequest()
+                self.loadOrderResultPage(isSuccess: true)
+            } else if let error = error {
+                self.setPaypalFailRequest()
+                self.loadOrderResultPage(isSuccess: false)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
+            }
+        }
     }
     
     private func loadPaymentSheet() {
@@ -146,6 +183,28 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             })
         } else {
             self.presentStripe()
+        }
+    }
+    
+    func setPaypalSuccessRequest() {
+        self.viewModel.tryAgain(success: {
+            SRSessionManager.shared.makeOrder?.tryAgain = false
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        }
+    }
+    
+    func setPaypalFailRequest() {
+        guard let orderId = SRSessionManager.shared.orderResponseInnerModel?.order?.id else { return }
+        
+        self.viewModel.paypalFailure(orderId: orderId) {
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        } error: { errorViewModel in
+            self.showAlertError(viewModel: errorViewModel)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
         }
     }
     

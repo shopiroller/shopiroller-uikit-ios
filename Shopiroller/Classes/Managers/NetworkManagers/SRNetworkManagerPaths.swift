@@ -39,6 +39,7 @@ enum SRNetworkManagerPaths: String {
     case shippingAddress = "/shipping"
     case shipping = "/shipping/"
     case billing = "/billing/"
+    case paypalFailure = "/failure"
     
     var name: String {
         switch self {
