@@ -36,5 +36,4 @@ TODO: Add long description of the pod here.
   s.dependency 'IQKeyboardManagerSwift'
   s.dependency 'Stripe'
   s.dependency 'Braintree'
-  s.dependency 'BraintreeDropIn'
 end

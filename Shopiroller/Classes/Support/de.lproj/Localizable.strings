@@ -161,6 +161,8 @@
 "payment-information-page-title" = "Zahlung";
 "info-information-page-title" = "Info";
 "confirm-order-button-text" = "Bestellung bestätigen";
+"checkout-address-next-step-title" = "Nächster Schritt: Zahlungsmethode";
+"checkout-payment-next-step-title" = "Nächster Schritt: Bestellinformationen";
 
 //MARK: - Allgemeine Adressansicht
 "delivery-address-title" = "Lieferadresse";
@@ -222,6 +224,7 @@
 //MARK: - CheckOutPayment
 "checkout-payment-select-payment-method-text" = "Zahlungsmethode auswählen";
 "checkout-payment-selected-payment-method-credit-cart-placeholder" = "Kreditkarte";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
 "checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Banküberweisung";
 "checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "An der Tür bezahlen";
 "checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";

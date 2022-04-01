@@ -8,7 +8,7 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 import Stripe
-import BraintreeDropIn
+import Braintree
 
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
