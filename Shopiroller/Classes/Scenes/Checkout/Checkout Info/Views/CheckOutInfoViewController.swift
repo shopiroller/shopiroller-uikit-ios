@@ -277,10 +277,10 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
                 delay = Int(1500 - responseTime)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
-                if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
+                 
                     self.stopAnimation()
                     NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
-                }
+                
             }
             
         })

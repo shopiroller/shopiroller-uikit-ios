@@ -125,12 +125,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
             } else  if (orderResponse != nil && orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
-                self.paymentIntentClientSecret = orderResponse.payment?.token ?? ""
-                self.paymentIntentPaymentId = paymentIntentClientSecret?.substring(toIndex: 27)
-                viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
-                
-                
-                
+                self.viewModel.completeOrderModel.orderId = orderResponse.order?.id
+                self.viewModel.completeOrderModel.paymentType = PaymentTypeEnum.PayPal.description
                 loadPaypal()
             }
         } else {
@@ -140,7 +136,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     private func loadPaypal() {
-        loadDirectlyPaypal(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
+        
+//        loadDirectlyPaypal(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
+        
+        guard let token = SRSessionManager.shared.orderResponseInnerModel?.payment?.token else { return }
+        
+        loadDirectlyPaypal(clientTokenOrTokenizationKey: token)
     }
     
     func loadDirectlyPaypal(clientTokenOrTokenizationKey: String) {
@@ -157,33 +158,17 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         checkoutRequest.displayName = Bundle.main.infoDictionary!["CFBundleName"] as! String
         
         payPalDriver.tokenizePayPalAccount(with: checkoutRequest) { (tokenizedPayPalAccount, error) in
-            guard let tokenizedPayPalAccount = tokenizedPayPalAccount else {
-                if let error = error {
-                    self.setFailRequest()
-                    self.loadOrderResultPage(isSuccess: false)
-                } else {
-                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
-                }
-                return
+            if let tokenizedPayPalAccount = tokenizedPayPalAccount {
+                self.viewModel.completeOrderModel.nonce = tokenizedPayPalAccount.nonce
+                self.setPaypalSuccessRequest()
+                self.loadOrderResultPage(isSuccess: true)
+            } else if let error = error {
+                self.setPaypalFailRequest()
+                self.loadOrderResultPage(isSuccess: false)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
             }
-            self.setSuccessRequest()
-            self.loadOrderResultPage(isSuccess: true)
         }
-    }
-    
-    private func fetchClientToken() {
-        // TODO: Switch this URL to your own authenticated API
-        let clientTokenURL = NSURL(string: "https://braintree-sample-merchant.herokuapp.com/client_token")!
-        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
-        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
-        
-        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
-            // TODO: Handle errors
-            let clientToken = String(data: data!, encoding: String.Encoding.utf8)
-            
-            // As an example, you may wish to present Drop-in at this point.
-            // Continue to the next section to learn more...
-        }.resume()
     }
     
     private func loadPaymentSheet() {
@@ -203,6 +188,30 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         } else {
             self.presentStripe()
         }
+    }
+    
+    func setPaypalSuccessRequest() {
+        self.viewModel.tryAgain(success: {
+            SRSessionManager.shared.makeOrder?.tryAgain = false
+        })
+        { [weak self] (errorViewModel) in
+            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        }
+    }
+    
+    func setPaypalFailRequest() {
+        guard let orderId = SRSessionManager.shared.orderResponseInnerModel?.order?.id else { return }
+        
+        self.viewModel.paypalFailure(orderId: orderId) {
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        } error: { errorViewModel in
+            self.showAlertError(viewModel: errorViewModel)
+            SRSessionManager.shared.makeOrder?.tryAgain = true
+        }
+
+
     }
     
     private func presentStripe() {

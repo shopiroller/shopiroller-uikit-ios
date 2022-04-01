@@ -23,6 +23,8 @@ class CheckOutViewModel {
     
     var stripeOrderStatusModel = SRStripeOrderStatusModel()
     
+    var completeOrderModel = CompleteOrderModel()
+    
     var errorMessage: String?
     
     func getPageTitle() -> String? {
@@ -89,6 +91,39 @@ class CheckOutViewModel {
             switch result {
             case .success(let response):
                 print(response)
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func tryAgain(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.tryAgain(completeOrderModel).response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                SRSessionManager.shared.orderResponseInnerModel = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func paypalFailure(orderId: String, success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.paypalFailure(orderId: orderId).response() {
+            (result) in
+            switch result {
+            case .success(_):
                 DispatchQueue.main.async {
                     success?()
                 }

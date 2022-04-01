@@ -12,6 +12,7 @@ struct CompleteOrderModel: Codable {
     
     var orderId: String?
     var userNote: String?
+    var nonce: String?
     var paymentType: String?
     var card: OrderCardModel?
     var bankAccount: String?
@@ -20,6 +21,7 @@ struct CompleteOrderModel: Codable {
     enum CodingKeys: String,CodingKey {
         case orderId = "orderId"
         case userNote = "userNote"
+        case nonce = "nonce"
         case paymentType = "paymentType"
         case card = "card"
         case bankAccount = "bankAccount"
