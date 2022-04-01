@@ -109,8 +109,8 @@
 
 // MARK: - Address List
 "address_list_page_title" = "My Addresses";
-"address_list_segmented_shipping" = "Teslimat Adresi";
-"address_list_segmented_billing" = "Fatura Adresi";
+"address_list_segmented_shipping" = "Delivery Address";
+"address_list_segmented_billing" = "Billing Address";
 "address_list_empty_shipping_title" = "No delivery address";
 "address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
 "address_list_empty_billing_title" = "No billing address";
