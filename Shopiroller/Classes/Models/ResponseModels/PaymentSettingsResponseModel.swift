@@ -10,12 +10,13 @@ import Foundation
 
 struct PaymentSettingsResponeModel: Codable {
     
-    var description : String?
-    var deliveryConditions : String?
-    var cancellationProcedure : String?
-    var distanceSalesContract : String?
-    var paymentAccounts : [BankAccountModel]?
-    var supportedPaymentTypes : [SupportedPaymentType]?
+    var description: String?
+    var deliveryConditions: String?
+    var cancellationProcedure: String?
+    var distanceSalesContract: String?
+    var paymentAccounts: [BankAccountModel]?
+    var supportedPaymentTypes: [SupportedPaymentType]?
+    var defaultCurrency: CurrencyEnum?
     var deliveryConditionsTitle: String?
     var cancellationProcedureTitle: String?
     
@@ -28,6 +29,7 @@ struct PaymentSettingsResponeModel: Codable {
         case supportedPaymentTypes = "supportedPaymentTypes"
         case deliveryConditionsTitle = "deliveryConditionsTitle"
         case cancellationProcedureTitle = "cancellationProcedureTitle"
+        case defaultCurrency = "defaultCurrency"
     }
     
     func getSupportedPaymentTypes() ->  [SupportedPaymentType]? {

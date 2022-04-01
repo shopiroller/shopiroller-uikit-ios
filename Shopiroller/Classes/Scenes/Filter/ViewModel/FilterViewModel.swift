@@ -16,6 +16,7 @@ class FilterViewModel: SRBaseViewModel {
     
     private var filterOptions: SRFilterOptionsResponseModel?
     private var filterListSelector: [FilterTableViewSelector] = []
+    private var paymentSettings : PaymentSettingsResponeModel?
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
     var selectedModel: FilterModel
@@ -138,7 +139,7 @@ class FilterViewModel: SRBaseViewModel {
     }
     
     func getCurrency() -> CurrencyEnum {
-        return CurrencyEnum.default
+        return paymentSettings?.defaultCurrency ?? .TRY
     }
     
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {
@@ -176,6 +177,24 @@ class FilterViewModel: SRBaseViewModel {
             break
         }
     }
+    
+    func getPaymentSettings(completion: @escaping (Result<Void, ErrorViewModel>) -> Void){
+        SRNetworkManagerRequests.getPaymentSettings().response() {
+            (result) in
+            switch result {
+            case .success(let result):
+                self.paymentSettings = result.data
+                DispatchQueue.main.async {
+                    completion(.success(()))
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    completion(.failure(ErrorViewModel(error: err)))
+                }
+            }
+        }
+    }
+
  
 }
 

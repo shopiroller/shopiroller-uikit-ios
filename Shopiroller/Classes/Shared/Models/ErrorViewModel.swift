@@ -5,7 +5,7 @@
 //  Created by Görkem Gür on 26.09.2021.
 //
 
-class ErrorViewModel {
+class ErrorViewModel: Error {
     let error: ShopirollerError
     
     init(error: ShopirollerError) {
