@@ -124,7 +124,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
-            } else  if (orderResponse != nil && orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
+            } else  if (orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
                 self.viewModel.completeOrderModel.orderId = orderResponse.order?.id
                 self.viewModel.completeOrderModel.paymentType = PaymentTypeEnum.PayPal.description
                 loadPaypal()
@@ -136,12 +136,8 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     }
     
     private func loadPaypal() {
-        
-//        loadDirectlyPaypal(clientTokenOrTokenizationKey: "sandbox_f252zhq7_hh4cpc39zq4rgjcg")
-        
         guard let token = SRSessionManager.shared.orderResponseInnerModel?.payment?.token else { return }
-        
-        loadDirectlyPaypal(clientTokenOrTokenizationKey: token)
+        self.loadDirectlyPaypal(clientTokenOrTokenizationKey: token)
     }
     
     func loadDirectlyPaypal(clientTokenOrTokenizationKey: String) {
@@ -210,8 +206,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
             self.showAlertError(viewModel: errorViewModel)
             SRSessionManager.shared.makeOrder?.tryAgain = true
         }
-
-
     }
     
     private func presentStripe() {
