@@ -1,0 +1,131 @@
+PODS:
+  - Braintree (5.6.3):
+    - Braintree/Card (= 5.6.3)
+    - Braintree/Core (= 5.6.3)
+    - Braintree/PayPal (= 5.6.3)
+  - Braintree/Card (5.6.3):
+    - Braintree/Core
+  - Braintree/Core (5.6.3)
+  - Braintree/PayPal (5.6.3):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.6.3)
+  - FittedSheets (2.4.2)
+  - InputMask (6.1.0)
+  - IQKeyboardManagerSwift (6.5.9)
+  - Kingfisher (7.1.2)
+  - lottie-ios (3.3.0)
+  - MaterialComponents/AnimationTiming (124.2.0)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/Buttons (124.2.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/Shadow
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Elevation (124.2.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (124.2.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (124.2.0)
+  - MaterialComponents/private/Color (124.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (124.2.0)
+  - MaterialComponents/Ripple (124.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Shadow (124.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/ShadowElevations (124.2.0)
+  - MaterialComponents/ShadowLayer (124.2.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (124.2.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (124.2.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Typography (124.2.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+    - MDFTextAccessibility
+  - MDFInternationalization (3.0.0)
+  - MDFTextAccessibility (2.0.1)
+  - Shopiroller (0.2.24):
+    - Braintree
+    - FittedSheets
+    - InputMask
+    - IQKeyboardManagerSwift
+    - Kingfisher (~> 7.1.2)
+    - lottie-ios
+    - MaterialComponents/Buttons
+    - Stripe
+    - SVProgressHUD
+  - Stripe (21.11.1):
+    - Stripe/Stripe3DS2 (= 21.11.1)
+    - StripeCore (= 21.11.1)
+    - StripeUICore (= 21.11.1)
+  - Stripe/Stripe3DS2 (21.11.1):
+    - StripeCore (= 21.11.1)
+    - StripeUICore (= 21.11.1)
+  - StripeCore (21.11.1)
+  - StripeUICore (21.11.1):
+    - StripeCore (= 21.11.1)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - Shopiroller (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Braintree
+    - FittedSheets
+    - InputMask
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - lottie-ios
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
+    - Stripe
+    - StripeCore
+    - StripeUICore
+    - SVProgressHUD
+
+EXTERNAL SOURCES:
+  Shopiroller:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Braintree: cef7388a3647515f1e0861e52200c2f3dad0f98f
+  FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
+  MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
+  Shopiroller: 116298db7e9f1f27807741ebe775f249195d607f
+  Stripe: f2bed8369154c35c8ec794704e042e05240d6f21
+  StripeCore: 36571be19dae15e90c8ad47e1af45712aea93f5a
+  StripeUICore: 1b32566d6a69581be786609a032872b0fb5a6823
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
+
+COCOAPODS: 1.11.3

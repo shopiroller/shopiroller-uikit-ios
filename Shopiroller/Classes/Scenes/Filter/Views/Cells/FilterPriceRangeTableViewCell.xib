@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FilterPriceRangeTableViewCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1R-RM-aES">
+                        <rect key="frame" x="35" y="23" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sFk-XG-f3S">
+                        <rect key="frame" x="35" y="33" width="250" height="54"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1H-Ti-9xM" userLabel="Min Price TextField">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="54"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="cmt-aH-Deh"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-O5-Hyt" userLabel="Max Price TextField">
+                                <rect key="frame" x="130" y="0.0" width="120" height="54"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="bRf-kq-P2P"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="sFk-XG-f3S" secondAttribute="trailing" constant="35" id="8yR-Qp-6TV"/>
+                    <constraint firstItem="f1R-RM-aES" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="UxP-9H-rhJ"/>
+                    <constraint firstAttribute="bottom" secondItem="sFk-XG-f3S" secondAttribute="bottom" constant="23" id="Xfc-ol-Z2k"/>
+                    <constraint firstItem="sFk-XG-f3S" firstAttribute="top" secondItem="f1R-RM-aES" secondAttribute="bottom" constant="10" id="mPT-cQ-M48"/>
+                    <constraint firstItem="sFk-XG-f3S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="oa1-PF-M9m"/>
+                    <constraint firstItem="f1R-RM-aES" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="qzf-Ui-Pnw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="maxPriceTextField" destination="kYO-O5-Hyt" id="3wr-Nm-G7l"/>
+                <outlet property="minPriceTextField" destination="t1H-Ti-9xM" id="8x2-Qq-fJ8"/>
+                <outlet property="priceRangeLabel" destination="f1R-RM-aES" id="hTQ-iV-N4P"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="100"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

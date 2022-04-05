@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductListViewController" customModule="Shopiroller" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyView" destination="o5m-dJ-oKq" id="euz-yA-AzC"/>
+                <outlet property="filterButton" destination="Z6n-Wq-zJ4" id="6GW-hG-w9M"/>
+                <outlet property="lineView" destination="LhM-Lt-ClT" id="aRn-KP-c61"/>
+                <outlet property="productsCollectionView" destination="qgN-SV-lwp" id="rjU-bk-rU5"/>
+                <outlet property="sortButton" destination="taT-go-KFi" id="TGh-Ac-Dox"/>
+                <outlet property="sortFilterContainerView" destination="4gC-Qf-1iB" id="Ide-Uv-t76"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gC-Qf-1iB" userLabel="SortFilter Container View">
+                    <rect key="frame" x="15" y="54" width="384" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taT-go-KFi" userLabel="Sort Button">
+                            <rect key="frame" x="0.0" y="0.0" width="186.5" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="sortIcon.png" imagePlacement="trailing" title="Button" imagePadding="10">
+                                <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="sortButtonTapped:" destination="-1" eventType="touchUpInside" id="0mC-29-hhC"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-Lt-ClT">
+                            <rect key="frame" x="191.5" y="12" width="1" height="20"/>
+                            <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="1TX-FY-724"/>
+                                <constraint firstAttribute="height" constant="20" id="ZAn-mq-9YH"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6n-Wq-zJ4" userLabel="Filter Button">
+                            <rect key="frame" x="197.5" y="0.0" width="186.5" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="filterIcon.png" imagePlacement="trailing" title="Button" imagePadding="10">
+                                <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="z6n-js-Xhh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="taT-go-KFi" firstAttribute="top" secondItem="4gC-Qf-1iB" secondAttribute="top" id="Auz-IP-mgv"/>
+                        <constraint firstAttribute="bottom" secondItem="taT-go-KFi" secondAttribute="bottom" id="IDD-Zv-M0h"/>
+                        <constraint firstItem="LhM-Lt-ClT" firstAttribute="leading" secondItem="taT-go-KFi" secondAttribute="trailing" constant="5" id="UiK-xG-oUd"/>
+                        <constraint firstItem="LhM-Lt-ClT" firstAttribute="centerY" secondItem="4gC-Qf-1iB" secondAttribute="centerY" id="bGy-bf-0uV"/>
+                        <constraint firstItem="Z6n-Wq-zJ4" firstAttribute="leading" secondItem="LhM-Lt-ClT" secondAttribute="trailing" constant="5" id="mjo-Xc-HdP"/>
+                        <constraint firstItem="taT-go-KFi" firstAttribute="leading" secondItem="4gC-Qf-1iB" secondAttribute="leading" id="qRY-BC-sbU"/>
+                        <constraint firstAttribute="bottom" secondItem="Z6n-Wq-zJ4" secondAttribute="bottom" id="rzs-i3-RqW"/>
+                        <constraint firstItem="Z6n-Wq-zJ4" firstAttribute="top" secondItem="4gC-Qf-1iB" secondAttribute="top" id="sfX-rM-t9X"/>
+                        <constraint firstItem="LhM-Lt-ClT" firstAttribute="centerX" secondItem="4gC-Qf-1iB" secondAttribute="centerX" id="ukV-Zf-txe"/>
+                        <constraint firstAttribute="height" constant="44" id="wQG-Yo-3i3"/>
+                        <constraint firstAttribute="trailing" secondItem="Z6n-Wq-zJ4" secondAttribute="trailing" id="zCu-bk-N1d"/>
+                    </constraints>
+                </view>
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qgN-SV-lwp">
+                    <rect key="frame" x="15" y="113" width="384" height="739"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ECW-Od-0Q4">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5m-dJ-oKq" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="213" width="414" height="480"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="qgN-SV-lwp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="0HO-W6-shR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4gC-Qf-1iB" secondAttribute="trailing" constant="15" id="5h1-OG-Ebj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qgN-SV-lwp" secondAttribute="bottom" constant="10" id="Ctg-AT-CwL"/>
+                <constraint firstItem="4gC-Qf-1iB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="JgX-Ew-nJD"/>
+                <constraint firstItem="4gC-Qf-1iB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="LOP-Zc-K7G"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RrE-TW-gZ0"/>
+                <constraint firstItem="qgN-SV-lwp" firstAttribute="top" secondItem="4gC-Qf-1iB" secondAttribute="bottom" constant="15" id="otq-Dz-jUh"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="qlL-ao-AB2"/>
+                <constraint firstAttribute="trailing" secondItem="qgN-SV-lwp" secondAttribute="trailing" constant="15" id="sVR-Qs-dRm"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="twO-o9-IUy"/>
+                <constraint firstItem="o5m-dJ-oKq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yi1-pB-8g4"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="82.366071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="filterIcon.png" width="24" height="24"/>
+        <image name="sortIcon.png" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

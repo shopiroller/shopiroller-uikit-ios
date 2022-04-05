@@ -1,0 +1,311 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+
+
+//MARK: - GENERAL USAGE
+"free-shipping-text" = "Free Shipping";
+"sold-out-text" = "SOLD OUT";
+"section-see-all-title" = "See All";
+"address-text" = "Address";
+"payment-text" = "Payment";
+"info-text" = "Info";
+"no-internet-connection-title" = "No Internet Connection";
+"no-internet-connection-description" = "Please Check Your Internet Connection";
+"general-ok-button-text" = "Ok";
+"error-general-title" = "Error";
+"keyboard-next-action-text" = "Next";
+"keyboard-done-action-text" = "Done";
+"search-bar-search-text" = "Search";
+"general-error-description" = "Sorry, something went wrong. Please try again later";
+
+//MARK: - Products Empty View
+"empty-view-title" = "No Products added.";
+"empty-view-description" = "There are currently no added items in the shop.";
+
+// MARK: - Categories
+"categories-section-title" = "Categories";
+
+//MARK: - Explore
+"explore-page-title" = "Polsto";
+"explore-title-text" = "Explore";
+"products-identifier" = "ProductsTitleView";
+
+//MARK: - Product Detail
+"quantity-title" = "Select Quantity";
+"description-title" = "Product Description";
+"return-exchange-terms-title" = "Return / Exchange Terms";
+"delivery-terms-title" = "Delivery Terms";
+"add-to-cart" = "Add To Cart";
+"shipping-price-text" = "Shipping Price ";
+"product-detail-description-title-text" = "Description";
+"product-detail-return-exchange-title-text" = "Return/Exchange Terms";
+"product-detail-delivery-title-text" = "Delivery Terms";
+"product-detail-back-to-product-button-text" = "Back to product";
+"product-detail-back-to-product-list-button-text" = "Back to product list";
+"product-detail-out-of-stock-title" = "Out of Stock";
+"product-detail-out-of-stock-description" = "You can’t order this product anymore and out of stock.";
+"product-detail-maximum-product-quantity-title" = "Maximum Product Limit";
+"product-detail-maximum-product-quantity-description" = "You reached maximum product buying limit. You can added max %@ products in shopping cart";
+"product-detail-product-not-found-title" = "Not Found";
+"product-detail-product-not-found-description" = "The page you are looking for does not exist or may have been removed.";
+
+//MARK: - Order List
+"order-list-page-title" = "My Orders";
+"empty-orders-title" = "No order yet";
+"empty-orders-description" = "You have no order yet. We can’t list any product for you.";
+"empty-orders-action-button" = "Start Shopping";
+
+//MARK: - Order Cell
+"order-no" = "Order No: ";
+"empty-orders-title" = "No order yet";
+
+// MARK: - Order Detail
+"order-detail-page-title" = "Order Detail";
+"WaitingPayment" = "Waiting Payment";
+"WaitingApproval" = "Waiting Approval";
+"Approved" = "Approved";
+"WaitingForSupplying" = "Waiting Supplying";
+"Preparing" = "Preparing";
+"Shipped" = "Shipped";
+"Delivered" = "Delivered";
+"CancelRequested" = "Cancellation Requested";
+"Canceled" = "Canceled";
+"Refunded" = "Refunded";
+"PaymentFailed" = "Payment Failed";
+
+//MARK: - Categories
+"category-page-title" = "Categories";
+"category-items-text" = "XX items";
+"sub-category-container-text" = "All XX Items ";
+
+//MARK: - Product List
+"sort-title-text" = "Sort By";
+"filter-title-text" = "Filter";
+
+// MARK: - Payment Method
+"CashOnDelivery" = "Cash on Delivery";
+"Transfer" = "Transfer";
+"CreditCard" = "Credit Card";
+"Paypal" = "PayPal";
+
+// MARK: - Order Details
+"order_details_order_info_title" = "Order Informatıon";
+"order_details_payment_info_title" = "Payment Information";
+"order_details_address_info_title" = "Address Information";
+"order_details_products_info_title" = "Products";
+"order_details_bank_receiver" = "Receiver Name: ";
+"order_details_bank_account" = "Account: ";
+"order_details_bank_iban" = "Iban: ";
+"order_details_address_delivery" = "Delivery Address";
+"order_details_address_billing" = "Billing Address";
+"order_details_quantity" = "Piece: ";
+"order_details_iban_text_copied" = "Copied The Clipboard.";
+"order-details-user-note" = "User Note: %@";
+
+// MARK: - Address List
+"address_list_page_title" = "My Addresses";
+"address_list_segmented_shipping" = "Delivery Address";
+"address_list_segmented_billing" = "Billing Address";
+"address_list_empty_shipping_title" = "No delivery address";
+"address_list_empty_shipping_description" = "Launch your first address and take an items you want.";
+"address_list_empty_billing_title" = "No billing address";
+"address_list_empty_billing_description" = "Launch your first address and take an items you want.";
+"address_list_delivery_address_delete_success" = "Delivery adress successfully deleted.";
+"address_list_billing_address_delete_success" = "Billing adress successfully deleted.";
+
+// MARK: - Address Cell
+"address_cell_confirm_title" = " Are you sure you want to delete the address?";
+"address_cell_cancel" = "Cancel";
+"address_cell_delete" = "Delete";
+
+// MARK: - Bottom Price View
+"bottom_price_view_subtotal" = "Subtotal: ";
+"bottom_price_view_shipping" = "Shipping: ";
+"bottom_price_view_total" = "Total";
+"bottom_price_view_free" = "Free";
+
+// MARK: - Shopping Cart
+"shopping_cart_title" = "Shopping Cart";
+"shopping_cart_empty_title" = "Your bag is empty";
+"shopping_cart_empty_description" = "You have no items in your shopping cart";
+"shopping_cart_empty_button_title" = "Start Shopping";
+"shopping_cart_item_count" = "%@ items";
+"shopping_cart_clear_cart_title" = "Are you sure to clear cart ?";
+"shopping_cart_clear_cart_button_text" = "Clear Cart";
+"shopping_cart_clear_cart_description" = "You are clearing all  products in shopping cart now.";
+"shopping_cart_clear_cart_not_now" = "No, not now";
+"shopping_cart_clear_cart_clear_cart" = "Yes, clear my cart";
+"shopping_cart_validate_title" = "Cart is updating";
+"shopping_cart_validate_description" = "Your basket will be updated for the reasons below.";
+"shopping_cart_validate_warning" = "%@ product’s stock changed, %@ products are out of stock.";
+"shopping_cart_validate_ready_checkout" = "Ready to Checkout";
+"shopping_cart_validate_proceed_checkout" = "Proceed to Checkout";
+
+//MARK: - Cart Message Key
+"NotEnoughStock" = "%@ product left";
+"OutOfStock" = "Out Of Stock";
+"OverPublishmentDate" = "Product Removed";
+"ProductNotFound" = "Removed basket";
+
+// MARK: - Shopping Cell
+"shopping_cell_cargo_warning" = "%@ special cargo fee apply.";
+"shopping_cell_maximum_product_message" = "You can purchase up to %@ items from this product.";
+
+//MARK: - Checkout Progress
+"delivery-information-page-title" = "Delivery Information";
+"payment-information-page-title" = "Payment";
+"info-information-page-title" = "Info";
+"confirm-order-button-text" = "Confirm Order";
+"checkout-address-next-step-title" = "Next Step: Payment Method";
+"checkout-payment-next-step-title" = "Next Step: Order Info";
+
+//MARK: - GeneralAddressView
+"delivery-address-title" = "Delivery Adress";
+"billing-address-title" = "Billing Address";
+"add-address-button-text" = "Add Address";
+"select-other-address-button-text" = "Select Other Address";
+
+
+//MARK: - AddressBottomView
+"address-bottom-view-title-text" = "Add New Address";
+"address-bottom-view-name-text" = "Name";
+"address-bottom-view-name-empty-text" = "Please enter your name";
+"address-bottom-view-name-invalid-text" = "Please enter Valid name";
+"address-bottom-view-surname-text" = "Surname";
+"address-bottom-view-surname-empty-text" = "Please enter your surname";
+"address-bottom-view-surname-invalid-text" = "Please enter valid surname";
+"address-bottom-view-phone-text" = "Phone";
+"address-bottom-view-phone-empty-text" = "Please enter your phone number";
+"address-bottom-view-phone-invalid-text" = "Please enter Valid phone number";
+"address-bottom-view-country-text" = "Country";
+"address-bottom-view-country-error-text" = "Please select country";
+"address-bottom-view-states-text" = "States";
+"address-bottom-view-states-error-text" = "Please select state";
+"address-bottom-view-district-text" = "Cities";
+"address-bottom-view-district-error-text" = "Please select city";
+"address-bottom-view-address-text" = "Address";
+"address-bottom-view-address-empty-text" = "Please enter your address";
+"address-bottom-view-address-invalid-text" = "Please enter valid address";
+"address-bottom-view-zipcode-text" = "Zip Code";
+"address-bottom-view-zipcode-empty-text" = "Please enter your zipcode";
+"address-bottom-view-zipcode-invalid-text" = "Please enter valid zipcode";
+"address-bottom-view-address-title-text" = "Address Title";
+"address-bottom-view-address-title-empty-text" = "Please enter your address title";
+"address-bottom-view-address-title-invalid-text" = "Please enter valid address title";
+"address-bottom-view-individual-checkbox-text" = "Individual";
+"address-bottom-view-corporate-checkbox-text" = "Corporate";
+"address-bottom-view-identitynumber-text" = "Identity Number";
+"address-bottom-view-identitynumber-error-text" = "Please enter your identity number";
+"address-bottom-view-identitynumber-invalid-text" = "Please enter valid identity number";
+"address-bottom-view-corporate-company-name-text" = "Company Name";
+"address-bottom-view-corporate-company-name-error-text" = "Please enter your company name";
+"address-bottom-view-corporate-tax-office-text" = "Tax Office";
+"address-bottom-view-corporate-tax-office-error-text" = "Please enter your tax office";
+"address-bottom-view-corporate-tax-number-text" = "Tax Number";
+"address-bottom-view-corporate-tax-number-error-text" = "Please enter your tax number";
+"address-bottom-view-save-button-text" = "Save";
+"address-bottom-view-address-saved-text" = "Address Saved";
+"address-bottom-view-save-as-billing-address-text" = "Save As Billing Address";
+
+//MARK: - ListPopUp
+"list-popup-select-address-title" = "Select Address";
+"list-popup-select-payment-title" = "Select Payment";
+"list-popup-shopping-cart-title" = "Cart is updating";
+"list-pop-up-credit-cart-text" = "Credit Cart";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Bank Transfer";
+"list-pop-up-pay-at-the-door-text" = "Pay At The Door";
+"list-pop-up-stripe-text" = "Stripe";
+
+//MARK: - CheckOutPayment
+"checkout-payment-select-payment-method-text" = "Select Payment Method";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Credit Cart";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Bank Transfer";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Pay At The Door";
+"checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
+"checkout-payment-credit-card-holder-placeholder" = "Card Holder Name";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "There is no payment method yet.";
+"checkout-payment-empty-view-description" = "The store owner has not added a payment method yet.";
+"checkout-table-view-account-iban-text"= "Iban: ";
+"checkout-table-view-account-department-text" = "Department: ";
+"checkout-table-view-account-number-text" = "Account: ";
+"checkout-table-view-iban-copied-message" = "Iban information was copied for the selected bank.";
+"checkout-payment-paypal-description" = "After clicking \"Complete Order\", you will be redirected to PayPal to complete your purchase securely.";
+"checkout-payment-stripe-description" = "After clicking \"Complete Order\", you will be redirected to Stripe to complete your purchase securely.";
+
+//MARK: - CheckOutInfo
+"checkout-info-shopping-card-view-title" = "Card";
+"checkout-info-payment-card-view-title" = "Payment";
+"checkout-info-billing-address-card-view-title" = "Billing Address";
+"checkout-info-delivery-addresss-card-view-title" = "Delivery Address";
+"checkout-info-order-note-text-view-placeholder" = "Leave a note for your order";
+"checkout-info-confirm-order-button-title" = "Confirm Order";
+"checkout-info-terms-and-conditions-text" = "I confirm that I have read, understand and agree to the <u><b>Sales Agreement Form</b></u>";
+"checkout-info-update-order-pop-up-title" = "Update your order!";
+"checkout-info-update-order-pop-up-description" = "You can't order on your cart. \n Some products changed , updated or not selling anymore";
+"checkout-info-update-order-pop-up-button-text" = "Update My Cart";
+"checkout-info-card-description-text" = "%@ items %@ %@";
+"checkout-info-bank-transfer-description-text" = "Bank Transfer %@ %@";
+"checkout-info-credit-card-description-text" = "Credit Card %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "You have to agree the terms.";
+"checkout-info-agreement-is-not-checked-description" = "You have to agree the Terms of Conditions and Privacy Policy.";
+"checkout-info-agreement-is-not-checked-title" = "Agree Now";
+
+//MARK: - SelectionPopUp
+"selection-pop-up-country-text" = "Select Country";
+"selection-pop-up-states-text" = "Select State";
+"selection-pop-up-district-text" = "Select District";
+"selection-pop-up-search-placeholder" = "Search";
+"selection-pop-up-cancel-button-text" = "Cancel";
+
+//MARK: - Credit Card Validation
+"credit-card-number-error-text" = "Please check the credit card number";
+"credit-card-holder-error-text" = "Please check the credit card holder";
+"credit-card-expire-date-error-text" = "Please check the expire date";
+"credit-card-cvv-error-text" = "Please check the cvv";
+
+//MARK: - CheckOut Result Page
+"checkout-result-info-page-title" = "Order Info";
+"checkout-result-info-success-title" = "It's ordered!";
+"checkout-result-info-success-description" = "Thanks for your order , we hope you enjoyed shopping with us";
+"checkout-result-info-success-order-number" = "Order Number %@";
+"checkout-result-info-fail-title" = "Payment Failed";
+"checkout-result-info-fail-description" = "Sorry' payment failed. You can change the payment method and try again.";
+"checkout-result-info-fail-message" = "Error Message %@";
+"checkout-result-info-fail-detail-description" = "Your payment method was declined.";
+"checkout-result-info-success-check-order-button-text" = "Check Order";
+"checkout-result-info-success-continue-shopping-button-text" = "Continue Shopping";
+"checkout-result-info-fail-update-payment-method-button-text" = "Update Payment Method";
+"checkout-result-info-fail-detail-description-will-replace" = "status=";
+"checkout-result-info-fail-detail-description-to-replace" = "Error Code ";
+
+//MARK: - Filter
+
+"filter_title" = "Filter";
+"filter_confirm" = "List Products";
+"filter_remove" = "Clean";
+"filter_category" = "Category";
+"filter_brand" = "Brand";
+"filter_price_range" = "Price Range";
+"filter_only_stock" = "Only Stock";
+"filter_discounted_products" = "Discounted Products";
+"filter_free_shipping" = "Free Shipping";
+"filter_choice_apply" = "Apply";
+"filter_price_range_lowest" = "Lowest Price";
+"filter_price_range_highest" = "Highest Price";
+
+//MARK: = Sort
+"sort_dialog_title" = "Order";
+"sort_dialog_most_shipped" = "Best Sellers";
+"sort_dialog_price_increasing" = "Price Increasing";
+"sort_dialog_price_decreasing" = "Price Decreasing";
+"sort_dialog_most_recent_added" = "Most Recent Added";

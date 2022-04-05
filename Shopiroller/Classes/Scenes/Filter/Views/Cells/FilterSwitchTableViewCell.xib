@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FilterSwitchTableViewCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFL-bv-Ad5">
+                        <rect key="frame" x="35" y="23" width="191" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="sasda" translatesAutoresizingMaskIntoConstraints="NO" id="JbD-F0-rGg">
+                        <rect key="frame" x="236" y="16.5" width="51" height="31"/>
+                        <color key="onTintColor" systemColor="labelColor"/>
+                        <connections>
+                            <action selector="cellSwitchChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="3fs-EB-LPV"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="JbD-F0-rGg" secondAttribute="trailing" constant="35" id="J0l-KP-HI7"/>
+                    <constraint firstItem="JbD-F0-rGg" firstAttribute="leading" secondItem="TFL-bv-Ad5" secondAttribute="trailing" constant="10" id="O8S-fS-aOo"/>
+                    <constraint firstItem="JbD-F0-rGg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="X1Q-Fw-J9r"/>
+                    <constraint firstItem="TFL-bv-Ad5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="Z8K-Xu-pwZ"/>
+                    <constraint firstItem="TFL-bv-Ad5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="cI8-xD-jqN"/>
+                    <constraint firstAttribute="bottom" secondItem="TFL-bv-Ad5" secondAttribute="bottom" constant="23" id="uuC-sc-Hxh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellSwitch" destination="JbD-F0-rGg" id="Lrm-sr-rTj"/>
+                <outlet property="titleLabel" destination="TFL-bv-Ad5" id="fJz-EC-SJJ"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="100"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

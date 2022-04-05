@@ -5,42 +5,89 @@
 //  Created by ealtaca on 09/29/2021.
 //  Copyright (c) 2021 ealtaca. All rights reserved.
 //
-
 import UIKit
+import Shopiroller
+import IQKeyboardManagerSwift
+import Braintree
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
+    
+    func userLoginNeeded() {
+        
+    }
+    
     var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    
+    
+    private let connectingUrl : ConnectableUrls = .stage
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithOpaqueBackground()
+        coloredAppearance.backgroundColor = .red
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+                       
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
+        var theme = ShopirollerTheme()
+        theme.navigationTitleTintColor = .white
+        theme.navigationBarTintColor = .red
+        theme.navigationIconsTintColor = .white
+        
+        
+        let ecommerce = ShopirollerCredentials(aliasKey: informations(type: connectingUrl).aliasKey, apiKey: informations(type: connectingUrl).shopirollerApiKey, baseUrl: informations(type: connectingUrl).shopirollerBaseUrl)
+        let appUser = ShopirollerAppUserCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: informations(type: connectingUrl).appUserApiKey, baseUrl: informations(type: connectingUrl).appUserBaseUrl)
+        
+        
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
+        
+        ShopirollerApp.shared.setUserId("61cc73512c630dd8754409d3")
+        ShopirollerApp.shared.setUserEmail("gorkem@mobiroller.com")
+        ShopirollerApp.shared.setFallbackLanguage("tr")
+        ShopirollerApp.shared.setDevelopmentMode(false)
+        ShopirollerApp.shared.delegate = self
+        let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
+        BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
+                
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.shopiroller.demo.payments") == .orderedSame {
+            return BTAppContextSwitcher.handleOpenURL(url)
+        }
+        return false
+    }
+    
+    public func applicationWillTerminate(_ application: UIApplication) {
+        SRAppConstants.ShoppingCart.badgeCount = "0"
+    }
+    
+    private func informations(type: ConnectableUrls) -> (shopirollerBaseUrl: String , appUserBaseUrl: String , shopirollerApiKey: String, appUserApiKey: String, aliasKey: String) {
+        switch type {
+        case .prod:
+            return("api.shopiroller.com","mobiroller.api.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
+        case .stage:
+            return("stg.api.shopiroller.com","api.stg.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
+        case .dev:
+            return("dev.ecommerce.applyze.com","dev.applyze.com","ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY=","/QcOg8MuI4TZNT/eAIpLbicVqpGxkxz1YeqAilOOj4s=","ETSiz+R2jbsYnrBJO9Kz+Ils3UY=")
+        }
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    enum ConnectableUrls {
+        case prod
+        case stage
+        case dev
+        
     }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 

@@ -8,35 +8,32 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.1.0'
+  s.version          = '0.2.25'
   s.summary          = 'A short description of Shopiroller.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/ealtaca/Shopiroller'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
-  s.source           = { :git => 'https://github.com/ealtaca/Shopiroller.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/ealtaca/shopiroller_ios.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '9.0'
-
-  s.source_files = 'Shopiroller/Classes/**/*'
+  s.ios.deployment_target = '13.0'
   
-  # s.resource_bundles = {
-  #   'Shopiroller' => ['Shopiroller/Assets/*.png']
-  # }
+  s.platform     = :ios, '13.0'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}"
+  
+  s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Fonts/*.{ttf}' , 'Shopiroller/Animations/*.{json}'
+
+  s.dependency 'SVProgressHUD'
+  s.dependency 'MaterialComponents/Buttons'
+  s.dependency 'FittedSheets'
+  s.dependency 'Kingfisher' , '~> 7.1.2'
+  s.dependency 'InputMask'
+  s.dependency 'lottie-ios'
+  s.dependency 'IQKeyboardManagerSwift'
+  s.dependency 'Stripe'
+  s.dependency 'Braintree'
 end

@@ -1,0 +1,319 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+
+
+//MARK: - GENERAL USAGE
+"free-shipping-text" = "Ücretsiz Kargo";
+"sold-out-text" = "TÜKENDİ";
+"section-see-all-title" = "Hepsini Gör";
+"address-text" = "Kargo";
+"payment-text" = "Ödeme";
+"info-text" = "Sipariş";
+"no-internet-connection-title" = "İnternet bağlantısı yok";
+"no-internet-connection-description" = "Lütfen internet bağlantınızı kontrol edin";
+"general-ok-button-text" = "Tamam";
+"error-general-title" = "Hata";
+"keyboard-next-action-text" = "Sonraki";
+"keyboard-done-action-text" = "Bitti";
+"search-bar-search-text" = "Ara";
+"general-error-description" = "Üzgünüz, bir hata oluştu. Lütfen daha sonra tekrar deneyin";
+
+//MARK: - Products Empty View
+"empty-view-title" = "Ürün bulunamadı.";
+"empty-view-description" = "Henüz ürün eklenmemiş.";
+
+// MARK: - Categories
+"categories-section-title" = "Kategoriler";
+
+//MARK: - Explore
+"explore-page-title" = "Polsto";
+"explore-title-text" = "Keşfet";
+"products-identifier" = "ProductsTitleView";
+
+//MARK: - Product Detail
+"quantity-title" = "Adet";
+"description-title" = "Ürün Açıklaması";
+"return-exchange-terms-title" = "İade / Değişim Koşulları";
+"delivery-terms-title" = "Teslimat Koşulları";
+"add-to-cart" = "Sepete Ekle";
+"shipping-price-text" = "Kargo Ücreti ";
+"product-detail-description-title-text" = "Açıklama";
+"product-detail-return-exchange-title-text" = "İade & değişim koşulları";
+"product-detail-delivery-title-text" = "Teslimat koşulları";
+"product-detail-back-to-product-button-text" = "Ürüne Dön";
+"product-detail-back-to-product-list-button-text" = "Ürünlere dön";
+"product-detail-out-of-stock-title" = "Ürün Stoklarda Bulunmamaktadır.";
+"product-detail-out-of-stock-description" = "Bu ürün stoklarda mevcut olmadığı için sepete eklenemez.";
+"product-detail-maximum-product-quantity-title" = "Maksimum ürün sınırı";
+"product-detail-maximum-product-quantity-description" = "Maksimum ürün satın alma sınırına ulaştınız. Sepetinize maksimum %@ ürün ekleyebilirsiniz";
+"product-detail-product-not-found-title" = "Bulunamadı";
+"product-detail-product-not-found-description" = "Aradığınız sayfa mevcut değil veya kaldırılmış olabilir.";
+
+//MARK: - Order List
+"order-list-page-title" = "Siparişlerim";
+"empty-orders-title" = "Henüz sipariş yok";
+"empty-orders-description" = "Henüz siparişiniz Yok. Sizin için herhangi bir ürün listeleyemiyoruz.";
+"empty-orders-action-button" = "Alışverişe Başla";
+
+//MARK: - Order Cell
+"order-no" = "Sipariş numarası ";
+"empty-orders-title" = "Henüz sipariş yok";
+
+// MARK: - Order Detail
+"order-detail-page-title" = "Ürün detayı";
+"WaitingPayment" = "Ödeme Bekleniyor";
+"WaitingApproval" = "Onay Bekliyor";
+"Approved" = "Onaylandı";
+"WaitingForSupplying" = "Tedarik Bekleniyor";
+"Preparing" = "Hazırlanıyor";
+"Shipped" = "Kargolandı";
+"Delivered" = "Teslim Edildi";
+"CancelRequested" = "İptal Edildi";
+"Canceled" = "Vazgeçıldı";
+"Refunded" = "Geri Ödeme Yapıldı";
+"PaymentFailed" = "Ödeme Başarısız";
+
+//MARK: - Categories
+"category-page-title" = "Kategoriler";
+"category-items-text" = "XX ürünler";
+"sub-category-container-text" = "Tüm XX Ürünleri";
+
+//MARK: - Product List
+"sort-title-text" = "Sırala";
+"filter-title-text" = "Filtrele";
+
+// MARK: - Payment Method
+"CashOnDelivery" = "Kapıda Ödeme";
+"Transfer" = "Banka Hesabına Transfer";
+"CreditCard" = "Kredi Kartı İle Ödeme";
+"Paypal" = "PayPal ile Ödeme";
+
+// MARK: - Order Details
+"order_details_order_info_title" = "Sipariş Bilgisi";
+"order_details_payment_info_title" = "Ödeme Bilgisi";
+"order_details_address_info_title" = "Adres Bilgisi";
+"order_details_products_info_title" = "Ürünler";
+"order_details_bank_receiver" = "Alıcı İsmi: ";
+"order_details_bank_account" = "Hesap Numarası: ";
+"order_details_bank_iban" = "Iban Numarası: ";
+"order_details_address_delivery" = "Teslimat Adresi";
+"order_details_address_billing" = "Fatura Adresi";
+"order_details_quantity" = "Adet: ";
+"order_details_iban_text_copied" = "Panoya Kopyalandı.";
+"order-details-user-note" = "Kullanıcı Notu: %@";
+
+// MARK: - Address List
+"address_list_page_title" = "Adreslerim";
+"address_list_segmented_shipping" = "Teslimat Adresi";
+"address_list_segmented_billing" = "Fatura Adresi";
+"address_list_empty_shipping_title" = "Teslimat adresi bulunamadı";
+"address_list_empty_shipping_description" = "Kayıtlı teslimat adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
+"address_list_empty_billing_title" = "Fatura adresi bulunamadı";
+"address_list_empty_billing_description" = "Kayıtlı fatura adresi bulunamadı. Lütfen yeni bir adres ekleyin.";
+"address_list_delivery_address_delete_success" = "Teslimat adresi başarıyla silinmiştir.";
+"address_list_billing_address_delete_success" = "Fatura adresi başarıyla silinmiştir.";
+
+
+// MARK: - Address Cell
+"address_cell_confirm_title" = " adresini silmek istediğinize emin misiniz?";
+"address_cell_cancel" = "Vazgeç";
+"address_cell_delete" = "Sil";
+
+// MARK: - Bottom Price View
+"bottom_price_view_subtotal" = "Ürün Tutarı: ";
+"bottom_price_view_shipping" = "Kargo Tutarı: ";
+"bottom_price_view_total" = "Toplam";
+"bottom_price_view_free" = "Ücretsiz Kargo";
+
+// MARK: - Shopping Cart
+"shopping_cart_title" = "Sepetim";
+"shopping_cart_empty_title" = "Sepetiniz Boş";
+"shopping_cart_empty_description" = "Sepetinizde ürün bulunmuyor..";
+"shopping_cart_empty_button_title" = "Alışverişe Başla";
+"shopping_cart_item_count" = "%@ ürün";
+"shopping_cart_clear_cart_title" = "Sepetinizi temizlemek istediğinize emin misiniz ?";
+"shopping_cart_clear_cart_button_text" = "Sepeti Temizle";
+"shopping_cart_clear_cart_description" = "Sepetinizdeki bütün ürünler temizlenecek.";
+"shopping_cart_clear_cart_not_now" = "Hayır, Şimdi Değil";
+"shopping_cart_clear_cart_clear_cart" = "Evet, Sepetimi Temizle";
+"shopping_cart_validate_title" = "Sepet Güncelleniyor";
+"shopping_cart_validate_description" = "Sepetiniz aşağıdaki nedenlerle güncellenecektir..";
+"shopping_cart_validate_warning" = "%@ ürünün stoğu değişti, %@ ürünün stoğu kalmadı";
+"shopping_cart_validate_ready_checkout" = "Hazır";
+"shopping_cart_validate_proceed_checkout" = "Sepeti Onayla";
+
+
+//MARK: - Cart Message Key
+"NotEnoughStock" = "%@ ürün kaldı";
+"OutOfStock" = "Stok Kalmadı";
+"OverPublishmentDate" = "Ürün Silindi";
+"ProductNotFound" = "Sepet Temizlendi";
+
+// MARK: - Shopping Cell
+"shopping_cell_cargo_warning" = "%@ özel kargo ücreti uygulanır.";
+"shopping_cell_maximum_product_message" = "
+Bu üründen en fazla %@ adet satın alabilirsiniz.";
+
+//MARK: - Checkout Progress
+"delivery-information-page-title" = "Kargo Bilgisi";
+"payment-information-page-title" = "Ödeme";
+"info-information-page-title" = "Bilgilendirme";
+"confirm-order-button-text" = "Siparişi Onayla";
+"checkout-address-next-step-title" = "Sonraki Adım: Ödeme Yöntemi";
+"checkout-payment-next-step-title" = "Sonraki Adım: Sipariş Bilgisi";
+
+//MARK: - GeneralAddressView
+"delivery-address-title" = "Teslimat Adresi";
+"billing-address-title" = "Fatura Adresi";
+"add-address-button-text" = "Yeni Adres Ekle";
+"select-other-address-button-text" = "Diğer Adreslerim";
+
+//MARK: - AddressBottomView
+"address-bottom-view-title-text" = "Ekle";
+"address-bottom-view-name-text" = "İsim";
+"address-bottom-view-name-empty-text" = "Lütfen isminizi giriniz";
+"address-bottom-view-name-invalid-text" = "Lütfen geçerli bir isim giriniz";
+"address-bottom-view-surname-text" = "Soyisim";
+"address-bottom-view-surname-empty-text" = "Lütfen soyisminizi giriniz";
+"address-bottom-view-surname-invalid-text" = "Lütfen Geçerli Bir Soyisim Giriniz";
+"address-bottom-view-phone-text" = "Telefon";
+"address-bottom-view-phone-empty-text" = "Lütfen telefon numaranızı giriniz";
+"address-bottom-view-phone-invalid-text" = "Lütfen geçerli bir telefon numarası giriniz";
+"address-bottom-view-country-text" = "Ülke";
+"address-bottom-view-country-error-text" = "Lütfen ülke seçimi yapınız";
+"address-bottom-view-states-text" = "Şehir";
+"address-bottom-view-states-error-text" = "Lütfen şehir seçimi yapınız";
+"address-bottom-view-district-text" = "İlçe";
+"address-bottom-view-district-error-text" = "Lütfen ilçe seçimi yapınız";
+"address-bottom-view-address-text" = "Adres";
+"address-bottom-view-address-empty-text" = "Lütfen adresinizi giriniz";
+"address-bottom-view-address-invalid-text" = "Lütfen geçerli bir adres giriniz";
+"address-bottom-view-zipcode-text" = "Posta Kodu";
+"address-bottom-view-zipcode-empty-text" = "Lütfen posta kodunu giriniz";
+"address-bottom-view-zipcode-invalid-text" = "Lütfen geçerli bir posta kodu giriniz";
+"address-bottom-view-address-title-text" = "Adres Başlığı";
+"address-bottom-view-address-title-empty-text" = "Lütfen Adres Başlığını giriniz";
+"address-bottom-view-address-title-invalid-text" = "Lütfen Geçerli Bir Adres Başlığı giriniz";
+"address-bottom-view-individual-checkbox-text" = "Bireysel";
+"address-bottom-view-corporate-checkbox-text" = "Kurumsal";
+"address-bottom-view-identitynumber-text" = "Kimlik Numarası";
+"address-bottom-view-identitynumber-error-text" = "Lütfen kimlik numaranızı giriniz";
+"address-bottom-view-identitynumber-invalid-text" = "Lütfen geçerli bir kimlik numarası giriniz";
+"address-bottom-view-corporate-company-name-text" = "Şirket Adı";
+"address-bottom-view-corporate-company-name-error-text" = "Lütfen şirket adınızı giriniz";
+"address-bottom-view-corporate-tax-office-text" = "Vergi Dairesi";
+"address-bottom-view-corporate-tax-office-error-text" = "Lütfen vergi dairenizi yazınız";
+"address-bottom-view-corporate-tax-number-text" = "Vergi Numarası";
+"address-bottom-view-corporate-tax-number-error-text" = "Lütfen vergi numaranızı giriniz";
+"address-bottom-view-save-button-text" = "Kaydet";
+"address-bottom-view-address-saved-text" = "Adres başarıyla kaydedildi";
+"address-bottom-view-save-as-billing-address-text" = "Fatura Adresi Olarak Kaydet";
+
+//MARK: - ListPopUp
+
+"list-popup-select-address-title" = "Adres Seç";
+"list-popup-select-payment-title" = "Ödeme Yöntemi Seç";
+"list-popup-shopping-cart-title" = "Sepet Güncelleniyor";
+"list-pop-up-credit-cart-text" = "Kredi Kartı";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Banka Hesabına Transfer";
+"list-pop-up-pay-at-the-door-text" = "Kapıda Ödeme";
+"list-pop-up-stripe-text" = "Stripe";
+
+
+//MARK: - CheckOutPayment
+
+"checkout-payment-select-payment-method-text" = "Ödeme Yöntemi Seçin";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Kredi Kartı";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Banka Transferi";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "Kapıda Ödeme";
+"checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
+"checkout-payment-credit-card-holder-placeholder" = "Kart Sahibinin Adı";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "Henüz bir ödeme yöntemi eklenmemiş.";
+"checkout-payment-empty-view-description" = "Mağaza sahibi henüz bir ödeme yöntemi eklememiş.";
+"checkout-table-view-account-iban-text"= "Iban: ";
+"checkout-table-view-account-department-text" = "Şube: ";
+"checkout-table-view-account-number-text" = "Hesap: ";
+"checkout-table-view-iban-copied-message" = "Seçili banka hesabına ait iban bilgisi kopyalandı.";
+"checkout-payment-paypal-description" = " \"Siparişi Tamamla\"  yı tıkladıktan sonra, satın alma işleminizi güvenli bir şekilde tamamlamak için PayPal'a yönlendirileceksiniz.";
+"checkout-payment-stripe-description" = " \"Siparişi Tamamla\"  yı tıkladıktan sonra, satın alma işleminizi güvenli bir şekilde tamamlamak için Stripe'a yönlendirileceksiniz.";
+
+//MARK: - CheckOutInfo
+
+"checkout-info-shopping-card-view-title" = "Sepet";
+"checkout-info-payment-card-view-title" = "Ödeme";
+"checkout-info-billing-address-card-view-title" = "Fatura Adresi";
+"checkout-info-delivery-addresss-card-view-title" = "Teslimat Adresi";
+"checkout-info-order-note-text-view-placeholder" = "Siparişiniz için not bırakın";
+"checkout-info-confirm-order-button-title" = "Ödemeyi Onayla";
+"checkout-info-terms-and-conditions-text" = "<u><b>Satış Sözleşmesi Formunu</b></u> okuduğumu, anladığımı ve kabul ettiğimi onaylıyorum.";
+"checkout-info-update-order-pop-up-title" = "Siparisinizi guncelleyin";
+"checkout-info-update-order-pop-up-description" = "Sepetinizdeki ürünleri sipariş edemezsiniz. %@ Bazı ürünler değişti veya stokta kalmadı";
+"checkout-info-update-order-pop-up-button-text" = "Sepetimi güncelle";
+"checkout-info-card-description-text" = "%@ ürün %@ %@ ";
+"checkout-info-bank-transfer-description-text" = "Banka Hesabına Transfer %@ %@";
+"checkout-info-credit-card-description-text" = "Kredi Kartı %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "Şartları kabul etmelisiniz.";
+"checkout-info-agreement-is-not-checked-description" = "Koşul şartlarını ve gizlilik politikasını kabul etmeniz gerekir.";
+"checkout-info-agreement-is-not-checked-title" = "Şimdi kabul et";
+
+//MARK: - SelectionPopUp
+
+"selection-pop-up-country-text" = "Ülke Seçin";
+"selection-pop-up-states-text" = "Şehir Seçin";
+"selection-pop-up-district-text" = "İlçe Seçin";
+"selection-pop-up-search-placeholder" = "Arama";
+"selection-pop-up-cancel-button-text" = "Vazgeç";
+
+//MARK: - Credit Card Validation
+
+"credit-card-number-error-text" = "Lütfen kart numaranızı kontrol edin";
+"credit-card-holder-error-text" = "Lütfen isim ve soyisim alanlarını kontrol edin.";
+"credit-card-expire-date-error-text" = "Lütfen son kullanma tarihini kontrol edin.";
+"credit-card-cvv-error-text" = "Lütfen cvv alanını kontrol edin.";
+
+//MARK: - CheckOut Order Info
+
+"checkout-result-info-page-title" = "Sipariş Bilgileri";
+"checkout-result-info-success-title" = "Sipariş verildi!";
+"checkout-result-info-success-description" = "Siparişiniz için teşekkür ederiz, umarız bizimle alışveriş yapmaktan keyif almışsınızdır";
+"checkout-result-info-success-order-number" = "Order Number %@";
+"checkout-result-info-fail-title" = "Ödeme Başarısız";
+"checkout-result-info-fail-description" = "Üzgünüz' ödeme başarısız oldu. Ödeme yöntemini değiştirip tekrar deneyebilirsiniz.";
+"checkout-result-info-fail-message" = "Hata Mesajı %@";
+"checkout-result-info-success-check-order-button-text" = "Siparişi Kontrol Et";
+"checkout-result-info-success-continue-shopping-button-text" = "Alışverişe Devam Et";
+"checkout-result-info-fail-update-payment-method-button-text" = "Ödeme Yöntemini Güncelle";
+"checkout-result-info-fail-detail-description-will-replace" = "status=";
+"checkout-result-info-fail-detail-description-to-replace" = "Hata Kodu  ";
+
+//MARK: - Filter
+
+"filter_title" = "Filtrele";
+"filter_confirm" = "Ürünleri Listele";
+"filter_remove" = "Temizle";
+"filter_category" = "Kategori";
+"filter_brand" = "Marka";
+"filter_price_range" = "Fiyat Aralığı";
+"filter_only_stock" = "Sadece Stoktakiler";
+"filter_discounted_products" = "İndirimli Ürünler";
+"filter_free_shipping" = "Ücretsiz Kargo";
+"filter_choice_apply" = "Uygula";
+"filter_price_range_lowest" = "En Düşük";
+"filter_price_range_highest" = "En Yüksek";
+
+//MARK: = Sort
+"sort_dialog_title" = "Sırala";
+"sort_dialog_most_shipped" = "En Çok Satanlar";
+"sort_dialog_price_increasing" = "Fiyat Artan";
+"sort_dialog_price_decreasing" = "Fiyat Azalan";
+"sort_dialog_most_recent_added" = "En Yeniler";

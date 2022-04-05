@@ -1,0 +1,309 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+
+
+//MARK: - GENERAL USAGE
+"free-shipping-text" = "Kostenloser Versand";
+"sold-out-text" = "AUSVERKAUFT";
+"section-see-all-title" = "Alle anzeigen";
+"address-text" = "Adresse";
+"payment-text" = "Zahlung";
+"info-text" = "Info";
+"no-internet-connection-title" = "Keine Internetverbindung";
+"no-internet-connection-description" = "Bitte überprüfen Sie Ihre Internetverbindung";
+"general-ok-button-text" = "Ausgemacht";
+"error-general-title" = "Fehler";
+"keyboard-next-action-text" = "Weiter";
+"keyboard-done-action-text" = "Fertig";
+"search-bar-search-text" = "Suchen";
+"general-error-description" = "Leider ist etwas schief gelaufen. Bitte versuchen Sie es später erneut";
+
+//MARK: - Produkte leere Ansicht
+"empty-view-title" = "Keine Produkte hinzugefügt.";
+"empty-view-description" = "Derzeit sind keine Artikel im Shop hinzugefügt.";
+
+// MARK: - Kategorien
+"categories-section-title" = "Kategorien";
+
+//MARK: - Erkunden
+"explore-page-title" = "Polsto";
+"explore-title-text" = "Erkunden";
+"products-identifier" = "ProductsTitleView";
+
+//MARK: - Produktdetail
+"quantity-title" = "Menge auswählen";
+"description-title" = "Produktbeschreibung";
+"return-exchange-terms-title" = "Rückgabe-/Umtauschbedingungen";
+"delivery-terms-title" = "Lieferbedingungen";
+"add-to-cart" = "In den Einkaufswagen";
+"shipping-price-text" = "Versandpreis";
+"product-detail-description-title-text" = "Beschreibung";
+"product-detail-return-exchange-title-text" = "Rückgabe-/Umtauschbedingungen";
+"product-detail-delivery-title-text" = "Lieferbedingungen";
+"product-detail-back-to-product-button-text" = "Zurück zum Produkt";
+"product-detail-back-to-product-list-button-text" = "Zurück zur Produktliste";
+"product-detail-out-of-stock-title" = "Nicht auf Lager";
+"product-detail-out-of-stock-description" = "Sie können dieses Produkt nicht mehr bestellen und es ist nicht auf Lager.";
+"product-detail-maximum-product-quantity-title" = "Maximales Produktlimit";
+"product-detail-maximum-product-quantity-description" = "Sie haben das maximale Kauflimit für Produkte erreicht. Sie können maximal %@ Produkte in den Einkaufswagen legen";
+"product-detail-product-not-found-title" = "Nicht gefunden";
+"product-detail-product-not-found-description" = "Die gesuchte Seite existiert nicht oder wurde möglicherweise entfernt.";
+
+//MARK: - Auftragsliste
+"order-list-page-title" = "Meine Bestellungen";
+"empty-orders-title" = "Noch keine Bestellung";
+"empty-orders-description" = "Sie haben noch keine Bestellung. Wir können kein Produkt für Sie auflisten.";
+"empty-orders-action-button" = "Einkauf beginnen";
+
+//MARK: - Auftragszelle
+"order-no" = "Bestellnummer: ";
+"empty-orders-title" = "Noch keine Bestellung";
+
+// MARK: - Bestelldetail
+"order-detail-page-title" = "Bestelldetails";
+"WaitingPayment" = "Warten auf Zahlung";
+"WaitingApproval" = "Warten auf Genehmigung";
+"Approved" = "Genehmigt";
+"WaitingForSupplying" = "Warten auf Lieferung";
+"Preparing" = "Vorbereitung";
+"Shipped" = "Versendet";
+"Delivered" = "Geliefert";
+"CancelRequested" = "Stornierung angefordert";
+"Canceled" = "Storniert";
+"Refunded" = "Erstattet";
+"PaymentFailed" = "Zahlung fehlgeschlagen";
+
+//MARK: - Kategorien
+"category-page-title" = "Kategorien";
+"category-items-text" = "XX Artikel";
+"sub-category-container-text" = "Alle XX Artikel";
+
+//MARK: - Produktliste
+"sort-title-text" = "Sortieren nach";
+"filter-title-text" = "Filter";
+
+// MARK: - Zahlungsmethode
+"CashOnDelivery" = "Nachnahme";
+"Transfer" = "Überweisung";
+"CreditCard" = "Kreditkarte";
+"PayPal" = "PayPal";
+
+// MARK: - Bestelldetails
+"order_details_order_info_title" = "Bestellinformationen";
+"order_details_payment_info_title" = "Zahlungsinformationen";
+"order_details_address_info_title" = "Adressinformationen";
+"order_details_products_info_title" = "Produkte";
+"order_details_bank_receiver" = "Name des Empfängers: ";
+"order_details_bank_account" = "Konto: ";
+"order_details_bank_iban" = "IBAN: ";
+"order_details_address_delivery" = "Lieferadresse";
+"order_details_address_billing" = "Rechnungsadresse";
+"order_details_quantity" = "Stück: ";
+"order_details_iban_text_copied" = "Zwischenablage kopiert.";
+"order-details-user-note" = "Benutzerhinweis: %@";
+
+// MARK: - Adressliste
+"address_list_page_title" = "Meine Adressen";
+"address_list_segmented_shipping" = "Teslimat Adresse";
+"address_list_segmented_billing" = "Fatura Adresse";
+"address_list_empty_shipping_title" = "Keine Lieferadresse";
+"address_list_empty_shipping_description" = "Starten Sie Ihre erste Adresse und nehmen Sie die gewünschten Artikel.";
+"address_list_empty_billing_title" = "Keine Rechnungsadresse";
+"address_list_empty_billing_description" = "Starten Sie Ihre erste Adresse und nehmen Sie die gewünschten Artikel.";
+"address_list_delivery_address_delete_success" = "Lieferadresse erfolgreich gelöscht.";
+"address_list_billing_address_delete_success" = "Rechnungsadresse erfolgreich gelöscht.";
+
+// MARK: - Adresszelle
+"address_cell_confirm_title" = "Sind Sie sicher, dass Sie die Adresse löschen möchten?";
+"address_cell_cancel" = "Abbrechen";
+"address_cell_delete" = "Löschen";
+
+// MARK: - Untere Preisansicht
+"bottom_price_view_subtotal" = "Zwischensumme: ";
+"bottom_price_view_shipping" = "Versand: ";
+"bottom_price_view_total" = "Gesamt";
+"bottom_price_view_free" = "Kostenlos";
+
+// MARK: - Einkaufswagen
+"shopping_cart_title" = "Einkaufswagen";
+"shopping_cart_empty_title" = "Ihre Tasche ist leer";
+"shopping_cart_empty_description" = "Sie haben keine Artikel in Ihrem Einkaufswagen";
+"shopping_cart_empty_button_title" = "Einkauf beginnen";
+"shopping_cart_item_count" = "%@ Artikel";
+"shopping_cart_clear_cart_title" = "Möchten Sie den Einkaufswagen wirklich leeren?";
+"shopping_cart_clear_cart_button_text" = "Warenkorb löschen";
+"shopping_cart_clear_cart_description" = "Sie löschen jetzt alle Produkte im Einkaufswagen.";
+"shopping_cart_clear_cart_not_now" = "Nein, nicht jetzt";
+"shopping_cart_clear_cart_clear_cart" = "Ja, Warenkorb löschen";
+"shopping_cart_validate_title" = "Warenkorb wird aktualisiert";
+"shopping_cart_validate_description" = "Ihr Warenkorb wird aus den folgenden Gründen aktualisiert.";
+"shopping_cart_validate_warning" = "Der Lagerbestand von %@ Produkt wurde geändert, %@ Produkte sind nicht auf Lager.";
+"shopping_cart_validate_ready_checkout" = "Zur Kasse bereit";
+"shopping_cart_validate_proceed_checkout" = "Zur Kasse gehen";
+
+//MARK: - Warenkorb-Nachrichtenschlüssel
+"NotEnoughStock" = "%@ Produkt übrig";
+"OutOfStock" = "Nicht auf Lager";
+"OverPublishmentDate" = "Produkt entfernt";
+"ProductNotFound" = "Warenkorb entfernt";
+
+// MARK: - Einkaufszelle
+"shopping_cell_cargo_warning" = "%@ Sonderfrachtgebühr wird erhoben.";
+"shopping_cell_maximum_product_message" = "Sie können bis zu %@ Artikel von diesem Produkt kaufen.";
+
+//MARK: - Checkout-Fortschritt
+"delivery-information-page-title" = "Lieferinformationen";
+"payment-information-page-title" = "Zahlung";
+"info-information-page-title" = "Info";
+"confirm-order-button-text" = "Bestellung bestätigen";
+"checkout-address-next-step-title" = "Nächster Schritt: Zahlungsmethode";
+"checkout-payment-next-step-title" = "Nächster Schritt: Bestellinformationen";
+
+//MARK: - Allgemeine Adressansicht
+"delivery-address-title" = "Lieferadresse";
+"billing-address-title" = "Rechnungsadresse";
+"add-address-button-text" = "Adresse hinzufügen";
+"select-other-address-button-text" = "Andere Adresse auswählen";
+
+//MARK: - AddressBottomView
+"address-bottom-view-title-text" = "Neue Adresse hinzufügen";
+"address-bottom-view-name-text" = "Name";
+"address-bottom-view-name-empty-text" = "Bitte geben Sie Ihren Namen ein";
+"address-bottom-view-name-invalid-text" = "Bitte gültigen Namen eingeben";
+"address-bottom-view-surname-text" = "Nachname";
+"address-bottom-view-surname-empty-text" = "Bitte geben Sie Ihren Nachnamen ein";
+"address-bottom-view-surname-invalid-text" = "Bitte geben Sie einen gültigen Nachnamen ein";
+"address-bottom-view-phone-text" = "Telefon";
+"address-bottom-view-phone-empty-text" = "Bitte geben Sie Ihre Telefonnummer ein";
+"address-bottom-view-phone-invalid-text" = "Bitte geben Sie eine gültige Telefonnummer ein";
+"address-bottom-view-country-text" = "Land";
+"address-bottom-view-country-error-text" = "Bitte Land auswählen";
+"address-bottom-view-states-text" = "Staaten";
+"address-bottom-view-states-error-text" = "Bitte Bundesland auswählen";
+"address-bottom-view-district-text" = "Städte";
+"address-bottom-view-district-error-text" = "Bitte Stadt auswählen";
+"address-bottom-view-address-text" = "Adresse";
+"address-bottom-view-address-empty-text" = "Bitte geben Sie Ihre Adresse ein";
+"address-bottom-view-address-invalid-text" = "Bitte gültige Adresse eingeben";
+"address-bottom-view-zipcode-text" = "Postleitzahl";
+"address-bottom-view-zipcode-empty-text" = "Bitte geben Sie Ihre Postleitzahl ein";
+"address-bottom-view-zipcode-invalid-text" = "Bitte gültige Postleitzahl eingeben";
+"address-bottom-view-address-title-text" = "Titel der Adresse";
+"address-bottom-view-address-title-empty-text" = "Bitte geben Sie Ihren Adresstitel ein";
+"address-bottom-view-address-title-invalid-text" = "Bitte geben Sie einen gültigen Adresstitel ein";
+"address-bottom-view-individual-checkbox-text" = "Individuell";
+"address-bottom-view-corporate-checkbox-text" = "Unternehmen";
+"address-bottom-view-identitynumber-text" = "Identitätsnummer";
+"address-bottom-view-identitynumber-error-text" = "Bitte geben Sie Ihre Identitätsnummer ein";
+"address-bottom-view-identitynumber-invalid-text" = "Bitte gültige Identitätsnummer eingeben";
+"address-bottom-view-corporate-company-name-text" = "Firmenname";
+"address-bottom-view-corporate-company-name-error-text" = "Bitte geben Sie Ihren Firmennamen ein";
+"address-bottom-view-corporate-tax-office-text" = "Finanzamt";
+"address-bottom-view-corporate-tax-office-error-text" = "Bitte geben Sie Ihr Finanzamt ein";
+"address-bottom-view-corporate-tax-number-text" = "Steuernummer";
+"address-bottom-view-corporate-tax-number-error-text" = "Bitte geben Sie Ihre Steuernummer ein";
+"address-bottom-view-save-button-text" = "Speichern";
+"address-bottom-view-address-saved-text" = "Adresse gespeichert";
+"address-bottom-view-save-as-billing-address-text" = "Als Rechnungsadresse speichern";
+
+//MARK: - ListPopUp
+"list-popup-select-address-title" = "Adresse auswählen";
+"list-popup-select-payment-title" = "Zahlung auswählen";
+"list-popup-shopping-cart-title" = "Warenkorb wird aktualisiert";
+"list-pop-up-credit-cart-text" = "Kreditkarte";
+"list-pop-up-paypal-text" = "Paypal";
+"list-pop-up-bank-transfer-text" = "Banküberweisung";
+"list-pop-up-pay-at-the-door-text" = "An der Tür bezahlen";
+"list-pop-up-stripe-text" = "Stripe";
+
+//MARK: - CheckOutPayment
+"checkout-payment-select-payment-method-text" = "Zahlungsmethode auswählen";
+"checkout-payment-selected-payment-method-credit-cart-placeholder" = "Kreditkarte";
+"checkout-payment-selected-payment-method-paypal-placeholder" = "Paypal";
+"checkout-payment-selected-payment-method-transfer-bank-placeholder" = "Banküberweisung";
+"checkout-payment-selected-payment-method-pay-at-the-door-placeholder" = "An der Tür bezahlen";
+"checkout-payment-selected-payment-method-stripe-placeholder" = "Stripe";
+"Checkout-Payment-selected-Payment-Method-Paypal-Placeholder" = "Paypal";
+"checkout-payment-credit-card-holder-placeholder" = "Name des Karteninhabers";
+"checkout-payment-credit-card-number-placeholder" = "* * * * 3486";
+"checkout-payment-credit-card-expire-date-placeholer" = "MM/YY";
+"checkout-payment-credit-card-cvv-placeholder" = "CVV";
+"checkout-payment-empty-view-title" = "Es gibt noch keine Zahlungsmethode.";
+"checkout-payment-empty-view-description" = "Der Shop-Inhaber hat noch keine Zahlungsmethode hinzugefügt.";
+"checkout-table-view-account-iban-text"= "IBAN: ";
+"checkout-table-view-account-department-text" = "Abteilung: ";
+"checkout-table-view-account-number-text" = "Konto: ";
+"checkout-table-view-iban-copied-message" = "Iban-Informationen wurden für die ausgewählte Bank kopiert.";
+"checkout-payment-paypal-description" = "Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu PayPal weitergeleitet, um Ihren Einkauf sicher abzuschließen.";
+"checkout-payment-stripe-description" = "Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu Stripe weitergeleitet, um Ihren Einkauf sicher abzuschließen.";
+
+//MARK: - CheckOutInfo
+"checkout-info-shopping-card-view-title" = "Karte";
+"checkout-info-payment-card-view-title" = "Zahlung";
+"checkout-info-billing-address-card-view-title" = "Rechnungsadresse";
+"checkout-info-delivery-addresss-card-view-title" = "Lieferadresse";
+"checkout-info-order-note-text-view-placeholder" = "Hinterlassen Sie eine Notiz für Ihre Bestellung";
+"checkout-info-confirm-order-button-title" = "Bestellung bestätigen";
+"checkout-info-terms-and-conditions-text" = "Ich bestätige, dass ich das <u><b>Kaufvertragsformular</b></u> gelesen und verstanden habe und ihm zustimme";
+"checkout-info-update-order-pop-up-title" = "Aktualisieren Sie Ihre Bestellung!";
+"checkout-info-update-order-pop-up-description" = "Sie können in Ihrem Einkaufswagen nichts bestellen. \n Einige Produkte wurden geändert, aktualisiert oder werden nicht mehr verkauft";
+"checkout-info-update-order-pop-up-button-text" = "Meinen Warenkorb aktualisieren";
+"checkout-info-card-description-text" = "%@ Artikel %@ %@";
+"checkout-info-bank-transfer-description-text" = "Banküberweisung %@ %@";
+"checkout-info-credit-card-description-text" = "Kreditkarte %@ **** %@";
+"checkout-info-agreement-is-not-checked-title" = "Sie müssen den Bedingungen zustimmen.";
+"checkout-info-agreement-is-not-checked-description" = "Sie müssen den Allgemeinen Geschäftsbedingungen und der Datenschutzrichtlinie zustimmen.";
+"checkout-info-agreement-is-not-checked-title" = "Jetzt zustimmen";
+
+//MARK: - SelectionPopUp
+"selection-pop-up-country-text" = "Land";
+"selection-pop-up-search-placeholder" = "Suchen";
+"selection-pop-up-cancel-button-text" = "Abbrechen";
+
+//MARK: - Kreditkartenvalidierung
+"credit-card-number-error-text" = "Bitte überprüfen Sie die Kreditkartennummer";
+"credit-card-holder-error-text" = "Bitte überprüfen Sie den Kreditkarteninhaber";
+"credit-card-expire-date-error-text" = "Bitte überprüfen Sie das Ablaufdatum";
+"credit-card-cvv-error-text" = "Bitte überprüfen Sie den CVV";
+
+//MARK: - CheckOut-Ergebnisseite
+"checkout-result-info-page-title" = "Bestellinformationen";
+"checkout-result-info-success-title" = "Es ist bestellt!";
+"checkout-result-info-success-description" = "Danke für Ihre Bestellung, wir hoffen, dass Ihnen der Einkauf bei uns gefallen hat";
+"checkout-result-info-success-order-number" = "Bestellnummer %@";
+"checkout-result-info-fail-title" = "Zahlung fehlgeschlagen";
+"checkout-result-info-fail-description" = "Die Zahlung ist leider fehlgeschlagen. Sie können die Zahlungsmethode ändern und es erneut versuchen.";
+"checkout-result-info-fail-message" = "Fehlermeldung %@";
+"checkout-result-info-fail-detail-description" = "Ihre Zahlungsmethode wurde abgelehnt.";
+"checkout-result-info-success-check-order-button-text" = "Bestellung prüfen";
+"checkout-result-info-success-continue-shopping-button-text" = "Weiter einkaufen";
+"checkout-result-info-fail-update-payment-method-button-text" = "Zahlungsmethode aktualisieren";
+"checkout-result-info-fail-detail-description-will-replace" = "status=";
+"checkout-result-info-fail-detail-description-to-replace" = "Fehlercode";
+
+
+//MARKE: - Filtern
+"filter_title" = "Filtern";
+"filter_confirm" = "Produkte auflisten";
+"filter_remove" = "Säubern";
+"filter_category" = "Kategorie";
+"filter_brand" = "Marke";
+"filter_price_range" = "Preisspanne";
+"filter_only_stock" = "Nur Lagerbestand";
+"filter_discounted_products" = "Ermäßigte Produkte";
+"filter_free_shipping" = "Kostenloser Versand";
+"filter_choice_apply" = "Übernehmen";
+"filter_price_range_lowest" = "Niedrigster Preis";
+"filter_price_range_highest" = "Höchster Preis";
+
+//MARK: = Sortieren
+"sort_dialog_title" = "Bestellung";
+"sort_dialog_most_shipped" = "Bestseller";
+"sort_dialog_price_increasing" = "Preiserhöhung";
+"sort_dialog_price_decreasing" = "Preis sinkt";
+"sort_dialog_most_recent_added" = "Zuletzt hinzugefügt";
