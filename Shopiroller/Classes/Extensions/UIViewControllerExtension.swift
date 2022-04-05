@@ -135,7 +135,7 @@ extension UIViewController {
             prompt(ShoppingCartViewController(viewModel: ShoppingCartViewModel())
                , animated: true, completion: nil)
         } else {
-            ShopirollerApp.shared.delegate?.userLoginNeeded()
+            ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
         }
     }
     
