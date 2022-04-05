@@ -83,7 +83,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             if(viewModel.hasCampaign()){
                 campaignView.isHidden = false
                 campaignLabel.text = viewModel.campaignMessage
-            }else{
+            } else {
                 campaignView.isHidden = true
             }
             
