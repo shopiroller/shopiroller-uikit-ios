@@ -98,7 +98,7 @@ class FilterChoiceViewModel: SRBaseViewModel {
     
     private func configureDataList(dataList: [CategoriesItem], depth: Int, selectedIds: [String]) {
         for item in dataList {
-            if let id = item.categoryId, let name = item.name?["en"] {
+            if let id = item.categoryId, let name = item.name?[Locale.current.languageCode ?? "en"] {
                 originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: depth), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
             if let subCategories = item.subCategories, !subCategories.isEmpty {
