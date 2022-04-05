@@ -42,7 +42,9 @@ extension UIViewController {
         let navigationController = UINavigationController()
         navigationController.viewControllers = [viewController]
         navigationController.modalPresentationStyle = .fullScreen
+        reConfigureNavigationBarAppearance(navigationController: navigationController)
         present(navigationController, animated: flag, completion: completion)
+        
     }
     
     func root(_ viewController: UIViewController, animated flag: Bool) {
@@ -184,7 +186,7 @@ extension UIViewController {
 
     }
     
-    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false){
+    func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false) {
         initializeNavigationBar(isBackButtonActive)
         
         let backButton = createNavigationItem(.backIcon , .goBack)
@@ -199,6 +201,17 @@ extension UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
 
         navigationItem.rightBarButtonItems = rightBarButtonItems
+    }
+    
+    private func reConfigureNavigationBarAppearance(navigationController: UINavigationController?) {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navBarAppearance.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
+            navBarAppearance.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
     }
     
     func showAlert(title: String?,
