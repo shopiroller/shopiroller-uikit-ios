@@ -137,6 +137,6 @@ public struct ShopirollerAppUserCredentials {
 
 public protocol ShopirollerDelegate {
     
-    func userLoginNeeded()
+    func userLoginNeeded(navigationController: UINavigationController?)
         
 }
