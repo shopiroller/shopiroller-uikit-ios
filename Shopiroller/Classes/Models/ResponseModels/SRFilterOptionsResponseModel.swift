@@ -9,6 +9,7 @@ import Foundation
 
 
 struct SRFilterOptionsResponseModel: Codable {
+    
     var variationGroups: [VariationGroupsItem]?
     var brands: [BrandsItem]?
     var categories: [CategoriesItem]?
@@ -54,7 +55,7 @@ struct BrandsItem: Codable {
     
     var updateDate: String?
     var name: String?
-    var icon: String?
+    var icon: ProductImageModel?
     var id: String?
     var isActive: Bool?
     var createDate: String?

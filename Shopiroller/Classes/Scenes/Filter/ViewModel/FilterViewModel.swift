@@ -38,8 +38,8 @@ class FilterViewModel: SRBaseViewModel {
             (result) in
             switch result{
             case .success(let response):
+                self.filterOptions = response.data
                 DispatchQueue.main.async {
-                    self.filterOptions = response.data
                     succes?()
                 }
             case.failure(let err):
@@ -54,7 +54,7 @@ class FilterViewModel: SRBaseViewModel {
         if(!(filterOptions?.categories?.isEmpty ?? true)) {
             filterListSelector.append(.category)
         }
-        if(!(filterOptions?.brands?.isEmpty ?? true)) {
+        if((filterOptions?.brands?.isEmpty ?? true)) {
             filterListSelector.append(.brand)
         }
         
