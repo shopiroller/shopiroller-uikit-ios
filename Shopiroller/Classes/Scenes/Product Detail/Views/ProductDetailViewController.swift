@@ -189,7 +189,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         collectionView.register(cellClass: ProductImageSliderCollectionViewCell.self)
         collectionView.delegate = self
-        collectionView.dataSource = self        
+        collectionView.dataSource = self
         collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
                 
         getProductDetail()
@@ -224,7 +224,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.viewWillAppear(animated)
         getCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
-        
         setTransparentNavigationBar()
     }
     
@@ -258,11 +257,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
+        addToCardButton.isUserInteractionEnabled = false
         if ShopirollerApp.shared.isUserLoggedIn() {
             addProductToCart()
-            addToCardButton.isUserInteractionEnabled = false
         } else {
-            ShopirollerApp.shared.delegate?.userLoginNeeded()
+            ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
+            addToCardButton.isUserInteractionEnabled = true
         }
     }
     
