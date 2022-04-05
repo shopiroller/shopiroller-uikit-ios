@@ -25,13 +25,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var productDiscountContainer: UIView!
     @IBOutlet private weak var productDiscountLabel: UILabel!
     @IBOutlet private weak var productNewPrice: UILabel!
-    @IBOutlet private weak var productImageSoldOutContainer: UIView!
-    @IBOutlet private weak var productImageFreeShippingContainer: UIView!
     @IBOutlet private weak var productOldPrice: UILabel!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var productPriceContainer: UIView!
-    @IBOutlet private weak var freeShippingLabel: UILabel!
-    @IBOutlet private weak var soldOutLabel: UILabel!
+    @IBOutlet private weak var freeShippingLabel: PaddingLabel!
+    @IBOutlet private weak var soldOutLabel: PaddingLabel!
     @IBOutlet private weak var situationContainer: UIStackView!
     
     override func awakeFromNib() {
@@ -86,27 +84,23 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }
         
         if viewModel.isShippingFree() {
-            productImageFreeShippingContainer.isHidden = false
+            freeShippingLabel.isHidden = false
+            freeShippingLabel.setProductSituation(type: .freeShipping)
             freeShippingLabel.textColor = .white
             freeShippingLabel.text = Constants.freeShipping.uppercased()
             freeShippingLabel.font = .bold9
-            productImageFreeShippingContainer.layer.backgroundColor  = UIColor.textPrimary.cgColor
-            productImageFreeShippingContainer.layer.cornerRadius = 5
-            productImageFreeShippingContainer.layer.masksToBounds = true
         } else {
-            productImageFreeShippingContainer.isHidden = true
+            freeShippingLabel.isHidden = true
         }
         
         if viewModel.isOutofStock() {
-            productImageSoldOutContainer.isHidden = false
+            soldOutLabel.setProductSituation(type: .soldOut)
+            soldOutLabel.isHidden = false
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
             soldOutLabel.font = .bold9
-            productImageSoldOutContainer.layer.backgroundColor  = UIColor.badgeSecondary.cgColor
-            productImageSoldOutContainer.layer.cornerRadius = 5
-            productImageSoldOutContainer.layer.masksToBounds = true
         } else {
-            productImageSoldOutContainer.isHidden = true
+            soldOutLabel.isHidden = true
         }
         
         situationContainer.isHidden = !viewModel.hasSituation()
