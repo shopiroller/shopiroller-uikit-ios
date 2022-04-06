@@ -10,6 +10,7 @@ import UIKit
 protocol CheckOutProgressPageDelegate {
     func currentPageIndex(currentIndex: Int)
     func showSuccessfullToastMessage()
+    func hideConfirmOrderButton()
     func popLastViewController()
     func isHidingNextButton(hide: Bool?)
     func isEnabledNextButton(enabled: Bool?)
