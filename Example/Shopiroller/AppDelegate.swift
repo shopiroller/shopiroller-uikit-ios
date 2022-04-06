@@ -13,7 +13,7 @@ import Braintree
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     
-    func userLoginNeeded() {
+    func userLoginNeeded(navigationController: UINavigationController?) {
         
     }
     

@@ -223,8 +223,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     private func makeOrder() {
         if SRNetworkCheckHelper.isConnectedToNetwork(){
             DispatchQueue.main.async {
-                if (!self.animationView.isAnimationPlaying){
+                if (!self.animationView.isAnimationPlaying) {
                     self.showAnimation()
+                    self.delegate?.hideConfirmOrderButton()
                 }
             }
             viewModel.setMakeOrderBuyerModel()
