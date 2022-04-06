@@ -18,8 +18,6 @@ public class ShopirollerApp {
     public var delegate: ShopirollerDelegate?
     
     public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerAppUserCredentials, baseUrl: String, theme: ShopirollerTheme) {
-                
-        SRAppContext.appLanguage = Locale.current.languageCode ?? "tr"
         
         self.theme = theme
         SRAppContext.apiKey = eCommerceCredentials.apiKey
@@ -39,7 +37,7 @@ public class ShopirollerApp {
             withFilenameString: "Poppins-SemiBold.ttf",
             bundle: .shopiroller
         )
-
+        
         UIFont.jbs_registerFont(
             withFilenameString: "Poppins-Regular.ttf",
             bundle: .shopiroller
@@ -49,8 +47,8 @@ public class ShopirollerApp {
             withFilenameString: "Poppins-Medium.ttf",
             bundle: .shopiroller
         )
-
-
+        
+        
         UIFont.listAllFontsOnSystem()
         
         SRAppContext.fontFamily = .poppins
@@ -81,9 +79,13 @@ public class ShopirollerApp {
     public func setFallbackLanguage(_ fallbackLanguage: String) {
         SRAppContext.fallbackLanguage = fallbackLanguage
     }
-
+    
     func isUserLoggedIn() -> Bool {
         return SRAppContext.userId != "" && SRAppContext.userEmail != ""
+    }
+    
+    public func setHeaderAppLanguage(_ appLanguage: String) {
+        SRAppContext.appLanguage = appLanguage.lowercased()
     }
 }
 
@@ -138,5 +140,5 @@ public struct ShopirollerAppUserCredentials {
 public protocol ShopirollerDelegate {
     
     func userLoginNeeded(navigationController: UINavigationController?)
-        
+    
 }

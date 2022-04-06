@@ -9,14 +9,17 @@ import UIKit
 
 
 class OrderTableViewCell: UITableViewCell {
+    
     private struct Constants {
+    
+        static var successTransaction: String { return "success-transaction".localized }
         
-        static var successTransaction: String { return "success-transaction".localized}
+        static var pendiginTransaction: String { return "pending-transaction".localized }
         
-        static var pendiginTransaction: String { return "pending-transaction".localized}
+        static var orderNo: String { return "order-no".localized }
         
-        static var orderNo: String { return "order-no".localized}
     }
+    
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var orderNo: UILabel!
     @IBOutlet private weak var date: UILabel!
