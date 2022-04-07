@@ -20,6 +20,7 @@ class ECommerceUtil {
         
         let date = dateFormatterGet.date(from: date ?? "")
         let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.locale = Locale.preferredLocale()
         dateFormatterPrint.dateFormat = toFormat
         
         return dateFormatterPrint.string(from: date ?? Date())

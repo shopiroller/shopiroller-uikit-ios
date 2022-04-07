@@ -124,10 +124,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
                 viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
                 loadPaymentSheet()
+                SRSessionManager.shared.makeOrder?.orderId = orderResponse.order?.id
             } else  if (orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
                 self.viewModel.completeOrderModel.orderId = orderResponse.order?.id
                 self.viewModel.completeOrderModel.paymentType = PaymentTypeEnum.PayPal.description
                 loadPaypal()
+                SRSessionManager.shared.makeOrder?.orderId = orderResponse.order?.id
             }
         } else {
             loadOrderResultPage(isSuccess: false)
@@ -199,13 +201,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     func setPaypalFailRequest() {
         guard let orderId = SRSessionManager.shared.orderResponseInnerModel?.order?.id else { return }
-        
-        self.viewModel.paypalFailure(orderId: orderId) {
+        viewModel.paypalFailure(orderId: orderId, success: {
             SRSessionManager.shared.makeOrder?.tryAgain = true
-        } error: { errorViewModel in
+        }, error: { (errorViewModel) in
             self.showAlertError(viewModel: errorViewModel)
             SRSessionManager.shared.makeOrder?.tryAgain = true
-        }
+        })
     }
     
     private func presentStripe() {
@@ -319,6 +320,11 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
 }
 
 extension CheckOutViewController : CheckOutProgressPageDelegate {
+    
+    func hideConfirmOrderButton() {
+        self.confirmOrderButtonContainer.isHidden = true
+        self.bottomSafeAreaLayout.isHidden = true
+    }
     
     func isEnabledNextButton(enabled: Bool?) {
         if enabled == true {

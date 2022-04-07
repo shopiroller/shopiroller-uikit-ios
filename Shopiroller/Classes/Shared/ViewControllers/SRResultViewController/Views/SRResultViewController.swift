@@ -95,7 +95,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
             let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
             self.prompt(orderDetailVC, animated: true, completion: nil)
         } else {
-            dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
             NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
         }
     }

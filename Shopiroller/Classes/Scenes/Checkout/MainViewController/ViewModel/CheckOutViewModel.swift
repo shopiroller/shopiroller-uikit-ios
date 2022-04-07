@@ -73,7 +73,6 @@ class CheckOutViewModel {
             (result) in
             switch result {
             case .success(let response):
-                print(response)
                 DispatchQueue.main.async {
                     success?()
                 }
