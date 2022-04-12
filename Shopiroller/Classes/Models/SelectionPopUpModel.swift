@@ -14,7 +14,14 @@ struct SelectionPopUpModel {
 }
 
 enum SelectionType {
-    case country,
-         district,
-         state
+    case adress(SelectionAdressType)
+    case variant
+    
+    
+    enum SelectionAdressType {
+        case country
+        case district
+        case state
+    }
+    
 }

@@ -67,7 +67,7 @@ public class GeneralAddressView: SRBaseView {
         if model.isEmpty {
             selectOtherAddressButton.isHidden = true
             containerView.isHidden = true
-        }else {
+        } else {
             selectOtherAddressButton.isHidden = false
             containerView.isHidden = false
             titleLabel.text = model.title

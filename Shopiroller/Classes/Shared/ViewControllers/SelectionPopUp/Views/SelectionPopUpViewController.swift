@@ -16,16 +16,12 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     
     private struct Constants {
         static var searchText : String { return "selection-pop-up-search-placeholder".localized }
-        static var cancelButtonText: String { return "selection-pop-up-cancel-button-text".localized }
         static var selectCountryTitle: String { return "selection-pop-up-country-text".localized }
         static var selectStateTitle: String { return "selection-pop-up-states-text".localized }
         static var selectDistrictTitle: String { return "selection-pop-up-district-text".localized }
     }
 
-    @IBOutlet private weak var selectionPopUpTitle: UILabel!
-    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var selectionTableView: UITableView!
-    @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var selectionPopUpView: UIView!
     
     var delegate: SelectionPopUpDelegate?
@@ -39,37 +35,50 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         
         selectionPopUpView.makeCardView()
         
+        self.navigationController?.navigationBar.isHidden = false
+        
         selectionTableView.delegate = self
         selectionTableView.dataSource = self
         selectionTableView.register(cellClass: SelectionTableViewCell.self)
-        selectionTableView.rowHeight = 50
         selectionTableView.separatorStyle = .none
-        
-        cancelButton.setTitle(Constants.cancelButtonText)
-        cancelButton.setTitleColor(.textPrimary)
-        cancelButton.titleLabel?.font = .semiBold16
-
-        searchBar.delegate = self
-        searchBar.setSearchBar(placeholder: Constants.searchText)
         
         viewModel.clearData()
         
         switch viewModel.getSelectionType() {
-        case .country:
-            selectionPopUpTitle.text = Constants.selectCountryTitle
-        case .state:
-            selectionPopUpTitle.text = Constants.selectStateTitle
-        case .district:
-            selectionPopUpTitle.text = Constants.selectDistrictTitle
+        case .adress(addressType: .country):
+            self.title = Constants.selectCountryTitle
+        case .adress(addressType: .district):
+            self.title = Constants.selectDistrictTitle
+        case .adress(addressType: .state):
+            self.title = Constants.selectStateTitle
+        case .variant:
+            break
         case .none:
-            selectionPopUpTitle.text = Constants.selectCountryTitle
+            break
         }
-        
         
     }
     
-    @IBAction func cancelButtonTapped() {
-        dismiss(animated: false, completion: nil)
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .iceBlue
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.showsCancelButton = true
+        navigationItem.searchController = searchController
     }
     
 }
@@ -93,6 +102,10 @@ extension SelectionPopUpViewController: UITableViewDelegate, UITableViewDataSour
         })
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = .iceBlue
+    }
+    
 }
 
 extension SelectionPopUpViewController: UISearchBarDelegate {
@@ -105,5 +118,6 @@ extension SelectionPopUpViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.clearData()
         selectionTableView.reloadData()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }

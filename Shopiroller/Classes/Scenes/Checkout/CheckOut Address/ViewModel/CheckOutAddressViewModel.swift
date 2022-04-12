@@ -12,10 +12,10 @@ class CheckOutAddressViewModel: SRBaseViewModel {
     
     private var defaultAdressList: SRDefaultAddressModel?
     
-    private var shippingAddress: UserShippingAddressModel?
+    private var shippingAddressModel: UserShippingAddressModel?
     
-    private var billingAddress: UserBillingAdressModel?
-        
+    private var billingAddressModel: UserBillingAdressModel?
+    
     private var userShippingAddressList : [UserShippingAddressModel]?
     
     private var userBillingAddressList : [UserBillingAdressModel]?
@@ -26,8 +26,7 @@ class CheckOutAddressViewModel: SRBaseViewModel {
             switch result {
             case .success(let response):
                 self.defaultAdressList = response.data
-                self.getShippingAddress()
-                self.getBillingAddress()
+                self.setDefaultAddresses()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -40,11 +39,11 @@ class CheckOutAddressViewModel: SRBaseViewModel {
     }
     
     func getDeliveryAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: shippingAddress?.title, address: shippingAddress?.addressLine, description: shippingAddress?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
+        return GeneralAddressModel(title: shippingAddressModel?.title, address: shippingAddressModel?.addressLine, description: shippingAddressModel?.getDescriptionArea(), type: .shipping, isEmpty: isShippingAddressEmpty())
     }
     
     func getBillingAddressModel() -> GeneralAddressModel {
-        return GeneralAddressModel(title: billingAddress?.title, address: billingAddress?.addressLine, description: billingAddress?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
+        return GeneralAddressModel(title: billingAddressModel?.title, address: billingAddressModel?.addressLine, description: billingAddressModel?.getDescriptionArea(), type: .billing, isEmpty: isBillingAddressEmpty())
     }
     
     
@@ -56,18 +55,23 @@ class CheckOutAddressViewModel: SRBaseViewModel {
         return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
     }
     
-    func getShippingAddress() -> UserShippingAddressModel? {
-        if shippingAddress == nil {
-            shippingAddress = defaultAdressList?.shippingAddress
+    private func setDefaultAddresses() {
+        if shippingAddressModel == nil {
+            shippingAddressModel = defaultAdressList?.shippingAddress
         }
-        return shippingAddress
+        
+        if billingAddressModel == nil {
+            billingAddressModel = defaultAdressList?.billingAddress
+        }
+        
+    }
+    
+    func getShippingAddress() -> UserShippingAddressModel? {
+        return shippingAddressModel
     }
     
     func getBillingAddress() -> UserBillingAdressModel? {
-        if billingAddress == nil {
-            billingAddress = defaultAdressList?.billingAddress
-        }
-        return billingAddress
+        return billingAddressModel
     }
     
     func isShippingAddressEmpty() -> Bool {
@@ -128,15 +132,15 @@ class CheckOutAddressViewModel: SRBaseViewModel {
     
     func setDefaultAddress(defaultAddress: SRDefaultAddressModel) {
         defaultAdressList = defaultAddress
-        billingAddress = defaultAddress.billingAddress
-        shippingAddress = defaultAddress.shippingAddress
+        billingAddressModel = defaultAddress.billingAddress
+        shippingAddressModel = defaultAddress.shippingAddress
     }
     
-    func setShippingAddress(shippingAddressModel: UserShippingAddressModel) {
-        shippingAddress = shippingAddressModel
-    }
-    
-    func setBillingAddress(billingAddressModel: UserBillingAdressModel) {
-        billingAddress = billingAddressModel
+    func setAdresses(userShippingAddress: UserShippingAddressModel? = nil , userBillingAddress: UserBillingAdressModel? = nil) {
+        if let userBillingAddress = userBillingAddress {
+            billingAddressModel = userBillingAddress
+        } else if let userShippingAddress = userShippingAddress {
+            shippingAddressModel = userShippingAddress
+        }
     }
 }

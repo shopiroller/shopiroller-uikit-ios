@@ -34,6 +34,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     @IBOutlet private weak var popUpView: UIView!
     @IBOutlet private weak var buttonContainer: UIView!
     @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var backgroundView: UIView!
     
     var addressDelegate : ListPopUpAddressDelegate?
     
@@ -50,6 +51,11 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         
         popUpView.makeCardView()
         
+        self.backgroundView.backgroundColor = .black.withAlphaComponent(0.2)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(popView))
+        self.backgroundView.addGestureRecognizer(tap)
+        
         popUpImageViewBackground.backgroundColor = .white
         popUpImageViewBackground.layer.cornerRadius = popUpImageViewBackground.frame.width / 2
         popUpImageView.layer.backgroundColor = UIColor.badgeSecondary.cgColor
@@ -61,18 +67,13 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         shoppingCartInformation.font = .semiBold12
         shoppingCartInformation.textColor = .orangeyRed
         
+        popUpTableView.delegate = self
+        popUpTableView.dataSource = self
         popUpTableView.register(cellClass: AddressSelectTableViewCell.self)
         popUpTableView.register(cellClass: PaymentTableViewCell.self)
         popUpTableView.register(cellClass: SortProductTableViewCell.self)
         popUpTableView.separatorInset = UIEdgeInsets.zero
-        popUpTableView.delegate = self
-        popUpTableView.dataSource = self
         popUpTableView.tableFooterView = UIView()
-
-        
-        let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(popView))
-        self.view.backgroundColor = .black.withAlphaComponent(0.2)
-        view.addGestureRecognizer(dismissGesture)
         
         switch viewModel.getListType(){
         case .address:
@@ -158,8 +159,7 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             case .shipping:
                 let model = viewModel.getShippingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupShippingCell(model: model,index: indexPath.row,showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
-                cell.delegate = self
+                cell.setupShippingCell(model: model, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 if indexPath.row == viewModel.getItemCount() - 1 {
                     cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
                 }
@@ -167,8 +167,7 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             case .billing:
                 let model = viewModel.getBillingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupBillingCell(model: model,index: indexPath.row, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
-                cell.delegate = self
+                cell.setupBillingCell(model: model, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 return cell
             }
         case .shoppingCart:
@@ -177,53 +176,45 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             let model = viewModel.getSupportedMethods(position: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: PaymentTableViewCell.reuseIdentifier, for: indexPath) as! PaymentTableViewCell
             cell.setupCell(model: model,index: indexPath.row)
-            cell.delegate = self
             return cell
         case .sortList :
             let title = viewModel.getSortListModel(position: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: SortProductTableViewCell.reuseIdentifier, for: indexPath) as! SortProductTableViewCell
-            cell.setup(title: title, isChecked: viewModel.selectedIndex == indexPath.row,index: indexPath.row)
+            cell.setup(title: title, isChecked: viewModel.sortOptionsSelectedIndex == indexPath.row,index: indexPath.row)
             if indexPath.row == viewModel.getItemCount() - 1 {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
             }
-            cell.delegate = self
             return cell
         }
         return UITableViewCell()
     }
-}
-
-extension ListPopUpViewController: AddressPopUpSelectedDelegate {
-    
-    func getIndex(shippingAddressIndex: Int?, billingAddressIndex: Int?) {
-        if let shippingAddressIndex = shippingAddressIndex {
-            addressDelegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: shippingAddressIndex))
-            self.popView()
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch viewModel.getListType() {
+        case .address:
+            tableView.tableFooterView = UIView()
+            tableView.separatorStyle = .none
+            switch viewModel.getAddressType() {
+            case .shipping:
+                addressDelegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: indexPath.row))
+            case .billing:
+                addressDelegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: indexPath.row))
+            }
+        case .shoppingCart:
+            break
+        case .payment:
+            guard let supportedPaymentMethods = viewModel.getSupportedMethods(position: indexPath.row) else { return }
+            paymentDelegate?.getSelectedPayment(payment: supportedPaymentMethods.paymentType)
+        case .sortList :
+            viewModel.sortOptionsSelectedIndex = indexPath.row
+            sortDelegate?.getSelectedSortIndex(index: viewModel.sortOptionsSelectedIndex ?? 0)
         }
-        if let billingAddressIndex = billingAddressIndex {
-            addressDelegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: billingAddressIndex))
-            self.popView()
-        }
+        self.popView()
     }
-}
-
-extension ListPopUpViewController: PaymentTableViewCellDelegate {
     
-    func getPaymentIndex(index: Int?) {
-        if let paymentType = viewModel.getSupportedMethods(position: index ?? 0)?.paymentType {
-            paymentDelegate?.getSelectedPayment(payment: paymentType)
-            self.popView()
-        }
-      
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
-}
-
-extension ListPopUpViewController: SortProductCellDelegate {
     
-    func getTappedIndex(index: Int) {
-        viewModel.selectedIndex = index
-        sortDelegate?.getSelectedSortIndex(index: viewModel.selectedIndex ?? 0)
-        pop(animated: false, completion: nil)
-    }
 }
 

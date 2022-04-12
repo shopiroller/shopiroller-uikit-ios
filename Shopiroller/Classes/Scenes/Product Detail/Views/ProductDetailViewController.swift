@@ -253,7 +253,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){

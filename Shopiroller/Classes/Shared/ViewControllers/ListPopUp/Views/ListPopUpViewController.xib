@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPopUpViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="96e-94-WG6" id="2Bh-T4-zPt"/>
                 <outlet property="button" destination="6zG-dy-vjm" id="KA9-fm-zuR"/>
                 <outlet property="buttonContainer" destination="5Zh-Xl-9z7" id="ymy-7F-7KW"/>
                 <outlet property="popUpHeightConstraint" destination="xzX-Wk-NsX" id="65n-E8-MTG"/>
@@ -31,6 +32,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96e-94-WG6">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCc-zs-vyl">
                     <rect key="frame" x="12.5" y="353" width="389" height="200"/>
                     <subviews>
@@ -113,7 +118,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob8-O4-hrS">
                                     <rect key="frame" x="0.0" y="45" width="389" height="95"/>
                                     <subviews>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-wD-NFR">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-wD-NFR">
                                             <rect key="frame" x="0.0" y="0.0" width="389" height="95"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
@@ -160,9 +165,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pCc-zs-vyl" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.939614" id="QKG-AN-hqp"/>
-                <constraint firstItem="pCc-zs-vyl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="eX0-G9-m22"/>
-                <constraint firstItem="pCc-zs-vyl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="lsX-3L-5Ry"/>
+                <constraint firstItem="pCc-zs-vyl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="K2D-fK-3dd"/>
+                <constraint firstItem="pCc-zs-vyl" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.939614" id="M8d-f5-zGn"/>
+                <constraint firstItem="96e-94-WG6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wa1-YG-NGR"/>
+                <constraint firstAttribute="bottom" secondItem="96e-94-WG6" secondAttribute="bottom" id="gFo-rL-EmC"/>
+                <constraint firstAttribute="trailing" secondItem="96e-94-WG6" secondAttribute="trailing" id="k8X-DB-U59"/>
+                <constraint firstItem="pCc-zs-vyl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="v4a-EO-fsy"/>
+                <constraint firstItem="96e-94-WG6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yjl-ib-z2k"/>
             </constraints>
             <point key="canvasLocation" x="132" y="75"/>
         </view>

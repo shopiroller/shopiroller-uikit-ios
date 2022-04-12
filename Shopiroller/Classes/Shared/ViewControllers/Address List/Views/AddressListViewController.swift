@@ -84,12 +84,12 @@ extension AddressListViewController: UITableViewDelegate, UITableViewDataSource,
             guard let model = viewModel.getBillingAddress(position: indexPathRow ?? 0) else { return }
             let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: true,userBillingAddress: model))
             vc.delegate = self
-            self.sheet(vc, completion: nil)
+            self.sheet(vc)
         case .shipping:
             guard let model = viewModel.getShippingAddress(position: indexPathRow ?? 0) else { return }
             let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: true,userShippingAddress: model))
             vc.delegate = self
-            self.sheet(vc, completion: nil)
+            self.sheet(vc)
         }
     }
     

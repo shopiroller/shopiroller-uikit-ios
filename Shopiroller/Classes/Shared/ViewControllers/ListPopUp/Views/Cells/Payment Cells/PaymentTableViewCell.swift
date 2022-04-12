@@ -7,16 +7,10 @@
 
 import UIKit
 
-protocol PaymentTableViewCellDelegate {
-    func getPaymentIndex(index: Int?)
-}
-
 class PaymentTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var paymentTypeImage: UIImageView!
     @IBOutlet private weak var paymentTypeText: UILabel!
-    
-    var delegate: PaymentTableViewCellDelegate?
     
     private var index: Int?
     
@@ -25,10 +19,6 @@ class PaymentTableViewCell: UITableViewCell {
         
         paymentTypeText.textColor = .textPrimary
         paymentTypeText.font = .semiBold13
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        self.addGestureRecognizer(tapGesture)
-        tapGesture.delegate = self
         
     }
     
@@ -57,9 +47,5 @@ class PaymentTableViewCell: UITableViewCell {
         case .some(.Other):
             break
         }
-    }
-    
-    @objc func cellTapped() {
-        delegate?.getPaymentIndex(index: self.index)
     }
 }

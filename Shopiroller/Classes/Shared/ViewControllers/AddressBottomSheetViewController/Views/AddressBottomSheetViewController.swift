@@ -54,11 +54,13 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         static var districtTextFieldText: String { return "address-bottom-view-district-text".localized }
         
+        static var keyboardDoneActionText: String { return "keyboard-done-action-text".localized }
+        
     }
     
     
     private struct ErrorConstants {
-       
+        
         static var nameEmptyError : String { return "address-bottom-view-name-empty-text".localized }
         
         static var nameValidationError : String { return "address-bottom-view-name-invalid-text".localized }
@@ -100,9 +102,25 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         static var taxNumberEmptyError : String { return "address-bottom-view-corporate-tax-number-error-text".localized }
     }
     
-    @IBOutlet private weak var topViewContainer: UIView!
-    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var individualCheckBoxTitle: UILabel!
+    @IBOutlet private weak var corporateCheckBoxTitle: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var saveAsBillingAddressTitle: UILabel!
+    
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var saveAsBillingAddressButton: UIButton!
+    @IBOutlet private weak var individualCheckBoxButton: UIButton!
+    @IBOutlet private weak var corporateCheckBoxButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
+    
+    @IBOutlet private weak var saveAsBillingContainer: UIView!
+    @IBOutlet private weak var statesContainerView: UIView!
+    @IBOutlet private weak var districtsContainerView: UIView!
+    @IBOutlet private weak var billingAddressContainer: UIView!
+    @IBOutlet private weak var identityNumberContainer: UIView!
+    @IBOutlet private weak var corporateContainer: UIView!
+    @IBOutlet private weak var topViewContainer: UIView!
+    
     @IBOutlet private weak var nameView: SRTextField!
     @IBOutlet private weak var surnameView: SRTextField!
     @IBOutlet private weak var phoneNumberView: SRTextField!
@@ -110,32 +128,19 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     @IBOutlet private weak var userAddressView: SRTextField!
     @IBOutlet private weak var zipCodeView: SRTextField!
     @IBOutlet private weak var addressTitleView: SRTextField!
-    @IBOutlet private weak var individualCheckBoxButton: UIButton!
-    @IBOutlet private weak var individualCheckBoxTitle: UILabel!
-    @IBOutlet private weak var corporateCheckBoxButton: UIButton!
-    @IBOutlet private weak var corporateCheckBoxTitle: UILabel!
-    @IBOutlet private weak var identityNumberContainer: UIView!
-    @IBOutlet private weak var identityNumberView: SRTextField!
-    @IBOutlet private weak var corporateContainer: UIView!
     @IBOutlet private weak var companyNameView: SRTextField!
     @IBOutlet private weak var taxOfficeView: SRTextField!
     @IBOutlet private weak var taxNumberView: SRTextField!
-    @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var billingAddressContainer: UIView!
-    @IBOutlet private weak var saveAsBillingAddressButton: UIButton!
-    @IBOutlet private weak var saveAsBillingAddressTitle: UILabel!
-    @IBOutlet private weak var saveAsBillingContainer: UIView!
-    @IBOutlet private weak var statesContainerView: UIView!
-    @IBOutlet private weak var districtsContainerView: UIView!
     @IBOutlet private weak var statesView: SRTextField!
     @IBOutlet private weak var districtView: SRTextField!
+    @IBOutlet private weak var identityNumberView: SRTextField!
     
     
     var delegate: AddressBottomViewDelegate?
     
-    var isBillingAddressChecked: Bool = true
+    private var isBillingAddressChecked: Bool = true
     
-    var isIndividualButtonTapped: Bool = true
+    private var isIndividualButtonTapped: Bool = true
     
     
     init(viewModel: AddressBottomSheetViewModel){
@@ -156,8 +161,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
         saveAsBillingAddressButton.imageView?.tintColor = .black
         
-        individualCheckBoxButton.setImage(.radioOn)
         individualCheckBoxTitle.text = Constants.individualTextFieldText
+        individualCheckBoxButton.setImage(.radioOn)
+        
         corporateCheckBoxTitle.text = Constants.corporateCheckBoxText
         corporateCheckBoxButton.setImage(.radioOff)
         
@@ -231,8 +237,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         identityNumberView.getTextField().returnKeyType = .done
         identityNumberView.getTextField().delegate = self
         identityNumberView.getTextField().keyboardType = .numberPad
-        identityNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
-
+        identityNumberView.getTextField().addCustomTextAction(title: Constants.keyboardDoneActionText, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         companyNameView.getTextField().placeholder = Constants.companyNameTextFieldText
         companyNameView.getTextField().returnKeyType = .next
@@ -250,7 +255,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxNumberView.getTextField().returnKeyType = .done
         taxNumberView.getTextField().delegate = self
         taxNumberView.getTextField().keyboardType = .numberPad
-        taxNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        taxNumberView.getTextField().addCustomTextAction(title: Constants.keyboardDoneActionText, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         let tapCountryTextField = UITapGestureRecognizer(target: self, action: #selector(countryViewTapped))
         countryView.getTextField().backgroundColor = .clear
@@ -271,6 +276,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         getCountryList()
         setUpLayout()
+        
         if viewModel.isEditAvailable() {
             setEditBinds()
             statesContainerView.isHidden = false
@@ -300,11 +306,11 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func nextActionStateTextField() {
-       statesViewTapped()
+        statesViewTapped()
     }
     
     @objc func nextActionCitiesTextField() {
-       districtViewTapped()
+        districtViewTapped()
     }
     
     @objc func nextActionAddressTextField() {
@@ -347,13 +353,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     private func setBillingAddressButton() {
-        if isBillingAddressChecked {
-            billingAddressContainer.isHidden = false
-            saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
-        }else {
-            billingAddressContainer.isHidden = true
-            saveAsBillingAddressButton.setImage(UIImage(systemName: "circle"))
-        }
+        billingAddressContainer.isHidden = !isBillingAddressChecked
+        isBillingAddressChecked ? saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle")) : saveAsBillingAddressButton.setImage(UIImage(systemName: "circle"))
     }
     
     @IBAction func individualButtonTapped() {
@@ -387,9 +388,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     @IBAction func saveButtonTapped() {
         if isValid() {
-            if viewModel.isEditAvailable(){
+            if viewModel.isEditAvailable() {
                 editAddress()
-            }else {
+            } else {
                 saveAddress()
             }
         }
@@ -397,17 +398,17 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     
     @objc func countryViewTapped() {
-        self.viewModel.selectionType = .country
+        self.viewModel.selectionAddressType = .country
         showSelectionPopUp()
     }
     
     @objc func statesViewTapped() {
-        viewModel.selectionType = .state
+        viewModel.selectionAddressType = .state
         showSelectionPopUp()
     }
     
     @objc func districtViewTapped() {
-        viewModel.selectionType = .district
+        viewModel.selectionAddressType = .district
         showSelectionPopUp()
     }
     
@@ -423,17 +424,18 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
         let selectionPopupVC = SelectionPopUpViewController(viewModel: viewModel.getSelectionModel())
+        let navigationController = UINavigationController()
         selectionPopupVC.delegate = self
-        popUp(selectionPopupVC)
+        navigationController.viewControllers = [selectionPopupVC]
+        self.present(navigationController, animated: true)
     }
     
     private func getCountryList() {
         viewModel.getCountryModel(success: {
-            [weak self] in
-            guard let self = self else { return }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -441,18 +443,18 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         statesView.getTextField().isEnabled = true
         viewModel.getStateModel(success: {
             [weak self] in
-            if self?.viewModel.getStates().count != 0 {
-                self?.statesContainerView.isHidden = false
+            guard let self = self else { return }
+            if self.viewModel.getStates().count != 0 {
+                self.statesContainerView.isHidden = false
             } else {
-                self?.districtsContainerView.isHidden = true
-                self?.statesContainerView.isHidden = true
-                self?.districtView.getTextField().text = self?.countryView.getTextField().text
-                self?.statesView.getTextField().text = self?.countryView.getTextField().text
+                self.districtsContainerView.isHidden = true
+                self.statesContainerView.isHidden = true
+                self.districtView.getTextField().text = self.countryView.getTextField().text
+                self.statesView.getTextField().text = self.countryView.getTextField().text
             }
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -460,6 +462,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         districtView.getTextField().isEnabled = true
         viewModel.getDistrictModel(success: {
             [weak self] in
+            
             if self?.viewModel.getDistricts().count != 0 {
                 self?.districtsContainerView.isHidden = false
                 if self?.viewModel.getDistricts().count == 1 {
@@ -470,10 +473,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 self?.districtView.getTextField().text = self?.statesView.getTextField().text
                 self?.districtsContainerView.isHidden = true
             }
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -596,9 +598,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 } else {
                     taxNumberView.getErrorLabelText() != nil ? taxNumberView.setInfoLabel(infoText: "") : taxNumberView.removeError()
                 }
-                }
-
-    }
+            }
+            
+        }
         return isValid
     }
     
@@ -610,7 +612,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func editAddress() {
         switch viewModel.getAddressType() {
         case .billing:
-            if let userBillingAddress = viewModel.getBillingAddress(){
+            if let userBillingAddress = viewModel.getBillingAddress() {
                 var editBillingAddress: EditAddressModel? = EditAddressModel()
                 editBillingAddress?.apiKey = SRAppContext.appUserApiKey
                 editBillingAddress?.appKey = SRAppContext.appUserAppKey
@@ -668,15 +670,15 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func setEditBinds() {
         switch viewModel.getAddressType() {
         case .shipping:
-            if let userShippingAddress = viewModel.getShippingAddress(){
+            if let userShippingAddress = viewModel.getShippingAddress() {
                 saveAsBillingContainer.isHidden = true
                 billingAddressContainer.isHidden = true
                 let names : [String] = userShippingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
                 surnameView.getTextField().text = names[names.count - 1]
-                for i in 0..<(names.count - 1){
+                for i in 0..<(names.count - 1) {
                     if i == 0 {
                         nameView.getTextField().text = names[0]
-                    }else {
+                    } else {
                         nameView.getTextField().text = nameView.getTextField().text ?? "" + names[i]
                     }
                 }
@@ -695,7 +697,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 billingAddressContainer.isHidden = false
                 let names : [String] = userBillingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
                 surnameView.getTextField().text = names[names.count - 1]
-                for i in 0..<(names.count - 1){
+                for i in 0..<(names.count - 1) {
                     if i == 0 {
                         nameView.getTextField().text = names[0]
                     }else {
@@ -786,9 +788,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         } else {
             viewModel.addShippingAddress(success: {
@@ -797,9 +799,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         }
         
@@ -814,9 +816,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         } else {
             viewModel.addBillingAddress(success: {
@@ -825,12 +827,12 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         }
-       
+        
     }
     
     private func addAddress() {
@@ -840,9 +842,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             
             self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: nil, defaultAddressModel: self.viewModel.getDefaultAddressModel())
             self.pop(animated: true, completion: nil)
-        }) {
-            [weak self] (errorViewModel) in
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
         
     }
@@ -900,7 +902,7 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
 
 extension AddressBottomSheetViewController: SelectionPopUpDelegate {
     func getCountryId(id: String?) {
-        switch viewModel.selectionType {
+        switch viewModel.selectionAddressType {
         case .country:
             viewModel.countryId = id ?? ""
             countryView.getTextField().text = viewModel.getSelectedCountryName(selectedId: id)

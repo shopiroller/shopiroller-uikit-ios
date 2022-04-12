@@ -333,6 +333,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
 }
 
 extension CheckOutPaymentViewController: ListPopUpPaymentDelegate {
+    
     func getSelectedPayment(payment: PaymentTypeEnum) {
         viewModel.paymentType = payment
         self.configureEmptyView()
@@ -385,6 +386,7 @@ extension CheckOutPaymentViewController: UITextFieldDelegate {
 }
 
 extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getBankAccountCount() ?? 0
     }
@@ -392,15 +394,18 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = viewModel.getBankAccountModel(position: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: BankTransferTableViewCell.reuseIdentifier, for: indexPath) as! BankTransferTableViewCell
-        if viewModel.selectedBankIndex == indexPath.row {
-            viewModel.isSelected = true
-            setBankTransferUI()
-        } else {
-            viewModel.isSelected = false
-        }
+        viewModel.isSelected = viewModel.selectedBankIndex == indexPath.row
         cell.configureBankList(model: model,index: indexPath.row, isSelected: viewModel.isSelected)
+        cell.selectionStyle = .none
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectedBankIndex = indexPath.row
+        viewModel.isSelected ? setBankTransferUI() : bankTransferTableView.reloadData()
+        SRSessionManager.shared.orderEvent.bankAccount = viewModel.getBankAccountModel(position: indexPath.row )
+        bankTransferTableView.reloadData()
     }
 }
 
@@ -413,11 +418,6 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
         self.view.makeToast(String(format: "checkout-table-view-iban-copied-message".localized),position: ToastPosition.bottom,style: style)
     }
     
-    func setSelectedBankIndex(index: Int?) {
-        SRSessionManager.shared.orderEvent.bankAccount = viewModel.getBankAccountModel(position: index ?? 0)
-        viewModel.selectedBankIndex = index
-        bankTransferTableView.reloadData()
-    }
 }
     
 

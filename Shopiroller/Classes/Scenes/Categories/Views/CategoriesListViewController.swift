@@ -14,7 +14,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     @IBOutlet private weak var categoriesTableView: UITableView!
     
     private let badgeView  = SRBadgeButton()
-
+    
     init(viewModel: CategoriesListViewModel){
         super.init(viewModel: viewModel, nibName: CategoriesListViewController.nibName, bundle: Bundle(for: CategoriesListViewController.self))
         title = viewModel.getPageTitle()
@@ -53,7 +53,7 @@ class CategoriesListViewController: BaseViewController<CategoriesListViewModel> 
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     @objc func showAllProducts() {
@@ -104,7 +104,7 @@ extension CategoriesListViewController: UITableViewDelegate, UITableViewDataSour
             viewModel.setSelectedRowName(position: indexPath.row)
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
-        }else {
+        } else {
             let vc = ProductListViewController(viewModel: ProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, pageTitle: viewModel.categoryList?[indexPath.row].name))
             prompt(vc, animated: true, completion: nil)
         }

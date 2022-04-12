@@ -70,7 +70,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     override func setupNavigationBar() {
