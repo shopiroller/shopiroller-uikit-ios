@@ -15,7 +15,7 @@ class ListPopUpViewModel: SRBaseViewModel {
     private var addressType: GeneralAddressType?
     private var supportedPaymentMethods: [SupportedPaymentType]?
     private var sortTitles : [String] = ["sort_dialog_most_shipped".localized,"sort_dialog_price_increasing".localized,"sort_dialog_price_decreasing".localized,"sort_dialog_most_recent_added".localized]
-    var selectedIndex: Int? = 0
+    var sortOptionsSelectedIndex: Int? = 0
     
     
     init(listType: ListType, userShippingAddressList : [UserShippingAddressModel]? = nil, userBillingAddressList: [UserBillingAdressModel]? = nil,
@@ -25,7 +25,7 @@ class ListPopUpViewModel: SRBaseViewModel {
         self.userBillingAddressList = userBillingAddressList
         self.addressType = addressType
         self.supportedPaymentMethods = supportedPaymentMethods
-        self.selectedIndex = selectedSortIndex
+        self.sortOptionsSelectedIndex = selectedSortIndex
     }
     
     func getListType() -> ListType {
@@ -63,7 +63,7 @@ class ListPopUpViewModel: SRBaseViewModel {
         case .shoppingCart:
             return 75
         case .address:
-            return 101
+            return 105
         case .sortList:
             return 65
         }

@@ -47,7 +47,7 @@ struct PaymentSettingsResponeModel: Codable {
 
 struct SupportedPaymentType: Codable {
     
-    var paymentType : PaymentTypeEnum?
+    var paymentType : PaymentTypeEnum
     var description : String?
     var configuration: PaymentConfiguration?
     

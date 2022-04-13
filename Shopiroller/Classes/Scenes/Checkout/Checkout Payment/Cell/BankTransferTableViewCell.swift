@@ -10,8 +10,6 @@ import UIKit
 protocol BankTransferCellDelegate {
     
     func tappedCopyIbanButton()
-    
-    func setSelectedBankIndex(index: Int?)
 }
 
 class BankTransferTableViewCell: UITableViewCell {
@@ -75,10 +73,6 @@ class BankTransferTableViewCell: UITableViewCell {
         bankAccountNumber.font = .regular12
         bankAccountNumber.textColor = .textPCaption
         
-        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        containerView.isUserInteractionEnabled = true
-        containerView.addGestureRecognizer(cellTapGesture)
-        
     }
     
     func configureBankList(model : BankAccountModel?, index: Int?, isSelected: Bool) {
@@ -104,10 +98,7 @@ class BankTransferTableViewCell: UITableViewCell {
         }
         
     }
-    
-    @objc func cellTapped() {
-        delegate?.setSelectedBankIndex(index: self.indexAtRow)
-    }
+
     
     func setSelectedCell() {
         ibanCopyButtonContainer.isHidden = false

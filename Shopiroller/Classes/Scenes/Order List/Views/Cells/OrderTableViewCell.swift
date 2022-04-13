@@ -29,6 +29,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet private weak var time: UILabel!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         statusView.layer.cornerRadius = 15

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FittedSheets
 
 class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel> {
     
@@ -135,7 +136,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     private func sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel) {
         let addressBotttomSheetViewController = AddressBottomSheetViewController(viewModel: addressBottomSheetViewModel)
         addressBotttomSheetViewController.delegate = self
-        self.sheet(addressBotttomSheetViewController, completion: nil)
+        self.sheet(addressBotttomSheetViewController)
     }
     
 }
@@ -162,18 +163,19 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
             break
         }
         let listPopUpVC = ListPopUpViewController(viewModel: listPopUpViewModel)
+        listPopUpVC.modalPresentationStyle = .popover
         listPopUpVC.addressDelegate = self
-        popUp(listPopUpVC, completion: nil)
+        popUp(listPopUpVC)
     }
 }
 
 extension CheckOutAddressViewController : AddressBottomViewDelegate {
     func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
         if let userShippingAddressModel = userShippingAddressModel {
-            viewModel.setShippingAddress(shippingAddressModel: userShippingAddressModel)
+            viewModel.setAdresses(userShippingAddress: userShippingAddressModel)
         }
         if let userBillingAddressModel = userBillingAddressModel {
-            viewModel.setBillingAddress(billingAddressModel: userBillingAddressModel)
+            viewModel.setAdresses(userBillingAddress: userBillingAddressModel)
         }
         
         if let defaultAddressModel = defaultAddressModel {
@@ -197,13 +199,13 @@ extension CheckOutAddressViewController : AddressBottomViewDelegate {
 extension CheckOutAddressViewController: ListPopUpAddressDelegate {
     
     func getBillingAddress(billingAddress: UserBillingAdressModel?) {
-        viewModel.setBillingAddress(billingAddressModel: billingAddress ?? UserBillingAdressModel())
+        viewModel.setAdresses(userBillingAddress: billingAddress)
         SRSessionManager.shared.userBillingAddress = viewModel.getBillingAddress()
         configureViews()
     }
     
     func getShippingAddress(shippingAddress: UserShippingAddressModel?) {
-        viewModel.setShippingAddress(shippingAddressModel: shippingAddress ?? UserShippingAddressModel())
+        viewModel.setAdresses(userShippingAddress: shippingAddress)
         SRSessionManager.shared.userDeliveryAddress = viewModel.getShippingAddress()
         configureViews()
     }

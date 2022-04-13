@@ -34,7 +34,7 @@ extension UIViewController {
     func modal(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController()
         navigationController.viewControllers = [viewController]
-        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .overCurrentContext
         present(navigationController, animated: flag, completion: completion)
     }
     
@@ -102,10 +102,8 @@ extension UIViewController {
         sheetController.pullBarBackgroundColor = .iceBlue
         sheetController.cornerRadius = 15
         sheetController.gripColor = .black
-        DispatchQueue.main.async {
-            viewController.modalPresentationStyle = .overCurrentContext
-            self.present(sheetController, animated: true, completion: nil)
-        }
+        viewController.modalPresentationStyle = .overCurrentContext
+        self.present(sheetController, animated: true, completion: nil)
         
     }
     

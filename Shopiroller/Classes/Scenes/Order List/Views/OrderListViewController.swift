@@ -55,11 +55,6 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
         }
     }
     
-    public override func setupNavigationBar() {
-//        super.setupNavigationBar()
-//        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
-    }
-    
     private func getOrderList() {
         viewModel.getOrderList(success: {
             self.configure()

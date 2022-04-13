@@ -13,7 +13,7 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     private var type: GeneralAddressType
     private var isEditing: Bool
     
-    var selectionType: SelectionType?
+    var selectionAddressType: SelectionType.SelectionAdressType?
     
     private var countryList: [CountryModel]?
     private var stateList: [CountryModel]?
@@ -210,16 +210,16 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
     }
     
     func getSelectionModel() -> SelectionPopUpViewModel {
-        switch selectionType {
+        switch selectionAddressType {
         case .country:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
         case .district:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .district))
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .adress(.district)))
         case .state:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .state))
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .adress(.state)))
         case .none:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .country))
-        }
+            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
+    }
     }
     
     func getSelectedCountryName(selectedId : String?) -> String? {

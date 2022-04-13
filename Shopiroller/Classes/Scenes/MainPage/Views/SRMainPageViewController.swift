@@ -86,7 +86,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     func configureRefreshControl () {
