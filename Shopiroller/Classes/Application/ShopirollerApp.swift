@@ -71,6 +71,12 @@ public class ShopirollerApp {
             options.tracesSampleRate = 1.0
         }
         
+        setUserInfoToSentry()
+        
+    }
+    
+    private func setUserInfoToSentry() {
+        
         if SRAppContext.userId != "" {
             user.userId = SRAppContext.userId
         }
@@ -80,7 +86,6 @@ public class ShopirollerApp {
         }
         
         SentrySDK.setUser(user)
-        
     }
     
     private func initializeIQKeyboardManager() {
@@ -93,10 +98,12 @@ public class ShopirollerApp {
     
     public func setUserId(_ userId: String) {
         SRAppContext.userId = userId
+        setUserInfoToSentry()
     }
     
     public func setUserEmail(_ email: String) {
         SRAppContext.userEmail = email
+        setUserInfoToSentry()
     }
     
     public func setDevelopmentMode (_ developmentMode: Bool) {
