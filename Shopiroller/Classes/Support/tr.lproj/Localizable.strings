@@ -31,7 +31,6 @@
 "categories-section-title" = "Kategoriler";
 
 //MARK: - Explore
-"explore-page-title" = "Polsto";
 "explore-title-text" = "Keşfet";
 "products-identifier" = "ProductsTitleView";
 
@@ -62,7 +61,6 @@
 
 //MARK: - Order Cell
 "order-no" = "Sipariş numarası ";
-"empty-orders-title" = "Henüz sipariş yok";
 
 // MARK: - Order Detail
 "order-detail-page-title" = "Ürün detayı";
@@ -264,7 +262,7 @@ Bu üründen en fazla %@ adet satın alabilirsiniz.";
 "checkout-info-credit-card-description-text" = "Kredi Kartı %@ **** %@";
 "checkout-info-agreement-is-not-checked-title" = "Şartları kabul etmelisiniz.";
 "checkout-info-agreement-is-not-checked-description" = "Koşul şartlarını ve gizlilik politikasını kabul etmeniz gerekir.";
-"checkout-info-agreement-is-not-checked-title" = "Şimdi kabul et";
+"checkout-info-agreement-is-not-checked-button-title" = "Şimdi kabul et";
 
 //MARK: - SelectionPopUp
 

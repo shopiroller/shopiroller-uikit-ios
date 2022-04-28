@@ -31,7 +31,6 @@
 "categories-section-title" = "Categories";
 
 //MARK: - Explore
-"explore-page-title" = "Polsto";
 "explore-title-text" = "Explore";
 "products-identifier" = "ProductsTitleView";
 
@@ -62,7 +61,6 @@
 
 //MARK: - Order Cell
 "order-no" = "Order No: ";
-"empty-orders-title" = "No order yet";
 
 // MARK: - Order Detail
 "order-detail-page-title" = "Order Detail";
@@ -258,7 +256,7 @@
 "checkout-info-credit-card-description-text" = "Credit Card %@ **** %@";
 "checkout-info-agreement-is-not-checked-title" = "You have to agree the terms.";
 "checkout-info-agreement-is-not-checked-description" = "You have to agree the Terms of Conditions and Privacy Policy.";
-"checkout-info-agreement-is-not-checked-title" = "Agree Now";
+"checkout-info-agreement-is-not-checked-button-title" = "Agree Now";
 
 //MARK: - SelectionPopUp
 "selection-pop-up-country-text" = "Select Country";

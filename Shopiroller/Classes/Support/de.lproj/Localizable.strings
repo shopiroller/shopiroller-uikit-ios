@@ -13,7 +13,7 @@
 "section-see-all-title" = "Alle anzeigen";
 "address-text" = "Adresse";
 "payment-text" = "Zahlung";
-"info-text" = "Info";
+"info-text" = "Befehl";
 "no-internet-connection-title" = "Keine Internetverbindung";
 "no-internet-connection-description" = "Bitte überprüfen Sie Ihre Internetverbindung";
 "general-ok-button-text" = "Ausgemacht";
@@ -31,7 +31,6 @@
 "categories-section-title" = "Kategorien";
 
 //MARK: - Erkunden
-"explore-page-title" = "Polsto";
 "explore-title-text" = "Erkunden";
 "products-identifier" = "ProductsTitleView";
 
@@ -56,7 +55,6 @@
 
 //MARK: - Auftragsliste
 "order-list-page-title" = "Meine Bestellungen";
-"empty-orders-title" = "Noch keine Bestellung";
 "empty-orders-description" = "Sie haben noch keine Bestellung. Wir können kein Produkt für Sie auflisten.";
 "empty-orders-action-button" = "Einkauf beginnen";
 
@@ -85,7 +83,7 @@
 
 //MARK: - Produktliste
 "sort-title-text" = "Sortieren nach";
-"filter-title-text" = "Filter";
+"filter-title-text" = "Filtern";
 
 // MARK: - Zahlungsmethode
 "CashOnDelivery" = "Nachnahme";
@@ -109,8 +107,8 @@
 
 // MARK: - Adressliste
 "address_list_page_title" = "Meine Adressen";
-"address_list_segmented_shipping" = "Teslimat Adresse";
-"address_list_segmented_billing" = "Fatura Adresse";
+"address_list_segmented_shipping" = "Lieferadresse";
+"address_list_segmented_billing" = "Rechnungsadresse";
 "address_list_empty_shipping_title" = "Keine Lieferadresse";
 "address_list_empty_shipping_description" = "Starten Sie Ihre erste Adresse und nehmen Sie die gewünschten Artikel.";
 "address_list_empty_billing_title" = "Keine Rechnungsadresse";
@@ -159,7 +157,7 @@
 //MARK: - Checkout-Fortschritt
 "delivery-information-page-title" = "Lieferinformationen";
 "payment-information-page-title" = "Zahlung";
-"info-information-page-title" = "Info";
+"info-information-page-title" = "Befehl";
 "confirm-order-button-text" = "Bestellung bestätigen";
 "checkout-address-next-step-title" = "Nächster Schritt: Zahlungsmethode";
 "checkout-payment-next-step-title" = "Nächster Schritt: Bestellinformationen";
@@ -258,7 +256,7 @@
 "checkout-info-credit-card-description-text" = "Kreditkarte %@ **** %@";
 "checkout-info-agreement-is-not-checked-title" = "Sie müssen den Bedingungen zustimmen.";
 "checkout-info-agreement-is-not-checked-description" = "Sie müssen den Allgemeinen Geschäftsbedingungen und der Datenschutzrichtlinie zustimmen.";
-"checkout-info-agreement-is-not-checked-title" = "Jetzt zustimmen";
+"checkout-info-agreement-is-not-checked-button-title" = "Jetzt zustimmen";
 
 //MARK: - SelectionPopUp
 "selection-pop-up-country-text" = "Land";

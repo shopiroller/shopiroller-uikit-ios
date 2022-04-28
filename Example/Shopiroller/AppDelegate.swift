@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         ShopirollerApp.shared.setHeaderAppLanguage("tr")
         ShopirollerApp.shared.setDevelopmentMode(false)
         ShopirollerApp.shared.delegate = self
+        
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
         
         window?.rootViewController = navigationController

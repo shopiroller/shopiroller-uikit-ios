@@ -57,7 +57,7 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getAgreementCheckPopUpModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .validateCart, title: "checkout-info-agreement-is-not-checked-title".localized, description: "checkout-info-agreement-is-not-checked-description".localized, firstButton: PopUpButtonModel(title: "checkout-info-agreement-is-not-checked-title".localized, type: .darkButton), secondButton: nil)
+        return PopUpViewModel(image: .validateCart, title: "checkout-info-agreement-is-not-checked-title".localized, description: "checkout-info-agreement-is-not-checked-description".localized, firstButton: PopUpButtonModel(title: "checkout-info-agreement-is-not-checked-button-title".localized, type: .darkButton), secondButton: nil)
     }
     
     func isInvalidItemsAvailable() -> Bool {

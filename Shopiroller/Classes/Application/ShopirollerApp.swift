@@ -70,7 +70,7 @@ public class ShopirollerApp {
             options.enableAutoSessionTracking = true
             options.tracesSampleRate = 1.0
         }
-        
+    
         setUserInfoToSentry()
         
     }
