@@ -44,7 +44,7 @@ class ProductViewModel {
         if let productListModel = productListModel {
             return productListModel.shippingPrice == 0.0
         } else if let productDetailModel = productDetailModel {
-            return productDetailModel.shippingPrice == 0.0
+            return (!(isUseFixPrice()) && productDetailModel.shippingPrice == 0.0)
         }
         return false
     }
@@ -60,10 +60,6 @@ class ProductViewModel {
     
     func isOutofStock() -> Bool {
         return productListModel?.stock == 0 || (productDetailModel?.stock == 0)
-    }
-    
-    func hasSituation() -> Bool {
-        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
     }
     
     func getPrice() -> String {
