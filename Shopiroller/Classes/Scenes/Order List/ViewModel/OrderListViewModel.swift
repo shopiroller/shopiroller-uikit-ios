@@ -66,7 +66,7 @@ open class OrderListViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: nil))
+        return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: .black))
     }
     
     func isOpenedFromResultPage() -> Bool? {
