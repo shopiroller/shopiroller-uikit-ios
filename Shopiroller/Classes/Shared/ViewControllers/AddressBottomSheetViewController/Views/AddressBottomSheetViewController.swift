@@ -150,7 +150,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     override func setup() {
         super.setup()
         
-        closeButton.tintColor = .white
         closeButton.setImage(UIImage(systemName: "xmark"))
         closeButton.imageView?.tintColor = .black
         
@@ -423,7 +422,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxNumberView.resignFirstResponder()
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
-        let selectionPopupVC = SelectionPopUpViewController(viewModel: viewModel.getSelectionModel())
+        let selectionPopupVC = SelectionViewController(viewModel: viewModel.getSelectionModel())
         let navigationController = UINavigationController()
         selectionPopupVC.delegate = self
         navigationController.viewControllers = [selectionPopupVC]

@@ -8,7 +8,7 @@
 import Foundation
 
 
-class SelectionPopUpViewModel: SRBaseViewModel {
+class SelectionViewModel: SRBaseViewModel {
     
     private var selectionPopUpModel: SelectionPopUpModel?
     private var filteredList: [CountryModel] = []
