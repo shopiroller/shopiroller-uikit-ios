@@ -372,15 +372,22 @@ extension CheckOutPaymentViewController: UITextFieldDelegate {
             creditCartExpireDateTextField.becomeFirstResponder()
         case creditCartExpireDateTextField:
             creditCartCvvTextField.becomeFirstResponder()
+        case creditCartCvvTextField:
+            validateCreditCardFields()
         default:
             break
         }
-        validateCreditCardFields()
         return true
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
          return true;
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField == creditCartCvvTextField) {
+            validateCreditCardFields()
+        }
     }
 }
 
