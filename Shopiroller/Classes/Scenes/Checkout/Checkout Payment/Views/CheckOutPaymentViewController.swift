@@ -395,6 +395,9 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
         let model = viewModel.getBankAccountModel(position: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: BankTransferTableViewCell.reuseIdentifier, for: indexPath) as! BankTransferTableViewCell
         viewModel.isSelected = viewModel.selectedBankIndex == indexPath.row
+        if (viewModel.isSelected) {
+            setBankTransferUI()
+        }
         cell.configureBankList(model: model,index: indexPath.row, isSelected: viewModel.isSelected)
         cell.selectionStyle = .none
         cell.delegate = self
@@ -403,7 +406,7 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedBankIndex = indexPath.row
-        viewModel.isSelected ? setBankTransferUI() : bankTransferTableView.reloadData()
+        bankTransferTableView.reloadData()
         SRSessionManager.shared.orderEvent.bankAccount = viewModel.getBankAccountModel(position: indexPath.row )
         bankTransferTableView.reloadData()
     }
