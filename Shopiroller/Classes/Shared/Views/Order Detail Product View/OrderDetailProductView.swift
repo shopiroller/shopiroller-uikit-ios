@@ -29,7 +29,7 @@ class OrderDetailProductView: SRBaseView {
         
         if let quantity = model.quantity {
             orderPiece.textColor = .textPCaption
-            orderPiece.attributedText = ECommerceUtil.getBoldNormal("order_details_quantity".localized, String(quantity))
+            orderPiece.attributedText = ECommerceUtil.getBoldNormal("e_commerce_order_details_quantity".localized, String(quantity))
         }
         
         let calculatedPrice: Double? = (model.paidPrice == 0) ? model.campaignPrice : model.paidPrice

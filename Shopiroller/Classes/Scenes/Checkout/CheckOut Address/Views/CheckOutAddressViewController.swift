@@ -11,11 +11,11 @@ import FittedSheets
 class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel> {
     
     private struct Constants {
-        static var deliveryAddressText: String { return "delivery-address-title".localized }
+        static var deliveryAddressText: String { return "user_delivery_address".localized }
         
-        static var billingAddressText: String { return "billing-address-title".localized }
+        static var billingAddressText: String { return "user_billing_address".localized }
         
-        static var addAddressButtonText: String { return "add-address-button-text".localized }
+        static var addAddressButtonText: String { return "e_commerce_address_selection_no_shipping_address_button".localized }
     }
     
     @IBOutlet private weak var containerView: UIView!

@@ -80,8 +80,6 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
             setUpForAddress()
         case .payment:
             setUpForPayment()
-        case .shoppingCart:
-            setUpForAddress()
         case .sortList:
             setUpForSort()
         }
@@ -110,20 +108,20 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         case .shipping:
             popUpImageView.image = .billingAddressIcon
         }
-        popUpTitle.text = "list-popup-select-address-title".localized
+        popUpTitle.text = "e_commerce_address_selection_address_shipping_popup_title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
     }
     
     private func setUpForPayment() {
         popUpImageView.image = .emptyPaymentMethod
-        popUpTitle.text = "list-popup-select-payment-title".localized
+        popUpTitle.text = "e_commerce_payment_method_selection_payment_type_popup_title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
     }
     
     private func setUpForShoppingCart() {
-        popUpTitle.text = "list-popup-shopping-cart-title".localized
+        popUpTitle.text = "e_commerce_order_summary_update_order_popup_button".localized
         popUpTitle.font = .bold24
         popUpTitle.textColor = .black
         shoppingCartDescriptionContainer.isHidden = false
@@ -132,7 +130,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
     private func setUpForSort() {
         popUpImageView.image = .sortPopUpIcon
-        popUpTitle.text = "sort_dialog_title".localized
+        popUpTitle.text = "e_commerce_category_product_list_order_dialog_title".localized
         popUpTitle.font = .semiBold20
         popUpTitle.textColor = .black
         popUpTableView.rowHeight = 60
@@ -170,8 +168,6 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.setupBillingCell(model: model, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 return cell
             }
-        case .shoppingCart:
-            break
         case .payment:
             let model = viewModel.getSupportedMethods(position: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: PaymentTableViewCell.reuseIdentifier, for: indexPath) as! PaymentTableViewCell
@@ -200,8 +196,6 @@ extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
             case .billing:
                 addressDelegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: indexPath.row))
             }
-        case .shoppingCart:
-            break
         case .payment:
             guard let supportedPaymentMethods = viewModel.getSupportedMethods(position: indexPath.row) else { return }
             paymentDelegate?.getSelectedPayment(payment: supportedPaymentMethods.paymentType)

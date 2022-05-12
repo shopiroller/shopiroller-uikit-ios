@@ -19,7 +19,7 @@ public class GeneralAddressView: SRBaseView {
     
     private struct Constants {
         
-        static var selectOtherAdressButtonText: String { return "select-other-address-button-text".localized }
+        static var selectOtherAdressButtonText: String { return "e_commerce_address_selection_other_addresses".localized }
     }
     
     @IBOutlet private weak var containerView: UIView!

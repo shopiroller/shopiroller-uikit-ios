@@ -18,88 +18,88 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     private struct Constants {
         
-        static var titleText: String { return "address-bottom-view-title-text".localized }
+        static var titleText: String { return "e_commerce_address_selection_add_new_address".localized }
         
-        static var nameTextFieldText : String { return "address-bottom-view-name-text".localized }
+        static var nameTextFieldText : String { return "user_address_name".localized }
         
-        static var surNameTextFieldText : String { return "address-bottom-view-surname-text".localized }
+        static var surNameTextFieldText : String { return "user_address_surname".localized }
         
-        static var phoneTextFieldText : String { return "address-bottom-view-phone-text".localized }
+        static var phoneTextFieldText : String { return "user_address_phone".localized }
         
-        static var countryTextFieldText : String { return "address-bottom-view-country-text".localized }
+        static var countryTextFieldText : String { return "user_address_country".localized }
         
-        static var addressTextFieldText : String { return "address-bottom-view-address-text".localized }
+        static var addressTextFieldText : String { return "user_address_address_line".localized }
         
-        static var zipCodeTextFieldText : String { return "address-bottom-view-zipcode-text".localized }
+        static var zipCodeTextFieldText : String { return "user_address_postal_code".localized }
         
-        static var addressTitleTextFieldText : String { return "address-bottom-view-address-title-text".localized }
+        static var addressTitleTextFieldText : String { return "user_address_address_title".localized }
         
-        static var individualTextFieldText : String { return "address-bottom-view-individual-checkbox-text".localized }
+        static var individualCheckBoxText : String { return "user_address_individual".localized }
         
-        static var corporateCheckBoxText : String { return "address-bottom-view-corporate-checkbox-text".localized }
+        static var corporateCheckBoxText : String { return "user_address_corporate".localized }
         
-        static var identityNumberTextFieldText : String { return "address-bottom-view-identitynumber-text".localized }
+        static var identityNumberTextFieldText : String { return "user_address_identity_number".localized }
         
-        static var companyNameTextFieldText : String { return "address-bottom-view-corporate-company-name-text".localized }
+        static var companyNameTextFieldText : String { return "user_address_company_name".localized }
         
-        static var corporateTaxOfficeTextFieldText : String { return "address-bottom-view-corporate-tax-office-text".localized }
+        static var corporateTaxOfficeTextFieldText : String { return "user_address_tax_office".localized }
         
-        static var corporateTaxNumberTextFieldText : String { return "address-bottom-view-corporate-tax-number-text".localized }
+        static var corporateTaxNumberTextFieldText : String { return "user_address_tax_number".localized }
         
-        static var saveButtonText : String { return "address-bottom-view-save-button-text".localized }
+        static var saveButtonText : String { return "e_commerce_general_save_button_text".localized }
         
-        static var saveAsBillingAddressText: String { return "address-bottom-view-save-as-billing-address-text".localized }
+        static var saveAsBillingAddressText: String { return "user_address_save_as_billing".localized }
         
-        static var statesTextFieldText: String { return "address-bottom-view-states-text".localized }
+        static var statesTextFieldText: String { return "user_address_city".localized }
         
-        static var districtTextFieldText: String { return "address-bottom-view-district-text".localized }
+        static var districtTextFieldText: String { return "user_address_district".localized }
         
-        static var keyboardDoneActionText: String { return "keyboard-done-action-text".localized }
+        static var keyboardDoneActionText: String { return "general_keyboard_done_action_text".localized }
         
     }
     
     
     private struct ErrorConstants {
         
-        static var nameEmptyError : String { return "address-bottom-view-name-empty-text".localized }
+        static var nameEmptyError : String { return "user_address_form_name_empty".localized }
         
-        static var nameValidationError : String { return "address-bottom-view-name-invalid-text".localized }
+        static var nameValidationError : String { return "user_address_form_name_valid".localized }
         
         static var surnameEmptyError : String { return "address-bottom-view-surname-empty-text".localized }
         
-        static var surnameValidationError : String { return "address-bottom-view-surname-invalid-text".localized }
+        static var surnameValidationError : String { return "user_address_form_surname_empty".localized }
         
-        static var phoneEmptyError : String { return "address-bottom-view-phone-empty-text".localized }
+        static var phoneEmptyError : String { return "user_address_form_phone_empty".localized }
         
-        static var phoneValidationError : String { return "address-bottom-view-phone-invalid-text".localized }
+        static var phoneValidationError : String { return "user_address_form_phone_valid".localized }
         
-        static var countryError : String { return "address-bottom-view-country-error-text".localized }
+        static var countryError : String { return "user_address_form_country_empty".localized }
         
-        static var stateError : String { return "address-bottom-view-states-error-text".localized }
+        static var stateError : String { return "user_address_form_city_empty".localized }
         
-        static var districtError : String { return "address-bottom-view-district-error-text".localized }
+        static var districtError : String { return "user_address_form_district_empty".localized }
         
-        static var addressEmptyError : String { return "address-bottom-view-address-empty-text".localized }
+        static var addressEmptyError : String { return "user_address_form_address_empty".localized }
         
-        static var addressValidationError : String { return "address-bottom-view-address-invalid-text".localized }
+        static var addressValidationError : String { return "user_address_form_address_valid".localized }
         
-        static var zipCodeEmptyError : String { return "address-bottom-view-zipcode-empty-text".localized }
+        static var zipCodeEmptyError : String { return "user_address_form_postal_code_empty".localized }
         
-        static var zipCodeValidationError : String { return "address-bottom-view-zipcode-invalid-text".localized }
+        static var zipCodeValidationError : String { return "user_address_form_postal_code_valid".localized }
         
-        static var addressTitleEmptyError : String { return "address-bottom-view-address-title-empty-text".localized }
+        static var addressTitleEmptyError : String { return "user_address_form_address_title_empty".localized }
         
-        static var addressTitleValidationError : String { return "address-bottom-view-address-title-invalid-text".localized }
+        static var addressTitleValidationError : String { return "user_address_form_address_title_valid".localized }
         
-        static var identityNumberEmptyError : String { return "address-bottom-view-identitynumber-error-text".localized }
+        static var identityNumberEmptyError : String { return "user_address_form_identity_number_empty".localized }
         
-        static var identityNumberValidationError : String { return "address-bottom-view-identitynumber-invalid-text".localized }
+        static var identityNumberValidationError : String { return "user_address_form_identity_number_valid".localized }
         
-        static var companyNameEmptyError : String { return "address-bottom-view-corporate-company-name-error-text".localized }
+        static var companyNameEmptyError : String { return "user_address_form_company_empty".localized }
         
-        static var taxOfficeEmptyError : String { return "address-bottom-view-corporate-tax-office-error-text".localized }
+        static var taxOfficeEmptyError : String { return "user_address_form_tax_office_empty".localized }
         
-        static var taxNumberEmptyError : String { return "address-bottom-view-corporate-tax-number-error-text".localized }
+        static var taxNumberEmptyError : String { return "user_address_form_tax_number_empty".localized }
     }
     
     @IBOutlet private weak var individualCheckBoxTitle: UILabel!
@@ -161,7 +161,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
         saveAsBillingAddressButton.imageView?.tintColor = .black
         
-        individualCheckBoxTitle.text = Constants.individualTextFieldText
+        individualCheckBoxTitle.text = Constants.individualCheckBoxText
         individualCheckBoxButton.setImage(.radioOn)
         
         corporateCheckBoxTitle.text = Constants.corporateCheckBoxText

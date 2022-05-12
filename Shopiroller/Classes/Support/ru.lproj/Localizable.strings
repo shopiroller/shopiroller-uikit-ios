@@ -1,0 +1,302 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+"e_commerce_general_error_description" = "Извините, произошла ошибка. Повторите попытку позже";
+"e_commerce_general_error_title" = "Ошибка";
+"e_commerce_general_next_step_text" = "Далее";
+"e_commerce_general_ok_button_text" = "ХОРОШО";
+"e_commerce_general_cancel_button_text" = "Отменить";
+"e_commerce_internet_connection_error_title" = "Нет подключения к Интернету";
+"e_commerce_internet_connection_error_description" = "Проверьте подключение к Интернету";
+"e_commerce_general_start_shopping_button_text" = "Начать покупки";
+"e_commerce_general_save_button_text" = "Сохранить";
+"e_commerce_general_keyboard_done_action_text" = "Готово";
+"e_commerce_checkout_top_layout_address_text" = "Доставка";
+"e_commerce_checkout_top_layout_payment_text" = "Оплата";
+"e_commerce_checkout_top_layout_info_text" = "Заказ";
+
+"e_commerce_list_no_product_title" = "Товары еще не добавлены.";
+"e_commerce_list_no_product_description" = "В этом магазине пока нет товаров. Но скоро здесь что-то произойдет.";
+"e_commerce_list_sold_out_badge" = "Продано";
+"e_commerce_list_sale_badge" = "Скидка";
+"e_commerce_list_free_shipping_badge" = "Бесплатная доставка";
+"e_commerce_list_categories" = "Категории";
+"e_commerce_list_see_all" = "Просмотреть все";
+"e_commerce_list_explore" = "Исследовать";
+
+"e_commerce_category_list_categories_title" = "Категории";
+"e_commerce_category_list_category_item_count" = "%@ продуктов";
+"e_commerce_category_list_see_all_product_for_category" = "Все продукты %@";
+
+"e_commerce_category_product_list_no_empty_view_title" = "Товар не добавлен.";
+"e_commerce_category_product_list_no_empty_view_description" = "В магазине нет товаров этой категории.";
+"e_commerce_category_product_list_order" = "Сортировать";
+"e_commerce_category_product_list_filter" = "Фильтр";
+"e_commerce_category_product_list_order_dialog_title" = "Сортировка";
+"e_commerce_category_product_list_order_dialog_most_shipped" = "Бестселлеры";
+"e_commerce_category_product_list_order_dialog_price_increasing" = "Цена по возрастанию";
+"e_commerce_category_product_list_order_dialog_price_decreasing" = "Цена снижена";
+"e_commerce_category_product_list_order_dialog_most_recent_added" = "Самые последние";
+
+"e_commerce_product_detail_description" = "Описание продукта";
+"e_commerce_product_detail_return_terms" = "Условия возврата и обмена";
+"e_commerce_product_detail_delivery_conditions" = "Условия доставки";
+"e_commerce_product_detail_terms_delivery_conditions_popup_button" = "Вернуться к продукту";
+"e_commerce_product_detail_buy_now" = "Добавить в корзину";
+"e_commerce_product_detail_maximum_product_message" = "Вы можете приобрести до %@ этого продукта.";
+"e_commerce_product_detail_sold_out_button" = "Распродано";
+"e_commerce_product_detail_sold_out_badge" = "Распродано";
+"e_commerce_product_detail_free_shipping_badge" = "Бесплатная доставка";
+"e_commerce_product_detail_maximum_product_limit_title" = "Максимальный лимит продукта";
+"e_commerce_product_detail_maximum_product_limit_description" = "Вы достигли максимального предела покупок товаров. Вы можете добавить в корзину не более %@ ​​товаров";
+"e_commerce_product_detail_maximum_product_limit_button" = "Вернуться к продукту";
+"e_commerce_product_detail_out_of_stock_title" = "Нет в наличии";
+"e_commerce_product_detail_out_of_stock_description" = "Вы не можете разместить заказ, так как товаров не осталось";
+"e_commerce_product_detail_out_of_stock_button" = "Вернуться к списку товаров";
+"e_commerce_product_detail_added_to_shopping_cart_button" = "Добавлено в корзину";
+"e_commerce_product_detail_cargo_price" = "Стоимость доставки %@";
+"e_commerce_product_detail_not_found_product_title" = "Не найдено";
+"e_commerce_product_detail_not_found_product_description" = "Страница, которую вы ищете, не существует или, возможно, была удалена.";
+"e_commerce_product_detail_not_found_product_button" = "Я понимаю";
+
+"e_commerce_address_selection_title" = "Информация о доставке";
+"e_commerce_address_selection_shipping_address_title" = "Адрес доставки";
+"e_commerce_address_selection_add_new_address" = "Добавить";
+"e_commerce_address_selection_no_shipping_address" = "Адрес доставки не найден.";
+"e_commerce_address_selection_no_shipping_address_button" = "Добавить новый адрес";
+"e_commerce_address_selection_other_addresses" = "Другие мои адреса";
+"e_commerce_address_selection_invoice_address_title" = "Платежный адрес";
+"e_commerce_address_selection_no_invoice_address" = "Платежный адрес не найден.";
+"e_commerce_address_selection_no_invoice_address_button" = "Добавить новый адрес";
+"e_commerce_address_selection_next_step" = "Следующий шаг: способ оплаты";
+"e_commerce_address_selection_address_shipping_popup_title" = "Выбор адреса";
+"e_commerce_address_selection_address_shipping_popup_description" = "Описание выбора адреса";
+"e_commerce_address_selection_address_invoice_popup_title" = "Выбор адреса";
+"e_commerce_address_selection_address_invoice_popup_description" = "Описание выбора адреса";
+
+"e_commerce_payment_method_selection_title" = "Платежная информация";
+"e_commerce_payment_method_selection_empty_view_title" = "Пока нет доступных способов оплаты.";
+"e_commerce_payment_method_selection_empty_view_description" = "Владелец магазина еще не добавил способ оплаты.";
+"e_commerce_payment_method_selection_button_title" = "Выберите способ оплаты";
+"e_commerce_payment_method_selection_payment_type_popup_title" = "Выбор способа оплаты";
+"e_commerce_payment_method_selection_payment_type_popup_description" = "Выберите наиболее удобный способ оплаты.";
+"e_commerce_payment_method_selection_next_step" = "Следующий шаг: информация о заказе";
+"e_commerce_payment_method_selection_pay_at_door" = "Оплата у двери";
+"e_commerce_payment_method_selection_transfer" = "Банковский перевод";
+"e_commerce_payment_method_selection_credit_card" = "Кредитная карта";
+"e_commerce_payment_method_selection_stripe" = "Stripe";
+"e_commerce_payment_method_selection_paypal" = "Paypal";
+"e_commerce_payment_credit_card_number" = "Номер карты";
+"e_commerce_payment_credit_card_name" = "Имя Фамилия";
+"e_commerce_payment_credit_card_expire_date" = "Срок действия";
+"e_commerce_payment_credit_card_security_code" = "Код безопасности";
+"e_commerce_payment_credit_card_validation_empty" = "%@ требуется";
+"e_commerce_payment_credit_card_validation_invalid" = "%@ неверно";
+"e_commerce_payment_secure_payment_title" = "3D Secure Payment";
+"e_commerce_payment_bank_iban" = "Ибан: ";
+"e_commerce_payment_bank_branch" = "Отделение: ";
+"e_commerce_payment_bank_account" = "Учетная запись: ";
+"e_commerce_payment_bank_copy_toast_message" = "Скопировано в буфер обмена.";
+
+"e_commerce_payment_method_selection_description_text" = " После нажатия \"Завершить заказ\" вы будете перенаправлены на %@ для безопасного завершения покупки.";
+
+"e_commerce_order_summary_title" = "Сводка заказа";
+"e_commerce_order_summary_payment_title" = "Платеж";
+"e_commerce_order_summary_cart_title" = "Корзина";
+"e_commerce_order_summary_cart_description" = "%@ продукт %@ %@";
+"e_commerce_order_summary_credit_cart_description" = "Кредитная карта %@ **** %@";
+"e_commerce_order_summary_bank_transfer_description" = "Перевод на банковский счет %@ %@";
+"e_commerce_order_summary_invoice_address_title" = "Адрес счета";
+"e_commerce_order_summary_delivery_address_title" = "Адрес доставки";
+"e_commerce_order_summary_agreement_description" = "Я прочитал и принимаю Соглашение о дистанционной продаже</font></b></u>.";
+"e_commerce_order_summary_products_price" = "Сумма товара";
+"e_commerce_order_summary_shipping_price" = "Сумма доставки";
+"e_commerce_order_summary_total_price" = "Всего";
+"e_commerce_order_summary_action_confirm_order" = "Подтвердить заказ";
+"e_commerce_order_summary_agreement_popup_title" = "Вы должны принять соглашение";
+"e_commerce_order_summary_agreement_popup_description" = "Вы должны принять Соглашение о дистанционной продаже, чтобы продолжить оформление заказа.";
+"e_commerce_order_summary_agreement_popup_button" = "Я согласен";
+"e_commerce_order_summary_update_order_popup_title" = "Обновите свой заказ!";
+"e_commerce_order_summary_update_order_popup_description" = "Вы не можете заказать эту корзину. Некоторых товаров нет в наличии или они были удалены.";
+"e_commerce_order_summary_update_order_popup_button" = "Обновить мою корзину";
+"e_commerce_order_summary_order_note_hint" = "Примечание к заказу";
+
+"e_commerce_result_success_title" = "Заказано!";
+"e_commerce_result_success_description" = "Спасибо за заказ. Надеемся, вам понравились покупки.";
+"e_commerce_result_success_action_my_orders" = "Мои заказы";
+"e_commerce_result_success_action_continue_shopping" = "Продолжить покупки";
+"e_commerce_result_failed_title" = "Платеж не прошел.";
+"e_commerce_result_failed_description" = "К сожалению, оплата не удалась. Повторите попытку.";
+"e_commerce_result_failed_action_update_payment_method" = "Обновить способ оплаты";
+"e_commerce_result_success_reference_number" = "Ссылочный номер: %@";
+"e_commerce_result_credit_card_not_enough_balance" = "Недостаточно баланса";
+"e_commerce_result_credit_card_process_did_not_approved" = "Транзакция не принята";
+"e_commerce_result_credit_card_invalid_payment_info" = "Неверная информация о карте";
+"e_commerce_result_credit_card_lost_or_stolen" = "Утеряна или украдена карта";
+"e_commerce_result_credit_card_expired_card" = "Срок действия карты истек.";
+"e_commerce_result_credit_card_invalid_cvc" = "Неверный защитный код";
+"e_commerce_result_credit_card_requires_three_d" = "Для этого процесса требуется 3D Secure";
+"e_commerce_result_credit_card_installment_not_allowed" = "Рассрочка платежа по дебетовой карте невозможна.";
+"e_commerce_result_credit_card_too_many_invalid" = "Слишком много неверных попыток.";
+"e_commerce_result_credit_card_not_enough_limit" = "Недостаточно лимита на эту сумму.";
+"e_commerce_result_credit_card_invalid_enum" = "Недопустимое перечисление, такое как Валюта, Региональный стандарт или Возврат.";
+"e_commerce_result_credit_card_already_done_before" = "Предыдущая транзакция";
+"e_commerce_result_credit_card_failed_title" = "Сообщение об ошибке %@";
+"e_commerce_result_fail_detail_description_will_replace" = "status=";
+"e_commerce_result_fail_detail_description_to_replace" = "Код ошибки";
+"e_commerce_result_pay_pal_currency_not_supported" = "Используемая валюта не поддерживается.";
+
+"e_commerce_list_order_number" = "Номер заказа";
+"e_commerce_my_orders_title" = "Мои заказы";
+"e_commerce_my_orders_no_order_title" = "Заказ не найден.";
+"e_commerce_my_orders_no_order_description" = "Вы можете совершать покупки прямо сейчас и отслеживать свои заказы на этой странице.";
+
+"e_commerce_order_status_waiting_payment" = "Ожидание платежа";
+"e_commerce_order_status_waiting_approval" = "Ожидает одобрения";
+"e_commerce_order_status_approved" = "Одобрено";
+"e_commerce_order_status_waiting_supplying" = "Поставка";
+"e_commerce_order_status_preparing" = "Подготовка";
+"e_commerce_order_status_shipped" = "Отправлено";
+"e_commerce_order_status_delivered" = "Доставлено";
+"e_commerce_order_status_cancel_requested" = "Запрошена отмена";
+"e_commerce_order_status_canceled" = "Отменено";
+"e_commerce_order_status_refunded" = "Возмещено";
+"e_commerce_order_status_payment_failed" = "Ошибка платежа";
+
+"e_commerce_order_details_page_title" = "Сведения о заказе";
+"e_commerce_order_details_information_title" = "Информация о заказе";
+"e_commerce_order_details_user_note_sub_title" = "Примечание пользователя:";
+"e_commerce_order_details_cargo_title" = "Отслеживание грузов";
+"e_commerce_order_details_address_information_title" = "Адресная информация";
+"e_commerce_order_details_delivery_address_title" = "Адрес доставки";
+"e_commerce_order_details_invoice_address_title" = "Адрес счета-фактуры";
+"e_commerce_order_details_payment_information_title" = "Платежная информация";
+"e_commerce_order_details_product_title" = "Товары";
+"e_commerce_order_details_quantity" = "Количество: %@";
+"e_commerce_order_details_cargo_tracking" = "Где моя посылка?";
+"e_commerce_order_details_item_ordered" = "Заказано %@ товаров";
+"e_commerce_order_details_bank_receiver" = "Получатель: %@";
+"e_commerce_order_details_bank_account" = "Учетная запись: %@";
+"e_commerce_order_details_bank_iban" = "Ибан: %@";
+"e_commerce_order_details_bank_copy_toast_message" = "Скопировано в буфер обмена.";
+"e_commerce_order_details_cargo_copy_toast_message" = "Скопировано в буфер обмена.";
+
+"e_commerce_shopping_cart_item_count" = "%@ товаров";
+"e_commerce_shopping_cart_clear_cart" = "Очистить корзину";
+"e_commerce_shopping_cart_products_price" = "Количество товара: ";
+"e_commerce_shopping_cart_shipping_price" = "Сумма доставки: ";
+"e_commerce_shopping_cart_total_price" = "Всего";
+"e_commerce_shopping_cart_checkout_button" = "Подтвердить корзину";
+"e_commerce_shopping_cart_title" = "Моя корзина";
+"e_commerce_shopping_cart_invalid_product_left" = "Осталось %@ товаров";
+"e_commerce_shopping_cart_invalid_removed_basket" = "Удалено из корзины";
+"e_commerce_shopping_cart_invalid_out_of_stock" = "Товаров нет в наличии";
+"e_commerce_shopping_cart_invalid_publishment_end" = "Товар удален";
+"e_commerce_shopping_cart_invalid_popup_button" = "Продолжить";
+"e_commerce_shopping_cart_updating_popup_title" = "Обновить корзину";
+"e_commerce_shopping_cart_updating_popup_description" = "Ваша корзина будет обновлена ​​по следующим причинам";
+"e_commerce_shopping_cart_empty_view_start_shopping_button" = "Начать покупки";
+"e_commerce_shopping_cart_empty_view_title" = "Ваша корзина пуста";
+"e_commerce_shopping_cart_empty_view_description" = "В вашей корзине нет товаров.";
+"e_commerce_shopping_cart_clear_cart_title" = "Вы уверены, что хотите очистить корзину?";
+"e_commerce_shopping_cart_clear_cart_description" = "Все товары в вашей корзине будут удалены.";
+"e_commerce_shopping_cart_clear_cart_button" = "Да, очистить мою корзину";
+"e_commerce_shopping_cart_delete_cart_title" = "Вы уверены, что хотите удалить этот товар?";
+"e_commerce_shopping_cart_delete_cart_description" = "Вы удаляете %@ этот товар";
+"e_commerce_shopping_cart_delete_cart_button" = "Да, удалить";
+"e_commerce_shopping_cart_cargo_warning" = "%@ применяется специальная стоимость доставки.";
+
+"e_commerce_dialog_delete_address_positive_button" = "Да, удалить";
+"e_commerce_dialog_negative_button" = "Нет, не сейчас";
+
+"e_commerce_search_list_order" = "Сортировать";
+"e_commerce_search_list_filter" = "Фильтр";
+
+"e_commerce_filter_category" = "Категория";
+"e_commerce_filter_brand" = "Бренд";
+"e_commerce_filter_size" = "Размер";
+"e_commerce_filter_color" = "Цвет";
+"e_commerce_filter_price_range" = "Ценовой диапазон";
+"e_commerce_filter_lowest" = "Самый низкий";
+"e_commerce_filter_highest" = "Самый высокий";
+"e_commerce_stock_only" = "Только в наличии";
+"e_commerce_discounted_products" = "Продукты со скидкой";
+"e_commerce_free_shipping" = "Бесплатная доставка";
+"e_commerce_filter_list_products" = "Список продуктов";
+
+"e_commerce_filter_multi_choice_search" = "Поиск";
+"e_commerce_filter_multi_choice_apply" = "Применить";
+
+"e_commerce_filter_selection_apply" = "Применить";
+
+"e_commerce_filter_clear" = "Очистить";
+"e_commerce_multi_choice_search" = "Поиск";
+"e_commerce_multi_choice_apply" = "Применить";
+
+"user_delivery_address" = "Адрес доставки";
+"user_billing_address" = "Платежный адрес";
+"user_address_name" = "Имя";
+"user_address_surname" = "Фамилия";
+"user_address_phone" = "Телефон";
+"user_address_country" = "Страна";
+"user_address_city" = "Город";
+"user_address_district" = "Район";
+"user_address_address_line" = "Адрес";
+"user_address_postal_code" = "Почтовый индекс";
+"user_address_address_title" = "Название адреса";
+"user_address_save_as_billing" = "Сохранить как платежный адрес";
+"user_address_individual" = "Индивидуальный";
+"user_address_corporate" = "Корпоративный";
+"user_address_company_name" = "Название компании";
+"user_address_tax_office" = "Налоговая инспекция";
+"user_address_tax_number" = "Налоговый номер";
+"user_address_identity_number" = "Идентификационный номер";
+
+"user_address_form_name_empty" = "Пожалуйста, введите ваше имя";
+"user_address_form_surname_empty" = "Пожалуйста, введите вашу фамилию";
+"user_address_form_phone_empty" = "Пожалуйста, введите свой номер телефона";
+"user_address_form_country_empty" = "Выберите страну";
+"user_address_form_city_empty" = "Выберите город";
+"user_address_form_district_empty" = "Выберите округ";
+"user_address_form_address_empty" = "Пожалуйста, введите информацию об адресе";
+"user_address_form_postal_code_empty" = "Пожалуйста, введите почтовый индекс";
+"user_address_form_address_title_empty" = "Пожалуйста, введите название адреса";
+"user_address_form_company_empty" = "Пожалуйста, введите название компании";
+"user_address_form_tax_office_empty" = "Пожалуйста, войдите в налоговую инспекцию";
+"user_address_form_tax_number_empty" = "Пожалуйста, введите налоговый номер";
+"user_address_form_identity_number_empty" = "Пожалуйста, введите идентификационный номер";
+
+"user_address_form_name_valid" = "Введите действительное имя";
+"user_address_form_surname_valid" = "Пожалуйста, введите действительную фамилию";
+"user_address_form_phone_valid" = "Введите действительный номер телефона";
+"user_address_form_address_valid" = "Введите действительный адрес";
+"user_address_form_postal_code_valid" = "Пожалуйста, введите действительный почтовый индекс";
+"user_address_form_address_title_valid" = "Пожалуйста, введите действительное название адреса";
+
+"search_bar_search_text" = "Поиск товаров";
+"payment_bank_branch_code" = "Код отделения:";
+"payment_bank_branch_number" = "Номер счета-";
+"action_copied_clipboard" = "Скопировано в буфер обмена";
+
+"user_address_delivery_address_title" = "Адрес доставки";
+"user_address_invoice_address_title" = "Адрес счета";
+
+"user_my_address_title" = "Мои адреса";
+"user_my_address_no_address_title" = "Нет адреса";
+"user_my_address_no_address_description" = "Зарегистрированный адрес не найден. Пожалуйста, добавьте новый адрес.";
+
+"user_my_address_action_delete" = "УДАЛИТЬ";
+"user_my_address_address_action_edit" = "Изменить";
+"user_my_address_delete_address_title" = "Вы уверены, что хотите удалить %@?";
+"user_my_address_delete_address_cancel_button" = "Отмена";
+"user_my_address_delete_address_delete_button" = "Удалить";
+
+"user_my_address_new_address_title" = "Новый адрес";
+"user_my_address_update_address_title" = "Обновить адрес";
+"user_my_address_saved_toast_message" = "Адрес сохранен";
+"user_my_address_shipping_address_removed_message" = "Адрес доставки успешно удален.";
+"user_my_address_billing_address_removed_message" = "Платежный адрес успешно удален.";

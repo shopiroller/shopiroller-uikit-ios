@@ -93,7 +93,7 @@ public class ShopirollerApp {
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "keyboard-next-action-text".localized
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "e_commerce_general_next_step_text".localized
     }
     
     public func setUserId(_ userId: String) {

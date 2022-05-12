@@ -32,9 +32,9 @@ class SRResultViewControllerViewModel : SRBaseViewModel {
     func getFormattedErrorMesage() -> NSAttributedString {
         var errorMessageAttributedText : NSAttributedString = NSAttributedString()
         if let errorMessage = errorMessage , errorMessage != "" {
-            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-description".localized + "(" + errorMessage.replacingOccurrences(of: "checkout-result-info-fail-detail-description-will-replace".localized, with: "checkout-result-info-fail-detail-description-to-replace".localized) + ")"),isReverse: false)
+            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "e_commerce_result_credit_card_failed_title".localized, String.NEW_LINE), normalText: String(format: "e_commerce_result_failed_description".localized + "(" + errorMessage.replacingOccurrences(of: "e_commerce_result_fail_detail_description_will_replace".localized, with: "e_commerce_result_fail_detail_description_to_replace".localized) + ")"),isReverse: false)
         } else {
-            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "checkout-result-info-fail-message".localized, String.NEW_LINE), normalText: String(format: "checkout-result-info-fail-message".localized),isReverse: false)
+            errorMessageAttributedText = String().makeBoldString(boldText: String(format: "e_commerce_result_credit_card_failed_title".localized, String.NEW_LINE), normalText: String(format: "e_commerce_result_credit_card_failed_title".localized),isReverse: false)
         }
         return errorMessageAttributedText
     }

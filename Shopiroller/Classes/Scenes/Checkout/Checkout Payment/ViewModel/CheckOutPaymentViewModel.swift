@@ -11,23 +11,28 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     
     private struct Constants {
         
-        static var creditCardNumberErrorText: String { return "credit-card-number-error-text".localized }
+        static var creditCardEmptyError: String { return "e_commerce_payment_credit_card_validation_empty".localized }
         
-        static var creditCardHolderErrorText: String { return "credit-card-holder-error-text".localized }
+        static var creditCardValidationError: String { return "e_commerce_payment_credit_card_validation_invalid".localized }
         
-        static var creditCardExpireDateErrorText: String { return "credit-card-expire-date-error-text".localized }
+        static var creditCardNumberText: String { return "e_commerce_payment_credit_card_number".localized }
         
-        static var creditCardCvvText: String { return "credit-card-cvv-error-text".localized }
+        static var creditCardHolderText: String { return "e_commerce_payment_credit_card_name".localized }
+        
+        static var creditCardExpireDateText: String { return "e_commerce_payment_credit_card_expire_date".localized }
+        
+        static var creditCardCVVText: String { return "e_commerce_payment_credit_card_security_code".localized }
+        
     }
     
     private var paymentSettings : PaymentSettingsResponeModel?
     
     private var _selectedPayment: PaymentTypeEnum? = nil
-        
+    
     var selectedBankIndex: Int?
     
     var isSelected: Bool = false
-
+    
     func getPaymentSettings(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getPaymentSettings().response() {
             (result) in
@@ -93,7 +98,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func getEmptyViewModel() -> EmptyModel {
-        return EmptyModel(image: .emptyPaymentMethod, title:"checkout-payment-empty-view-title".localized, description:  "checkout-payment-empty-view-description".localized, button: nil)
+        return EmptyModel(image: .emptyPaymentMethod, title:"e_commerce_payment_method_selection_empty_view_title".localized, description:  "e_commerce_payment_method_selection_empty_view_description".localized, button: nil)
     }
     
     func getBankAccountCount() -> Int? {
@@ -167,42 +172,52 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     
     func isValid(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         if(isValidCreditCardHolder(error: error) && isValidCreditCardNumber(error: error) &&
-            isValidCreditCardExpireDate(error: error) && isValidCreditCardCvv(error: error)) {
+           isValidCreditCardExpireDate(error: error) && isValidCreditCardCvv(error: error)) {
             success?()
         }
     }
     
-    private func isValidCreditCardHolder(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
+    func isValidCreditCardHolder(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
         if let fullName = creditCardHolder, fullName.isValidFullName {
             return true
+        } else if (creditCardHolder == nil || creditCardHolder == "")  {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardHolderText)))
+        } else {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardHolderText)))
         }
-        error?(ErrorViewModel.validationError(message: Constants.creditCardHolderErrorText))
         return false
     }
     
-    private func isValidCreditCardExpireDate(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
+    func isValidCreditCardExpireDate(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
         if let creditCardExpireYear = creditCardExpireYear , creditCardExpireYear.count == 2 {
             return true
-        } else if let creditCardExpireMonth = creditCardExpireMonth , creditCardExpireMonth.count == 2 {
+        } else if let creditCardExpireMonth = creditCardExpireMonth ,creditCardExpireMonth.count == 2 {
             return true
+        } else if ((creditCardExpireYear == nil || creditCardExpireYear == "") || (creditCardExpireMonth == nil || creditCardExpireMonth == "")) {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardExpireDateText)))
         }
-        error?(ErrorViewModel.validationError(message: Constants.creditCardExpireDateErrorText))
         return false
     }
     
-    private func isValidCreditCardNumber(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
-        if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true) {
-            return true
+     func isValidCreditCardNumber(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
+         if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true) {
+             return true
+         } else if (creditCardNumber == nil || creditCardNumber == "") {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardNumberText)))
+        } else {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardNumberText)))
         }
-        error?(ErrorViewModel.validationError(message: Constants.creditCardNumberErrorText))
         return false
     }
     
-    private func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
-        if let cvv = creditCardCvv, cvv.isValidCreditCardCvv {
-            return true
+     func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
+         if let cvv = creditCardCvv , cvv.isValidCreditCardCvv {
+             return true
+        } else if (creditCardCvv == nil || creditCardCvv == "") {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardCVVText)))
+        } else {
+            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardCVVText)))
         }
-        error?(ErrorViewModel.validationError(message: Constants.creditCardCvvText))
         return false
     }
     
@@ -217,5 +232,5 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
         return description
     }
-
+    
 }

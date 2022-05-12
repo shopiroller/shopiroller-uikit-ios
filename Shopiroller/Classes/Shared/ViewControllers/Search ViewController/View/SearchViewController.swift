@@ -9,7 +9,7 @@ import UIKit
 
 private struct Constants {
     
-    static var searchText : String { return "search-bar-search-text".localized }
+    static var searchText : String { return "search_bar_search_text".localized }
     
 }
 

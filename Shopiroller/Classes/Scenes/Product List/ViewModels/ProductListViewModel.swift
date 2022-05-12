@@ -105,7 +105,10 @@ class ProductListViewModel : SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .noProductsIcon, title: "empty-view-title".localized, description: "empty-view-description".localized, button: nil)
+        if let title = title {
+            return EmptyModel(image: .noProductsIcon, title: String(format: "e_commerce_product_search_no_result_title".localized, title), description: "e_commerce_product_search_no_result_description".localized, button: nil)
+        }
+        return EmptyModel(image: .noProductsIcon, title: "e_commerce_category_product_list_no_empty_view_title".localized, description: "e_commerce_category_product_list_no_empty_view_description".localized, button: nil)
     }
     
     func getProductId(position: Int) -> String {

@@ -7,6 +7,10 @@
 
 import UIKit
 
+@objc public protocol SRFullScreenSlideshowDelegate: NSObjectProtocol {
+    @objc func getCurrentIndex(index: Int)
+}
+
 @objcMembers
 open class SRFullScreenSlideshowViewController: UIViewController {
 
@@ -20,10 +24,13 @@ open class SRFullScreenSlideshowViewController: UIViewController {
         slideshow.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
 
         return slideshow
-    }()
+    } ()
 
     /// Close button 
     open var closeButton = UIButton()
+    
+    /// Delegate for get image index
+    weak var delegate: SRFullScreenSlideshowDelegate?
 
     /// Close button frame
     open var closeButtonFrame: CGRect?
@@ -119,7 +126,7 @@ open class SRFullScreenSlideshowViewController: UIViewController {
         if let pageSelected = pageSelected {
             pageSelected(slideshow.currentPage)
         }
-
+        delegate?.getCurrentIndex(index: slideshow.currentPage)
         dismiss(animated: true, completion: nil)
     }
 }

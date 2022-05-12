@@ -14,7 +14,7 @@ class ListPopUpViewModel: SRBaseViewModel {
     private var userBillingAddressList : [UserBillingAdressModel]?
     private var addressType: GeneralAddressType?
     private var supportedPaymentMethods: [SupportedPaymentType]?
-    private var sortTitles : [String] = ["sort_dialog_most_shipped".localized,"sort_dialog_price_increasing".localized,"sort_dialog_price_decreasing".localized,"sort_dialog_most_recent_added".localized]
+    private var sortTitles : [String] = ["e_commerce_category_product_list_order_dialog_most_shipped".localized,"e_commerce_category_product_list_order_dialog_price_increasing".localized,"e_commerce_category_product_list_order_dialog_price_decreasing".localized,"e_commerce_category_product_list_order_dialog_most_recent_added".localized]
     var sortOptionsSelectedIndex: Int? = 0
     
     
@@ -40,8 +40,6 @@ class ListPopUpViewModel: SRBaseViewModel {
         switch listType {
         case .payment:
             return supportedPaymentMethods?.count ?? 0
-        case .shoppingCart:
-            return 0
         case .address:
             switch addressType {
             case .shipping:
@@ -60,8 +58,6 @@ class ListPopUpViewModel: SRBaseViewModel {
         switch listType {
         case .payment:
             return 65
-        case .shoppingCart:
-            return 75
         case .address:
             return 105
         case .sortList:
@@ -89,7 +85,6 @@ class ListPopUpViewModel: SRBaseViewModel {
 
 enum ListType {
     case payment
-    case shoppingCart
     case address
     case sortList
 }
