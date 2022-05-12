@@ -199,7 +199,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-        
+     
+        self.view.isHidden = true
     }
     
     override func setupNavigationBar() {
@@ -323,6 +324,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             [weak self] in
             guard let self = self else { return }
             self.setUI()
+            self.view.isHidden = false
             self.collectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
@@ -455,11 +457,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         if let brandImage = viewModel.getBrandImage() {
             productBrandImage.kf.setImage(with: URL(string: brandImage))
-        }else{
+        } else {
             productBrandImage.isHidden = true
         }
-        
-        situationContainer.isHidden = !viewModel.hasSituation()
         
         setOutOfStockUI()
         setFreeShippingUI()
@@ -491,9 +491,10 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     private func setFreeShippingUI() {
         
+        shippingPriceContainer.isHidden = viewModel.isUseFixPrice()
+        
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
-            shippingPriceContainer.isHidden = true
             shippingPriceContainerConstraint.constant = 0
             freeShippingContainer.makeCardView()
             freeShippingContainer.backgroundColor = .black
@@ -502,7 +503,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             freeShippingLabel.text = Constants.freeShippingText.uppercased()
         } else {
             freeShippingContainer.isHidden = true
-            shippingPriceContainer.isHidden = false
             shippingPriceLabel.attributedText = String().makeBoldString(boldText: ECommerceUtil.getFormattedPrice(price: Double(viewModel.getShippingPrice()), currency: viewModel.getCurrency()), normalText: Constants.shippingPriceText,isReverse: true)
             shippingImage.image = .cargoShippingImage
             shippingImage.tintColor = .pinkishTan

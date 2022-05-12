@@ -112,11 +112,11 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func isShippingFree() -> Bool {
-        return productDetailModel?.shippingPrice == 0.0
+        return (!(isUseFixPrice()) && productDetailModel?.shippingPrice == 0.0)
     }
     
     func isUseFixPrice() -> Bool {
-        return productDetailModel?.useFixPrice == true
+        return (productDetailModel?.useFixPrice == true && productDetailModel?.shippingPrice == 0)
     }
     
     func hasDiscount() -> Bool {
@@ -125,10 +125,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getCurrency() -> String {
         return productDetailModel?.currency?.currencySymbol ?? ""
-    }
-    
-    func hasSituation() -> Bool {
-        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
     }
     
     func getShippingPrice() -> String {

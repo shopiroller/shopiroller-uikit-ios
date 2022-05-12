@@ -94,16 +94,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }
         
         if viewModel.isOutofStock() {
-            soldOutLabel.setProductSituation(type: .soldOut)
             soldOutLabel.isHidden = false
+            soldOutLabel.setProductSituation(type: .soldOut)
             soldOutLabel.textColor = .textPrimary
             soldOutLabel.text = Constants.soldOut
             soldOutLabel.font = .bold9
+        } else if (viewModel.isOutofStock() && viewModel.isUseFixPrice()) {
+            soldOutLabel.isHidden = false
         } else {
             soldOutLabel.isHidden = true
         }
-        
-        situationContainer.isHidden = !viewModel.hasSituation()
         
     }
     
