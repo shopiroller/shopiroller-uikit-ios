@@ -26,21 +26,21 @@ class PaymentTableViewCell: UITableViewCell {
         self.index = index
         switch model?.paymentType {
         case .PayPal:
-            paymentTypeText.text = "list-pop-up-paypal-text".localized
+            paymentTypeText.text = "e_commerce_payment_method_selection_paypal".localized
             paymentTypeImage.image = .paypalIcon
         case .PayAtDoor:
-            paymentTypeText.text = "list-pop-up-pay-at-the-door-text".localized
+            paymentTypeText.text = "e_commerce_payment_method_selection_pay_at_door".localized
             paymentTypeImage.image = .payAtTheDoorIcon
         case .Online, .Online3DS:
-            paymentTypeText.text = "list-pop-up-credit-cart-text".localized
+            paymentTypeText.text = "e_commerce_payment_method_selection_credit_card".localized
             paymentTypeImage.image = .creditCartIcon
         case .Transfer:
-            paymentTypeText.text = "list-pop-up-bank-transfer-text".localized
+            paymentTypeText.text = "e_commerce_payment_method_selection_transfer".localized
             paymentTypeImage.image = .bankIcon
         case .none:
             break
         case .Stripe,.Stripe3DS:
-            paymentTypeText.text = "list-pop-up-stripe-text".localized
+            paymentTypeText.text = "e_commerce_payment_method_selection_stripe".localized
             paymentTypeImage.image = .stripeIcon
         case .some(.Other):
             break

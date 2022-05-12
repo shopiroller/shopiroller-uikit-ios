@@ -12,9 +12,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     private struct Constants {
         
-        static var freeShipping: String { return "free-shipping-text".localized }
+        static var freeShipping: String { return "e_commerce_list_free_shipping_badge".localized }
         
-        static var soldOut: String { return "sold-out-text".localized }
+        static var soldOut: String { return "e_commerce_list_sold_out_badge".localized }
         
     }
     

@@ -12,7 +12,9 @@ class CategoriesListViewModel : SRBaseViewModel {
     
     private struct Constants {
         
-        static var subCategoryContainerText: String { return "sub-category-container-text".localized }
+        static var subCategoryContainerText: String { return "e_commerce_category_list_see_all_product_for_category".localized }
+        
+        static var categoriesPageTitle: String { return "e_commerce_category_list_categories_title".localized }
         
     }
 
@@ -35,7 +37,7 @@ class CategoriesListViewModel : SRBaseViewModel {
     }
     
     func getPageTitle() -> String? {
-        return (isSubCategory == true) ? selectedRowName : "category-page-title".localized
+        return (isSubCategory == true) ? selectedRowName : Constants.categoriesPageTitle
     }
     
     func getModel() -> [SRCategoryResponseModel]? {
@@ -51,7 +53,7 @@ class CategoriesListViewModel : SRBaseViewModel {
     }
     
     func getTitle() -> String? {
-        return Constants.subCategoryContainerText.replacingOccurrences(of: "XX", with: selectedRowName ?? "" )
+        return String(format: Constants.subCategoryContainerText, selectedRowName ?? "")
     }
     
     func setSelectedRowName(position: Int) {

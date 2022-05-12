@@ -11,9 +11,9 @@ open class SRMainPageViewModel: SRBaseViewModel {
     
     private struct Constants {
         
-        static var emptyViewTitle: String { return "empty-view-title".localized }
+        static var emptyViewTitle: String { return "e_commerce_category_product_list_no_empty_view_title".localized }
         
-        static var emptyViewDescription: String { return "empty-view-description".localized }
+        static var emptyViewDescription: String { return "e_commerce_category_product_list_no_empty_view_description".localized }
         
     }
     

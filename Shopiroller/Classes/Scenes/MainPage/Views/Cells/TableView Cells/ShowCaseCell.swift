@@ -16,7 +16,7 @@ protocol ShowCaseCellDelegate : AnyObject {
 public class ShowCaseCell: UICollectionViewCell  {
     
     private struct Constants {
-        static var seeAllTitle: String { return "section-see-all-title".localized  }
+        static var seeAllTitle: String { return "e_commerce_list_see_all".localized  }
     }
 
     @IBOutlet private weak var collectionView: UICollectionView!

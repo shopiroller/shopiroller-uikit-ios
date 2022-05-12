@@ -30,11 +30,11 @@ class CheckOutViewModel {
     func getPageTitle() -> String? {
         switch progressStage {
         case .payment:
-            return "payment-information-page-title".localized
+            return "e_commerce_payment_method_selection_title".localized
         case .info:
-            return "info-information-page-title".localized
+            return "e_commerce_order_summary_title".localized
         case .address:
-            return "delivery-information-page-title".localized
+            return "e_commerce_address_selection_title".localized
             
         }
     }

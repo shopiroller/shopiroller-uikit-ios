@@ -27,10 +27,10 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
         minPriceTextField.backgroundColor = .buttonLight
         maxPriceTextField.textColor = .textSecondary
         maxPriceTextField.backgroundColor = .buttonLight
-        priceRangeLabel.text =  "filter_price_range".localized
+        priceRangeLabel.text =  "e_commerce_filter_price_range".localized
         
-        minPriceTextField.placeholder = "filter_price_range_lowest".localized
-        maxPriceTextField.placeholder = "filter_price_range_highest".localized
+        minPriceTextField.placeholder = "e_commerce_filter_lowest".localized
+        maxPriceTextField.placeholder = "e_commerce_filter_highest".localized
         
         minPriceTextField.delegate = self
         maxPriceTextField.delegate = self

@@ -13,14 +13,14 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     
     private struct Constants {
-        static var shoppingCardViewTitle: String { return "checkout-info-shopping-card-view-title".localized }
-        static var paymentCardViewTitle: String { return "checkout-info-payment-card-view-title".localized }
-        static var billingAddressCardViewTitle: String { return "checkout-info-billing-address-card-view-title".localized }
-        static var deliveryAddressCardViewTitle: String { return "checkout-info-delivery-addresss-card-view-title".localized }
-        static var confirmOrderButtonTitle: String { return "checkout-info-confirm-order-button-title".localized }
-        static var agreeTermsAndConditionsText: String { return "checkout-info-terms-and-conditions-text".localized }
+        static var shoppingCardViewTitle: String { return "e_commerce_order_summary_cart_title".localized }
+        static var paymentCardViewTitle: String { return "e_commerce_order_summary_payment_title".localized }
+        static var billingAddressCardViewTitle: String { return "e_commerce_order_summary_invoice_address_title".localized }
+        static var deliveryAddressCardViewTitle: String { return "e_commerce_order_summary_delivery_address_title".localized }
+        static var confirmOrderButtonTitle: String { return "e_commerce_order_summary_action_confirm_order".localized }
+        static var agreeTermsAndConditionsText: String { return "e_commerce_order_summary_agreement_description".localized }
         static var userOrderNotePlaceholderText: String { return
-            "checkout-info-order-note-text-view-placeholder".localized
+            "e_commerce_order_summary_order_note_hint".localized
         }
     }
     
@@ -347,17 +347,17 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         mainContainerView.isHidden = false
         switch SRSessionManager.shared.orderEvent.paymentType {
         case PaymentTypeEnum.PayPal.rawValue:
-            paymentCardViewDescription.text = "list-pop-up-paypal-text".localized
+            paymentCardViewDescription.text = "e_commerce_payment_method_selection_paypal".localized
         case PaymentTypeEnum.PayAtDoor.rawValue:
-            paymentCardViewDescription.text = "list-pop-up-pay-at-the-door-text".localized
+            paymentCardViewDescription.text = "e_commerce_payment_method_selection_pay_at_door".localized
         case PaymentTypeEnum.Online.rawValue , PaymentTypeEnum.Online3DS.rawValue:
             paymentCardViewDescription.text = viewModel.getCreditCardDescription()
         case PaymentTypeEnum.Transfer.rawValue:
-            billingAddressViewTitle.text = "checkout-info-billing-address-card-view-title".localized
-            deliveryAddressCardTitle.text = "checkout-info-delivery-addresss-card-view-title".localized
+            billingAddressViewTitle.text = Constants.billingAddressCardViewTitle
+            deliveryAddressCardTitle.text = Constants.deliveryAddressCardViewTitle
             paymentCardViewDescription.text = viewModel.getTrasnferToBankDescriptonText()
         case PaymentTypeEnum.Stripe.rawValue , PaymentTypeEnum.Stripe3DS.rawValue :
-            paymentCardViewDescription.text = "list-pop-up-stripe-text".localized
+            paymentCardViewDescription.text = "e_commerce_payment_method_selection_stripe".localized
         default:
             break
         }

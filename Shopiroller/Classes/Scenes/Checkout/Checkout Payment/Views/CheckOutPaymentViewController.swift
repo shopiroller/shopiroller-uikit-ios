@@ -12,18 +12,15 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private struct Constants {
         
-        static var selectPaymentMethodText : String { return "checkout-payment-select-payment-method-text".localized }
-        static var selectedPaymentMethodCreditCart : String { return "checkout-payment-selected-payment-method-credit-cart-placeholder".localized }
-        static var selectedPaymentMethodBankTransfer : String { return "checkout-payment-selected-payment-method-transfer-bank-placeholder".localized}
-        static var selectedPaymentMethodPayAtTheDoor : String { return "checkout-payment-selected-payment-method-pay-at-the-door-placeholder".localized }
-        static var creditCartHolderNamePlaceholder : String { return "checkout-payment-credit-card-holder-placeholder".localized }
-        static var creditCartNumberPlaceholder : String { return "checkout-payment-credit-card-number-placeholder".localized }
-        static var creditCartExpireDatePlaceholder : String { return "checkout-payment-credit-card-expire-date-placeholer".localized }
-        static var creditCartCvvPlaceholder : String { return "checkout-payment-credit-card-cvv-placeholder".localized }
-        static var payWithStripeDescription: String { return "checkout-payment-selected-payment-method-stripe-placeholder".localized }
-        static var payWithPaypalDescription: String { return "checkout-payment-selected-payment-method-paypal-placeholder".localized }
-        static var paypalContainerDescription: String { return "checkout-payment-paypal-description".localized }
-        static var stripeContainerDescription: String { return "checkout-payment-stripe-description".localized }
+        static var selectPaymentMethodText : String { return "e_commerce_payment_method_selection_button_title".localized }
+        static var selectedPaymentMethodCreditCart : String { return "e_commerce_payment_method_selection_credit_card".localized }
+        static var selectedPaymentMethodBankTransfer : String { return "e_commerce_payment_method_selection_transfer".localized}
+        static var selectedPaymentMethodPayAtTheDoor : String { return "e_commerce_payment_method_selection_pay_at_door".localized }
+        static var creditCartHolderNamePlaceholder : String { return "e_commerce_payment_credit_card_name".localized }
+        static var creditCartNumberPlaceholder : String { return "e_commerce_payment_credit_card_number".localized }
+        static var creditCartExpireDatePlaceholder : String { return "e_commerce_payment_credit_card_expire_date".localized }
+        static var creditCartCvvPlaceholder : String { return "e_commerce_payment_credit_card_security_code".localized }
+        static var payWithStripePaypalDescription: String { return "e_commerce_payment_method_selection_description_text".localized }
     }
     
     
@@ -132,7 +129,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCardCvvListener.primaryMaskFormat = "[000]"
         creditCardCvvListener.affinityCalculationStrategy = .prefix
         creditCartCvvTextField.placeholder = Constants.creditCartCvvPlaceholder
-        creditCartCvvTextField.addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        creditCartCvvTextField.addCustomTextAction(title: "e_commerce_general_keyboard_done_action_text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         stripeAndPaypalImage.image = .stripeAndPaypalIcon
         
@@ -218,7 +215,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         default:
             break
         }
-        validateCreditCardFields()
     }
     
     
@@ -247,12 +243,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
             stripeAndPaypalContainer.isHidden = true
-            selectedMethodViewTitle.text = Constants.payWithPaypalDescription.uppercased()
-            selectedMethodTitle.text = Constants.payWithPaypalDescription
+            selectedMethodViewTitle.text = PaymentTypeEnum.PayPal.rawValue.uppercased()
+            selectedMethodTitle.text = PaymentTypeEnum.PayPal.rawValue.uppercased()
             stripeAndPaypalContainer.isHidden = false
             stripeAndPaypalDescriptionLabel.font = .regular14
             stripeAndPaypalDescriptionLabel.textColor = .textPCaption
-            stripeAndPaypalDescriptionLabel.text = Constants.paypalContainerDescription
+            stripeAndPaypalDescriptionLabel.text = String(format: Constants.payWithStripePaypalDescription, PaymentTypeEnum.PayPal.rawValue)
         case .PayAtDoor:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
@@ -267,12 +263,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
-            selectedMethodViewTitle.text = Constants.payWithStripeDescription.uppercased()
-            selectedMethodTitle.text = Constants.payWithStripeDescription
+            selectedMethodViewTitle.text = PaymentTypeEnum.Stripe.rawValue.uppercased()
+            selectedMethodTitle.text = PaymentTypeEnum.Stripe.rawValue.uppercased()
             stripeAndPaypalContainer.isHidden = false
             stripeAndPaypalDescriptionLabel.font = .regular14
             stripeAndPaypalDescriptionLabel.textColor = .textPCaption
-            stripeAndPaypalDescriptionLabel.text = Constants.stripeContainerDescription
+            stripeAndPaypalDescriptionLabel.text = String(format: Constants.payWithStripePaypalDescription, PaymentTypeEnum.Stripe.rawValue)
         case .none:
             break
         case .some(.Other):
@@ -294,7 +290,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
                 self.delegate?.isEnabledNextButton(enabled: false)
-                validateCreditCardFields()
                 if viewModel.getDefaultPaymentMethod() == .Online {
                     SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
                 } else {
@@ -326,6 +321,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         viewModel.isValid(success: { [weak self] in
             self?.delegate?.isEnabledNextButton(enabled: true)
         }) { [weak self] (errorViewModel) in
+            if (errorViewModel.isValidationError) {
+                self?.showAlertError(viewModel: errorViewModel)
+                DispatchQueue.main.async {
+                    self?.view.endEditing(true)
+                }
+            }
             self?.delegate?.isEnabledNextButton(enabled: false)
         }
     }
@@ -333,12 +334,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
 }
 
 extension CheckOutPaymentViewController: ListPopUpPaymentDelegate {
-    
     func getSelectedPayment(payment: PaymentTypeEnum) {
         viewModel.paymentType = payment
         self.configureEmptyView()
         self.view.layoutIfNeeded()
     }
+    
 }
 
 extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
@@ -356,7 +357,6 @@ extension CheckOutPaymentViewController: MaskedTextFieldDelegateListener {
         if textField == creditCartCvvTextField {
             self.viewModel.creditCardCvv = value
         }
-        validateCreditCardFields()
     }
     
 }
@@ -373,15 +373,21 @@ extension CheckOutPaymentViewController: UITextFieldDelegate {
         case creditCartExpireDateTextField:
             creditCartCvvTextField.becomeFirstResponder()
         case creditCartCvvTextField:
-            self.validateCreditCardFields()
+            validateCreditCardFields()
         default:
             break
         }
         return true
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
          return true;
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField == creditCartCvvTextField) {
+            validateCreditCardFields()
+        }
     }
 }
 

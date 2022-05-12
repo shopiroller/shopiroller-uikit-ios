@@ -150,6 +150,7 @@ public extension UIView {
      */
     func showToast(_ toast: UIView, duration: TimeInterval = ToastManager.shared.duration, position: ToastPosition = ToastManager.shared.position, completion: ((_ didTap: Bool) -> Void)? = nil) {
         let point = position.centerPoint(forToast: toast, inSuperview: self)
+        ToastManager.shared.isQueueEnabled = true
         showToast(toast, duration: duration, point: point, completion: completion)
     }
     
@@ -166,11 +167,14 @@ public extension UIView {
      */
     func showToast(_ toast: UIView, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, completion: ((_ didTap: Bool) -> Void)? = nil) {
         objc_setAssociatedObject(toast, &ToastKeys.completion, ToastCompletionWrapper(completion), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+        if activeToasts.count > 0 , !(activeToasts.contains(toast)) {
+            hideToast()
+        }
         
         if ToastManager.shared.isQueueEnabled, activeToasts.count > 0 {
             objc_setAssociatedObject(toast, &ToastKeys.duration, NSNumber(value: duration), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             objc_setAssociatedObject(toast, &ToastKeys.point, NSValue(cgPoint: point), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            
             queue.add(toast)
         } else {
             showToast(toast, duration: duration, point: point)
@@ -343,7 +347,6 @@ public extension UIView {
             toast.isUserInteractionEnabled = true
             toast.isExclusiveTouch = true
         }
-        
         activeToasts.add(toast)
         self.addSubview(toast)
         

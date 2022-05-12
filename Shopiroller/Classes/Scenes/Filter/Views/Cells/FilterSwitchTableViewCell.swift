@@ -47,11 +47,11 @@ class FilterSwitchTableViewCell: UITableViewCell {
     private func getTitleLabel() -> String? {
             switch type {
             case .stockSwitch:
-                return "filter_only_stock".localized
+                return "e_commerce_stock_only".localized
             case .discountedProductsSwitch:
-                return "filter_discounted_products".localized
+                return "e_commerce_discounted_products".localized
             case .freeShippingSwitch:
-                return "filter_free_shipping".localized
+                return "e_commerce_free_shipping".localized
             default:
                 return nil
             }

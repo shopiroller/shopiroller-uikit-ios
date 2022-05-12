@@ -11,7 +11,7 @@ import UIKit
 class ProductsTitleView: UICollectionReusableView {
     
     private struct Constants {
-        static var titleText: String { return "explore-title-text".localized  }
+        static var titleText: String { return "e_commerce_list_explore".localized  }
         
     }
     

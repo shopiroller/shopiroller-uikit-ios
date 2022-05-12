@@ -20,7 +20,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     
     init(viewModel: FilterViewModel, delegate: FilterViewControllerDelegate) {
         self.delegate = delegate
-        super.init("filter_title".localized, viewModel: viewModel, nibName: FilterViewController.nibName, bundle: Bundle(for: FilterViewController.self))
+        super.init("e_commerce_search_list_filter".localized, viewModel: viewModel, nibName: FilterViewController.nibName, bundle: Bundle(for: FilterViewController.self))
     }
     
     override func setup() {
@@ -30,13 +30,13 @@ class FilterViewController: BaseViewController<FilterViewModel> {
         
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
-        confirmButton.setTitle("filter_confirm".localized)
+        confirmButton.setTitle("e_commerce_filter_list_products".localized)
         confirmButton.titleLabel?.font = .semiBold16
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let clearButton = UIBarButtonItem.init(title: "filter_remove".localized, style: .done, target: self, action: #selector(clearButtonTapped))
+        let clearButton = UIBarButtonItem.init(title: "e_commerce_filter_clear".localized, style: .done, target: self, action: #selector(clearButtonTapped))
         updateNavigationBar(rightBarButtonItems: [clearButton], isBackButtonActive: true)
     }
     

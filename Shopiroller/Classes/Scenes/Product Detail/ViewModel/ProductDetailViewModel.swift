@@ -194,7 +194,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getProductNotFoundPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "product-detail-product-not-found-title".localized, description: "product-detail-product-not-found-description".localized, firstButton: nil, secondButton: PopUpButtonModel(title: "general-ok-button-text".localized, type: .darkButton))
+        return PopUpViewModel(image: .outOfStock, title: "product-detail-product-not-found-title".localized, description: "product-detail-product-not-found-description".localized, firstButton: nil, secondButton: PopUpButtonModel(title: "e_commerce_general_ok_button_text".localized, type: .darkButton))
     }
     
     func isStateSoldOut() -> Bool {
@@ -210,7 +210,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
         deliveryConditionTitle != "" {
             return deliveryConditionTitle
         } else {
-            return "delivery-terms-title".localized
+            return "e_commerce_product_detail_delivery_conditions".localized
         }
     }
     
@@ -219,7 +219,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
         cancellationProdecureTitle != "" {
             return cancellationProdecureTitle
         } else {
-            return "return-exchange-terms-title".localized
+            return "e_commerce_product_detail_return_terms".localized
         }
     }
     

@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         case .prod:
             return("api.shopiroller.com","mobiroller.api.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
         case .stage:
-            return("stg.api.shopiroller.com","api.stg.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
+            return("stg.api.shopiroller.com","api.stg.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","uCLTObwN/gnREO+1l6ZXR6P5wvc=")
         case .dev:
             return("dev.ecommerce.applyze.com","dev.applyze.com","ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY=","/QcOg8MuI4TZNT/eAIpLbicVqpGxkxz1YeqAilOOj4s=","ETSiz+R2jbsYnrBJO9Kz+Ils3UY=")
         }

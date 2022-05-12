@@ -20,6 +20,10 @@ class ErrorViewModel: Error {
         return error.localizedDescription
     }
     
+    var isValidationError: Bool {
+        return error.isValidationError
+    }
+    
     static func validationError(message: String) -> ErrorViewModel {
         return ErrorViewModel(error: ShopirollerError.validation(description: message))
     }

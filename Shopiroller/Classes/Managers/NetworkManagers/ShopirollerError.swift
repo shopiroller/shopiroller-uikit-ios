@@ -63,6 +63,15 @@ public enum ShopirollerError: Error, Equatable {
         }
     }
     
+    public var isValidationError: Bool {
+        switch self {
+        case .validation(_):
+            return true
+        default:
+            return false
+        }
+    }
+    
     public static func ==(left: ShopirollerError, right: ShopirollerError) -> Bool {
         switch (left, right) {
         case (.network, .network),

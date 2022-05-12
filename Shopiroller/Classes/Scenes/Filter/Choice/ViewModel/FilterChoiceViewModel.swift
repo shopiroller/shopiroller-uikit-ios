@@ -15,14 +15,14 @@ class FilterChoiceViewModel: SRBaseViewModel {
     private var filteredList: [GenericSelectionModel<FilterChoiceTableModel>] = []
     
     init(dataList: [CategoriesItem], selectedIds: [String] = []) {
-        title = "filter_category".localized
+        title = "e_commerce_filter_category".localized
         isMultipleChoice = false
         super.init()
         configureDataList(dataList: dataList, depth: 1, selectedIds: selectedIds)
     }
     
     init(dataList: [BrandsItem], selectedIds: [String] = []) {
-        title = "filter_brand".localized
+        title = "e_commerce_filter_brand".localized
         isMultipleChoice = true
         super.init()
         configureDataList(dataList: dataList, selectedIds: selectedIds)

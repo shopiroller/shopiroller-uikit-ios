@@ -11,9 +11,9 @@ import Foundation
 class CheckOutProgress : SRBaseView {
 
     private struct Constants {
-        static var adressText: String { return "address-text".localized }
-        static var paymentText: String { return "payment-text".localized }
-        static var infoText: String { return "info-text".localized }
+        static var adressText: String { return "e_commerce_checkout_top_layout_address_text".localized }
+        static var paymentText: String { return "e_commerce_checkout_top_layout_payment_text".localized }
+        static var infoText: String { return "e_commerce_checkout_top_layout_info_text".localized }
         
     }
     

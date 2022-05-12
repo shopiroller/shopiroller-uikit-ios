@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="215" height="96"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehw-nr-ihg">
-                                                    <rect key="frame" x="5" y="0.0" width="210" height="17"/>
+                                                    <rect key="frame" x="10" y="0.0" width="205" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -48,9 +48,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ehw-nr-ihg" secondAttribute="trailing" id="HGa-Jo-lM4"/>
                                                 <constraint firstItem="ehw-nr-ihg" firstAttribute="top" secondItem="Aba-vH-nPp" secondAttribute="top" id="HVw-a5-06m"/>
-                                                <constraint firstItem="2Vf-8t-LjH" firstAttribute="leading" secondItem="Aba-vH-nPp" secondAttribute="leading" constant="10" id="Ssg-jZ-z2I"/>
+                                                <constraint firstItem="2Vf-8t-LjH" firstAttribute="leading" secondItem="ehw-nr-ihg" secondAttribute="leading" id="Ssg-jZ-z2I"/>
                                                 <constraint firstItem="2Vf-8t-LjH" firstAttribute="top" secondItem="ehw-nr-ihg" secondAttribute="bottom" constant="5" id="dRU-Vl-npq"/>
-                                                <constraint firstItem="ehw-nr-ihg" firstAttribute="leading" secondItem="Aba-vH-nPp" secondAttribute="leading" constant="5" id="nDe-6I-WRt"/>
+                                                <constraint firstItem="ehw-nr-ihg" firstAttribute="leading" secondItem="Aba-vH-nPp" secondAttribute="leading" constant="10" id="nDe-6I-WRt"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Vf-8t-LjH" secondAttribute="trailing" id="sCp-Pf-7P0"/>
                                             </constraints>
                                         </view>

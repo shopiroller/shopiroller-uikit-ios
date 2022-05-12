@@ -27,13 +27,13 @@ class BottomPriceView: SRBaseView {
         priceLabel.textColor = .textPrimary
         priceLabel.font = .bold24
  
-        subTotalPriceLabel.text = "bottom_price_view_subtotal".localized + ECommerceUtil.getFormattedPrice(price: model.subTotalPrice, currency: model.currency)
+        subTotalPriceLabel.text = "e_commerce_shopping_cart_products_price".localized + ECommerceUtil.getFormattedPrice(price: model.subTotalPrice, currency: model.currency)
         
         let shippingPrice = ECommerceUtil.getFormattedPrice(price: model.shippingPrice, currency: model.currency)
         
-        shippingPriceLabel.text = "bottom_price_view_shipping".localized + shippingPrice
+        shippingPriceLabel.text = "e_commerce_shopping_cart_shipping_price".localized + shippingPrice
         
-        totalLabel.text = "bottom_price_view_total".localized
+        totalLabel.text = "e_commerce_shopping_cart_total_price".localized
 
         priceLabel.text = ECommerceUtil.getFormattedPrice(price: model.totalPrice, currency: model.currency)
     }

@@ -42,15 +42,15 @@ enum PaymentTypeEnum: String, Codable {
     var description: String {
         switch self {
         case .PayAtDoor:
-            return "checkout-payment-selected-payment-method-pay-at-the-door-placeholder".localized
+            return "e_commerce_payment_method_selection_pay_at_door".localized
         case .Online, .Online3DS:
-            return "checkout-payment-selected-payment-method-credit-cart-placeholder".localized
+            return "e_commerce_payment_method_selection_credit_card".localized
         case .Transfer:
-            return "checkout-payment-selected-payment-method-transfer-bank-placeholder".localized
+            return "e_commerce_payment_method_selection_transfer".localized
         case .PayPal:
-            return "checkout-payment-selected-payment-method-paypal-placeholder".localized
+            return "e_commerce_payment_method_selection_paypal".localized
         case .Stripe3DS , .Stripe:
-            return "checkout-payment-selected-payment-method-stripe-placeholder".localized
+            return "e_commerce_payment_method_selection_stripe".localized
         case .Other:
             return "Other"
         }
