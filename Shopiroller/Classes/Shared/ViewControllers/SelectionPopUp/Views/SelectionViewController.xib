@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectionPopUpViewController" customModule="Shopiroller" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectionViewController" customModule="Shopiroller" customModuleProvider="target">
             <connections>
                 <outlet property="selectionPopUpView" destination="4GX-oK-gyv" id="ZCz-KP-O2r"/>
                 <outlet property="selectionTableView" destination="FU2-AO-jNh" id="ucq-w8-WqD"/>
@@ -29,10 +29,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z8e-Xr-3Ho">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <rect key="frame" x="10" y="0.0" width="394" height="818"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FU2-AO-jNh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="394" height="818"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
                             </subviews>
@@ -45,11 +45,11 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="z8e-Xr-3Ho" secondAttribute="bottom" id="0br-9d-dJT"/>
-                        <constraint firstAttribute="trailing" secondItem="z8e-Xr-3Ho" secondAttribute="trailing" id="EvW-sy-U2Y"/>
-                        <constraint firstItem="z8e-Xr-3Ho" firstAttribute="leading" secondItem="4GX-oK-gyv" secondAttribute="leading" id="jKO-VX-eIE"/>
+                        <constraint firstAttribute="trailing" secondItem="z8e-Xr-3Ho" secondAttribute="trailing" constant="10" id="EvW-sy-U2Y"/>
+                        <constraint firstItem="z8e-Xr-3Ho" firstAttribute="leading" secondItem="4GX-oK-gyv" secondAttribute="leading" constant="10" id="jKO-VX-eIE"/>
                         <constraint firstItem="z8e-Xr-3Ho" firstAttribute="top" secondItem="4GX-oK-gyv" secondAttribute="top" id="wlb-Pa-LoS"/>
                     </constraints>
                 </view>

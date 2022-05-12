@@ -12,7 +12,7 @@ protocol SelectionPopUpDelegate {
     func getCountryId(id: String?)
 }
 
-class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> {
+class SelectionViewController: BaseViewController<SelectionViewModel> {
     
     private struct Constants {
         static var searchText : String { return "selection-pop-up-search-placeholder".localized }
@@ -26,14 +26,12 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     
     var delegate: SelectionPopUpDelegate?
         
-    init(viewModel: SelectionPopUpViewModel){
-        super.init(viewModel: viewModel, nibName: SelectionPopUpViewController.nibName, bundle: Bundle(for: SelectionPopUpViewController.self))
+    init(viewModel: SelectionViewModel){
+        super.init(viewModel: viewModel, nibName: SelectionViewController.nibName, bundle: Bundle(for: SelectionViewController.self))
     }
     
     override func setup() {
         super.setup()
-        
-        selectionPopUpView.makeCardView()
         
         self.navigationController?.navigationBar.isHidden = false
         
@@ -64,7 +62,7 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
         
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
-        coloredAppearance.backgroundColor = .iceBlue
+        coloredAppearance.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
@@ -83,7 +81,7 @@ class SelectionPopUpViewController: BaseViewController<SelectionPopUpViewModel> 
     
 }
 
-extension SelectionPopUpViewController: UITableViewDelegate, UITableViewDataSource {
+extension SelectionViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getItemCount()
@@ -97,18 +95,15 @@ extension SelectionPopUpViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationItem.searchController?.dismiss(animated: false)
         self.dismiss(animated: false, completion: {
             self.delegate?.getCountryId(id: self.viewModel.getCountryId(position: indexPath.row))
         })
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.backgroundColor = .iceBlue
-    }
-    
 }
 
-extension SelectionPopUpViewController: UISearchBarDelegate {
+extension SelectionViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchText = searchText
         viewModel.filterContentForSearchText()
@@ -120,4 +115,5 @@ extension SelectionPopUpViewController: UISearchBarDelegate {
         selectionTableView.reloadData()
         navigationController?.dismiss(animated: true, completion: nil)
     }
+    
 }

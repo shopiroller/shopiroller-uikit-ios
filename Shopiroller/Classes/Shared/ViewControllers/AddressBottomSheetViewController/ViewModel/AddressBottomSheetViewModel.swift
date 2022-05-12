@@ -209,16 +209,16 @@ class AddressBottomSheetViewModel : SRBaseViewModel {
         return districtList ?? []
     }
     
-    func getSelectionModel() -> SelectionPopUpViewModel {
+    func getSelectionModel() -> SelectionViewModel {
         switch selectionAddressType {
         case .country:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
+            return SelectionViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
         case .district:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .adress(.district)))
+            return SelectionViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getDistricts(), selectionType: .adress(.district)))
         case .state:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .adress(.state)))
+            return SelectionViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getStates(), selectionType: .adress(.state)))
         case .none:
-            return SelectionPopUpViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
+            return SelectionViewModel(selectionPopUpModel: SelectionPopUpModel(datalist: getCountries(), selectionType: .adress(.country)))
     }
     }
     
