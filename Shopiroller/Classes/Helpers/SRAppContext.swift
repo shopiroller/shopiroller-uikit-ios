@@ -180,6 +180,15 @@ extension SRAppContext {
         }
     }
     
+    static var appTitle: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appTitle) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appTitle)
+        }
+    }
+    
     static var developmentMode: Bool {
         get {
             return userDefaults.object(forKey: SRAppConstants.SdkSettings.developmentMode) as? Bool ?? false

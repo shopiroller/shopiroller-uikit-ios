@@ -12,7 +12,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
     
-    public init(viewModel: OrderListViewModel){
+    public init(viewModel: OrderListViewModel) {
         super.init("e_commerce_my_orders_title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
@@ -69,7 +69,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     }
     
     func actionButtonClicked(_ sender: Any) {
-       popToRoot(animated: true, completion: nil)
+        self.createNewRootMainPage()
     }
     
     private func getCount() {

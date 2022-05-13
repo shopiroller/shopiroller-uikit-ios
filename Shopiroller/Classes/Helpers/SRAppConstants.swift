@@ -34,6 +34,7 @@ public struct SRAppConstants {
             static let appUserApiKey = "appUserApiKey"
             static let fallbackLanguage = "fallbackLanguage"
             static let appLanguage = "appLanguage"
+            static let appTitle = "appTitle"
 
         }
         
