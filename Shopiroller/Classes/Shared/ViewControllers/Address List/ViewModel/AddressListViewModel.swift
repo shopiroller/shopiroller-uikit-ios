@@ -145,11 +145,11 @@ class AddressListViewModel: SRBaseViewModel {
     }
     
     private func getShippingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized, description: "address_list_empty_shipping_description".localized, button: nil)
+        return EmptyModel(image: .emptyShippingAddresses, title: "e_commerce_address_selection_no_shipping_address_title".localized, description: "e_commerce_address_selection_no_shipping_address_description".localized, button: nil)
     }
     
     private func getBillingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized, description: "address_list_empty_billing_description".localized, button: nil)
+        return EmptyModel(image: .emptyBillingAddresses, title: "e_commerce_address_selection_no_invoice_address_title".localized, description: "e_commerce_address_selection_no_invoice_address_description".localized, button: nil)
     }
 }
 

@@ -17,7 +17,6 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var warningLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var checkoutButton: UIButton!
     
@@ -37,8 +36,6 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
         titleLabel.font = .bold24
         descriptionLabel.textColor = .textPCaption
         descriptionLabel.font = .regular14
-        warningLabel.textColor = .orangeyRed
-        warningLabel.font = .medium12
         
         containerView.layer.cornerRadius = 6
         
@@ -50,7 +47,6 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
         
         titleLabel.text = viewModel.getTitle()
         descriptionLabel.text = viewModel.getDescription()
-        warningLabel.text = viewModel.getWarning()
         checkoutButton.setTitle(viewModel.getButtonTitle())
         
         tableViewHeight.constant = viewModel.getTableViewMultiplier()

@@ -114,7 +114,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     func hasCampaign() -> Bool {
         if let messages = shoppingCart?.messages, !messages.isEmpty {
             for item in messages {
-                if(item.type?.caseInsensitiveCompare("Campaign") == ComparisonResult.orderedSame) {
+                if(item.type?.caseInsensitiveCompare(SRAppConstants.ShoppingCart.shoppingCartMessageType) == ComparisonResult.orderedSame) {
                     campaignMessage = item.message
                     return true
                 }

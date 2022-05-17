@@ -35,13 +35,13 @@ enum CartMessageKeyEnum: String, Codable {
         case .UpdatedProduct:
             return ""
         case .NotEnoughStock:
-            return "NotEnoughStock".localized
+            return "e_commerce_shopping_cart_invalid_product_left".localized
         case .OutOfStock:
-            return "OutOfStock".localized
+            return "e_commerce_shopping_cart_invalid_out_of_stock".localized
         case .OverPublishmentDate:
-            return "OverPublishmentDate".localized
+            return "e_commerce_shopping_cart_invalid_publishment_end".localized
         case .ProductNotFound:
-            return "ProductNotFound".localized
+            return "e_commerce_shopping_cart_invalid_removed_basket".localized
         case .FreeShippingCampaign:
             return "FreeShippingCampaign".localized
         }

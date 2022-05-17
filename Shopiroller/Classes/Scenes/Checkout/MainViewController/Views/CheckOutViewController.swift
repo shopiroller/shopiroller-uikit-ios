@@ -352,7 +352,7 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
     }
     
     func showSuccessfullToastMessage() {
-        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized),position: ToastPosition.bottom)
+        self.view.makeToast(String(format: "user_my_address_saved_toast_message".localized),position: ToastPosition.bottom)
     }
     
     func currentPageIndex(currentIndex: Int) {
