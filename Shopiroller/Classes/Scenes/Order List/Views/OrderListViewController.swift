@@ -24,20 +24,19 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         if viewModel.isOpenedFromResultPage() == true {
             self.navigationController?.navigationBar.isHidden = false
+            updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
         }
     }
     
     public override func goBack() {
         if viewModel.isOpenedFromResultPage() == true {
-            let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-            self.post(mainPageVC, animated: true, completion: nil)
+            self.popToRoot(animated: true)
         } else {
             pop(animated: true, completion: nil)
         }

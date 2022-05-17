@@ -93,7 +93,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     @IBAction func firstButtonTapped() {
         if viewModel.getType() == .success {
             let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel(isOpenedFromResult: true))
-            self.post(orderDetailVC, animated: true, completion: nil)
+            self.prompt(orderDetailVC, animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)
             NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
