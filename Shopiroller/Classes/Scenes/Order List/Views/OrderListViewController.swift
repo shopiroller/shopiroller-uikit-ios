@@ -24,15 +24,20 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         if viewModel.isOpenedFromResultPage() == true {
-            goBack()
+            self.navigationController?.navigationBar.isHidden = false
         }
     }
     
     public override func goBack() {
         if viewModel.isOpenedFromResultPage() == true {
             let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-            self.prompt(mainPageVC, animated: true, completion: nil)
+            self.post(mainPageVC, animated: true, completion: nil)
         } else {
             pop(animated: true, completion: nil)
         }
@@ -44,7 +49,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
             emptyView.delegate = self
-        }else{
+        } else {
             orderTable.isHidden = false
             orderTable.register(cellClass: OrderTableViewCell.self)
             orderTable.delegate = self
