@@ -10,13 +10,13 @@ import Foundation
 
 class SelectionViewModel: SRBaseViewModel {
     
-    private var selectionPopUpModel: SelectionPopUpModel?
+    private var selectionPopUpModel: SelectionModel?
     private var filteredList: [CountryModel] = []
     private var selectionList: [CountryModel]?
     
     var searchText: String?
     
-    init(selectionPopUpModel: SelectionPopUpModel? = nil){
+    init(selectionPopUpModel: SelectionModel? = nil){
         self.selectionPopUpModel = selectionPopUpModel
     }
     

@@ -54,7 +54,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         static var districtTextFieldText: String { return "user_address_district".localized }
         
-        static var keyboardDoneActionText: String { return "general_keyboard_done_action_text".localized }
+        static var keyboardDoneActionText: String { return "e_commerce_general_keyboard_done_action_text".localized }
         
     }
     
@@ -899,7 +899,7 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
     }
 }
 
-extension AddressBottomSheetViewController: SelectionPopUpDelegate {
+extension AddressBottomSheetViewController: SelectionController {
     func getCountryId(id: String?) {
         switch viewModel.selectionAddressType {
         case .country:

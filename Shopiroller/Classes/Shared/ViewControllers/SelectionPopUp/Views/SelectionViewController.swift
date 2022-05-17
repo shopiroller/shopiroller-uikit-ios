@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-protocol SelectionPopUpDelegate {
+protocol SelectionController {
     func getCountryId(id: String?)
 }
 
@@ -16,15 +16,15 @@ class SelectionViewController: BaseViewController<SelectionViewModel> {
     
     private struct Constants {
         static var searchText : String { return "selection-pop-up-search-placeholder".localized }
-        static var selectCountryTitle: String { return "selection-pop-up-country-text".localized }
-        static var selectStateTitle: String { return "selection-pop-up-states-text".localized }
-        static var selectDistrictTitle: String { return "selection-pop-up-district-text".localized }
+        static var selectCountryTitle: String { return "user_address_country".localized }
+        static var selectStateTitle: String { return "user_address_city".localized }
+        static var selectDistrictTitle: String { return "user_address_district".localized }
     }
 
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var selectionPopUpView: UIView!
     
-    var delegate: SelectionPopUpDelegate?
+    var delegate: SelectionController?
         
     init(viewModel: SelectionViewModel){
         super.init(viewModel: viewModel, nibName: SelectionViewController.nibName, bundle: Bundle(for: SelectionViewController.self))
