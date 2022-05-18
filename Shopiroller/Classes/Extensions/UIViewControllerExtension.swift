@@ -250,6 +250,15 @@ extension UIViewController {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.isHidden = navigationBarisHidden
     }
+    
+    func createNewRootMainPage() {
+        let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
+        guard var viewControllers = navigationController?.viewControllers else { return }
+        mainPageVC.title = SRAppContext.appTitle
+        viewControllers.popLast()
+        viewControllers.append(mainPageVC)
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+    }
 
     
 }

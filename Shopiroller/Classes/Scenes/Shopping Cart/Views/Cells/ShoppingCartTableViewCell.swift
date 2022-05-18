@@ -101,7 +101,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
             warningView.isHidden = false
-            warningLabel.text = String(format: "shopping_cell_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
+            warningLabel.text = String(format: "e_commerce_shopping_cart_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
             productImageToStackView.constant = 10
         }
     }
@@ -119,7 +119,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(text: String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
+                makeToast(text: String(format: "e_commerce_product_detail_maximum_product_message".localized, String(quantity)))
             }else {
                 delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }

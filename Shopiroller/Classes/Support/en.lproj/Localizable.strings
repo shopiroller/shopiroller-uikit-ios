@@ -1,8 +1,15 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
 
 "e_commerce_general_error_description" = "Sorry, an error occurred. Please try again later";
 "e_commerce_general_error_title" = "Error";
-"e_commerce_general_ok_button_text" = "OK";
 "e_commerce_general_next_step_text" = "Next";
+"e_commerce_general_ok_button_text" = "OK";
 "e_commerce_general_cancel_button_text" = "Cancel";
 "e_commerce_internet_connection_error_title" = "No internet connection";
 "e_commerce_internet_connection_error_description" = "Please check your internet connection";
@@ -12,85 +19,91 @@
 "e_commerce_checkout_top_layout_address_text" = "Shipping";
 "e_commerce_checkout_top_layout_payment_text" = "Payment";
 "e_commerce_checkout_top_layout_info_text" = "Order";
+"products-identifier" = "ProductsTitleView";
 
-"e_commerce_list_no_product_title" = "No products added.";
-"e_commerce_list_no_product_description" = "There are currently no added items in the shop.";
+/*MARK: - GENERAL PRODUCT LIST USAGE*/
+"e_commerce_list_no_product_title" = "No products have been added yet.";
+"e_commerce_list_no_product_description" = "There are no products in this store yet. But something will happen here soon.";
 "e_commerce_list_sold_out_badge" = "Sold Out";
-"e_commerce_list_sale_badge" = "Sale";
+"e_commerce_list_sale_badge" = "Discount";
 "e_commerce_list_free_shipping_badge" = "Free Shipping";
 "e_commerce_list_categories" = "Categories";
 "e_commerce_list_see_all" = "See All";
 "e_commerce_list_explore" = "Explore";
-
 "e_commerce_category_list_categories_title" = "Categories";
-"e_commerce_category_list_category_item_count" = "%@ items";
-"e_commerce_category_list_see_all_product_for_category" = "See All %@ Products";
+"e_commerce_category_list_category_item_count" = "%@ products";
+"e_commerce_category_list_see_all_product_for_category" = "All %@ Products";
 
-"e_commerce_category_product_list_no_empty_view_title" = "No products added";
-"e_commerce_category_product_list_no_empty_view_description" = "There are currently no added items in the shop.";
-"e_commerce_category_product_list_order" = "Order";
+/*MARK: - PRODUCT LIST USAGE*/
+"e_commerce_category_product_list_no_empty_view_title" = "Product not found.";
+"e_commerce_category_product_list_no_empty_view_description" = "No Products Have Been Added Yet.";
+"e_commerce_category_product_list_order" = "Sort";
 "e_commerce_category_product_list_filter" = "Filter";
-"e_commerce_category_product_list_order_dialog_title" = "Order";
+"e_commerce_category_product_list_order_dialog_title" = "Sort";
 "e_commerce_category_product_list_order_dialog_most_shipped" = "Best Sellers";
-"e_commerce_category_product_list_order_dialog_price_increasing" = "Price Increasing";
-"e_commerce_category_product_list_order_dialog_price_decreasing" = "Price Decreasing";
-"e_commerce_category_product_list_order_dialog_most_recent_added" = "Most Recent Added";
+"e_commerce_category_product_list_order_dialog_price_increasing" = "Price Ascending";
+"e_commerce_category_product_list_order_dialog_price_decreasing" = "Price Decreased";
+"e_commerce_category_product_list_order_dialog_most_recent_added" = "Most Recent";
+"e_commerce_product_search_no_result_title" = "No results found for %@";
+"e_commerce_product_search_no_result_description" = "No results were found for your search. Try something else.";
 
-"e_commerce_product_search_no_result_title" = "No result for %@";
-"e_commerce_product_search_no_result_description" = "No results for your search. Try other search terms.";
-
+/*MARK: - PRODUCT DETAIL USAGE*/
 "e_commerce_product_detail_quantity" = "Quantity";
 "e_commerce_product_detail_description" = "Product Description";
-"e_commerce_product_detail_return_terms" = "Return & Exchange Terms";
+"e_commerce_product_detail_return_terms" = "Return & Exchange Conditions";
 "e_commerce_product_detail_delivery_conditions" = "Delivery Conditions";
 "e_commerce_product_detail_terms_delivery_conditions_popup_button" = "Back to product";
 "e_commerce_product_detail_buy_now" = "Add to Cart";
-"e_commerce_product_detail_maximum_product_message" = "You can purchase up to %@ items from this product.";
+"e_commerce_product_detail_maximum_product_message" = "You may purchase up to %@ of this product.";
 "e_commerce_product_detail_sold_out_button" = "Sold Out";
 "e_commerce_product_detail_sold_out_badge" = "Sold Out";
 "e_commerce_product_detail_free_shipping_badge" = "Free Shipping";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maximum Product Limit";
-"e_commerce_product_detail_maximum_product_limit_description" = "You reached maximum product buying limit. You can added max %@ products in shopping cart";
+"e_commerce_product_detail_maximum_product_limit_description" = "You have reached the maximum product purchase limit. You can add a maximum of %@ products to your cart";
 "e_commerce_product_detail_maximum_product_limit_button" = "Back to product";
 "e_commerce_product_detail_out_of_stock_title" = "Out of Stock";
-"e_commerce_product_detail_out_of_stock_description" = "You can't order this product anymore as it is out of stock";
-"e_commerce_product_detail_out_of_stock_button" = "Back to product list";
-"e_commerce_product_detail_added_to_shopping_cart_button" = "Added to Shopping cart";
-"e_commerce_product_detail_cargo_price" = "Cargo Fee %@";
+"e_commerce_product_detail_out_of_stock_description" = "You cannot place an order because there are no products left";
+"e_commerce_product_detail_out_of_stock_button" = "Return to product list";
+"e_commerce_product_detail_added_to_shopping_cart_button" = "Added to Cart";
+"e_commerce_product_detail_cargo_price" = "Shipping Fee %@";
 "e_commerce_product_detail_not_found_product_title" = "Not Found";
 "e_commerce_product_detail_not_found_product_description" = "The page you are looking for does not exist or may have been removed.";
 "e_commerce_product_detail_not_found_product_button" = "Understood";
 
+/*MARK: - CHECKOUT ADDRESS SELECTION*/
 "e_commerce_address_selection_title" = "Shipping Information";
-"e_commerce_address_selection_shipping_address_title" = "Shipping Address";
+"e_commerce_address_selection_shipping_address_title" = "Delivery Address";
 "e_commerce_address_selection_add_new_address" = "Add";
-"e_commerce_address_selection_no_shipping_address" = "No delivery address.";
-"e_commerce_address_selection_no_shipping_address_button" = "Add New Address";
-"e_commerce_address_selection_other_addresses" = "Other Addresses";
-"e_commerce_address_selection_invoice_address_title" = "Invoice Address";
-"e_commerce_address_selection_no_invoice_address" = "No invoice address.";
-"e_commerce_address_selection_no_invoice_address_button" = "Add New Address";
+"e_commerce_address_selection_no_shipping_address_title" = "Delivery address not found.";
+"e_commerce_address_selection_no_shipping_address_description" = "Shipping address registered. Please add a new address.";
+"e_commerce_address_selection_no_shipping_address_button" = "Add New Shipping Address";
+"e_commerce_address_selection_other_addresses" = "My Other Addresses";
+"e_commerce_address_selection_invoice_address_title" = "Billing Address";
+"e_commerce_address_selection_no_invoice_address_title" = "Billing address not found.";
+"e_commerce_address_selection_no_invoice_address_description" = "No registered billing address found. Please add a new address.";
+"e_commerce_address_selection_no_invoice_address_button" = "Add New Billing Address";
 "e_commerce_address_selection_next_step" = "Next Step: Payment Method";
-"e_commerce_address_selection_address_shipping_popup_title" = "Select Address";
-"e_commerce_address_selection_address_shipping_popup_description" = "Select Address description";
-"e_commerce_address_selection_address_invoice_popup_title" = "Select Address";
-"e_commerce_address_selection_address_invoice_popup_description" = "Select Address description";
+"e_commerce_address_selection_address_shipping_popup_title" = "Address Selection";
+"e_commerce_address_selection_address_shipping_popup_description" = "Address Selection description";
+"e_commerce_address_selection_address_invoice_popup_title" = "Address Selection";
+"e_commerce_address_selection_address_invoice_popup_description" = "Address Selection description";
 
+/*MARK: - PAYMENT METHOD SELECTION*/
 "e_commerce_payment_method_selection_title" = "Payment";
 "e_commerce_payment_method_selection_empty_view_title" = "There is no payment method yet.";
 "e_commerce_payment_method_selection_empty_view_description" = "The store owner has not added a payment method yet.";
 "e_commerce_payment_method_selection_button_title" = "Select Payment Method";
 "e_commerce_payment_method_selection_payment_type_popup_title" = "Select Payment";
 "e_commerce_payment_method_selection_payment_type_popup_description" = "Select your best payment method.";
-
-"e_commerce_payment_method_selection_next_step" = "Next Step: Order Information";"e_commerce_payment_method_selection_pay_at_door" = "Cash on Delivery";
+"e_commerce_payment_method_selection_next_step" = "Next Step: Order Information";
+"e_commerce_payment_method_selection_pay_at_door" = "Cash on Delivery";
 "e_commerce_payment_method_selection_transfer" = "Transfer";
 "e_commerce_payment_method_selection_credit_card" = "Credit Card";
-"e_commerce_payment_method_selection_paypal" = "PayPal";
 "e_commerce_payment_method_selection_stripe" = "Stripe";
-
+"e_commerce_payment_method_selection_paypal" = "PayPal";
 "e_commerce_payment_method_selection_description_text" = "After clicking \"Complete order\", you will be redirected to %@ to complete your purchase securely";
 
+/*MARK: - PAYMENT METHODS*/
 "e_commerce_payment_credit_card_number" = "Card Number";
 "e_commerce_payment_credit_card_name" = "Cardholder Name";
 "e_commerce_payment_credit_card_expire_date" = "MM/YY";
@@ -103,6 +116,7 @@
 "e_commerce_payment_bank_account" = "Account: ";
 "e_commerce_payment_bank_copy_toast_message" = "Copied to clipboard";
 
+/*MARK: - ORDER SUMMARY USAGE*/
 "e_commerce_order_summary_title" = "Order Summary";
 "e_commerce_order_summary_payment_title" = "Payment";
 "e_commerce_order_summary_cart_title" = "Cart";
@@ -124,6 +138,7 @@
 "e_commerce_order_summary_update_order_popup_button" = "Update My Cart";
 "e_commerce_order_summary_order_note_hint" = "Order Note";
 
+/*MARK: - RESULT PAGE USAGE*/
 "e_commerce_result_success_title" = "It’s ordered!";
 "e_commerce_result_success_description" = "Thanks for your order, we hope you enjoyed shopping with us.";
 "e_commerce_result_success_action_my_orders" = "Check Order";
@@ -148,12 +163,12 @@
 "e_commerce_result_fail_detail_description_will_replace" = "status=";
 "e_commerce_result_fail_detail_description_to_replace" = "Error Code";
 "e_commerce_result_pay_pal_currency_not_supported" = "The currency used is not supported.";
-
 "e_commerce_list_order_number" = "Order Number :";
 "e_commerce_my_orders_title" = "My Orders";
 "e_commerce_my_orders_no_order_title" = "No order yet.";
 "e_commerce_my_orders_no_order_description" = "If you start shopping, you will be able to follow your orders here!";
 
+/*MARK: - ORDER STATUS USAGE*/
 "e_commerce_order_status_waiting_payment" = "Waiting Payment";
 "e_commerce_order_status_waiting_approval" = "Waiting Approval";
 "e_commerce_order_status_approved" = "Approved";
@@ -166,6 +181,7 @@
 "e_commerce_order_status_refunded" = "Refunded";
 "e_commerce_order_status_payment_failed" = "Payment Failed";
 
+/*MARK: - ORDER DETAIL USAGE*/
 "e_commerce_order_details_page_title" = "Order Detail";
 "e_commerce_order_details_information_title" = "Order Information";
 "e_commerce_order_details_user_note_sub_title" = "User Note: %@";
@@ -184,37 +200,38 @@
 "e_commerce_order_details_bank_copy_toast_message" = "Copied to clipboard";
 "e_commerce_order_details_cargo_copy_toast_message" = "Copied to clipboard";
 
-"e_commerce_shopping_cart_item_count" = "%@ items";
+/*MARK: - SHOPPING CART USAGE*/
+"e_commerce_shopping_cart_item_count" = "%@ products";
 "e_commerce_shopping_cart_clear_cart" = "Clear Cart";
-"e_commerce_shopping_cart_products_price" = "Subtotal: ";
-"e_commerce_shopping_cart_shipping_price" = "Shipping: ";
+"e_commerce_shopping_cart_products_price" = "Product Amount: ";
+"e_commerce_shopping_cart_shipping_price" = "Shipping Amount: ";
 "e_commerce_shopping_cart_total_price" = "Total";
-"e_commerce_shopping_cart_checkout_button" = "Proceed to Checkout";
-"e_commerce_shopping_cart_title" = "Shopping Cart";
-"e_commerce_shopping_cart_invalid_product_left" = "%@ product left";
-"e_commerce_shopping_cart_invalid_removed_basket" = "Removed basket";
-"e_commerce_shopping_cart_invalid_out_of_stock" = "Out Of Stock";
-"e_commerce_shopping_cart_invalid_publishment_end" = "Product Removed";
-"e_commerce_shopping_cart_invalid_popup_button" = "Ready to Checkout";
-"e_commerce_shopping_cart_updating_popup_title" = "Cart is updating";
-"e_commerce_shopping_cart_updating_popup_description" = "Your basket will be updated for reasons below";
-"e_commerce_shopping_cart_empty_view_start_shopping_button" = "Start Shopping";
-"e_commerce_shopping_cart_empty_view_title" = "Your cart is Empty";
+"e_commerce_shopping_cart_checkout_button" = "Confirm Cart";
+"e_commerce_shopping_cart_title" = "My Cart";
+"e_commerce_shopping_cart_invalid_product_left" = "%@ products left";
+"e_commerce_shopping_cart_invalid_removed_basket" = "Deleted from cart";
+"e_commerce_shopping_cart_invalid_out_of_stock" = "Item Out of Stock";
+"e_commerce_shopping_cart_invalid_publishment_end" = "Product removed";
+"e_commerce_shopping_cart_invalid_popup_button" = "Continue";
+"e_commerce_shopping_cart_updating_popup_title" = "Update Cart";
+"e_commerce_shopping_cart_updating_popup_description" = "Your cart will be updated for the following reasons";
+"e_commerce_shopping_cart_empty_view_title" = "Your cart is empty";
 "e_commerce_shopping_cart_empty_view_description" = "You have no items in your shopping cart.";
-"e_commerce_shopping_cart_clear_cart_title" = "Are you sure to clear cart?";
-"e_commerce_shopping_cart_clear_cart_description" = "You are clearing all products in shopping cart now.";
+"e_commerce_shopping_cart_clear_cart_title" = "Are you sure you want to clear your cart?";
+"e_commerce_shopping_cart_clear_cart_description" = "All items in your cart will be cleared.";
 "e_commerce_shopping_cart_clear_cart_button" = "Yes, clear my cart";
-"e_commerce_shopping_cart_delete_cart_title" = "Are you sure to delete this product?";
-"e_commerce_shopping_cart_delete_cart_description" = "You are deleting %@ now.";
-"e_commerce_shopping_cart_delete_cart_button" = "Yes, delete it";
-"e_commerce_shopping_cart_cargo_warning" = "%@ special cargo fee applied";
+"e_commerce_shopping_cart_delete_cart_title" = "Are you sure you want to delete this product?";
+"e_commerce_shopping_cart_delete_cart_description" = "You are deleting %@ this product";
+"e_commerce_shopping_cart_delete_cart_button" = "Yes, delete";
+"e_commerce_shopping_cart_cargo_warning" = "%@ special shipping charges apply.";
+"e_commerce_dialog_delete_address_positive_button" = "Yes, delete";
+"e_commerce_dialog_negative_button" = "No, not now";
 
-"e_commerce_dialog_delete_address_positive_button" = "Yes delete it";
-"e_commerce_dialog_negative_button" = "No, not now.";
-
+/*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Order";
 "e_commerce_search_list_filter" = "Filter";
 
+/*MARK: - FILTER OPTIONS USAGE*/
 "e_commerce_filter_category" = "Category";
 "e_commerce_filter_brand" = "Brand";
 "e_commerce_filter_size" = "Size";
@@ -227,15 +244,15 @@
 "e_commerce_free_shipping" = "Free Shipping";
 "e_commerce_filter_list_products" = "List Products";
 
+/*MARK: - FILTER OPTIONS TEXTS*/
 "e_commerce_filter_multi_choice_search" = "Search";
 "e_commerce_filter_multi_choice_apply" = "Apply";
-
 "e_commerce_filter_selection_apply" = "Apply";
-
 "e_commerce_filter_clear" = "Clear";
 "e_commerce_multi_choice_search" = "Search";
 "e_commerce_multi_choice_apply" = "Apply";
 
+/*MARK: - USER SECTIONS*/
 "user_delivery_address" = "Delivery Address";
 "user_billing_address" = "Billing Address";
 "user_address_name" = "Name";
@@ -255,6 +272,7 @@
 "user_address_tax_number" = "Tax Number";
 "user_address_identity_number" = "Identity Number";
 
+/*MARK: - USER ADDRESS VALIDATION USAGE*/
 "user_address_form_name_empty" = "Please enter your name";
 "user_address_form_surname_empty" = "Please enter your last name";
 "user_address_form_phone_empty" = "Please enter your phone number";
@@ -268,32 +286,27 @@
 "user_address_form_tax_office_empty" = "Please enter tax office";
 "user_address_form_tax_number_empty" = "Please enter tax number";
 "user_address_form_identity_number_empty" = "Please enter ID number";
-
 "user_address_form_name_valid" = "Please enter a valid name";
 "user_address_form_surname_valid" = "Please enter a valid last name";
 "user_address_form_phone_valid" = "Please enter a valid phone number";
 "user_address_form_address_valid" = "Please enter a valid address";
 "user_address_form_postal_code_valid" = "Please enter a valid postal code";
 "user_address_form_address_title_valid" = "Please enter a valid address title";
-
+"user_address_form_identity_number_valid" = "Please enter a valid ID";
 "search_bar_search_text" = "Search for Products";
 "payment_bank_branch_code" = "Branch Code:";
 "payment_bank_branch_number" = "Account Number-";
 "action_copied_clipboard" = "Copied to clipboard";
-
 "user_address_delivery_address_title" = "Delivery Address";
 "user_address_invoice_address_title" = "Invoice Address";
-
 "user_my_address_title" = "My Addresses";
 "user_my_address_no_address_title" = "No Address";
 "user_my_address_no_address_description" = "No registered address found. Please add a new address.";
-
 "user_my_address_action_delete" = "DELETE";
 "user_my_address_address_action_edit" = "Edit";
 "user_my_address_delete_address_title" = "Are you sure you want to delete %@";
 "user_my_address_delete_address_cancel_button" = "Cancel";
 "user_my_address_delete_address_delete_button" = "Delete";
-
 "user_my_address_new_address_title" = "New Address";
 "user_my_address_update_address_title" = "Update Address";
 "user_my_address_saved_toast_message" = "Address saved";

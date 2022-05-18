@@ -19,7 +19,9 @@
 "e_commerce_checkout_top_layout_address_text" = "Versand";
 "e_commerce_checkout_top_layout_payment_text" = "Zahlung";
 "e_commerce_checkout_top_layout_info_text" = "Bestellung";
+"products-identifier" = "ProductsTitleView";
 
+/*MARK: - GENERAL PRODUCT LIST USAGE*/
 "e_commerce_list_no_product_title" = "Es wurden noch keine Produkte hinzugefügt.";
 "e_commerce_list_no_product_description" = "Es gibt noch keine Produkte in diesem Shop. Aber hier wird bald etwas passieren.";
 "e_commerce_list_sold_out_badge" = "Ausverkauft";
@@ -28,11 +30,11 @@
 "e_commerce_list_categories" = "Kategorien";
 "e_commerce_list_see_all" = "Alle anzeigen";
 "e_commerce_list_explore" = "Erkunden";
-
 "e_commerce_category_list_categories_title" = "Kategorien";
 "e_commerce_category_list_category_item_count" = "%@ Produkte";
 "e_commerce_category_list_see_all_product_for_category" = "Alle %@ Produkte";
 
+/*MARK: - PRODUCT LIST USAGE*/
 "e_commerce_category_product_list_no_empty_view_title" = "Produkt nicht gefunden.";
 "e_commerce_category_product_list_no_empty_view_description" = "Es wurden noch keine Produkte hinzugefügt.";
 "e_commerce_category_product_list_order" = "Sortieren";
@@ -42,10 +44,10 @@
 "e_commerce_category_product_list_order_dialog_price_increasing" = "Preis aufsteigend";
 "e_commerce_category_product_list_order_dialog_price_decreasing" = "Preis gesenkt";
 "e_commerce_category_product_list_order_dialog_most_recent_added" = "Neueste";
-
 "e_commerce_product_search_no_result_title" = "Keine Ergebnisse gefunden für %@";
 "e_commerce_product_search_no_result_description" = "Für Ihre Suche wurden keine Ergebnisse gefunden. Versuchen Sie etwas anderes.";
 
+/*MARK: - PRODUCT DETAIL USAGE*/
 "e_commerce_product_detail_quantity" = "Menge";
 "e_commerce_product_detail_description" = "Produktbeschreibung";
 "e_commerce_product_detail_return_terms" = "Rückgabe- und Umtauschbedingungen";
@@ -68,21 +70,25 @@
 "e_commerce_product_detail_not_found_product_description" = "Die gesuchte Seite existiert nicht oder wurde möglicherweise entfernt.";
 "e_commerce_product_detail_not_found_product_button" = "Ich verstehe";
 
+/*MARK: - CHECKOUT ADDRESS SELECTION*/
 "e_commerce_address_selection_title" = "Versandinformationen";
 "e_commerce_address_selection_shipping_address_title" = "Lieferadresse";
 "e_commerce_address_selection_add_new_address" = "Hinzufügen";
-"e_commerce_address_selection_no_shipping_address" = "Lieferadresse nicht gefunden.";
-"e_commerce_address_selection_no_shipping_address_button" = "Neue Adresse hinzufügen";
+"e_commerce_address_selection_no_shipping_address_title" = "Lieferadresse nicht gefunden.";
+"e_commerce_address_selection_no_shipping_address_description" = "Lieferadresse registriert. Bitte fügen Sie eine neue Adresse hinzu.";
+"e_commerce_address_selection_no_shipping_address_button" = "Neue Versandadresse hinzufügen";
 "e_commerce_address_selection_other_addresses" = "Meine anderen Adressen";
 "e_commerce_address_selection_invoice_address_title" = "Rechnungsadresse";
-"e_commerce_address_selection_no_invoice_address" = "Rechnungsadresse nicht gefunden.";
-"e_commerce_address_selection_no_invoice_address_button" = "Neue Adresse hinzufügen";
+"e_commerce_address_selection_no_invoice_address_title" = "Rechnungsadresse nicht gefunden.";
+"e_commerce_address_selection_no_invoice_address_description" = "Keine registrierte Rechnungsadresse gefunden. Bitte fügen Sie eine neue Adresse hinzu.";
+"e_commerce_address_selection_no_invoice_address_button" = "Neue Rechnungsadresse hinzufügen";
 "e_commerce_address_selection_next_step" = "Nächster Schritt: Zahlungsmethode";
 "e_commerce_address_selection_address_shipping_popup_title" = "Adressauswahl";
 "e_commerce_address_selection_address_shipping_popup_description" = "Beschreibung der Adressauswahl";
 "e_commerce_address_selection_address_invoice_popup_title" = "Adressauswahl";
 "e_commerce_address_selection_address_invoice_popup_description" = "Beschreibung der Adressauswahl";
 
+/*MARK: - PAYMENT METHOD SELECTION*/
 "e_commerce_payment_method_selection_title" = "Zahlungsinformationen";
 "e_commerce_payment_method_selection_empty_view_title" = "Noch keine Zahlungsmethode verfügbar.";
 "e_commerce_payment_method_selection_empty_view_description" = "Der Ladenbesitzer hat noch keine Zahlungsmethode hinzugefügt.";
@@ -95,6 +101,9 @@
 "e_commerce_payment_method_selection_credit_card" = "Kreditkarte";
 "e_commerce_payment_method_selection_stripe" = "Streifen";
 "e_commerce_payment_method_selection_paypal" = "Paypal";
+"e_commerce_payment_method_selection_description_text" = " Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu %@ weitergeleitet, um Ihren Kauf sicher abzuschließen.";
+
+/*MARK: - PAYMENT METHODS*/
 "e_commerce_payment_credit_card_number" = "Kartennummer";
 "e_commerce_payment_credit_card_name" = "Name Nachname";
 "e_commerce_payment_credit_card_expire_date" = "MONAT / JAHR";
@@ -107,8 +116,7 @@
 "e_commerce_payment_bank_account" = "Konto: ";
 "e_commerce_payment_bank_copy_toast_message" = "In die Zwischenablage kopiert.";
 
-"e_commerce_payment_method_selection_description_text" = " Nachdem Sie auf \"Bestellung abschließen\" geklickt haben, werden Sie zu %@ weitergeleitet, um Ihren Kauf sicher abzuschließen.";
-
+/*MARK: - ORDER SUMMARY USAGE*/
 "e_commerce_order_summary_title" = "Bestellzusammenfassung";
 "e_commerce_order_summary_payment_title" = "Zahlung";
 "e_commerce_order_summary_cart_title" = "Warenkorb";
@@ -130,6 +138,7 @@
 "e_commerce_order_summary_update_order_popup_button" = "Meinen Warenkorb aktualisieren";
 "e_commerce_order_summary_order_note_hint" = "Bestellhinweis";
 
+/*MARK: - RESULT PAGE USAGE*/
 "e_commerce_result_success_title" = "Bestellt!";
 "e_commerce_result_success_description" = "Danke für Ihre Bestellung, wir hoffen, Sie haben Ihren Einkauf genossen.";
 "e_commerce_result_success_action_my_orders" = "Meine Bestellungen";
@@ -154,12 +163,12 @@
 "e_commerce_result_fail_detail_description_will_replace" = "status=";
 "e_commerce_result_fail_detail_description_to_replace" = "Fehlercode";
 "e_commerce_result_pay_pal_currency_not_supported" = "Die verwendete Währung wird nicht unterstützt.";
-
 "e_commerce_list_order_number" = "Bestellnummer %@";
 "e_commerce_my_orders_title" = "Meine Bestellungen";
 "e_commerce_my_orders_no_order_title" = "Bestellung nicht gefunden.";
 "e_commerce_my_orders_no_order_description" = "Auf dieser Seite können Sie jetzt einkaufen und Ihre Bestellungen verfolgen.";
 
+/*MARK: - ORDER STATUS USAGE*/
 "e_commerce_order_status_waiting_payment" = "Warten auf Zahlung";
 "e_commerce_order_status_waiting_approval" = "Genehmigung ausstehend";
 "e_commerce_order_status_approved" = "Genehmigt";
@@ -172,6 +181,7 @@
 "e_commerce_order_status_refunded" = "Erstattet";
 "e_commerce_order_status_payment_failed" = "Zahlung fehlgeschlagen";
 
+/*MARK: - ORDER DETAIL USAGE*/
 "e_commerce_order_details_page_title" = "Bestelldetails";
 "e_commerce_order_details_information_title" = "Bestellinformationen";
 "e_commerce_order_details_user_note_sub_title" = "Benutzerhinweis: %@";
@@ -190,6 +200,7 @@
 "e_commerce_order_details_bank_copy_toast_message" = "In die Zwischenablage kopiert.";
 "e_commerce_order_details_cargo_copy_toast_message" = "In die Zwischenablage kopiert.";
 
+/*MARK: - SHOPPING CART USAGE*/
 "e_commerce_shopping_cart_item_count" = "%@ Produkte";
 "e_commerce_shopping_cart_clear_cart" = "Warenkorb löschen";
 "e_commerce_shopping_cart_products_price" = "Produktmenge: ";
@@ -213,13 +224,14 @@
 "e_commerce_shopping_cart_delete_cart_description" = "Sie löschen %@ dieses Produkt";
 "e_commerce_shopping_cart_delete_cart_button" = "Ja, löschen";
 "e_commerce_shopping_cart_cargo_warning" = "%@ es fallen spezielle Versandgebühren an.";
-
 "e_commerce_dialog_delete_address_positive_button" = "Ja, löschen";
 "e_commerce_dialog_negative_button" = "Nein, nicht jetzt";
 
+/*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Sortieren";
 "e_commerce_search_list_filter" = "Filter";
 
+/*MARK: - FILTER OPTIONS USAGE*/
 "e_commerce_filter_category" = "Kategorie";
 "e_commerce_filter_brand" = "Marke";
 "e_commerce_filter_size" = "Größe";
@@ -232,15 +244,15 @@
 "e_commerce_free_shipping" = "Kostenloser Versand";
 "e_commerce_filter_list_products" = "Produkte auflisten";
 
+/*MARK: - FILTER OPTIONS TEXTS*/
 "e_commerce_filter_multi_choice_search" = "Suche";
 "e_commerce_filter_multi_choice_apply" = "Übernehmen";
-
 "e_commerce_filter_selection_apply" = "Übernehmen";
-
 "e_commerce_filter_clear" = "Löschen";
 "e_commerce_multi_choice_search" = "Suche";
 "e_commerce_multi_choice_apply" = "Bewerben";
 
+/*MARK: - USER SECTIONS*/
 "user_delivery_address" = "Lieferadresse";
 "user_billing_address" = "Rechnungsadresse";
 "user_address_name" = "Name";
@@ -260,6 +272,7 @@
 "user_address_tax_number" = "Steuernummer";
 "user_address_identity_number" = "Identitätsnummer";
 
+/*MARK: - USER ADDRESS VALIDATION USAGE*/
 "user_address_form_name_empty" = "Bitte geben Sie Ihren Namen ein";
 "user_address_form_surname_empty" = "Bitte geben Sie Ihren Nachnamen ein";
 "user_address_form_phone_empty" = "Bitte geben Sie Ihre Telefonnummer ein";
@@ -273,7 +286,6 @@
 "user_address_form_tax_office_empty" = "Bitte Finanzamt eingeben";
 "user_address_form_tax_number_empty" = "Bitte Steuernummer eingeben";
 "user_address_form_identity_number_empty" = "Bitte ID-Nummer eingeben";
-
 "user_address_form_name_valid" = "Bitte geben Sie einen gültigen Namen ein";
 "user_address_form_surname_valid" = "Bitte geben Sie einen gültigen Nachnamen ein";
 "user_address_form_phone_valid" = "Bitte geben Sie eine gültige Telefonnummer ein";
@@ -281,29 +293,22 @@
 "user_address_form_postal_code_valid" = "Bitte geben Sie eine gültige Postleitzahl ein";
 "user_address_form_address_title_valid" = "Bitte geben Sie einen gültigen Adresstitel ein";
 "user_address_form_identity_number_valid" = "Bitte geben Sie eine gültige ID ein";
-
 "search_bar_search_text" = "Suche nach Produkten";
 "payment_bank_branch_code" = "Filialcode:";
 "payment_bank_branch_number" = "Kontonummer:";
 "action_copied_clipboard" = "In die Zwischenablage kopiert";
-
 "user_address_delivery_address_title" = "Lieferadresse";
 "user_address_invoice_address_title" = "Rechnungsadresse";
-
 "user_my_address_title" = "Meine Adressen";
 "user_my_address_no_address_title" = "Keine Adresse";
 "user_my_address_no_address_description" = "Keine registrierte Adresse gefunden. Bitte fügen Sie eine neue Adresse hinzu.";
-
 "user_my_address_action_delete" = "LÖSCHEN";
 "user_my_address_address_action_edit" = "Bearbeiten";
 "user_my_address_delete_address_title" = "Sind Sie sicher, dass Sie %@ löschen möchten?";
 "user_my_address_delete_address_cancel_button" = "Abbrechen";
 "user_my_address_delete_address_delete_button" = "Löschen";
-
 "user_my_address_new_address_title" = "Neue Adresse";
 "user_my_address_update_address_title" = "Adresse aktualisieren";
 "user_my_address_saved_toast_message" = "Adresse gespeichert";
 "user_my_address_shipping_address_removed_message" = "Die Lieferadresse wurde erfolgreich gelöscht.";
 "user_my_address_billing_address_removed_message" = "Rechnungsadresse wurde erfolgreich gelöscht.";
-
-

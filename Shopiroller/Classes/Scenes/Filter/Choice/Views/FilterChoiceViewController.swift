@@ -29,7 +29,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
         
         confirmButton.setTitleColor(.white)
         confirmButton.backgroundColor = .buttonPrimary
-        confirmButton.setTitle("filter_choice_apply".localized)
+        confirmButton.setTitle("e_commerce_filter_selection_apply".localized)
         
         selectionTableView.register(cellClass: FilterChoiceTableViewCell.self)
         selectionTableView.delegate = self

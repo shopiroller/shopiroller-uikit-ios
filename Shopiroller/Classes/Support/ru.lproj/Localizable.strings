@@ -5,6 +5,7 @@
   Created by Görkem Gür on 8.10.2021.
   
 */
+
 "e_commerce_general_error_description" = "Извините, произошла ошибка. Повторите попытку позже";
 "e_commerce_general_error_title" = "Ошибка";
 "e_commerce_general_next_step_text" = "Далее";
@@ -18,7 +19,9 @@
 "e_commerce_checkout_top_layout_address_text" = "Доставка";
 "e_commerce_checkout_top_layout_payment_text" = "Оплата";
 "e_commerce_checkout_top_layout_info_text" = "Заказ";
+"products-identifier" = "ProductsTitleView";
 
+/*MARK: - GENERAL PRODUCT LIST USAGE*/
 "e_commerce_list_no_product_title" = "Товары еще не добавлены.";
 "e_commerce_list_no_product_description" = "В этом магазине пока нет товаров. Но скоро здесь что-то произойдет.";
 "e_commerce_list_sold_out_badge" = "Продано";
@@ -27,11 +30,11 @@
 "e_commerce_list_categories" = "Категории";
 "e_commerce_list_see_all" = "Просмотреть все";
 "e_commerce_list_explore" = "Исследовать";
-
 "e_commerce_category_list_categories_title" = "Категории";
 "e_commerce_category_list_category_item_count" = "%@ продуктов";
 "e_commerce_category_list_see_all_product_for_category" = "Все продукты %@";
 
+/*MARK: - PRODUCT LIST USAGE*/
 "e_commerce_category_product_list_no_empty_view_title" = "Товар не добавлен.";
 "e_commerce_category_product_list_no_empty_view_description" = "В магазине нет товаров этой категории.";
 "e_commerce_category_product_list_order" = "Сортировать";
@@ -41,7 +44,11 @@
 "e_commerce_category_product_list_order_dialog_price_increasing" = "Цена по возрастанию";
 "e_commerce_category_product_list_order_dialog_price_decreasing" = "Цена снижена";
 "e_commerce_category_product_list_order_dialog_most_recent_added" = "Самые последние";
+"e_commerce_product_search_no_result_title" = "Ничего не найдено для %@";
+"e_commerce_product_search_no_result_description" = "По вашему запросу ничего не найдено. Попробуйте что-нибудь другое.";
 
+/*MARK: - PRODUCT DETAIL USAGE*/
+"e_commerce_product_detail_quantity" = "количество";
 "e_commerce_product_detail_description" = "Описание продукта";
 "e_commerce_product_detail_return_terms" = "Условия возврата и обмена";
 "e_commerce_product_detail_delivery_conditions" = "Условия доставки";
@@ -63,21 +70,25 @@
 "e_commerce_product_detail_not_found_product_description" = "Страница, которую вы ищете, не существует или, возможно, была удалена.";
 "e_commerce_product_detail_not_found_product_button" = "Я понимаю";
 
+/*MARK: - CHECKOUT ADDRESS SELECTION*/
 "e_commerce_address_selection_title" = "Информация о доставке";
 "e_commerce_address_selection_shipping_address_title" = "Адрес доставки";
 "e_commerce_address_selection_add_new_address" = "Добавить";
-"e_commerce_address_selection_no_shipping_address" = "Адрес доставки не найден.";
-"e_commerce_address_selection_no_shipping_address_button" = "Добавить новый адрес";
+"e_commerce_address_selection_no_shipping_address_title" = "Адрес доставки не найден.";
+"e_commerce_address_selection_no_shipping_address_description" = "Зарегистрирован адрес доставки. Пожалуйста, добавьте новый адрес.";
+"e_commerce_address_selection_no_shipping_address_button" = "Добавить новый адрес доставки";
 "e_commerce_address_selection_other_addresses" = "Другие мои адреса";
 "e_commerce_address_selection_invoice_address_title" = "Платежный адрес";
-"e_commerce_address_selection_no_invoice_address" = "Платежный адрес не найден.";
-"e_commerce_address_selection_no_invoice_address_button" = "Добавить новый адрес";
+"e_commerce_address_selection_no_invoice_address_title" = "Платежный адрес не найден.";
+"e_commerce_address_selection_no_invoice_address_description" = "Зарегистрированный платежный адрес не найден. Пожалуйста, добавьте новый адрес.";
+"e_commerce_address_selection_no_invoice_address_button" = "Добавить новый платежный адрес";
 "e_commerce_address_selection_next_step" = "Следующий шаг: способ оплаты";
 "e_commerce_address_selection_address_shipping_popup_title" = "Выбор адреса";
 "e_commerce_address_selection_address_shipping_popup_description" = "Описание выбора адреса";
 "e_commerce_address_selection_address_invoice_popup_title" = "Выбор адреса";
 "e_commerce_address_selection_address_invoice_popup_description" = "Описание выбора адреса";
 
+/*MARK: - PAYMENT METHOD SELECTION*/
 "e_commerce_payment_method_selection_title" = "Платежная информация";
 "e_commerce_payment_method_selection_empty_view_title" = "Пока нет доступных способов оплаты.";
 "e_commerce_payment_method_selection_empty_view_description" = "Владелец магазина еще не добавил способ оплаты.";
@@ -90,6 +101,9 @@
 "e_commerce_payment_method_selection_credit_card" = "Кредитная карта";
 "e_commerce_payment_method_selection_stripe" = "Stripe";
 "e_commerce_payment_method_selection_paypal" = "Paypal";
+"e_commerce_payment_method_selection_description_text" = " После нажатия \"Завершить заказ\" вы будете перенаправлены на %@ для безопасного завершения покупки.";
+
+/*MARK: - PAYMENT METHODS*/
 "e_commerce_payment_credit_card_number" = "Номер карты";
 "e_commerce_payment_credit_card_name" = "Имя Фамилия";
 "e_commerce_payment_credit_card_expire_date" = "Срок действия";
@@ -102,8 +116,7 @@
 "e_commerce_payment_bank_account" = "Учетная запись: ";
 "e_commerce_payment_bank_copy_toast_message" = "Скопировано в буфер обмена.";
 
-"e_commerce_payment_method_selection_description_text" = " После нажатия \"Завершить заказ\" вы будете перенаправлены на %@ для безопасного завершения покупки.";
-
+/*MARK: - ORDER SUMMARY USAGE*/
 "e_commerce_order_summary_title" = "Сводка заказа";
 "e_commerce_order_summary_payment_title" = "Платеж";
 "e_commerce_order_summary_cart_title" = "Корзина";
@@ -125,6 +138,7 @@
 "e_commerce_order_summary_update_order_popup_button" = "Обновить мою корзину";
 "e_commerce_order_summary_order_note_hint" = "Примечание к заказу";
 
+/*MARK: - RESULT PAGE USAGE*/
 "e_commerce_result_success_title" = "Заказано!";
 "e_commerce_result_success_description" = "Спасибо за заказ. Надеемся, вам понравились покупки.";
 "e_commerce_result_success_action_my_orders" = "Мои заказы";
@@ -149,12 +163,12 @@
 "e_commerce_result_fail_detail_description_will_replace" = "status=";
 "e_commerce_result_fail_detail_description_to_replace" = "Код ошибки";
 "e_commerce_result_pay_pal_currency_not_supported" = "Используемая валюта не поддерживается.";
-
 "e_commerce_list_order_number" = "Номер заказа";
 "e_commerce_my_orders_title" = "Мои заказы";
 "e_commerce_my_orders_no_order_title" = "Заказ не найден.";
 "e_commerce_my_orders_no_order_description" = "Вы можете совершать покупки прямо сейчас и отслеживать свои заказы на этой странице.";
 
+/*MARK: - ORDER STATUS USAGE*/
 "e_commerce_order_status_waiting_payment" = "Ожидание платежа";
 "e_commerce_order_status_waiting_approval" = "Ожидает одобрения";
 "e_commerce_order_status_approved" = "Одобрено";
@@ -167,6 +181,7 @@
 "e_commerce_order_status_refunded" = "Возмещено";
 "e_commerce_order_status_payment_failed" = "Ошибка платежа";
 
+/*MARK: - ORDER DETAIL USAGE*/
 "e_commerce_order_details_page_title" = "Сведения о заказе";
 "e_commerce_order_details_information_title" = "Информация о заказе";
 "e_commerce_order_details_user_note_sub_title" = "Примечание пользователя:";
@@ -185,6 +200,7 @@
 "e_commerce_order_details_bank_copy_toast_message" = "Скопировано в буфер обмена.";
 "e_commerce_order_details_cargo_copy_toast_message" = "Скопировано в буфер обмена.";
 
+/*MARK: - SHOPPING CART USAGE*/
 "e_commerce_shopping_cart_item_count" = "%@ товаров";
 "e_commerce_shopping_cart_clear_cart" = "Очистить корзину";
 "e_commerce_shopping_cart_products_price" = "Количество товара: ";
@@ -199,7 +215,6 @@
 "e_commerce_shopping_cart_invalid_popup_button" = "Продолжить";
 "e_commerce_shopping_cart_updating_popup_title" = "Обновить корзину";
 "e_commerce_shopping_cart_updating_popup_description" = "Ваша корзина будет обновлена ​​по следующим причинам";
-"e_commerce_shopping_cart_empty_view_start_shopping_button" = "Начать покупки";
 "e_commerce_shopping_cart_empty_view_title" = "Ваша корзина пуста";
 "e_commerce_shopping_cart_empty_view_description" = "В вашей корзине нет товаров.";
 "e_commerce_shopping_cart_clear_cart_title" = "Вы уверены, что хотите очистить корзину?";
@@ -209,13 +224,14 @@
 "e_commerce_shopping_cart_delete_cart_description" = "Вы удаляете %@ этот товар";
 "e_commerce_shopping_cart_delete_cart_button" = "Да, удалить";
 "e_commerce_shopping_cart_cargo_warning" = "%@ применяется специальная стоимость доставки.";
-
 "e_commerce_dialog_delete_address_positive_button" = "Да, удалить";
 "e_commerce_dialog_negative_button" = "Нет, не сейчас";
 
+/*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Сортировать";
 "e_commerce_search_list_filter" = "Фильтр";
 
+/*MARK: - FILTER OPTIONS USAGE*/
 "e_commerce_filter_category" = "Категория";
 "e_commerce_filter_brand" = "Бренд";
 "e_commerce_filter_size" = "Размер";
@@ -228,15 +244,15 @@
 "e_commerce_free_shipping" = "Бесплатная доставка";
 "e_commerce_filter_list_products" = "Список продуктов";
 
+/*MARK: - FILTER OPTIONS TEXTS*/
 "e_commerce_filter_multi_choice_search" = "Поиск";
 "e_commerce_filter_multi_choice_apply" = "Применить";
-
 "e_commerce_filter_selection_apply" = "Применить";
-
 "e_commerce_filter_clear" = "Очистить";
 "e_commerce_multi_choice_search" = "Поиск";
 "e_commerce_multi_choice_apply" = "Применить";
 
+/*MARK: - USER SECTIONS*/
 "user_delivery_address" = "Адрес доставки";
 "user_billing_address" = "Платежный адрес";
 "user_address_name" = "Имя";
@@ -256,6 +272,7 @@
 "user_address_tax_number" = "Налоговый номер";
 "user_address_identity_number" = "Идентификационный номер";
 
+/*MARK: - USER ADDRESS VALIDATION USAGE*/
 "user_address_form_name_empty" = "Пожалуйста, введите ваше имя";
 "user_address_form_surname_empty" = "Пожалуйста, введите вашу фамилию";
 "user_address_form_phone_empty" = "Пожалуйста, введите свой номер телефона";
@@ -269,32 +286,27 @@
 "user_address_form_tax_office_empty" = "Пожалуйста, войдите в налоговую инспекцию";
 "user_address_form_tax_number_empty" = "Пожалуйста, введите налоговый номер";
 "user_address_form_identity_number_empty" = "Пожалуйста, введите идентификационный номер";
-
 "user_address_form_name_valid" = "Введите действительное имя";
 "user_address_form_surname_valid" = "Пожалуйста, введите действительную фамилию";
 "user_address_form_phone_valid" = "Введите действительный номер телефона";
 "user_address_form_address_valid" = "Введите действительный адрес";
 "user_address_form_postal_code_valid" = "Пожалуйста, введите действительный почтовый индекс";
 "user_address_form_address_title_valid" = "Пожалуйста, введите действительное название адреса";
-
+"user_address_form_identity_number_valid" = "Пожалуйста, введите действительный идентификационный номер";
 "search_bar_search_text" = "Поиск товаров";
 "payment_bank_branch_code" = "Код отделения:";
 "payment_bank_branch_number" = "Номер счета-";
 "action_copied_clipboard" = "Скопировано в буфер обмена";
-
 "user_address_delivery_address_title" = "Адрес доставки";
 "user_address_invoice_address_title" = "Адрес счета";
-
 "user_my_address_title" = "Мои адреса";
 "user_my_address_no_address_title" = "Нет адреса";
 "user_my_address_no_address_description" = "Зарегистрированный адрес не найден. Пожалуйста, добавьте новый адрес.";
-
 "user_my_address_action_delete" = "УДАЛИТЬ";
 "user_my_address_address_action_edit" = "Изменить";
 "user_my_address_delete_address_title" = "Вы уверены, что хотите удалить %@?";
 "user_my_address_delete_address_cancel_button" = "Отмена";
 "user_my_address_delete_address_delete_button" = "Удалить";
-
 "user_my_address_new_address_title" = "Новый адрес";
 "user_my_address_update_address_title" = "Обновить адрес";
 "user_my_address_saved_toast_message" = "Адрес сохранен";

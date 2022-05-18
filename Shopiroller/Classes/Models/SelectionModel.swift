@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SelectionPopUpModel {
+struct SelectionModel {
     let datalist: [Any]?
     let selectionType: SelectionType?
 }

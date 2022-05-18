@@ -13,6 +13,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private struct Constants {
         
         static var productsTitleIdentifier: String { return "products-identifier".localized }
+
     }
     
     @IBOutlet private weak var emptyView: EmptyView!

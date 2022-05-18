@@ -13,7 +13,7 @@ open class OrderListViewModel: SRBaseViewModel {
     private struct Constants {
         static var emptyOrdersTitle: String { return "e_commerce_my_orders_no_order_title".localized }
         static var emptyOrdersDescription: String { return "e_commerce_my_orders_no_order_description".localized }
-        static var emptyOrdersActionButton: String { return "general_start_shopping_button_text".localized }
+        static var emptyOrdersActionButton: String { return "e_commerce_general_start_shopping_button_text".localized }
     }
     
     private var isOpenedFromResult: Bool? = false

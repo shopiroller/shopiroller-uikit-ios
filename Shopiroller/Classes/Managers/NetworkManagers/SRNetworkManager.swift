@@ -237,16 +237,16 @@ final public class SRNetworkManager {
                         
                         if let isUserFriendlyMessage = value.isUserFriendlyMessage {
                             if !isUserFriendlyMessage {
-                                resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: value.key ?? "")))
+                                resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: value.key ?? "")))
                             } else if isUserFriendlyMessage {
                                 resourceResult(.failure(ShopirollerError.other(title: nil,description: value.message ?? "",isUserFriendlyMessage: true)))
                             }
                             
                         } else if let error = value.message {
-                            resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: error)))
+                            resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: error)))
                             return
                         } else if let errors = value.errors {
-                            resourceResult(.failure(ShopirollerError.other(title: "error-general-title", description: errors[0])))
+                            resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: errors[0])))
                             return
                         } else {
                             resourceResult(.success(result: value))

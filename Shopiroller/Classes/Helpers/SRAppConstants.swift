@@ -34,6 +34,7 @@ public struct SRAppConstants {
             static let appUserApiKey = "appUserApiKey"
             static let fallbackLanguage = "fallbackLanguage"
             static let appLanguage = "appLanguage"
+            static let appTitle = "appTitle"
 
         }
         
@@ -101,6 +102,7 @@ public struct SRAppConstants {
     public struct ShoppingCart {
         
         public static var badgeCount = "badgeCount"
+        public static var shoppingCartMessageType = "Campaign"
     }
     
     struct History {

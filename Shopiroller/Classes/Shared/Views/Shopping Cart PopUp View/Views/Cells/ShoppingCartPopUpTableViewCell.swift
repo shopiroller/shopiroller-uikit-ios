@@ -67,7 +67,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
                 stockLabel.text = String(format: key.text, String(stock))
                 countLabel.text = String(stock)
                 controlView.isHidden = false
-            }else {
+            } else {
                 stockLabel.text = key.text
                 controlView.isHidden = true
             }
@@ -86,7 +86,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(String(format: "shopping_cell_maximum_product_message".localized, String(quantity)))
+                makeToast(String(format: "e_commerce_product_detail_maximum_product_message".localized, String(quantity)))
             }else {
                 delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,10 +79,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="150"/>
                                                     <subviews>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bM5-LH-8iY" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="250"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="300"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="250" id="tPf-Te-Paa"/>
+                                                                <constraint firstAttribute="height" constant="300" id="ECn-37-a5l"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fry-Jm-H4g" customClass="GeneralAddressView" customModule="Shopiroller" customModuleProvider="target">
@@ -159,10 +159,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="150"/>
                                                     <subviews>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AU-XV-LmI" customClass="EmptyView" customModule="Shopiroller" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="250"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="300"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="250" id="jAV-3r-EZw"/>
+                                                                <constraint firstAttribute="height" constant="300" id="Fog-iG-JDe"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-XF-aeQ" customClass="GeneralAddressView" customModule="Shopiroller" customModuleProvider="target">
@@ -174,6 +174,11 @@
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="3AU-XV-LmI" firstAttribute="top" secondItem="Yj7-MY-Cqt" secondAttribute="top" id="KUy-ea-sKa"/>
+                                                        <constraint firstItem="3AU-XV-LmI" firstAttribute="leading" secondItem="Yj7-MY-Cqt" secondAttribute="leading" id="cM9-6e-1bb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3AU-XV-LmI" secondAttribute="trailing" id="jpX-1F-ZdT"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

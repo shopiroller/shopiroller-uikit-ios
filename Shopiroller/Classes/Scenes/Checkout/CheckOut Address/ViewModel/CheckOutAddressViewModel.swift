@@ -48,11 +48,11 @@ class CheckOutAddressViewModel: SRBaseViewModel {
     
     
     func getShippingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShippingAddresses, title: "address_list_empty_shipping_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
+        return EmptyModel(image: .emptyShippingAddresses, title: "e_commerce_address_selection_no_shipping_address_title".localized,description: "e_commerce_address_selection_no_shipping_address_description".localized, button: ButtonModel(title: "e_commerce_address_selection_no_shipping_address_button".localized, color: .textPrimary))
     }
     
     func getBillingEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyBillingAddresses, title: "address_list_empty_billing_title".localized,description: nil, button: ButtonModel(title: "add-address-button-text".localized, color: .textPrimary))
+        return EmptyModel(image: .emptyBillingAddresses, title: "e_commerce_address_selection_no_invoice_address_title".localized,description: "e_commerce_address_selection_no_invoice_address_description".localized, button: ButtonModel(title: "e_commerce_address_selection_no_invoice_address_button".localized, color: .textPrimary))
     }
     
     private func setDefaultAddresses() {

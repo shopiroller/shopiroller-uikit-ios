@@ -424,7 +424,7 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
         style.backgroundColor = .veryLightPink
         style.messageColor = .textPrimary
         style.messageFont = .regular12
-        self.view.makeToast(String(format: "checkout-table-view-iban-copied-message".localized),position: ToastPosition.bottom,style: style)
+        self.view.makeToast(String(format: "e_commerce_order_details_bank_copy_toast_message".localized),position: ToastPosition.bottom,style: style)
     }
     
 }

@@ -18,7 +18,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
         static var bankAccount: String { return "e_commerce_order_details_bank_account".localized }
         static var bankAccountIban: String { return "e_commerce_order_details_bank_iban".localized }
         static var bankAccountIbanCopiedText: String { return "e_commerce_order_details_bank_copy_toast_message".localized }
-        static var orderNoteText: String { return "order-details-user-e_commerce_order_details_user_note_sub_title".localized  }
+        static var orderNoteText: String { return "e_commerce_order_details_user_note_sub_title".localized  }
     }
     
     @IBOutlet weak var bottomPriceView: BottomPriceView!

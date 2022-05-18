@@ -114,6 +114,10 @@ public class ShopirollerApp {
         SRAppContext.fallbackLanguage = fallbackLanguage
     }
     
+    public func setAppTitle(appTitle: String) {
+        SRAppContext.appTitle = appTitle
+    }
+    
     func isUserLoggedIn() -> Bool {
         return SRAppContext.userId != "" && SRAppContext.userEmail != ""
     }

@@ -15,7 +15,9 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         
         static var billingAddressText: String { return "user_billing_address".localized }
         
-        static var addAddressButtonText: String { return "e_commerce_address_selection_no_shipping_address_button".localized }
+        static var addShippingAddressButton: String { return "e_commerce_address_selection_no_shipping_address_button".localized }
+        
+        static var addInvoiceAddressButton: String { return "e_commerce_address_selection_no_invoice_address_button".localized }
     }
     
     @IBOutlet private weak var containerView: UIView!
@@ -48,11 +50,11 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
         billingAddressViewTitle.textColor = .textPrimary
         billingAddressViewTitle.font = .semiBold14
         
-        shippingAddressAddButton.setTitle(Constants.addAddressButtonText)
+        shippingAddressAddButton.setTitle(Constants.addShippingAddressButton)
         shippingAddressAddButton.tintColor = .textSecondary
         shippingAddressAddButton.titleLabel?.font = .medium12
         
-        billingAddressAddButton.setTitle(Constants.addAddressButtonText)
+        billingAddressAddButton.setTitle(Constants.addInvoiceAddressButton)
         billingAddressAddButton.tintColor = .textSecondary
         billingAddressAddButton.titleLabel?.font = .medium12
         
