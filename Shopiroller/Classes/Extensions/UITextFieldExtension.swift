@@ -77,7 +77,7 @@ extension UITextField {
     }
 
     func addNextAction(target: Any, selector: Selector) {
-        let nextButton = UITextField.ToolbarItem(title: "keyboard-next-action-text" .localized, target: target, selector: selector)
+        let nextButton = UITextField.ToolbarItem(title: "e_commerce_general_next_step_text" .localized, target: target, selector: selector)
         self.addToolbar(trailing: [nextButton])
     }
     

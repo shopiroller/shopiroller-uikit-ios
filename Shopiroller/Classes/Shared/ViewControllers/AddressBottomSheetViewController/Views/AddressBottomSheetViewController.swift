@@ -18,91 +18,109 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     private struct Constants {
         
-        static var titleText: String { return "address-bottom-view-title-text".localized }
+        static var titleText: String { return "e_commerce_address_selection_add_new_address".localized }
         
-        static var nameTextFieldText : String { return "address-bottom-view-name-text".localized }
+        static var nameTextFieldText : String { return "user_address_name".localized }
         
-        static var surNameTextFieldText : String { return "address-bottom-view-surname-text".localized }
+        static var surNameTextFieldText : String { return "user_address_surname".localized }
         
-        static var phoneTextFieldText : String { return "address-bottom-view-phone-text".localized }
+        static var phoneTextFieldText : String { return "user_address_phone".localized }
         
-        static var countryTextFieldText : String { return "address-bottom-view-country-text".localized }
+        static var countryTextFieldText : String { return "user_address_country".localized }
         
-        static var addressTextFieldText : String { return "address-bottom-view-address-text".localized }
+        static var addressTextFieldText : String { return "user_address_address_line".localized }
         
-        static var zipCodeTextFieldText : String { return "address-bottom-view-zipcode-text".localized }
+        static var zipCodeTextFieldText : String { return "user_address_postal_code".localized }
         
-        static var addressTitleTextFieldText : String { return "address-bottom-view-address-title-text".localized }
+        static var addressTitleTextFieldText : String { return "user_address_address_title".localized }
         
-        static var individualTextFieldText : String { return "address-bottom-view-individual-checkbox-text".localized }
+        static var individualCheckBoxText : String { return "user_address_individual".localized }
         
-        static var corporateCheckBoxText : String { return "address-bottom-view-corporate-checkbox-text".localized }
+        static var corporateCheckBoxText : String { return "user_address_corporate".localized }
         
-        static var identityNumberTextFieldText : String { return "address-bottom-view-identitynumber-text".localized }
+        static var identityNumberTextFieldText : String { return "user_address_identity_number".localized }
         
-        static var companyNameTextFieldText : String { return "address-bottom-view-corporate-company-name-text".localized }
+        static var companyNameTextFieldText : String { return "user_address_company_name".localized }
         
-        static var corporateTaxOfficeTextFieldText : String { return "address-bottom-view-corporate-tax-office-text".localized }
+        static var corporateTaxOfficeTextFieldText : String { return "user_address_tax_office".localized }
         
-        static var corporateTaxNumberTextFieldText : String { return "address-bottom-view-corporate-tax-number-text".localized }
+        static var corporateTaxNumberTextFieldText : String { return "user_address_tax_number".localized }
         
-        static var saveButtonText : String { return "address-bottom-view-save-button-text".localized }
+        static var saveButtonText : String { return "e_commerce_general_save_button_text".localized }
         
-        static var saveAsBillingAddressText: String { return "address-bottom-view-save-as-billing-address-text".localized }
+        static var saveAsBillingAddressText: String { return "user_address_save_as_billing".localized }
         
-        static var statesTextFieldText: String { return "address-bottom-view-states-text".localized }
+        static var statesTextFieldText: String { return "user_address_city".localized }
         
-        static var districtTextFieldText: String { return "address-bottom-view-district-text".localized }
+        static var districtTextFieldText: String { return "user_address_district".localized }
+        
+        static var keyboardDoneActionText: String { return "e_commerce_general_keyboard_done_action_text".localized }
         
     }
     
     
     private struct ErrorConstants {
-       
-        static var nameEmptyError : String { return "address-bottom-view-name-empty-text".localized }
         
-        static var nameValidationError : String { return "address-bottom-view-name-invalid-text".localized }
+        static var nameEmptyError : String { return "user_address_form_name_empty".localized }
+        
+        static var nameValidationError : String { return "user_address_form_name_valid".localized }
         
         static var surnameEmptyError : String { return "address-bottom-view-surname-empty-text".localized }
         
-        static var surnameValidationError : String { return "address-bottom-view-surname-invalid-text".localized }
+        static var surnameValidationError : String { return "user_address_form_surname_empty".localized }
         
-        static var phoneEmptyError : String { return "address-bottom-view-phone-empty-text".localized }
+        static var phoneEmptyError : String { return "user_address_form_phone_empty".localized }
         
-        static var phoneValidationError : String { return "address-bottom-view-phone-invalid-text".localized }
+        static var phoneValidationError : String { return "user_address_form_phone_valid".localized }
         
-        static var countryError : String { return "address-bottom-view-country-error-text".localized }
+        static var countryError : String { return "user_address_form_country_empty".localized }
         
-        static var stateError : String { return "address-bottom-view-states-error-text".localized }
+        static var stateError : String { return "user_address_form_city_empty".localized }
         
-        static var districtError : String { return "address-bottom-view-district-error-text".localized }
+        static var districtError : String { return "user_address_form_district_empty".localized }
         
-        static var addressEmptyError : String { return "address-bottom-view-address-empty-text".localized }
+        static var addressEmptyError : String { return "user_address_form_address_empty".localized }
         
-        static var addressValidationError : String { return "address-bottom-view-address-invalid-text".localized }
+        static var addressValidationError : String { return "user_address_form_address_valid".localized }
         
-        static var zipCodeEmptyError : String { return "address-bottom-view-zipcode-empty-text".localized }
+        static var zipCodeEmptyError : String { return "user_address_form_postal_code_empty".localized }
         
-        static var zipCodeValidationError : String { return "address-bottom-view-zipcode-invalid-text".localized }
+        static var zipCodeValidationError : String { return "user_address_form_postal_code_valid".localized }
         
-        static var addressTitleEmptyError : String { return "address-bottom-view-address-title-empty-text".localized }
+        static var addressTitleEmptyError : String { return "user_address_form_address_title_empty".localized }
         
-        static var addressTitleValidationError : String { return "address-bottom-view-address-title-invalid-text".localized }
+        static var addressTitleValidationError : String { return "user_address_form_address_title_valid".localized }
         
-        static var identityNumberEmptyError : String { return "address-bottom-view-identitynumber-error-text".localized }
+        static var identityNumberEmptyError : String { return "user_address_form_identity_number_empty".localized }
         
-        static var identityNumberValidationError : String { return "address-bottom-view-identitynumber-invalid-text".localized }
+        static var identityNumberValidationError : String { return "user_address_form_identity_number_valid".localized }
         
-        static var companyNameEmptyError : String { return "address-bottom-view-corporate-company-name-error-text".localized }
+        static var companyNameEmptyError : String { return "user_address_form_company_empty".localized }
         
-        static var taxOfficeEmptyError : String { return "address-bottom-view-corporate-tax-office-error-text".localized }
+        static var taxOfficeEmptyError : String { return "user_address_form_tax_office_empty".localized }
         
-        static var taxNumberEmptyError : String { return "address-bottom-view-corporate-tax-number-error-text".localized }
+        static var taxNumberEmptyError : String { return "user_address_form_tax_number_empty".localized }
     }
     
-    @IBOutlet private weak var topViewContainer: UIView!
-    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var individualCheckBoxTitle: UILabel!
+    @IBOutlet private weak var corporateCheckBoxTitle: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var saveAsBillingAddressTitle: UILabel!
+    
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var saveAsBillingAddressButton: UIButton!
+    @IBOutlet private weak var individualCheckBoxButton: UIButton!
+    @IBOutlet private weak var corporateCheckBoxButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
+    
+    @IBOutlet private weak var saveAsBillingContainer: UIView!
+    @IBOutlet private weak var statesContainerView: UIView!
+    @IBOutlet private weak var districtsContainerView: UIView!
+    @IBOutlet private weak var billingAddressContainer: UIView!
+    @IBOutlet private weak var identityNumberContainer: UIView!
+    @IBOutlet private weak var corporateContainer: UIView!
+    @IBOutlet private weak var topViewContainer: UIView!
+    
     @IBOutlet private weak var nameView: SRTextField!
     @IBOutlet private weak var surnameView: SRTextField!
     @IBOutlet private weak var phoneNumberView: SRTextField!
@@ -110,32 +128,19 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     @IBOutlet private weak var userAddressView: SRTextField!
     @IBOutlet private weak var zipCodeView: SRTextField!
     @IBOutlet private weak var addressTitleView: SRTextField!
-    @IBOutlet private weak var individualCheckBoxButton: UIButton!
-    @IBOutlet private weak var individualCheckBoxTitle: UILabel!
-    @IBOutlet private weak var corporateCheckBoxButton: UIButton!
-    @IBOutlet private weak var corporateCheckBoxTitle: UILabel!
-    @IBOutlet private weak var identityNumberContainer: UIView!
-    @IBOutlet private weak var identityNumberView: SRTextField!
-    @IBOutlet private weak var corporateContainer: UIView!
     @IBOutlet private weak var companyNameView: SRTextField!
     @IBOutlet private weak var taxOfficeView: SRTextField!
     @IBOutlet private weak var taxNumberView: SRTextField!
-    @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var billingAddressContainer: UIView!
-    @IBOutlet private weak var saveAsBillingAddressButton: UIButton!
-    @IBOutlet private weak var saveAsBillingAddressTitle: UILabel!
-    @IBOutlet private weak var saveAsBillingContainer: UIView!
-    @IBOutlet private weak var statesContainerView: UIView!
-    @IBOutlet private weak var districtsContainerView: UIView!
     @IBOutlet private weak var statesView: SRTextField!
     @IBOutlet private weak var districtView: SRTextField!
+    @IBOutlet private weak var identityNumberView: SRTextField!
     
     
     var delegate: AddressBottomViewDelegate?
     
-    var isBillingAddressChecked: Bool = true
+    private var isBillingAddressChecked: Bool = true
     
-    var isIndividualButtonTapped: Bool = true
+    private var isIndividualButtonTapped: Bool = true
     
     
     init(viewModel: AddressBottomSheetViewModel){
@@ -145,7 +150,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     override func setup() {
         super.setup()
         
-        closeButton.tintColor = .white
         closeButton.setImage(UIImage(systemName: "xmark"))
         closeButton.imageView?.tintColor = .black
         
@@ -156,8 +160,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
         saveAsBillingAddressButton.imageView?.tintColor = .black
         
+        individualCheckBoxTitle.text = Constants.individualCheckBoxText
         individualCheckBoxButton.setImage(.radioOn)
-        individualCheckBoxTitle.text = Constants.individualTextFieldText
+        
         corporateCheckBoxTitle.text = Constants.corporateCheckBoxText
         corporateCheckBoxButton.setImage(.radioOff)
         
@@ -231,8 +236,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         identityNumberView.getTextField().returnKeyType = .done
         identityNumberView.getTextField().delegate = self
         identityNumberView.getTextField().keyboardType = .numberPad
-        identityNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
-
+        identityNumberView.getTextField().addCustomTextAction(title: Constants.keyboardDoneActionText, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         companyNameView.getTextField().placeholder = Constants.companyNameTextFieldText
         companyNameView.getTextField().returnKeyType = .next
@@ -250,7 +254,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxNumberView.getTextField().returnKeyType = .done
         taxNumberView.getTextField().delegate = self
         taxNumberView.getTextField().keyboardType = .numberPad
-        taxNumberView.getTextField().addCustomTextAction(title: "keyboard-done-action-text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        taxNumberView.getTextField().addCustomTextAction(title: Constants.keyboardDoneActionText, target: self, selector: #selector(toolbarDoneButtonClicked))
         
         let tapCountryTextField = UITapGestureRecognizer(target: self, action: #selector(countryViewTapped))
         countryView.getTextField().backgroundColor = .clear
@@ -271,6 +275,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         
         getCountryList()
         setUpLayout()
+        
         if viewModel.isEditAvailable() {
             setEditBinds()
             statesContainerView.isHidden = false
@@ -300,11 +305,11 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     @objc func nextActionStateTextField() {
-       statesViewTapped()
+        statesViewTapped()
     }
     
     @objc func nextActionCitiesTextField() {
-       districtViewTapped()
+        districtViewTapped()
     }
     
     @objc func nextActionAddressTextField() {
@@ -347,13 +352,8 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     }
     
     private func setBillingAddressButton() {
-        if isBillingAddressChecked {
-            billingAddressContainer.isHidden = false
-            saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle"))
-        }else {
-            billingAddressContainer.isHidden = true
-            saveAsBillingAddressButton.setImage(UIImage(systemName: "circle"))
-        }
+        billingAddressContainer.isHidden = !isBillingAddressChecked
+        isBillingAddressChecked ? saveAsBillingAddressButton.setImage(UIImage(systemName: "checkmark.circle")) : saveAsBillingAddressButton.setImage(UIImage(systemName: "circle"))
     }
     
     @IBAction func individualButtonTapped() {
@@ -387,9 +387,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     @IBAction func saveButtonTapped() {
         if isValid() {
-            if viewModel.isEditAvailable(){
+            if viewModel.isEditAvailable() {
                 editAddress()
-            }else {
+            } else {
                 saveAddress()
             }
         }
@@ -397,17 +397,17 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     
     
     @objc func countryViewTapped() {
-        self.viewModel.selectionType = .country
+        self.viewModel.selectionAddressType = .country
         showSelectionPopUp()
     }
     
     @objc func statesViewTapped() {
-        viewModel.selectionType = .state
+        viewModel.selectionAddressType = .state
         showSelectionPopUp()
     }
     
     @objc func districtViewTapped() {
-        viewModel.selectionType = .district
+        viewModel.selectionAddressType = .district
         showSelectionPopUp()
     }
     
@@ -422,18 +422,19 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         taxNumberView.resignFirstResponder()
         taxOfficeView.resignFirstResponder()
         addressTitleView.resignFirstResponder()
-        let selectionPopupVC = SelectionPopUpViewController(viewModel: viewModel.getSelectionModel())
+        let selectionPopupVC = SelectionViewController(viewModel: viewModel.getSelectionModel())
+        let navigationController = UINavigationController()
         selectionPopupVC.delegate = self
-        popUp(selectionPopupVC)
+        navigationController.viewControllers = [selectionPopupVC]
+        self.present(navigationController, animated: true)
     }
     
     private func getCountryList() {
         viewModel.getCountryModel(success: {
-            [weak self] in
-            guard let self = self else { return }
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -441,18 +442,18 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         statesView.getTextField().isEnabled = true
         viewModel.getStateModel(success: {
             [weak self] in
-            if self?.viewModel.getStates().count != 0 {
-                self?.statesContainerView.isHidden = false
+            guard let self = self else { return }
+            if self.viewModel.getStates().count != 0 {
+                self.statesContainerView.isHidden = false
             } else {
-                self?.districtsContainerView.isHidden = true
-                self?.statesContainerView.isHidden = true
-                self?.districtView.getTextField().text = self?.countryView.getTextField().text
-                self?.statesView.getTextField().text = self?.countryView.getTextField().text
+                self.districtsContainerView.isHidden = true
+                self.statesContainerView.isHidden = true
+                self.districtView.getTextField().text = self.countryView.getTextField().text
+                self.statesView.getTextField().text = self.countryView.getTextField().text
             }
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -460,6 +461,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         districtView.getTextField().isEnabled = true
         viewModel.getDistrictModel(success: {
             [weak self] in
+            
             if self?.viewModel.getDistricts().count != 0 {
                 self?.districtsContainerView.isHidden = false
                 if self?.viewModel.getDistricts().count == 1 {
@@ -470,10 +472,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 self?.districtView.getTextField().text = self?.statesView.getTextField().text
                 self?.districtsContainerView.isHidden = true
             }
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
     }
     
@@ -596,9 +597,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 } else {
                     taxNumberView.getErrorLabelText() != nil ? taxNumberView.setInfoLabel(infoText: "") : taxNumberView.removeError()
                 }
-                }
-
-    }
+            }
+            
+        }
         return isValid
     }
     
@@ -610,7 +611,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func editAddress() {
         switch viewModel.getAddressType() {
         case .billing:
-            if let userBillingAddress = viewModel.getBillingAddress(){
+            if let userBillingAddress = viewModel.getBillingAddress() {
                 var editBillingAddress: EditAddressModel? = EditAddressModel()
                 editBillingAddress?.apiKey = SRAppContext.appUserApiKey
                 editBillingAddress?.appKey = SRAppContext.appUserAppKey
@@ -668,15 +669,15 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
     private func setEditBinds() {
         switch viewModel.getAddressType() {
         case .shipping:
-            if let userShippingAddress = viewModel.getShippingAddress(){
+            if let userShippingAddress = viewModel.getShippingAddress() {
                 saveAsBillingContainer.isHidden = true
                 billingAddressContainer.isHidden = true
                 let names : [String] = userShippingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
                 surnameView.getTextField().text = names[names.count - 1]
-                for i in 0..<(names.count - 1){
+                for i in 0..<(names.count - 1) {
                     if i == 0 {
                         nameView.getTextField().text = names[0]
-                    }else {
+                    } else {
                         nameView.getTextField().text = nameView.getTextField().text ?? "" + names[i]
                     }
                 }
@@ -695,7 +696,7 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 billingAddressContainer.isHidden = false
                 let names : [String] = userBillingAddress.contact?.nameSurname?.components(separatedBy: " ") ?? []
                 surnameView.getTextField().text = names[names.count - 1]
-                for i in 0..<(names.count - 1){
+                for i in 0..<(names.count - 1) {
                     if i == 0 {
                         nameView.getTextField().text = names[0]
                     }else {
@@ -786,9 +787,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         } else {
             viewModel.addShippingAddress(success: {
@@ -797,9 +798,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: self.viewModel.getShippingAddress(), userBillingAddressModel: nil, defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         }
         
@@ -814,9 +815,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         } else {
             viewModel.addBillingAddress(success: {
@@ -825,12 +826,12 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
                 
                 self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: self.viewModel.getBillingAddress(), defaultAddressModel: nil)
                 self.pop(animated: true, completion: nil)
-            }) {
-                [weak self] (errorViewModel) in
+            }) { [weak self] (errorViewModel) in
                 guard let self = self else { return }
+                self.showAlertError(viewModel: errorViewModel)
             }
         }
-       
+        
     }
     
     private func addAddress() {
@@ -840,9 +841,9 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
             
             self.delegate?.saveButtonTapped(userShippingAddressModel: nil, userBillingAddressModel: nil, defaultAddressModel: self.viewModel.getDefaultAddressModel())
             self.pop(animated: true, completion: nil)
-        }) {
-            [weak self] (errorViewModel) in
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
+            self.showAlertError(viewModel: errorViewModel)
         }
         
     }
@@ -898,9 +899,9 @@ extension AddressBottomSheetViewController : UITextFieldDelegate {
     }
 }
 
-extension AddressBottomSheetViewController: SelectionPopUpDelegate {
+extension AddressBottomSheetViewController: SelectionController {
     func getCountryId(id: String?) {
-        switch viewModel.selectionType {
+        switch viewModel.selectionAddressType {
         case .country:
             viewModel.countryId = id ?? ""
             countryView.getTextField().text = viewModel.getSelectedCountryName(selectedId: id)

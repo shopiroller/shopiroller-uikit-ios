@@ -11,7 +11,7 @@ import WebKit
 
 private struct Constans {
     
-    static var webViewTitle: String { return "product-detail-description-title-text".localized }
+    static var webViewTitle: String { return "e_commerce_product_detail_description".localized }
 }
 class WebViewController: BaseViewController<WebViewViewModel> {
     

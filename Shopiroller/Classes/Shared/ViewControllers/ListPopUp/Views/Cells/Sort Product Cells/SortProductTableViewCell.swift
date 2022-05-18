@@ -7,16 +7,11 @@
 
 import UIKit
 
-protocol SortProductCellDelegate {
-    func getTappedIndex(index: Int)
-}
-
 class SortProductTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var sortByTitle: UILabel!
     @IBOutlet private weak var sortCheckedImage: UIImageView!
     
-    var delegate : SortProductCellDelegate?
     private var selectedIndex : Int = 0
     
     override func awakeFromNib() {
@@ -27,24 +22,13 @@ class SortProductTableViewCell: UITableViewCell {
         
         sortCheckedImage.tintColor = .textPrimary
         
-        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(cellTapGesture)
     }
-
+    
     
     func setup(title: String?, isChecked: Bool,index: Int?) {
         self.selectedIndex = index ?? 0
-        if isChecked {
-            sortCheckedImage.isHidden = false
-        } else {
-            sortCheckedImage.isHidden = true
-        }
+        sortCheckedImage.isHidden = isChecked ? false : true
         sortByTitle.text = title
-    }
-    
-    @objc func cellTapped() {
-        delegate?.getTappedIndex(index: selectedIndex)
     }
     
 }

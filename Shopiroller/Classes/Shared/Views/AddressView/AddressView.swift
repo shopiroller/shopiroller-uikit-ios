@@ -50,9 +50,9 @@ enum AddressType: String {
     var text: String {
         switch self {
         case .billing:
-            return "order_details_address_billing".localized
+            return "e_commerce_order_details_invoice_address_title".localized
         case .shipping:
-            return "order_details_address_delivery".localized
+            return "e_commerce_order_details_delivery_address_title".localized
         }
     }
 }

@@ -24,12 +24,12 @@ class FilterVariationTableViewCell: UITableViewCell {
     }
     
     func setupCategory(selectionLabel: String) {
-        titleLabel.text = "filter_category".localized
+        titleLabel.text = "e_commerce_filter_category".localized
         setSelectionLabel(selectionLabel: selectionLabel)
     }
     
     func setupBrand(selectionLabel: String) {
-        titleLabel.text = "filter_brand".localized
+        titleLabel.text = "e_commerce_filter_brand".localized
         setSelectionLabel(selectionLabel: selectionLabel)
     }
     

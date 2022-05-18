@@ -10,16 +10,16 @@ import UIKit
 class SRResultViewController: BaseViewController<SRResultViewControllerViewModel> {
     
     private struct Constants {
-        static var pageTitle: String { "checkout-result-info-page-title".localized }
-        static var successTitle: String { "checkout-result-info-success-title".localized }
-        static var successDescription: String { "checkout-result-info-success-description" .localized }
-        static var successOrderNumber: String { "checkout-result-info-success-order-number".localized }
-        static var successCheckOrderButtonText: String { "checkout-result-info-success-check-order-button-text".localized }
-        static var successContinueShoppingButtonText: String { "checkout-result-info-success-continue-shopping-button-text".localized }
-        static var failTitle: String {  "checkout-result-info-fail-title" .localized }
-        static var failDescription: String { "checkout-result-info-fail-description".localized }
-        static var failMessage: String { "ccheckout-result-info-fail-message".localized }
-        static var failUpdatePaymentMethodButtonText: String { "checkout-result-info-fail-update-payment-method-button-text".localized }
+        static var pageTitle: String { "e_commerce_order_details_information_title".localized }
+        static var successTitle: String { "e_commerce_result_success_title".localized }
+        static var successDescription: String { "e_commerce_result_success_description" .localized }
+        static var successOrderNumber: String { "e_commerce_result_success_reference_number".localized }
+        static var successCheckOrderButtonText: String { "e_commerce_result_success_action_my_orders".localized }
+        static var successContinueShoppingButtonText: String { "e_commerce_result_success_action_continue_shopping".localized }
+        static var failTitle: String {  "e_commerce_result_failed_title" .localized }
+        static var failDescription: String { "e_commerce_result_failed_description".localized }
+        static var failMessage: String { "e_commerce_result_credit_card_failed_title".localized }
+        static var failUpdatePaymentMethodButtonText: String { "e_commerce_result_failed_action_update_payment_method".localized }
     }
     
     @IBOutlet private weak var resultImageView: UIImageView!
@@ -92,7 +92,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     
     @IBAction func firstButtonTapped() {
         if viewModel.getType() == .success {
-            let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
+            let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel(isOpenedFromResult: true))
             self.prompt(orderDetailVC, animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)

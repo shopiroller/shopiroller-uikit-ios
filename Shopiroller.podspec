@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.2.25'
+  s.version          = '0.2.26'
   s.summary          = 'A short description of Shopiroller.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -36,4 +36,5 @@ TODO: Add long description of the pod here.
   s.dependency 'IQKeyboardManagerSwift'
   s.dependency 'Stripe'
   s.dependency 'Braintree'
+  s.dependency 'Sentry' , '~> 7.12.0'
 end

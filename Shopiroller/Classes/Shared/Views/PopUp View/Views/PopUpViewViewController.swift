@@ -79,7 +79,6 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             let myParagraphStyle = NSMutableParagraphStyle()
             myParagraphStyle.alignment = .center
             description.addAttributes([.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
-            
             descriptionLabel.attributedText = description
         } else {
             descriptionLabel.text = viewModel.getDescription()
@@ -93,12 +92,12 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
                 if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
                     self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
                 }
-            } else if (self.descriptionLabel.numberOfLines <= 2){
-                self.popUpHeightContstraint.constant = ((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4)
+            } else if (self.descriptionLabel.numberOfLines <= 2 && self.descriptionLabel.text != "") {
+                self.popUpHeightContstraint.constant = ((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4.25)
             }
         }
     }
-  
+    
     @IBAction private func firstButtonTapped(_ sender: Any) {
         dismiss(animated: false, completion: {
             self.delegate?.firstButtonClicked(sender, popUpViewController: self)

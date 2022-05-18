@@ -9,6 +9,14 @@ import Foundation
 
 class ShoppingCartPopUpViewModel: SRBaseViewModel {
     
+    private struct Constants {
+        
+        static var updateShoppingCartTitle: String { return "e_commerce_shopping_cart_updating_popup_title".localized }
+        static var updateShoppingCartDescription: String { return "e_commerce_shopping_cart_updating_popup_description".localized }
+        static var updateShoppingCartButton: String { return "e_commerce_shopping_cart_invalid_popup_button".localized }
+
+    }
+    
     private let productList: [ShoppingCartItem]?
     
     private var outOfStockCount = 0
@@ -18,15 +26,11 @@ class ShoppingCartPopUpViewModel: SRBaseViewModel {
     }
     
     func getTitle() -> String {
-        return "Cart is updating".localized
+        return Constants.updateShoppingCartTitle
     }
     
     func getDescription() -> String {
-        return  "shopping_cart_validate_description".localized
-    }
-    
-    func getWarning() -> String {
-        return String(format: "shopping_cart_validate_warning".localized, arguments: [String(changedProductCount()), String(outOfStockCount)])
+        return Constants.updateShoppingCartDescription
     }
     
     private func changedProductCount() -> Int {
@@ -44,7 +48,7 @@ class ShoppingCartPopUpViewModel: SRBaseViewModel {
     }
     
     func getButtonTitle() -> String {
-        return "shopping_cart_validate_ready_checkout".localized
+        return Constants.updateShoppingCartButton
     }
     
     func getProductListCount() -> Int {

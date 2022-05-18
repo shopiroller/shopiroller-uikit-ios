@@ -10,20 +10,20 @@ import UIKit
 
 class SRBadgeButton: UIButton {
     
-    var badgeLabel = UILabel()
+    private var badgeLabel = UILabel()
     
-    var badge: String? {
+    var badgeCount: String? {
         didSet {
-            addBadgeToButon(badge: badge)
+            addBadgeCount(badgeCount: badgeCount)
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addBadgeToButon(badge: badge)
+        addBadgeCount(badgeCount: badgeCount)
     }
     
-    func addBadgeToButon(badge: String?) {
+    func addBadgeCount(badgeCount: String?) {
         badgeLabel.layer.cornerRadius = badgeLabel.bounds.size.height / 2
         badgeLabel.textAlignment = .center
         badgeLabel.textColor = .white
@@ -31,7 +31,7 @@ class SRBadgeButton: UIButton {
         badgeLabel.font = UIFont.boldSystemFont(ofSize: 10)
         badgeLabel.backgroundColor = UIColor(red: 221/255, green: 55/255, blue: 95/255, alpha: 1)
         let badgeSize = badgeLabel.frame.size
-        self.badgeLabel.text = badge
+        self.badgeLabel.text = badgeCount
         
         let height = max(15, Double(badgeSize.height) + 2.0)
         let width = max(height, Double(badgeSize.width) + 5.0)
@@ -52,7 +52,7 @@ class SRBadgeButton: UIButton {
             
         badgeLabel.layer.cornerRadius = badgeLabel.frame.height/2
         badgeLabel.layer.masksToBounds = true
-        if badge == "0" || badge == nil {
+        if (badgeCount == "0" || badgeCount == nil) {
             badgeLabel.isHidden = true
         } else {
             badgeLabel.isHidden = false
@@ -62,7 +62,7 @@ class SRBadgeButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addBadgeToButon(badge: nil)
+        self.addBadgeCount(badgeCount: nil)
         fatalError("init(coder:) has not been implemented")
     }
 }

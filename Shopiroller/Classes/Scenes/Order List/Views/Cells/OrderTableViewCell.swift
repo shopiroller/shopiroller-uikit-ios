@@ -11,12 +11,8 @@ import UIKit
 class OrderTableViewCell: UITableViewCell {
     
     private struct Constants {
-    
-        static var successTransaction: String { return "success-transaction".localized }
         
-        static var pendiginTransaction: String { return "pending-transaction".localized }
-        
-        static var orderNo: String { return "order-no".localized }
+        static var orderNo: String { return "e_commerce_list_order_number".localized }
         
     }
     
@@ -29,6 +25,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet private weak var time: UILabel!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         statusView.layer.cornerRadius = 15
@@ -51,7 +48,7 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setup(model: OrderDetailModel) {
-        orderNo.text = Constants.orderNo + (model.orderCode ?? "")
+        orderNo.text = String(format: Constants.orderNo, model.orderCode ?? "")
         date.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.ddMMMMyyy)
         time.text = ECommerceUtil.convertServerDate(date: model.createdDate, toFormat: ECommerceUtil.EEEEhhmm)
         price.text = ECommerceUtil.getFormattedPrice(price: model.totalPrice, currency: model.currency)

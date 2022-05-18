@@ -7,6 +7,7 @@
 
 
 import Foundation
+import Sentry
 
 public enum ShopirollerError: Error, Equatable {
     case network, url, parseObject, parseJSON, general, encode, createJSON, download, expiredToken, checkUidUserExists(userMessage: String)
@@ -59,6 +60,15 @@ public enum ShopirollerError: Error, Equatable {
             return title ?? "generic-error-title"
         default:
             return "generic-error-title"
+        }
+    }
+    
+    public var isValidationError: Bool {
+        switch self {
+        case .validation(_):
+            return true
+        default:
+            return false
         }
     }
     
@@ -125,6 +135,7 @@ extension Error {
             }
             break
         }
+        SentrySDK.capture(message: "Error: \(error) \n" + "Error Message: \(errorMessage)")
         #if DEBUG
 //        loggingPrint(errorMessage)
         return ShopirollerError.other(title: "", description: errorMessage)

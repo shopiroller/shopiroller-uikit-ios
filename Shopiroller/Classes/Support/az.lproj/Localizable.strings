@@ -1,0 +1,314 @@
+/*
+  Localizable.strings
+  Pods
+
+  Created by Görkem Gür on 8.10.2021.
+  
+*/
+
+"e_commerce_general_error_description" = "Bağışlayın, xəta baş verdi. Lütfən, daha sonra yenidən cəhd edin";
+"e_commerce_general_error_title" = "Xəta";
+"e_commerce_general_next_step_text" = "Növbəti";
+"e_commerce_general_ok_button_text" = "Tamam";
+"e_commerce_general_cancel_button_text" = "Ləğv et";
+"e_commerce_internet_connection_error_title" = "İnternet bağlantısı yoxdur";
+"e_commerce_internet_connection_error_description" = "Lütfən, internet bağlantınızı yoxlayın";
+"e_commerce_general_start_shopping_button_text" = "Alış-verişə başlayın";
+"e_commerce_general_save_button_text" = "Saxla";
+"e_commerce_general_keyboard_done_action_text" = "Bitdi";
+"e_commerce_checkout_top_layout_address_text" = "Göndərmə";
+"e_commerce_checkout_top_layout_payment_text" = "Ödəniş";
+"e_commerce_checkout_top_layout_info_text" = "Sifariş";
+"products-identifier" = "ProductsTitleView";
+
+/*MARK: - GENERAL PRODUCT LIST USAGE*/
+"e_commerce_list_no_product_title" = "Hələ heç bir məhsul əlavə olunmayıb.";
+"e_commerce_list_no_product_description" = "Bu mağazada hələ heç bir məhsul yoxdur. Lakin burada tezliklə nəsə baş verəcək.";
+"e_commerce_list_sold_out_badge" = "Satıldı";
+"e_commerce_list_sale_badge" = "Endirim";
+"e_commerce_list_free_shipping_badge" = "Pulsuz Göndərmə";
+"e_commerce_list_categories" = "Kateqoriyalar";
+"e_commerce_list_see_all" = "Hamısına Bax";
+"e_commerce_list_explore" = "Kəşf et";
+"e_commerce_category_list_categories_title" = "Kateqoriyalar";
+"e_commerce_category_list_category_item_count" = "%@ məhsullar";
+"e_commerce_category_list_see_all_product_for_category" = "Bütün %@ Məhsullar";
+
+/*MARK: - PRODUCT LIST USAGE*/
+"e_commerce_category_product_list_no_empty_view_title" = "Heç bir məhsul əlavə olunmayıb.";
+"e_commerce_category_product_list_no_empty_view_description" = "Mağazada bu kateqoriya üçün məhsul yoxdur.";
+"e_commerce_category_product_list_order" = "Sıralama";
+"e_commerce_category_product_list_filter" = "Filtr";
+"e_commerce_category_product_list_order_dialog_title" = "Sıralama";
+"e_commerce_category_product_list_order_dialog_most_shipped" = "Ən yaxşı satıcılar";
+"e_commerce_category_product_list_order_dialog_price_increasing" = "Qiymət Artan";
+"e_commerce_category_product_list_order_dialog_price_decreasing" = "Qiymət azaldı";
+"e_commerce_category_product_list_order_dialog_most_recent_added" = "Ən son";
+"e_commerce_product_search_no_result_title" = "%@ üçün heç bir nəticə tapılmadı";
+"e_commerce_product_search_no_result_description" = "Axtarışınız üçün heç bir nəticə tapılmadı. Başqa bir şey sınayın.";
+
+/*MARK: - PRODUCT DETAIL USAGE*/
+"e_commerce_product_detail_quantity" = "Kəmiyyət";
+"e_commerce_product_detail_description" = "Məhsul təsviri";
+"e_commerce_product_detail_return_terms" = "Qaytarma və Mübadilə Şərtləri";
+"e_commerce_product_detail_delivery_conditions" = "Çatdırılma Şərtləri";
+"e_commerce_product_detail_terms_delivery_conditions_popup_button" = "Məhsula qayıt";
+"e_commerce_product_detail_buy_now" = "Səbətə əlavə et";
+"e_commerce_product_detail_maximum_product_message" = "Bu məhsuldan maksimum %@ ala bilərsiniz.";
+"e_commerce_product_detail_sold_out_button" = "Satıldı";
+"e_commerce_product_detail_sold_out_badge" = "Satıldı";
+"e_commerce_product_detail_free_shipping_badge" = "Pulsuz Göndərmə";
+"e_commerce_product_detail_maximum_product_limit_title" = "Maksimum Məhsul Limiti";
+"e_commerce_product_detail_maximum_product_limit_description" = "Maksimum məhsul alış limitinə çatdınız. Səbətinizə maksimum %@ məhsul əlavə edə bilərsiniz";
+"e_commerce_product_detail_maximum_product_limit_button" = "Məhsula qayıt";
+"e_commerce_product_detail_out_of_stock_title" = "Ehtiyatda yoxdur";
+"e_commerce_product_detail_out_of_stock_description" = "Sifariş verə bilməzsiniz, çünki məhsul qalmayıb";
+"e_commerce_product_detail_out_of_stock_button" = "Məhsul siyahısına qayıdın";
+"e_commerce_product_detail_added_to_shopping_cart_button" = "Səbətə əlavə edildi";
+"e_commerce_product_detail_cargo_price" = "Çatdırılma haqqı %@";
+"e_commerce_product_detail_not_found_product_title" = "Tapılmadı";
+"e_commerce_product_detail_not_found_product_description" = "Axtardığınız səhifə mövcud deyil və ya silinmiş ola bilər.";
+"e_commerce_product_detail_not_found_product_button" = "Başa düşürəm";
+
+/*MARK: - CHECKOUT ADDRESS SELECTION*/
+"e_commerce_address_selection_title" = "Göndərmə məlumatı";
+"e_commerce_address_selection_shipping_address_title" = "Çatdırılma Ünvanı";
+"e_commerce_address_selection_add_new_address" = "Əlavə et";
+"e_commerce_address_selection_no_shipping_address_title" = "Çatdırılma ünvanı tapılmadı.";
+"e_commerce_address_selection_no_shipping_address_description" = "Göndərmə ünvanı qeydə alınıb. Lütfən, yeni ünvan əlavə edin.";
+"e_commerce_address_selection_no_shipping_address_button" = "Yeni Göndərmə Ünvanı əlavə et";
+"e_commerce_address_selection_other_addresses" = "Digər Ünvanlarım";
+"e_commerce_address_selection_invoice_address_title" = "Fatura Ünvanı";
+"e_commerce_address_selection_no_invoice_address_title" = "Fatura ünvanı tapılmadı.";
+"e_commerce_address_selection_no_invoice_address_description" = "Qeydiyyatdan keçmiş faktura ünvanı tapılmadı. Lütfən, yeni ünvan əlavə edin.";
+"e_commerce_address_selection_no_invoice_address_button" = "Yeni faktura ünvanı əlavə et";
+"e_commerce_address_selection_next_step" = "Növbəti Addım: Ödəniş Metodu";
+"e_commerce_address_selection_address_shipping_popup_title" = "Ünvan seçimi";
+"e_commerce_address_selection_address_shipping_popup_description" = "Ünvan Seçiminin təsviri";
+"e_commerce_address_selection_address_invoice_popup_title" = "Ünvan seçimi";
+"e_commerce_address_selection_address_invoice_popup_description" = "Ünvan Seçiminin təsviri";
+
+/*MARK: - PAYMENT METHOD SELECTION*/
+"e_commerce_payment_method_selection_title" = "Ödəniş Məlumatı";
+"e_commerce_payment_method_selection_empty_view_title" = "Hələ heç bir ödəniş üsulu mövcud deyil.";
+"e_commerce_payment_method_selection_empty_view_description" = "Mağaza sahibi hələ ödəniş üsulu əlavə etməyib.";
+"e_commerce_payment_method_selection_button_title" = "Ödəniş üsulunu seçin";
+"e_commerce_payment_method_selection_payment_type_popup_title" = "Ödəniş metodunun seçimi";
+"e_commerce_payment_method_selection_payment_type_popup_description" = "Ən rahat ödəniş üsulunuzu seçin.";
+"e_commerce_payment_method_selection_next_step" = "Növbəti Addım: Sifariş Məlumatı";
+"e_commerce_payment_method_selection_pay_at_door" = "Qapıda Ödəniş";
+"e_commerce_payment_method_selection_transfer" = "Bank köçürməsi";
+"e_commerce_payment_method_selection_credit_card" = "Kredit Kartı";
+"e_commerce_payment_method_selection_stripe" = "Stripe";
+"e_commerce_payment_method_selection_paypal" = "Paypal";
+"e_commerce_payment_method_selection_description_text" = "Sifarişi tamamla üzərinə kliklədikdən sonra alışınızı təhlükəsiz şəkildə tamamlamaq üçün %@ yönləndiriləcəksiniz.";
+
+/*MARK: - PAYMENT METHODS*/
+"e_commerce_payment_credit_card_number" = "Kart nömrəsi";
+"e_commerce_payment_credit_card_name" = "Ad Soyadı";
+"e_commerce_payment_credit_card_expire_date" = "Son istifadə tarixi";
+"e_commerce_payment_credit_card_security_code" = "Təhlükəsizlik Kodu";
+"e_commerce_payment_credit_card_validation_empty" = "%@ tələb olunur";
+"e_commerce_payment_credit_card_validation_invalid" = "%@ yanlış";
+"e_commerce_payment_secure_payment_title" = "3D Secure Ödəniş";
+"e_commerce_payment_bank_iban" = "İban: ";
+"e_commerce_payment_bank_branch" = "Filial: ";
+"e_commerce_payment_bank_account" = "Hesab: ";
+"e_commerce_payment_bank_copy_toast_message" = "Buferə kopyalandı.";
+
+/*MARK: - ORDER SUMMARY USAGE*/
+"e_commerce_order_summary_title" = "Sifariş Xülasəsi";
+"e_commerce_order_summary_payment_title" = "Ödəniş";
+"e_commerce_order_summary_cart_title" = "Səbət";
+"e_commerce_order_summary_cart_description" = "%@ məhsul %@ %@";
+"e_commerce_order_summary_credit_cart_description" = "Kredit Kartı %@ **** %@";
+"e_commerce_order_summary_bank_transfer_description" = "Bank Hesabına %@ %@ köçürün";
+"e_commerce_order_summary_invoice_address_title" = "Fatura Ünvanı";
+"e_commerce_order_summary_delivery_address_title" = "Çatdırılma Ünvanı";
+"e_commerce_order_summary_agreement_description" = "Mən Məsafəli Satış Müqaviləsini oxudum və təsdiqlədim</font></b></u>.";
+"e_commerce_order_summary_products_price" = "Elementin məbləği";
+"e_commerce_order_summary_shipping_price" = "Göndərmə məbləği";
+"e_commerce_order_summary_total_price" = "Cəmi";
+"e_commerce_order_summary_action_confirm_order" = "Sifarişi təsdiq et";
+"e_commerce_order_summary_agreement_popup_title" = "Sazişi qəbul etməlisiniz";
+"e_commerce_order_summary_agreement_popup_description" = "Sifariş verməyə davam etmək üçün Məsafəli Satış Müqaviləsini qəbul etməlisiniz.";
+"e_commerce_order_summary_agreement_popup_button" = "Razıyam";
+"e_commerce_order_summary_update_order_popup_title" = "Sifarişinizi yeniləyin!";
+"e_commerce_order_summary_update_order_popup_description" = "Bu səbəti sifariş edə bilməzsiniz. Bəzi məhsullar stokda yoxdur və ya silinib.";
+"e_commerce_order_summary_update_order_popup_button" = "Səbətimi yeniləyin";
+"e_commerce_order_summary_order_note_hint" = "Sifariş Qeydi";
+
+/*MARK: - RESULT PAGE USAGE*/
+"e_commerce_result_success_title" = "Sifariş verildi!";
+"e_commerce_result_success_description" = "Sifarişiniz üçün təşəkkür edirik, ümid edirik ki, alış-verişdən zövq aldınız.";
+"e_commerce_result_success_action_my_orders" = "Sifarişlərim";
+"e_commerce_result_success_action_continue_shopping" = "Alış-verişə davam et";
+"e_commerce_result_failed_title" = "Ödəniş alınmadı.";
+"e_commerce_result_failed_description" = "Bağışlayın, ödəniş alınmadı. Lütfən, yenidən cəhd edin.";
+"e_commerce_result_failed_action_update_payment_method" = "Ödəniş Metodunu Yeniləyin";
+"e_commerce_result_success_reference_number" = "İstinad nömrəsi: %@";
+"e_commerce_result_credit_card_not_enough_balance" = "Qeyri-kafi balans";
+"e_commerce_result_credit_card_process_did_not_approved" = "Əməliyyat qəbul edilmir";
+"e_commerce_result_credit_card_invalid_payment_info" = "Etibarsız kart məlumatı";
+"e_commerce_result_credit_card_lost_or_stolen" = "İtmiş və ya oğurlanmış kart";
+"e_commerce_result_credit_card_expired_card" = "Kartın müddəti bitdi.";
+"e_commerce_result_credit_card_invalid_cvc" = "Pis Təhlükəsizlik Kodu";
+"e_commerce_result_credit_card_requires_three_d" = "Bu proses 3D Secure tələb edir";
+"e_commerce_result_credit_card_installment_not_allowed" = "Debet kartı taksitləri tətbiq edilə bilməz.";
+"e_commerce_result_credit_card_too_many_invalid" = "Həddindən artıq etibarsız cəhd.";
+"e_commerce_result_credit_card_not_enough_limit" = "Bu məbləğ üçün limit kifayət deyil.";
+"e_commerce_result_credit_card_invalid_enum" = "Valyuta, Yerli və ya Geri Ödəniş kimi bir siyahı etibarsızdır.";
+"e_commerce_result_credit_card_already_done_before" = "Əvvəlki əməliyyat";
+"e_commerce_result_credit_card_failed_title" = "Xəta Mesajı %@";
+"e_commerce_result_fail_detail_description_will_replace" = "status=";
+"e_commerce_result_fail_detail_description_to_replace" = "Xəta Kodu";
+"e_commerce_result_pay_pal_currency_not_supported" = "İstifadə olunan valyuta dəstəklənmir.";
+"e_commerce_list_order_number" = "Sifariş nömrəsi";
+"e_commerce_my_orders_title" = "Sifarişlərim";
+"e_commerce_my_orders_no_order_title" = "Sifariş tapılmadı.";
+"e_commerce_my_orders_no_order_description" = "İndi alış-veriş edə və sifarişlərinizi bu səhifədə izləyə bilərsiniz.";
+
+/*MARK: - ORDER STATUS USAGE*/
+"e_commerce_order_status_waiting_payment" = "Ödəniş gözlənilir";
+"e_commerce_order_status_waiting_approval" = "Təsdiq gözlənilir";
+"e_commerce_order_status_approved" = "Təsdiq edildi";
+"e_commerce_order_status_waiting_supplying" = "Təchizat";
+"e_commerce_order_status_preparing" = "Hazırlanır";
+"e_commerce_order_status_shipped" = "Göndərildi";
+"e_commerce_order_status_delivered" = "Çatdırıldı";
+"e_commerce_order_status_cancel_requested" = "Ləğv tələb olundu";
+"e_commerce_order_status_canceled" = "Ləğv edildi";
+"e_commerce_order_status_refunded" = "Geri qaytarıldı";
+"e_commerce_order_status_payment_failed" = "Ödəniş alınmadı";
+
+/*MARK: - ORDER DETAIL USAGE*/
+"e_commerce_order_details_page_title" = "Sifariş Təfərrüatı";
+"e_commerce_order_details_information_title" = "Sifariş Məlumatı";
+"e_commerce_order_details_user_note_sub_title" = "İstifadəçi Qeydi: %@";
+"e_commerce_order_details_cargo_title" = "Yük İzləmə";
+"e_commerce_order_details_address_information_title" = "Ünvan Məlumatı";
+"e_commerce_order_details_delivery_address_title" = "Çatdırılma Ünvanı";
+"e_commerce_order_details_invoice_address_title" = "Fatura Ünvanı";
+"e_commerce_order_details_payment_information_title" = "Ödəniş Məlumatı";
+"e_commerce_order_details_product_title" = "Məhsullar";
+"e_commerce_order_details_quantity" = "Kəmiyyət: %@";
+"e_commerce_order_details_cargo_tracking" = "Mənim bağlamam haradadır?";
+"e_commerce_order_details_item_ordered" = "Sifariş edilən %@ element";
+"e_commerce_order_details_bank_receiver" = "Alıcı: %@";
+"e_commerce_order_details_bank_account" = "Hesab: %@";
+"e_commerce_order_details_bank_iban" = "İban: %@";
+"e_commerce_order_details_bank_copy_toast_message" = "Buferə kopyalandı.";
+"e_commerce_order_details_cargo_copy_toast_message" = "Buferə kopyalandı.";
+
+/*MARK: - SHOPPING CART USAGE*/
+"e_commerce_shopping_cart_item_count" = "%@ element";
+"e_commerce_shopping_cart_clear_cart" = "Səbəti təmizləyin";
+"e_commerce_shopping_cart_products_price" = "Elementin məbləği: ";
+"e_commerce_shopping_cart_shipping_price" = "Göndərilmə məbləği: ";
+"e_commerce_shopping_cart_total_price" = "Cəmi";
+"e_commerce_shopping_cart_checkout_button" = "Səbəti təsdiqləyin";
+"e_commerce_shopping_cart_title" = "Mənim Səbətim";
+"e_commerce_shopping_cart_invalid_product_left" = "%@ məhsul qalıb";
+"e_commerce_shopping_cart_invalid_removed_basket" = "Səbətdən silindi";
+"e_commerce_shopping_cart_invalid_out_of_stock" = "Ehtiyatda yoxdur";
+"e_commerce_shopping_cart_invalid_publishment_end" = "Məhsul silindi";
+"e_commerce_shopping_cart_invalid_popup_button" = "Davam et";
+"e_commerce_shopping_cart_updating_popup_title" = "Səbəti yeniləyin";
+"e_commerce_shopping_cart_updating_popup_description" = "Səbətiniz aşağıdakı səbəblərə görə yenilənəcək";
+"e_commerce_shopping_cart_empty_view_title" = "Səbətiniz boşdur";
+"e_commerce_shopping_cart_empty_view_description" = "Alış-veriş səbətinizdə heç bir element yoxdur.";
+"e_commerce_shopping_cart_clear_cart_title" = "Səbətinizi təmizləmək istədiyinizə əminsinizmi?";
+"e_commerce_shopping_cart_clear_cart_description" = "Səbətinizdəki bütün elementlər silinəcək.";
+"e_commerce_shopping_cart_clear_cart_button" = "Bəli, səbətimi təmizləyin";
+"e_commerce_shopping_cart_delete_cart_title" = "Bu məhsulu silmək istədiyinizə əminsiniz?";
+"e_commerce_shopping_cart_delete_cart_description" = "Siz %@ bu məhsulu silirsiniz";
+"e_commerce_shopping_cart_delete_cart_button" = "Bəli, silin";
+"e_commerce_shopping_cart_cargo_warning" = "%@ xüsusi göndərmə xərcləri tətbiq olunur.";
+"e_commerce_dialog_delete_address_positive_button" = "Bəli, silin";
+"e_commerce_dialog_negative_button" = "Xeyr, indi deyil";
+
+/*MARK: - SORT PRODUCTS USAGE*/
+"e_commerce_search_list_order" = "Sıralama";
+"e_commerce_search_list_filter" = "Filtr";
+
+/*MARK: - FILTER OPTIONS USAGE*/
+"e_commerce_filter_category" = "Kateqoriya";
+"e_commerce_filter_brand" = "Brend";
+"e_commerce_filter_size" = "Ölçü";
+"e_commerce_filter_color" = "Rəng";
+"e_commerce_filter_price_range" = "Qiymət Aralığı";
+"e_commerce_filter_lowest" = "Ən aşağı";
+"e_commerce_filter_highest" = "Ən yüksək";
+"e_commerce_stock_only" = "Yalnız Stokda";
+"e_commerce_discounted_products" = "Endirimli Məhsullar";
+"e_commerce_free_shipping" = "Pulsuz Göndərmə";
+"e_commerce_filter_list_products" = "Məhsulların siyahısı";
+
+/*MARK: - FILTER OPTIONS TEXTS*/
+"e_commerce_filter_multi_choice_search" = "Axtar";
+"e_commerce_filter_multi_choice_apply" = "Tətbiq et";
+"e_commerce_filter_selection_apply" = "Tətbiq et";
+"e_commerce_filter_clear" = "Sil";
+"e_commerce_multi_choice_search" = "Axtar";
+"e_commerce_multi_choice_apply" = "Tətbiq et";
+
+/*MARK: - USER SECTIONS*/
+"user_delivery_address" = "Çatdırılma Ünvanı";
+"user_billing_address" = "Fatura Ünvanı";
+"user_address_name" = "Ad";
+"user_address_surname" = "Soyad";
+"user_address_phone" = "Telefon";
+"user_address_country" = "Ölkə";
+"user_address_city" = "Şəhər";
+"user_address_district" = "Rayon";
+"user_address_address_line" = "Ünvan";
+"user_address_postal_code" = "Poçt Kodu";
+"user_address_address_title" = "Ünvan Başlığı";
+"user_address_save_as_billing" = "Fatura ünvanı kimi yadda saxlayın";
+"user_address_individual" = "Fərdi";
+"user_address_corporate" = "Korporativ";
+"user_address_company_name" = "Şirkətin Adı";
+"user_address_tax_office" = "Vergi İdarəsi";
+"user_address_tax_number" = "Vergi nömrəsi";
+"user_address_identity_number" = "Şəxsiyyət Nömrəsi";
+
+/*MARK: - USER ADDRESS VALIDATION USAGE*/
+"user_address_form_name_empty" = "Adınızı daxil edin";
+"user_address_form_surname_empty" = "Lütfən, soyadınızı daxil edin";
+"user_address_form_phone_empty" = "Lütfən, telefon nömrənizi daxil edin";
+"user_address_form_country_empty" = "Lütfən, ölkə seçin";
+"user_address_form_city_empty" = "Lütfən, bir şəhər seçin";
+"user_address_form_district_empty" = "Lütfən, rayon seçin";
+"user_address_form_address_empty" = "Ünvan məlumatını daxil edin";
+"user_address_form_postal_code_empty" = "Lütfən, poçt kodunu daxil edin";
+"user_address_form_address_title_empty" = "Lütfən, ünvan başlığını daxil edin";
+"user_address_form_company_empty" = "Lütfən, şirkət adını daxil edin";
+"user_address_form_tax_office_empty" = "Lütfən, vergi idarəsinə daxil olun";
+"user_address_form_tax_number_empty" = "Lütfən, vergi nömrəsini daxil edin";
+"user_address_form_identity_number_empty" = "Lütfən, ID nömrəsini daxil edin";
+"user_address_form_name_valid" = "Lütfən, düzgün ad daxil edin";
+"user_address_form_surname_valid" = "Lütfən, etibarlı soyad daxil edin";
+"user_address_form_phone_valid" = "Lütfən, etibarlı telefon nömrəsi daxil edin";
+"user_address_form_address_valid" = "Lütfən, düzgün ünvan daxil edin";
+"user_address_form_postal_code_valid" = "Lütfən, etibarlı poçt kodu daxil edin";
+"user_address_form_address_title_valid" = "Lütfən, düzgün ünvan başlığı daxil edin";
+"user_address_form_identity_number_valid" = "Lütfən, etibarlı ID nömrəsi daxil edin";
+"search_bar_search_text" = "Məhsulları axtarın";
+"payment_bank_branch_code" = "Filial Kodu:";
+"payment_bank_branch_number" = "Hesab nömrəsi-";
+"action_copied_clipboard" = "Buferə kopyalandı";
+"user_address_delivery_address_title" = "Çatdırılma Ünvanı";
+"user_address_invoice_address_title" = "Fatura Ünvanı";
+"user_my_address_title" = "Ünvanlarım";
+"user_my_address_no_address_title" = "Ünvan yoxdur";
+"user_my_address_no_address_description" = "Qeydiyyatdan keçmiş ünvan tapılmadı. Lütfən, yeni ünvan əlavə edin.";
+"user_my_address_action_delete" = "SİL";
+"user_my_address_address_action_edit" = "Düzəliş et";
+"user_my_address_delete_address_title" = "<![CDATA[<b>%@</b>]]>-ni silmək istədiyinizə əminsiniz?";
+"user_my_address_delete_address_cancel_button" = "Ləğv et";
+"user_my_address_delete_address_delete_button" = "Sil";
+"user_my_address_new_address_title" = "Yeni ünvan əlavə edin";
+"user_my_address_update_address_title" = "Ünvanı yeniləyin";
+"user_my_address_saved_toast_message" = "Ünvan saxlandı";
+"user_my_address_shipping_address_removed_message" = "Göndərmə ünvanı uğurla silindi.";
+"user_my_address_billing_address_removed_message" = "Fatura ünvanı uğurla silindi.";

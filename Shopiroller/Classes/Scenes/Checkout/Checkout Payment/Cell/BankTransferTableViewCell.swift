@@ -10,19 +10,17 @@ import UIKit
 protocol BankTransferCellDelegate {
     
     func tappedCopyIbanButton()
-    
-    func setSelectedBankIndex(index: Int?)
 }
 
 class BankTransferTableViewCell: UITableViewCell {
    
     private struct Constants {
         
-        static var accountIbanText: String { return "checkout-table-view-account-iban-text".localized }
+        static var accountIbanText: String { return "e_commerce_payment_bank_iban".localized }
         
-        static var accountDepartmentText: String { return "checkout-table-view-account-department-text".localized }
+        static var accountDepartmentText: String { return "e_commerce_payment_bank_branch".localized }
         
-        static var accountNumberText: String { return "checkout-table-view-account-number-text".localized }
+        static var accountNumberText: String { return "e_commerce_payment_bank_account".localized }
     }
     
     @IBOutlet private weak var ibanCopyButton: UIButton!
@@ -75,10 +73,6 @@ class BankTransferTableViewCell: UITableViewCell {
         bankAccountNumber.font = .regular12
         bankAccountNumber.textColor = .textPCaption
         
-        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        containerView.isUserInteractionEnabled = true
-        containerView.addGestureRecognizer(cellTapGesture)
-        
     }
     
     func configureBankList(model : BankAccountModel?, index: Int?, isSelected: Bool) {
@@ -104,10 +98,7 @@ class BankTransferTableViewCell: UITableViewCell {
         }
         
     }
-    
-    @objc func cellTapped() {
-        delegate?.setSelectedBankIndex(index: self.indexAtRow)
-    }
+
     
     func setSelectedCell() {
         ibanCopyButtonContainer.isHidden = false

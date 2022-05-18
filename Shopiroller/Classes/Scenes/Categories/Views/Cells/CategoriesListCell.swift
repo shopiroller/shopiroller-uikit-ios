@@ -11,7 +11,7 @@ class CategoriesListCell: UITableViewCell {
     
     private struct Constants {
         
-        static var categoryItemText : String { return "category-items-text".localized }
+        static var categoryItemText : String { return "e_commerce_category_list_category_item_count".localized }
         
     }
     
@@ -58,7 +58,7 @@ class CategoriesListCell: UITableViewCell {
         }
         
         categoryNameTitle.text = model.name
-        categoryItemCountLabel.text = Constants.categoryItemText.replacingOccurrences(of: "XX", with: String(model.totalProducts ?? 0))
+        categoryItemCountLabel.text = String(format: Constants.categoryItemText, String(model.totalProducts ?? 0))
     }
     
     private func setCategoryImage(url: String) {

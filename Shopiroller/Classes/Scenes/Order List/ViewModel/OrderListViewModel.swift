@@ -11,9 +11,9 @@ import UIKit
 open class OrderListViewModel: SRBaseViewModel {
     
     private struct Constants {
-        static var emptyOrdersTitle: String { return "empty-orders-title".localized }
-        static var emptyOrdersDescription: String { return "empty-orders-description".localized }
-        static var emptyOrdersActionButton: String { return "empty-orders-action-button".localized }
+        static var emptyOrdersTitle: String { return "e_commerce_my_orders_no_order_title".localized }
+        static var emptyOrdersDescription: String { return "e_commerce_my_orders_no_order_description".localized }
+        static var emptyOrdersActionButton: String { return "e_commerce_general_start_shopping_button_text".localized }
     }
     
     private var isOpenedFromResult: Bool? = false
@@ -66,7 +66,7 @@ open class OrderListViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: nil))
+        return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: .black))
     }
     
     func isOpenedFromResultPage() -> Bool? {

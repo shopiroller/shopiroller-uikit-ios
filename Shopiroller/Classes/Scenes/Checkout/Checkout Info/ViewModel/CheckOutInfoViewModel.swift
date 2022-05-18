@@ -35,11 +35,11 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getUpdateCardPopUpModel() -> PopUpViewModel {
-        return PopUpViewModel(image: UIImage(systemName: "pencil")!, title:  "checkout-info-update-order-pop-up-title".localized, description: String(format: "checkout-info-update-order-pop-up-description".localized, String.NEW_LINE), firstButton: PopUpButtonModel(title:   "checkout-info-update-order-pop-up-button-text".localized, type: .darkButton), secondButton: nil)
+        return PopUpViewModel(image: UIImage(systemName: "pencil")!, title: "e_commerce_order_summary_update_order_popup_title".localized, description: String(format: "e_commerce_order_summary_update_order_popup_description".localized, String.NEW_LINE), firstButton: PopUpButtonModel(title: "e_commerce_order_summary_update_order_popup_button".localized, type: .darkButton), secondButton: nil)
     }
     
     func getCardDescription() -> String {
-        return String(format: "checkout-info-card-description-text".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg ,
+        return String(format: "e_commerce_order_summary_cart_description".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg ,
         String.NEW_LINE, String(ECommerceUtil.getFormattedPrice(price: shoppingCart?.totalPrice, currency: shoppingCart?.currency)))
     }
     
@@ -48,16 +48,16 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getTrasnferToBankDescriptonText() -> String {
-        return String(format: "checkout-info-bank-transfer-description-text".localized, String.NEW_LINE, SRSessionManager.shared.orderEvent.bankAccount?.accountToString as! CVarArg)
+        return String(format: "e_commerce_order_summary_bank_transfer_description".localized, String.NEW_LINE, SRSessionManager.shared.orderEvent.bankAccount?.accountToString as! CVarArg)
     }
     
     func getCreditCardDescription() -> String {
-        return String(format: "checkout-info-credit-card-description-text".localized, String.NEW_LINE,
+        return String(format: "e_commerce_order_summary_credit_cart_description".localized, String.NEW_LINE,
             SRSessionManager.shared.orderEvent.orderCard.cardNumber?.substring(fromIndex: 12) as! CVarArg)
     }
     
     func getAgreementCheckPopUpModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .validateCart, title: "checkout-info-agreement-is-not-checked-title".localized, description: "checkout-info-agreement-is-not-checked-description".localized, firstButton: PopUpButtonModel(title: "checkout-info-agreement-is-not-checked-title".localized, type: .darkButton), secondButton: nil)
+        return PopUpViewModel(image: .validateCart, title: "e_commerce_order_summary_agreement_popup_title".localized, description: "e_commerce_order_summary_agreement_popup_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_order_summary_agreement_popup_button".localized, type: .darkButton), secondButton: nil)
     }
     
     func isInvalidItemsAvailable() -> Bool {

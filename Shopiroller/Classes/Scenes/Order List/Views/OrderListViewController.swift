@@ -12,8 +12,8 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var orderTable: UITableView!
     
-    public init(viewModel: OrderListViewModel){
-        super.init("order-list-page-title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
+    public init(viewModel: OrderListViewModel) {
+        super.init("e_commerce_my_orders_title".localized, viewModel: viewModel, nibName: OrderListViewController.nibName, bundle: Bundle(for: OrderListViewController.self))
     }
     
     public override func setup() {
@@ -24,15 +24,19 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         if viewModel.isOpenedFromResultPage() == true {
-            goBack()
+            self.navigationController?.navigationBar.isHidden = false
+            updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
         }
     }
     
     public override func goBack() {
         if viewModel.isOpenedFromResultPage() == true {
-            let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
-            self.prompt(mainPageVC, animated: true, completion: nil)
+            self.popToRoot(animated: true)
         } else {
             pop(animated: true, completion: nil)
         }
@@ -44,7 +48,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
             emptyView.delegate = self
-        }else{
+        } else {
             orderTable.isHidden = false
             orderTable.register(cellClass: OrderTableViewCell.self)
             orderTable.delegate = self
@@ -53,11 +57,6 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
             orderTable.backgroundColor = .clear
             orderTable.clipsToBounds = false
         }
-    }
-    
-    public override func setupNavigationBar() {
-//        super.setupNavigationBar()
-//        updateNavigationBar(rightBarButtonItems: nil, isBackButtonActive: true)
     }
     
     private func getOrderList() {
@@ -74,7 +73,7 @@ open class OrderListViewController: BaseViewController<OrderListViewModel>, Empt
     }
     
     func actionButtonClicked(_ sender: Any) {
-       popToRoot(animated: true, completion: nil)
+        self.createNewRootMainPage()
     }
     
     private func getCount() {

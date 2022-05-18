@@ -23,33 +23,33 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     struct Constants {
         
-        static var quantityTitle: String { return "quantity-title".localized }
+        static var quantityTitle: String { return "e_commerce_product_detail_quantity".localized }
         
-        static var descriptionTitle: String { return "description-title".localized }
+        static var descriptionTitle: String { return "e_commerce_product_detail_description".localized }
         
-        static var returnExchangeTitle: String { return "return-exchange-terms-title".localized }
+        static var returnExchangeTitle: String { return "e_commerce_product_detail_return_terms".localized }
         
-        static var deliveryTitle: String { return "delivery-terms-title".localized }
+        static var deliveryTitle: String { return "e_commerce_product_detail_delivery_conditions".localized }
         
-        static var freeShippingText: String { return "free-shipping-text".localized }
+        static var freeShippingText: String { return "e_commerce_list_free_shipping_badge".localized }
         
-        static var soldOutText: String { return "sold-out-text".localized }
+        static var soldOutText: String { return "e_commerce_list_sold_out_badge".localized }
         
-        static var addToCartText: String { return "add-to-cart".localized }
+        static var addToCartText: String { return "e_commerce_product_detail_buy_now".localized }
         
-        static var shippingPriceText: String { return "shipping-price-text".localized }
+        static var shippingPriceText: String { return "e_commerce_product_detail_cargo_price".localized }
         
-        static var backToProductButtonText: String { return "product-detail-back-to-product-button-text".localized }
+        static var backToProductButtonText: String { return "e_commerce_product_detail_maximum_product_limit_button".localized }
         
-        static var backToProductsButtonText: String { return "product-detail-back-to-product-list-button-text".localized }
+        static var backToProductsButtonText: String { return "e_commerce_product_detail_out_of_stock_button".localized }
         
-        static var outOfStockTitle: String { return "product-detail-out-of-stock-title".localized }
+        static var outOfStockTitle: String { return "e_commerce_product_detail_out_of_stock_title".localized }
         
-        static var outOfStockDescription: String { return "product-detail-out-of-stock-description".localized }
+        static var outOfStockDescription: String { return "e_commerce_product_detail_out_of_stock_description".localized }
         
-        static var maxQuantityTitle: String { return "product-detail-maximum-product-quantity-title".localized  }
+        static var maxQuantityTitle: String { return "e_commerce_product_detail_maximum_product_limit_title".localized  }
         
-        static var maxQuantityDescription: String { return "product-detail-maximum-product-quantity-description".localized }
+        static var maxQuantityDescription: String { return "e_commerce_product_detail_maximum_product_limit_description".localized }
         
     }
     
@@ -199,7 +199,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-        
+     
+        self.view.isHidden = true
     }
     
     override func setupNavigationBar() {
@@ -253,7 +254,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
@@ -323,6 +324,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             [weak self] in
             guard let self = self else { return }
             self.setUI()
+            self.view.isHidden = false
             self.collectionView.reloadData()
         }) {
             [weak self] (errorViewModel) in
@@ -385,7 +387,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func setMaxItemQuantitySituation(_ count: String) {
-        self.view.makeToast(String(format: "shopping_cell_maximum_product_message".localized, count))
+        self.view.makeToast(String(format: "e_commerce_product_detail_maximum_product_message".localized, count))
     }
     
     @objc private func minusImageTapped(_ sender: Any) {
@@ -455,11 +457,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         if let brandImage = viewModel.getBrandImage() {
             productBrandImage.kf.setImage(with: URL(string: brandImage))
-        }else{
+        } else {
             productBrandImage.isHidden = true
         }
-        
-        situationContainer.isHidden = !viewModel.hasSituation()
         
         setOutOfStockUI()
         setFreeShippingUI()
@@ -491,9 +491,10 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     private func setFreeShippingUI() {
         
+        shippingPriceContainer.isHidden = viewModel.isUseFixPrice()
+        
         if viewModel.isShippingFree() {
             freeShippingContainer.isHidden = false
-            shippingPriceContainer.isHidden = true
             shippingPriceContainerConstraint.constant = 0
             freeShippingContainer.makeCardView()
             freeShippingContainer.backgroundColor = .black
@@ -502,7 +503,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             freeShippingLabel.text = Constants.freeShippingText.uppercased()
         } else {
             freeShippingContainer.isHidden = true
-            shippingPriceContainer.isHidden = false
             shippingPriceLabel.attributedText = String().makeBoldString(boldText: ECommerceUtil.getFormattedPrice(price: Double(viewModel.getShippingPrice()), currency: viewModel.getCurrency()), normalText: Constants.shippingPriceText,isReverse: true)
             shippingImage.image = .cargoShippingImage
             shippingImage.tintColor = .pinkishTan
@@ -589,6 +589,8 @@ extension ProductDetailViewController : UICollectionViewDelegate , UICollectionV
             imagesArray.append(ImageSlideModel(url: URL(string: image.normal ?? "")!))
         }
         fullScreenController.inputs = imagesArray.map{ $0.inputSource }
+        fullScreenController.initialPage = indexPath.row
+        fullScreenController.delegate = self
         present(fullScreenController, animated: true, completion: nil)
     }
     
@@ -625,3 +627,9 @@ extension ProductDetailViewController: UITextFieldDelegate {
     }
 }
 
+extension ProductDetailViewController: SRFullScreenSlideshowDelegate {
+    public func getCurrentIndex(index: Int) {
+        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        pageControl.currentPage = index
+    }
+}

@@ -112,11 +112,11 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func isShippingFree() -> Bool {
-        return productDetailModel?.shippingPrice == 0.0
+        return (!(isUseFixPrice()) && productDetailModel?.shippingPrice == 0.0)
     }
     
     func isUseFixPrice() -> Bool {
-        return productDetailModel?.useFixPrice == true
+        return (productDetailModel?.useFixPrice == true && productDetailModel?.shippingPrice == 0)
     }
     
     func hasDiscount() -> Bool {
@@ -125,10 +125,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getCurrency() -> String {
         return productDetailModel?.currency?.currencySymbol ?? ""
-    }
-    
-    func hasSituation() -> Bool {
-        return (isShippingFree() || isOutofStock()) && !isUseFixPrice()
     }
     
     func getShippingPrice() -> String {
@@ -181,24 +177,24 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getReturnExchangePopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .deliveryTerms, title: getCancellationProdecureTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
+        return PopUpViewModel(image: .deliveryTerms, title: getCancellationProdecureTitle(), description: nil , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil, htmlDescription: getReturnExchangeTerms()?.convertHtml())
     }
     
     func getDeliveryTermsPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .deliveryTerms, title: getDeliveryConditionsTitle(), description: nil , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
+        return PopUpViewModel(image: .deliveryTerms, title: getDeliveryConditionsTitle(), description: nil , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil, htmlDescription :  getDeliveryTerms()?.convertHtml())
     }
     
     func getSoldOutPopUpViewModel() -> PopUpViewModel {
         isPopUpState = true
-        return PopUpViewModel(image: .outOfStock, title: "product-detail-out-of-stock-title".localized, description: "product-detail-out-of-stock-description".localized , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-list-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_out_of_stock_title".localized, description: "e_commerce_product_detail_out_of_stock_description".localized , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_out_of_stock_button".localized, type: .lightButton), secondButton: nil)
     }
     
     func getMaxQuantityPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "product-detail-maximum-product-quantity-title".localized, description: String(format: "product-detail-maximum-product-quantity-description".localized, "\(productDetailModel?.maxQuantityPerOrder ?? 0)") , firstButton: PopUpButtonModel(title: "product-detail-back-to-product-button-text".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_maximum_product_limit_title".localized, description: String(format: "e_commerce_product_detail_maximum_product_limit_description".localized, "\(productDetailModel?.maxQuantityPerOrder ?? 0)") , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil)
     }
     
     func getProductNotFoundPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "product-detail-product-not-found-title".localized, description: "product-detail-product-not-found-description".localized, firstButton: nil, secondButton: PopUpButtonModel(title: "general-ok-button-text".localized, type: .darkButton))
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_not_found_product_title".localized, description: "e_commerce_product_detail_not_found_product_description".localized, firstButton: nil, secondButton: PopUpButtonModel(title: "e_commerce_general_ok_button_text".localized, type: .darkButton))
     }
     
     func isStateSoldOut() -> Bool {
@@ -214,7 +210,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
         deliveryConditionTitle != "" {
             return deliveryConditionTitle
         } else {
-            return "delivery-terms-title".localized
+            return "e_commerce_product_detail_delivery_conditions".localized
         }
     }
     
@@ -223,7 +219,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
         cancellationProdecureTitle != "" {
             return cancellationProdecureTitle
         } else {
-            return "return-exchange-terms-title".localized
+            return "e_commerce_product_detail_return_terms".localized
         }
     }
     

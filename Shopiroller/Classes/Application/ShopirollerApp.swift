@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import IQKeyboardManagerSwift
+import Sentry
 
 public class ShopirollerApp {
     
@@ -16,6 +17,8 @@ public class ShopirollerApp {
     public var theme: ShopirollerTheme = ShopirollerTheme()
     
     public var delegate: ShopirollerDelegate?
+    
+    private let user = User()
     
     public func initiliaze(eCommerceCredentials: ShopirollerCredentials, appUserCredentials: ShopirollerAppUserCredentials, baseUrl: String, theme: ShopirollerTheme) {
         
@@ -54,6 +57,35 @@ public class ShopirollerApp {
         SRAppContext.fontFamily = .poppins
         
         initializeIQKeyboardManager()
+        
+        initializeSentryCrashReports()
+    }
+    
+    private func initializeSentryCrashReports() {
+        
+        SentrySDK.start { options in
+            options.dsn = "https://ca29bd2504fa4f60b812d9a343bc0a47@o1202858.ingest.sentry.io/6329022"
+            options.enableNetworkTracking = true
+            options.enableNetworkBreadcrumbs = true
+            options.enableAutoSessionTracking = true
+            options.tracesSampleRate = 1.0
+        }
+    
+        setUserInfoToSentry()
+        
+    }
+    
+    private func setUserInfoToSentry() {
+        
+        if SRAppContext.userId != "" {
+            user.userId = SRAppContext.userId
+        }
+        
+        if SRAppContext.userEmail != "" {
+            user.email = SRAppContext.userEmail
+        }
+        
+        SentrySDK.setUser(user)
     }
     
     private func initializeIQKeyboardManager() {
@@ -61,15 +93,17 @@ public class ShopirollerApp {
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "keyboard-next-action-text".localized
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "e_commerce_general_next_step_text".localized
     }
     
     public func setUserId(_ userId: String) {
         SRAppContext.userId = userId
+        setUserInfoToSentry()
     }
     
     public func setUserEmail(_ email: String) {
         SRAppContext.userEmail = email
+        setUserInfoToSentry()
     }
     
     public func setDevelopmentMode (_ developmentMode: Bool) {
@@ -78,6 +112,10 @@ public class ShopirollerApp {
     
     public func setFallbackLanguage(_ fallbackLanguage: String) {
         SRAppContext.fallbackLanguage = fallbackLanguage
+    }
+    
+    public func setAppTitle(appTitle: String) {
+        SRAppContext.appTitle = appTitle
     }
     
     func isUserLoggedIn() -> Bool {
@@ -132,7 +170,6 @@ public struct ShopirollerAppUserCredentials {
         self.apiKey = apiKey
         self.baseUrl = baseUrl
     }
-    
     
 }
 

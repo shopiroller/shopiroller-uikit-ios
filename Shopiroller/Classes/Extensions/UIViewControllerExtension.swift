@@ -34,7 +34,7 @@ extension UIViewController {
     func modal(_ viewController: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         let navigationController = UINavigationController()
         navigationController.viewControllers = [viewController]
-        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .overCurrentContext
         present(navigationController, animated: flag, completion: completion)
     }
     
@@ -102,10 +102,8 @@ extension UIViewController {
         sheetController.pullBarBackgroundColor = .iceBlue
         sheetController.cornerRadius = 15
         sheetController.gripColor = .black
-        DispatchQueue.main.async {
-            viewController.modalPresentationStyle = .overCurrentContext
-            self.present(sheetController, animated: true, completion: nil)
-        }
+        viewController.modalPresentationStyle = .overCurrentContext
+        self.present(sheetController, animated: true, completion: nil)
         
     }
     
@@ -226,7 +224,7 @@ extension UIViewController {
                    canceled: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let noInternetConnectionAction = UIAlertAction(title: "general-ok-button-text".localized, style: .default) { action -> Void in
+        let noInternetConnectionAction = UIAlertAction(title: "e_commerce_general_ok_button_text".localized, style: .default) { action -> Void in
             self.pop(animated: true, completion: nil)
         }
         alert.addAction(noInternetConnectionAction)
@@ -236,19 +234,30 @@ extension UIViewController {
     
     func showAlertError(viewModel: ErrorViewModel?) {
         if viewModel?.error == .network {
-            self.view.makeToast("no-internet-connection-description".localized)
+            self.view.makeToast("e_commerce_internet_connection_error_description".localized)
+        } else if (viewModel?.isValidationError == true) {
+            self.view.makeToast(viewModel?.message)
         } else {
-            self.view.makeToast("general-error-description".localized)
+            self.view.makeToast("e_commerce_general_error_description".localized)
         }
     }
     
     func showNoConnectionAlert() {
-        showAlert(title: "no-internet-connection-title".localized, message: "no-internet-connection-description".localized)
+        showAlert(title: "e_commerce_internet_connection_error_title".localized, message: "e_commerce_internet_connection_error_description".localized)
     }
     
     func hideNavigationBar(_ navigationBarisHidden: Bool) {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.isHidden = navigationBarisHidden
+    }
+    
+    func createNewRootMainPage() {
+        let mainPageVC = SRMainPageViewController(viewModel: SRMainPageViewModel())
+        guard var viewControllers = navigationController?.viewControllers else { return }
+        mainPageVC.title = SRAppContext.appTitle
+        viewControllers.popLast()
+        viewControllers.append(mainPageVC)
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
 
     

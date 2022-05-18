@@ -11,23 +11,21 @@ open class SRMainPageViewModel: SRBaseViewModel {
     
     private struct Constants {
         
-        static var emptyViewTitle: String { return "empty-view-title".localized }
+        static var emptyViewTitle: String { return "e_commerce_category_product_list_no_empty_view_title".localized }
         
-        static var emptyViewDescription: String { return "empty-view-description".localized }
+        static var emptyViewDescription: String { return "e_commerce_category_product_list_no_empty_view_description".localized }
         
     }
     
     private var sliderModel: [SRSliderDataModel]?
     private var categoriesWithOptions: SRCategoryResponseWithOptionsModel?
-    private var products: [ProductDetailResponseModel]?
-    private var showcase: [SRShowcaseResponseModel]?
+    private var productList: [ProductDetailResponseModel]?
+    private var showcaseList: [SRShowcaseResponseModel]?
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel: SRCategoryResponseModel?
     private var mainDisplayTypeList: [MainPageDisplayTypes] = []
 
     private var currentPage: Int = 0
-        
-    private var total: Int? = nil
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getSliders(showProgress: showProgress ?? true).response() {
@@ -49,13 +47,13 @@ open class SRMainPageViewModel: SRBaseViewModel {
     func getProducts(showProgress: Bool?, isPagination: Bool = false,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
         if !isPagination {
-            products = nil
+            productList = nil
         }
 
-        if products?.count ?? 0 == 0 {
+        if productList?.count ?? 0 == 0 {
             currentPage = 1
         } else {
-            if ((products?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) {
+            if ((productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) {
                 return
             }
             currentPage = currentPage + 1
@@ -72,9 +70,9 @@ open class SRMainPageViewModel: SRBaseViewModel {
             case .success(let response):
                 if let productList = response.data , (!productList.isEmpty) {
                     if self.currentPage != 1 {
-                        self.products = self.products! + productList
+                        self.productList = self.productList! + productList
                     } else{
-                        self.products = productList
+                        self.productList = productList
                     }
                 }
                 DispatchQueue.main.async {
@@ -118,7 +116,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
             (result) in
             switch result{
             case .success(let response):
-                self.showcase = response.data
+                self.showcaseList = response.data
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -148,7 +146,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func showcaseItemCount() -> Int {
-        if let showcase = showcase?.filter({($0.productCount ?? 0 > 0)}) , showcase.count > 0 {
+        if let showcase = showcaseList?.filter({($0.productCount ?? 0 > 0)}) , showcase.count > 0 {
             return showcase.count
         } else {
             return 0
@@ -156,7 +154,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func productItemCount() -> Int {
-        return products?.count ?? 0
+        return productList?.count ?? 0
     }
     
     func getTableSliderVieWModel(position: Int) -> [SliderSlidesModel]? {
@@ -164,7 +162,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getTableProductVieWModel() -> [ProductDetailResponseModel]? {
-        return products
+        return productList
     }
     
     func getCategoriesViewModel() -> [SRCategoryResponseModel]? {
@@ -192,18 +190,18 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getShowCaseViewModel(position: Int) -> SRShowcaseResponseModel? {
-        if let showcase = showcase {
+        if let showcase = showcaseList {
             showcaseModel = showcase[position]
         }
         return showcaseModel
     }
     
     func getProductId(position: Int) -> String? {
-        return products?[position].id
+        return productList?[position].id
     }
     
     func getshowCaseProductDetail(position: Int) -> [ProductDetailResponseModel] {
-        return showcase?[position].products ?? []
+        return showcaseList?[position].products ?? []
     }
     
     func getHeight(type: CellType) -> Float {
@@ -233,7 +231,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getSectionCount() -> Int {
-        return mainDisplayTypeList.count ?? 0
+        return mainDisplayTypeList.count
     }
     
     func reloadSections() {
@@ -257,7 +255,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getSectionAt(position: Int) -> MainPageDisplayTypes {
-        return mainDisplayTypeList[position] ?? .products
+        return mainDisplayTypeList[position]
     }
     
     func getMobileSettingsEnum() -> CategoryDisplayTypeEnum {

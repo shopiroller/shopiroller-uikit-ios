@@ -11,9 +11,9 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     
     private struct Constants {
         
-        static var filterTitle: String { return "filter-title-text".localized }
+        static var filterTitle: String { return "e_commerce_category_product_list_filter".localized }
         
-        static var sortByTitle: String { return "sort-title-text".localized }
+        static var sortByTitle: String { return "e_commerce_category_product_list_order".localized }
     }
     
     @IBOutlet private weak var contentStackView: UIStackView!
@@ -47,10 +47,10 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
         productsCollectionView.dataSource = self
         productsCollectionView.register(cellClass: ItemCollectionViewCell.self)
         
-        sortButton.setTitle("sort-title-text".localized)
+        sortButton.setTitle(Constants.sortByTitle)
         sortButton.setTitleColor(.textPrimary)
         sortButton.tintColor = .textPrimary
-        filterButton.setTitle("filter-title-text".localized)
+        filterButton.setTitle(Constants.filterTitle)
         filterButton.setTitleColor(.textPrimary)
         filterButton.tintColor = .textPrimary
         
@@ -70,7 +70,7 @@ class ProductListViewController: BaseViewController<ProductListViewModel> {
     }
     
     @objc func updateBadgeCount() {
-        badgeView.badge = SRAppContext.shoppingCartCount
+        badgeView.badgeCount = SRAppContext.shoppingCartCount
     }
     
     override func setupNavigationBar() {

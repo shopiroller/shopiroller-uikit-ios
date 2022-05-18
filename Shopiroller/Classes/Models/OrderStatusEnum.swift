@@ -24,27 +24,27 @@ enum OrderStatusEnum: String, Codable {
     var text : String {
         switch self {
         case .WaitingPayment:
-            return "WaitingPayment".localized
+            return "e_commerce_order_status_waiting_payment".localized
         case .WaitingApproval:
-            return "WaitingApproval".localized
+            return "e_commerce_order_status_waiting_approval".localized
         case .Approved:
-            return "Approved".localized
+            return "e_commerce_order_status_approved".localized
         case .WaitingForSupplying:
-            return "WaitingForSupplying".localized
+            return "e_commerce_order_status_waiting_supplying".localized
         case .Preparing:
-            return "Preparing".localized
+            return "e_commerce_order_status_preparing".localized
         case .Shipped:
-            return "Shipped".localized
+            return "e_commerce_order_status_shipped".localized
         case .Delivered:
-            return "Delivered".localized
+            return "e_commerce_order_status_delivered".localized
         case .CancelRequested:
-            return "CancelRequested".localized
+            return "e_commerce_order_status_cancel_requested".localized
         case .Canceled:
-            return "Canceled".localized
+            return "e_commerce_order_status_canceled".localized
         case .Refunded:
-            return "Refunded".localized
+            return "e_commerce_order_status_refunded".localized
         case .PaymentFailed:
-            return "PaymentFailed".localized
+            return "e_commerce_order_status_payment_failed".localized
         }
     }
     

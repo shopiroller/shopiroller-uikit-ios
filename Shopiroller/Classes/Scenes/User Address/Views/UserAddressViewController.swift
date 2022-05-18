@@ -9,8 +9,8 @@ import UIKit
 import MaterialComponents.MaterialButtons
 
 private struct Constants {
-    static var shippingTitle: String { return "address_list_segmented_shipping".localized }
-    static var billingTitle: String { return "address_list_segmented_billing".localized }
+    static var shippingTitle: String { return "user_address_delivery_address_title".localized }
+    static var billingTitle: String { return "user_address_invoice_address_title".localized }
 }
 
 open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
@@ -23,7 +23,7 @@ open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     private var pageVC: AddressListPageViewController?
     
     public init(viewModel: UserAddressViewModel){
-        super.init("address_list_page_title".localized, viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
+        super.init("user_my_address_title".localized, viewModel: viewModel, nibName: UserAddressViewController.nibName, bundle: Bundle(for: UserAddressViewController.self))
     }
     
     public override func setupNavigationBar() {
@@ -65,15 +65,9 @@ open class UserAddressViewController: BaseViewController<UserAddressViewModel> {
     }
     
     @IBAction func addButtonTapped() {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .shipping,isEditing: false))
-            vc.delegate = self
-            self.sheet(vc, completion: nil)
-        }else {
-            let vc = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: .billing,isEditing: false))
-            vc.delegate = self
-            self.sheet(vc, completion: nil)
-        }
+        let addressBottomSheetViewController = AddressBottomSheetViewController(viewModel: AddressBottomSheetViewModel(type: segmentedControl.selectedSegmentIndex == 0 ? .shipping : .billing, isEditing: false))
+        addressBottomSheetViewController.delegate = self
+        self.sheet(addressBottomSheetViewController)
     }
     
     private func getCount() {
@@ -95,7 +89,7 @@ extension UserAddressViewController: AddressListPageDelegate {
 
 extension UserAddressViewController: AddressBottomViewDelegate {
     func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
-        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized))
+        self.view.makeToast(String(format: "user_my_address_saved_toast_message".localized))
         NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userAddressListObserve), object: nil)
         dismiss(animated: true, completion: nil)
     }

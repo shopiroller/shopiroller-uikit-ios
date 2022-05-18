@@ -10,15 +10,15 @@ import UIKit
 class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     private struct Constants {
-        static var orderInfoTitle: String { return "order_details_order_info_title".localized }
-        static var paymentInfoTitle: String { return "order_details_payment_info_title".localized }
-        static var addressInfoTitle: String { return "order_details_address_info_title".localized }
-        static var productsInfoTitle: String { return "order_details_products_info_title".localized }
-        static var bankAccountReceiverText: String { return "order_details_bank_receiver".localized }
-        static var bankAccount: String { return "order_details_bank_account".localized }
-        static var bankAccountIban: String { return "order_details_bank_iban".localized }
-        static var bankAccountIbanCopiedText: String { return "order_details_iban_text_copied".localized }
-        static var orderNoteText: String { return "order-details-user-note".localized  }
+        static var orderInfoTitle: String { return "e_commerce_order_details_information_title".localized }
+        static var paymentInfoTitle: String { return "e_commerce_order_details_payment_information_title".localized }
+        static var addressInfoTitle: String { return "e_commerce_order_details_address_information_title".localized }
+        static var productsInfoTitle: String { return "e_commerce_order_details_product_title".localized }
+        static var bankAccountReceiverText: String { return "e_commerce_order_details_bank_receiver".localized }
+        static var bankAccount: String { return "e_commerce_order_details_bank_account".localized }
+        static var bankAccountIban: String { return "e_commerce_order_details_bank_iban".localized }
+        static var bankAccountIbanCopiedText: String { return "e_commerce_order_details_bank_copy_toast_message".localized }
+        static var orderNoteText: String { return "e_commerce_order_details_user_note_sub_title".localized  }
     }
     
     @IBOutlet weak var bottomPriceView: BottomPriceView!
@@ -65,7 +65,7 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
     
     
     init(viewModel: OrderDetailViewModel){
-        super.init("order-detail-page-title".localized, viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
+        super.init("e_commerce_order_details_page_title".localized, viewModel: viewModel, nibName: OrderDetailViewController.nibName, bundle: Bundle(for: OrderDetailViewController.self))
     }
     
     override func setup() {
@@ -199,10 +199,10 @@ class OrderDetailViewController: BaseViewController<OrderDetailViewModel> {
             creditCartNumberLabel.text = viewModel.getCreditCartNumber()
         case .Transfer:
             bankTransferContainerView.isHidden = false
-            bankAccountIban.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_iban".localized, viewModel.getBankAccountIban() ?? "")
+            bankAccountIban.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccountIban, viewModel.getBankAccountIban() ?? "")
             bankAccountName.text = viewModel.getBankName()
-            bankAccountUserName.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_receiver".localized, viewModel.getBankAccountHolderNameSurname() ?? "")
-            bankAccountNumber.attributedText = ECommerceUtil.getBoldNormal("order_details_bank_account".localized, viewModel.getBankAccountNumber() ?? "")
+            bankAccountUserName.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccountReceiverText, viewModel.getBankAccountHolderNameSurname() ?? "")
+            bankAccountNumber.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccount, viewModel.getBankAccountNumber() ?? "")
         default:
             break
         }

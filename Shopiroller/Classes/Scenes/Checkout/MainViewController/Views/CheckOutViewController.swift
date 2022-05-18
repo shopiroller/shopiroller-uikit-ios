@@ -13,9 +13,9 @@ import Braintree
 class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     private struct Constants {
-        static var confirmOrderButtonText: String { "confirm-order-button-text".localized }
-        static var checkoutAdressNextStepText: String { "checkout-address-next-step-title".localized }
-        static var checkoutPaymentNextStepText: String { "checkout-payment-next-step-title".localized }
+        static var confirmOrderButtonText: String { "e_commerce_order_summary_action_confirm_order".localized }
+        static var checkoutAdressNextStepText: String { "e_commerce_address_selection_next_step".localized }
+        static var checkoutPaymentNextStepText: String { "e_commerce_payment_method_selection_next_step".localized }
     }
     
     @IBOutlet private weak var checkOutProgress: CheckOutProgress!
@@ -57,7 +57,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         
         viewControllerTitle.font = viewControllerTitle.font.withSize(17)
         viewControllerTitle.textColor = .black
-        viewControllerTitle.text = "delivery-information-page-title".localized
+        viewControllerTitle.text = "e_commerce_address_selection_title".localized
         
         nextPageTitleLabel.font = .regular12    
         nextPageTitleLabel.text = Constants.checkoutAdressNextStepText
@@ -250,7 +250,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     private func loadOrderResultPage(isSuccess : Bool) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isSuccess: isSuccess))
-        self.prompt(resultVC, animated: true, completion: nil)
+        self.prompt(resultVC, animated: true)
     }
     
     @IBAction func nextButtonTapped() {
@@ -305,12 +305,12 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     private func setTitle(stage : ProgressStageEnum) {
         switch stage {
         case .address:
-            self.viewControllerTitle.text = "delivery-information-page-title".localized
+            self.viewControllerTitle.text = "e_commerce_address_selection_title".localized
         case .payment:
-            self.viewControllerTitle.text = "payment-information-page-title".localized
+            self.viewControllerTitle.text = "e_commerce_payment_method_selection_title".localized
         case .info:
             self.viewControllerTitle.text =
-            "info-information-page-title".localized
+            "e_commerce_order_summary_title".localized
         }
     }
     
@@ -352,7 +352,7 @@ extension CheckOutViewController : CheckOutProgressPageDelegate {
     }
     
     func showSuccessfullToastMessage() {
-        self.view.makeToast(String(format: "address-bottom-view-address-saved-text".localized),position: ToastPosition.bottom)
+        self.view.makeToast(String(format: "user_my_address_saved_toast_message".localized),position: ToastPosition.bottom)
     }
     
     func currentPageIndex(currentIndex: Int) {

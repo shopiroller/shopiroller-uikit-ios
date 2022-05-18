@@ -18,8 +18,8 @@ class CategoriesCell: UICollectionViewCell {
     
     private struct Constants {
         
-        static var sectiontitle: String { return "categories-section-title".localized  }
-        static var seeAllTitle: String { return "section-see-all-title".localized  }
+        static var sectiontitle: String { return "e_commerce_list_categories".localized  }
+        static var seeAllTitle: String { return "e_commerce_list_see_all".localized  }
         
     }
     

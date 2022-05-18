@@ -100,11 +100,11 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .emptyShoppingCart, title: "shopping_cart_empty_title".localized, description: "shopping_cart_empty_description".localized, button: ButtonModel(title: "shopping_cart_empty_button_title".localized, color: .textPrimary))
+        return EmptyModel(image: .emptyShoppingCart, title: "e_commerce_shopping_cart_empty_view_title".localized, description: "e_commerce_shopping_cart_empty_view_description".localized, button: ButtonModel(title: "e_commerce_general_start_shopping_button_text".localized, color: .textPrimary))
     }
     
     func getItemCountText() -> String {
-        return String(format: "shopping_cart_item_count".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg)
+        return String(format: "e_commerce_shopping_cart_item_count".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg)
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
@@ -114,7 +114,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     func hasCampaign() -> Bool {
         if let messages = shoppingCart?.messages, !messages.isEmpty {
             for item in messages {
-                if(item.type?.caseInsensitiveCompare("Campaign") == ComparisonResult.orderedSame){
+                if(item.type?.caseInsensitiveCompare(SRAppConstants.ShoppingCart.shoppingCartMessageType) == ComparisonResult.orderedSame) {
                     campaignMessage = item.message
                     return true
                 }
@@ -132,7 +132,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getClearCartPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .clearCart, title: "shopping_cart_clear_cart_title".localized, description: "shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title: "shopping_cart_clear_cart_not_now".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "shopping_cart_clear_cart_clear_cart".localized, type: .lightButton))
+        return PopUpViewModel(image: .clearCart, title: "e_commerce_shopping_cart_clear_cart_title".localized, description: "e_commerce_shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_dialog_negative_button".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "e_commerce_shopping_cart_clear_cart_button".localized, type: .lightButton))
     }
     
     func hasInvalidItems() -> Bool {

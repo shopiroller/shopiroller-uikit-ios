@@ -11,11 +11,11 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
     
     private struct Constants {
         
-        static var clearCartButtonText : String { return "shopping_cart_clear_cart_button_text".localized }
+        static var clearCartButtonText : String { return "e_commerce_shopping_cart_clear_cart".localized }
         
-        static var pageTitle: String { return "shopping_cart_title".localized }
+        static var pageTitle: String { return "e_commerce_shopping_cart_title".localized }
         
-        static var checkOutButtonText: String { return "shopping_cart_validate_proceed_checkout".localized }
+        static var checkOutButtonText: String { return "e_commerce_shopping_cart_checkout_button".localized }
     }
     
 
