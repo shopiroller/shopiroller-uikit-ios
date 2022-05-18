@@ -250,7 +250,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     
     private func loadOrderResultPage(isSuccess : Bool) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isSuccess: isSuccess))
-        self.prompt(resultVC, animated: true, completion: nil)
+        self.prompt(resultVC, animated: true)
     }
     
     @IBAction func nextButtonTapped() {

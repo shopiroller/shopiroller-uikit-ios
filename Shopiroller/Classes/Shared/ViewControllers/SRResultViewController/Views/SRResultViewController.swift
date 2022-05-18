@@ -92,7 +92,7 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     
     @IBAction func firstButtonTapped() {
         if viewModel.getType() == .success {
-            let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel())
+            let orderDetailVC = OrderListViewController(viewModel: OrderListViewModel(isOpenedFromResult: true))
             self.prompt(orderDetailVC, animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)
