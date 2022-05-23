@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import AVFoundation
 
 
 public class ProductDetailViewModel: SRBaseViewModel {
@@ -14,6 +15,10 @@ public class ProductDetailViewModel: SRBaseViewModel {
     private var productId: String?
     private var productDetailModel: ProductDetailResponseModel?
     private var paymentSettings: PaymentSettingsResponeModel?
+    private var variantData: [VariantDataModel]?
+    private var variationGroups: [VariationGroups]?
+    private var variantsList: [ProductDetailResponseModel]?
+    private var productImagesList: [ProductImageModel] = [ProductImageModel]()
     
     var quantityCount = 1
     private var isPopUpState: Bool = false
@@ -47,6 +52,10 @@ public class ProductDetailViewModel: SRBaseViewModel {
             switch result{
             case .success(let response):
                 self.productDetailModel = response.data
+                self.variantData = self.productDetailModel?.variantData
+                self.variantsList = self.productDetailModel?.variants
+                self.variationGroups = self.productDetailModel?.variationGroups
+                self.setVariantListVariables()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -92,15 +101,15 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getItemCount() -> Int? {
-        return productDetailModel?.images?.count ?? 0
+        return productImagesList.count
     }
     
     func getImages(position : Int) -> ProductImageModel? {
-        return productDetailModel?.images?[position]
+        return productImagesList[position]
     }
     
     func getImageArray() -> [ProductImageModel]? {
-        return productDetailModel?.images
+        return productImagesList
     }
     
     func getBrandImage() -> String? {
@@ -220,6 +229,44 @@ public class ProductDetailViewModel: SRBaseViewModel {
             return cancellationProdecureTitle
         } else {
             return "e_commerce_product_detail_return_terms".localized
+        }
+    }
+    
+    func getVariantFields() -> [SRTextField] {
+        var textFields : [SRTextField] = [SRTextField]()
+        if let variationGroups = variationGroups {
+            for (index,variations) in variationGroups.enumerated() {
+                let textFld = SRTextField()
+                textFld.getTextField().backgroundColor = .buttonLight
+                textFld.setup(rightViewImage: UIImage(systemName: "chevron.down"), type: .withNoPadding)
+                textFld.isEnabled = false
+                textFld.getTextField().text = variations.name
+                textFld.tag = index
+                textFields.append(textFld)
+            }
+            return textFields
+        }
+        return [SRTextField]()
+    }
+    
+    func getVariantList(index: Int) -> [Variation]? {
+        return variationGroups?[index].variations
+    }
+    
+    func isVariantEmpty() -> Bool {
+        guard let variationGroups = variationGroups else {
+            return false
+        }
+        return variationGroups.isEmpty
+    }
+    
+    private func setVariantListVariables() {
+        guard let variantsList = variantsList else {
+            return
+        }
+        productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
+        for variants in variantsList {
+            productImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
         }
     }
     

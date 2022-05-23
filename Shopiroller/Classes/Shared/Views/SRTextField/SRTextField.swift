@@ -13,11 +13,13 @@ class SRTextField: SRBaseView {
     @IBOutlet private weak var errorLabelContainer: UIView!
     @IBOutlet private weak var errorLabel: UILabel!
     
+    private var type: SRTextFieldType?
     
-    func setup(rightViewImage: UIImage?){
+    func setup(rightViewImage: UIImage? , type: SRTextFieldType){
         super.setup()
         guard let rightImage = rightViewImage else { return }
-        textField.rightViewImage = rightImage
+        self.type = type
+        textField.rightViewImage(image: rightImage, type: type)
     }
     
     func getTextField() -> UITextField {
@@ -71,9 +73,18 @@ class SRTextField: SRBaseView {
         if isEnabled {
             textField.textColor = .textPrimary
         } else {
-            textField.textColor = .textPCaption
+            if (type == .withNoPadding) {
+                textField.textColor = .textPrimary
+                textField.font = .semiBold14
+            } else {
+                textField.textColor = .textPCaption
+            }
         }
     }
 
+}
+
+enum SRTextFieldType {
+    case withPadding,withNoPadding
 }
 

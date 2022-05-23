@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "Ürün kalmadığı için sipariş veremezsiniz";
 "e_commerce_product_detail_out_of_stock_button" = "Ürün listesine dön";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Sepete Eklendi";
-"e_commerce_product_detail_cargo_price" = "Kargo Ücreti %@";
+"e_commerce_product_detail_cargo_price" = "Kargo Ücreti ";
 "e_commerce_product_detail_not_found_product_title" = "Bulunamadı";
 "e_commerce_product_detail_not_found_product_description" = "Aradığınız sayfa mevcut değil ya da kaldırılmış olabilir.";
 "e_commerce_product_detail_not_found_product_button" = "Anladım";
