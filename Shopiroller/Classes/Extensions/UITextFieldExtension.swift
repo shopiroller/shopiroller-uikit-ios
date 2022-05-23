@@ -28,21 +28,22 @@ extension UITextField {
         }
     }
     
-    var rightViewImage: UIImage? {
-        set {
-            let button = UIButton(type: .custom)
+    func rightViewImage(image: UIImage, type: SRTextFieldType) {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: bounds.size.height)
+        button.setImage(image)
+        self.rightView = button
+        self.tintColor = .textPrimary
+        self.rightViewMode = .always
+        translatesAutoresizingMaskIntoConstraints = false
+        if (type == .withPadding) {
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-            button.frame = CGRect(x: 0.0, y: 0.0, width: 80, height: bounds.size.height)
-            button.setImage(newValue)
-            self.rightView = button
-            self.tintColor = .textPrimary
-            self.rightViewMode = .always
-            
-            translatesAutoresizingMaskIntoConstraints = false
             rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        }
-        get {
-            return (rightView as? UIImageView)?.image
+            rightView?.heightAnchor.constraint(equalToConstant: image.size.height).isActive = true
+        } else {
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+            rightView?.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            rightView?.heightAnchor.constraint(equalToConstant: 7).isActive = true
         }
     }
     
