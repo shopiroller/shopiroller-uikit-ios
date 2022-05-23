@@ -4,7 +4,6 @@
 //
 //  Created by abdllhyalcn on 4.11.2021.
 //
-
 import Foundation
 
 struct ShoppingCartMessage: Codable {
@@ -47,4 +46,3 @@ enum CartMessageKeyEnum: String, Codable {
         }
     }
 }
-

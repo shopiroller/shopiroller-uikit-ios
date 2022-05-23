@@ -74,7 +74,7 @@ open class SRImageSlideshow: UIView {
         }
     }
 
-    open var pageIndicator: SRPageIndicatorView? {
+    open var pageIndicator: SRLabelPageIndicator? {
         didSet {
             oldValue?.view.removeFromSuperview()
             if let pageIndicator = pageIndicator {
@@ -99,7 +99,7 @@ open class SRImageSlideshow: UIView {
     @available(*, deprecated, message: "Use pageIndicatorPosition instead")
     open var pageControlPosition = SRPageControlPosition.insideScrollView {
         didSet {
-            pageIndicator = UIPageControl()
+            pageIndicator = SRLabelPageIndicator()
             switch pageControlPosition {
             case .hidden:
                 pageIndicator = nil
@@ -259,7 +259,7 @@ open class SRImageSlideshow: UIView {
         addSubview(scrollView)
 
         if pageIndicator == nil {
-            pageIndicator = UIPageControl()
+            pageIndicator = SRLabelPageIndicator()
         }
 
         setTimerIfNeeded()
@@ -283,7 +283,7 @@ open class SRImageSlideshow: UIView {
 
     open func layoutPageControl() {
         if let pageIndicatorView = pageIndicator?.view {
-            pageIndicatorView.isHidden = images.count < 2
+            pageIndicatorView.isHidden = images.count < 1
 
             var edgeInsets: UIEdgeInsets = UIEdgeInsets.zero
             if #available(iOS 11.0, *) {
@@ -291,7 +291,7 @@ open class SRImageSlideshow: UIView {
             }
 
             pageIndicatorView.sizeToFit()
-            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(for: frame, indicatorSize: pageIndicatorView.frame.size, edgeInsets: edgeInsets)
+            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(for: frame, indicatorSize: CGSize(width: pageIndicatorView.frame.size.width + 20, height: pageIndicatorView.frame.size.height), edgeInsets: edgeInsets)
         }
     }
 

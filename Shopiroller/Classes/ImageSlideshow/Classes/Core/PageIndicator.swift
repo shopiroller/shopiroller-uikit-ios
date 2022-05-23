@@ -96,7 +96,7 @@ public class SRLabelPageIndicator: UILabel, SRPageIndicatorView {
     }
 
     private func updateLabel() {
-        text = "\(page+1)/\(numberOfPages)"
+        text = numberOfPages == 1 ? "\(page+1)" : "\(page+1) / \(numberOfPages)"
     }
 
     public override func sizeToFit() {

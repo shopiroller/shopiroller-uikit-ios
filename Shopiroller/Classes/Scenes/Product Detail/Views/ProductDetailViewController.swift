@@ -103,6 +103,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBOutlet private weak var quantityTextField: UITextField!
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var variantStackView: UIStackView!
     
     private let badgeView  = SRBadgeButton()
     
@@ -117,7 +118,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         checkmarkImage.tintColor = .white
         
         scrollView.delegate = self
-        
+    
         descriptionContainerImage.image = UIImage(systemName: "chevron.right")
         descriptionContainerImage.tintColor = .black
         descriptionContainer.layer.cornerRadius = 8
@@ -464,7 +465,26 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         setOutOfStockUI()
         setFreeShippingUI()
         setDiscountUI()
+        setVariantUI()
         
+    }
+    
+    private func setVariantUI() {
+        
+        if(!viewModel.isVariantEmpty()) {
+            variantStackView.isHidden = false
+            let textFields = viewModel.getVariantFields()
+            
+            for textField in textFields {
+                let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(tapp(_:)))
+                textField.addGestureRecognizer(tapVariantButton)
+                variantStackView.addArrangedSubview(textField)
+            }
+        }
+    }
+    
+    @objc func tapp(_ sender: UITapGestureRecognizer) {
+        //TODO OPEN POPUP SELECTION
     }
     
     private func setOutOfStockUI() {
