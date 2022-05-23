@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		478017BEEB5ED3710861C257 /* Pods_Shopiroller_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E4973D0D621F9708057EFD /* Pods_Shopiroller_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		D1738F599002F4508BB57F51 /* Pods_Shopiroller_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6965EEAF0E76F8F856C280C8 /* Pods_Shopiroller_Example.framework */; };
 		EE19222527159B7500A2BD7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE19222727159B7500A2BD7A /* LaunchScreen.storyboard */; };
 		EE7A34AF2727EF9700EBE8FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35520FCF2AA5D46C5580379D /* Pods-Shopiroller_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopiroller_Example.debug.xcconfig"; path = "Target Support Files/Pods-Shopiroller_Example/Pods-Shopiroller_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Shopiroller_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopiroller_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6965EEAF0E76F8F856C280C8 /* Pods_Shopiroller_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopiroller_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6A9878811EDF96BE9091C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		D854DAD16ED6D1E416FB7072 /* Pods-Shopiroller_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopiroller_Example.release.xcconfig"; path = "Target Support Files/Pods-Shopiroller_Example/Pods-Shopiroller_Example.release.xcconfig"; sourceTree = "<group>"; };
+		967B283D3344B0E0E6B0F51A /* Pods-Shopiroller_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopiroller_Example.debug.xcconfig"; path = "Target Support Files/Pods-Shopiroller_Example/Pods-Shopiroller_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		9F47A6F6AD3C1EE6E6AF0355 /* Pods-Shopiroller_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopiroller_Example.release.xcconfig"; path = "Target Support Files/Pods-Shopiroller_Example/Pods-Shopiroller_Example.release.xcconfig"; sourceTree = "<group>"; };
+		E8E4973D0D621F9708057EFD /* Pods_Shopiroller_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopiroller_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE025E0F28295DDD000E9294 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EE19222627159B7500A2BD7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE19222927159B7700A2BD7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1738F599002F4508BB57F51 /* Pods_Shopiroller_Example.framework in Frameworks */,
+				478017BEEB5ED3710861C257 /* Pods_Shopiroller_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF390CA28083E49003E4F24 /* Shopiroller.framework */,
-				6965EEAF0E76F8F856C280C8 /* Pods_Shopiroller_Example.framework */,
+				E8E4973D0D621F9708057EFD /* Pods_Shopiroller_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -56,8 +56,8 @@
 		413BBA333D396C3437D6610A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				35520FCF2AA5D46C5580379D /* Pods-Shopiroller_Example.debug.xcconfig */,
-				D854DAD16ED6D1E416FB7072 /* Pods-Shopiroller_Example.release.xcconfig */,
+				967B283D3344B0E0E6B0F51A /* Pods-Shopiroller_Example.debug.xcconfig */,
+				9F47A6F6AD3C1EE6E6AF0355 /* Pods-Shopiroller_Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -118,11 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Shopiroller_Example" */;
 			buildPhases = (
-				8EC50B3296074E4E393520A7 /* [CP] Check Pods Manifest.lock */,
+				C8923D7A073072A2AE5A6696 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				18CAA625DB38F8385E212756 /* [CP] Embed Pods Frameworks */,
+				5952C50B06A5213ECDDDB6ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,7 +185,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18CAA625DB38F8385E212756 /* [CP] Embed Pods Frameworks */ = {
+		5952C50B06A5213ECDDDB6ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,7 +233,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shopiroller_Example/Pods-Shopiroller_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8EC50B3296074E4E393520A7 /* [CP] Check Pods Manifest.lock */ = {
+		C8923D7A073072A2AE5A6696 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,7 +390,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35520FCF2AA5D46C5580379D /* Pods-Shopiroller_Example.debug.xcconfig */;
+			baseConfigurationReference = 967B283D3344B0E0E6B0F51A /* Pods-Shopiroller_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -420,7 +420,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D854DAD16ED6D1E416FB7072 /* Pods-Shopiroller_Example.release.xcconfig */;
+			baseConfigurationReference = 9F47A6F6AD3C1EE6E6AF0355 /* Pods-Shopiroller_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
