@@ -76,7 +76,7 @@ PODS:
     - Kingfisher (~> 7.1.2)
     - lottie-ios
     - MaterialComponents/Buttons
-    - Sentry (~> 7.12.0)
+    - Sentry
     - Stripe
     - SVProgressHUD
   - Stripe (21.11.1):
@@ -126,7 +126,7 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   Sentry: d2f889ed77bd7f8c51b1934dbabddbc553790630
-  Shopiroller: 36ec44d9a9f6d367abfcf09b7c3eed7e7b552e2f
+  Shopiroller: 71dd59fe569ae3838ce4a1fd92ab68032e6eb38e
   Stripe: f2bed8369154c35c8ec794704e042e05240d6f21
   StripeCore: 36571be19dae15e90c8ad47e1af45712aea93f5a
   StripeUICore: 1b32566d6a69581be786609a032872b0fb5a6823
