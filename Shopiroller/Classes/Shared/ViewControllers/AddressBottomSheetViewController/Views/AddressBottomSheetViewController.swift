@@ -194,21 +194,21 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         phoneNumberView.getTextField().addNextAction(target: self, selector: #selector(nextActionPhoneNumberTextField))
         
         countryView.getTextField().placeholder = Constants.countryTextFieldText
-        countryView.setup(rightViewImage: .dropdownIcon)
+        countryView.setup(rightViewImage: .dropdownIcon, type: .withPadding)
         countryView.getTextField().returnKeyType = .done
         countryView.getTextField().keyboardType = .alphabet
         countryView.getTextField().delegate = self
         countryView.getTextField().addCustomTextAction(title: Constants.statesTextFieldText, target: self, selector: #selector(nextActionCountryTextField))
         
         statesView.getTextField().placeholder = Constants.statesTextFieldText
-        statesView.setup(rightViewImage: .dropdownIcon)
+        statesView.setup(rightViewImage: .dropdownIcon,type: .withPadding)
         statesView.getTextField().returnKeyType = .done
         statesView.getTextField().keyboardType = .alphabet
         statesView.getTextField().delegate = self
         statesView.getTextField().addCustomTextAction(title: Constants.districtTextFieldText, target: self, selector: #selector(nextActionStateTextField))
         
         districtView.getTextField().placeholder = Constants.districtTextFieldText
-        districtView.setup(rightViewImage: .dropdownIcon)
+        districtView.setup(rightViewImage: .dropdownIcon,type: .withPadding)
         districtView.getTextField().returnKeyType = .done
         districtView.getTextField().keyboardType = .numberPad
         districtView.getTextField().delegate = self

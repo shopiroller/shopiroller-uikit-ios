@@ -15,6 +15,9 @@ struct ProductDetailResponseModel : Codable {
     var code : String?
     var useFixPrice : Bool?
     var brand : ProductDetailBrandModel?
+    var variants: [ProductDetailResponseModel]?
+    var variationGroups: [VariationGroups]?
+    var variantData: [VariantDataModel]?
     var id : String?
     var title : String?
     var stock : Int?
@@ -31,6 +34,9 @@ struct ProductDetailResponseModel : Codable {
         case code = "code"
         case useFixPrice = "useFixPrice"
         case brand = "brand"
+        case variants = "variants"
+        case variationGroups = "variationGroups"
+        case variantData = "variantData"
         case id = "id"
         case title = "title"
         case stock = "stock"
