@@ -19,10 +19,19 @@ public class ProductDetailViewModel: SRBaseViewModel {
     private var variationGroups: [VariationGroups]?
     private var variantsList: [ProductDetailResponseModel]?
     private var productImagesList: [ProductImageModel] = [ProductImageModel]()
+    private var variantImagesList: [ProductImageModel] = [ProductImageModel]()
+    private var variantDataDictionary = [String : String]()
     
     var quantityCount = 1
+    private var selectedVariantGroupIndex = 0
+    private var selectedVariantImageIndex = 0
+//    var productDetailImagesCount = 0
+    
+    private var tempImageIndex = 0
     private var isPopUpState: Bool = false
     private var isUserFriendly: Bool = false
+    private var textFields : [SRTextField] = [SRTextField]()
+    
     
     init (productId: String = String()) {
         self.productId = productId
@@ -216,7 +225,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getDeliveryConditionsTitle() -> String {
         if let deliveryConditionTitle = paymentSettings?.deliveryConditionsTitle ,
-        deliveryConditionTitle != "" {
+           deliveryConditionTitle != "" {
             return deliveryConditionTitle
         } else {
             return "e_commerce_product_detail_delivery_conditions".localized
@@ -225,7 +234,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getCancellationProdecureTitle() -> String {
         if let cancellationProdecureTitle = paymentSettings?.cancellationProcedureTitle ,
-        cancellationProdecureTitle != "" {
+           cancellationProdecureTitle != "" {
             return cancellationProdecureTitle
         } else {
             return "e_commerce_product_detail_return_terms".localized
@@ -233,26 +242,107 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVariantFields() -> [SRTextField] {
-        var textFields : [SRTextField] = [SRTextField]()
         if let variationGroups = variationGroups {
             for (index,variations) in variationGroups.enumerated() {
                 let textFld = SRTextField()
                 textFld.getTextField().backgroundColor = .buttonLight
                 textFld.setup(rightViewImage: UIImage(systemName: "chevron.down"), type: .withNoPadding)
                 textFld.isEnabled = false
-                textFld.getTextField().text = variations.name
+                textFld.getTextField().text = variations.variations?[0].value
+                variantDataDictionary.updateValue(variations.variations?[0].value ?? "", forKey: variations.name ?? "")
                 textFld.tag = index
                 textFields.append(textFld)
             }
+            productDetailModel = variantsList?[0]
+            productId = productDetailModel?.id ?? ""
             return textFields
         }
         return [SRTextField]()
     }
     
-    func getVariantList(index: Int) -> [Variation]? {
+    func setSelectedVariantTextFieldIndex(index: Int) {
+        self.selectedVariantGroupIndex = index
+    }
+    
+    func getSelectedVariantGroupIndex() -> Int {
+        return self.selectedVariantGroupIndex
+    }
+    
+    func getVariantListAt(index: Int) -> [Variation]? {
         return variationGroups?[index].variations
     }
     
+    func getVariantListCountAt(index: Int) -> Int {
+        return variationGroups?[index].variations?.count ?? 1
+    }
+    
+    func getVariantValueAt(index: Int, variantGroupIndex: Int) -> String? {
+        guard let variantValue = variationGroups?[variantGroupIndex].variations?[index].value else { return "" }
+        return variantValue
+    }
+    
+    func setSelectedVariantValue(index: Int, variantGroupIndex: Int) {
+        if let selectedVariantValue = variationGroups?[variantGroupIndex].variations?[index].value {
+            variantDataDictionary.updateValue(selectedVariantValue, forKey: variationGroups?[variantGroupIndex].name ?? "")
+        }
+    }
+    
+    func getImageIndexAtVariant(index: Int, variantGroupIndex: Int) -> Int {
+        var list = variantsList.map{ $0 }
+        for (_,element) in variantDataDictionary.enumerated() {
+            let variantId = getVariantIdFrom(variantName: element.key, variantValue: element.value)
+            list = list?.filter {($0.variantData?.contains(where: { $0.variationId == variantId }) ?? false)}
+        }
+        if let model = list?[0] {
+            productDetailModel = model
+            productId = model.id
+            let imageIndex = (getImageIndexOfVariant(variantModel: model))
+            if imageIndex != -1 {
+                tempImageIndex = imageIndex //+ productDetailImagesCount
+            } else {
+                return tempImageIndex
+            }
+        }
+        return tempImageIndex
+    }
+    
+    func getVariantIdFrom(variantName: String, variantValue: String) -> String? {
+        var variationList = [Variation]()
+        var variantId = ""
+        if let variationGroupsList = variationGroups?.filter({ $0.name == variantName }) {
+            variationGroupsList.forEach {
+                variationList = $0.variations?.filter { $0.value == variantValue } ?? [Variation]()
+            }
+        }
+        variationList.forEach {
+            variantId = $0.id ?? ""
+        }
+        return variantId
+    }
+    
+    func getIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
+        if let variantsList = variantsList {
+            for (index,element) in variantsList.enumerated() {
+                if element.id == variantModel.id {
+                    return index
+                }
+            }
+        }
+        return 0
+    }
+    
+    func getImageIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
+        if let variantsList = variantsList {
+            let variantListWithImage = variantsList.filter{ $0.images?.count ?? 0 > 0}
+            for (index,element) in variantListWithImage.enumerated() {
+                if element.id == variantModel.id {
+                    return index
+                }
+            }
+        }
+        return -1
+    }
+
     func isVariantEmpty() -> Bool {
         guard let variationGroups = variationGroups else {
             return false
@@ -264,10 +354,21 @@ public class ProductDetailViewModel: SRBaseViewModel {
         guard let variantsList = variantsList else {
             return
         }
-        productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
+//        productDetailImagesCount = productDetailModel?.images?.count ?? 0
+        
         for variants in variantsList {
-            productImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
+            variantImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
         }
+        productImagesList.append(contentsOf: variantImagesList)
+        productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
     }
     
+}
+
+extension Array {
+    func allSameForProperty<T:Equatable> (_ p:KeyPath<Element,T>) -> Bool {
+        return self.isEmpty || self.allSatisfy{
+            self.first![keyPath:p] == $0[keyPath:p]
+        }
+    }
 }

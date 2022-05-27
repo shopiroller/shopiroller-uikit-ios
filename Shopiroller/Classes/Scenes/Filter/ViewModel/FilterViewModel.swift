@@ -54,16 +54,15 @@ class FilterViewModel: SRBaseViewModel {
         if(!(filterOptions?.categories?.isEmpty ?? true)) {
             filterListSelector.append(.category)
         }
-        if((filterOptions?.brands?.isEmpty ?? true)) {
+        if(!(filterOptions?.brands?.isEmpty ?? true)) {
             filterListSelector.append(.brand)
         }
         
-        // MARK: VariationGroups removed in filter section until next phase
-        /*if let arr = filterOptions?.variationGroups?.enumerated() {
+        if let arr = filterOptions?.variationGroups?.enumerated() {
             for (index, _) in arr {
                 filterListSelector.append(.variationGroups(position: index))
             }
-        }*/
+        }
         
         filterListSelector.append(.priceRange)
         filterListSelector.append(.filterSwitch(type: .stockSwitch))
@@ -93,7 +92,7 @@ class FilterViewModel: SRBaseViewModel {
         return filterListSelector[position]
     }
     
-    func getVariationGroupsItem(position: Int) -> VariationGroupsItem? {
+    func getVariationGroupsItem(position: Int) -> VariationGroups? {
         return filterOptions?.variationGroups?[position]
     }
     

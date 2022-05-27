@@ -259,6 +259,5 @@ extension UIViewController {
         viewControllers.append(mainPageVC)
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
-
     
 }
