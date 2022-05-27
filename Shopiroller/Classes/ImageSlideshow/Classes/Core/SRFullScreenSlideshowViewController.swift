@@ -126,7 +126,7 @@ open class SRFullScreenSlideshowViewController: UIViewController {
         if let pageSelected = pageSelected {
             pageSelected(slideshow.currentPage)
         }
-        delegate?.getCurrentIndex(index: slideshow.currentPage)
+//        delegate?.getCurrentIndex(index: slideshow.currentPage)
         dismiss(animated: true, completion: nil)
     }
 }
