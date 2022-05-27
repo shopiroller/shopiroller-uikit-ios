@@ -28,7 +28,7 @@ class FilterChoiceViewModel: SRBaseViewModel {
         configureDataList(dataList: dataList, selectedIds: selectedIds)
     }
     
-    init(dataList: VariationGroupsItem, selectedIds: [String] = []) {
+    init(dataList: VariationGroups, selectedIds: [String] = []) {
         title = dataList.name
         isMultipleChoice = true
         super.init()
@@ -118,7 +118,7 @@ class FilterChoiceViewModel: SRBaseViewModel {
         filteredList = originalList
     }
     
-    private func configureDataList(dataList: [VariationsItem], selectedIds: [String]) {
+    private func configureDataList(dataList: [Variation], selectedIds: [String]) {
         for item in dataList {
             if let id = item.id, let name = item.value {
                 originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))

@@ -10,7 +10,7 @@ import Foundation
 
 struct SRFilterOptionsResponseModel: Codable {
     
-    var variationGroups: [VariationGroupsItem]?
+    var variationGroups: [VariationGroups]?
     var brands: [BrandsItem]?
     var categories: [CategoriesItem]?
     
@@ -18,36 +18,6 @@ struct SRFilterOptionsResponseModel: Codable {
         case variationGroups = "variationGroups"
         case brands = "brands"
         case categories = "categories"
-    }
-}
-
-struct VariationGroupsItem: Codable {
-    
-    var updateDate: String?
-    var variations: [VariationsItem]?
-    var name : String?
-    var id: String?
-    var isActive: Bool?
-    var createDate: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case updateDate = "updateDate"
-        case variations = "variations"
-        case name = "name"
-        case id = "id"
-        case isActive = "isActive"
-        case createDate = "createDate"
-    }
-}
-
-struct VariationsItem: Codable {
-    
-    var id: String?
-    var value: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case id = "id"
-        case value = "value"
     }
 }
 

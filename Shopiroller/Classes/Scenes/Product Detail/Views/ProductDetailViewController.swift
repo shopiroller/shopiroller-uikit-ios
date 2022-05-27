@@ -107,6 +107,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     private let badgeView  = SRBadgeButton()
     
+    private var toolBar = UIToolbar()
+    private var pickerView  = UIPickerView()
+    
     public init(viewModel: ProductDetailViewModel) {
         super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
     }
@@ -192,16 +195,21 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
-                
-        getProductDetail()
-        
-        getPaymentSettings()
-        
+            
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
      
-        self.view.isHidden = true
+        self.view.isHidden = false
+        
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getProductDetail()
+        
+        getPaymentSettings()
     }
     
     override func setupNavigationBar() {
@@ -470,21 +478,82 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func setVariantUI() {
-        
         if(!viewModel.isVariantEmpty()) {
             variantStackView.isHidden = false
             let textFields = viewModel.getVariantFields()
-            
             for textField in textFields {
-                let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(tapp(_:)))
+                let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(variantButtonTapped(_:)))
                 textField.addGestureRecognizer(tapVariantButton)
                 variantStackView.addArrangedSubview(textField)
             }
         }
     }
     
-    @objc func tapp(_ sender: UITapGestureRecognizer) {
-        //TODO OPEN POPUP SELECTION
+    @objc func variantButtonTapped(_ sender: UITapGestureRecognizer) {
+        guard let selectedIndex = sender.view?.tag else {
+            return
+        }
+        viewModel.setSelectedVariantTextFieldIndex(index: selectedIndex)
+        self.view.subviews.contains(pickerView) ? removePickerViewFromSuperView() : createPickerView()
+    }
+    
+    private func removePickerViewFromSuperView() {
+        pickerView.removeFromSuperview()
+        toolBar.removeFromSuperview()
+    }
+    
+    private func createPickerView() {
+    
+        pickerView = UIPickerView.init()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.backgroundColor = .buttonLight
+        pickerView.autoresizingMask = .flexibleWidth
+        pickerView.contentMode = .center
+        
+        let pickerViewHeight = CGFloat(viewModel.getVariantListCountAt(index: viewModel.getSelectedVariantGroupIndex())) * 120
+        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - pickerViewHeight, width: UIScreen.main.bounds.size.width, height: pickerViewHeight)
+        self.view.addSubview(pickerView)
+        
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - pickerViewHeight, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .default
+        toolBar.items = [
+            UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickerViewDoneButtonTapped))]
+        
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func pickerViewDoneButtonTapped() {
+        
+        let pickerViewSelectedIndex = pickerView.selectedRow(inComponent: 0)
+        
+        viewModel.setSelectedVariantValue(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+        
+        for subview in variantStackView.subviews as [UIView] {
+            if let srTextField = subview as? SRTextField {
+                if srTextField.tag == viewModel.getSelectedVariantGroupIndex() {
+                    srTextField.getTextField().text = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+                }
+            }
+        }
+        
+        loadVariantImage(index: pickerViewSelectedIndex)
+        pickerView.removeFromSuperview()
+        toolBar.removeFromSuperview()
+    }
+    
+    @objc func pickerViewCancelButtonTapped() {
+        pickerView.removeFromSuperview()
+        toolBar.removeFromSuperview()
+    }
+    
+    
+    private func loadVariantImage(index: Int) {
+        let index = viewModel.getImageIndexAtVariant(index: index, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        pageControl.currentPage = index
     }
     
     private func setOutOfStockUI() {
@@ -647,9 +716,26 @@ extension ProductDetailViewController: UITextFieldDelegate {
     }
 }
 
-extension ProductDetailViewController: SRFullScreenSlideshowDelegate {
+extension ProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     public func getCurrentIndex(index: Int) {
         collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
         pageControl.currentPage = index
     }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.getVariantListCountAt(index: viewModel.getSelectedVariantGroupIndex())
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let variants = viewModel.getVariantListAt(index: viewModel.getSelectedVariantGroupIndex()) else {
+            return ""
+        }
+        return variants[row].value
+    }
+    
 }
