@@ -210,6 +210,10 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         getProductDetail()
         
         getPaymentSettings()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPickerView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     override func setupNavigationBar() {
@@ -516,12 +520,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         self.view.addSubview(pickerView)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - pickerViewHeight, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barStyle = .default
-        toolBar.items = [
-            UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped)),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickerViewDoneButtonTapped))]
-        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped))
+        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
+        doneButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        toolBar.items = [cancelButton,flexibleSpace,doneButton]
+        UIToolbar.appearance().barTintColor = .buttonLight
         self.view.addSubview(toolBar)
     }
     
@@ -540,15 +545,20 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
         
         loadVariantImage(index: pickerViewSelectedIndex)
-        pickerView.removeFromSuperview()
-        toolBar.removeFromSuperview()
+        removePickerViewFromSuperView()
     }
     
     @objc func pickerViewCancelButtonTapped() {
-        pickerView.removeFromSuperview()
-        toolBar.removeFromSuperview()
+        removePickerViewFromSuperView()
     }
     
+    @objc func dismissPickerView(sender: AnyObject) {
+        let subview = view?.hitTest(sender.location(in: view), with: nil)
+        if(!(subview?.isDescendant(of: pickerView) ?? false))
+        {
+            removePickerViewFromSuperView()
+        }
+    }
     
     private func loadVariantImage(index: Int) {
         let index = viewModel.getImageIndexAtVariant(index: index, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
