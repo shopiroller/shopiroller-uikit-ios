@@ -363,6 +363,20 @@ public class ProductDetailViewModel: SRBaseViewModel {
         productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
     }
     
+    func getPickerViewModel(items: [UIBarButtonItem]?) -> PickerViewModel? {
+        let pickerViewHeight = CGFloat(getVariantListCountAt(index: selectedVariantGroupIndex)) * 120
+        return PickerViewModel(pickerViewHeight: pickerViewHeight, items: items)
+    }
+    
+    func getPickerViewTitle() -> String? {
+        return variationGroups?[selectedVariantGroupIndex].name ?? ""
+    }
+    
+}
+
+struct PickerViewModel {
+    let pickerViewHeight: CGFloat?
+    let items: [UIBarButtonItem]?
 }
 
 extension Array {
