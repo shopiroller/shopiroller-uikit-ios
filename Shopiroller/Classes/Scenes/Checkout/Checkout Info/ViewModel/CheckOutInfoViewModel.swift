@@ -44,7 +44,7 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: (shoppingCart?.totalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0), shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency)
+        return BottomPriceModel(subTotalPrice: (shoppingCart?.totalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0), shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .normal)
     }
     
     func getTrasnferToBankDescriptonText() -> String {

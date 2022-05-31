@@ -226,6 +226,7 @@
 "e_commerce_shopping_cart_cargo_warning" = "%@ xüsusi göndərmə xərcləri tətbiq olunur.";
 "e_commerce_dialog_delete_address_positive_button" = "Bəli, silin";
 "e_commerce_dialog_negative_button" = "Xeyr, indi deyil";
+"e_commerce_shopping_cart_taxes_included" = "Vergilər Daxildir";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Sıralama";
