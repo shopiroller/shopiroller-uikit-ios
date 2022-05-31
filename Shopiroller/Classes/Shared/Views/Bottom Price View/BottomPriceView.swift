@@ -42,7 +42,7 @@ class BottomPriceView: SRBaseView {
 
         priceLabel.text = ECommerceUtil.getFormattedPrice(price: model.totalPrice, currency: model.currency)
         
-        taxesInfoLabel.text = "".localized
+        taxesInfoLabel.text = "e_commerce_shopping_cart_taxes_included".localized
     }
 
 }

@@ -227,8 +227,7 @@
 "e_commerce_shopping_cart_delete_cart_description" = "Bu ürünü %@ siliyorsunuz";
 "e_commerce_shopping_cart_delete_cart_button" = "Evet, silinsin";
 "e_commerce_shopping_cart_cargo_warning" = "%@ özel kargo ücreti uygulanır.";
-"e_commerce_shopping_cart_taxes_included" = "Vergiler Dahildir."
-
+"e_commerce_shopping_cart_taxes_included" = "Vergiler Dahildir";
 "e_commerce_dialog_delete_address_positive_button" = "Evet silinsin";
 "e_commerce_dialog_negative_button" = "Hayır, şimdi değil";
 
