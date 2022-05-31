@@ -211,9 +211,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         getPaymentSettings()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPickerView))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
     }
     
     override func setupNavigationBar() {
@@ -507,27 +504,41 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     }
     
     private func createPickerView() {
-    
-        pickerView = UIPickerView.init()
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.backgroundColor = .buttonLight
-        pickerView.autoresizingMask = .flexibleWidth
-        pickerView.contentMode = .center
+        var items = [UIBarButtonItem]()
         
-        let pickerViewHeight = CGFloat(viewModel.getVariantListCountAt(index: viewModel.getSelectedVariantGroupIndex())) * 120
-        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - pickerViewHeight, width: UIScreen.main.bounds.size.width, height: pickerViewHeight)
-        self.view.addSubview(pickerView)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - pickerViewHeight, width: UIScreen.main.bounds.size.width, height: 50))
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped))
-        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
         doneButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-        toolBar.items = [cancelButton,flexibleSpace,doneButton]
-        UIToolbar.appearance().barTintColor = .buttonLight
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped))
+        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        let label = UILabel()
+        label.tintColor = .black
+        label.textAlignment = .center
+        label.text = viewModel.getPickerViewTitle()
+        let titleLabel = UIBarButtonItem(customView: label)
+        
+        items.append(cancelButton)
+        items.append(flexibleSpace)
+        items.append(titleLabel)
+        items.append(flexibleSpace)
+        items.append(doneButton)
+        
+        let pickerViewModel = viewModel.getPickerViewModel(items: items)
+        
+        pickerView = initializePickerView(pickerViewHeight: pickerViewModel?.pickerViewHeight)
+        
+        toolBar = initializeToolbar(pickerViewModel: pickerViewModel)
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        self.view.addSubview(pickerView)
+        
         self.view.addSubview(toolBar)
+        
     }
     
     @objc func pickerViewDoneButtonTapped() {
@@ -550,14 +561,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @objc func pickerViewCancelButtonTapped() {
         removePickerViewFromSuperView()
-    }
-    
-    @objc func dismissPickerView(sender: AnyObject) {
-        let subview = view?.hitTest(sender.location(in: view), with: nil)
-        if(!(subview?.isDescendant(of: pickerView) ?? false))
-        {
-            removePickerViewFromSuperView()
-        }
     }
     
     private func loadVariantImage(index: Int) {
