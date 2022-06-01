@@ -33,7 +33,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         super.init(nil, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
     }
     
-    public override func setup() {
+    open override func setup() {
         super.setup()
         view.backgroundColor = .white
         
