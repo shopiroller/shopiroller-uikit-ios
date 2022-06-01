@@ -118,14 +118,16 @@ class ShoppingCartTableViewCell: UITableViewCell {
   
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
-            if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
-                makeToast(text: String(format: "e_commerce_product_detail_maximum_product_message".localized, String(quantity)))
-            }else {
-                delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
+            if (model?.product?.variantData?.isEmpty == false) {
+                quantity == model?.product?.stock || quantity == model?.product?.maxQuantityPerOrder ? makeToast(text: String(format: "e_commerce_product_detail_maximum_product_message".localized, String(quantity))) : delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
+            } else {
+                if(quantity >= model?.product?.maxQuantityPerOrder ?? 0 || quantity >= model?.product?.stock ?? 0) {
+                    makeToast(text: String(format: "e_commerce_product_detail_maximum_product_message".localized, String(quantity)))
+                } else {
+                    delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity + 1)
+                }
             }
         }
     }
-    
-    
 }
 
