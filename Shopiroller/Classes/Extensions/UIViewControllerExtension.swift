@@ -276,7 +276,6 @@ extension UIViewController {
         
         var toolBar = UIToolbar()
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - (pickerViewModel?.pickerViewHeight ?? 0), width: UIScreen.main.bounds.size.width, height: 50))
-        
         UIToolbar.appearance().barTintColor = .buttonLight
         
         toolBar.items = pickerViewModel?.items
