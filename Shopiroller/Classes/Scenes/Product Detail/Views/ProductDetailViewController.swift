@@ -51,6 +51,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         static var maxQuantityDescription: String { return "e_commerce_product_detail_maximum_product_limit_description".localized }
         
+        static var pickerViewConfirmButton: String { return
+            "e_commerce_general_ok_button_text".localized }
+        
+        static var pickerViewCancelButton: String { return
+            "e_commerce_general_cancel_button_text".localized }
+        
     }
     
     
@@ -105,6 +111,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     @IBOutlet private weak var variantStackView: UIStackView!
     
+    @IBOutlet private weak var backgroundView: UIView!
+    
     private let badgeView  = SRBadgeButton()
     
     private var toolBar = UIToolbar()
@@ -121,7 +129,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         checkmarkImage.tintColor = .white
         
         scrollView.delegate = self
-    
+        
         descriptionContainerImage.image = UIImage(systemName: "chevron.right")
         descriptionContainerImage.tintColor = .black
         descriptionContainer.layer.cornerRadius = 8
@@ -191,20 +199,24 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         let deliveryRecognizer = UITapGestureRecognizer(target: self, action: #selector(deliveryTermsContainerTapped(_:)))
         deliveryTermsContainer.addGestureRecognizer(deliveryRecognizer)
         
+        let pickerViewDismissTapGesture = UITapGestureRecognizer(target: self, action: #selector(pickerViewCancelButtonTapped))
+        self.view.addGestureRecognizer(pickerViewDismissTapGesture)
+        pickerViewDismissTapGesture.cancelsTouchesInView = false
+        pickerViewDismissTapGesture.delegate = self
+        
         collectionView.register(cellClass: ProductImageSliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
-            
+        
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-     
-        self.view.isHidden = false
         
     }
     
     public override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         getProductDetail()
@@ -217,8 +229,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-//        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
-//        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
+        //        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
+        //        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [searchButton, cardButton], isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
     }
@@ -506,23 +518,20 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     private func createPickerView() {
         var items = [UIBarButtonItem]()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
+        let doneButton = UIBarButtonItem(title: Constants.pickerViewConfirmButton, style: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
         doneButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(pickerViewCancelButtonTapped))
+        let cancelButton = UIBarButtonItem(title: Constants.pickerViewCancelButton, style: .plain, target: self, action: #selector(pickerViewCancelButtonTapped))
         cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        
+        let toolbarTitle = UIBarButtonItem(title: viewModel.getPickerViewTitle(), style: .plain, target: self, action: nil)
+        toolbarTitle.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let label = UILabel()
-        label.tintColor = .black
-        label.textAlignment = .center
-        label.text = viewModel.getPickerViewTitle()
-        let titleLabel = UIBarButtonItem(customView: label)
-        
         items.append(cancelButton)
         items.append(flexibleSpace)
-        items.append(titleLabel)
+        items.append(toolbarTitle)
         items.append(flexibleSpace)
         items.append(doneButton)
         
@@ -749,6 +758,22 @@ extension ProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerVi
             return ""
         }
         return variants[row].value
+    }
+    
+}
+
+
+extension ProductDetailViewController : UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let touchedView = touch.view {
+            if !((touchedView.isDescendant(of: pickerView)) || (touchedView.isDescendant(of: toolBar))) {
+                removePickerViewFromSuperView()
+            } else {
+                return false
+            }
+        }
+        return true
     }
     
 }
