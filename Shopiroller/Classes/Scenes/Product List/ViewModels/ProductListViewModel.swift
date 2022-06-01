@@ -50,6 +50,7 @@ class ProductListViewModel : SRBaseViewModel {
         if(hasFilter()) {
             urlQueryItems.append(contentsOf: filterModel.getQueryArray())
         }
+        
         urlQueryItems.append(contentsOf: getSortQueryItems())
         
         if productList?.count ?? 0 == 0 {
