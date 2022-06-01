@@ -25,12 +25,11 @@ struct FilterModel {
         if(!brandIds.selectedIds.isEmpty) {
             urlQueryItems.append(contentsOf: brandIds.selectedIds.map{URLQueryItem(name: SRAppConstants.Query.Keys.brandId, value: $0) })
         }
-        // MARK: VariationGroups removed in filter section until next phase
-        /*if(!variationGroups.isEmpty) {
+        if(!variationGroups.isEmpty) {
             for item in variationGroups {
-                urlQueryItems.append(contentsOf: brandIds.selectedIds.map{URLQueryItem(name: SRAppConstants.Query.Keys.categoryId, value: $0) })
+                urlQueryItems.append(contentsOf: item.variationIds.selectedIds.map{ URLQueryItem(name: SRAppConstants.Query.Keys.variantData, value: $0 ) })
             }
-        }*/
+        }
         if let minimumPrice = minimumPrice {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.priceMin, value: String(minimumPrice)))
         }
