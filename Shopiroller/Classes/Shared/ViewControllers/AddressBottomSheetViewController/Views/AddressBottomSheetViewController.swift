@@ -564,42 +564,6 @@ class AddressBottomSheetViewController : BaseViewController<AddressBottomSheetVi
         if (viewModel.getAddressType() == .shipping && !isBillingAddressChecked) {
             return isValid
         }
-        
-        if billingAddressContainer.isHidden == false {
-            if isIndividualButtonTapped {
-                if (identityNumberView.getTextField().text == "") {
-                    setTextFieldError(textFieldView: identityNumberView, errorMessage: ErrorConstants.identityNumberEmptyError)
-                    isValid = false;
-                } else if (identityNumberView.getTextField().text?.count ?? 0 < 11) {
-                    setTextFieldError(textFieldView: identityNumberView, errorMessage: ErrorConstants.identityNumberValidationError)
-                    isValid = false;
-                } else {
-                    identityNumberView.getErrorLabelText() != nil ? identityNumberView.setInfoLabel(infoText: "") : identityNumberView.removeError()
-                }
-            }else {
-                if (companyNameView.getTextField().text == "") {
-                    setTextFieldError(textFieldView: companyNameView, errorMessage: ErrorConstants.companyNameEmptyError)
-                    isValid = false;
-                } else {
-                    companyNameView.getErrorLabelText() != nil ? companyNameView.setInfoLabel(infoText: "") : companyNameView.removeError()
-                }
-                
-                if (taxOfficeView.getTextField().text == "") {
-                    setTextFieldError(textFieldView: taxOfficeView, errorMessage: ErrorConstants.taxOfficeEmptyError)
-                    isValid = false;
-                } else {
-                    taxOfficeView.getErrorLabelText() != nil ? taxOfficeView.setInfoLabel(infoText: "") : taxOfficeView.removeError()
-                }
-                
-                if (taxNumberView.getTextField().text == "") {
-                    setTextFieldError(textFieldView: taxNumberView, errorMessage: ErrorConstants.taxNumberEmptyError)
-                    isValid = false;
-                } else {
-                    taxNumberView.getErrorLabelText() != nil ? taxNumberView.setInfoLabel(infoText: "") : taxNumberView.removeError()
-                }
-            }
-            
-        }
         return isValid
     }
     
