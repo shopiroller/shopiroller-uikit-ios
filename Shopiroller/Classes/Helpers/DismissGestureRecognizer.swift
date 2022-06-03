@@ -21,12 +21,13 @@ private extension PropertyStoring {
 }
 
 extension UIViewController: PropertyStoring {
-
+    
     private struct CustomProperties {
         static var dismissType: DismissType = .disableGesture
         static var dismissTypeGesture: UIGestureRecognizer? = nil
+        static var sender: UIPanGestureRecognizer? = nil
     }
-
+    
     public var dismissType: DismissType {
         get {
             let type = getAssociatedObject(&CustomProperties.dismissType, defaultValue: CustomProperties.dismissType as AnyObject) as? DismissType
@@ -47,14 +48,14 @@ extension UIViewController: PropertyStoring {
             objc_setAssociatedObject(self, &CustomProperties.dismissTypeGesture, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
-    
+
     private func disableDismissTypeGesture() {
-        if let g = dismissTypeGesture {
-            g.isEnabled = false
-            view.removeGestureRecognizer(g)
+        if let dismissType = dismissTypeGesture {
+            dismissType.isEnabled = false
+            view.removeGestureRecognizer(dismissType)
         }
     }
-
+    
     private func addPanGesture() {
         disableDismissTypeGesture()
         if dismissType != .disableGesture {
@@ -67,15 +68,49 @@ extension UIViewController: PropertyStoring {
             }
         }
     }
+    
     @objc private func handleEdgePanGesture(_ sender: UIPanGestureRecognizer) {
-            if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled {
-                self.view.endEditing(true)
-                self.dismiss(animated: true, completion: nil)
-            }
+        if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled && (sender.horizontalDirection(target: view) == .Left) {
+            CustomProperties.sender = sender
+            popCurrentViewController()
         }
+    }
+    
+    private func popCurrentViewController() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = .fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.view.endEditing(true)
+        if let navigationController = navigationController, navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            dismiss(animated: false, completion: nil)
+        }
+    }
 }
 
 public enum DismissType {
     case disableGesture
     case swipeRightForFullScreen
+}
+
+
+extension UIPanGestureRecognizer {
+    
+    enum GestureDirection {
+        case Left
+        case Right
+    }
+    
+    /// Get current horizontal direction
+    ///
+    /// - Parameter target: view target
+    /// - Returns: current direction
+    func horizontalDirection(target: UIView) -> GestureDirection {
+        return self.velocity(in: target).x > 0 ? .Right : .Left
+    }
+    
 }
