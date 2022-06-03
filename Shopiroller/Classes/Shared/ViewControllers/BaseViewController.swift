@@ -28,6 +28,7 @@ open class BaseViewController<T>: UIViewController {
         super.viewDidLoad()
         setup()
         overrideUserInterfaceStyle = .light
+        dismissType = .swipeRightForFullScreen
         setupNavigationBar()
     }
     
