@@ -92,7 +92,7 @@ class OrderDetailViewModel: SRBaseViewModel {
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), shippingPrice: detail?.shippingPrice, totalPrice: detail?.totalPrice, currency: detail?.currency)
+        return BottomPriceModel(subTotalPrice: (detail?.totalPrice ?? 0) - (detail?.shippingPrice ?? 0), shippingPrice: detail?.shippingPrice, totalPrice: detail?.totalPrice, currency: detail?.currency, bottomPriceType: .normal)
     }
     
     func getAddressList() -> [AddressCellModel] {

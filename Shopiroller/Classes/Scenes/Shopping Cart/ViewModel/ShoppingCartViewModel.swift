@@ -108,7 +108,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: shoppingCart?.subTotalPrice, shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency)
+        return BottomPriceModel(subTotalPrice: shoppingCart?.subTotalPrice, shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .shoppingCart)
     }
 
     func hasCampaign() -> Bool {
