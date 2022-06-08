@@ -61,7 +61,7 @@ class AddressListViewController: BaseViewController<AddressListViewModel> {
         viewModel.deleteAddress(success: {
             guard let row = self.viewModel.selectedIndexPathRow else { return }
             self.addressTable.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
-            self.view.makeToast(text: self.viewModel.state == .shipping ? "address_list_delivery_address_delete_success".localized : "address_list_billing_address_delete_success".localized)
+            self.view.makeToast(text: self.viewModel.state == .shipping ? "user_my_address_shipping_address_removed_message".localized : "user_my_address_billing_address_removed_message".localized)
             self.configure(isUpdate: true)
             self.getAddressList()
             self.addressTable.reloadData()
