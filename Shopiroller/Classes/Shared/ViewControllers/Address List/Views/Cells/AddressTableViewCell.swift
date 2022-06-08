@@ -38,11 +38,11 @@ class AddressTableViewCell: UITableViewCell {
         confirmView.layer.cornerRadius = 6
         informationView.layer.cornerRadius = 6
         
-        confirmCancelButton.setTitle("address_cell_cancel".localized)
+        confirmCancelButton.setTitle("user_my_address_delete_address_cancel_button".localized)
         confirmCancelButton.setTitleColor(.textPrimary)
         confirmCancelButton.titleLabel?.font = .semiBold14
         
-        confirmDeleteButton.setTitle("address_cell_delete".localized)
+        confirmDeleteButton.setTitle("user_my_address_delete_address_delete_button".localized)
         confirmDeleteButton.setTitleColor(.white)
         confirmDeleteButton.layer.cornerRadius = 6
         confirmDeleteButton.backgroundColor = .textPrimary
@@ -60,14 +60,14 @@ class AddressTableViewCell: UITableViewCell {
     
     func setup(model: UserBillingAdressModel, indexPathRow: Int) {
         self.indexPathRow = indexPathRow
-        confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
+        confirmTitle.attributedText = NSAttributedString(format: NSAttributedString(string: "user_my_address_delete_address_title".localized), args: ECommerceUtil.getBoldNormal(model.title ?? "", ""))
         informationTitle.text = model.title
         informationAddress.text = model.getListBillingDescriptionArea()
     }
     
     func setup(model: UserShippingAddressModel, indexPathRow: Int) {
         self.indexPathRow = indexPathRow
-        confirmTitle.attributedText = ECommerceUtil.getBoldNormal(model.title ?? "", "address_cell_confirm_title".localized)
+        confirmTitle.attributedText = NSAttributedString(format: NSAttributedString(string: "user_my_address_delete_address_title".localized), args: ECommerceUtil.getBoldNormal(model.title ?? "", ""))
         informationTitle.text = model.title
         informationAddress.text = model.getListDeliveryDescriptionArea()
     }
