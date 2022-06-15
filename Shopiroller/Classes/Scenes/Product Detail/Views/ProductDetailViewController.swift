@@ -535,7 +535,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         items.append(flexibleSpace)
         items.append(doneButton)
         
-        let pickerViewModel = viewModel.getPickerViewModel(items: items)
+        var pickerViewModel = viewModel.getPickerViewModel(items: items)
+        
+        if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 6 ) {
+            pickerViewModel?.pickerViewHeight = self.view.frame.height / 10 * 4
+        }
         
         pickerView = initializePickerView(pickerViewHeight: pickerViewModel?.pickerViewHeight)
         
@@ -565,6 +569,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
         
         loadVariantImage(index: pickerViewSelectedIndex)
+        setOutOfStockUI()
+        setDiscountUI()
+        setFreeShippingUI()
         removePickerViewFromSuperView()
     }
     
