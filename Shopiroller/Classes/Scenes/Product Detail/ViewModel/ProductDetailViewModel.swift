@@ -375,7 +375,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
 }
 
 struct PickerViewModel {
-    let pickerViewHeight: CGFloat?
+    var pickerViewHeight: CGFloat?
     let items: [UIBarButtonItem]?
 }
 
