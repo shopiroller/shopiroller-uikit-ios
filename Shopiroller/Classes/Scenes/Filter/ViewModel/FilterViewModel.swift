@@ -17,6 +17,7 @@ class FilterViewModel: SRBaseViewModel {
     private var filterOptions: SRFilterOptionsResponseModel?
     private var filterListSelector: [FilterTableViewSelector] = []
     private var paymentSettings : PaymentSettingsResponeModel?
+    private var tempVariantQuery = ""
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
     var selectedModel: FilterModel
@@ -170,7 +171,25 @@ class FilterViewModel: SRBaseViewModel {
             if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
                 selectedModel.variationGroups[index].variationIds = selectedIds
             } else {
-                selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: selectedIds))
+                var copyOfSelectedIds = selectedIds
+                var isFound = false
+                var variantQuery = ""
+                tempVariantQuery.append(";" + (variationGroup.id ?? "") + ":")
+                for id in copyOfSelectedIds.selectedIds {
+                    tempVariantQuery.append((id ) + ",")
+                    isFound = true
+                }
+                if (isFound) {
+                    tempVariantQuery.removeLast()
+                    variantQuery.append(tempVariantQuery)
+                }
+                
+                if (variantQuery.length > 0) {
+                    variantQuery.removeFirst()
+                }
+                copyOfSelectedIds.selectedIds.removeAll()
+                copyOfSelectedIds.selectedIds.append(variantQuery)
+                selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds))
             }
         default:
             break
