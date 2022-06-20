@@ -552,6 +552,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         self.view.addSubview(toolBar)
         
+        pickerView.selectRow(viewModel.getSelectedVariantIndexForPickerView(), inComponent: 0, animated: true)
+        
     }
     
     @objc func pickerViewDoneButtonTapped() {
@@ -563,7 +565,9 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         for subview in variantStackView.subviews as [UIView] {
             if let srTextField = subview as? SRTextField {
                 if srTextField.tag == viewModel.getSelectedVariantGroupIndex() {
-                    srTextField.getTextField().text = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+                    let selectedVariant = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+                    srTextField.getTextField().text = selectedVariant ?? ""
+                    viewModel.setSelectedVariantForPickerView(pickerViewIndex: pickerViewSelectedIndex)
                 }
             }
         }
