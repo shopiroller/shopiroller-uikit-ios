@@ -36,7 +36,7 @@ class FilterVariationTableViewCell: UITableViewCell {
     private func setSelectionLabel(selectionLabel: String) {
         if(selectionLabel.isEmpty) {
             self.selectionLabel.isHidden = true
-        }else {
+        } else {
             self.selectionLabel.isHidden = false
             self.selectionLabel.text = selectionLabel
         }

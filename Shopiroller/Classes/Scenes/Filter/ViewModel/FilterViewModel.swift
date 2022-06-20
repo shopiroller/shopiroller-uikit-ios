@@ -169,7 +169,12 @@ class FilterViewModel: SRBaseViewModel {
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return}
             if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                selectedModel.variationGroups[index].variationIds = selectedIds
+                for id in selectedIds.selectedIds {
+                    if !(selectedModel.variationGroups[index].variationIds.selectedIds[0].contains(id)) {
+                        selectedModel.variationGroups[index].variationIds.selectedIds[0].append(id)
+                        selectedModel.variationGroups[index].variationIds.selectionNameLabel = selectedIds.
+                    }
+                }
             } else {
                 var copyOfSelectedIds = selectedIds
                 var isFound = false

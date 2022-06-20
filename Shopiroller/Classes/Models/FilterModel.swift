@@ -63,7 +63,7 @@ struct VariationIds {
 
 struct SelectionIds {
     var selectedIds: [String]
-    let selectionNameLabel: String
+    var selectionNameLabel: String
     
     init(selectedIds: [String] = [], selectionNameLabel: String = String()) {
         self.selectedIds = selectedIds

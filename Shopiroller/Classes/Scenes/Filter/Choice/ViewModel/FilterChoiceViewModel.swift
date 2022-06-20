@@ -13,6 +13,7 @@ class FilterChoiceViewModel: SRBaseViewModel {
     let isMultipleChoice: Bool
     private var originalList: [GenericSelectionModel<FilterChoiceTableModel>] = []
     private var filteredList: [GenericSelectionModel<FilterChoiceTableModel>] = []
+    private var variantValues = [String : [String]]()
     
     init(dataList: [CategoriesItem], selectedIds: [String] = []) {
         title = "e_commerce_filter_category".localized
@@ -111,7 +112,6 @@ class FilterChoiceViewModel: SRBaseViewModel {
     private func configureDataList(dataList: [BrandsItem], selectedIds: [String]) {
         for item in dataList {
             if let id = item.id, let name = item.name {
-                
                 originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
             }
         }
@@ -119,9 +119,24 @@ class FilterChoiceViewModel: SRBaseViewModel {
     }
     
     private func configureDataList(dataList: [Variation], selectedIds: [String]) {
+        var isValuesAdded = false
+        var values = [String]()
+        if (selectedIds.count > 0) {
+            var query = [String]()
+            query = selectedIds[0].components(separatedBy: ";")
+            for i in 0..<query.count {
+                variantValues.updateValue(query[i].components(separatedBy: ":")[1].components(separatedBy: ","), forKey: query[i].components(separatedBy: ":")[0])
+            }
+            for items in variantValues {
+                items.value.forEach {
+                    values.append($0)
+                }
+            }
+            isValuesAdded = true
+        }
         for item in dataList {
             if let id = item.id, let name = item.value {
-                originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: selectedIds)))
+                originalList.append(GenericSelectionModel(data: FilterChoiceTableModel(id: id, name: name, depth: 1), isSelected: isSelectedId(id: id, selectedIds: isValuesAdded ? values : selectedIds)))
             }
         }
         filteredList = originalList
