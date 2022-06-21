@@ -173,28 +173,29 @@ class FilterViewModel: SRBaseViewModel {
             selectedModel.brandIds = selectedIds
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return}
-            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                selectedModel.variationGroups[index].variationIds = selectedIds
+            var copyOfSelectedIds = selectedIds
+            var isFound = false
+            var variantQuery = ""
+            tempVariantQuery.append(";" + (variationGroup.id ?? "") + ":")
+            for id in copyOfSelectedIds.selectedIds {
+                tempVariantQuery.append((id ) + ",")
+                isFound = true
+            }
+            
+            if (isFound) {
+                tempVariantQuery.removeLast()
+                variantQuery.append(tempVariantQuery)
+            }
+            
+            if (variantQuery.length > 0) {
+                variantQuery.removeFirst()
+            }
+            copyOfSelectedIds.selectedIds.removeAll()
+            copyOfSelectedIds.selectedIds.append(variantQuery)
+            setVariantDataDictionary(query: variantQuery)
+            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id ?? ""}) {
+                selectedModel.variationGroups.insert(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds), at: index)
             } else {
-                var copyOfSelectedIds = selectedIds
-                var isFound = false
-                var variantQuery = ""
-                tempVariantQuery.append(";" + (variationGroup.id ?? "") + ":")
-                for id in copyOfSelectedIds.selectedIds {
-                    tempVariantQuery.append((id ) + ",")
-                    isFound = true
-                }
-                if (isFound) {
-                    tempVariantQuery.removeLast()
-                    variantQuery.append(tempVariantQuery)
-                }
-                
-                if (variantQuery.length > 0) {
-                    variantQuery.removeFirst()
-                }
-                copyOfSelectedIds.selectedIds.removeAll()
-                copyOfSelectedIds.selectedIds.append(variantQuery)
-                setVariantDataDictionary(query: variantQuery)
                 selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds))
             }
         default:
