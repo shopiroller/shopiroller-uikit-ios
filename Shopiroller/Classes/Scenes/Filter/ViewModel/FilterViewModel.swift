@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Accelerate
 
 class FilterViewModel: SRBaseViewModel {
     
@@ -80,7 +81,7 @@ class FilterViewModel: SRBaseViewModel {
             return selectedModel.brandIds.selectionNameLabel
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position), let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) else {return String()}
-            return selectedModel.variationGroups[index].variationIds.selectionNameLabel
+            return selectedModel.variationGroups[index].variationIds.selectionNameLabel ?? ""
         default:
             return String()
         }
@@ -151,8 +152,10 @@ class FilterViewModel: SRBaseViewModel {
             return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds.selectedIds)
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
-            if (selectedModel.variationGroups.count > 0) {
-                setVariantDataDictionary(query: selectedModel.variationGroups[position].variationIds.selectedIds[0])
+            if selectedModel.variationGroups.count > 0 , selectedModel.variationGroups.contains(where: {$0.variationGroupsItemId == variationGroup.id ?? ""}) {
+                guard let index = selectedModel.variationGroups.firstIndex(where: { $0.variationGroupsItemId == variationGroup.id }) else { return nil }
+                let query = selectedModel.variationGroups[index].variationIds.selectedIds[0]
+                setVariantDataDictionary(query: query)
                 return FilterChoiceViewModel(dataList: variationGroup, selectedIds: variantDataSelectedDictionary[variationGroup.id ?? ""] ?? [String]())
             } else {
                 return FilterChoiceViewModel(dataList: variationGroup)
