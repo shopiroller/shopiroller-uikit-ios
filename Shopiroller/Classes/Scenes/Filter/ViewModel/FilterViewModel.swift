@@ -18,6 +18,7 @@ class FilterViewModel: SRBaseViewModel {
     private var filterListSelector: [FilterTableViewSelector] = []
     private var paymentSettings : PaymentSettingsResponeModel?
     private var tempVariantQuery = ""
+    private var variantDataSelectedDictionary = [String : [String]]()
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
     var selectedModel: FilterModel
@@ -150,8 +151,9 @@ class FilterViewModel: SRBaseViewModel {
             return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds.selectedIds)
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
-            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                return FilterChoiceViewModel(dataList: variationGroup, selectedIds:  selectedModel.variationGroups[index].variationIds.selectedIds)
+            if (selectedModel.variationGroups.count > 0) {
+                setVariantDataDictionary(query: selectedModel.variationGroups[position].variationIds.selectedIds[0])
+                return FilterChoiceViewModel(dataList: variationGroup, selectedIds: variantDataSelectedDictionary[variationGroup.id ?? ""] ?? [String]())
             } else {
                 return FilterChoiceViewModel(dataList: variationGroup)
             }
@@ -189,11 +191,21 @@ class FilterViewModel: SRBaseViewModel {
                 }
                 copyOfSelectedIds.selectedIds.removeAll()
                 copyOfSelectedIds.selectedIds.append(variantQuery)
+                setVariantDataDictionary(query: variantQuery)
                 selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds))
             }
         default:
             break
         }
+    }
+    
+    private func setVariantDataDictionary(query: String) {
+        var variantDataSelectedDictionary = [String : [String]]()
+        let query = query.components(separatedBy: ";")
+        for i in 0..<query.count {
+            variantDataSelectedDictionary.updateValue(query[i].components(separatedBy: ":")[1].components(separatedBy: ","), forKey: query[i].components(separatedBy: ":")[0])
+        }
+        self.variantDataSelectedDictionary = variantDataSelectedDictionary
     }
     
     func getPaymentSettings(completion: @escaping (Result<Void, ErrorViewModel>) -> Void){
