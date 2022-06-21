@@ -21,6 +21,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     private var productImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantDataDictionary = [String : String]()
+    private var pickerViewSelectedVariant = [Int : Int]()
     
     var quantityCount = 1
     private var selectedVariantGroupIndex = 0
@@ -370,6 +371,17 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getPickerViewTitle() -> String? {
         return variationGroups?[selectedVariantGroupIndex].name ?? ""
+    }
+    
+    func setSelectedVariantForPickerView(pickerViewIndex: Int) {
+        pickerViewSelectedVariant.updateValue(pickerViewIndex, forKey: selectedVariantGroupIndex)
+    }
+    
+    func getSelectedVariantIndexForPickerView() -> Int {
+        if let variantIndex = pickerViewSelectedVariant[selectedVariantGroupIndex] {
+            return variantIndex
+        }
+        return 0
     }
     
 }
