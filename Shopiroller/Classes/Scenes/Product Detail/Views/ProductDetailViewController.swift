@@ -540,7 +540,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         items.append(doneButton)
         
         var pickerViewModel = viewModel.getPickerViewModel(items: items)
-        
+
         if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 5 ) {
             pickerViewModel?.pickerViewHeight = (self.view.frame.height / 10 * 3).rounded(.toNearestOrEven)
         }
