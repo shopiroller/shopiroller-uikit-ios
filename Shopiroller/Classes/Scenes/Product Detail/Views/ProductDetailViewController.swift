@@ -282,7 +282,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBAction private func addToCardshowAnimation(_ sender: Any){
         addToCardButton.isUserInteractionEnabled = false
         if ShopirollerApp.shared.isUserLoggedIn() {
-            addProductToCart()
+            if (viewModel.isVariantCanBeAdded()) {
+                addProductToCart()
+            } else {
+                self.showPopUp(viewModel: self.viewModel.getVariantDoesNotExistPopUpViewModel())
+            }
         } else {
             ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
             addToCardButton.isUserInteractionEnabled = true
@@ -537,8 +541,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         var pickerViewModel = viewModel.getPickerViewModel(items: items)
         
-        if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 6 ) {
-            pickerViewModel?.pickerViewHeight = self.view.frame.height / 10 * 4
+        if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 5 ) {
+            pickerViewModel?.pickerViewHeight = (self.view.frame.height / 10 * 3).rounded(.toNearestOrEven)
         }
         
         pickerView = initializePickerView(pickerViewHeight: pickerViewModel?.pickerViewHeight)
@@ -673,6 +677,8 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
                 self.dismiss(animated: true, completion: nil)
             }
             popToRoot(animated: false, completion: nil)
+        } else {
+            self.addToCardButton.isUserInteractionEnabled = true
         }
     }
     

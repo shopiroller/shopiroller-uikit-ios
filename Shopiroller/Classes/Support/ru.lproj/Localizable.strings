@@ -58,6 +58,8 @@
 "e_commerce_product_detail_sold_out_button" = "Распродано";
 "e_commerce_product_detail_sold_out_badge" = "Распродано";
 "e_commerce_product_detail_free_shipping_badge" = "Бесплатная доставка";
+"e_commerce_product_detail_does_not_exist_variant_error" = "Ошибка варианта";
+"e_commerce_product_detail_does_not_exist_variant_description" = "Вы выбрали вариант, которого нет в продукте. Измените выбор варианта.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Максимальный лимит продукта";
 "e_commerce_product_detail_maximum_product_limit_description" = "Вы достигли максимального предела покупок товаров. Вы можете добавить в корзину не более %@ ​​товаров";
 "e_commerce_product_detail_maximum_product_limit_button" = "Вернуться к продукту";
