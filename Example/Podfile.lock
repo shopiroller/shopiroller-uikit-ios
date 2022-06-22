@@ -68,7 +68,7 @@ PODS:
   - Sentry (7.16.0):
     - Sentry/Core (= 7.16.0)
   - Sentry/Core (7.16.0)
-  - Shopiroller (0.2.26):
+  - Shopiroller (0.2.27):
     - Braintree
     - FittedSheets
     - InputMask
@@ -131,7 +131,7 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   Sentry: 8045e58d18a62583325aa4a661262fdea799abb1
-  Shopiroller: 71dd59fe569ae3838ce4a1fd92ab68032e6eb38e
+  Shopiroller: 3b01f203916f6c797d2a5e331a22e9ff60b0113e
   Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
   StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
   StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
