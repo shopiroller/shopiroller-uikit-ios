@@ -289,7 +289,9 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 setBankTransferUI()
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
-                self.delegate?.isEnabledNextButton(enabled: false)
+                if (viewModel.creditCardCvv != "" && viewModel.creditCardCvv != nil) {
+                    validateCreditCardFields()
+                }
                 if viewModel.getDefaultPaymentMethod() == .Online {
                     SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
                 } else {
@@ -385,7 +387,7 @@ extension CheckOutPaymentViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField == creditCartCvvTextField) {
+        if (viewModel.paymentType == .Online || viewModel.paymentType == .Online3DS) {
             validateCreditCardFields()
         }
     }
