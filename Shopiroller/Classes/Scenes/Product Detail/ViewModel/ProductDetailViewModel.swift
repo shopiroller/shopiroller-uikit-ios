@@ -216,6 +216,10 @@ public class ProductDetailViewModel: SRBaseViewModel {
         return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_not_found_product_title".localized, description: "e_commerce_product_detail_not_found_product_description".localized, firstButton: nil, secondButton: PopUpButtonModel(title: "e_commerce_general_ok_button_text".localized, type: .darkButton))
     }
     
+    func getVariantDoesNotExistPopUpViewModel() -> PopUpViewModel {
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_does_not_exist_variant_error".localized, description: "e_commerce_product_detail_does_not_exist_variant_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
+    }
+    
     func isStateSoldOut() -> Bool {
         return isPopUpState
     }
@@ -289,12 +293,8 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getImageIndexAtVariant(index: Int, variantGroupIndex: Int) -> Int {
-        var list = variantsList.map{ $0 }
-        for (_,element) in variantDataDictionary.enumerated() {
-            let variantId = getVariantIdFrom(variantName: element.key, variantValue: element.value)
-            list = list?.filter {($0.variantData?.contains(where: { $0.variationId == variantId }) ?? false)}
-        }
-        if let model = list?[0] {
+        if let list = getSelectedVariantList() , !(list.isEmpty) {
+            let model = list[0]
             productDetailModel = model
             productId = model.id
             let imageIndex = (getImageIndexOfVariant(variantModel: model))
@@ -305,6 +305,22 @@ public class ProductDetailViewModel: SRBaseViewModel {
             }
         }
         return tempImageIndex
+    }
+    
+    private func getSelectedVariantList() -> [ProductDetailResponseModel]? {
+        var list = variantsList.map{ $0 }
+        for (_,element) in variantDataDictionary.enumerated() {
+            let variantId = getVariantIdFrom(variantName: element.key, variantValue: element.value)
+            list = list?.filter {($0.variantData?.contains(where: { $0.variationId == variantId }) ?? false)}
+        }
+        return list
+    }
+    
+    func isVariantCanBeAdded() -> Bool {
+        if let list = getSelectedVariantList() , !(list).isEmpty {
+            return true
+        }
+        return false
     }
     
     func getVariantIdFrom(variantName: String, variantValue: String) -> String? {
