@@ -317,10 +317,14 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func isVariantCanBeAdded() -> Bool {
-        if let list = getSelectedVariantList() , !(list).isEmpty {
-            return true
+        if let variants = variantsList , !variants.isEmpty {
+            if let list = getSelectedVariantList() , !(list).isEmpty {
+                return true
+            } else {
+                return false
+            }
         }
-        return false
+        return true
     }
     
     func getVariantIdFrom(variantName: String, variantValue: String) -> String? {
