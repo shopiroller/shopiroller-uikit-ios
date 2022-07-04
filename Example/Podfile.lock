@@ -65,9 +65,9 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
-  - Sentry (7.16.0):
-    - Sentry/Core (= 7.16.0)
-  - Sentry/Core (7.16.0)
+  - Sentry (7.19.0):
+    - Sentry/Core (= 7.19.0)
+  - Sentry/Core (7.19.0)
   - Shopiroller (0.2.27):
     - Braintree
     - FittedSheets
@@ -79,20 +79,20 @@ PODS:
     - Sentry
     - Stripe
     - SVProgressHUD
-  - Stripe (22.4.0):
-    - Stripe/Stripe3DS2 (= 22.4.0)
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - Stripe/Stripe3DS2 (22.4.0):
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - StripeApplePay (22.4.0):
-    - StripeCore (= 22.4.0)
-  - StripeCore (22.4.0)
-  - StripeUICore (22.4.0):
-    - StripeCore (= 22.4.0)
+  - Stripe (22.5.1):
+    - Stripe/Stripe3DS2 (= 22.5.1)
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - Stripe/Stripe3DS2 (22.5.1):
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - StripeApplePay (22.5.1):
+    - StripeCore (= 22.5.1)
+  - StripeCore (22.5.1)
+  - StripeUICore (22.5.1):
+    - StripeCore (= 22.5.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -130,12 +130,12 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Sentry: 8045e58d18a62583325aa4a661262fdea799abb1
+  Sentry: d6b16e66a0ad0c39a0b76d9a1194e68e78c37ce6
   Shopiroller: 3b01f203916f6c797d2a5e331a22e9ff60b0113e
-  Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
-  StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
-  StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
-  StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
+  Stripe: 2b2decd03146e08a350960966d41f3028c2eac29
+  StripeApplePay: b14f06ac6fc24b56704c1e598149ed0cc45e166f
+  StripeCore: 4833738f2ca4336712f279f3c2867a0a7eb67c93
+  StripeUICore: 08c1efbd7e3c54ee7fa74334a37a1d4c08ba944d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
