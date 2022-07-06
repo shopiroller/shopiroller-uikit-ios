@@ -13,7 +13,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     private struct Constants {
         
         static var productsTitleIdentifier: String { return "products-identifier".localized }
-
+        
     }
     
     @IBOutlet private weak var emptyView: EmptyView!
@@ -48,7 +48,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ItemCollectionViewCell.self)
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
-
+        
         
         getSliders(showProgress: true)
         getCategories(showProgress: true)
@@ -81,7 +81,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
             rightBarButtonItems.append(optionsButton)
         }
-         
+        
         updateNavigationBar(rightBarButtonItems:  rightBarButtonItems, isBackButtonActive: false)
         cartButton.customView?.addSubview(badgeView)
     }
@@ -385,7 +385,7 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
             case .showcase:
                 return CGSize(width: (collectionView.frame.width), height: (collectionView.frame.height / 2)  * 125 / 170 )
             case .products:
-                return CGSize(width: ((collectionView.frame.width / 2) - 30), height: ((collectionView.frame.width / 2) - 10 ) * 204 / 195)
+                return CGSize(width: ((collectionView.frame.width / 2) - 30),  height: ((collectionView.frame.width / 2) - 10 ) * 224 / 145)
             }
         case shimmerCollectionView:
             return CGSize(width: (collectionView.frame.width / 2) - 10, height: ((collectionView.frame.width / 2) - 10 ) * 204 / 155)
@@ -396,9 +396,17 @@ extension SRMainPageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.productItemCount() - 2 {
-            getProducts(showProgress: true, isPagination: true)
+        if (collectionView == mainCollectionView) {
+            switch viewModel.getSectionAt(position: indexPath.section) {
+            case .products:
+                if indexPath.row == viewModel.productItemCount() - 2 {
+                    getProducts(showProgress: true, isPagination: true)
+                }
+            default:
+                break
+            }
         }
+        
     }
     
 }

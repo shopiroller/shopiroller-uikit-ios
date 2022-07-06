@@ -154,7 +154,6 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     }
     
     @objc func toolbarDoneButtonClicked() {
-        validateCreditCardFields()
         _ = textFieldShouldReturn(creditCartCvvTextField)
     }
     
@@ -289,7 +288,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
                 setBankTransferUI()
                 SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Transfer.rawValue
             case .Online3DS, .Online:
-                self.delegate?.isEnabledNextButton(enabled: false)
+                validateCreditCardFields(showAlert: false)
                 if viewModel.getDefaultPaymentMethod() == .Online {
                     SRSessionManager.shared.orderEvent.paymentType = PaymentTypeEnum.Online.rawValue
                 } else {
@@ -317,11 +316,11 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         popUp(listPopupViewController)
     }
     
-    private func validateCreditCardFields() {
+    private func validateCreditCardFields(showAlert: Bool) {
         viewModel.isValid(success: { [weak self] in
             self?.delegate?.isEnabledNextButton(enabled: true)
         }) { [weak self] (errorViewModel) in
-            if (errorViewModel.isValidationError) {
+            if (errorViewModel.isValidationError && showAlert) {
                 self?.showAlertError(viewModel: errorViewModel)
                 DispatchQueue.main.async {
                     self?.view.endEditing(true)
@@ -373,20 +372,16 @@ extension CheckOutPaymentViewController: UITextFieldDelegate {
         case creditCartExpireDateTextField:
             creditCartCvvTextField.becomeFirstResponder()
         case creditCartCvvTextField:
-            validateCreditCardFields()
+            validateCreditCardFields(showAlert: true)
         default:
             break
         }
         return true
     }
-
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-         return true;
-    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField == creditCartCvvTextField) {
-            validateCreditCardFields()
+        if (viewModel.paymentType == .Online || viewModel.paymentType == .Online3DS) {
+            validateCreditCardFields(showAlert: false)
         }
     }
 }
@@ -428,5 +423,3 @@ extension CheckOutPaymentViewController: BankTransferCellDelegate {
     }
     
 }
-    
-

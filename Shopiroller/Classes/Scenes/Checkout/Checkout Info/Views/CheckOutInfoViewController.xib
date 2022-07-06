@@ -51,10 +51,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Yc-c7-irg">
-                            <rect key="frame" x="0.0" y="10" width="414" height="688"/>
+                            <rect key="frame" x="0.0" y="10" width="414" height="663"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6af-lt-3Pq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="663"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G1f-dR-mh3">
                                             <rect key="frame" x="16" y="15" width="382" height="382"/>
@@ -461,17 +461,20 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYf-qf-rDK">
-                            <rect key="frame" x="0.0" y="698" width="414" height="120"/>
+                            <rect key="frame" x="0.0" y="673" width="414" height="145"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="57R-3i-H1Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZW-Zq-Er6" customClass="BottomPriceView" customModule="Shopiroller" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="80" id="xXC-C4-yJo"/>
+                                            </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsQ-Is-A11">
-                                            <rect key="frame" x="0.0" y="80" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="105" width="414" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxp-H1-bm2">
                                                     <rect key="frame" x="20" y="3" width="30" height="34"/>
@@ -514,13 +517,17 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lZW-Zq-Er6" firstAttribute="leading" secondItem="57R-3i-H1Q" secondAttribute="leading" id="0Vs-2o-wMF"/>
+                                        <constraint firstAttribute="trailing" secondItem="lZW-Zq-Er6" secondAttribute="trailing" id="Slp-do-rXQ"/>
+                                        <constraint firstItem="lZW-Zq-Er6" firstAttribute="top" secondItem="57R-3i-H1Q" secondAttribute="top" id="elK-yT-9kl"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="57R-3i-H1Q" firstAttribute="leading" secondItem="pYf-qf-rDK" secondAttribute="leading" id="5QP-vy-hjx"/>
                                 <constraint firstAttribute="trailing" secondItem="57R-3i-H1Q" secondAttribute="trailing" id="75h-d4-HX3"/>
-                                <constraint firstAttribute="height" constant="120" id="czJ-7l-oJV"/>
                                 <constraint firstItem="57R-3i-H1Q" firstAttribute="top" secondItem="pYf-qf-rDK" secondAttribute="top" id="xBb-4w-wrG"/>
                                 <constraint firstAttribute="bottom" secondItem="57R-3i-H1Q" secondAttribute="bottom" id="zYi-an-Iis"/>
                             </constraints>

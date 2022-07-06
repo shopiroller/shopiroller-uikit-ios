@@ -51,6 +51,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         static var maxQuantityDescription: String { return "e_commerce_product_detail_maximum_product_limit_description".localized }
         
+        static var pickerViewConfirmButton: String { return
+            "e_commerce_general_ok_button_text".localized }
+        
+        static var pickerViewCancelButton: String { return
+            "e_commerce_general_cancel_button_text".localized }
+        
     }
     
     
@@ -103,8 +109,14 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBOutlet private weak var quantityTextField: UITextField!
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var variantStackView: UIStackView!
+    
+    @IBOutlet private weak var backgroundView: UIView!
     
     private let badgeView  = SRBadgeButton()
+    
+    private var toolBar = UIToolbar()
+    private var pickerView  = UIPickerView()
     
     public init(viewModel: ProductDetailViewModel) {
         super.init(viewModel: viewModel, nibName: ProductDetailViewController.nibName, bundle: Bundle(for: ProductDetailViewController.self))
@@ -187,28 +199,38 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         let deliveryRecognizer = UITapGestureRecognizer(target: self, action: #selector(deliveryTermsContainerTapped(_:)))
         deliveryTermsContainer.addGestureRecognizer(deliveryRecognizer)
         
+        let pickerViewDismissTapGesture = UITapGestureRecognizer(target: self, action: #selector(pickerViewCancelButtonTapped))
+        self.view.addGestureRecognizer(pickerViewDismissTapGesture)
+        pickerViewDismissTapGesture.cancelsTouchesInView = false
+        pickerViewDismissTapGesture.delegate = self
+        
         collectionView.register(cellClass: ProductImageSliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
-                
-        getProductDetail()
-        
-        getPaymentSettings()
         
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-     
-        self.view.isHidden = true
+        
+    }
+    
+    public override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        getProductDetail()
+        
+        getPaymentSettings()
+        
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-//        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
-//        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
+        //        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
+        //        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [searchButton, cardButton], isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
     }
@@ -260,7 +282,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     @IBAction private func addToCardshowAnimation(_ sender: Any){
         addToCardButton.isUserInteractionEnabled = false
         if ShopirollerApp.shared.isUserLoggedIn() {
-            addProductToCart()
+            if (viewModel.isVariantCanBeAdded()) {
+                addProductToCart()
+            } else {
+                self.showPopUp(viewModel: self.viewModel.getVariantDoesNotExistPopUpViewModel())
+            }
         } else {
             ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
             addToCardButton.isUserInteractionEnabled = true
@@ -464,7 +490,107 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         setOutOfStockUI()
         setFreeShippingUI()
         setDiscountUI()
+        setVariantUI()
         
+    }
+    
+    private func setVariantUI() {
+        if(!viewModel.isVariantEmpty()) {
+            variantStackView.isHidden = false
+            let textFields = viewModel.getVariantFields()
+            for textField in textFields {
+                let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(variantButtonTapped(_:)))
+                textField.addGestureRecognizer(tapVariantButton)
+                variantStackView.addArrangedSubview(textField)
+            }
+        }
+    }
+    
+    @objc func variantButtonTapped(_ sender: UITapGestureRecognizer) {
+        guard let selectedIndex = sender.view?.tag else {
+            return
+        }
+        viewModel.setSelectedVariantTextFieldIndex(index: selectedIndex)
+        self.view.subviews.contains(pickerView) ? removePickerViewFromSuperView() : createPickerView()
+    }
+    
+    private func removePickerViewFromSuperView() {
+        pickerView.removeFromSuperview()
+        toolBar.removeFromSuperview()
+    }
+    
+    private func createPickerView() {
+        var items = [UIBarButtonItem]()
+        
+        let doneButton = UIBarButtonItem(title: Constants.pickerViewConfirmButton, style: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
+        doneButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        
+        let cancelButton = UIBarButtonItem(title: Constants.pickerViewCancelButton, style: .plain, target: self, action: #selector(pickerViewCancelButtonTapped))
+        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        
+        let toolbarTitle = UIBarButtonItem(title: viewModel.getPickerViewTitle(), style: .plain, target: self, action: nil)
+        toolbarTitle.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        items.append(cancelButton)
+        items.append(flexibleSpace)
+        items.append(toolbarTitle)
+        items.append(flexibleSpace)
+        items.append(doneButton)
+        
+        var pickerViewModel = viewModel.getPickerViewModel(items: items)
+
+        if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 5 ) {
+            pickerViewModel?.pickerViewHeight = (self.view.frame.height / 10 * 3).rounded(.toNearestOrEven)
+        }
+        
+        pickerView = initializePickerView(pickerViewHeight: pickerViewModel?.pickerViewHeight)
+        
+        toolBar = initializeToolbar(pickerViewModel: pickerViewModel)
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        self.view.addSubview(pickerView)
+        
+        self.view.addSubview(toolBar)
+        
+        pickerView.selectRow(viewModel.getSelectedVariantIndexForPickerView(), inComponent: 0, animated: true)
+        
+    }
+    
+    @objc func pickerViewDoneButtonTapped() {
+        
+        let pickerViewSelectedIndex = pickerView.selectedRow(inComponent: 0)
+        
+        viewModel.setSelectedVariantValue(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+        
+        for subview in variantStackView.subviews as [UIView] {
+            if let srTextField = subview as? SRTextField {
+                if srTextField.tag == viewModel.getSelectedVariantGroupIndex() {
+                    let selectedVariant = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+                    srTextField.getTextField().text = selectedVariant ?? ""
+                    viewModel.setSelectedVariantForPickerView(pickerViewIndex: pickerViewSelectedIndex)
+                }
+            }
+        }
+        
+        loadVariantImage(index: pickerViewSelectedIndex)
+        setOutOfStockUI()
+        setDiscountUI()
+        setFreeShippingUI()
+        removePickerViewFromSuperView()
+    }
+    
+    @objc func pickerViewCancelButtonTapped() {
+        removePickerViewFromSuperView()
+    }
+    
+    private func loadVariantImage(index: Int) {
+        let index = viewModel.getImageIndexAtVariant(index: index, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        pageControl.currentPage = index
     }
     
     private func setOutOfStockUI() {
@@ -551,6 +677,8 @@ extension ProductDetailViewController : PopUpViewViewControllerDelegate {
                 self.dismiss(animated: true, completion: nil)
             }
             popToRoot(animated: false, completion: nil)
+        } else {
+            self.addToCardButton.isUserInteractionEnabled = true
         }
     }
     
@@ -627,9 +755,42 @@ extension ProductDetailViewController: UITextFieldDelegate {
     }
 }
 
-extension ProductDetailViewController: SRFullScreenSlideshowDelegate {
+extension ProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     public func getCurrentIndex(index: Int) {
         collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
         pageControl.currentPage = index
     }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.getVariantListCountAt(index: viewModel.getSelectedVariantGroupIndex())
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let variants = viewModel.getVariantListAt(index: viewModel.getSelectedVariantGroupIndex()) else {
+            return ""
+        }
+        return variants[row].value
+    }
+    
+}
+
+
+extension ProductDetailViewController : UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let touchedView = touch.view {
+            if !((touchedView.isDescendant(of: pickerView)) || (touchedView.isDescendant(of: toolBar))) {
+                removePickerViewFromSuperView()
+            } else {
+                return false
+            }
+        }
+        return true
+    }
+    
 }

@@ -155,14 +155,16 @@ extension ProductListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == viewModel.getProductCount() - 2){
+        if (indexPath.row == viewModel.getProductCount() - 2) {
             getProducts(pagination: true)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row)))
-        prompt(vc, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            let vc = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: self.viewModel.getProductId(position: indexPath.row)))
+            self.prompt(vc, animated: true, completion: nil)
+        })
     }
     
 }

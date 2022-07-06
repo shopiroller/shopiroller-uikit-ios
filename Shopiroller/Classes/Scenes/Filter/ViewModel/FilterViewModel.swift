@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Accelerate
 
 class FilterViewModel: SRBaseViewModel {
     
@@ -17,6 +18,8 @@ class FilterViewModel: SRBaseViewModel {
     private var filterOptions: SRFilterOptionsResponseModel?
     private var filterListSelector: [FilterTableViewSelector] = []
     private var paymentSettings : PaymentSettingsResponeModel?
+    private var tempVariantQuery = ""
+    private var variantDataSelectedDictionary = [String : [String]]()
     
     var selectedIndexPath = IndexPath(row: 0, section: 0)
     var selectedModel: FilterModel
@@ -54,16 +57,15 @@ class FilterViewModel: SRBaseViewModel {
         if(!(filterOptions?.categories?.isEmpty ?? true)) {
             filterListSelector.append(.category)
         }
-        if((filterOptions?.brands?.isEmpty ?? true)) {
+        if(!(filterOptions?.brands?.isEmpty ?? true)) {
             filterListSelector.append(.brand)
         }
         
-        // MARK: VariationGroups removed in filter section until next phase
-        /*if let arr = filterOptions?.variationGroups?.enumerated() {
+        if let arr = filterOptions?.variationGroups?.enumerated() {
             for (index, _) in arr {
                 filterListSelector.append(.variationGroups(position: index))
             }
-        }*/
+        }
         
         filterListSelector.append(.priceRange)
         filterListSelector.append(.filterSwitch(type: .stockSwitch))
@@ -79,7 +81,7 @@ class FilterViewModel: SRBaseViewModel {
             return selectedModel.brandIds.selectionNameLabel
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position), let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) else {return String()}
-            return selectedModel.variationGroups[index].variationIds.selectionNameLabel
+            return selectedModel.variationGroups[index].variationIds.selectionNameLabel ?? ""
         default:
             return String()
         }
@@ -93,7 +95,7 @@ class FilterViewModel: SRBaseViewModel {
         return filterListSelector[position]
     }
     
-    func getVariationGroupsItem(position: Int) -> VariationGroupsItem? {
+    func getVariationGroupsItem(position: Int) -> VariationGroups? {
         return filterOptions?.variationGroups?[position]
     }
     
@@ -150,8 +152,11 @@ class FilterViewModel: SRBaseViewModel {
             return FilterChoiceViewModel(dataList: filterOptions?.brands ?? [], selectedIds: selectedModel.brandIds.selectedIds)
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return nil}
-            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                return FilterChoiceViewModel(dataList: variationGroup, selectedIds:  selectedModel.variationGroups[index].variationIds.selectedIds)
+            if selectedModel.variationGroups.count > 0 , selectedModel.variationGroups.contains(where: {$0.variationGroupsItemId == variationGroup.id ?? ""}) {
+                guard let index = selectedModel.variationGroups.firstIndex(where: { $0.variationGroupsItemId == variationGroup.id }) else { return nil }
+                let query = selectedModel.variationGroups[index].variationIds.selectedIds[0]
+                setVariantDataDictionary(query: query)
+                return FilterChoiceViewModel(dataList: variationGroup, selectedIds: variantDataSelectedDictionary[variationGroup.id ?? ""] ?? [String]())
             } else {
                 return FilterChoiceViewModel(dataList: variationGroup)
             }
@@ -168,14 +173,43 @@ class FilterViewModel: SRBaseViewModel {
             selectedModel.brandIds = selectedIds
         case .variationGroups(position: let position):
             guard let variationGroup = getVariationGroupsItem(position: position) else {return}
-            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id}) {
-                selectedModel.variationGroups[index].variationIds = selectedIds
+            var copyOfSelectedIds = selectedIds
+            var isFound = false
+            var variantQuery = ""
+            tempVariantQuery.append(";" + (variationGroup.id ?? "") + ":")
+            for id in copyOfSelectedIds.selectedIds {
+                tempVariantQuery.append((id ) + ",")
+                isFound = true
+            }
+            
+            if (isFound) {
+                tempVariantQuery.removeLast()
+                variantQuery.append(tempVariantQuery)
+            }
+            
+            if (variantQuery.length > 0) {
+                variantQuery.removeFirst()
+            }
+            copyOfSelectedIds.selectedIds.removeAll()
+            copyOfSelectedIds.selectedIds.append(variantQuery)
+            setVariantDataDictionary(query: variantQuery)
+            if let index = selectedModel.variationGroups.firstIndex(where: {$0.variationGroupsItemId == variationGroup.id ?? ""}) {
+                selectedModel.variationGroups.insert(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds), at: index)
             } else {
-                selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: selectedIds))
+                selectedModel.variationGroups.append(VariationIds(variationGroupsItemId: variationGroup.id, variationIds: copyOfSelectedIds))
             }
         default:
             break
         }
+    }
+    
+    private func setVariantDataDictionary(query: String) {
+        var variantDataSelectedDictionary = [String : [String]]()
+        let query = query.components(separatedBy: ";")
+        for i in 0..<query.count {
+            variantDataSelectedDictionary.updateValue(query[i].components(separatedBy: ":")[1].components(separatedBy: ","), forKey: query[i].components(separatedBy: ":")[0])
+        }
+        self.variantDataSelectedDictionary = variantDataSelectedDictionary
     }
     
     func getPaymentSettings(completion: @escaping (Result<Void, ErrorViewModel>) -> Void){

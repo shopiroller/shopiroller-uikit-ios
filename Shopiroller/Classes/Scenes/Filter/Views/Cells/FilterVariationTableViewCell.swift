@@ -18,7 +18,7 @@ class FilterVariationTableViewCell: UITableViewCell {
         selectionLabel.textColor = .textPCaption
     }
     
-    func setup(model: VariationGroupsItem, selectionLabel: String) {
+    func setup(model: VariationGroups, selectionLabel: String) {
         titleLabel.text = model.name
         setSelectionLabel(selectionLabel: selectionLabel)
     }
