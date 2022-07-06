@@ -79,20 +79,20 @@ PODS:
     - Sentry
     - Stripe
     - SVProgressHUD
-  - Stripe (22.5.1):
-    - Stripe/Stripe3DS2 (= 22.5.1)
-    - StripeApplePay (= 22.5.1)
-    - StripeCore (= 22.5.1)
-    - StripeUICore (= 22.5.1)
-  - Stripe/Stripe3DS2 (22.5.1):
-    - StripeApplePay (= 22.5.1)
-    - StripeCore (= 22.5.1)
-    - StripeUICore (= 22.5.1)
-  - StripeApplePay (22.5.1):
-    - StripeCore (= 22.5.1)
-  - StripeCore (22.5.1)
-  - StripeUICore (22.5.1):
-    - StripeCore (= 22.5.1)
+  - Stripe (22.6.0):
+    - Stripe/Stripe3DS2 (= 22.6.0)
+    - StripeApplePay (= 22.6.0)
+    - StripeCore (= 22.6.0)
+    - StripeUICore (= 22.6.0)
+  - Stripe/Stripe3DS2 (22.6.0):
+    - StripeApplePay (= 22.6.0)
+    - StripeCore (= 22.6.0)
+    - StripeUICore (= 22.6.0)
+  - StripeApplePay (22.6.0):
+    - StripeCore (= 22.6.0)
+  - StripeCore (22.6.0)
+  - StripeUICore (22.6.0):
+    - StripeCore (= 22.6.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -132,10 +132,10 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   Sentry: d6b16e66a0ad0c39a0b76d9a1194e68e78c37ce6
   Shopiroller: 3b01f203916f6c797d2a5e331a22e9ff60b0113e
-  Stripe: 2b2decd03146e08a350960966d41f3028c2eac29
-  StripeApplePay: b14f06ac6fc24b56704c1e598149ed0cc45e166f
-  StripeCore: 4833738f2ca4336712f279f3c2867a0a7eb67c93
-  StripeUICore: 08c1efbd7e3c54ee7fa74334a37a1d4c08ba944d
+  Stripe: 4dfbdf728f31b178f682bde8709336ec9a2c29e8
+  StripeApplePay: 5c1a8b4b017c48f824dfb27e6ea05a328d7c57c8
+  StripeCore: 9b44be7bcfe6905257f5094ab2d76fdf8adb5747
+  StripeUICore: b09d3bc4f00ebc3f3b415e429df3454a575a3a13
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
