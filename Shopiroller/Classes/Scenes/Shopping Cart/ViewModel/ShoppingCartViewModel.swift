@@ -13,6 +13,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     private var shoppingCart: SRShoppingCartResponseModel?
     var campaignMessage: String?
     var indexAtRow: Int?
+    private var discountCoupon: String?
     
     func getShoppingCart(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getShoppingCart(userId: SRAppContext.userId).response() {
@@ -132,7 +133,11 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getClearCartPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .clearCart, title: "e_commerce_shopping_cart_clear_cart_title".localized, description: "e_commerce_shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_dialog_negative_button".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "e_commerce_shopping_cart_clear_cart_button".localized, type: .lightButton))
+        return PopUpViewModel(image: .clearCart, title: "e_commerce_shopping_cart_clear_cart_title".localized, description: "e_commerce_shopping_cart_clear_cart_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_dialog_negative_button".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "e_commerce_shopping_cart_clear_cart_button".localized, type: .lightButton), type: .normalPopUp)
+    }
+    
+    func getCouponPopUpViewModel() -> PopUpViewModel {
+        return PopUpViewModel(image: .couponPopUpIcon, title: "e_commerce_shopping_cart_coupon_dialog_title".localized, firstButton: PopUpButtonModel(title: "e_commerce_dialog_negative_button".localized, type: .clearButton), secondButton: PopUpButtonModel(title: "e_commerce_shopping_cart_coupon_apply_discount".localized, type: .lightButton), type: .inputPopUp, inputString: getDiscountCoupon())
     }
     
     func hasInvalidItems() -> Bool {
@@ -141,6 +146,14 @@ class ShoppingCartViewModel: SRBaseViewModel {
     
     func geShoppingCartPopUpViewModel() -> ShoppingCartPopUpViewModel {
         return ShoppingCartPopUpViewModel(productList: shoppingCart?.invalidItems)
+    }
+    
+    func setDiscountCoupon(coupon: String?) {
+        discountCoupon = coupon
+    }
+    
+    func getDiscountCoupon() -> String? {
+        return discountCoupon
     }
     
     

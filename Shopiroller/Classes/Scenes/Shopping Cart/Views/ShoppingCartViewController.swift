@@ -88,6 +88,8 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             }
             
             tableView.register(cellClass: ShoppingCartTableViewCell.self)
+            tableView.register(cellClass: ShoppingCartTableViewCouponCell.self)
+            viewModel.setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
             tableView.delegate = self
             tableView.dataSource = self
             tableView.reloadData()
@@ -173,16 +175,40 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
 
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.shoppingItemCount()
+        if (section == 0) {
+            return viewModel.shoppingItemCount()
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
-        guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
-        cell.setup(model: model, self,index: indexPath.row,isLast: self.viewModel.shoppingItemCount() - 1 == indexPath.row)
-        return cell
+        if (indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
+            guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
+            cell.setup(model: model, self,index: indexPath.row,isLast: false)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCouponCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCouponCell
+            cell.setup(buttonText: viewModel.getDiscountCoupon())
+            return cell
+        }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 1) {
+            let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())
+            vc.delegate = self
+            popUp(vc, completion: nil)
+            print(indexPath)
+        }
+    }
+    
 }
 
 extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, ShoppingCartPopUpViewControllerDelegate {
@@ -208,7 +234,14 @@ extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {}
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
-        clearShoppingCart()
+        if let popUpType = popUpViewController.viewModel.getType() {
+            switch popUpType {
+            case .inputPopUp:
+                viewModel.setDiscountCoupon(coupon: popUpViewController.viewModel.getInputString())
+                self.tableView.reloadData()
+            case .normalPopUp:
+                clearShoppingCart()
+            }
+        }
     }
-    
 }
