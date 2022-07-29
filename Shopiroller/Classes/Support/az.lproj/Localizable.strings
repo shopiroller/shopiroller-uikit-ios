@@ -229,6 +229,9 @@
 "e_commerce_dialog_delete_address_positive_button" = "Bəli, silin";
 "e_commerce_dialog_negative_button" = "Xeyr, indi deyil";
 "e_commerce_shopping_cart_taxes_included" = "Vergilər Daxildir";
+"e_commerce_shopping_cart_coupon_dialog_title" = "Endirim kodunuz";
+"e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "Endirim Kodu";
+"e_commerce_shopping_cart_coupon_apply_discount" = "Endirim tətbiq et";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Sıralama";

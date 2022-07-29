@@ -232,6 +232,9 @@
 "e_commerce_shopping_cart_taxes_included" = "Vergiler Dahildir";
 "e_commerce_dialog_delete_address_positive_button" = "Evet silinsin";
 "e_commerce_dialog_negative_button" = "Hayır, şimdi değil";
+"e_commerce_shopping_cart_coupon_dialog_title" = "İndirim kodunuz";
+"e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "İndirim Kodu";
+"e_commerce_shopping_cart_coupon_apply_discount" = "İndirimi Uygula";
 
 //MARK: - SORT PRODUCTS USAGE
 "e_commerce_search_list_order" = "Sırala";
