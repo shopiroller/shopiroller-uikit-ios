@@ -232,6 +232,9 @@
 "e_commerce_shopping_cart_coupon_dialog_title" = "Your discount code";
 "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "Discount Code";
 "e_commerce_shopping_cart_coupon_apply_discount" = "Apply Discount";
+"e_commerce_shopping_cart_coupon_remove_discount" = "Clear Coupon";
+"e_commerce_shopping_cart_coupon_not_found_message" = "Coupon not found for the information you entered";
+"e_commerce_shopping_cart_bottom_view_coupon_discount" = "Discount: -";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Order";

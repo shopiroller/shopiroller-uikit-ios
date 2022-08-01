@@ -232,6 +232,9 @@
 "e_commerce_shopping_cart_coupon_dialog_title" = "Endirim kodunuz";
 "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "Endirim Kodu";
 "e_commerce_shopping_cart_coupon_apply_discount" = "Endirim tətbiq et";
+"e_commerce_shopping_cart_coupon_remove_discount" = "Kuponu sil";
+"e_commerce_shopping_cart_coupon_not_found_message" = "Daxil etdiyiniz məlumat üçün kupon tapılmadı";
+"e_commerce_shopping_cart_bottom_view_coupon_discount" = "Endirim: -";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Sıralama";

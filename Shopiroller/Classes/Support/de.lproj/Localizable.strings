@@ -232,6 +232,9 @@
 "e_commerce_shopping_cart_coupon_dialog_title" = "Ihr Rabattcode";
 "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "Rabattcode";
 "e_commerce_shopping_cart_coupon_apply_discount" = "Rabatt anwenden";
+"e_commerce_shopping_cart_coupon_remove_discount" = "Gutschein löschen";
+"e_commerce_shopping_cart_coupon_not_found_message" = "Gutschein für die eingegebenen Informationen nicht gefunden";
+"e_commerce_shopping_cart_bottom_view_coupon_discount" = "Rabatt: -";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Sortieren";

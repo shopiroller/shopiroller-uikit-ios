@@ -235,6 +235,9 @@
 "e_commerce_shopping_cart_coupon_dialog_title" = "İndirim kodunuz";
 "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "İndirim Kodu";
 "e_commerce_shopping_cart_coupon_apply_discount" = "İndirimi Uygula";
+"e_commerce_shopping_cart_coupon_remove_discount" = "Kuponu Temizle";
+"e_commerce_shopping_cart_coupon_not_found_message" = "Girdiğiniz bilgilere ait kupon bulunamadı";
+"e_commerce_shopping_cart_bottom_view_coupon_discount" = "İndirim: -";
 
 //MARK: - SORT PRODUCTS USAGE
 "e_commerce_search_list_order" = "Sırala";

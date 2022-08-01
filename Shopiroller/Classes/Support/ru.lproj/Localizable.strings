@@ -232,6 +232,9 @@
 "e_commerce_shopping_cart_coupon_dialog_title" = "Ваш код скидки";
 "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder" = "Код скидки";
 "e_commerce_shopping_cart_coupon_apply_discount" = "Применить скидку";
+"e_commerce_shopping_cart_coupon_remove_discount" = "Очистить купон";
+"e_commerce_shopping_cart_coupon_not_found_message" = "Купон не найден для введенной вами информации";
+"e_commerce_shopping_cart_bottom_view_coupon_discount" = "Скидка: -";
 
 /*MARK: - SORT PRODUCTS USAGE*/
 "e_commerce_search_list_order" = "Сортировать";
