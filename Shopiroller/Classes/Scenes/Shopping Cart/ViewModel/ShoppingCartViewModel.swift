@@ -21,6 +21,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
             switch result {
             case .success(let result):
                 self.shoppingCart = result.data
+                self.checkDiscount()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -29,6 +30,14 @@ class ShoppingCartViewModel: SRBaseViewModel {
                     error?(ErrorViewModel(error: err))
                 }
             }
+        }
+    }
+    
+    func checkDiscount() {
+        if (hasDiscount()) {
+            setDiscountCoupon(coupon: shoppingCart?.couponName)
+        } else {
+            setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
         }
     }
     
@@ -109,7 +118,7 @@ class ShoppingCartViewModel: SRBaseViewModel {
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: shoppingCart?.subTotalPrice, shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .shoppingCart)
+        return BottomPriceModel(subTotalPrice: shoppingCart?.subTotalPrice, shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .shoppingCart,discountPrice: shoppingCart?.couponPrice)
     }
 
     func hasCampaign() -> Bool {
@@ -156,5 +165,42 @@ class ShoppingCartViewModel: SRBaseViewModel {
         return discountCoupon
     }
     
+    func insertCoupon(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.insertCoupon(userId: SRAppContext.userId, couponName: discountCoupon ?? "").response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                self.shoppingCart = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func removeCoupon(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.removeCoupon(userId: SRAppContext.userId, couponName: discountCoupon ?? "").response() {
+            (result) in
+            switch result {
+            case .success(let response):
+                self.shoppingCart = response.data
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    private func hasDiscount() -> Bool {
+        return (shoppingCart?.couponId != "" && shoppingCart?.couponPrice != 0.0)
+    }
     
 }

@@ -11,55 +11,67 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="KGk-i7-Jjw" customClass="ShoppingCartTableViewCouponCell" customModule="Shopiroller" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="KGk-i7-Jjw" customClass="ShoppingCartTableViewCouponCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h4v-wA-ulX">
-                        <rect key="frame" x="0.0" y="10" width="320" height="97"/>
+                        <rect key="frame" x="0.0" y="5" width="320" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-rx-tcH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-aJ-pA6">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-aJ-pA6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="15" maxY="0.0"/>
                                         <state key="normal" title="İndirim Kuponu">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <imageReference key="image" image="couponIcon" symbolScale="large" renderingMode="template"/>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="İndirim Kuponu" imagePadding="15">
-                                            <imageReference key="image" image="couponIcon" symbolScale="large" renderingMode="template"/>
-                                            <color key="baseForegroundColor" systemColor="labelColor"/>
-                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="couponButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vIo-FU-BUo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-M4-yeR">
+                                        <rect key="frame" x="264" y="10" width="46" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="removeButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nya-bA-2VK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <constraints>
                                     <constraint firstItem="JW5-aJ-pA6" firstAttribute="leading" secondItem="v2x-rx-tcH" secondAttribute="leading" id="0JJ-px-ZLh"/>
                                     <constraint firstAttribute="trailing" secondItem="JW5-aJ-pA6" secondAttribute="trailing" id="2cp-Lz-JOo"/>
+                                    <constraint firstItem="TBZ-M4-yeR" firstAttribute="centerY" secondItem="v2x-rx-tcH" secondAttribute="centerY" id="4QQ-Gc-UPT"/>
+                                    <constraint firstItem="JW5-aJ-pA6" firstAttribute="centerY" secondItem="v2x-rx-tcH" secondAttribute="centerY" id="T1t-X7-1Y5"/>
                                     <constraint firstItem="JW5-aJ-pA6" firstAttribute="top" secondItem="v2x-rx-tcH" secondAttribute="top" id="UWm-do-3yz"/>
-                                    <constraint firstAttribute="bottom" secondItem="JW5-aJ-pA6" secondAttribute="bottom" id="VYl-rw-pwk"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="iAZ-JI-wuG"/>
+                                    <constraint firstAttribute="trailing" secondItem="TBZ-M4-yeR" secondAttribute="trailing" constant="10" id="i4l-yD-EeP"/>
+                                    <constraint firstAttribute="height" constant="50" id="k8C-10-saV"/>
+                                    <constraint firstItem="JW5-aJ-pA6" firstAttribute="centerX" secondItem="v2x-rx-tcH" secondAttribute="centerX" id="yBg-5q-Pbz"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="v2x-rx-tcH" firstAttribute="leading" secondItem="h4v-wA-ulX" secondAttribute="leading" id="5Ry-ou-l4x"/>
-                            <constraint firstAttribute="bottom" secondItem="v2x-rx-tcH" secondAttribute="bottom" id="Is8-cC-STL"/>
                             <constraint firstItem="v2x-rx-tcH" firstAttribute="top" secondItem="h4v-wA-ulX" secondAttribute="top" id="QMo-tQ-Ray"/>
+                            <constraint firstAttribute="bottom" secondItem="v2x-rx-tcH" secondAttribute="bottom" id="YaG-jI-VyB"/>
                             <constraint firstAttribute="trailing" secondItem="v2x-rx-tcH" secondAttribute="trailing" id="eRH-13-DZ4"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="h4v-wA-ulX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Agb-7I-JWB"/>
+                    <constraint firstItem="h4v-wA-ulX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Agb-7I-JWB"/>
                     <constraint firstItem="h4v-wA-ulX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KGG-1g-wVx"/>
                     <constraint firstAttribute="bottom" secondItem="h4v-wA-ulX" secondAttribute="bottom" id="R8l-sT-5eA"/>
                     <constraint firstAttribute="trailing" secondItem="h4v-wA-ulX" secondAttribute="trailing" id="Roz-cc-hS4"/>
@@ -69,8 +81,9 @@
             <connections>
                 <outlet property="couponButton" destination="JW5-aJ-pA6" id="qHZ-bz-vBd"/>
                 <outlet property="couponButtonBackgroundView" destination="v2x-rx-tcH" id="KM4-NE-vmc"/>
+                <outlet property="couponRemoveButton" destination="TBZ-M4-yeR" id="jph-ZM-7hg"/>
             </connections>
-            <point key="canvasLocation" x="144.92753623188406" y="161.04910714285714"/>
+            <point key="canvasLocation" x="145" y="115"/>
         </tableViewCell>
     </objects>
     <resources>

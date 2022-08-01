@@ -17,6 +17,7 @@ struct ShoppingCartItem: Codable {
     var isValid: Bool?
     var createdDate: String?
     var updatedDate: String?
+    var videos: [String]?
     var messages: [ShoppingCartMessage]? = []
     
     enum CodingKeys: String,CodingKey {
@@ -29,5 +30,6 @@ struct ShoppingCartItem: Codable {
         case createdDate = "createDate"
         case updatedDate = "updateDate"
         case messages = "messages"
+        case videos = "videos"
     }
 }

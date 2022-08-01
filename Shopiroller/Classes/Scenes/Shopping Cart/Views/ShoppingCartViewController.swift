@@ -80,7 +80,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             bottomPriceView.setup(model: viewModel.getBottomPriceModel())
             itemCountLabel.text = viewModel.getItemCountText()
             
-            if(viewModel.hasCampaign()){
+            if(viewModel.hasCampaign()) {
                 campaignView.isHidden = false
                 campaignLabel.text = viewModel.campaignMessage
             } else {
@@ -89,11 +89,9 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             
             tableView.register(cellClass: ShoppingCartTableViewCell.self)
             tableView.register(cellClass: ShoppingCartTableViewCouponCell.self)
-            viewModel.setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
             tableView.delegate = self
             tableView.dataSource = self
             tableView.reloadData()
-            
             showIfHasInvalidItem()
         }
     }
@@ -171,6 +169,35 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         hideNavigationBar(false)
     }
     
+    private func updateBottomView() {
+        viewModel.checkDiscount()
+        bottomPriceView.setup(model: viewModel.getBottomPriceModel())
+        self.bottomPriceView.layoutIfNeeded()
+    }
+    
+    private func removeCoupon() {
+        viewModel.removeCoupon(success: {
+            self.tableView.reloadData()
+            self.updateBottomView()
+        }) { (errorViewModel) in
+            self.showAlertError(viewModel: errorViewModel)
+        }
+    }
+    
+    private func applyCoupon() {
+        viewModel.insertCoupon(success: {
+            self.tableView.reloadData()
+            self.updateBottomView()
+        }) { (errorViewModel) in
+            self.viewModel.setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
+            if (errorViewModel.key == SRAppConstants.ShoppingCart.couponNotFound) {
+                self.view.makeToast("e_commerce_shopping_cart_coupon_not_found_message".localized)
+            } else {
+                self.showAlertError(viewModel: errorViewModel)
+            }
+        }
+    }
+    
 }
 
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
@@ -195,17 +222,8 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCouponCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCouponCell
-            cell.setup(buttonText: viewModel.getDiscountCoupon())
+            cell.setup(buttonText: viewModel.getDiscountCoupon(), delegate: self)
             return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 1) {
-            let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())
-            vc.delegate = self
-            popUp(vc, completion: nil)
-            print(indexPath)
         }
     }
     
@@ -237,11 +255,25 @@ extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
         if let popUpType = popUpViewController.viewModel.getType() {
             switch popUpType {
             case .inputPopUp:
-                viewModel.setDiscountCoupon(coupon: popUpViewController.viewModel.getInputString())
-                self.tableView.reloadData()
+                self.viewModel.setDiscountCoupon(coupon: popUpViewController.viewModel.getInputString())
+                self.applyCoupon()
             case .normalPopUp:
                 clearShoppingCart()
             }
         }
     }
+}
+
+extension ShoppingCartViewController : ShoppingCartTableViewCouponCellDelegate {
+    
+    func couponButtonTapped() {
+        let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())
+        vc.delegate = self
+        popUp(vc, completion: nil)
+    }
+    
+   func removeButtonTapped() {
+       self.removeCoupon()
+    }
+    
 }
