@@ -40,11 +40,11 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     
     func getCardDescription() -> String {
         return String(format: "e_commerce_order_summary_cart_description".localized, String(shoppingCart?.items?.count ?? 0) as CVarArg ,
-        String.NEW_LINE, String(ECommerceUtil.getFormattedPrice(price: shoppingCart?.totalPrice, currency: shoppingCart?.currency)))
+        String.NEW_LINE, String(ECommerceUtil.getFormattedPrice(price: shoppingCart?.subTotalPrice, currency: shoppingCart?.currency)))
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: (shoppingCart?.totalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0), shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .normal,discountPrice: 0.0)
+        return BottomPriceModel(subTotalPrice: (shoppingCart?.subTotalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0), shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .normal,discountPrice: shoppingCart?.couponPrice)
     }
     
     func getTrasnferToBankDescriptonText() -> String {
