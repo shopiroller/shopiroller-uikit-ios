@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import LinkPresentation
+import AVKit
 
 private var lastContentOffset: CGFloat = 0
 
@@ -56,13 +57,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         static var pickerViewCancelButton: String { return
             "e_commerce_general_cancel_button_text".localized }
-        
     }
     
     
     @IBOutlet private weak var topViewGradient: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var playVideoButton: UIButton!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var pageControlContainer: UIView!
     
@@ -213,24 +214,19 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
         
+        playVideoButton.isHidden = !viewModel.hasVideo()
     }
     
     public override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         getProductDetail()
-        
         getPaymentSettings()
-        
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-        //        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
-        //        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [searchButton, cardButton], isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
     }
@@ -277,6 +273,17 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @objc func updateBadgeCount() {
         badgeView.badgeCount = SRAppContext.shoppingCartCount
+    }
+    
+    @IBAction func playVideoTapped(_ sender: Any) {
+        if let url = viewModel.getVideoUrl() {
+            let player = AVPlayer(url: url)
+            let controller = AVPlayerViewController()
+            controller.player = player
+            present(controller, animated: true) {
+                player.play()
+            }
+        }
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){

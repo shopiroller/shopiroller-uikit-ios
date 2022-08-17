@@ -26,6 +26,7 @@ struct ProductDetailResponseModel : Codable {
     var shippingPrice: Double?
     var currency: CurrencyEnum?
     var featuredImage: ProductImageModel?
+    var videos: [String]?
     
     enum CodingKeys: String,CodingKey {
         case description = "description"
@@ -45,5 +46,6 @@ struct ProductDetailResponseModel : Codable {
         case shippingPrice = "shippingPrice"
         case currency = "currency"
         case featuredImage = "featuredImage"
+        case videos = "videos"
     }
 }
