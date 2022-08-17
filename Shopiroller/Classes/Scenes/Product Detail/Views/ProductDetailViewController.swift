@@ -214,7 +214,8 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
         
-        playVideoButton.isHidden = !viewModel.hasVideo()
+        //TODO: change line
+        playVideoButton.isHidden = viewModel.hasVideo()
     }
     
     public override func viewDidLoad() {
@@ -313,7 +314,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             })
         }
     }
-    
     
     private func hideAddProductAnimation() {
         UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
