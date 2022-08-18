@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import MaterialComponents.MaterialButtons
 
 open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
@@ -22,6 +23,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var shimmerCollectionView: UICollectionView!
+    @IBOutlet weak var floatingButton: UIButton!
     
     private var refreshControl = UIRefreshControl()
     
@@ -217,7 +219,6 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
             [weak self] in
@@ -241,6 +242,14 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             }, completion: nil)
         }
     }
+    
+    @IBAction func floatingButtonTapped(_ sender: Any) {
+        let phoneNumber =  "+989160000000"
+        if let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)"), UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+        }
+    }
+    
 }
 
 extension SRMainPageViewController : ShowCaseCellDelegate {
