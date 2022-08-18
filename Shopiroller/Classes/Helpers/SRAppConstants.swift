@@ -26,6 +26,7 @@ public struct SRAppConstants {
             static let fontFamily = "font_family"
             static let userId = "userId"
             static let userEmail = "userEmail"
+            static let userFullname = "userFullname"
             static let aliasKey = "aliasKey"
             static let apiKey = "apiKey"
             static let baseUrl = "baseUrl"

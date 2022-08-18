@@ -55,7 +55,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
         }
     }
     
-    
     func getProductDetail(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
             (result) in
@@ -78,7 +77,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppContext.userId).response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title, userFullName: SRAppContext.userFullname, userEmail: SRAppContext.userEmail), userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case.success(let response):
