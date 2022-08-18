@@ -108,7 +108,6 @@ public class ShopirollerApp {
     
     public func setUserFullname(_ fullName: String) {
         SRAppContext.userFullname = fullName
-        setUserInfoToSentry()
     }
     
     public func setDevelopmentMode (_ developmentMode: Bool) {
