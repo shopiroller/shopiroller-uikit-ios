@@ -26,7 +26,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
     var quantityCount = 1
     private var selectedVariantGroupIndex = 0
     private var selectedVariantImageIndex = 0
-//    var productDetailImagesCount = 0
     
     private var tempImageIndex = 0
     private var isPopUpState: Bool = false
@@ -124,6 +123,19 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getBrandImage() -> String? {
         productDetailModel?.brand?.icon?.normal
+    }
+    
+    func hasVideo() -> Bool {
+        return !(productDetailModel?.videos?.isEmpty ?? true)
+    }
+    
+    func getVideoUrl() -> URL? {
+        //TODO: Remove the line
+        return URL(string: "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1")
+        if !(productDetailModel?.videos?.isEmpty ?? true), let urlString = productDetailModel?.videos?[0] {
+            return URL(string: urlString)
+        }
+        return nil
     }
     
     func isOutofStock() -> Bool {

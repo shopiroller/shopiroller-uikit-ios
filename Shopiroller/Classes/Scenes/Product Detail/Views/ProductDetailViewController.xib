@@ -29,6 +29,7 @@
                 <outlet property="minusImage" destination="gnm-5i-fdc" id="SuP-LC-G7v"/>
                 <outlet property="pageControl" destination="eOc-SW-Dfm" id="KPv-I9-xq9"/>
                 <outlet property="pageControlContainer" destination="l6D-XH-vmm" id="YGV-Js-VWg"/>
+                <outlet property="playVideoButton" destination="5LV-yT-Ta8" id="Zqk-N4-Oz5"/>
                 <outlet property="productBrandImage" destination="LZR-Oo-f4Q" id="F8f-za-Azc"/>
                 <outlet property="productNewPrice" destination="4sr-vb-SdR" id="UDT-9p-fGv"/>
                 <outlet property="productOldPrice" destination="cZk-Yq-xlN" id="mWR-U1-hzs"/>
@@ -84,6 +85,19 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                         </collectionView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-yT-Ta8">
+                                                            <rect key="frame" x="374" y="90" width="28" height="28"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="28" id="JuD-d4-BdY"/>
+                                                                <constraint firstAttribute="height" constant="28" id="ge1-7I-w2d"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" image="play.circle.fill" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="playVideoTapped:" destination="-1" eventType="touchUpInside" id="G6U-lP-lE6"/>
+                                                            </connections>
+                                                        </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-XH-vmm">
                                                             <rect key="frame" x="185.66666666666666" y="305" width="42.666666666666657" height="20"/>
                                                             <subviews>
@@ -106,6 +120,7 @@
                                                         <constraint firstItem="5mC-Ak-39y" firstAttribute="leading" secondItem="Ltr-vT-XYt" secondAttribute="leading" id="5Q2-Sl-NfM"/>
                                                         <constraint firstItem="5mC-Ak-39y" firstAttribute="top" secondItem="Ltr-vT-XYt" secondAttribute="top" id="MUC-KQ-jde"/>
                                                         <constraint firstItem="l6D-XH-vmm" firstAttribute="centerX" secondItem="Ltr-vT-XYt" secondAttribute="centerX" id="Pt9-3L-sHi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5LV-yT-Ta8" secondAttribute="trailing" constant="12" id="T9h-CO-RlZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="5mC-Ak-39y" secondAttribute="bottom" id="acV-sI-hKV"/>
                                                         <constraint firstAttribute="trailing" secondItem="5mC-Ak-39y" secondAttribute="trailing" id="ghs-1K-R08"/>
                                                         <constraint firstAttribute="bottom" secondItem="l6D-XH-vmm" secondAttribute="bottom" constant="15" id="vJ6-Yf-IHF"/>
@@ -642,6 +657,7 @@
                 <constraint firstItem="qAY-dd-ZXA" firstAttribute="leading" secondItem="0Ju-2C-EhQ" secondAttribute="leading" id="lDH-hk-AiG"/>
                 <constraint firstAttribute="trailing" secondItem="M3c-Ri-bGY" secondAttribute="trailing" id="ljh-Tg-IGp"/>
                 <constraint firstItem="Xz7-zK-shE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mOt-nZ-T5T"/>
+                <constraint firstItem="5LV-yT-Ta8" firstAttribute="top" secondItem="Xz7-zK-shE" secondAttribute="bottom" id="ptn-ny-SCy"/>
                 <constraint firstAttribute="bottom" secondItem="M3c-Ri-bGY" secondAttribute="bottom" id="qkG-Ju-ZIT"/>
             </constraints>
             <point key="canvasLocation" x="49.275362318840585" y="113.83928571428571"/>
@@ -650,6 +666,7 @@
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="minusBlack.png" width="22" height="22"/>
+        <image name="play.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plusBlack.png" width="22" height="22"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
