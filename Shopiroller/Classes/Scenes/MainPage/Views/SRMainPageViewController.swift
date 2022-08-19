@@ -7,14 +7,11 @@
 
 import UIKit
 import Kingfisher
-import MaterialComponents.MaterialButtons
 
 open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private struct Constants {
-        
         static var productsTitleIdentifier: String { return "products-identifier".localized }
-        
     }
     
     @IBOutlet private weak var emptyView: EmptyView!
@@ -23,7 +20,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var shimmerCollectionView: UICollectionView!
-    @IBOutlet weak var floatingButton: UIButton!
+    @IBOutlet private weak var floatingButton: UIButton!
     
     private var refreshControl = UIRefreshControl()
     
@@ -51,11 +48,11 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
         
-        
         getSliders(showProgress: true)
         getCategories(showProgress: true)
         getShowCase(showProgress: true)
         getProducts(showProgress: true, isPagination: false)
+        getClient()
         
         configureRefreshControl()
     }
@@ -119,6 +116,13 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             self.mainCollectionView.refreshControl?.endRefreshing()
             self.mainCollectionView.reloadData()
             self.configureEmptyView()
+        })
+    }
+    
+    private func getClient() {
+        viewModel.getClient(success: { [weak self] in
+            guard let self = self else { return }
+            self.floatingButton.isHidden = !self.viewModel.whatsAppMobileIsActive()
         })
     }
     
@@ -244,12 +248,10 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     }
     
     @IBAction func floatingButtonTapped(_ sender: Any) {
-        let phoneNumber =  "+989160000000"
-        if let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)"), UIApplication.shared.canOpenURL(appURL) {
+        if let number = viewModel.getWhatsAppNumber(), let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(number)"), UIApplication.shared.canOpenURL(appURL) {
             UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
     }
-    
 }
 
 extension SRMainPageViewController : ShowCaseCellDelegate {
