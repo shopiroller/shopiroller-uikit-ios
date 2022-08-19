@@ -214,8 +214,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
         
-        //TODO: change line
-        playVideoButton.isHidden = viewModel.hasVideo()
+        playVideoButton.isHidden = !viewModel.hasVideo()
     }
     
     public override func viewDidLoad() {

@@ -11,9 +11,7 @@ import Kingfisher
 open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private struct Constants {
-        
         static var productsTitleIdentifier: String { return "products-identifier".localized }
-        
     }
     
     @IBOutlet private weak var emptyView: EmptyView!
@@ -216,7 +214,6 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             emptyViewContainer.isHidden = true
         }
     }
-    
     
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
