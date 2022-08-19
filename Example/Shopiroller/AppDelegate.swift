@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         window?.makeKeyAndVisible()
         
         BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
-                
+        
         return true
     }
     

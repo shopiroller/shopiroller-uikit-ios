@@ -94,6 +94,15 @@ extension SRAppContext {
         }
     }
     
+    static var userFullname: String {
+        get {
+            return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.userFullname) as? String ?? ""
+            }
+        set {
+            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.userFullname)
+        }
+    }
+    
     
     static var searchHistory: [String] {
         get {
