@@ -38,6 +38,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.selectionStyle = .none
+        
         warningView.backgroundColor = .badgeWarningInfo
         warningView.layer.cornerRadius = 6
         warningLabel.textColor = .textSecondary

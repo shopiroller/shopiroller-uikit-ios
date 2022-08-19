@@ -51,10 +51,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Yc-c7-irg">
-                            <rect key="frame" x="0.0" y="10" width="414" height="663"/>
+                            <rect key="frame" x="0.0" y="10" width="414" height="683"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6af-lt-3Pq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="663"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="683"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G1f-dR-mh3">
                                             <rect key="frame" x="16" y="15" width="382" height="382"/>
@@ -461,33 +461,33 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYf-qf-rDK">
-                            <rect key="frame" x="0.0" y="673" width="414" height="145"/>
+                            <rect key="frame" x="0.0" y="693" width="414" height="125"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="57R-3i-H1Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZW-Zq-Er6" customClass="BottomPriceView" customModule="Shopiroller" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="xXC-C4-yJo"/>
+                                                <constraint firstAttribute="height" constant="70" id="xXC-C4-yJo"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsQ-Is-A11">
-                                            <rect key="frame" x="0.0" y="105" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="95" width="414" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxp-H1-bm2">
-                                                    <rect key="frame" x="20" y="3" width="30" height="34"/>
+                                                    <rect key="frame" x="20" y="-2" width="30" height="34"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="agreeTermsButtonTapped" destination="-1" eventType="touchUpInside" id="UQ0-be-ANX"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-JS-hLP">
-                                                    <rect key="frame" x="60" y="0.0" width="354" height="40"/>
+                                                    <rect key="frame" x="60" y="0.0" width="354" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYl-71-NJ3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -512,7 +512,7 @@
                                                 <constraint firstItem="9bE-JS-hLP" firstAttribute="leading" secondItem="Hxp-H1-bm2" secondAttribute="trailing" constant="10" id="RIw-cm-wsY"/>
                                                 <constraint firstItem="9bE-JS-hLP" firstAttribute="top" secondItem="vsQ-Is-A11" secondAttribute="top" id="ZJO-Vy-cxo"/>
                                                 <constraint firstItem="Hxp-H1-bm2" firstAttribute="leading" secondItem="vsQ-Is-A11" secondAttribute="leading" constant="20" id="eBz-eK-V72"/>
-                                                <constraint firstAttribute="height" constant="40" id="fww-vm-dgz"/>
+                                                <constraint firstAttribute="height" constant="30" id="fww-vm-dgz"/>
                                                 <constraint firstItem="Hxp-H1-bm2" firstAttribute="centerY" secondItem="vsQ-Is-A11" secondAttribute="centerY" id="z1S-Dk-FuQ"/>
                                             </constraints>
                                         </view>

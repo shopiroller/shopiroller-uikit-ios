@@ -25,6 +25,7 @@ class OrderDetailModel: Codable {
     var shippingTrackingCompany : String?
     var bankAccount: String?
     var paymentAccount: BankAccountModel?
+    var appliedCoupon: AppliedCouponModel?
     var shippingAddress: MakeOrderAddressModel?
     var billingAddress: MakeOrderAddressModel?
     var buyer: BuyerOrderModel?
@@ -48,6 +49,7 @@ class OrderDetailModel: Codable {
         case shippingAddress = "shippingAddress"
         case billingAddress = "billingAddress"
         case buyer = "buyer"
+        case appliedCoupon = "appliedCoupon"
     }
     
     func getFullName() -> String? {

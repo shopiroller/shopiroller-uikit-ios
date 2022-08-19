@@ -192,6 +192,16 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .post, path: .addresses , subpath: userId, resourceType: SRDefaultAddressModel.self, httpBody: address.data, shouldShowProgressHUD: true,ignoreBaseModel: true, isUser: true)
     }
     
+    static func insertCoupon(userId: String, couponName: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartCoupons.rawValue)\(couponName)"
+        return SRNetworkRequestManager(httpMethod: .post, path: .users, subpath: subpath , resourceType: SRShoppingCartResponseModel.self)
+    }
+    
+    static func removeCoupon(userId: String, couponName: String) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+        let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartCoupons.rawValue)\(couponName)"
+        return SRNetworkRequestManager(httpMethod: .delete, path: .users, subpath: subpath , resourceType: SRShoppingCartResponseModel.self)
+    }
+    
     
 }
 
