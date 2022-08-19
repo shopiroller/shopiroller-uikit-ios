@@ -25,6 +25,10 @@ extension UIImage {
     
     static let clearCart: UIImage = UIImage(named: "clearCart", in: .shopiroller, with: nil)!
     
+    static let couponIcon: UIImage = UIImage(named: "couponIcon", in: .shopiroller, with: nil)!
+    
+    static let couponPopUpIcon: UIImage = UIImage(named: "couponPopUpIcon", in: .shopiroller, with: nil)!
+    
     static let deliveryAddress: UIImage = UIImage(named: "deliveryAddress", in: .shopiroller, with: nil)!
     
     static let deliveryTerms: UIImage = UIImage(named: "deliveryTerms", in: .shopiroller, with: nil)!

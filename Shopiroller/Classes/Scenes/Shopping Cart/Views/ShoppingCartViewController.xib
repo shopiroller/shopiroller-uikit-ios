@@ -32,6 +32,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnm-Y0-Msj">
+                    <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-vH-C2R" userLabel="Container View">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
@@ -88,21 +92,21 @@
                             </subviews>
                         </stackView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-LT-85j">
-                            <rect key="frame" x="15" y="106" width="384" height="577"/>
+                            <rect key="frame" x="15" y="106" width="384" height="567"/>
                             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-OH-8i5" userLabel="Bottom View">
-                            <rect key="frame" x="0.0" y="683" width="414" height="135"/>
+                            <rect key="frame" x="0.0" y="673" width="414" height="145"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVx-Ry-Qbb" userLabel="bottomView" customClass="BottomPriceView" customModule="Shopiroller" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="80" id="Ief-TA-y4d"/>
+                                        <constraint firstAttribute="height" constant="90" id="Ief-TA-y4d"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6u-md-Q9h">
-                                    <rect key="frame" x="0.0" y="80" width="414" height="55"/>
+                                    <rect key="frame" x="0.0" y="90" width="414" height="55"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="55" id="QSh-5M-9nZ"/>
@@ -142,10 +146,6 @@
                         <constraint firstAttribute="trailing" secondItem="9eq-LT-85j" secondAttribute="trailing" constant="15" id="hMZ-4s-Nrf"/>
                         <constraint firstItem="Zoh-OH-8i5" firstAttribute="leading" secondItem="jcM-vH-C2R" secondAttribute="leading" id="s6V-zE-B6M"/>
                     </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnm-Y0-Msj">
-                    <rect key="frame" x="0.0" y="862" width="414" height="34"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

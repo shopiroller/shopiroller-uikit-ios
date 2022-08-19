@@ -20,6 +20,10 @@ class ErrorViewModel: Error {
         return error.localizedDescription
     }
     
+    var key: String {
+        return error.errorMessageKey
+    }
+    
     var isValidationError: Bool {
         return error.isValidationError
     }

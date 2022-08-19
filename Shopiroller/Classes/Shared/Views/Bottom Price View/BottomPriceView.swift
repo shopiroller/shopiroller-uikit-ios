@@ -15,6 +15,8 @@ class BottomPriceView: SRBaseView {
     @IBOutlet private weak var totalLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var taxesInfoLabel: UILabel!
+    @IBOutlet private weak var discountPriceContainer: UIView!
+    @IBOutlet private weak var discountPriceLabel: UILabel!
     
     func setup(model: BottomPriceModel) {
         super.setup()
@@ -29,6 +31,15 @@ class BottomPriceView: SRBaseView {
         taxesInfoLabel.font = .regular12
         priceLabel.textColor = .textPrimary
         priceLabel.font = .bold24
+        discountPriceLabel.textColor = .textSecondary
+        discountPriceLabel.font = .regular14
+        
+        if let discountPrice = model.discountPrice , discountPrice != 0.0 {
+            discountPriceContainer.isHidden = false
+            discountPriceLabel.text = "e_commerce_shopping_cart_bottom_view_coupon_discount".localized + ECommerceUtil.getFormattedPrice(price: model.discountPrice, currency: model.currency)
+        } else {
+            discountPriceContainer.isHidden = true
+        }
         
         taxesInfoLabel.isHidden = model.bottomPriceType == .normal
  
@@ -53,6 +64,7 @@ struct BottomPriceModel {
     let totalPrice: Double?
     let currency: String?
     let bottomPriceType: BottomPriceType?
+    let discountPrice: Double?
 }
 
 enum BottomPriceType {

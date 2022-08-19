@@ -104,6 +104,7 @@ public struct SRAppConstants {
         
         public static var badgeCount = "badgeCount"
         public static var shoppingCartMessageType = "Campaign"
+        public static var couponNotFound = "CouponNotFound"
     }
     
     struct History {
