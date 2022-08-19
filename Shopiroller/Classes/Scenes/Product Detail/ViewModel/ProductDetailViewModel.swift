@@ -129,8 +129,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVideoUrl() -> URL? {
-        //TODO: Remove the line
-        return URL(string: "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1")
         if !(productDetailModel?.videos?.isEmpty ?? true), let urlString = productDetailModel?.videos?[0] {
             return URL(string: urlString)
         }
