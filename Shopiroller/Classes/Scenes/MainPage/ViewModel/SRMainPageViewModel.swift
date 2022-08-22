@@ -107,7 +107,6 @@ open class SRMainPageViewModel: SRBaseViewModel {
                 }
             }
         }
-        
     }
     
     func getShowCase(showProgress: Bool?,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
