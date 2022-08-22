@@ -132,7 +132,9 @@ open class SRMainPageViewModel: SRBaseViewModel {
             (result) in
             switch result{
             case .success(let response):
-                self.clientModel = response.data
+                if let arr = response.data, !arr.isEmpty {
+                    self.clientModel = arr[0]
+                }
                 DispatchQueue.main.async {
                     success?()
                 }
