@@ -202,6 +202,7 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(httpMethod: .delete, path: .users, subpath: subpath , resourceType: SRShoppingCartResponseModel.self)
     }
     
-    
+    static func getClient() -> SRNetworkRequestManager<[ClientResponseModel]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .client, resourceType: [ClientResponseModel].self, shouldShowProgressHUD: false)
+    }
 }
-

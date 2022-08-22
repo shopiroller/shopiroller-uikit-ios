@@ -24,6 +24,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var showcaseModel: SRShowcaseResponseModel?
     private var categoriesModel: SRCategoryResponseModel?
     private var mainDisplayTypeList: [MainPageDisplayTypes] = []
+    private var clientModel: ClientResponseModel?
 
     private var currentPage: Int = 0
     
@@ -106,9 +107,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
                 }
             }
         }
-        
     }
-    
     
     func getShowCase(showProgress: Bool?,success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         
@@ -126,7 +125,33 @@ open class SRMainPageViewModel: SRBaseViewModel {
                 }
             }
         }
-        
+    }
+    
+    func getClient(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getClient().response() {
+            (result) in
+            switch result{
+            case .success(let response):
+                if let arr = response.data, !arr.isEmpty {
+                    self.clientModel = arr[0]
+                }
+                DispatchQueue.main.async {
+                    success?()
+                }
+            case.failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func whatsAppMobileIsActive() -> Bool {
+        return clientModel?.properties?.whatsAppMobileIsActive ?? false
+    }
+    
+    func getWhatsAppNumber() -> String? {
+        return clientModel?.properties?.accountNumber
     }
     
     func sliderItemCount() -> Int {
