@@ -213,14 +213,12 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-        
-        playVideoButton.isHidden = !viewModel.hasVideo()
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         getProductDetail()
-        getPaymentSettings()
+        viewModel.getProductTerms()
     }
     
     override func setupNavigationBar() {
@@ -241,7 +239,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getCount()
+        viewModel.getShoppingCartCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
         setTransparentNavigationBar()
     }
@@ -358,31 +356,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             self.setUI()
             self.view.isHidden = false
             self.collectionView.reloadData()
+            self.playVideoButton.isHidden = !self.viewModel.hasVideo()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
-        }
-    }
-    
-    
-    private func getPaymentSettings() {
-        viewModel.getProductTerms(success: {
-            [weak self] in
-            guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
-        }
-    }
-    
-    private func getCount() {
-        viewModel.getShoppingCartCount(success: {
-            [weak self] in
-            guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
         }
     }
     
