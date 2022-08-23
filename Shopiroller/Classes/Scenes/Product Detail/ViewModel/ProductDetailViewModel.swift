@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
-
 public class ProductDetailViewModel: SRBaseViewModel {
     
     private var productId: String?

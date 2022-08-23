@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -85,15 +86,17 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                         </collectionView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-yT-Ta8">
-                                                            <rect key="frame" x="374" y="90" width="28" height="28"/>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-yT-Ta8">
+                                                            <rect key="frame" x="368" y="90" width="28" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="JuD-d4-BdY"/>
                                                                 <constraint firstAttribute="height" constant="28" id="ge1-7I-w2d"/>
                                                             </constraints>
                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="play.circle.fill" catalog="system"/>
+                                                            <state key="normal">
+                                                                <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="playVideoTapped:" destination="-1" eventType="touchUpInside" id="G6U-lP-lE6"/>
                                                             </connections>
@@ -120,7 +123,7 @@
                                                         <constraint firstItem="5mC-Ak-39y" firstAttribute="leading" secondItem="Ltr-vT-XYt" secondAttribute="leading" id="5Q2-Sl-NfM"/>
                                                         <constraint firstItem="5mC-Ak-39y" firstAttribute="top" secondItem="Ltr-vT-XYt" secondAttribute="top" id="MUC-KQ-jde"/>
                                                         <constraint firstItem="l6D-XH-vmm" firstAttribute="centerX" secondItem="Ltr-vT-XYt" secondAttribute="centerX" id="Pt9-3L-sHi"/>
-                                                        <constraint firstAttribute="trailing" secondItem="5LV-yT-Ta8" secondAttribute="trailing" constant="12" id="T9h-CO-RlZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5LV-yT-Ta8" secondAttribute="trailing" constant="18" id="T9h-CO-RlZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="5mC-Ak-39y" secondAttribute="bottom" id="acV-sI-hKV"/>
                                                         <constraint firstAttribute="trailing" secondItem="5mC-Ak-39y" secondAttribute="trailing" id="ghs-1K-R08"/>
                                                         <constraint firstAttribute="bottom" secondItem="l6D-XH-vmm" secondAttribute="bottom" constant="15" id="vJ6-Yf-IHF"/>
