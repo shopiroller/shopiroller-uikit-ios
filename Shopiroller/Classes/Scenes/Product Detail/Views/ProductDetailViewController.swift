@@ -373,10 +373,10 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
-            if errorViewModel.message == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
+            if errorViewModel.key == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
                 self.addToCardButton.isUserInteractionEnabled = true
-            } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
+            } else if errorViewModel.key == SRAppConstants.URLResults.productMaxStockExceeded {
                 self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
             } else if self.viewModel.isUserFriendlyMessage() {
                 self.view.makeToast(errorViewModel.message)
