@@ -190,12 +190,18 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             self.updateBottomView()
         }) { (errorViewModel) in
             self.viewModel.setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
-            if (errorViewModel.key == SRAppConstants.ShoppingCart.couponNotFound) {
-                self.view.makeToast("e_commerce_shopping_cart_coupon_not_found_message".localized)
+            if errorViewModel.error.isUserFriendlyMessage == true {
+                self.showCouponErrorDialog(error: errorViewModel.message)
             } else {
                 self.showAlertError(viewModel: errorViewModel)
             }
         }
+    }
+    
+    private func showCouponErrorDialog(error: String) {
+        let popupVC = PopUpViewViewController(viewModel: PopUpViewModel(image: .outOfStock, title: "e_commerce_shopping_cart_coupon_dialog_title".localized, description: error , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil))
+        popupVC.delegate = self
+        popUp(popupVC, completion: nil)
     }
     
 }
