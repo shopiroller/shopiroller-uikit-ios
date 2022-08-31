@@ -256,7 +256,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
         navigationController!.navigationBar.backgroundColor = backgroundColor
         
-        
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.isTranslucent = false
@@ -275,11 +274,16 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @IBAction func playVideoTapped(_ sender: Any) {
         if let url = viewModel.getVideoUrl() {
-            let player = AVPlayer(url: url)
-            let controller = AVPlayerViewController()
-            controller.player = player
-            present(controller, animated: true) {
-                player.play()
+            if (AVAsset(url: url).isPlayable) {
+                let player = AVPlayer(url: url)
+                let controller = AVPlayerViewController()
+                controller.player = player
+                present(controller, animated: true) {
+                    player.play()
+                }
+            } else {
+                let webView = WebViewController(viewModel: WebViewViewModel(webViewUrl: viewModel.getVideoUrl()?.absoluteString, webViewHtml: nil))
+                present(webView, animated: true)
             }
         }
     }
