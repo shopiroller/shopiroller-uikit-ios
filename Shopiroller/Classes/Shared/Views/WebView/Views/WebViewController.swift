@@ -44,6 +44,11 @@ class WebViewController: BaseViewController<WebViewViewModel> {
         if let url = viewModel.webViewHtml {
             let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
             webView.loadHTMLString(headerString + url, baseURL: nil)
+        } else if let url = viewModel.webViewUrl {
+            webView.configuration.mediaTypesRequiringUserActionForPlayback = .all
+            webView.configuration.allowsInlineMediaPlayback = false
+            webView.allowsLinkPreview = true
+            webView.load(URLRequest(url: URL(string:url)!))
         }
     }
 
