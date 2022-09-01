@@ -22,6 +22,9 @@ class SRShoppingCartResponseModel: Codable {
     var shippingPrice: Double?
     var updatedDate: String?
     var createdDate: String?
+    var couponName: String?
+    var couponId: String?
+    var couponPrice: Double?
 
     enum CodingKeys: String,CodingKey {
         case userId = "userId"
@@ -36,5 +39,8 @@ class SRShoppingCartResponseModel: Codable {
         case shippingPrice = "shippingPrice"
         case updatedDate = "updateDate"
         case createdDate = "createDate"
+        case couponName = "couponName"
+        case couponId = "couponId"
+        case couponPrice = "couponPrice"
     }
 }

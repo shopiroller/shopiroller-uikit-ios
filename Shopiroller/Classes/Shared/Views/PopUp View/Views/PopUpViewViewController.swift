@@ -25,10 +25,10 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var firstButtonContainerView: UIView!
     @IBOutlet private weak var secondButtonContainerView: UIView!
-    @IBOutlet private weak var buttonContainer: UIView!
-    @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var popUpHeightContstraint: NSLayoutConstraint!
     @IBOutlet private weak var descriptionContainerView: UIView!
+    @IBOutlet private weak var inputContainerView: UIView!
+    @IBOutlet private weak var inputTextField: UITextField!
     
     var delegate: PopUpViewViewControllerDelegate?
     
@@ -38,6 +38,28 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     
     override func setup() {
         super.setup()
+        
+        switch viewModel.getType() {
+        case .normalPopUp:
+            descriptionContainerView.isHidden = false
+            inputContainerView.isHidden = true
+        case .inputPopUp:
+            descriptionContainerView.isHidden = true
+            inputContainerView.isHidden = false
+        case .none:
+            inputContainerView.isHidden = true
+        }
+        
+        
+        inputTextField.text = viewModel.getInputString()
+        inputTextField.textColor = .textSecondary30
+        inputTextField.font = .regular12
+        inputTextField.borderStyle = .none
+        inputTextField.delegate = self
+        inputTextField.backgroundColor = .buttonLight
+        inputTextField.layer.cornerRadius = 6
+        inputTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: inputTextField.frame.height))
+        inputTextField.leftViewMode = .always
         
         circleImageBackground.backgroundColor = .white
         circleImageBackground.layer.cornerRadius = circleImageBackground.frame.width / 2
@@ -84,18 +106,26 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             descriptionLabel.text = viewModel.getDescription()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
-                let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
-                self.popUpHeightContstraint.constant += difference
-                
-                if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
-                    self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
+        if (viewModel.getDescription() != nil && viewModel.getDescription() != "") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                if self.descriptionLabel.frame.size.height > self.descriptionContainerView.frame.size.height {
+                    let difference = self.descriptionLabel.frame.size.height - self.descriptionContainerView.frame.size.height
+                    self.popUpHeightContstraint.constant += difference
+                    
+                    if self.popUpHeightContstraint.constant > self.view.frame.height / 10 * 6 {
+                        self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 6
+                    }
+                    
+                } else if (self.descriptionLabel.numberOfLines <= 2 && self.descriptionLabel.text != "") {
+                    if (((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4.25) > self.popUpHeightContstraint.constant) {
+                        self.popUpHeightContstraint.constant = ((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4.25)
+                    }
                 }
-            } else if (self.descriptionLabel.numberOfLines <= 2 && self.descriptionLabel.text != "") {
-                self.popUpHeightContstraint.constant = ((self.descriptionContainerView.frame.size.height + self.descriptionLabel.frame.size.height) * 4.25)
             }
+        } else {
+            self.popUpHeightContstraint.constant = self.view.frame.height / 10 * 3.5
         }
+        
     }
     
     @IBAction private func firstButtonTapped(_ sender: Any) {
@@ -105,9 +135,28 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     }
     
     @IBAction func secondButtonTapped(_ sender: Any) {
+        self.viewModel.setInputString(input: self.inputTextField.text)
         dismiss(animated: false, completion: {
             self.delegate?.secondButtonClicked(sender, popUpViewController: self)
         })
     }
+}
+
+extension PopUpViewViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if inputTextField.textColor == UIColor.textSecondary30 {
+            inputTextField.textColor = UIColor.black
+            inputTextField.text = nil
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if inputTextField.text != "" && inputTextField.textColor == .black {
+            viewModel.setInputString(input: textField.text)
+        } else {
+            inputTextField.textColor = UIColor.lightGray
+            inputTextField.text = "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized
+        }
+    }
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import LinkPresentation
+import AVKit
 
 private var lastContentOffset: CGFloat = 0
 
@@ -56,13 +57,13 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         
         static var pickerViewCancelButton: String { return
             "e_commerce_general_cancel_button_text".localized }
-        
     }
     
     
     @IBOutlet private weak var topViewGradient: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var playVideoButton: UIButton!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var pageControlContainer: UIView!
     
@@ -212,25 +213,18 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
         quantityTextField.textColor = .textPrimary
-        
     }
     
     public override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         getProductDetail()
-        
-        getPaymentSettings()
-        
+        viewModel.getProductTerms()
     }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let cardButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon , .goToCard))
         let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
-        //        let shareButton = createNavigationItem(UIImage(systemName: "square.and.arrow.up"))
-        //        shareButton.addTarget(self, action: #selector(shareProduct), for: .touchUpInside)
         updateNavigationBar(rightBarButtonItems: [searchButton, cardButton], isBackButtonActive: true)
         cardButton.customView?.addSubview(badgeView)
     }
@@ -245,7 +239,7 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getCount()
+        viewModel.getShoppingCartCount()
         NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
         setTransparentNavigationBar()
     }
@@ -262,7 +256,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }
         navigationController!.navigationBar.backgroundColor = backgroundColor
         
-        
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.isTranslucent = false
@@ -277,6 +270,22 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
     
     @objc func updateBadgeCount() {
         badgeView.badgeCount = SRAppContext.shoppingCartCount
+    }
+    
+    @IBAction func playVideoTapped(_ sender: Any) {
+        if let url = viewModel.getVideoUrl() {
+            if (AVAsset(url: url).isPlayable) {
+                let player = AVPlayer(url: url)
+                let controller = AVPlayerViewController()
+                controller.player = player
+                present(controller, animated: true) {
+                    player.play()
+                }
+            } else {
+                let webView = WebViewController(viewModel: WebViewViewModel(webViewUrl: viewModel.getVideoUrl()?.absoluteString, webViewHtml: nil))
+                present(webView, animated: true)
+            }
+        }
     }
     
     @IBAction private func addToCardshowAnimation(_ sender: Any){
@@ -306,7 +315,6 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             })
         }
     }
-    
     
     private func hideAddProductAnimation() {
         UIView.animate(withDuration: 0.4, delay: 0.2, options: .curveEaseOut, animations: {
@@ -352,31 +360,11 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
             self.setUI()
             self.view.isHidden = false
             self.collectionView.reloadData()
+            self.playVideoButton.isHidden = !self.viewModel.hasVideo()
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
             self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
-        }
-    }
-    
-    
-    private func getPaymentSettings() {
-        viewModel.getProductTerms(success: {
-            [weak self] in
-            guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
-        }
-    }
-    
-    private func getCount() {
-        viewModel.getShoppingCartCount(success: {
-            [weak self] in
-            guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
         }
     }
     
@@ -389,10 +377,10 @@ public class ProductDetailViewController: BaseViewController<ProductDetailViewMo
         }) {
             [weak self] (errorViewModel) in
             guard let self = self else { return }
-            if errorViewModel.message == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
+            if errorViewModel.key == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
                 self.addToCardButton.isUserInteractionEnabled = true
-            } else if errorViewModel.message == SRAppConstants.URLResults.productMaxStockExceeded {
+            } else if errorViewModel.key == SRAppConstants.URLResults.productMaxStockExceeded {
                 self.showPopUp(viewModel: self.viewModel.getSoldOutPopUpViewModel())
             } else if self.viewModel.isUserFriendlyMessage() {
                 self.view.makeToast(errorViewModel.message)

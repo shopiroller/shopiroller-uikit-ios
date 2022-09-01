@@ -80,7 +80,7 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             bottomPriceView.setup(model: viewModel.getBottomPriceModel())
             itemCountLabel.text = viewModel.getItemCountText()
             
-            if(viewModel.hasCampaign()){
+            if(viewModel.hasCampaign()) {
                 campaignView.isHidden = false
                 campaignLabel.text = viewModel.campaignMessage
             } else {
@@ -88,10 +88,10 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
             }
             
             tableView.register(cellClass: ShoppingCartTableViewCell.self)
+            tableView.register(cellClass: ShoppingCartTableViewCouponCell.self)
             tableView.delegate = self
             tableView.dataSource = self
             tableView.reloadData()
-            
             showIfHasInvalidItem()
         }
     }
@@ -169,20 +169,70 @@ class ShoppingCartViewController: BaseViewController<ShoppingCartViewModel>, Emp
         hideNavigationBar(false)
     }
     
+    private func updateBottomView() {
+        viewModel.checkDiscount()
+        bottomPriceView.setup(model: viewModel.getBottomPriceModel())
+        self.bottomPriceView.layoutIfNeeded()
+    }
+    
+    private func removeCoupon() {
+        viewModel.removeCoupon(success: {
+            self.tableView.reloadData()
+            self.updateBottomView()
+        }) { (errorViewModel) in
+            self.showAlertError(viewModel: errorViewModel)
+        }
+    }
+    
+    private func applyCoupon() {
+        viewModel.insertCoupon(success: {
+            self.tableView.reloadData()
+            self.updateBottomView()
+        }) { (errorViewModel) in
+            self.viewModel.setDiscountCoupon(coupon: "e_commerce_shopping_cart_coupon_dialog_textfield_placeholder".localized)
+            if errorViewModel.error.isUserFriendlyMessage == true {
+                self.showCouponErrorDialog(error: errorViewModel.message)
+            } else {
+                self.showAlertError(viewModel: errorViewModel)
+            }
+        }
+    }
+    
+    private func showCouponErrorDialog(error: String) {
+        let popupVC = PopUpViewViewController(viewModel: PopUpViewModel(image: .outOfStock, title: "e_commerce_shopping_cart_coupon_dialog_title".localized, description: error , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil))
+        popupVC.delegate = self
+        popUp(popupVC, completion: nil)
+    }
+    
 }
 
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.shoppingItemCount()
+        if (section == 0) {
+            return viewModel.shoppingItemCount()
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
-        guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
-        cell.setup(model: model, self,index: indexPath.row,isLast: self.viewModel.shoppingItemCount() - 1 == indexPath.row)
-        return cell
+        if (indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCell
+            guard let model = viewModel.getShoppingCartItem(position: indexPath.row) else { return cell}
+            cell.setup(model: model, self,index: indexPath.row,isLast: false)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingCartTableViewCouponCell.reuseIdentifier, for: indexPath) as! ShoppingCartTableViewCouponCell
+            cell.setup(buttonText: viewModel.getDiscountCoupon(), delegate: self)
+            return cell
+        }
     }
+    
 }
 
 extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, ShoppingCartPopUpViewControllerDelegate {
@@ -202,13 +252,33 @@ extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate, Shoppin
     
 }
 
-
 extension ShoppingCartViewController: PopUpViewViewControllerDelegate {
     
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {}
     
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
-        clearShoppingCart()
+        if let popUpType = popUpViewController.viewModel.getType() {
+            switch popUpType {
+            case .inputPopUp:
+                self.viewModel.setDiscountCoupon(coupon: popUpViewController.viewModel.getInputString())
+                self.applyCoupon()
+            case .normalPopUp:
+                clearShoppingCart()
+            }
+        }
+    }
+}
+
+extension ShoppingCartViewController : ShoppingCartTableViewCouponCellDelegate {
+    
+    func couponButtonTapped() {
+        let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())
+        vc.delegate = self
+        popUp(vc, completion: nil)
+    }
+    
+   func removeButtonTapped() {
+       self.removeCoupon()
     }
     
 }

@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
-
 public class ProductDetailViewModel: SRBaseViewModel {
     
     private var productId: String?
@@ -26,7 +25,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
     var quantityCount = 1
     private var selectedVariantGroupIndex = 0
     private var selectedVariantImageIndex = 0
-//    var productDetailImagesCount = 0
     
     private var tempImageIndex = 0
     private var isPopUpState: Bool = false
@@ -55,7 +53,6 @@ public class ProductDetailViewModel: SRBaseViewModel {
         }
     }
     
-    
     func getProductDetail(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
             (result) in
@@ -78,7 +75,7 @@ public class ProductDetailViewModel: SRBaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title), userId: SRAppContext.userId).response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title, userFullName: SRAppContext.userFullname, userEmail: SRAppContext.userEmail), userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case.success(let response):
@@ -124,6 +121,17 @@ public class ProductDetailViewModel: SRBaseViewModel {
     
     func getBrandImage() -> String? {
         productDetailModel?.brand?.icon?.normal
+    }
+    
+    func hasVideo() -> Bool {
+        return !(productDetailModel?.videos?.isEmpty ?? true)
+    }
+    
+    func getVideoUrl() -> URL? {
+        if !(productDetailModel?.videos?.isEmpty ?? true), let urlString = productDetailModel?.videos?[0] {
+            return URL(string: urlString)
+        }
+        return nil
     }
     
     func isOutofStock() -> Bool {

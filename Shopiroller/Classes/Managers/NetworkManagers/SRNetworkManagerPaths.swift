@@ -21,6 +21,7 @@ enum SRNetworkManagerPaths: String {
     case shoppingCartValidate = "/shopping-cart/validate"
     case quantity = "/quantity/"
     case shoppingCartItems = "/shopping-cart/items/"
+    case shoppingCartCoupons = "/shopping-cart/coupons/"
     case getShoppingCartCount = "/shopping-cart/count"
     case failurePayment = "/orders/failurePayment"
     case completePayment = "/orders/completePayment"
@@ -40,6 +41,7 @@ enum SRNetworkManagerPaths: String {
     case shipping = "/shipping/"
     case billing = "/billing/"
     case paypalFailure = "/failure"
+    case client = "/client/"
     
     var name: String {
         switch self {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,7 @@
                 <outlet property="collectionViewContainer" destination="YA6-N1-PzX" id="Vzt-Ms-wAC"/>
                 <outlet property="emptyView" destination="3MC-Ei-C3U" id="Gvl-cd-KOw"/>
                 <outlet property="emptyViewContainer" destination="kQF-CQ-qcC" id="cCM-15-GMQ"/>
+                <outlet property="floatingButton" destination="cEF-uL-BiR" id="YA3-KO-8gy"/>
                 <outlet property="mainCollectionView" destination="4Pe-ee-Bh4" id="ORv-8z-qNU"/>
                 <outlet property="scrollView" destination="Q6P-aq-NCD" id="g11-ej-VBK"/>
                 <outlet property="shimmerCollectionView" destination="Y5i-3W-9Rg" id="5oS-Kr-JJW"/>
@@ -116,12 +117,21 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </scrollView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-uL-BiR">
+                            <rect key="frame" x="338" y="742" width="64" height="64"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="whatsappIcon"/>
+                            <connections>
+                                <action selector="floatingButtonTapped:" destination="-1" eventType="touchUpInside" id="lev-fQ-fFm"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Q6P-aq-NCD" secondAttribute="bottom" id="DTO-SZ-3cO"/>
                         <constraint firstItem="Q6P-aq-NCD" firstAttribute="top" secondItem="g3w-iE-vCN" secondAttribute="top" id="Yhm-Yq-Ndb"/>
                         <constraint firstAttribute="trailing" secondItem="Q6P-aq-NCD" secondAttribute="trailing" id="gvH-bc-YH5"/>
+                        <constraint firstAttribute="trailing" secondItem="cEF-uL-BiR" secondAttribute="trailing" constant="12" id="kvs-bc-402"/>
                         <constraint firstItem="Q6P-aq-NCD" firstAttribute="leading" secondItem="g3w-iE-vCN" secondAttribute="leading" id="v5W-Lk-9xQ"/>
                     </constraints>
                 </view>
@@ -130,6 +140,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" systemColor="secondarySystemFillColor"/>
             <constraints>
+                <constraint firstItem="cEF-uL-BiR" firstAttribute="bottom" secondItem="vIL-8n-vpy" secondAttribute="bottom" constant="-12" id="7vt-P8-Wq8"/>
                 <constraint firstAttribute="bottom" secondItem="g3w-iE-vCN" secondAttribute="bottom" id="9Bj-7O-ka1"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="top" secondItem="vIL-8n-vpy" secondAttribute="top" id="OSP-Gv-5B7"/>
                 <constraint firstItem="g3w-iE-vCN" firstAttribute="leading" secondItem="vIL-8n-vpy" secondAttribute="leading" id="PEt-YT-xva"/>
@@ -139,6 +150,7 @@
         </view>
     </objects>
     <resources>
+        <image name="whatsappIcon" width="64" height="64"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

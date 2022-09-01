@@ -14,17 +14,22 @@ public class PopUpViewModel {
     private let image: UIImage
     private let title: String
     private let description: String?
+    private let type: PopUpButtonType?
     private let htmlDescription: NSAttributedString?
     private let firstButton: PopUpButtonModel?
     private let secondButton: PopUpButtonModel?
+    private var inputString: String?
     
-    init(image: UIImage, title: String, description: String?, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil, htmlDescription: NSAttributedString? = nil ){
+    init(image: UIImage, title: String, description: String? = nil, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil, htmlDescription: NSAttributedString? = nil,
+         type: PopUpButtonType = .normalPopUp, inputString: String? = nil){
         self.image = image
         self.title = title
         self.firstButton = firstButton
         self.secondButton = secondButton
         self.description = description
         self.htmlDescription = htmlDescription
+        self.type = type
+        self.inputString = inputString
     }
     
     func getImage() -> UIImage {
@@ -67,9 +72,26 @@ public class PopUpViewModel {
         return htmlDescription
     }
     
+    func getType() -> PopUpButtonType? {
+        return type
+    }
+    
+    func getInputString() -> String? {
+        return inputString
+    }
+    
+    func setInputString(input: String?) {
+        self.inputString = input
+    }
+    
 }
 
 struct PopUpButtonModel {
     let title: String
     let type: SRButtonType
+}
+
+enum PopUpButtonType {
+    case normalPopUp
+    case inputPopUp
 }

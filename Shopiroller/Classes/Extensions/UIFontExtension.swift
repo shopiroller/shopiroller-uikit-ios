@@ -76,6 +76,8 @@ extension UIFont {
 }
 
 extension UIFont {
+    
+    static let regular8: UIFont = SRFont.regular.font(ofSize: 8.0)
         
     static let regular10: UIFont = SRFont.regular.font(ofSize: 10.0)
     

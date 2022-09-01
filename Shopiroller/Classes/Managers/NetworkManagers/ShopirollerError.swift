@@ -12,7 +12,7 @@ import Sentry
 public enum ShopirollerError: Error, Equatable {
     case network, url, parseObject, parseJSON, general, encode, createJSON, download, expiredToken, checkUidUserExists(userMessage: String)
     case validation(description: String)
-    case other(title: String?, description: String, isUserFriendlyMessage: Bool? = nil)
+    case other(title: String?, description: String, isUserFriendlyMessage: Bool? = nil,key: String? = nil)
     
     public var description: String {
         switch self {
@@ -32,7 +32,7 @@ public enum ShopirollerError: Error, Equatable {
             return NSLocalizedString("Oturum Süresi Dolmuştur.", comment: "auth_error")
         case .checkUidUserExists(let userMessage):
             return userMessage
-        case .other(_, let description, _):
+        case .other(_, let description, _ , _):
             return description
         case .validation(let description):
             return description
@@ -45,9 +45,18 @@ public enum ShopirollerError: Error, Equatable {
         return description
     }
     
+    public var errorMessageKey: String {
+        switch self {
+        case .other(_,_,_, let key):
+            return key ?? ""
+        default:
+            return ""
+        }
+    }
+    
     public var isUserFriendlyMessage: Bool? {
         switch self {
-        case .other(_,_,let isUserFriendlyMessage):
+        case .other(_,_,let isUserFriendlyMessage,_):
             return isUserFriendlyMessage
         default:
             return false
@@ -56,7 +65,7 @@ public enum ShopirollerError: Error, Equatable {
     
     public var title: String {
         switch self {
-        case .other(_,let title, _):
+        case .other(_,let title,_,_):
             return title ?? "generic-error-title"
         default:
             return "generic-error-title"
@@ -84,8 +93,8 @@ public enum ShopirollerError: Error, Equatable {
             (.expiredToken, .expiredToken):
             return true
             
-        case (.other(let leftTitle, let leftDescription , let leftIsUserFriendlyMessage), .other(let rightTitle, let rightDescription, let rightIsUserFriendlyMessage)):
-            return leftDescription == rightDescription && leftIsUserFriendlyMessage == rightIsUserFriendlyMessage && leftTitle == rightTitle
+        case (.other(let leftTitle, let leftDescription , let leftIsUserFriendlyMessage, let leftKey), .other(let rightTitle, let rightDescription, let rightIsUserFriendlyMessage,let rightKey)):
+            return leftDescription == rightDescription && leftIsUserFriendlyMessage == rightIsUserFriendlyMessage && leftTitle == rightTitle && leftKey == rightKey
         default:
             return false
         }

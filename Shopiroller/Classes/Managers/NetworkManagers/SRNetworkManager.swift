@@ -237,7 +237,11 @@ final public class SRNetworkManager {
                         
                         if let isUserFriendlyMessage = value.isUserFriendlyMessage {
                             if !isUserFriendlyMessage {
-                                resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: value.key ?? "")))
+                                if let key = value.key {
+                                    resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: value.message ?? "", isUserFriendlyMessage: value.isUserFriendlyMessage, key: key)))
+                                } else {
+                                    resourceResult(.failure(ShopirollerError.other(title: "e_commerce_general_error_title", description: value.message ?? "" , isUserFriendlyMessage: false, key: value.key ?? "")))
+                                }
                             } else if isUserFriendlyMessage {
                                 resourceResult(.failure(ShopirollerError.other(title: nil,description: value.message ?? "",isUserFriendlyMessage: true)))
                             }
@@ -311,6 +315,3 @@ final public class SRNetworkManager {
     }
     
 }
-
-
-

@@ -11,9 +11,7 @@ import Kingfisher
 open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private struct Constants {
-        
         static var productsTitleIdentifier: String { return "products-identifier".localized }
-        
     }
     
     @IBOutlet private weak var emptyView: EmptyView!
@@ -22,6 +20,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var shimmerCollectionView: UICollectionView!
+    @IBOutlet private weak var floatingButton: UIButton!
     
     private var refreshControl = UIRefreshControl()
     
@@ -49,11 +48,11 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         mainCollectionView.register(cellClass: ShowCaseCell.self)
         mainCollectionView.register(ProductsTitleView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: Constants.productsTitleIdentifier)
         
-        
         getSliders(showProgress: true)
         getCategories(showProgress: true)
         getShowCase(showProgress: true)
         getProducts(showProgress: true, isPagination: false)
+        getClient()
         
         configureRefreshControl()
     }
@@ -117,6 +116,13 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             self.mainCollectionView.refreshControl?.endRefreshing()
             self.mainCollectionView.reloadData()
             self.configureEmptyView()
+        })
+    }
+    
+    private func getClient() {
+        viewModel.getClient(success: { [weak self] in
+            guard let self = self else { return }
+            self.floatingButton.isHidden = !self.viewModel.whatsAppMobileIsActive()
         })
     }
     
@@ -217,7 +223,6 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         }
     }
     
-    
     private func getCount() {
         viewModel.getShoppingCartCount(success: {
             [weak self] in
@@ -239,6 +244,12 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
             }, completion: nil)
+        }
+    }
+    
+    @IBAction func floatingButtonTapped(_ sender: Any) {
+        if let number = viewModel.getWhatsAppNumber(), let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(number)"), UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
         }
     }
 }

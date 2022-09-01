@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,6 +19,8 @@
                 <outlet property="descriptionLabel" destination="nAH-Y4-QMN" id="zaY-vZ-Q5Q"/>
                 <outlet property="firstButton" destination="ZWK-tJ-yv0" id="fTh-e8-frw"/>
                 <outlet property="firstButtonContainerView" destination="Cw0-u9-CbS" id="Zji-g6-bgw"/>
+                <outlet property="inputContainerView" destination="9a4-41-yvs" id="jfm-Ht-XNP"/>
+                <outlet property="inputTextField" destination="ggc-Am-0hF" id="4HU-Ra-WCG"/>
                 <outlet property="popUpHeightContstraint" destination="x1w-oC-fN8" id="xG7-zE-Wzk"/>
                 <outlet property="secondButton" destination="5a1-IA-Nof" id="wqh-SO-qRj"/>
                 <outlet property="secondButtonContainerView" destination="Mui-rp-ujg" id="DAc-Kv-eUl"/>
@@ -132,6 +134,26 @@
                                         <constraint firstAttribute="bottom" secondItem="JON-Yy-2qB" secondAttribute="bottom" id="Kyy-d9-8kU"/>
                                         <constraint firstItem="JON-Yy-2qB" firstAttribute="top" secondItem="ELe-PF-KRx" secondAttribute="top" id="oSn-rx-bfO"/>
                                         <constraint firstItem="JON-Yy-2qB" firstAttribute="leading" secondItem="ELe-PF-KRx" secondAttribute="leading" id="xXn-6K-Adf"/>
+                                    </constraints>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-41-yvs">
+                                    <rect key="frame" x="0.0" y="30" width="352" height="40"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-Am-0hF">
+                                            <rect key="frame" x="20" y="0.0" width="312" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="WLL-gf-gbI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ggc-Am-0hF" secondAttribute="trailing" constant="20" id="Jrh-dg-lG0"/>
+                                        <constraint firstItem="ggc-Am-0hF" firstAttribute="leading" secondItem="9a4-41-yvs" secondAttribute="leading" constant="20" id="sqX-Sn-J8H"/>
+                                        <constraint firstAttribute="bottom" secondItem="ggc-Am-0hF" secondAttribute="bottom" id="xEu-8P-vkP"/>
+                                        <constraint firstItem="ggc-Am-0hF" firstAttribute="top" secondItem="9a4-41-yvs" secondAttribute="top" id="yEy-n9-pag"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIb-dv-WOD">
