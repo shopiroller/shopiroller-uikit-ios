@@ -14,6 +14,6 @@ struct ClientResponseModel: Codable {
 }
 
 struct Properties: Codable {
-    let accountNumber, apiKey: String?
+    let accountNumber, apiKey, countryPhoneCode: String?
     let eCommerceButton, isOnline, whatsAppMobileIsActive, whatsAppWebIsActive: Bool?
 }
