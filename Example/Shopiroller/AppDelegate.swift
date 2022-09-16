@@ -13,6 +13,8 @@ import Braintree
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     
+    private var shopirollerTheme: ShopirollerTheme = ShopirollerTheme()
+    
     func userLoginNeeded(navigationController: UINavigationController?) {
         
     }
@@ -23,28 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let coloredAppearance = UINavigationBarAppearance()
-        coloredAppearance.configureWithOpaqueBackground()
-        coloredAppearance.backgroundColor = .red //NavigationBar Background Color
-        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-                       
-        UINavigationBar.appearance().standardAppearance = coloredAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-        
-        var theme = ShopirollerTheme()
-        theme.navigationTitleTintColor = .white
-        theme.navigationBarTintColor = .red
-        theme.navigationIconsTintColor = .white
         
         let ecommerce = ShopirollerCredentials(aliasKey: "jR2dd6uwpbKTu1kVLIVM84pd7yw=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
         let appUser = ShopirollerAppUserCredentials(appKey: "LLOgsgUoR/Bm5TqLR6+oJaCaNrs=", apiKey: "tKcdWgA5O7H2L0UAK4lpDMqDedkMY6VC2Aafls3mval=", baseUrl: "mobiroller.api.applyze.com")
         
-        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme) //We should initialize SDK here with our ApiKey and AppKey 
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: getShopirollerTheme(navigationTitleColor: .white, navigationBartintColor: .red)) //We should initialize SDK here with our ApiKey and AppKey
         
         ShopirollerApp.shared.setUserId("62221ee8944dc204e5a4262f") //You need to change this variable with your User Id
-        ShopirollerApp.shared.setUserEmail("User E-mail") //You need to change this variable with your User Email
-        let languageCode = Locale.current.languageCode ?? "tr"
+        ShopirollerApp.shared.setUserEmail("sample@sample.com") //You need to change this variable with your User Email
+        let languageCode = Locale.current.languageCode ?? "en"
         ShopirollerApp.shared.setFallbackLanguage(languageCode)
         ShopirollerApp.shared.setHeaderAppLanguage(languageCode)
         ShopirollerApp.shared.setDevelopmentMode(false) //With this function you can access user's address or user's orders
@@ -57,9 +46,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         return true
     }
     
+    private func getShopirollerTheme(navigationTitleColor: UIColor,navigationBartintColor: UIColor) -> ShopirollerTheme {
+        
+        shopirollerTheme.navigationTitleTintColor = navigationTitleColor
+        shopirollerTheme.navigationBarTintColor = navigationBartintColor
+        shopirollerTheme.navigationIconsTintColor = navigationTitleColor
+        setNavigationBarAppearance()
+        return shopirollerTheme
+    }
+    
+    private func setNavigationBarAppearance() {
+        
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithOpaqueBackground()
+        coloredAppearance.backgroundColor = shopirollerTheme.navigationBarTintColor
+        coloredAppearance.titleTextAttributes = [.foregroundColor: shopirollerTheme.navigationTitleTintColor]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: shopirollerTheme.navigationBarTintColor]
+                       
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
+    }
+    
     private func createMainPage() {
         let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
-        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
