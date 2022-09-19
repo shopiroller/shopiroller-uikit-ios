@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     
     private var shopirollerTheme: ShopirollerTheme = ShopirollerTheme()
     
-    func userLoginNeeded(navigationController: UINavigationController?) {
-        
-    }
-    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
@@ -84,11 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     public func applicationWillTerminate(_ application: UIApplication) {
         SRAppConstants.ShoppingCart.badgeCount = "0"
     }
-
-    enum ConnectableUrls {
-        case prod
-        case stage
-        case dev
+    
+    func userLoginNeeded(navigationController: UINavigationController?) {
+        //Let's say you have a login page and in your flow the user needs to login to complete the flow, if user not logged in you can use this function to redirect the user to the login screen. An example usage is available in SRProductDetailViewController
+        /*
+         An Example code below how to open Login Page
+         let loginPageVC = LoginPageViewController(viewModel: LoginPageViewModel())
+         navigationController?.pushViewController(loginPageVC, animated: true)
+         */
     }
     
 }
