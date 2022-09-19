@@ -21,37 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        //Set Theme Colors
         
-        let ecommerce = ShopirollerCredentials(aliasKey: "jR2dd6uwpbKTu1kVLIVM84pd7yw=", apiKey: "xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=", baseUrl: "api.shopiroller.com")
-        let appUser = ShopirollerAppUserCredentials(appKey: "LLOgsgUoR/Bm5TqLR6+oJaCaNrs=", apiKey: "tKcdWgA5O7H2L0UAK4lpDMqDedkMY6VC2Aafls3mval=", baseUrl: "mobiroller.api.applyze.com")
+        shopirollerTheme.navigationTitleTintColor = .white
+        shopirollerTheme.navigationBarTintColor = .red
+        shopirollerTheme.navigationIconsTintColor = .white
         
-        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: getShopirollerTheme(navigationTitleColor: .white, navigationBartintColor: .red)) //We should initialize SDK here with our ApiKey and AppKey
-        
-        ShopirollerApp.shared.setUserId("62221ee8944dc204e5a4262f") //You need to change this variable with your User Id
-        ShopirollerApp.shared.setUserEmail("sample@sample.com") //You need to change this variable with your User Email
-        let languageCode = Locale.current.languageCode ?? "en"
-        ShopirollerApp.shared.setFallbackLanguage(languageCode)
-        ShopirollerApp.shared.setHeaderAppLanguage(languageCode)
-        ShopirollerApp.shared.setDevelopmentMode(false) //With this function you can access user's address or user's orders
-        ShopirollerApp.shared.delegate = self
-        
-        createMainPage()
-        
-        BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
-        
-        return true
-    }
-    
-    private func getShopirollerTheme(navigationTitleColor: UIColor,navigationBartintColor: UIColor) -> ShopirollerTheme {
-        
-        shopirollerTheme.navigationTitleTintColor = navigationTitleColor
-        shopirollerTheme.navigationBarTintColor = navigationBartintColor
-        shopirollerTheme.navigationIconsTintColor = navigationTitleColor
-        setNavigationBarAppearance()
-        return shopirollerTheme
-    }
-    
-    private func setNavigationBarAppearance() {
+        //Set UINavigationBarAppearance
         
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithOpaqueBackground()
@@ -62,6 +38,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
+        let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl")
+        let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl")
+        
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: shopirollerTheme)
+        
+        ShopirollerApp.shared.setUserId("userId")
+        ShopirollerApp.shared.setUserEmail("sample@sample.com")
+        let languageCode = Locale.current.languageCode ?? "en"
+        ShopirollerApp.shared.setFallbackLanguage(languageCode)
+        ShopirollerApp.shared.setHeaderAppLanguage(languageCode)
+        ShopirollerApp.shared.setDevelopmentMode(false)
+        ShopirollerApp.shared.delegate = self
+        
+        createMainPage()
+        
+        BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
+        
+        return true
     }
     
     private func createMainPage() {
