@@ -10,7 +10,6 @@ Table of Contents
 <!--ts-->
    * [Installation](#installation)
    * [Guide Of Implementation](#guide-of-implementation)
-   * [How To Enable Development Mode](#how-to-enable-development-mode)
    * [Description Of ViewControllers](#description-of-viewcontrollers)
 
 <!--te-->
@@ -154,31 +153,6 @@ You can specify color whatever you want there are two sample color for <br/>
         }
     }
 ```
-
-<br/>
-
-
-### How To Enable Development Mode
----
-<br/>
-
-```swift
-ShopirollerApp.shared.setDevelopmentMode(false)
-```
-
-With the code above, the development mode can be activated.
-
-<br/>
-
-```swift
-if (SRAppContext.developmentMode) {
-    let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
-    rightBarButtonItems.append(optionsButton)
-}
-```
-With the code above, you can set human figure icon on navigationBar after that you can access the addresses and orders of the user by clicking the human figure icon in the navigation bar.
-
-
 
 <br/>
 
