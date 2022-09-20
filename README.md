@@ -34,13 +34,15 @@ end
 ```bash
 $ pod install
 ```
+
 3. Update Shopiroller via CocoaPods
 ```bash
 $ pod update
 ```
 
 ## Guide Of Implementation
----
+<br/>
+
 <details><summary markdown="span"> <strong>How To Initialize SDK </strong></summary>
 <br/>
 
@@ -66,8 +68,11 @@ Set your credentials through `AppDelegate` as below:
         return true
     }
 ```
- > **Note** 2: In the above, you should specify  **ShopirollerCredentials apiKey, aliasKey and baseUrl**  with your Credentials.<br/>
- > **Note** 3: In the above, you should specify **ShopirollerAppUserCredentials** as same as **ShopirollerCredentials**.
+> **Note**
+> In the above, you should specify  **ShopirollerCredentials apiKey, aliasKey and baseUrl**  with your Credentials.<br/>
+
+> **Note**
+> In the above, you should specify **ShopirollerAppUserCredentials** as same as **ShopirollerCredentials**.
  
 <br/>
 </details>
@@ -79,7 +84,7 @@ Set your credentials through `AppDelegate` as below:
 
   ### 2 - Set App Theme
   <br/>
-If you checked ShopirollerApp.shared.initialize method you can see theme parameter in this method helping us to set theme of navigationBarTitleTintColor and Appearance Color
+If you checked ShopirollerApp.shared.initialize method you can see theme parameter in this method helping us to set theme of navigationBarTitleTintColor and Appearance Color  <br/>
 
 Set your theme through AppDelegate as below:
 
@@ -160,6 +165,25 @@ You can specify color whatever you want there are two sample color for <br/>
   </details>
 
 <br/>
+
+|Component|Description|
+|---|---|
+|SBUGroupChannelListViewController|A `ViewController` that manages a group channel list.|
+|SBUGroupChannelViewController|A `ViewController` that manages a 1-on-n group chat channel.|
+|SBUOpenChannelViewController|A `ViewController` that manages a open chat channel.|
+|SBUCreateChannelViewController|A `ViewController` that creates a channel.|
+|SBUInviteUserViewController|A `ViewController` that invites a user to a channel.|
+|SBURegisterOperatorViewController|A `ViewController` that registers as operator in a channel.|
+|SBUUserListViewController|A `ViewController` that shows a list of members or participants in a channel.|
+|SBUGroupChannelSettingsViewController|A `ViewController` that configures a group channel.|
+|SBUOpenChannelSettingsViewController|A `ViewController` that configures a open channel.|
+|SBUModerationsViewController|A `ViewController` that moderates a channel.|
+|SBUMessageSearchViewController|A `ViewController` that searches messages in a channel.|
+|SBUTheme|A singleton that manages themes.|
+|SBUColorSet|A singleton that manages color sets.|
+|SBUFontSet|A singleton that manages font sets.|
+|SendbirdUI|A class that contains static functions required when using Sendbird UIKit.|
+|SBUGlobalSet|A class that contains static attributes required when using Sendbird UIKit.|
 
 ## Author
 
