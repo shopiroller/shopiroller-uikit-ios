@@ -119,7 +119,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
     }
     
     @IBAction func sortButtonTapped(_ sender: Any) {
-        let sortPopUpVC = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .sortList, selectedSortIndex: viewModel.getSelectedSortIndex()))
+        let sortPopUpVC = SRListPopUpViewController(viewModel: SRListPopUpViewModel(listType: .sortList, selectedSortIndex: viewModel.getSelectedSortIndex()))
         sortPopUpVC.sortDelegate = self
         popUp(sortPopUpVC, completion: nil)
     }

@@ -26,7 +26,7 @@ class SRSelectionViewController: BaseViewController<SRSelectionViewModel> {
     
     var delegate: SelectionController?
         
-    init(viewModel: SRSelectionViewModel){
+    init(viewModel: SRSelectionViewModel) {
         super.init(viewModel: viewModel, nibName: SRSelectionViewController.nibName, bundle: Bundle(for: SRSelectionViewController.self))
     }
     

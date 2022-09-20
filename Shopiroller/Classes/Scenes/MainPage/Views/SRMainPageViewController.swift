@@ -77,7 +77,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
         rightBarButtonItems.append(searchButton)
         
         if (SRAppContext.developmentMode) {
-            let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
+            let optionsButton = UIBarButtonItem(customView: createNavigationItem(UIImage(systemName: "figure.wave"), .openOptions))
             rightBarButtonItems.append(optionsButton)
         }
         

@@ -155,16 +155,16 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     
     
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
-        var listPopUpViewModel : ListPopUpViewModel = ListPopUpViewModel(listType: .address)
+        var listPopUpViewModel : SRListPopUpViewModel = SRListPopUpViewModel(listType: .address)
         switch type {
         case .billing:
-            listPopUpViewModel = ListPopUpViewModel(listType: .address, userBillingAddressList: viewModel.getUserBillingAddressList(), addressType: type)
+            listPopUpViewModel = SRListPopUpViewModel(listType: .address, userBillingAddressList: viewModel.getUserBillingAddressList(), addressType: type)
         case .shipping:
-            listPopUpViewModel = ListPopUpViewModel(listType: .address, userShippingAddressList: viewModel.getUserShippingAddressList(), addressType: type)
+            listPopUpViewModel = SRListPopUpViewModel(listType: .address, userShippingAddressList: viewModel.getUserShippingAddressList(), addressType: type)
         case .none:
             break
         }
-        let listPopUpVC = ListPopUpViewController(viewModel: listPopUpViewModel)
+        let listPopUpVC = SRListPopUpViewController(viewModel: listPopUpViewModel)
         listPopUpVC.modalPresentationStyle = .popover
         listPopUpVC.addressDelegate = self
         popUp(listPopUpVC)

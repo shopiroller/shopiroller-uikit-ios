@@ -20,7 +20,7 @@ protocol ListPopUpSortDelegate {
     func getSelectedSortIndex(index: Int)
 }
 
-class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
+class SRListPopUpViewController: BaseViewController<SRListPopUpViewModel> {
     
     @IBOutlet private weak var popUpHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var popUpTitle: UILabel!
@@ -42,8 +42,8 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
     var sortDelegate: ListPopUpSortDelegate?
     
-    init(viewModel: ListPopUpViewModel) {
-        super.init(viewModel: viewModel, nibName: ListPopUpViewController.nibName, bundle: Bundle(for: ListPopUpViewController.self))
+    init(viewModel: SRListPopUpViewModel) {
+        super.init(viewModel: viewModel, nibName: SRListPopUpViewController.nibName, bundle: Bundle(for: SRListPopUpViewController.self))
     }
     
     override func setup() {
@@ -75,7 +75,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
         popUpTableView.separatorInset = UIEdgeInsets.zero
         popUpTableView.tableFooterView = UIView()
         
-        switch viewModel.getListType(){
+        switch viewModel.getListType() {
         case .address:
             setUpForAddress()
         case .payment:
@@ -142,7 +142,7 @@ class ListPopUpViewController: BaseViewController<ListPopUpViewModel> {
     
 }
 
-extension ListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
+extension SRListPopUpViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getItemCount()
