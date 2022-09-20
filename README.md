@@ -5,12 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
 [![Platform](https://img.shields.io/cocoapods/p/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
 
-Table of Contents[](README.md)
-===================
+Table of Contents
+===
 <!--ts-->
    * [Installation](#installation)
    * [Guide Of Implementation](#guide-of-implementation)
-   * [Guide Of Implementation](#guide-of-implementation)
+   * [How To Enable Development Mode](#how-to-enable-development-mode)
+   * [Description Of ViewControllers](#description-of-viewcontrollers)
 
 <!--te-->
 
@@ -41,12 +42,12 @@ $ pod update
 ```
 
 ## Guide Of Implementation
-<br/>
-
+---
 <br/>
 
 ### 1 - Initialize with Credentials
- <br/>
+<br/>
+
 
 Set your credentials through `AppDelegate` as below:
 
@@ -106,7 +107,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
 
-           ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: shopirollerTheme)
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: shopirollerTheme)
 
         return true
     }
@@ -156,29 +157,48 @@ You can specify color whatever you want there are two sample color for <br/>
 
 <br/>
 
+
+### How To Enable Development Mode
+---
+<br/>
+
+```swift
+ShopirollerApp.shared.setDevelopmentMode(false)
+```
+
+With the code above, the development mode can be activated.
+
+<br/>
+
+```swift
+if (SRAppContext.developmentMode) {
+    let optionsButton = UIBarButtonItem(customView: createNavigationItem(.menuIcon, .openOptions))
+    rightBarButtonItems.append(optionsButton)
+}
+```
+With the code above, you can set human figure icon on navigationBar after that you can access the addresses and orders of the user by clicking the human figure icon in the navigation bar.
+
+
+
+<br/>
+
+### Description Of ViewControllers
+---
+<br/>
+
 |Component|Description|
 |---|---|
-|SBUGroupChannelListViewController|A `ViewController` that manages a group channel list.|
-|SBUGroupChannelViewController|A `ViewController` that manages a 1-on-n group chat channel.|
-|SBUOpenChannelViewController|A `ViewController` that manages a open chat channel.|
-|SBUCreateChannelViewController|A `ViewController` that creates a channel.|
-|SBUInviteUserViewController|A `ViewController` that invites a user to a channel.|
-|SBURegisterOperatorViewController|A `ViewController` that registers as operator in a channel.|
-|SBUUserListViewController|A `ViewController` that shows a list of members or participants in a channel.|
-|SBUGroupChannelSettingsViewController|A `ViewController` that configures a group channel.|
-|SBUOpenChannelSettingsViewController|A `ViewController` that configures a open channel.|
-|SBUModerationsViewController|A `ViewController` that moderates a channel.|
-|SBUMessageSearchViewController|A `ViewController` that searches messages in a channel.|
-|SBUTheme|A singleton that manages themes.|
-|SBUColorSet|A singleton that manages color sets.|
-|SBUFontSet|A singleton that manages font sets.|
-|SendbirdUI|A class that contains static functions required when using Sendbird UIKit.|
-|SBUGlobalSet|A class that contains static attributes required when using Sendbird UIKit.|
-
-## Author
-
-ealtaca, ealtaca@gmail.com
-
-## License
-
-Shopiroller is available under the MIT license. See the LICENSE file for more info.
+|SRMainPageViewController|A `ViewController` that shows product, sliders, categories.|
+|SRCategoriesListViewController|A `ViewController` that shows categories.|
+|SROrderListViewController|A `ViewController` that shows whether the created order was successful .|
+|SROrderDetailViewController|A `ViewController` that shows selected order's detail.|
+|SRProductListViewController|A `ViewController` that shows products belong to the selected category.|
+|SRProductDetailViewController|A `ViewController` that shows product's detail belong to the selected product.|
+|SRShoppingCartViewController|A `ViewController` that shows products added to cart.|
+|ThreeDSModalViewController|A `ViewController` that show payment methods with web view.|
+|AddressListPageViewController|A `ViewController` that MainPage of SRUserAddressViewController.|
+|SRUserAddressViewController|A `ViewController` that manage AddressListPageViewController's ViewControllers.|
+|SRAddressListViewController|A `ViewController` that shows user's address.|
+|SRResultViewController|A `ViewController` that shows whether the order was successful or unsuccessful after the order was created.|
+|SRListPopUpViewController|A `ViewController` that used to have the user select a data from a list.|
+|SRSelectionViewController|A `ViewController` that that allows the user to select country, city and county while registering an address.|
