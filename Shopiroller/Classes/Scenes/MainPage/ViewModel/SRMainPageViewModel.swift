@@ -151,7 +151,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getWhatsAppNumber() -> String? {
-        return clientModel?.properties?.accountNumber?.replacingOccurrences(of: " ", with: "")
+        return "+" + (clientModel?.properties?.countryPhoneCode ?? "") + (clientModel?.properties?.accountNumber?.replacingOccurrences(of: " ", with: "") ?? "")
     }
     
     func sliderItemCount() -> Int {
