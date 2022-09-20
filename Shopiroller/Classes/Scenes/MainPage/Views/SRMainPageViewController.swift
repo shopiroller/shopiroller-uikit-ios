@@ -256,12 +256,12 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
 
 extension SRMainPageViewController : ShowCaseCellDelegate {
     func getShowCaseInfo(showcaseId: String?, title: String?) {
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel(pageTitle: title,showcaseId: showcaseId))
+        let productListVC = SRProductListViewController(viewModel: SRProductListViewModel(pageTitle: title,showcaseId: showcaseId))
         post(productListVC, animated: true)
     }
     
     func getProductId(productId: String) {
-        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: productId))
+        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: productId))
         post(productDetailVC, animated: true)
     }
 }
@@ -340,7 +340,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModel.getSectionAt(position: indexPath.section) {
         case .products:
-            let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
+            let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
             self.post(productDetailVC, animated: true, completion: nil)
         default:
             break
@@ -427,16 +427,16 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position){
-            let categoriesListVC = CategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
+            let categoriesListVC = SRCategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
             post(categoriesListVC, animated: true, completion: nil)
         } else {
-            let productListVC = ProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
+            let productListVC = SRProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
             post(productListVC, animated: true, completion: nil)
         }
         
     }
     func getCategories(position: Int) {
-        let categoriesListViewController = CategoriesListViewController(viewModel: CategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
+        let categoriesListViewController = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
         self.post(categoriesListViewController, animated: true, completion: nil)
     }
 }
@@ -444,12 +444,12 @@ extension SRMainPageViewController : CategoriesCellDelegate {
 extension SRMainPageViewController: SliderClickDelegate {
     
     func openProductDetail(id: String?) {
-        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(productId: id ?? ""))
+        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: id ?? ""))
         post(productDetailVC, animated: false, completion: nil)
     }
     
     func openProductList(categoryId: String?) {
-        let productListVC = ProductListViewController(viewModel: ProductListViewModel(categoryId: categoryId,pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
+        let productListVC = SRProductListViewController(viewModel: SRProductListViewModel(categoryId: categoryId,pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
         post(productListVC, animated: false, completion: nil)
     }
     

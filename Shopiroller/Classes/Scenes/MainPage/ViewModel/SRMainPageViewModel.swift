@@ -287,12 +287,12 @@ open class SRMainPageViewModel: SRBaseViewModel {
         return categoriesWithOptions?.mobileSettings?.categoryDisplayType ?? .imageAndText
     }
     
-    func getCategoriesListViewModel(position: Int) -> CategoriesListViewModel {
-        return CategoriesListViewModel(categoryList: getSubCategories(position: position), isSubCategory: true,selectedRowName: getCategoryName(position: position),categoryId: getCategoryId(position: position),categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
+    func getCategoriesListViewModel(position: Int) -> SRCategoriesListViewModel {
+        return SRCategoriesListViewModel(categoryList: getSubCategories(position: position), isSubCategory: true,selectedRowName: getCategoryName(position: position),categoryId: getCategoryId(position: position),categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
     }
     
-    func getProductListViewModel(position: Int) -> ProductListViewModel {
-        return ProductListViewModel(categoryId: getCategoryId(position: position),pageTitle: getCategoryName(position: position))
+    func getProductListViewModel(position: Int) -> SRProductListViewModel {
+        return SRProductListViewModel(categoryId: getCategoryId(position: position),pageTitle: getCategoryName(position: position))
     }
     
     func getSliderCategoryName(id: String?) -> String? {

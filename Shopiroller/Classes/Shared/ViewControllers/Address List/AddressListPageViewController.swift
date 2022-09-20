@@ -36,10 +36,10 @@ class AddressListPageViewController: UIPageViewController {
     }
     
     private func populateItems() {
-        let shippingVC = AddressListViewController(viewModel: AddressListViewModel(state: .shipping))
+        let shippingVC = SRAddressListViewController(viewModel: SRAddressListViewModel(state: .shipping))
         shippingVC.view.tag = 0
         items.append(shippingVC)
-        let billingVC = AddressListViewController(viewModel: AddressListViewModel(state: .billing))
+        let billingVC = SRAddressListViewController(viewModel: SRAddressListViewModel(state: .billing))
         billingVC.view.tag = 1
         items.append(billingVC)
     }

@@ -132,7 +132,7 @@ extension UIViewController {
     
     @objc func goToCard() {
         if ShopirollerApp.shared.isUserLoggedIn() {
-            prompt(ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+            prompt(SRShoppingCartViewController(viewModel: SRShoppingCartViewModel())
                , animated: true, completion: nil)
         } else {
             ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
@@ -140,7 +140,7 @@ extension UIViewController {
     }
     
     @objc func searchProduct() {
-        let searchVC = SearchViewController(viewModel: SearchViewModel())
+        let searchVC = SRSearchViewController(viewModel: SRSearchViewModel())
         self.prompt(searchVC, animated: true, completion: nil)
     }
     
@@ -153,13 +153,13 @@ extension UIViewController {
         actionSheetController.addAction(cancelAction)
 
         let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { action -> Void in
-            let orderListVC = OrderListViewController(viewModel: OrderListViewModel())
+            let orderListVC = SROrderListViewController(viewModel: SROrderListViewModel())
             self.prompt(orderListVC, animated: true, completion: nil)
         }
         actionSheetController.addAction(chooseOrderAction)
         
         let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { action -> Void in
-            let addressListVC = UserAddressViewController(viewModel: UserAddressViewModel())
+            let addressListVC = SRUserAddressViewController(viewModel: SRUserAddressViewModel())
             self.prompt(addressListVC, animated: true, completion: nil)
         }
         actionSheetController.addAction(chooseAddressAction)
