@@ -43,7 +43,6 @@ $ pod update
 ## Guide Of Implementation
 <br/>
 
-<details><summary markdown="span"> <strong>How To Initialize SDK </strong></summary>
 <br/>
 
 ### 1 - Initialize with Credentials
@@ -75,11 +74,7 @@ Set your credentials through `AppDelegate` as below:
 > In the above, you should specify **ShopirollerAppUserCredentials** as same as **ShopirollerCredentials**.
  
 <br/>
-</details>
-<br/>
 
-<details>
-<summary markdown="span"><strong> How To Change App Theme </strong></summary>
 <br/>
 
   ### 2 - Set App Theme
@@ -124,11 +119,8 @@ You can specify color whatever you want there are two sample color for <br/>
 ![mergedImage](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png)
 
 <br/>
-</details>
 <br/>
 
-<details>
-<summary markdown="span"><strong> How To Integrate Login Required </strong></summary>
 <br/>
 
   ### 3 - Add Login Required
@@ -161,8 +153,6 @@ You can specify color whatever you want there are two sample color for <br/>
         }
     }
 ```
-
-  </details>
 
 <br/>
 
