@@ -163,16 +163,6 @@ You can specify color whatever you want there are two sample color for <br/>
 |Component|Description|
 |---|---|
 |SRMainPageViewController|A `ViewController` that shows product, sliders, categories.|
-|SRCategoriesListViewController|A `ViewController` that shows categories.|
-|SROrderListViewController|A `ViewController` that shows whether the created order was successful .|
-|SROrderDetailViewController|A `ViewController` that shows selected order's detail.|
-|SRProductListViewController|A `ViewController` that shows products belong to the selected category.|
-|SRProductDetailViewController|A `ViewController` that shows product's detail belong to the selected product.|
 |SRShoppingCartViewController|A `ViewController` that shows products added to cart.|
-|ThreeDSModalViewController|A `ViewController` that show payment methods with web view.|
+|SROrderListViewController|A `ViewController` that shows whether the created order was successful .|
 |AddressListPageViewController|A `ViewController` that MainPage of SRUserAddressViewController.|
-|SRUserAddressViewController|A `ViewController` that manage AddressListPageViewController's ViewControllers.|
-|SRAddressListViewController|A `ViewController` that shows user's address.|
-|SRResultViewController|A `ViewController` that shows whether the order was successful or unsuccessful after the order was created.|
-|SRListPopUpViewController|A `ViewController` that used to have the user select a data from a list.|
-|SRSelectionViewController|A `ViewController` that that allows the user to select country, city and county while registering an address.|
