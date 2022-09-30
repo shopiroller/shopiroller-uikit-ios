@@ -107,7 +107,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 You can specify color whatever you want there are two sample color for <br/>
 * navigationBarTitleTintColor .white
 * navigationBarTintColor .red <br/>
-![enter image description here](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png =x600) 
+
+![](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png) 
 
 
 ### 3 - Add Login Required
