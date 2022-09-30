@@ -311,7 +311,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     }
     
     @objc func openPaymentList() {
-        let listPopupViewController = ListPopUpViewController(viewModel: ListPopUpViewModel(listType: .payment, supportedPaymentMethods: viewModel.getSupportedPaymentList()))
+        let listPopupViewController = SRListPopUpViewController(viewModel: SRListPopUpViewModel(listType: .payment, supportedPaymentMethods: viewModel.getSupportedPaymentList()))
         listPopupViewController.paymentDelegate = self
         popUp(listPopupViewController)
     }
