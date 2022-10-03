@@ -9,21 +9,18 @@
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
   s.version          = '0.2.32'
-  s.summary          = 'A short description of Shopiroller.'
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
+  s.summary          = 'Shopiroller Description'
   s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
+  s.description      = 'Shopiroller’s Mobile SDK.'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
-  s.source           = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version }
   s.swift_version    = "4.0"
 
   s.ios.deployment_target = '13.0'
   
   s.platform     = :ios, '13.0'
-
+  
+  s.source       = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version }
   s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}"
   
   s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Fonts/*.{ttf}' , 'Shopiroller/Animations/*.{json}'
