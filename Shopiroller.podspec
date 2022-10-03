@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.2.32'
+  s.version          = '0.2.33'
   s.summary          = 'Shopiroller Description'
   s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
   s.description      = 'Shopiroller’s Mobile SDK.'
