@@ -19,7 +19,6 @@ TODO: Add long description of the pod here.
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
   s.source           = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version }
   s.swift_version    = "4.0"
-  s.requires_arc     = true
   s.source_files     = ["Shopiroller/Classes/**/*.swift"]
 
   s.ios.deployment_target = '13.0'
