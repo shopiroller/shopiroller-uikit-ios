@@ -64,7 +64,7 @@ open class ImageSlideshowItemSR: UIScrollView, UIScrollViewDelegate {
         imageViewWrapper.addSubview(imageView)
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         imageView.isAccessibilityElement = true
-        imageView.accessibilityTraits = .image
+        imageView.accessibilityTraits = UIAccessibilityTraitImage
         if #available(iOS 11.0, *) {
             imageView.accessibilityIgnoresInvertColors = true
         }

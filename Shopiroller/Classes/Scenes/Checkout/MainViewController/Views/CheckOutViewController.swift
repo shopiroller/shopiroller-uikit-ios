@@ -65,14 +65,14 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             let checkOutPageViewController = CheckOutPageViewController(checkOutPageDelegate: self)
-            self.addChild(checkOutPageViewController)
+            self.addChildViewController(checkOutPageViewController)
             checkOutPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
             
             self.containerView.addSubview(checkOutPageViewController.view)
             
             checkOutPageViewController.view.frame = self.containerView.frame
             
-            checkOutPageViewController.didMove(toParent: self)
+            checkOutPageViewController.didMove(toParentViewController: self)
             
             self.checkOutPageViewController = checkOutPageViewController
         }

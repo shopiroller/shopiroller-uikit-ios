@@ -24,7 +24,7 @@ class SearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         searchTextLabel.textColor = .textSecondary
         searchTextLabel.font = .regular12
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
+        contentView.frame = contentView.frame.insetBy(dx: 0, dy: 30)
     }
 
     @IBAction func deleteButtonTapped() {
