@@ -1,6 +1,6 @@
 # Shopiroller
 
-[![Build](https://img.shields.io/github/checks-status/ealtaca/shopiroller_io/master)](https://cocoapods.org/pods/Shopiroller)
+[![Build](https://img.shields.io/github/checks-status/ealtaca/shopiroller_ios/master)](https://cocoapods.org/pods/Shopiroller)
 [![Version](https://img.shields.io/cocoapods/v/ShopiRoller)](https://cocoapods.org/pods/Shopiroller)
 [![Platform](https://img.shields.io/badge/platform-iOS-green)]()
 [![Swift](https://img.shields.io/badge/swift-4.0-green)]()
