@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
+  s.homepage         = 'https://cocoapods.org/pods/Shopiroller'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
   s.source           = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version.to_s }
