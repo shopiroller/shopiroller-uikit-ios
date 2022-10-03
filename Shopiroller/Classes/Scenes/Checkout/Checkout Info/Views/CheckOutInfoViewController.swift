@@ -174,7 +174,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     @IBAction func cardViewEditButtonTapped() {
-        let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+        let shoppingCartVC = SRShoppingCartViewController(viewModel: SRShoppingCartViewModel())
         self.prompt(shoppingCartVC, animated: true, completion: nil)
     }
     
@@ -384,7 +384,7 @@ extension CheckOutInfoViewController : PopUpViewViewControllerDelegate {
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController) {
         popUpViewController.dismiss(animated: true, completion: {
             if self.isShoppingCartPopUp {
-                let shoppingCartVC = ShoppingCartViewController(viewModel: ShoppingCartViewModel())
+                let shoppingCartVC = SRShoppingCartViewController(viewModel: SRShoppingCartViewModel())
                 self.popUp(shoppingCartVC, completion: nil)
             } else {
                 self.viewModel.isAgreeTermsButtonChecked = true

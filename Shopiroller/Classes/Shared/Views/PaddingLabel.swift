@@ -21,8 +21,7 @@ import Foundation
     override func drawText(in rect: CGRect) {
         self.layer.cornerRadius = 6
         self.layer.masksToBounds = true
-        let insets = UIEdgeInsets.init(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.drawText(in: rect.inset(by: insets))
+        super.drawText(in: rect.offsetBy(dx: 0, dy: 0))
     }
     
     override var intrinsicContentSize: CGSize {
