@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/badge/platform-iOS-green)]()
 [![Swift](https://img.shields.io/badge/swift-4.0-green)]()
 [![Release](https://img.shields.io/github/v/release/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/releases/latest)
-[![Release](https://img.shields.io/github/issues-pr-raw/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/pulls)
+[![PR](https://img.shields.io/github/issues-pr-raw/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/pulls)
 <br>
 
 Social
