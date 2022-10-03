@@ -37,7 +37,7 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
         segmentedControl.setTitle(Constants.shippingTitle, forSegmentAt: 0)
         segmentedControl.setTitle(Constants.billingTitle, forSegmentAt: 1)
         let pageVC = AddressListPageViewController(addressDelegate: self)
-        addChild(pageVC)
+        addChildViewController(pageVC)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.medium14], for: .normal)
@@ -51,7 +51,7 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
             pageVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0),
         ])
         
-        pageVC.didMove(toParent: self)
+        pageVC.didMove(toParentViewController: self)
         
         self.pageVC = pageVC
     }

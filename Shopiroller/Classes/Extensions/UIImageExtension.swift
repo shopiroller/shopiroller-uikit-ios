@@ -147,7 +147,7 @@ extension UIImageView {
         else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
                 activityIndicator.frame = CGRect(x: (self.frame.width / 2) - 30, y: (self.frame.height / 2) - 30, width: 60, height: 60)
-                activityIndicator.style = .medium
+                activityIndicator.activityIndicatorViewStyle = .medium
                 activityIndicator.color = .textPrimary
                 self.addSubview(activityIndicator)
                 activityIndicator.startAnimating()
