@@ -128,15 +128,15 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     }
     
     @IBAction func addShippingAddressButtonTapped() {
-        sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel(type: .shipping))
+        sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel(type: .shipping))
     }
     
     @IBAction func addBillingAddressButtonTapped() {
-        sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel(type: .billing))
+        sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel(type: .billing))
     }
     
-    private func sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel) {
-        let addressBotttomSheetViewController = AddressBottomSheetViewController(viewModel: addressBottomSheetViewModel)
+    private func sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel) {
+        let addressBotttomSheetViewController = SRAddressBottomSheetViewController(viewModel: addressBottomSheetViewModel)
         addressBotttomSheetViewController.delegate = self
         self.sheet(addressBotttomSheetViewController)
     }
@@ -147,24 +147,24 @@ extension CheckOutAddressViewController: GeneralAddressDelegate {
     func editButtonTapped(type: GeneralAddressType) {
         switch type {
         case .shipping:
-            sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel(type: type, isEditing: true, userShippingAddress: viewModel.getShippingAddress()))
+            sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel(type: type, isEditing: true, userShippingAddress: viewModel.getShippingAddress()))
         case .billing:
-            sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel(type: type, isEditing: true, userBillingAddress: viewModel.getBillingAddress()))
+            sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel(type: type, isEditing: true, userBillingAddress: viewModel.getBillingAddress()))
         }
     }
     
     
     func selectOtherAdressButtonTapped(type: GeneralAddressType?) {
-        var listPopUpViewModel : ListPopUpViewModel = ListPopUpViewModel(listType: .address)
+        var listPopUpViewModel : SRListPopUpViewModel = SRListPopUpViewModel(listType: .address)
         switch type {
         case .billing:
-            listPopUpViewModel = ListPopUpViewModel(listType: .address, userBillingAddressList: viewModel.getUserBillingAddressList(), addressType: type)
+            listPopUpViewModel = SRListPopUpViewModel(listType: .address, userBillingAddressList: viewModel.getUserBillingAddressList(), addressType: type)
         case .shipping:
-            listPopUpViewModel = ListPopUpViewModel(listType: .address, userShippingAddressList: viewModel.getUserShippingAddressList(), addressType: type)
+            listPopUpViewModel = SRListPopUpViewModel(listType: .address, userShippingAddressList: viewModel.getUserShippingAddressList(), addressType: type)
         case .none:
             break
         }
-        let listPopUpVC = ListPopUpViewController(viewModel: listPopUpViewModel)
+        let listPopUpVC = SRListPopUpViewController(viewModel: listPopUpViewModel)
         listPopUpVC.modalPresentationStyle = .popover
         listPopUpVC.addressDelegate = self
         popUp(listPopUpVC)
@@ -217,7 +217,7 @@ extension CheckOutAddressViewController : EmptyViewAddressDelegate {
     
     func addAddressButtonClicked(type: GeneralAddressType?) {
         if let type = type {
-            sheetAddressBottomSheet(addressBottomSheetViewModel: AddressBottomSheetViewModel(type: type))
+            sheetAddressBottomSheet(addressBottomSheetViewModel: SRAddressBottomSheetViewModel(type: type))
         }
     }    
 }

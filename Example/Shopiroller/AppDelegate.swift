@@ -13,54 +13,55 @@ import Braintree
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
     
-    func userLoginNeeded(navigationController: UINavigationController?) {
-        
-    }
+    private var shopirollerTheme: ShopirollerTheme = ShopirollerTheme()
     
     var window: UIWindow?
     
-    
-    private let connectingUrl : ConnectableUrls = .stage
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        //Set Theme Colors
+        
+        shopirollerTheme.navigationTitleTintColor = .white
+        shopirollerTheme.navigationBarTintColor = .red
+        shopirollerTheme.navigationIconsTintColor = .white
+        
+        //Set UINavigationBarAppearance
         
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithOpaqueBackground()
-        coloredAppearance.backgroundColor = .red
-        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredAppearance.backgroundColor = shopirollerTheme.navigationBarTintColor
+        coloredAppearance.titleTextAttributes = [.foregroundColor: shopirollerTheme.navigationTitleTintColor]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: shopirollerTheme.navigationBarTintColor]
                        
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
-        var theme = ShopirollerTheme()
-        theme.navigationTitleTintColor = .white
-        theme.navigationBarTintColor = .red
-        theme.navigationIconsTintColor = .white
+        let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl")
+        let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl")
         
+        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: shopirollerTheme)
         
-        let ecommerce = ShopirollerCredentials(aliasKey: informations(type: connectingUrl).aliasKey, apiKey: informations(type: connectingUrl).shopirollerApiKey, baseUrl: informations(type: connectingUrl).shopirollerBaseUrl)
-        let appUser = ShopirollerAppUserCredentials(appKey: "+ClZjmILFflQA0nSBI0XLjEaT6Y=", apiKey: informations(type: connectingUrl).appUserApiKey, baseUrl: informations(type: connectingUrl).appUserBaseUrl)
-        
-        
-        ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: theme)
-        
-        ShopirollerApp.shared.setUserId("61cc73512c630dd8754409d3")
-        ShopirollerApp.shared.setUserEmail("gorkem@mobiroller.com")
-        ShopirollerApp.shared.setFallbackLanguage("tr")
-        ShopirollerApp.shared.setHeaderAppLanguage("tr")
+        ShopirollerApp.shared.setUserId("userId")
+        ShopirollerApp.shared.setUserEmail("sample@sample.com")
+        let languageCode = Locale.current.languageCode ?? "en"
+        ShopirollerApp.shared.setFallbackLanguage(languageCode)
+        ShopirollerApp.shared.setHeaderAppLanguage(languageCode)
         ShopirollerApp.shared.setDevelopmentMode(false)
         ShopirollerApp.shared.delegate = self
         
-        let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
-        
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        createMainPage()
         
         BTAppContextSwitcher.setReturnURLScheme("com.shopiroller.demo.payments")
         
         return true
+    }
+    
+    private func createMainPage() {
+        let navigationController = UINavigationController(rootViewController: SRMainPageViewController(viewModel: SRMainPageViewModel()))
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
     
     open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -74,22 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         SRAppConstants.ShoppingCart.badgeCount = "0"
     }
     
-    private func informations(type: ConnectableUrls) -> (shopirollerBaseUrl: String , appUserBaseUrl: String , shopirollerApiKey: String, appUserApiKey: String, aliasKey: String) {
-        switch type {
-        case .prod:
-            return("api.shopiroller.com","mobiroller.api.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","r4N/jWShy0aNEhn2PQYDHDOZGC4=")
-        case .stage:
-            return("stg.api.shopiroller.com","api.stg.applyze.com","xXspnfUxPzOGKNu90bFAjlOTnMLpN8veiixvEFXUw9I=","tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=","uCLTObwN/gnREO+1l6ZXR6P5wvc=")
-        case .dev:
-            return("dev.ecommerce.applyze.com","dev.applyze.com","ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY=","/QcOg8MuI4TZNT/eAIpLbicVqpGxkxz1YeqAilOOj4s=","ETSiz+R2jbsYnrBJO9Kz+Ils3UY=")
-        }
+    func userLoginNeeded(navigationController: UINavigationController?) {
+        //Let's say you have a login page and in your flow the user needs to login to complete the flow, if user not logged in you can use this function to redirect the user to the login screen. An example usage is available in SRProductDetailViewController
+        /*
+         An Example code below how to open Login Page
+         let loginPageVC = LoginPageViewController(viewModel: LoginPageViewModel())
+         navigationController?.pushViewController(loginPageVC, animated: true)
+         */
     }
-
-    enum ConnectableUrls {
-        case prod
-        case stage
-        case dev
-        
-    }
+    
 }
 
