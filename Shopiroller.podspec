@@ -8,17 +8,19 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.2.30'
+  s.version          = '0.2.31'
   s.summary          = 'A short description of Shopiroller.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://cocoapods.org/pods/Shopiroller'
+  s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
-  s.source           = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:ealtaca/shopiroller_ios.git', :tag => s.version }
   s.swift_version    = "4.0"
+  s.requires_arc     = true
+  s.source_files     = ["Shopiroller/Classes/**/*.swift"]
 
   s.ios.deployment_target = '13.0'
   
