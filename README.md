@@ -1,9 +1,21 @@
 # Shopiroller
 
-[![CI Status](https://img.shields.io/travis/ealtaca/Shopiroller.svg?style=flat)](https://travis-ci.org/ealtaca/Shopiroller)
-[![Version](https://img.shields.io/cocoapods/v/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
-[![License](https://img.shields.io/cocoapods/l/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
-[![Platform](https://img.shields.io/cocoapods/p/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
+[![Build](https://img.shields.io/github/checks-status/ealtaca/shopiroller_io/master)](https://cocoapods.org/pods/Shopiroller)
+[![Version](https://img.shields.io/cocoapods/v/ShopiRoller)](https://cocoapods.org/pods/Shopiroller)
+[![Platform](https://img.shields.io/badge/platform-iOS-green)]()
+[![Swift](https://img.shields.io/badge/swift-4.0-green)]()
+[![Release](https://img.shields.io/github/v/release/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/releases/latest)
+[![Release](https://img.shields.io/github/issues-pr-raw/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/pulls)
+<br>
+
+Social
+---
+
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/shopiroller)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/shopiroller/)
+
+
+
 
 Table of Contents
 ===
