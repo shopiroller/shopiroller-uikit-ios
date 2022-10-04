@@ -62,7 +62,7 @@ Set your credentials through `AppDelegate` as below:
 // AppDelegate.swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-      ...
+      window = UIWindow(frame: UIScreen.main.bounds)
 
       let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl") /* You need to change string variables iosAliasKey, apiKey and baseUrl with your credentials */
       let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl") /* These credentials for users these variables need to be changed like below code with your credentials */
@@ -92,12 +92,12 @@ Set your theme through AppDelegate as below:
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-    ...
+    window = UIWindow(frame: UIScreen.main.bounds)
 
     //Set Theme Colors
 
     shopirollerTheme.navigationTitleTintColor = .white
-    shopirollerTheme.navigationBarTintColor = .red
+    shopirollerTheme.navigationBarTintColor = UIColor(named: "navigationTint")
     shopirollerTheme.navigationIconsTintColor = .white
 
     //Set UINavigationBarAppearance
@@ -120,7 +120,7 @@ You can specify color whatever you want there are two sample color for <br/>
 * navigationBarTitleTintColor .white
 * navigationBarTintColor .red <br/>
 
-![](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png) 
+![Gif](./sample-gif/sample.gif)
 
 
 ### 3 - Add Login Required
