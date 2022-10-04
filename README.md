@@ -62,7 +62,7 @@ Set your credentials through `AppDelegate` as below:
 // AppDelegate.swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-      window = UIWindow(frame: UIScreen.main.bounds)
+      ...
 
       let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl") /* You need to change string variables iosAliasKey, apiKey and baseUrl with your credentials */
       let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl") /* These credentials for users these variables need to be changed like below code with your credentials */
@@ -92,7 +92,7 @@ Set your theme through AppDelegate as below:
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-    window = UIWindow(frame: UIScreen.main.bounds)
+    ...
 
     //Set Theme Colors
 
