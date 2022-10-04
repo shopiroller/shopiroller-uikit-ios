@@ -118,7 +118,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 You can specify color whatever you want there are two sample color for <br/>
 * navigationBarTitleTintColor .white
-* navigationBarTintColor .red <br/>
+* navigationBarTintColor UIColor(named: "navigationTint") <br/>
 
 ![Gif](./sample-gif/sample.gif)
 
