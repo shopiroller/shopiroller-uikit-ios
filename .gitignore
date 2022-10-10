@@ -66,6 +66,9 @@ playground.xcworkspace
 **/.DS_Store 
 **/._.DS_Store
 
+# Credentials
+Credentials.swift
+
 # CocoaPods
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
