@@ -97,7 +97,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     //Set Theme Colors
 
     shopirollerTheme.navigationTitleTintColor = .white
-    shopirollerTheme.navigationBarTintColor = .red
+    shopirollerTheme.navigationBarTintColor = UIColor(named: "navigationTint")
     shopirollerTheme.navigationIconsTintColor = .white
 
     //Set UINavigationBarAppearance
@@ -118,9 +118,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 You can specify color whatever you want there are two sample color for <br/>
 * navigationBarTitleTintColor .white
-* navigationBarTintColor .red <br/>
+* navigationBarTintColor UIColor(named: "navigationTint") <br/>
 
-![](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png) 
+![Gif](./sample-gif/sample.gif)
 
 
 ### 3 - Add Login Required
