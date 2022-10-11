@@ -14,11 +14,6 @@ struct SRFilterOptionsResponseModel: Codable {
     var brands: [BrandsItem]?
     var categories: [CategoriesItem]?
     
-    enum CodingKeys: String,CodingKey {
-        case variationGroups = "variationGroups"
-        case brands = "brands"
-        case categories = "categories"
-    }
 }
 
 struct BrandsItem: Codable {
@@ -29,15 +24,6 @@ struct BrandsItem: Codable {
     var id: String?
     var isActive: Bool?
     var createDate: String?
-    
-    enum CodingKeys: String,CodingKey  {
-        case updateDate = "updateDate"
-        case name = "name"
-        case icon = "icon"
-        case id = "id"
-        case isActive = "isActive"
-        case createDate = "createDate"
-    }
 }
 
 struct CategoriesItem: Codable {
@@ -52,19 +38,6 @@ struct CategoriesItem: Codable {
     var categoryId: String?
     var subCategories: [CategoriesItem]?
     var createDate: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case updateDate = "updateDate"
-        case name = "name"
-        case icon = "icon"
-        case totalProduct = "totalProduct"
-        case orderIndex = "orderIndex"
-        case parentCategoryId = "parentCategoryId"
-        case isActive = "isActive"
-        case categoryId = "categoryId"
-        case subCategories = "subCategories"
-        case createDate = "createDate"
-    }
     
 }
 

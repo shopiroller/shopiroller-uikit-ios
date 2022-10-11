@@ -362,7 +362,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
             self.collectionView.reloadData()
             self.playVideoButton.isHidden = !self.viewModel.hasVideo()
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
             self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
         }

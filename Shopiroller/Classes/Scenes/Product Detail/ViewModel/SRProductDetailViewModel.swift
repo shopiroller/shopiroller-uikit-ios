@@ -351,10 +351,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func getIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
         if let variantsList = variantsList {
-            for (index,element) in variantsList.enumerated() {
-                if element.id == variantModel.id {
-                    return index
-                }
+            for (index,element) in variantsList.enumerated() where element.id == variantModel.id {
+                return index
             }
         }
         return 0

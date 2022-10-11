@@ -15,12 +15,12 @@ struct ShoppingCartMessage: Codable {
 
 enum CartMessageKeyEnum: String, Codable {
 
-    case UpdatedProduct = "UpdatedProduct"
-    case NotEnoughStock = "NotEnoughStock"
-    case OutOfStock = "OutOfStock"
-    case OverPublishmentDate = "OverPublishmentDate"
-    case ProductNotFound = "ProductNotFound"
-    case FreeShippingCampaign = "FreeShippingCampaign"
+    case UpdatedProduct
+    case NotEnoughStock
+    case OutOfStock
+    case OverPublishmentDate
+    case ProductNotFound
+    case FreeShippingCampaign
     
     
     var text: String {

@@ -214,7 +214,7 @@ class SROrderDetailViewController: BaseViewController<SROrderDetailViewModel> {
             [weak self] in
             guard let self = self else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
         }
     }

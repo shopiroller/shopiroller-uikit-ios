@@ -74,7 +74,7 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
             [weak self] in
             guard let self = self else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
         }
     }

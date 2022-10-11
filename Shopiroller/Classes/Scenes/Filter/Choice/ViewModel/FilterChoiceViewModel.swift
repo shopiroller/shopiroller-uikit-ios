@@ -49,11 +49,9 @@ class FilterChoiceViewModel: SRBaseViewModel {
     
     func didSelectRow(position: Int) {
         filteredList[position].isSelected = !filteredList[position].isSelected
-        for (index, item) in originalList.enumerated() {
-            if(item.data.id == filteredList[position].data.id) {
-                originalList[index].isSelected = !originalList[index].isSelected
-                break
-            }
+        for (index, item) in originalList.enumerated() where item.data.id == filteredList[position].data.id {
+            originalList[index].isSelected = !originalList[index].isSelected
+            break
         }
     }
     
@@ -66,15 +64,13 @@ class FilterChoiceViewModel: SRBaseViewModel {
             }
         }
     }
-        
+    
     func getSelectedIds() -> SelectionIds {
         var selectionNameLabel = String()
         var selectedIds: [String] = []
-        for item in originalList {
-            if item.isSelected == true {
-                selectedIds.append(item.data.id)
-                selectionNameLabel += item.data.name + ", "
-            }
+        for item in originalList where item.isSelected {
+            selectedIds.append(item.data.id)
+            selectionNameLabel += item.data.name + ", "
         }
         return SelectionIds(selectedIds: selectedIds, selectionNameLabel: String(selectionNameLabel.dropLast(2)))
     }
@@ -129,10 +125,8 @@ class FilterChoiceViewModel: SRBaseViewModel {
     
     private func isSelectedId(id: String, selectedIds: [String]) -> Bool {
         if(!selectedIds.isEmpty) {
-            for item in selectedIds {
-                if(id == item) {
-                    return true
-                }
+            for item in selectedIds where id == item {
+                return true
             }
         }
         return false

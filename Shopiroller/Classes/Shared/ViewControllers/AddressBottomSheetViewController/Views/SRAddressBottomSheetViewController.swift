@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol AddressBottomViewDelegate {
+protocol AddressBottomViewDelegate: AnyObject {
     func closeButtonTapped()
     func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel? ,
                           userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel : SRDefaultAddressModel?)
@@ -136,7 +136,7 @@ class SRAddressBottomSheetViewController : BaseViewController<SRAddressBottomShe
     @IBOutlet private weak var identityNumberView: SRTextField!
     
     
-    var delegate: AddressBottomViewDelegate?
+    weak var delegate: AddressBottomViewDelegate?
     
     private var isBillingAddressChecked: Bool = true
     

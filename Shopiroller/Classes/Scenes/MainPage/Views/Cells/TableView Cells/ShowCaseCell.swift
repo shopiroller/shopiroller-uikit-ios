@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol ShowCaseCellDelegate : AnyObject {
+protocol ShowCaseCellDelegate: AnyObject {
     func getProductId(productId: String)
     func getShowCaseInfo(showcaseId : String?,title: String?)
 }
@@ -27,7 +27,7 @@ public class ShowCaseCell: UICollectionViewCell  {
     
     var viewModel: SRShowcaseResponseModel?
     
-    var delegate: ShowCaseCellDelegate?
+    weak var delegate: ShowCaseCellDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()

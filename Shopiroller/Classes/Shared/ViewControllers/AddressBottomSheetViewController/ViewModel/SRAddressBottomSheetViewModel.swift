@@ -219,16 +219,14 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
             return SRSelectionViewModel(selectionPopUpModel: SelectionModel(datalist: getStates(), selectionType: .adress(.state)))
         case .none:
             return SRSelectionViewModel(selectionPopUpModel: SelectionModel(datalist: getCountries(), selectionType: .adress(.country)))
-    }
+        }
     }
     
     func getSelectedCountryName(selectedId : String?) -> String? {
         if let countryList = countryList {
             guard let selectedId = selectedId else { return nil }
-            for state in countryList {
-                if (state.id == selectedId) {
-                    return state.name
-                }
+            for country in countryList where country.id == selectedId {
+                return country.name
             }
         }
         return ""
@@ -237,10 +235,8 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
     func getSelectedCityName(selectedId : String?) -> String? {
         if let cityList = districtList {
             guard let selectedId = selectedId else { return nil }
-            for state in cityList {
-                if (state.id == selectedId) {
-                    return state.name
-                }
+            for city in cityList where city.id == selectedId {
+                return city.name
             }
         }
         return ""
@@ -249,7 +245,7 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
     func getSelectedStateName(selectedId : String?) -> String? {
         if let stateList = stateList {
             guard let selectedId = selectedId else { return nil }
-            for state in stateList {
+            for state in stateList where state.id == selectedId {
                 if (state.id == selectedId) {
                     return state.name
                 }

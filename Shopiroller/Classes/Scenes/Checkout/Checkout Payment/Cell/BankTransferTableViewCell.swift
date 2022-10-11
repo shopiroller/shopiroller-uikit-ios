@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BankTransferCellDelegate {
+protocol BankTransferCellDelegate: AnyObject {
     
     func tappedCopyIbanButton()
 }
@@ -39,7 +39,7 @@ class BankTransferTableViewCell: UITableViewCell {
     
     private var bankAccountIbanText: String? = ""
     
-    var delegate : BankTransferCellDelegate?
+    weak var delegate : BankTransferCellDelegate?
     var model: BankAccountModel?
     
     override func awakeFromNib() {

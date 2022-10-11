@@ -11,7 +11,7 @@ import WebKit
 import SVProgressHUD
 
 
-protocol ThreeDSModalDelegate {
+protocol ThreeDSModalDelegate:AnyObject {
     func onPaymentSuccess()
     func onPaymentFailed(message: String?)
 }
@@ -21,7 +21,7 @@ class ThreeDSModalViewController: BaseViewController<ThreeDSModalViewModel> {
     @IBOutlet private weak var webView: WKWebView!
     @IBOutlet private weak var containerView: UIView!
     
-    var delegate: ThreeDSModalDelegate?
+    weak var delegate: ThreeDSModalDelegate?
     
     init(viewModel: ThreeDSModalViewModel){
         super.init(viewModel: viewModel, nibName: ThreeDSModalViewController.nibName, bundle: Bundle(for: ThreeDSModalViewController.self))

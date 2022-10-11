@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ShoppingCartTableViewCouponCellDelegate {
+protocol ShoppingCartTableViewCouponCellDelegate: AnyObject {
     func removeButtonTapped()
     func couponButtonTapped()
 }
@@ -18,7 +18,7 @@ class ShoppingCartTableViewCouponCell: UITableViewCell {
     @IBOutlet private weak var couponButton: UIButton!
     @IBOutlet private weak var couponRemoveButton: UIButton!
     
-    private var delegate : ShoppingCartTableViewCouponCellDelegate?
+    private weak var delegate : ShoppingCartTableViewCouponCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

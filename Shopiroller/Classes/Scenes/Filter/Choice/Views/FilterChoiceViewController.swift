@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol FilterChoiceViewControllerDelegate {
+protocol FilterChoiceViewControllerDelegate: AnyObject {
     func choiceConfirmed(selectedIds: SelectionIds)
 }
 
@@ -17,9 +17,9 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    private let delegate: FilterChoiceViewControllerDelegate
+    private weak var delegate: FilterChoiceViewControllerDelegate?
     
-    init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate) {
+    init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate?) {
         self.delegate = delegate
         super.init(viewModel.title, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
     }

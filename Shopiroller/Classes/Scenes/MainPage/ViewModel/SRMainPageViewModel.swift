@@ -25,7 +25,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var categoriesModel: SRCategoryResponseModel?
     private var mainDisplayTypeList: [MainPageDisplayTypes] = []
     private var clientModel: ClientResponseModel?
-
+    
     private var currentPage: Int = 0
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
@@ -50,7 +50,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         if !isPagination {
             productList = nil
         }
-
+        
         if productList?.count ?? 0 == 0 {
             currentPage = 1
         } else {
@@ -298,10 +298,8 @@ open class SRMainPageViewModel: SRBaseViewModel {
     func getSliderCategoryName(id: String?) -> String? {
         var categoryName : String? = ""
         if let categories = categoriesWithOptions?.categories {
-            for category in categories {
-                if (category.categoryId == id) {
-                    categoryName = category.name
-                }
+            for category in categories where category.categoryId == id {
+                categoryName = category.name
             }
         }
         return categoryName

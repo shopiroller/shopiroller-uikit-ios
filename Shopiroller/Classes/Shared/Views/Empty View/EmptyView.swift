@@ -12,7 +12,7 @@ protocol EmptyViewDelegate: AnyObject {
     func actionButtonClicked(_ sender: Any)
 }
 
-protocol EmptyViewAddressDelegate {
+protocol EmptyViewAddressDelegate: AnyObject {
     func addAddressButtonClicked(type: GeneralAddressType?)
 }
 
@@ -26,7 +26,7 @@ public class EmptyView: SRBaseView {
     
     weak var delegate: EmptyViewDelegate?
     
-    var addressDelegate : EmptyViewAddressDelegate?
+    weak var addressDelegate : EmptyViewAddressDelegate?
     
     private var type : GeneralAddressType? = .shipping
     

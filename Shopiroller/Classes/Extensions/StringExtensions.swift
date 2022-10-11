@@ -47,11 +47,11 @@ extension String {
         
         let firstText = NSMutableAttributedString.init(string: boldText ?? "")
         firstText.setAttributes([NSAttributedString.Key.font: isReverse ? UIFont.semiBold10 : UIFont.boldSystemFont(ofSize: 12),
-                                 NSAttributedString.Key.foregroundColor: isReverse ? UIColor.textSecondary : UIColor.textPCaption], range: NSMakeRange(0, firstText.length))
+                                 NSAttributedString.Key.foregroundColor: isReverse ? UIColor.textSecondary : UIColor.textPCaption], range: NSRange(location: 0, length: firstText.length))
         let secondText = NSMutableAttributedString.init(string: normalText ?? "")
         secondText.setAttributes([NSAttributedString.Key.font: isReverse ? UIFont.regular10 : UIFont.systemFont(ofSize: 12),
                                   NSAttributedString.Key.foregroundColor: isReverse ? UIColor.textSecondary :
-                                    UIColor.textPCaption], range: NSMakeRange(0, secondText.length))
+                                    UIColor.textPCaption], range: NSRange(location: 0, length: secondText.length))
         
         let finalText = NSMutableAttributedString()
         
@@ -75,7 +75,7 @@ extension String {
         do {
             let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
             let nsString = text as NSString
-            let match = regex.firstMatch(in: text, options: [], range: NSMakeRange(0, nsString.length))
+            let match = regex.firstMatch(in: text, options: [], range: NSRange(location: 0, length: nsString.length))
             return (match != nil)
         } catch {
             return false

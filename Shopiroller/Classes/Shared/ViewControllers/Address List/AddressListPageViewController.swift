@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol AddressListPageDelegate {
+protocol AddressListPageDelegate: AnyObject {
     func pageViewController(currentIndex: Int)
 }
 
 class AddressListPageViewController: UIPageViewController {
     
     private var items: [UIViewController] = []
-    internal let addressDelegate: AddressListPageDelegate
+    private weak var addressDelegate: AddressListPageDelegate?
     
-    init(addressDelegate: AddressListPageDelegate) {
+    init(addressDelegate: AddressListPageDelegate?) {
         self.addressDelegate = addressDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
@@ -50,9 +50,9 @@ extension AddressListPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             if(previousViewControllers[0].view.tag == 0){
-                addressDelegate.pageViewController(currentIndex: 1)
+                addressDelegate?.pageViewController(currentIndex: 1)
             }else{
-                addressDelegate.pageViewController(currentIndex: 0)
+                addressDelegate?.pageViewController(currentIndex: 0)
             }
         }
     }

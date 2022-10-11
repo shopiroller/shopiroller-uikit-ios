@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-protocol GeneralAddressDelegate {
+protocol GeneralAddressDelegate: AnyObject {
     
     func editButtonTapped(type: GeneralAddressType)
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
@@ -30,7 +30,7 @@ public class GeneralAddressView: SRBaseView {
     @IBOutlet private weak var selectOtherAddressButton: UIButton!
     
     
-    var delegate: GeneralAddressDelegate?
+    weak var delegate: GeneralAddressDelegate?
     
     var type: GeneralAddressType?
         

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import SafariServices
 
-protocol SliderClickDelegate {
+protocol SliderClickDelegate: AnyObject {
     func openProductDetail(id: String?)
     func openProductList(categoryId: String?)
     func openWebView(link : String?)
@@ -24,7 +24,7 @@ public class SliderTableViewCell: UICollectionViewCell {
     
     var viewModel: [SliderSlidesModel]?
     
-    var delegate : SliderClickDelegate?
+    weak var delegate : SliderClickDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()

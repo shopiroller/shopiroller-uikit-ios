@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchTableViewCellDelegate : AnyObject {
+protocol SearchTableViewCellDelegate: AnyObject {
     func deleteButtonTapped(title : String?)
 }
 
@@ -16,9 +16,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet private weak var searchTextLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     
-    private var title: String? = nil
+    private var title: String?
     
-    var delegate : SearchTableViewCellDelegate?
+    weak var delegate : SearchTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

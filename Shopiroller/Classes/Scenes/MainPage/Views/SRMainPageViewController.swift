@@ -26,7 +26,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private let badgeView = SRBadgeButton()
     
-    private var group : DispatchGroup? = nil
+    private var group : DispatchGroup?
     
     public init(viewModel: SRMainPageViewModel) {
         super.init(nil, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
@@ -136,7 +136,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.view.layoutIfNeeded()
                 self.mainCollectionView.reloadData()
             }
-        }) { [weak self] (errorViewModel) in
+        }) { [weak self] _ in
             guard let self = self else { return }
             if self.group != nil {
                 self.group?.leave()

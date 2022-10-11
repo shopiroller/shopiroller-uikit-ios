@@ -62,7 +62,7 @@ open class SROrderListViewController: BaseViewController<SROrderListViewModel>, 
     private func getOrderList() {
         viewModel.getOrderList(success: {
             self.configure()
-        }) { [weak self] (errorViewModel) in
+        }) { [weak self] _ in
             guard let self = self else { return }
         }
     }
@@ -81,7 +81,7 @@ open class SROrderListViewController: BaseViewController<SROrderListViewModel>, 
             [weak self] in
             guard let self = self else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
         }
     }

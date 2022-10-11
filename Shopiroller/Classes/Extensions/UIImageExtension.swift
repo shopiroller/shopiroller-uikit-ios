@@ -152,7 +152,7 @@ extension UIImageView {
                 self.addSubview(activityIndicator)
                 activityIndicator.startAnimating()
                 ImageCache.default.memoryStorage.config.totalCostLimit = 1 //1 in bytes
-                self.kf.setImage(with: URL(string: "\(url)?width=\(self.frame.width)"), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { (img) in
+                self.kf.setImage(with: URL(string: "\(url)?width=\(self.frame.width)"), placeholder: UIImage(named: "emptyProductImage", in: .shopiroller, with: nil)!, options: nil, progressBlock: nil) { _ in
                     activityIndicator.stopAnimating()
                 }
             }

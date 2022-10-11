@@ -43,9 +43,10 @@ struct AddressCellModel {
     let image: UIImage
 }
 
-enum AddressType: String {
-    case shipping = "shipping"
-    case billing = "billing"
+enum AddressType {
+    
+    case shipping
+    case billing
     
     var text: String {
         switch self {

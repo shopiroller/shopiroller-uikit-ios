@@ -99,7 +99,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
             [weak self] in
             guard self != nil else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard self != nil else { return }
         }
     }
@@ -113,7 +113,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
                 self.configureEmptyView()
             }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard self != nil else { return }
         }
     }

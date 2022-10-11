@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-protocol PopUpViewViewControllerDelegate {
+protocol PopUpViewViewControllerDelegate: AnyObject {
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
 }
@@ -30,7 +30,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var inputContainerView: UIView!
     @IBOutlet private weak var inputTextField: UITextField!
     
-    var delegate: PopUpViewViewControllerDelegate?
+    weak var delegate: PopUpViewViewControllerDelegate?
     
     public init(viewModel: PopUpViewModel) {
         super.init(viewModel: viewModel, nibName: PopUpViewViewController.nibName, bundle: Bundle(for: PopUpViewViewController.self))

@@ -27,7 +27,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     
     private var paymentSettings : PaymentSettingsResponeModel?
     
-    private var _selectedPayment: PaymentTypeEnum? = nil
+    private var _selectedPayment: PaymentTypeEnum?
     
     var selectedBankIndex: Int?
     

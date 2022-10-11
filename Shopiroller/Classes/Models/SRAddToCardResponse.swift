@@ -10,8 +10,4 @@ import Foundation
 
 struct SRAddToCardResponse : Codable {
     var shoppingCardCount: Int?
-    
-    enum CodingKeys: String,CodingKey {
-        case shoppingCardCount = "shoppingCardCount"
-    }
 }

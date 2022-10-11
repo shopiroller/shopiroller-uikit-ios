@@ -147,7 +147,7 @@ extension UIViewController {
     @objc func openOptions() {
         let actionSheetController = UIAlertController(title: "Select", message: "Select An Action", preferredStyle: .actionSheet)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ -> Void in
             self.dismiss(animated: true, completion: nil)
         }
         actionSheetController.addAction(cancelAction)
@@ -225,7 +225,7 @@ extension UIViewController {
                    canceled: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let noInternetConnectionAction = UIAlertAction(title: "e_commerce_general_ok_button_text".localized, style: .default) { action -> Void in
+        let noInternetConnectionAction = UIAlertAction(title: "e_commerce_general_ok_button_text".localized, style: .default) { _ -> Void in
             self.pop(animated: true, completion: nil)
         }
         alert.addAction(noInternetConnectionAction)
