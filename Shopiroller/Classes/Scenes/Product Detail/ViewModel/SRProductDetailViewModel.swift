@@ -317,7 +317,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     private func getSelectedVariantList() -> [ProductDetailResponseModel]? {
         var list = variantsList.map{ $0 }
-        for (_,element) in variantDataDictionary.enumerated() {
+        for (index,element) in variantDataDictionary.enumerated() {
             let variantId = getVariantIdFrom(variantName: element.key, variantValue: element.value)
             list = list?.filter {($0.variantData?.contains(where: { $0.variationId == variantId }) ?? false)}
         }

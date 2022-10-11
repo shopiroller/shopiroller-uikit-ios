@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol EmptyViewDelegate {
+protocol EmptyViewDelegate: AnyObject {
     func actionButtonClicked(_ sender: Any)
 }
 
@@ -24,7 +24,7 @@ public class EmptyView: SRBaseView {
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet private weak var buttonContainer: UIView!
     
-    var delegate: EmptyViewDelegate?
+    weak var delegate: EmptyViewDelegate?
     
     var addressDelegate : EmptyViewAddressDelegate?
     

@@ -47,7 +47,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     @IBOutlet private weak var stripeAndPaypalImage: UIImageView!
     @IBOutlet private weak var stripeAndPaypalDescriptionLabel: UILabel!
     
-    var delegate : CheckOutProgressPageDelegate?
+    weak var delegate : CheckOutProgressPageDelegate?
     var creditCardNumberListener: MaskedTextFieldDelegate!
     var creditCardExpireDateListener: MaskedTextFieldDelegate!
     var creditCardCvvListener: MaskedTextFieldDelegate!

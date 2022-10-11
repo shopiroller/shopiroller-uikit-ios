@@ -20,18 +20,6 @@ struct PaymentSettingsResponeModel: Codable {
     var deliveryConditionsTitle: String?
     var cancellationProcedureTitle: String?
     
-    enum CodingKeys: String, CodingKey {
-        case description = "description"
-        case deliveryConditions = "deliveryConditions"
-        case cancellationProcedure = "cancellationProcedure"
-        case distanceSalesContract = "distanceSalesContract"
-        case paymentAccounts = "paymentAccounts"
-        case supportedPaymentTypes = "supportedPaymentTypes"
-        case deliveryConditionsTitle = "deliveryConditionsTitle"
-        case cancellationProcedureTitle = "cancellationProcedureTitle"
-        case defaultCurrency = "defaultCurrency"
-    }
-    
     func getSupportedPaymentTypes() ->  [SupportedPaymentType]? {
         var newList : [SupportedPaymentType] = []
         if let supportedPaymentTypes = supportedPaymentTypes {
@@ -50,12 +38,6 @@ struct SupportedPaymentType: Codable {
     var paymentType : PaymentTypeEnum
     var description : String?
     var configuration: PaymentConfiguration?
-    
-    enum CodingKeys: String,CodingKey {
-        case description = "description"
-        case paymentType = "paymentType"
-        case configuration = "configuration"
-    }
 }
 
 
@@ -64,7 +46,4 @@ struct PaymentConfiguration: Codable {
     
     var accessToken : String?
     
-    enum CodingKeys: String,CodingKey {
-        case accessToken = "accessToken"
-    }
 }

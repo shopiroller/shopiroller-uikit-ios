@@ -15,13 +15,4 @@ struct SROrderResponseInnerModel: Codable {
     var message : String?
     var isUserFriendlyMessage: Bool?
     var errors: [String]?
-        
-    enum CodingKeys: String,CodingKey {
-        case order = "order"
-        case payment = "payment"
-        case key = "key"
-        case message = "message"
-        case isUserFriendlyMessage = "isUserFriendlyMessage"
-        case errors = "errors"
-    }
 }

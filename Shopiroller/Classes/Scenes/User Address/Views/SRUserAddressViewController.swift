@@ -75,7 +75,7 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
             [weak self] in
             guard let self = self else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
         }
     }

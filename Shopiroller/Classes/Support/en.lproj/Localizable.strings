@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "You cannot place an order because there are no products left";
 "e_commerce_product_detail_out_of_stock_button" = "Return to product list";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Added to Cart";
-"e_commerce_product_detail_cargo_price" = "Shipping Fee %@";
+"e_commerce_product_detail_cargo_price" = "Shipping Fee ";
 "e_commerce_product_detail_not_found_product_title" = "Not Found";
 "e_commerce_product_detail_not_found_product_description" = "The page you are looking for does not exist or may have been removed.";
 "e_commerce_product_detail_not_found_product_button" = "Understood";

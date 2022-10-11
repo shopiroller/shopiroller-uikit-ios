@@ -11,10 +11,4 @@ struct VariantDataModel : Codable {
     var value: String?
     var variationGroupId: String?
     var variationId: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case value = "value"
-        case variationGroupId = "variationGroupId"
-        case variationId = "variationId"
-    }
 }

@@ -71,7 +71,7 @@ class FilterChoiceViewModel: SRBaseViewModel {
         var selectionNameLabel = String()
         var selectedIds: [String] = []
         for item in originalList {
-            if(item.isSelected) {
+            if item.isSelected == true {
                 selectedIds.append(item.data.id)
                 selectionNameLabel += item.data.name + ", "
             }

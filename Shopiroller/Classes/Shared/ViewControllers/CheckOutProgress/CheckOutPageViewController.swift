@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CheckOutProgressPageDelegate {
+protocol CheckOutProgressPageDelegate: AnyObject {
     func currentPageIndex(currentIndex: Int)
     func showSuccessfullToastMessage()
     func hideConfirmOrderButton()

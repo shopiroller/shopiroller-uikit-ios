@@ -25,24 +25,6 @@ struct UserBillingAdressModel: Codable {
     var isDefault: Bool?
     var contact: AddressContactModel?
     
-    enum CodingKeys: String,CodingKey {
-        case type = "type"
-        case identityNumber = "identityNumber"
-        case companyName = "companyName"
-        case taxNumber = "taxNumber"
-        case taxOffice = "taxOffice"
-        case id = "id"
-        case title = "title"
-        case country = "country"
-        case state = "state"
-        case city = "city"
-        case addressLine = "addressLine"
-        case zipCode = "zipCode"
-        case description = "description"
-        case isDefault = "isDefault"
-        case contact = "contact"
-    }
-    
     func getOrderAdress() -> MakeOrderAddressModel {
         var makeOrderAddress = MakeOrderAddressModel()
         makeOrderAddress.city = city

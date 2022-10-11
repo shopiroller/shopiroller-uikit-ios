@@ -83,7 +83,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
                 
                 let campaignPrice = ECommerceUtil.getFormattedPrice(price: (model.product?.price ?? 0) * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: campaignPrice)
-                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
                 
                 discount.attributedText = attributeString
                 

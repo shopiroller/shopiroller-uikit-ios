@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol ListPopUpAddressDelegate {
+protocol ListPopUpAddressDelegate: AnyObject {
     func getBillingAddress(billingAddress: UserBillingAdressModel?)
     func getShippingAddress(shippingAddress: UserShippingAddressModel?)
 }
 
-protocol ListPopUpPaymentDelegate {
+protocol ListPopUpPaymentDelegate: AnyObject {
     func getSelectedPayment(payment: PaymentTypeEnum)
 }
 
-protocol ListPopUpSortDelegate {
+protocol ListPopUpSortDelegate: AnyObject {
     func getSelectedSortIndex(index: Int)
 }
 
@@ -36,11 +36,11 @@ class SRListPopUpViewController: BaseViewController<SRListPopUpViewModel> {
     @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var backgroundView: UIView!
     
-    var addressDelegate : ListPopUpAddressDelegate?
+    weak var addressDelegate : ListPopUpAddressDelegate?
     
-    var paymentDelegate: ListPopUpPaymentDelegate?
+    weak var paymentDelegate: ListPopUpPaymentDelegate?
     
-    var sortDelegate: ListPopUpSortDelegate?
+    weak var sortDelegate: ListPopUpSortDelegate?
     
     init(viewModel: SRListPopUpViewModel) {
         super.init(viewModel: viewModel, nibName: SRListPopUpViewController.nibName, bundle: Bundle(for: SRListPopUpViewController.self))

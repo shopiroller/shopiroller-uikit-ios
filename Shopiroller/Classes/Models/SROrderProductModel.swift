@@ -17,13 +17,4 @@ struct SROrderProductModel: Codable {
     var currency : CurrencyEnum?
     var campaignPrice: Double?
     
-    enum CodingKeys: String,CodingKey {
-        case id = "id"
-        case title = "title"
-        case featuredImage = "featuredImage"
-        case paidPrice = "paidPrice"
-        case quantity = "quantity"
-        case currency = "currency"
-        case campaignPrice = "campaignPrice"
-    }
 }

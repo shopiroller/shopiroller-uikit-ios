@@ -152,16 +152,17 @@ extension UIViewController {
         }
         actionSheetController.addAction(cancelAction)
 
-        let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { action -> Void in
+        let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { _ -> Void in
             let orderListVC = SROrderListViewController(viewModel: SROrderListViewModel())
             self.prompt(orderListVC, animated: true, completion: nil)
         }
         actionSheetController.addAction(chooseOrderAction)
         
-        let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { action -> Void in
+        let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { _ -> Void in
             let addressListVC = SRUserAddressViewController(viewModel: SRUserAddressViewModel())
             self.prompt(addressListVC, animated: true, completion: nil)
         }
+        
         actionSheetController.addAction(chooseAddressAction)
 
         self.present(actionSheetController, animated: true, completion: nil)

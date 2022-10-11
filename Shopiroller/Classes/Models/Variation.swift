@@ -10,9 +10,4 @@ import Foundation
 struct Variation : Codable {
     var id: String?
     var value: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case id = "id"
-        case value = "value"
-    }
 }

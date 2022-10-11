@@ -222,7 +222,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func getPaymentDescription() -> String? {
-        var description : String? = nil
+        var description : String? = ""
         if let paymentSettings = paymentSettings {
             paymentSettings.supportedPaymentTypes?.forEach {
                 if ($0.paymentType == _selectedPayment) {

@@ -16,7 +16,7 @@ public class ShopirollerApp {
     
     public var theme: ShopirollerTheme = ShopirollerTheme()
     
-    public var delegate: ShopirollerDelegate?
+    public weak var delegate: ShopirollerDelegate?
     
     private let user = User()
     
@@ -178,7 +178,7 @@ public struct ShopirollerAppUserCredentials {
 }
 
 
-public protocol ShopirollerDelegate {
+public protocol ShopirollerDelegate: AnyObject {
     
     func userLoginNeeded(navigationController: UINavigationController?)
     

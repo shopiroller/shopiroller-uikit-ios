@@ -29,22 +29,6 @@ struct SRMakeOrderResponse: Codable {
     var userShippingAdressModel: UserShippingAddressModel?
     var userBillingAdressModel: UserBillingAdressModel?
     
-    enum CodingKeys: String, CodingKey {
-        case userId = "userId"
-        case userNote = "userNote"
-        case bankAccount = "bankAccount"
-        case paymentAccount = "paymentAccount"
-        case paymentType = "paymentType"
-        case productPriceTotal = "productPriceTotal"
-        case shippingPrice = "shippingPrice"
-        case buyer = "buyer"
-        case creditCard = "creditCard"
-        case currency = "currency"
-        case orderId = "orderId"
-        case tryAgain = "tryAgain"
-        case shippingAddress = "shippingAddress"
-        case billingAddress = "billingAddress"
-    }
     
     func getCompleteOrderModel() -> CompleteOrderModel {
         if (paymentType?.lowercased() == PaymentTypeEnum.Online3DS.rawValue.lowercased() || paymentType?.lowercased() == PaymentTypeEnum.Online.rawValue.lowercased()) {

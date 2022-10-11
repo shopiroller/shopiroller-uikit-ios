@@ -22,21 +22,6 @@ struct MakeOrderAddressModel: Codable {
     var taxOffice: String?
     var nameSurname: String?
     
-    enum CodingKeys: String,CodingKey {
-        case id = "id"
-        case city = "city"
-        case country = "country"
-        case state = "state"
-        case description = "description"
-        case zipCode = "zipCode"
-        case identityNumber = "identityNumber"
-        case companyName = "companyName"
-        case taxNumber = "taxNumber"
-        case phoneNumber = "phoneNumber"
-        case taxOffice = "taxOffice"
-        case nameSurname = "nameSurname"
-    }
-    
     func getDescriptionArea() -> String {
         return [ description
                 , String.NEW_LINE

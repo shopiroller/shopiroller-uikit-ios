@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ShoppingCartPopUpTableViewCellDelegate {
+protocol ShoppingCartPopUpTableViewCellDelegate: AnyObject {
     func updateQuantityClicked(itemId: String?, quantity: Int)
 }
 
@@ -23,7 +23,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
     @IBOutlet private weak var plusButton: UIButton!
     
     private var model: ShoppingCartItem?
-    private var delegate: ShoppingCartPopUpTableViewCellDelegate?
+    private weak var delegate: ShoppingCartPopUpTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

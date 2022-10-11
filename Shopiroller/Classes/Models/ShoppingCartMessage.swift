@@ -11,12 +11,6 @@ struct ShoppingCartMessage: Codable {
     var key: CartMessageKeyEnum?
     var message: String?
     var type: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case key = "key"
-        case message = "message"
-        case type = "type"
-    }
 }
 
 enum CartMessageKeyEnum: String, Codable {

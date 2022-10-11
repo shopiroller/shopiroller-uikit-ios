@@ -16,12 +16,13 @@ extension NSMutableAttributedString {
     
     func stringWithString(stringToReplace: String, replacedWithString newStringPart: String) -> NSMutableAttributedString
     {
-        let mutableAttributedString = mutableCopy() as! NSMutableAttributedString
-        let mutableString = mutableAttributedString.mutableString
-        while mutableString.contains(stringToReplace) {
-            let rangeOfStringToBeReplaced = mutableString.range(of: stringToReplace)
-            mutableAttributedString.replaceCharacters(in: rangeOfStringToBeReplaced, with: newStringPart)
+        let mutableAttributedString = mutableCopy() as? NSMutableAttributedString
+        if let mutableString = mutableAttributedString?.mutableString {
+            while mutableString.contains(stringToReplace) {
+                let rangeOfStringToBeReplaced = mutableString.range(of: stringToReplace)
+                mutableAttributedString?.replaceCharacters(in: rangeOfStringToBeReplaced, with: newStringPart)
+            }
         }
-        return mutableAttributedString
+        return mutableAttributedString ?? NSMutableAttributedString()
     }
 }

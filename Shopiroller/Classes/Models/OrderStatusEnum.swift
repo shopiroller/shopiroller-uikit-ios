@@ -9,17 +9,17 @@ import Foundation
 
 enum OrderStatusEnum: String, Codable {
     
-    case WaitingPayment = "WaitingPayment"
-    case WaitingApproval = "WaitingApproval"
-    case Approved = "Approved"
-    case WaitingForSupplying = "WaitingForSupplying"
-    case Preparing = "Preparing"
-    case Shipped = "Shipped"
-    case Delivered = "Delivered"
-    case CancelRequested = "CancelRequested"
-    case Canceled = "Canceled"
-    case Refunded = "Refunded"
-    case PaymentFailed = "PaymentFailed"
+    case WaitingPayment
+    case WaitingApproval
+    case Approved
+    case WaitingForSupplying
+    case Preparing
+    case Shipped
+    case Delivered
+    case CancelRequested
+    case Canceled
+    case Refunded
+    case PaymentFailed
     
     var text : String {
         switch self {

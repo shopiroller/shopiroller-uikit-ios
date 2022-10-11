@@ -59,7 +59,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     private let timeInSeconds: TimeInterval = Date().timeIntervalSince1970
     
     
-    var delegate: CheckOutProgressPageDelegate?
+    weak var delegate: CheckOutProgressPageDelegate?
     
     init(viewModel: CheckOutInfoViewModel){
         super.init(viewModel: viewModel, nibName: CheckOutInfoViewController.nibName, bundle: Bundle(for: CheckOutInfoViewController.self))

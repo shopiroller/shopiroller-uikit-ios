@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "Вы не можете разместить заказ, так как товаров не осталось";
 "e_commerce_product_detail_out_of_stock_button" = "Вернуться к списку товаров";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Добавлено в корзину";
-"e_commerce_product_detail_cargo_price" = "Стоимость доставки %@";
+"e_commerce_product_detail_cargo_price" = "Стоимость доставки ";
 "e_commerce_product_detail_not_found_product_title" = "Не найдено";
 "e_commerce_product_detail_not_found_product_description" = "Страница, которую вы ищете, не существует или, возможно, была удалена.";
 "e_commerce_product_detail_not_found_product_button" = "Я понимаю";

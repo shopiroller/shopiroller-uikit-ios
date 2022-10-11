@@ -13,7 +13,7 @@ class BundleEx: Bundle {
     
     override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {
         if let bundle = objc_getAssociatedObject(self, &kBundleKey) {
-            return (bundle as! Bundle).localizedString(forKey: key, value: value, table: tableName)
+            return (bundle as? Bundle)?.localizedString(forKey: key, value: value, table: tableName) ?? ""
         }
         return super.localizedString(forKey: key, value: value, table: tableName)
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FilterPriceRangeTableViewCellDelegate {
+protocol FilterPriceRangeTableViewCellDelegate: AnyObject {
     func minPriceDidEndEditing(amount: Double?)
     func maxPriceDidEndEditing(amount: Double?)
 }
@@ -18,7 +18,7 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
     @IBOutlet weak var minPriceTextField: UITextField!
     @IBOutlet weak var maxPriceTextField: UITextField!
     
-    private var delegate: FilterPriceRangeTableViewCellDelegate?
+    private weak var delegate: FilterPriceRangeTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,8 +43,8 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
     
     func setup(delegate: FilterPriceRangeTableViewCellDelegate, currency: CurrencyEnum, minPrice: Double?, maxPrice: Double?) {
         self.delegate = delegate
-        minPriceTextField.rightView = getCurrencyLabel(currency: currency)
-        maxPriceTextField.rightView = getCurrencyLabel(currency: currency)
+        minPriceTextField.rightView = getCurrencyLabel(currency: currency.rawValue)
+        maxPriceTextField.rightView = getCurrencyLabel(currency: currency.rawValue)
         
         if let minPrice = minPrice {
             minPriceTextField.text = String(minPrice)
@@ -59,11 +59,11 @@ class FilterPriceRangeTableViewCell: UITableViewCell {
         }
     }
     
-    private func getCurrencyLabel(currency: CurrencyEnum) -> UILabel {
+    private func getCurrencyLabel(currency: String) -> UILabel {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 79, height: 22))
         label.font = .bold13
         label.textColor = .textSecondary
-        label.text = currency.rawValue + "      "
+        label.text = currency + "      "
         label.textAlignment = .center
         return label
     }

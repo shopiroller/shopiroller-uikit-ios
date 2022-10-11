@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddressTableViewCellDelegate {
+protocol AddressTableViewCellDelegate: AnyObject {
     func deleteButtonClicked(indexPathRow: Int?)
     func editButtonClicked(indexPathRow: Int?)
 }
@@ -28,7 +28,7 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet private weak var informationDeleteButton: UIButton!
     @IBOutlet private weak var informationEditButton: UIButton!
     
-    var delegate: AddressTableViewCellDelegate?
+    weak var delegate: AddressTableViewCellDelegate?
     
     private var indexPathRow: Int?
     

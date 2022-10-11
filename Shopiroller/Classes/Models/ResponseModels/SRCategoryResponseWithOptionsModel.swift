@@ -12,8 +12,4 @@ class SRCategoryResponseWithOptionsModel: Codable {
     var categories: [SRCategoryResponseModel]?
     var mobileSettings: SRMobileSettingsResponseModel?
     
-    enum CodingKeys: String, CodingKey {
-        case categories = "categories"
-        case mobileSettings = "mobileSettings"
-    }
 }

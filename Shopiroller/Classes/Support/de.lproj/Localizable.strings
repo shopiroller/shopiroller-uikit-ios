@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "Sie können keine Bestellung aufgeben, da keine Produkte mehr vorhanden sind";
 "e_commerce_product_detail_out_of_stock_button" = "Zurück zur Produktliste";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Zum Warenkorb hinzugefügt";
-"e_commerce_product_detail_cargo_price" = "Versandgebühr %@";
+"e_commerce_product_detail_cargo_price" = "Versandgebühr ";
 "e_commerce_product_detail_not_found_product_title" = "Nicht gefunden";
 "e_commerce_product_detail_not_found_product_description" = "Die gesuchte Seite existiert nicht oder wurde möglicherweise entfernt.";
 "e_commerce_product_detail_not_found_product_button" = "Ich verstehe";
