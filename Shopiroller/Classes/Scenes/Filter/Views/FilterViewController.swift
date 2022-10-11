@@ -72,7 +72,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        delegate.confirmedFilter(model: viewModel.selectedModel)
+        delegate?.confirmedFilter(model: viewModel.selectedModel)
         pop(animated: true, completion: nil)
     }
     

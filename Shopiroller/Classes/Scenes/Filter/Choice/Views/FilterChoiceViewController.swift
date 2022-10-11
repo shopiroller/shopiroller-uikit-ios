@@ -50,7 +50,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds())
+        delegate?.choiceConfirmed(selectedIds: viewModel.getSelectedIds())
         pop(animated: true, completion: nil)
     }
     
