@@ -11,7 +11,7 @@ import WebKit
 import SVProgressHUD
 
 
-protocol ThreeDSModalDelegate:AnyObject {
+protocol ThreeDSModalDelegate: AnyObject {
     func onPaymentSuccess()
     func onPaymentFailed(message: String?)
 }

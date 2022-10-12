@@ -354,15 +354,13 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func getProductDetail() {
-        viewModel.getProductDetail(success: {
-            [weak self] in
+        viewModel.getProductDetail(success: { [weak self] in
             guard let self = self else { return }
             self.setUI()
             self.view.isHidden = false
             self.collectionView.reloadData()
             self.playVideoButton.isHidden = !self.viewModel.hasVideo()
-        }) {
-            [weak self] _ in
+        }) { [weak self] _ in
             guard let self = self else { return }
             self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
         }
