@@ -25,7 +25,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         
     }
     
-    private var paymentSettings : PaymentSettingsResponeModel?
+    private var paymentSettings: PaymentSettingsResponeModel?
     
     private var _selectedPayment: PaymentTypeEnum?
     
@@ -33,7 +33,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     
     var isSelected: Bool = false
     
-    func getPaymentSettings(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func getPaymentSettings(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getPaymentSettings().response() {
             (result) in
             switch result {
@@ -50,7 +50,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    func setDefaultBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func setDefaultBillingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.setDefaultBillingAddress(SRAppContext.userId, addressId: SRSessionManager.shared.userBillingAddress?.id ?? "", userBillingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
@@ -66,7 +66,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    func setDefaultShippingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func setDefaultShippingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.setDefaultShippingaddress(SRAppContext.userId, addressId: SRSessionManager.shared.userDeliveryAddress?.id ?? "", userShippingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
@@ -230,7 +230,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func getPaymentDescription() -> String? {
-        var description : String? = ""
+        var description: String? = ""
         if let paymentSettings = paymentSettings {
             paymentSettings.supportedPaymentTypes?.forEach {
                 if ($0.paymentType == _selectedPayment) {

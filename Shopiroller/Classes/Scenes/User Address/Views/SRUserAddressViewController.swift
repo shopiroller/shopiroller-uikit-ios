@@ -73,7 +73,7 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
     private func getCount() {
         viewModel.getShoppingCartCount(success: { [weak self] in
             guard let self = self else { return }
-        }) { [weak self] _ in
+        }) { _ in
             guard let self = self else { return }
         }
     }

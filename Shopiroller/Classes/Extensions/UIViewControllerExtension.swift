@@ -225,9 +225,13 @@ extension UIViewController {
                    canceled: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let noInternetConnectionAction = UIAlertAction(title: "e_commerce_general_ok_button_text".localized, style: .default) { _ -> Void in
-            self.pop(animated: true, completion: nil)
-        }
+        
+        let noInternetConnectionAction = UIAlertAction(
+            title: "e_commerce_general_ok_button_text".localized,
+            style: .default) { _ -> Void in
+                self.pop(animated: true, completion: nil)
+            }
+        
         alert.addAction(noInternetConnectionAction)
         
         popUp(alert)

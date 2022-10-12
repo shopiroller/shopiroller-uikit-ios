@@ -55,8 +55,9 @@ open class SRZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransi
 
     func initialize() {
         // Pan gesture recognizer for interactive dismiss
-        gestureRecognizer = UIPanGestureRecognizer(target: self,
-                                                   action: #selector(SRZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
+        gestureRecognizer = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(SRZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
         gestureRecognizer.delegate = self
         // Append it to a window otherwise it will be canceled during the transition
         UIApplication.shared.keyWindow?.addGestureRecognizer(gestureRecognizer)
@@ -193,9 +194,12 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
         self.referenceSlideshowView?.pauseTimer()
 
         let containerView = transition.containerView
-        let fromViewController = transition.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        let fromViewController = transition.viewController(
+            forKey: UITransitionContextViewControllerKey.from)!
 
-        guard let toViewController = transition.viewController(forKey: UITransitionContextViewControllerKey.to) as? SRFullScreenSlideshowViewController else {
+        guard let toViewController = transition.viewController(
+            forKey: UITransitionContextViewControllerKey.to) as? SRFullScreenSlideshowViewController
+        else {
             return
         }
 
@@ -219,7 +223,9 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
             transitionView = UIImageView(image: referenceImageView.image)
             transitionView!.contentMode = UIViewContentMode.scaleAspectFill
             transitionView!.clipsToBounds = true
-            transitionView!.frame = containerView.convert(referenceImageView.bounds, from: referenceImageView)
+            transitionView!.frame = containerView.convert(
+                referenceImageView.bounds,
+                from: referenceImageView)
             containerView.addSubview(transitionView!)
             self.parent.referenceSlideshowViewFrame = transitionView!.frame
 
@@ -229,25 +235,34 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
                 transitionViewFinalFrame = image.tgr_aspectFitRectForSizeSR(finalFrame.size)
             }
         }
-
+        
         if let item = toViewController.slideshow.currentSlideshowItem, item.zoomInInitially {
-            transitionViewFinalFrame.size = CGSize(width: transitionViewFinalFrame.size.width * item.maximumZoomScale, height: transitionViewFinalFrame.size.height * item.maximumZoomScale)
+            transitionViewFinalFrame.size = CGSize(
+                width: transitionViewFinalFrame.size.width * item.maximumZoomScale,
+                height: transitionViewFinalFrame.size.height * item.maximumZoomScale)
         }
 
         let duration: TimeInterval = transitionDuration(using: transition)
 
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveLinear, animations: {
-            fromViewController.view.alpha = 0
-            transitionView?.frame = transitionViewFinalFrame
-            transitionView?.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
-        }, completion: {[ref = self.referenceImageView] _ in
-            fromViewController.view.alpha = 1
-            ref?.alpha = 1
-            transitionView?.removeFromSuperview()
-            transitionBackgroundView.removeFromSuperview()
-            containerView.addSubview(toViewController.view)
-            transition.completeTransition(!transition.transitionWasCancelled)
-        })
+        UIView.animate(
+            withDuration: duration, delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0,
+            options: UIViewAnimationOptions.curveLinear,
+            animations: {
+                
+                fromViewController.view.alpha = 0
+                transitionView?.frame = transitionViewFinalFrame
+                transitionView?.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+                
+            }, completion: { [ref = self.referenceImageView] _ in
+                fromViewController.view.alpha = 1
+                ref?.alpha = 1
+                transitionView?.removeFromSuperview()
+                transitionBackgroundView.removeFromSuperview()
+                containerView.addSubview(toViewController.view)
+                transition.completeTransition(!transition.transitionWasCancelled)
+            })
     }
 }
 
@@ -278,7 +293,9 @@ class SRZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
     private func animationParams(using transitionContext: UIViewControllerContextTransitioning) -> (TimeInterval, () -> Void, (Any) -> Void) {
         let toViewController: UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
 
-        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? SRFullScreenSlideshowViewController else {
+        guard let fromViewController = transitionContext.viewController(
+            forKey: UITransitionContextViewControllerKey.from) as? SRFullScreenSlideshowViewController
+        else {
             fatalError("Transition not used with FullScreenSlideshowViewController")
         }
 
@@ -295,23 +312,30 @@ class SRZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
         } else {
             transitionViewInitialFrame = fromViewController.slideshow.frame
         }
-
+        
         var transitionViewFinalFrame: CGRect
         if let referenceImageView = referenceImageView {
             referenceImageView.alpha = 0
-
+            
             let referenceSlideshowViewFrame = containerView.convert(referenceImageView.bounds, from: referenceImageView)
             transitionViewFinalFrame = referenceSlideshowViewFrame
-
+            
             // do a frame scaling when AspectFit content mode enabled
-            if fromViewController.slideshow.currentSlideshowItem?.imageView.image != nil && referenceImageView.contentMode == UIViewContentMode.scaleAspectFit {
-                transitionViewFinalFrame = containerView.convert(referenceImageView.aspectToFitFrameSR(), from: referenceImageView)
+            if (fromViewController.slideshow.currentSlideshowItem?.imageView.image != nil &&
+                referenceImageView.contentMode == UIViewContentMode.scaleAspectFit) {
+                
+                transitionViewFinalFrame = containerView.convert(
+                    referenceImageView.aspectToFitFrameSR(),
+                    from: referenceImageView)
             }
-
+            
             // fixes the problem when the referenceSlideshowViewFrame was shifted during change of the status bar hidden state
-            if UIApplication.shared.isStatusBarHidden && !toViewController.prefersStatusBarHidden && referenceSlideshowViewFrame.origin.y != parent.referenceSlideshowViewFrame?.origin.y {
+            if (UIApplication.shared.isStatusBarHidden && !toViewController.prefersStatusBarHidden &&
+                referenceSlideshowViewFrame.origin.y != parent.referenceSlideshowViewFrame?.origin.y) {
+                
                 transitionViewFinalFrame = transitionViewFinalFrame.offsetBy(dx: 0, dy: 20)
             }
+            
         } else {
             transitionViewFinalFrame = referenceSlideshowView?.frame ?? CGRect.zero
         }
@@ -367,7 +391,12 @@ class SRZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
             interruptibleAnimator(using: transitionContext).startAnimation()
         } else {
             let params = animationParams(using: transitionContext)
-            UIView.animate(withDuration: params.0, delay: 0, options: UIViewAnimationOptions(), animations: params.1, completion: params.2)
+            UIView.animate(
+                withDuration: params.0,
+                delay: 0,
+                options: UIViewAnimationOptions(),
+                animations: params.1,
+                completion: params.2)
         }
     }
 }
