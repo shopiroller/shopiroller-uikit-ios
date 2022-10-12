@@ -548,7 +548,9 @@ open class SRImageSlideshow: UIView {
 
         fullscreen.initialPage = currentPage
         fullscreen.inputs = images
-        slideshowTransitioningDelegate = SRZoomAnimatedTransitioningDelegate(slideshowView: self, slideshowController: fullscreen)
+        slideshowTransitioningDelegate = SRZoomAnimatedTransitioningDelegate(
+            slideshowView: self,
+            slideshowController: fullscreen)
         fullscreen.transitioningDelegate = slideshowTransitioningDelegate
         fullscreen.modalPresentationStyle = .custom
         controller.present(fullscreen, animated: true, completion: completion)

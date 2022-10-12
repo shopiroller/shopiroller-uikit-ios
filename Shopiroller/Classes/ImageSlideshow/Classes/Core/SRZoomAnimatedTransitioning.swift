@@ -55,7 +55,8 @@ open class SRZoomAnimatedTransitioningDelegate: NSObject, UIViewControllerTransi
 
     func initialize() {
         // Pan gesture recognizer for interactive dismiss
-        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SRZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
+        gestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                   action: #selector(SRZoomAnimatedTransitioningDelegate.handleSwipe(_:)))
         gestureRecognizer.delegate = self
         // Append it to a window otherwise it will be canceled during the transition
         UIApplication.shared.keyWindow?.addGestureRecognizer(gestureRecognizer)
@@ -187,18 +188,18 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
         return 0.5
     }
 
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transition: UIViewControllerContextTransitioning) {
         // Pauses slideshow
         self.referenceSlideshowView?.pauseTimer()
 
-        let containerView = transitionContext.containerView
-        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        let containerView = transition.containerView
+        let fromViewController = transition.viewController(forKey: UITransitionContextViewControllerKey.from)!
 
-        guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? SRFullScreenSlideshowViewController else {
+        guard let toViewController = transition.viewController(forKey: UITransitionContextViewControllerKey.to) as? SRFullScreenSlideshowViewController else {
             return
         }
 
-        toViewController.view.frame = transitionContext.finalFrame(for: toViewController)
+        toViewController.view.frame = transition.finalFrame(for: toViewController)
 
         let transitionBackgroundView = UIView(frame: containerView.frame)
         transitionBackgroundView.backgroundColor = toViewController.backgroundColor
@@ -233,7 +234,7 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
             transitionViewFinalFrame.size = CGSize(width: transitionViewFinalFrame.size.width * item.maximumZoomScale, height: transitionViewFinalFrame.size.height * item.maximumZoomScale)
         }
 
-        let duration: TimeInterval = transitionDuration(using: transitionContext)
+        let duration: TimeInterval = transitionDuration(using: transition)
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveLinear, animations: {
             fromViewController.view.alpha = 0
@@ -245,7 +246,7 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
             transitionView?.removeFromSuperview()
             transitionBackgroundView.removeFromSuperview()
             containerView.addSubview(toViewController.view)
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transition.completeTransition(!transition.transitionWasCancelled)
         })
     }
 }

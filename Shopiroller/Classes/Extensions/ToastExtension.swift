@@ -167,7 +167,7 @@ public extension UIView {
      */
     func showToast(_ toast: UIView, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, completion: ((_ didTap: Bool) -> Void)? = nil) {
         objc_setAssociatedObject(toast, &ToastKeys.completion, ToastCompletionWrapper(completion), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    
+        
         if activeToasts.count > 0 , !(activeToasts.contains(toast)) {
             hideToast()
         }
@@ -223,7 +223,7 @@ public extension UIView {
         }
         
         activeToasts.compactMap { $0 as? UIView }
-        .forEach { hideToast($0) }
+            .forEach { hideToast($0) }
         
         if includeActivity {
             hideToastActivity()
@@ -413,7 +413,10 @@ public extension UIView {
      @throws `ToastError.missingParameters` when message, title, and image are all nil
      @return The newly created toast view
      */
-    func toastViewForMessage(_ message: String?, title: String?, image: UIImage?, style: ToastStyle) throws -> UIView {
+    func toastViewForMessage(_ message: String?,
+                             title: String?,
+                             image: UIImage?,
+                             style: ToastStyle) throws -> UIView {
         // sanity
         guard message != nil || title != nil || image != nil else {
             throw ToastError.missingParameters

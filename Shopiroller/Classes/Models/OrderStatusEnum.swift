@@ -65,13 +65,13 @@ enum OrderStatusEnum: String, Codable {
         case .Delivered:
             return .badgeSuccess
         case .CancelRequested:
-            return .dangerBadge
+            return .badgeDanger
         case .Canceled:
-            return .dangerBadge
+            return .badgeDanger
         case .Refunded:
-            return .dangerBadge
+            return .badgeDanger
         case .PaymentFailed:
-            return .dangerBadge
+            return .badgeDanger
         }
     }
     

@@ -203,9 +203,13 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true) {
             return true
         } else if (creditCardNumber == nil || creditCardNumber == "") {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardNumberText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardEmptyError,
+                                Constants.creditCardNumberText)))
         } else {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardNumberText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardValidationError,
+                                Constants.creditCardNumberText)))
         }
         return false
     }
@@ -214,9 +218,13 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         if let cvv = creditCardCvv , cvv.isValidCreditCardCvv {
             return true
         } else if (creditCardCvv == nil || creditCardCvv == "") {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardCVVText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardEmptyError,
+                                Constants.creditCardCVVText)))
         } else {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardCVVText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardValidationError,
+                                Constants.creditCardCVVText)))
         }
         return false
     }
