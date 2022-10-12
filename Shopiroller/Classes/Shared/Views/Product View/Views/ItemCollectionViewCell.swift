@@ -46,7 +46,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configureCell(viewModel: ProductViewModel){
+    func configureCell(viewModel: ProductViewModel) {
         
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary

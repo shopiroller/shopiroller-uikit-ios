@@ -24,7 +24,7 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     
     private let delegate: ShoppingCartPopUpViewControllerDelegate
     
-    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate){
+    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate) {
         self.delegate = delegate
         super.init(viewModel: viewModel, nibName: ShoppingCartPopUpViewController.nibName, bundle: Bundle(for: ShoppingCartPopUpViewController.self))
     }

@@ -19,7 +19,7 @@ class SRListPopUpViewModel: SRBaseViewModel {
     
     
     init(listType: ListType, userShippingAddressList : [UserShippingAddressModel]? = nil, userBillingAddressList: [UserBillingAdressModel]? = nil,
-         addressType: GeneralAddressType? = nil,supportedPaymentMethods: [SupportedPaymentType]? = nil, selectedSortIndex: Int? = 0){
+         addressType: GeneralAddressType? = nil,supportedPaymentMethods: [SupportedPaymentType]? = nil, selectedSortIndex: Int? = 0) {
         self.listType = listType
         self.userShippingAddressList = userShippingAddressList
         self.userBillingAddressList = userBillingAddressList

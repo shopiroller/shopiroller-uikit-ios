@@ -101,7 +101,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
             minusButton.isEnabled = true
         }
         
-        if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
+        if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0) {
             warningView.isHidden = false
             warningLabel.text = String(format: "e_commerce_shopping_cart_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
             productImageToStackView.constant = 10

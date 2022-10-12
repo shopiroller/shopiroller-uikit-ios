@@ -14,7 +14,7 @@ open class BaseViewController<T>: UIViewController {
     
     internal let viewModel: T
     
-    init(_ title: String? = nil, viewModel: T, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
+    init(_ title: String? = nil, viewModel: T, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.viewModel = viewModel
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = title
@@ -34,7 +34,7 @@ open class BaseViewController<T>: UIViewController {
     internal func setup() {
     }
 
-    internal func setupNavigationBar(){}
+    internal func setupNavigationBar() { }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

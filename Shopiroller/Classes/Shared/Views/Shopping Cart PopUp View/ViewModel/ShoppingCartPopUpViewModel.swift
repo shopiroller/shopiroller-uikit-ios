@@ -37,7 +37,7 @@ class ShoppingCartPopUpViewModel: SRBaseViewModel {
         var count = 0
         if let list = productList {
             for item in list {
-                if(item.messages?[0].key == .UpdatedProduct || item.messages?[0].key == .NotEnoughStock){
+                if(item.messages?[0].key == .UpdatedProduct || item.messages?[0].key == .NotEnoughStock) {
                     count += 1
                 }else if(item.messages?[0].key == .OutOfStock) {
                     outOfStockCount += 1

@@ -20,8 +20,15 @@ public class PopUpViewModel {
     private let secondButton: PopUpButtonModel?
     private var inputString: String?
     
-    init(image: UIImage, title: String, description: String? = nil, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil, htmlDescription: NSAttributedString? = nil,
-         type: PopUpButtonType = .normalPopUp, inputString: String? = nil){
+    init(image: UIImage,
+         title: String,
+         description: String? = nil,
+         firstButton: PopUpButtonModel? = nil,
+         secondButton: PopUpButtonModel? = nil,
+         htmlDescription: NSAttributedString? = nil,
+         type: PopUpButtonType = .normalPopUp,
+         inputString: String? = nil) {
+        
         self.image = image
         self.title = title
         self.firstButton = firstButton

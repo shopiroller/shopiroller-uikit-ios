@@ -22,7 +22,7 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
     
     private var pageVC: AddressListPageViewController?
     
-    public init(viewModel: SRUserAddressViewModel){
+    public init(viewModel: SRUserAddressViewModel) {
         super.init("user_my_address_title".localized, viewModel: viewModel, nibName: SRUserAddressViewController.nibName, bundle: Bundle(for: SRUserAddressViewController.self))
     }
     

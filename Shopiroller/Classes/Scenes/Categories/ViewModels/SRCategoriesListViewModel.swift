@@ -28,7 +28,12 @@ class SRCategoriesListViewModel : SRBaseViewModel {
     
     private var categoryDisplayTypeEnum: CategoryDisplayTypeEnum? = .imageAndText
          
-    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel]() , isSubCategory: Bool? = false, selectedRowName: String? = String(), categoryId: String? = String(), categoryDisplayTypeEnum: CategoryDisplayTypeEnum? = .imageAndText){
+    init(categoryList : [SRCategoryResponseModel]? = [SRCategoryResponseModel](),
+         isSubCategory: Bool? = false,
+         selectedRowName: String? = String(),
+         categoryId: String? = String(),
+         categoryDisplayTypeEnum: CategoryDisplayTypeEnum? = .imageAndText) {
+        
         self.categoryList = categoryList
         self.isSubCategory = isSubCategory
         self.selectedRowName = selectedRowName
@@ -60,7 +65,7 @@ class SRCategoriesListViewModel : SRBaseViewModel {
         self.selectedRowName = categoryList?[position].name
     }
     
-    func setCategoryId(position: Int){
+    func setCategoryId(position: Int) {
         self.categoryId = categoryList?[position].categoryId
     }
     

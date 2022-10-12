@@ -40,7 +40,7 @@ class AddressSelectTableViewCell: UITableViewCell {
         
     }
 
-    func setupBillingCell(model: UserBillingAdressModel?, showDivider: Bool){
+    func setupBillingCell(model: UserBillingAdressModel?, showDivider: Bool) {
         addressTitle.text = model?.title
         addressFirstLine.text = model?.getPopupAddressFirstLine()
         addressSecondLine.text = model?.getPopupAddressSecondLine()
@@ -48,7 +48,7 @@ class AddressSelectTableViewCell: UITableViewCell {
         divider.isHidden = !showDivider
     }
     
-    func setupShippingCell(model: UserShippingAddressModel?, showDivider: Bool){
+    func setupShippingCell(model: UserShippingAddressModel?, showDivider: Bool) {
         addressTitle.text = model?.title
         addressFirstLine.text = model?.getPopupAddressFirstLine()
         addressSecondLine.text = model?.getPopupAddressSecondLine()

@@ -88,7 +88,7 @@ class AddressTableViewCell: UITableViewCell {
         delegate?.editButtonClicked(indexPathRow: indexPathRow)
     }
     
-    private func switchViews(openConfirm: Bool){
+    private func switchViews(openConfirm: Bool) {
         informationView.isHidden = openConfirm
         confirmView.isHidden = !openConfirm
     }

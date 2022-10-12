@@ -212,7 +212,7 @@ class FilterViewModel: SRBaseViewModel {
         self.variantDataSelectedDictionary = variantDataSelectedDictionary
     }
     
-    func getPaymentSettings(completion: @escaping (Result<Void, ErrorViewModel>) -> Void){
+    func getPaymentSettings(completion: @escaping (Result<Void, ErrorViewModel>) -> Void) {
         SRNetworkManagerRequests.getPaymentSettings().response() {
             (result) in
             switch result {

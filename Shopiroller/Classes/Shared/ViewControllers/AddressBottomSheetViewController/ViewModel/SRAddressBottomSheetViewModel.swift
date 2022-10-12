@@ -29,7 +29,11 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
     var addAddressModel: AddAddressModel = AddAddressModel()
     var editAddressModel: EditAddressModel = EditAddressModel()
     
-    init(type: GeneralAddressType , isEditing: Bool = false, userShippingAddress : UserShippingAddressModel? = nil , userBillingAddress: UserBillingAdressModel? = nil){
+    init(type: GeneralAddressType,
+         isEditing: Bool = false,
+         userShippingAddress : UserShippingAddressModel? = nil,
+         userBillingAddress: UserBillingAdressModel? = nil) {
+        
         self.type = type
         self.isEditing = isEditing
         self.userShippingAddress = userShippingAddress

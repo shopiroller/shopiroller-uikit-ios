@@ -15,7 +15,7 @@ class SRAddressListViewModel: SRBaseViewModel {
     private var billingAddressList: [UserBillingAdressModel]?
     var selectedIndexPathRow: Int?
     
-    init(state: AddressStateEnum){
+    init(state: AddressStateEnum) {
         self.state = state
     }
     

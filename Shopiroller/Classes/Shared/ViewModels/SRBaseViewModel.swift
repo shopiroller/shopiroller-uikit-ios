@@ -11,5 +11,5 @@ open class SRBaseViewModel {
     
     internal static let networkManager =  SRNetworkManager()
     
-    public init(){}
+    public init() { }
 }

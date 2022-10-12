@@ -19,7 +19,7 @@ class SRSearchViewController: BaseViewController<SRSearchViewModel> {
     @IBOutlet private weak var searchTableView: UITableView!
     @IBOutlet private weak var backButton: UIButton!
     
-    init(viewModel: SRSearchViewModel){
+    init(viewModel: SRSearchViewModel) {
         super.init(viewModel: viewModel, nibName: SRSearchViewController.nibName, bundle: Bundle(for: SRSearchViewController.self))
     }
     

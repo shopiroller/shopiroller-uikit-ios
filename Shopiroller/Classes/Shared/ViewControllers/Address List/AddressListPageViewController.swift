@@ -49,7 +49,7 @@ class AddressListPageViewController: UIPageViewController {
 extension AddressListPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            if(previousViewControllers[0].view.tag == 0){
+            if(previousViewControllers[0].view.tag == 0) {
                 addressDelegate?.pageViewController(currentIndex: 1)
             }else{
                 addressDelegate?.pageViewController(currentIndex: 0)

@@ -47,7 +47,7 @@ public class ShowCaseCell: UICollectionViewCell  {
         seeAllContainer.addGestureRecognizer(showAllTapGesture)
     }
       
-    func configureCell(viewModel: SRShowcaseResponseModel?){
+    func configureCell(viewModel: SRShowcaseResponseModel?) {
         self.viewModel = viewModel
         collectionView.reloadData()
         titleLabel.text = viewModel?.showcase?.name

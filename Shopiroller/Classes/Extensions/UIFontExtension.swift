@@ -123,7 +123,7 @@ extension UIFont {
 
 
     
-    class func listAllFontsOnSystem(){
+    class func listAllFontsOnSystem() {
         let familyNames = UIFont.familyNames
         for familyName in familyNames {
             let fontNames = UIFont.fontNames(forFamilyName: familyName)

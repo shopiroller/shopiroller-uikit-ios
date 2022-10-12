@@ -81,7 +81,7 @@ class BankTransferTableViewCell: UITableViewCell {
         
         bankAccountTitle.text = model?.name
         
-        if(model?.nameSurname != nil){
+        if(model?.nameSurname != nil) {
             bankAccountDescription.text = model?.nameSurname
         } else {
             bankAccountDescription.isHidden = true

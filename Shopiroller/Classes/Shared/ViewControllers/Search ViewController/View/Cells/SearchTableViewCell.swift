@@ -31,7 +31,7 @@ class SearchTableViewCell: UITableViewCell {
         delegate?.deleteButtonTapped(title: self.title)
     }
     
-    func configureCell(title : String?){
+    func configureCell(title : String?) {
         self.title = title
         searchTextLabel.text = title
     }

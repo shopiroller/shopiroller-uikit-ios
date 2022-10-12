@@ -42,8 +42,8 @@ open class SROrderListViewController: BaseViewController<SROrderListViewModel>, 
         }
     }
     
-    private func configure(){
-        if(viewModel.isOrderListEmpty()){
+    private func configure() {
+        if(viewModel.isOrderListEmpty()) {
             orderTable.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())

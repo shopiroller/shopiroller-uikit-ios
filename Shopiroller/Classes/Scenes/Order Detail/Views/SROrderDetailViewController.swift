@@ -64,7 +64,7 @@ class SROrderDetailViewController: BaseViewController<SROrderDetailViewModel> {
 
     
     
-    init(viewModel: SROrderDetailViewModel){
+    init(viewModel: SROrderDetailViewModel) {
         super.init("e_commerce_order_details_page_title".localized, viewModel: viewModel, nibName: SROrderDetailViewController.nibName, bundle: Bundle(for: SROrderDetailViewController.self))
     }
     
@@ -130,7 +130,7 @@ class SROrderDetailViewController: BaseViewController<SROrderDetailViewModel> {
             orderNote.isHidden = true
         }
         
-        if (viewModel.isCargoTrackingAvailable()){
+        if (viewModel.isCargoTrackingAvailable()) {
             cargoTrackingId.textColor = .textPCaption
             cargoTrackingId.font = .regular12
             cargoTrackingName.textColor = .textPCaption

@@ -426,7 +426,7 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     
     func getSubCategories(position: Int) {
         
-        if viewModel.hasSubCategory(position: position){
+        if viewModel.hasSubCategory(position: position) {
             let categoriesListVC = SRCategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
             post(categoriesListVC, animated: true, completion: nil)
         } else {

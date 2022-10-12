@@ -288,7 +288,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         }
     }
     
-    @IBAction private func addToCardshowAnimation(_ sender: Any){
+    @IBAction private func addToCardshowAnimation(_ sender: Any) {
         addToCardButton.isUserInteractionEnabled = false
         if ShopirollerApp.shared.isUserLoggedIn() {
             if (viewModel.isVariantCanBeAdded()) {

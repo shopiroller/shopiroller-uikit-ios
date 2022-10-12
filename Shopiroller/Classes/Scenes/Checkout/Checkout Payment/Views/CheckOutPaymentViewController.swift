@@ -55,7 +55,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     private var isValid: Bool = false
     
     
-    init(viewModel: CheckOutPaymentViewModel){
+    init(viewModel: CheckOutPaymentViewModel) {
         super.init(viewModel: viewModel, nibName: CheckOutPaymentViewController.nibName, bundle: Bundle(for:  CheckOutPaymentViewController.self))
     }
     

@@ -12,7 +12,7 @@ class CheckOutViewModel {
     
     private var currentStage : ProgressStageEnum?
     
-    init(currentStage: ProgressStageEnum? = .address){
+    init(currentStage: ProgressStageEnum? = .address) {
         self.currentStage = currentStage
         self.getShoppingCart()
     }
@@ -44,7 +44,7 @@ class CheckOutViewModel {
     }
     
     func getResultPageModel(isSuccess: Bool) -> SRResultViewControllerViewModel {
-        if (isSuccess){
+        if (isSuccess) {
             return getResultPageSuccessModel()
         } else {
             return getResultPageFailModel()

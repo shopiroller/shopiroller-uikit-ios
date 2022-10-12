@@ -23,7 +23,7 @@ class ThreeDSModalViewController: BaseViewController<ThreeDSModalViewModel> {
     
     weak var delegate: ThreeDSModalDelegate?
     
-    init(viewModel: ThreeDSModalViewModel){
+    init(viewModel: ThreeDSModalViewModel) {
         super.init(viewModel: viewModel, nibName: ThreeDSModalViewController.nibName, bundle: Bundle(for: ThreeDSModalViewController.self))
     }
     

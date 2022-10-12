@@ -35,7 +35,7 @@ struct MakeOrderAddressModel: Codable {
     }
     
     func getBillingDescriptionArea() -> String {
-        if (taxOffice != nil && taxOffice != ""){
+        if (taxOffice != nil && taxOffice != "") {
             return [ description
             , String.NEW_LINE
             , city

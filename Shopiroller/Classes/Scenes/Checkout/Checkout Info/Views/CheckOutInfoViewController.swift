@@ -61,7 +61,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     
     weak var delegate: CheckOutProgressPageDelegate?
     
-    init(viewModel: CheckOutInfoViewModel){
+    init(viewModel: CheckOutInfoViewModel) {
         super.init(viewModel: viewModel, nibName: CheckOutInfoViewController.nibName, bundle: Bundle(for: CheckOutInfoViewController.self))
     }
     
@@ -202,7 +202,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             }
     }
     
-    private func getShoppingCart(isCheckOut: Bool){
+    private func getShoppingCart(isCheckOut: Bool) {
         viewModel.getShoppingCart(success: {
             if isCheckOut {
                 if self.viewModel.isInvalidItemsAvailable() {
@@ -221,7 +221,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     private func makeOrder() {
-        if SRNetworkCheckHelper.isConnectedToNetwork(){
+        if SRNetworkCheckHelper.isConnectedToNetwork() {
             DispatchQueue.main.async {
                 if (!self.animationView.isAnimationPlaying) {
                     self.showAnimation()

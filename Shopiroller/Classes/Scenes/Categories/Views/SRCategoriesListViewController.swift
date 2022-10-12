@@ -15,7 +15,7 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     
     private let badgeView  = SRBadgeButton()
     
-    init(viewModel: SRCategoriesListViewModel){
+    init(viewModel: SRCategoriesListViewModel) {
         super.init(viewModel: viewModel, nibName: SRCategoriesListViewController.nibName, bundle: Bundle(for: SRCategoriesListViewController.self))
         title = viewModel.getPageTitle()
     }
@@ -79,7 +79,7 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
         }
     }
     
-    func setSubCategories(position: Int){
+    func setSubCategories(position: Int) {
         let vc = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName(),categoryId: viewModel.getCategoryId()))
         prompt(vc, animated: true, completion: nil)
     }
@@ -100,7 +100,7 @@ extension SRCategoriesListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if viewModel.hasSubCategory(position: indexPath.row){
+        if viewModel.hasSubCategory(position: indexPath.row) {
             viewModel.setSelectedRowName(position: indexPath.row)
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)

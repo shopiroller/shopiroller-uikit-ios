@@ -28,7 +28,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
     
     private var filterRedDotView = UIView()
         
-    init(viewModel: SRProductListViewModel){
+    init(viewModel: SRProductListViewModel) {
         super.init(viewModel.getPageTitle(),viewModel: viewModel, nibName: SRProductListViewController.nibName, bundle: Bundle(for: SRProductListViewController.self))
         title = viewModel.getPageTitle()
     }

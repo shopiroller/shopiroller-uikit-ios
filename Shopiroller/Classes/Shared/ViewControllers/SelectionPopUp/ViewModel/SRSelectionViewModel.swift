@@ -16,7 +16,7 @@ class SRSelectionViewModel: SRBaseViewModel {
     
     var searchText: String?
     
-    init(selectionPopUpModel: SelectionModel? = nil){
+    init(selectionPopUpModel: SelectionModel? = nil) {
         self.selectionPopUpModel = selectionPopUpModel
     }
     

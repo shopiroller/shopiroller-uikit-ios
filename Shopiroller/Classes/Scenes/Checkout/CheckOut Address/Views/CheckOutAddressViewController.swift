@@ -32,7 +32,7 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     
     weak var delegate : CheckOutProgressPageDelegate?
     
-    init(viewModel: CheckOutAddressViewModel){
+    init(viewModel: CheckOutAddressViewModel) {
         super.init(viewModel: viewModel, nibName: CheckOutAddressViewController.nibName, bundle: Bundle(for: CheckOutAddressViewController.self))
     }
     

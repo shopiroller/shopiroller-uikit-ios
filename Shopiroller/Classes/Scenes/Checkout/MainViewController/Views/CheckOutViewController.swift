@@ -38,7 +38,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     private var paymentIntentClientSecret: String?
     private var paymentIntentPaymentId: String?
 
-    init(viewModel: CheckOutViewModel){
+    init(viewModel: CheckOutViewModel) {
         super.init(viewModel.getPageTitle()?.localized, viewModel: viewModel, nibName: CheckOutViewController.nibName, bundle: Bundle(for: CheckOutViewController.self))
     }
     

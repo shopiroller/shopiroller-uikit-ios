@@ -15,7 +15,7 @@ class SRTextField: SRBaseView {
     
     private var type: SRTextFieldType?
     
-    func setup(rightViewImage: UIImage? , type: SRTextFieldType){
+    func setup(rightViewImage: UIImage? , type: SRTextFieldType) {
         super.setup()
         guard let rightImage = rightViewImage else { return }
         self.type = type

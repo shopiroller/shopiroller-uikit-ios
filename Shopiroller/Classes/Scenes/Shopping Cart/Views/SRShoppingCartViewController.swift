@@ -34,7 +34,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     @IBOutlet private weak var checkoutButton: UIButton!
     
 
-    init(viewModel: SRShoppingCartViewModel){
+    init(viewModel: SRShoppingCartViewModel) {
         super.init(Constants.pageTitle, viewModel: viewModel, nibName: SRShoppingCartViewController.nibName, bundle: Bundle(for: SRShoppingCartViewController.self))
     }
     
@@ -139,7 +139,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     private func showIfHasInvalidItem() {
-        if(viewModel.hasInvalidItems()){
+        if(viewModel.hasInvalidItems()) {
             let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel(), delegate: self)
             popUp(vc, completion: nil)
         }
@@ -156,7 +156,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     @IBAction func proceedToCheckoutClicked(_ sender: Any) {
-        if(!viewModel.hasInvalidItems()){
+        if(!viewModel.hasInvalidItems()) {
             let checkOutViewController = CheckOutViewController(viewModel: CheckOutViewModel())
             prompt(checkOutViewController, animated: true, completion: nil)
         } else {

@@ -57,7 +57,7 @@ public class EmptyView: SRBaseView {
             buttonContainer.isHidden = false
             actionButton.setTitle(button.title)
             actionButton.setTitleColor(.white)
-            if(button.color != nil){
+            if(button.color != nil) {
                 actionButton.backgroundColor = button.color
             }
         }
@@ -67,7 +67,7 @@ public class EmptyView: SRBaseView {
         delegate?.actionButtonClicked(sender)
     }
     
-    @IBAction func addAddressButtonClicked(_ sender: Any){
+    @IBAction func addAddressButtonClicked(_ sender: Any) {
         addressDelegate?.addAddressButtonClicked(type: self.type)
     }
     

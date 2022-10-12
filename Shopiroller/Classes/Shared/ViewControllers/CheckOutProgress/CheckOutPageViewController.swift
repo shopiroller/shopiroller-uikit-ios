@@ -23,7 +23,7 @@ class CheckOutPageViewController: UIPageViewController {
     var checkOutPaymentVC: CheckOutPaymentViewController?
     var checkOutInfoVC: CheckOutInfoViewController?
     
-    init(checkOutPageDelegate: CheckOutProgressPageDelegate){
+    init(checkOutPageDelegate: CheckOutProgressPageDelegate) {
         self.checkOutPageDelegate = checkOutPageDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
