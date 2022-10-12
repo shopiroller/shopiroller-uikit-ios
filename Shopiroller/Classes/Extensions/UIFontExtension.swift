@@ -49,36 +49,36 @@ enum SRFont: String {
     
 }
 enum RegisterFontError: Error {
-  case invalidFontFile
-  case fontPathNotFound
-  case initFontError
-  case registerFailed
+    case invalidFontFile
+    case fontPathNotFound
+    case initFontError
+    case registerFailed
 }
 class GetBundle {}
 
 extension UIFont {
     static func register(path: String, fileNameString: String, type: String) throws {
-      let frameworkBundle = Bundle(for: GetBundle.self)
-      guard let resourceBundleURL = frameworkBundle.path(forResource: fileNameString, ofType: type) else {
-         throw RegisterFontError.fontPathNotFound
-      }
-      guard let fontData = NSData(contentsOfFile: resourceBundleURL),    let dataProvider = CGDataProvider.init(data: fontData) else {
-        throw RegisterFontError.invalidFontFile
-      }
-      guard let fontRef = CGFont.init(dataProvider) else {
-         throw RegisterFontError.initFontError
-      }
-      var errorRef: Unmanaged<CFError>? = nil
-     guard CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) else   {
-           throw RegisterFontError.registerFailed
-      }
-     }
+        let frameworkBundle = Bundle(for: GetBundle.self)
+        guard let resourceBundleURL = frameworkBundle.path(forResource: fileNameString, ofType: type) else {
+            throw RegisterFontError.fontPathNotFound
+        }
+        guard let fontData = NSData(contentsOfFile: resourceBundleURL),    let dataProvider = CGDataProvider.init(data: fontData) else {
+            throw RegisterFontError.invalidFontFile
+        }
+        guard let fontRef = CGFont.init(dataProvider) else {
+            throw RegisterFontError.initFontError
+        }
+        var errorRef: Unmanaged<CFError>?
+        guard CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) else   {
+            throw RegisterFontError.registerFailed
+        }
+    }
 }
 
 extension UIFont {
     
     static let regular8: UIFont = SRFont.regular.font(ofSize: 8.0)
-        
+    
     static let regular10: UIFont = SRFont.regular.font(ofSize: 10.0)
     
     static let regular12: UIFont = SRFont.regular.font(ofSize: 12.0)
@@ -96,7 +96,7 @@ extension UIFont {
     static let medium20: UIFont = SRFont.medium.font(ofSize: 20.0)
     
     static let semiBold10: UIFont = SRFont.semiBold.font(ofSize: 10.0)
-        
+    
     static let semiBold12: UIFont = SRFont.semiBold.font(ofSize: 12.0)
     
     static let semiBold13: UIFont = SRFont.semiBold.font(ofSize: 13.0)
@@ -108,7 +108,7 @@ extension UIFont {
     static let semiBold16: UIFont = SRFont.semiBold.font(ofSize: 16.0)
     
     static let semiBold20: UIFont = SRFont.semiBold.font(ofSize: 20.0)
-        
+    
     static let bold24: UIFont = SRFont.bold.font(ofSize: 24)
     
     static let bold18: UIFont = SRFont.bold.font(ofSize: 18)
@@ -120,8 +120,8 @@ extension UIFont {
     static let bold13: UIFont = SRFont.bold.font(ofSize: 13)
     
     static let bold14: UIFont = SRFont.bold.font(ofSize: 14)
-
-
+    
+    
     
     class func listAllFontsOnSystem() {
         let familyNames = UIFont.familyNames
@@ -135,35 +135,35 @@ extension UIFont {
 }
 
 public extension UIFont {
-
+    
     public static func jbs_registerFont(withFilenameString filenameString: String, bundle: Bundle) {
-
+        
         print(filenameString)
         
         guard let pathForResourceString = bundle.path(forResource: filenameString, ofType: nil) else {
             print("UIFont+:  Failed to register font - path for resource not found.")
             return
         }
-
+        
         guard let fontData = NSData(contentsOfFile: pathForResourceString) else {
             print("UIFont+:  Failed to register font - font data could not be loaded.")
             return
         }
-
+        
         guard let dataProvider = CGDataProvider(data: fontData) else {
             print("UIFont+:  Failed to register font - data provider could not be loaded.")
             return
         }
-
+        
         guard let font = CGFont(dataProvider) else {
             print("UIFont+:  Failed to register font - font could not be loaded.")
             return
         }
-
+        
         var errorRef: Unmanaged<CFError>? = nil
         if (CTFontManagerRegisterGraphicsFont(font, &errorRef) == false) {
             print("UIFont+:  Failed to register font - register graphics font failed - this font may have already been registered in the main bundle.")
         }
     }
-
+    
 }

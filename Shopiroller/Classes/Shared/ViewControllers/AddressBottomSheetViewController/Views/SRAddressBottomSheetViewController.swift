@@ -459,8 +459,7 @@ class SRAddressBottomSheetViewController :
     
     private func getStateList() {
         statesView.getTextField().isEnabled = true
-        viewModel.getStateModel(success: {
-            [weak self] in
+        viewModel.getStateModel(success: { [weak self] in
             guard let self = self else { return }
             if self.viewModel.getStates().count != 0 {
                 self.statesContainerView.isHidden = false
@@ -478,9 +477,7 @@ class SRAddressBottomSheetViewController :
     
     private func getDistrictList() {
         districtView.getTextField().isEnabled = true
-        viewModel.getDistrictModel(success: {
-            [weak self] in
-            
+        viewModel.getDistrictModel(success: { [weak self] in
             if self?.viewModel.getDistricts().count != 0 {
                 self?.districtsContainerView.isHidden = false
                 if self?.viewModel.getDistricts().count == 1 {
@@ -515,6 +512,7 @@ class SRAddressBottomSheetViewController :
         } else {
             nameView.getErrorLabelText() != nil ? nameView.setInfoLabel(infoText: "") : nameView.removeError()
         }
+        
         if (surnameView.getTextField().text == "") {
             
             setTextFieldError(
@@ -534,6 +532,7 @@ class SRAddressBottomSheetViewController :
         } else {
             surnameView.getErrorLabelText() != nil ? surnameView.setInfoLabel(infoText: "") : surnameView.removeError()
         }
+        
         if (phoneNumberView.getTextField().text == "") {
             
             setTextFieldError(
@@ -553,6 +552,7 @@ class SRAddressBottomSheetViewController :
         } else {
             phoneNumberView.removeError()
         }
+        
         if ((countryView.getTextField().text == "" && countryView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
             
             setTextFieldError(
@@ -564,6 +564,7 @@ class SRAddressBottomSheetViewController :
         } else {
             countryView.removeError()
         }
+        
         if (statesContainerView.isHidden == false) {
             
             if((statesView.getTextField().text == "" && statesView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
@@ -578,6 +579,7 @@ class SRAddressBottomSheetViewController :
                 statesView.removeError()
             }
         }
+        
         if (districtsContainerView.isHidden == false) {
             
             if((districtView.getTextField().text == "" && districtView.getTextField().placeholder != "") && !viewModel.isEditAvailable()) {
@@ -592,6 +594,7 @@ class SRAddressBottomSheetViewController :
                 districtView.removeError()
             }
         }
+        
         if (userAddressView.getTextField().text == "") {
             
             setTextFieldError(
@@ -599,6 +602,7 @@ class SRAddressBottomSheetViewController :
                 errorMessage: ErrorConstants.addressEmptyError)
             
             isValid = false
+            
         } else if (userAddressView.getTextField().text?.count ?? 0 < 3) {
             
             setTextFieldError(
@@ -630,6 +634,7 @@ class SRAddressBottomSheetViewController :
         } else {
             zipCodeView.getErrorLabelText() != nil ? zipCodeView.setInfoLabel(infoText: "") : zipCodeView.removeError()
         }
+        
         if (addressTitleView.getTextField().text == "") {
             
             setTextFieldError(
@@ -652,9 +657,11 @@ class SRAddressBottomSheetViewController :
         if (viewModel.isEditAvailable() && viewModel.getShippingAddress() != nil) {
             return isValid
         }
+        
         if (viewModel.getAddressType() == .shipping && !isBillingAddressChecked) {
             return isValid
         }
+        
         return isValid
     }
     
@@ -836,8 +843,7 @@ class SRAddressBottomSheetViewController :
     
     private func saveShippingAddress(isEditing: Bool) {
         if isEditing {
-            viewModel.saveEdittedShippingAddress(success: {
-                [weak self] in
+            viewModel.saveEdittedShippingAddress(success: { [weak self] in
                 guard let self = self else { return }
                 
                 self.delegate?.saveButtonTapped(
@@ -850,11 +856,11 @@ class SRAddressBottomSheetViewController :
             }) { [weak self] (errorViewModel) in
                 
                 guard let self = self else { return }
+                
                 self.showAlertError(viewModel: errorViewModel)
             }
         } else {
-            viewModel.addShippingAddress(success: {
-                [weak self] in
+            viewModel.addShippingAddress(success: { [weak self] in
                 guard let self = self else { return }
                 
                 self.delegate?.saveButtonTapped(
@@ -867,11 +873,10 @@ class SRAddressBottomSheetViewController :
             }) { [weak self] (errorViewModel) in
                 
                 guard let self = self else { return }
+                
                 self.showAlertError(viewModel: errorViewModel)
             }
         }
-        
-        
     }
     
     private func saveBillingAddress(isEditing: Bool) {
@@ -892,9 +897,11 @@ class SRAddressBottomSheetViewController :
                 guard let self = self else { return }
                 self.showAlertError(viewModel: errorViewModel)
             }
+            
         } else {
-            viewModel.addBillingAddress(success: {
-                [weak self] in
+            
+            viewModel.addBillingAddress(success: { [weak self] in
+                
                 guard let self = self else { return }
                 
                 self.delegate?.saveButtonTapped(
@@ -905,7 +912,9 @@ class SRAddressBottomSheetViewController :
                 self.pop(animated: true, completion: nil)
                 
             }) { [weak self] (errorViewModel) in
+                
                 guard let self = self else { return }
+                
                 self.showAlertError(viewModel: errorViewModel)
             }
         }
@@ -913,8 +922,8 @@ class SRAddressBottomSheetViewController :
     }
     
     private func addAddress() {
-        viewModel.addAddress(success: {
-            [weak self] in
+        viewModel.addAddress(success: { [weak self] in
+            
             guard let self = self else { return }
             
             self.delegate?.saveButtonTapped(
@@ -925,10 +934,12 @@ class SRAddressBottomSheetViewController :
             self.pop(animated: true, completion: nil)
             
         }) { [weak self] (errorViewModel) in
+            
             guard let self = self else { return }
+            
             self.showAlertError(viewModel: errorViewModel)
+            
         }
-        
     }
 }
 
@@ -982,7 +993,7 @@ extension SRAddressBottomSheetViewController : UITextFieldDelegate {
     }
 }
 
-extension SRAddressBottomSheetViewController: SelectionController {
+extension SRAddressBottomSheetViewController: SelectionControllerDelegate {
     func getCountryId(id: String?) {
         switch viewModel.selectionAddressType {
         case .country:

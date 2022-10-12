@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol CategoriesCellDelegate : AnyObject {
+protocol CategoriesCellDelegate: AnyObject {
     func getSubCategories(position: Int)
     func getCategories(position: Int)
 }
@@ -35,7 +35,7 @@ class CategoriesCell: UICollectionViewCell {
     private var categoryDisplayTypeEnum: CategoryDisplayTypeEnum?
 
     
-    var delegate: CategoriesCellDelegate?
+    weak var delegate: CategoriesCellDelegate?
     
     private var cellPosition: Int = 0
     

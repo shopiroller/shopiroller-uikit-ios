@@ -142,7 +142,6 @@ extension Error {
             if let decodeError = self as? DecodingError {
                 errorMessage = decodeError.localizedDescription
             }
-            break
         }
         SentrySDK.capture(message: "Error: \(error) \n" + "Error Message: \(errorMessage)")
         #if DEBUG

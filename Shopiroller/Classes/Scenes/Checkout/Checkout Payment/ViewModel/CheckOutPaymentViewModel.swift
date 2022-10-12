@@ -168,7 +168,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    //MARK: Validation
+    // MARK: Validation
     
     func isValid(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         if(isValidCreditCardHolder(error: error) && isValidCreditCardNumber(error: error) &&

@@ -51,7 +51,6 @@ public class ShopirollerApp {
             bundle: .shopiroller
         )
         
-        
         UIFont.listAllFontsOnSystem()
         
         SRAppContext.fontFamily = .poppins

@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-protocol SelectionController {
+protocol SelectionControllerDelegate: AnyObject {
     func getCountryId(id: String?)
 }
 
@@ -24,7 +24,7 @@ class SRSelectionViewController: BaseViewController<SRSelectionViewModel> {
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var selectionPopUpView: UIView!
     
-    var delegate: SelectionController?
+    weak var delegate: SelectionControllerDelegate?
         
     init(viewModel: SRSelectionViewModel) {
         super.init(viewModel: viewModel, nibName: SRSelectionViewController.nibName, bundle: Bundle(for: SRSelectionViewController.self))

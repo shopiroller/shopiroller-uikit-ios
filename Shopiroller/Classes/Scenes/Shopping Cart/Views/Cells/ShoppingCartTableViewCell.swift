@@ -32,7 +32,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet private weak var productImageToStackView: NSLayoutConstraint!
     
     private var model: ShoppingCartItem?
-    private var delegate: ShoppingCartTableViewCellDelegate?
+    private weak var delegate: ShoppingCartTableViewCellDelegate?
     private var cellIndexAtRow: Int?
     
     override func awakeFromNib() {

@@ -11,7 +11,7 @@ import Foundation
 import SVProgressHUD
 
 
-public typealias handler = (FetchResult) -> Void
+public typealias Handler = (FetchResult) -> Void
 
 public enum FetchResult {
     case error(_: ShopirollerError)
@@ -134,7 +134,7 @@ final public class SRNetworkManager {
     }
     
     
-    private func uploadData(for request: URLRequest, data: Data, handler: @escaping handler) {
+    private func uploadData(for request: URLRequest, data: Data, handler: @escaping Handler) {
         urlSession.uploadTask(with: request, from: data, completionHandler: { data, response, error in
             loggingPrint(request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
@@ -155,7 +155,7 @@ final public class SRNetworkManager {
         }).resume()
     }
     
-    private func fetchData(for request: URLRequest, handler: @escaping handler) {
+    private func fetchData(for request: URLRequest, handler: @escaping Handler) {
         urlSession.dataTask(with: request, completionHandler: { data, response, error in
             loggingPrint(request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {

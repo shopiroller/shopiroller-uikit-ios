@@ -361,10 +361,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     func getImageIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
         if let variantsList = variantsList {
             let variantListWithImage = variantsList.filter{ $0.images?.count ?? 0 > 0}
-            for (index,element) in variantListWithImage.enumerated() {
-                if element.id == variantModel.id {
+            for (index,element) in variantListWithImage.enumerated() where element.id == variantModel.id {
                     return index
-                }
             }
         }
         return -1

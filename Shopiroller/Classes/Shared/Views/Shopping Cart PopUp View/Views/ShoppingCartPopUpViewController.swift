@@ -22,9 +22,9 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     
     @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
     
-    private let delegate: ShoppingCartPopUpViewControllerDelegate
+    private weak var delegate: ShoppingCartPopUpViewControllerDelegate?
     
-    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate) {
+    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate?) {
         self.delegate = delegate
         super.init(viewModel: viewModel, nibName: ShoppingCartPopUpViewController.nibName, bundle: Bundle(for: ShoppingCartPopUpViewController.self))
     }

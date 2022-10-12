@@ -126,10 +126,5 @@ struct AddressContactModel: Codable {
     var phoneNumber: String?
     var email: String?
     
-    enum CodingKeys: String,CodingKey {
-        case nameSurname = "nameSurname"
-        case phoneNumber = "phoneNumber"
-        case email = "email"
-    }
 }
 
