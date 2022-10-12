@@ -42,7 +42,7 @@ class ShoppingCartPopUpTableViewCell: UITableViewCell {
         controlView.layer.cornerRadius = 6
     }
 
-    func setup(model: ShoppingCartItem, delegate: ShoppingCartPopUpTableViewCellDelegate) {
+    func setup(model: ShoppingCartItem, delegate: ShoppingCartPopUpTableViewCellDelegate?) {
         self.model = model
         self.delegate = delegate
         

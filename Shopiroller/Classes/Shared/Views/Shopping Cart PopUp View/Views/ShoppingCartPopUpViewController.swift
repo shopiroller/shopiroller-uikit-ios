@@ -59,7 +59,7 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     
     @IBAction func readyToCheckoutClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        delegate.readyToCheckoutClicked(sender)
+        delegate?.readyToCheckoutClicked(sender)
     }
     
 }
