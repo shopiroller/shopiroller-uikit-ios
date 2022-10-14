@@ -67,7 +67,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         
         SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
             (result) in
-            switch result{
+            switch result {
             case .success(let response):
                 if let productList = response.data , (!productList.isEmpty) {
                     if self.currentPage != 1 {
