@@ -48,12 +48,14 @@ enum SRFont: String {
     
     
 }
+
 enum RegisterFontError: Error {
     case invalidFontFile
     case fontPathNotFound
     case initFontError
     case registerFailed
 }
+
 class GetBundle {}
 
 extension UIFont {
@@ -160,7 +162,7 @@ public extension UIFont {
             return
         }
         
-        var errorRef: Unmanaged<CFError>? = nil
+        var errorRef: Unmanaged<CFError>?
         if (CTFontManagerRegisterGraphicsFont(font, &errorRef) == false) {
             print("UIFont+:  Failed to register font - register graphics font failed - this font may have already been registered in the main bundle.")
         }

@@ -10,7 +10,7 @@ import UIKit
 extension UIColor {
     
     //static let pale: UIColor = #colorLiteral(red: 0.9723294377, green: 0.904499948, blue: 0.8483090401, alpha: 1)!
-    
+        
     static let ice = UIColor(named: "ice")!
     
     static let mainSecondary = UIColor(named: "mainSecondary")!
@@ -69,4 +69,37 @@ extension UIColor {
     
     static let lightGray = UIColor(named: "lightGray")!
     
+    public static func ajk(withFilenameString filenameString: String, bundle: Bundle) {
+        
+        print(filenameString)
+        
+        guard let pathForResourceString = bundle.path(forResource: filenameString, ofType: nil) else {
+            print("UIFont+:  Failed to register font - path for resource not found.")
+            return
+        }
+        
+        guard let fontData = NSData(contentsOfFile: pathForResourceString) else {
+            print("UIFont+:  Failed to register font - font data could not be loaded.")
+            return
+        }
+        
+        guard let dataProvider = CGDataProvider(data: fontData) else {
+            print("UIFont+:  Failed to register font - data provider could not be loaded.")
+            return
+        }
+        
+        guard let font = CGFont(dataProvider) else {
+            print("UIFont+:  Failed to register font - font could not be loaded.")
+            return
+        }
+        
+        var errorRef: Unmanaged<CFError>?
+        if (CTFontManagerRegisterGraphicsFont(font, &errorRef) == false) {
+            print("UIFont+:  Failed to register font - register graphics font failed - this font may have already been registered in the main bundle.")
+        }
+    }
+    
+    
 }
+
+

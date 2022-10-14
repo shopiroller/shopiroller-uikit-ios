@@ -44,7 +44,11 @@ extension Bundle {
         UserDefaults.standard.synchronize()
         
         let value = (language != nil ? Bundle.init(path: (Bundle.main.path(forResource: language, ofType: "lproj"))!) : nil)
-        objc_setAssociatedObject(Bundle.main, &kBundleKey, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(
+            Bundle.main,
+            &kBundleKey,
+            value,
+            objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
     class func isLanguageRTL(_ languageCode: String?) -> Bool {

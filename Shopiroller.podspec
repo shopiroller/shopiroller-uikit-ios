@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '13.0'
   
   s.platform     = :ios, '13.0'
-  
+    
   s.source       = { :git => 'git@github.com:shopiroller/shopiroller-uikit-ios.git', :tag => s.version }
+  
   s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}"
   
   s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Colors.xcassets', 'Shopiroller/Fonts/*.{ttf}', 'Shopiroller/Animations/*.{json}'
@@ -35,4 +36,5 @@ Pod::Spec.new do |s|
   s.dependency 'Stripe'
   s.dependency 'Braintree'
   s.dependency 'Sentry'
+  
 end
