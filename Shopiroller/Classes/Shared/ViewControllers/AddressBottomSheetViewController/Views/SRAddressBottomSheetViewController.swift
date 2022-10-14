@@ -305,7 +305,7 @@ class SRAddressBottomSheetViewController :
         
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @objc func nextActionNameTextField() {
         _ = textFieldShouldReturn(nameView.getTextField())
@@ -958,7 +958,7 @@ extension SRAddressBottomSheetViewController : UITextFieldDelegate {
             districtViewTapped()
             return false
         }
-        return true;
+        return true
     }
     
     

@@ -230,7 +230,6 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     @objc func shareProduct() {
-        //TODO APP LINK
         let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
         let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

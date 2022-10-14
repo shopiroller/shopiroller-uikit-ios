@@ -57,11 +57,10 @@ class FilterChoiceViewModel: SRBaseViewModel {
     
     func didDeselectRow(position: Int) {
         filteredList[position].isSelected = false
-        for (index, item) in originalList.enumerated() {
-            if(item.data.id == filteredList[position].data.id) {
-                originalList[index].isSelected = false
-                break
-            }
+        for (index, item) in originalList.enumerated()
+        where item.data.id == filteredList[position].data.id {
+            originalList[index].isSelected = false
+            break
         }
     }
     

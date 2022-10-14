@@ -250,9 +250,7 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
         if let stateList = stateList {
             guard let selectedId = selectedId else { return nil }
             for state in stateList where state.id == selectedId {
-                if (state.id == selectedId) {
                     return state.name
-                }
             }
         }
         return ""

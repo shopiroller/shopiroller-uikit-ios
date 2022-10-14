@@ -19,7 +19,7 @@ protocol CheckOutProgressPageDelegate: AnyObject {
 class CheckOutPageViewController: UIPageViewController {
 
     private var items: [UIViewController] = []
-    internal let checkOutPageDelegate : CheckOutProgressPageDelegate
+    private weak var checkOutPageDelegate: CheckOutProgressPageDelegate?
     var checkOutPaymentVC: CheckOutPaymentViewController?
     var checkOutInfoVC: CheckOutInfoViewController?
     
