@@ -29,7 +29,7 @@ struct BrandsItem: Codable {
 struct CategoriesItem: Codable {
     
     var updateDate: String?
-    var name: [String:String]?
+    var name: Dictionary<String, String>?
     var icon: ProductImageModel?
     var totalProduct: Int?
     var orderIndex: Int?
