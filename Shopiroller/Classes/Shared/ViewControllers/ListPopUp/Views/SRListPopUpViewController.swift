@@ -157,7 +157,9 @@ extension SRListPopUpViewController : UITableViewDelegate, UITableViewDataSource
             case .shipping:
                 let model = viewModel.getShippingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupShippingCell(model: model, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
+                cell.setupShippingCell(
+                    model: model,
+                    showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 if indexPath.row == viewModel.getItemCount() - 1 {
                     cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
                 }
@@ -165,7 +167,9 @@ extension SRListPopUpViewController : UITableViewDelegate, UITableViewDataSource
             case .billing:
                 let model = viewModel.getBillingAddress(position: indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddressSelectTableViewCell.reuseIdentifier, for: indexPath) as! AddressSelectTableViewCell
-                cell.setupBillingCell(model: model, showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
+                cell.setupBillingCell(
+                    model: model,
+                    showDivider: self.viewModel.getItemCount() - 1 != indexPath.row)
                 return cell
             }
         case .payment:
@@ -176,7 +180,10 @@ extension SRListPopUpViewController : UITableViewDelegate, UITableViewDataSource
         case .sortList :
             let title = viewModel.getSortListModel(position: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: SortProductTableViewCell.reuseIdentifier, for: indexPath) as! SortProductTableViewCell
-            cell.setup(title: title, isChecked: viewModel.sortOptionsSelectedIndex == indexPath.row,index: indexPath.row)
+            cell.setup(
+                title: title,
+                isChecked: viewModel.sortOptionsSelectedIndex == indexPath.row,
+                index: indexPath.row)
             if indexPath.row == viewModel.getItemCount() - 1 {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
             }
@@ -192,9 +199,11 @@ extension SRListPopUpViewController : UITableViewDelegate, UITableViewDataSource
             tableView.separatorStyle = .none
             switch viewModel.getAddressType() {
             case .shipping:
-                addressDelegate?.getShippingAddress(shippingAddress: viewModel.getShippingAddress(position: indexPath.row))
+                addressDelegate?.getShippingAddress(
+                    shippingAddress: viewModel.getShippingAddress(position: indexPath.row))
             case .billing:
-                addressDelegate?.getBillingAddress(billingAddress: viewModel.getBillingAddress(position: indexPath.row))
+                addressDelegate?.getBillingAddress(
+                    billingAddress: viewModel.getBillingAddress(position: indexPath.row))
             }
         case .payment:
             guard let supportedPaymentMethods = viewModel.getSupportedMethods(position: indexPath.row) else { return }

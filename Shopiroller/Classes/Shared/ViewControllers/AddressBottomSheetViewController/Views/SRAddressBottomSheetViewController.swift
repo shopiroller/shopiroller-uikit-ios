@@ -10,13 +10,13 @@ import UIKit
 
 protocol AddressBottomViewDelegate: AnyObject {
     func closeButtonTapped()
-    func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?,
-                          userBillingAddressModel: UserBillingAdressModel?,
-                          defaultAddressModel : SRDefaultAddressModel?)
+    func saveButtonTapped(
+        userShippingAddressModel: UserShippingAddressModel?,
+        userBillingAddressModel: UserBillingAdressModel?,
+        defaultAddressModel: SRDefaultAddressModel?)
 }
 
-class SRAddressBottomSheetViewController :
-    BaseViewController<SRAddressBottomSheetViewModel> {
+class SRAddressBottomSheetViewController: BaseViewController<SRAddressBottomSheetViewModel> {
     
     private struct Constants {
         
@@ -414,7 +414,7 @@ class SRAddressBottomSheetViewController :
         }
     }
     
-    
+
     @objc func countryViewTapped() {
         self.viewModel.selectionAddressType = .country
         showSelectionPopUp()
@@ -1017,5 +1017,3 @@ extension SRAddressBottomSheetViewController: SelectionControllerDelegate {
     }
     
 }
-
-

@@ -86,11 +86,18 @@ class BankTransferTableViewCell: UITableViewCell {
         } else {
             bankAccountDescription.isHidden = true
         }
-        bankAccountIban.attributedText = String().makeBoldString(boldText: Constants.accountIbanText, normalText: model?.accountAddress,isReverse: false)
-        bankAccountDepartment.attributedText = String().makeBoldString(boldText: Constants.accountDepartmentText, normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),isReverse: false)
+        bankAccountIban.attributedText = String().makeBoldString(
+            boldText: Constants.accountIbanText,
+            normalText: model?.accountAddress,isReverse: false)
+        bankAccountDepartment.attributedText = String().makeBoldString(
+            boldText: Constants.accountDepartmentText,
+            normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),
+            isReverse: false)
         bankAccountDepartment.lineBreakMode = .byTruncatingTail
-        bankAccountNumber.attributedText = String().makeBoldString(boldText: Constants.accountNumberText, normalText: model?.accountNumber,isReverse: false)
-        
+        bankAccountNumber.attributedText = String().makeBoldString(
+            boldText: Constants.accountNumberText,
+            normalText: model?.accountNumber,
+            isReverse: false)
         if isSelected {
             setSelectedCell()
         } else {

@@ -49,11 +49,23 @@ class CheckOutPageViewController: UIPageViewController {
             scrollView.isScrollEnabled = false
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadPayment), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.loadPayment),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve),
+            object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadAddress), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.loadAddress),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve),
+            object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadInfo), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.loadInfo),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage),
+            object: nil)
         
     }
     
@@ -96,14 +108,14 @@ extension CheckOutPageViewController: UIPageViewControllerDataSource {
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            checkOutPageDelegate.popLastViewController()
+            checkOutPageDelegate?.popLastViewController()
             return nil
         }
         
         guard items.count > previousIndex else {
             return nil
         }
-        checkOutPageDelegate.currentPageIndex(currentIndex: previousIndex)
+        checkOutPageDelegate?.currentPageIndex(currentIndex: previousIndex)
         return items[previousIndex]
     }
     
@@ -120,7 +132,7 @@ extension CheckOutPageViewController: UIPageViewControllerDataSource {
         guard items.count > nextIndex else {
             return nil
         }
-        checkOutPageDelegate.currentPageIndex(currentIndex: nextIndex)
+        checkOutPageDelegate?.currentPageIndex(currentIndex: nextIndex)
         return items[nextIndex]
     }
     

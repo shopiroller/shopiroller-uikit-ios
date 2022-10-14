@@ -98,7 +98,9 @@ extension SRAddressListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.reuseIdentifier, for: indexPath) as! AddressTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: AddressTableViewCell.reuseIdentifier,
+            for: indexPath) as! AddressTableViewCell
         cell.delegate = self
         switch viewModel.state {
         case .shipping:

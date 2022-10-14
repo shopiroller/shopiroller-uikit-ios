@@ -49,7 +49,11 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     @objc func updateBadgeCount() {

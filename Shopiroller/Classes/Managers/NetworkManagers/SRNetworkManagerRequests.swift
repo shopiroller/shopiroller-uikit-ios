@@ -211,7 +211,7 @@ struct SRNetworkManagerRequests {
         return SRNetworkRequestManager(
             httpMethod: .get,
             path: .getCategories,
-            resourceType:SRCategoryResponseWithOptionsModel.self,
+            resourceType: SRCategoryResponseWithOptionsModel.self,
             shouldShowProgressHUD: showProgress)
     }
     

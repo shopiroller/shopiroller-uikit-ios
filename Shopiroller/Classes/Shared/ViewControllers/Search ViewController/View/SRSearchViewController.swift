@@ -20,7 +20,10 @@ class SRSearchViewController: BaseViewController<SRSearchViewModel> {
     @IBOutlet private weak var backButton: UIButton!
     
     init(viewModel: SRSearchViewModel) {
-        super.init(viewModel: viewModel, nibName: SRSearchViewController.nibName, bundle: Bundle(for: SRSearchViewController.self))
+        super.init(
+            viewModel: viewModel,
+            nibName: SRSearchViewController.nibName,
+            bundle: Bundle(for: SRSearchViewController.self))
     }
     
     override func setup() {

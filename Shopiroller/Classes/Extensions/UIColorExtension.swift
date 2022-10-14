@@ -67,8 +67,5 @@ extension UIColor {
     
     static let navigationBackGroundEndColor = UIColor(named: "navigationBackGroundEndColor")!
     
-    static let lightGray = UIColor(named: "lightGray")!
-    
+    static let lightGray = UIColor(named: "lightGray")!    
 }
-
-

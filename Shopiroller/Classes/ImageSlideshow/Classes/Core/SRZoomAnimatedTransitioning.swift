@@ -235,7 +235,6 @@ class SRZoomInAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
                 transitionViewFinalFrame = image.tgr_aspectFitRectForSizeSR(finalFrame.size)
             }
         }
-        
         if let item = toViewController.slideshow.currentSlideshowItem, item.zoomInInitially {
             transitionViewFinalFrame.size = CGSize(
                 width: transitionViewFinalFrame.size.width * item.maximumZoomScale,
@@ -386,7 +385,6 @@ class SRZoomOutAnimator: ZoomAnimator, UIViewControllerAnimatedTransitioning {
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // Working around iOS 10+ breaking change requiring to use UIPropertyAnimator for proper interactive transition instead of UIView.animate
         if #available(iOS 10.0, *) {
             interruptibleAnimator(using: transitionContext).startAnimation()
         } else {

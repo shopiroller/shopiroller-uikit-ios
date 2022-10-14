@@ -54,7 +54,12 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
         filterButton.setTitleColor(.textPrimary)
         filterButton.tintColor = .textPrimary
         
-        filterRedDotView = UIView(frame: CGRect(x: filterButton.imageView!.frame.width + 15, y: 0, width: 10, height: 10))
+        filterRedDotView = UIView(
+            frame: CGRect(
+                x: filterButton.imageView!.frame.width + 15,
+                y: 0,
+                width: 10,
+                height: 10))
         filterRedDotView.backgroundColor = .red
         filterRedDotView.layer.cornerRadius = filterRedDotView.frame.height / 2
         filterButton.imageView!.addSubview(filterRedDotView)
@@ -66,7 +71,11 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
         super.viewWillAppear(animated)
         getCount()
         filterRedDotView.isHidden = !viewModel.hasFilter()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     @objc func updateBadgeCount() {

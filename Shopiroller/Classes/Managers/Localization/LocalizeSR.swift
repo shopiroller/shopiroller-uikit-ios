@@ -161,7 +161,9 @@ open class LocalizeSR: NSObject {
      */
     open class func defaultLanguage() -> String {
         var defaultLanguage: String = String()
-        guard let preferredLanguage = (UserDefaults.standard.object(forKey: "AppleLanguages") as? [String])?[0].substring(toIndex: 2) else {
+        guard let preferredLanguage = (UserDefaults.standard.object(
+            forKey: "AppleLanguages") as? [String])?[0].substring(toIndex: 2)
+        else {
             return LCLDefaultLanguage
         }
         let availableLanguages: [String] = self.availableLanguages()

@@ -11,9 +11,12 @@ class ShoppingCartPopUpViewModel: SRBaseViewModel {
     
     private struct Constants {
         
-        static var updateShoppingCartTitle: String { return "e_commerce_shopping_cart_updating_popup_title".localized }
-        static var updateShoppingCartDescription: String { return "e_commerce_shopping_cart_updating_popup_description".localized }
-        static var updateShoppingCartButton: String { return "e_commerce_shopping_cart_invalid_popup_button".localized }
+        static var updateShoppingCartTitle: String {
+            return "e_commerce_shopping_cart_updating_popup_title".localized }
+        static var updateShoppingCartDescription: String {
+            return "e_commerce_shopping_cart_updating_popup_description".localized }
+        static var updateShoppingCartButton: String {
+            return "e_commerce_shopping_cart_invalid_popup_button".localized }
 
     }
     

@@ -62,7 +62,10 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     weak var delegate: CheckOutProgressPageDelegate?
     
     init(viewModel: CheckOutInfoViewModel) {
-        super.init(viewModel: viewModel, nibName: CheckOutInfoViewController.nibName, bundle: Bundle(for: CheckOutInfoViewController.self))
+        super.init(
+            viewModel: viewModel,
+            nibName: CheckOutInfoViewController.nibName,
+            bundle: Bundle(for: CheckOutInfoViewController.self))
     }
     
     override func setup() {

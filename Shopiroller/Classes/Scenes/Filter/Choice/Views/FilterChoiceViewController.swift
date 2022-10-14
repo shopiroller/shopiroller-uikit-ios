@@ -21,7 +21,11 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     
     init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate?) {
         self.delegate = delegate
-        super.init(viewModel.title, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
+        super.init(
+            viewModel.title,
+            viewModel: viewModel,
+            nibName: FilterChoiceViewController.nibName,
+            bundle: Bundle(for: FilterChoiceViewController.self))
     }
     
     override func setup() {
@@ -76,7 +80,9 @@ extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterChoiceTableViewCell.reuseIdentifier, for: indexPath) as! FilterChoiceTableViewCell
-        cell.setup(model: viewModel.getFilteredListData(position: indexPath.row), isCheckBox: viewModel.isMultipleChoice)
+        cell.setup(
+            model: viewModel.getFilteredListData(position: indexPath.row),
+            isCheckBox: viewModel.isMultipleChoice)
         return cell
     }
     

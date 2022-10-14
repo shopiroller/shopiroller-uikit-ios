@@ -100,7 +100,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             let description = NSMutableAttributedString(attributedString: htmlDescription)
             let myParagraphStyle = NSMutableParagraphStyle()
             myParagraphStyle.alignment = .center
-            description.addAttributes([.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
+            description.addAttributes(
+                [.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
             descriptionLabel.attributedText = description
         } else {
             descriptionLabel.text = viewModel.getDescription()

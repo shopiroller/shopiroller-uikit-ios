@@ -199,7 +199,15 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     private func showCouponErrorDialog(error: String) {
-        let popupVC = PopUpViewViewController(viewModel: PopUpViewModel(image: .outOfStock, title: "e_commerce_shopping_cart_coupon_dialog_title".localized, description: error , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil))
+        let popupVC = PopUpViewViewController(
+            viewModel: PopUpViewModel(
+                image: .outOfStock,
+                title: "e_commerce_shopping_cart_coupon_dialog_title".localized,
+                description: error,
+                firstButton: PopUpButtonModel(
+                    title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized,
+                    type: .lightButton),
+                secondButton: nil))
         popupVC.delegate = self
         popUp(popupVC, completion: nil)
     }

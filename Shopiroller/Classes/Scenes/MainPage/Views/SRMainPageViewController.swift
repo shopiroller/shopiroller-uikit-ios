@@ -60,7 +60,11 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -427,16 +431,22 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     func getSubCategories(position: Int) {
         
         if viewModel.hasSubCategory(position: position) {
-            let categoriesListVC = SRCategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
+            let categoriesListVC = SRCategoriesListViewController(
+                viewModel: viewModel.getCategoriesListViewModel(position: position))
             post(categoriesListVC, animated: true, completion: nil)
         } else {
-            let productListVC = SRProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
+            let productListVC = SRProductListViewController(
+                viewModel: viewModel.getProductListViewModel(position: position))
             post(productListVC, animated: true, completion: nil)
         }
         
     }
     func getCategories(position: Int) {
-        let categoriesListViewController = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
+        let categoriesListViewController = SRCategoriesListViewController(
+            viewModel: SRCategoriesListViewModel(
+                categoryList: viewModel.getCategoriesViewModel(),
+                isSubCategory: false,
+                categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
         self.post(categoriesListViewController, animated: true, completion: nil)
     }
 }
@@ -449,7 +459,10 @@ extension SRMainPageViewController: SliderClickDelegate {
     }
     
     func openProductList(categoryId: String?) {
-        let productListVC = SRProductListViewController(viewModel: SRProductListViewModel(categoryId: categoryId,pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
+        let productListVC = SRProductListViewController(
+            viewModel: SRProductListViewModel(
+                categoryId: categoryId,
+                pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
         post(productListVC, animated: false, completion: nil)
     }
     

@@ -31,7 +31,7 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
     
     init(type: GeneralAddressType,
          isEditing: Bool = false,
-         userShippingAddress : UserShippingAddressModel? = nil,
+         userShippingAddress: UserShippingAddressModel? = nil,
          userBillingAddress: UserBillingAdressModel? = nil) {
         
         self.type = type

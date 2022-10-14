@@ -291,10 +291,15 @@ open class SRImageSlideshow: UIView {
             }
 
             pageIndicatorView.sizeToFit()
-            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(for: frame, indicatorSize: CGSize(width: pageIndicatorView.frame.size.width + 20, height: pageIndicatorView.frame.size.height), edgeInsets: edgeInsets)
+            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(
+                for: frame,
+                indicatorSize: CGSize(
+                    width: pageIndicatorView.frame.size.width + 20,
+                    height: pageIndicatorView.frame.size.height),
+                edgeInsets: edgeInsets)
         }
     }
-
+    
     /// updates frame of the scroll view and its inner items
     func layoutScrollView() {
         let pageIndicatorViewSize = pageIndicator?.view.frame.size
@@ -307,7 +312,11 @@ open class SRImageSlideshow: UIView {
             if !view.zoomInInitially {
                 view.zoomOut()
             }
-            view.frame = CGRect(x: scrollView.frame.size.width * CGFloat(index), y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+            view.frame = CGRect(
+                x: scrollView.frame.size.width * CGFloat(index),
+                y: 0,
+                width: scrollView.frame.size.width,
+                height: scrollView.frame.size.height)
         }
 
         setScrollViewPage(scrollViewPage, animated: false)
@@ -409,13 +418,17 @@ open class SRImageSlideshow: UIView {
     }
 
     /**
-     Change the scroll view page. This may differ from `setCurrentPage` as circular slider has two more dummy pages at indexes 0 and n-1 to provide fluent scrolling between first and last item.
      - parameter newScrollViewPage: new scroll view page
      - parameter animated: true if animate the change
      */
     open func setScrollViewPage(_ newScrollViewPage: Int, animated: Bool) {
         if scrollViewPage < scrollViewImages.count {
-            scrollView.scrollRectToVisible(CGRect(x: scrollView.frame.size.width * CGFloat(newScrollViewPage), y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height), animated: animated)
+            scrollView.scrollRectToVisible(
+                CGRect(
+                    x: scrollView.frame.size.width * CGFloat(newScrollViewPage),
+                    y: 0, width: scrollView.frame.size.width,
+                    height: scrollView.frame.size.height),
+                animated: animated)
             setCurrentPageForScrollViewPage(newScrollViewPage)
             if animated {
                 isAnimating = true

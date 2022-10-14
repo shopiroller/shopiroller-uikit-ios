@@ -199,10 +199,16 @@ class SROrderDetailViewController: BaseViewController<SROrderDetailViewModel> {
             creditCartNumberLabel.text = viewModel.getCreditCartNumber()
         case .Transfer:
             bankTransferContainerView.isHidden = false
-            bankAccountIban.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccountIban, viewModel.getBankAccountIban() ?? "")
+            bankAccountIban.attributedText = ECommerceUtil.getBoldNormal(
+                Constants.bankAccountIban,
+                viewModel.getBankAccountIban() ?? "")
             bankAccountName.text = viewModel.getBankName()
-            bankAccountUserName.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccountReceiverText, viewModel.getBankAccountHolderNameSurname() ?? "")
-            bankAccountNumber.attributedText = ECommerceUtil.getBoldNormal(Constants.bankAccount, viewModel.getBankAccountNumber() ?? "")
+            bankAccountUserName.attributedText = ECommerceUtil.getBoldNormal(
+                Constants.bankAccountReceiverText,
+                viewModel.getBankAccountHolderNameSurname() ?? "")
+            bankAccountNumber.attributedText = ECommerceUtil.getBoldNormal(
+                Constants.bankAccount,
+                viewModel.getBankAccountNumber() ?? "")
         default:
             break
         }
@@ -231,7 +237,10 @@ class SROrderDetailViewController: BaseViewController<SROrderDetailViewModel> {
         style.backgroundColor = .textPrimary.withAlphaComponent(0.7)
         style.messageColor = .white
         style.messageFont = .regular12
-        self.view.makeToast(Constants.bankAccountIbanCopiedText,position: ToastPosition.maxQuantity,style: style)
+        self.view.makeToast(
+            Constants.bankAccountIbanCopiedText,
+            position: ToastPosition.maxQuantity,
+            style: style)
     }
     
 }

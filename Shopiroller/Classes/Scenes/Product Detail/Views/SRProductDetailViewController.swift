@@ -366,13 +366,11 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func addProductToCart() {
-        viewModel.addProductToCart(success: {
-            [weak self] in
+        viewModel.addProductToCart(success: { [weak self] in
             guard let self = self else { return }
             self.showAddProductAnimation()
             self.navigationController?.viewWillLayoutSubviews()
-        }) {
-            [weak self] (errorViewModel) in
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             if errorViewModel.key == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
@@ -688,7 +686,9 @@ extension SRProductDetailViewController : UICollectionViewDelegate , UICollectio
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier,
+            for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
         cell.configurecell(images: viewModel.getImages(position: indexPath.row))
         return cell
     }
@@ -743,7 +743,10 @@ extension SRProductDetailViewController: UITextFieldDelegate {
 extension SRProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     public func getCurrentIndex(index: Int) {
-        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        collectionView.selectItem(
+            at: NSIndexPath(item: index, section: 0) as IndexPath,
+            animated: false,
+            scrollPosition: .centeredHorizontally)
         pageControl.currentPage = index
     }
     

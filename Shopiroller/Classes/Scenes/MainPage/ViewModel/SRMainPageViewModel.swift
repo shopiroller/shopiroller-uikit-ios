@@ -252,7 +252,11 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+        EmptyModel(
+            image: .noProductsIcon,
+            title: Constants.emptyViewTitle,
+            description: Constants.emptyViewDescription,
+            button: nil)
     }
     
     func getSectionCount() -> Int {

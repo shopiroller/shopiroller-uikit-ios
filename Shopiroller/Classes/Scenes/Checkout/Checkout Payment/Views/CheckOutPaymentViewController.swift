@@ -12,15 +12,24 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private struct Constants {
         
-        static var selectPaymentMethodText : String { return "e_commerce_payment_method_selection_button_title".localized }
-        static var selectedPaymentMethodCreditCart : String { return "e_commerce_payment_method_selection_credit_card".localized }
-        static var selectedPaymentMethodBankTransfer : String { return "e_commerce_payment_method_selection_transfer".localized}
-        static var selectedPaymentMethodPayAtTheDoor : String { return "e_commerce_payment_method_selection_pay_at_door".localized }
-        static var creditCartHolderNamePlaceholder : String { return "e_commerce_payment_credit_card_name".localized }
-        static var creditCartNumberPlaceholder : String { return "e_commerce_payment_credit_card_number".localized }
-        static var creditCartExpireDatePlaceholder : String { return "e_commerce_payment_credit_card_expire_date".localized }
-        static var creditCartCvvPlaceholder : String { return "e_commerce_payment_credit_card_security_code".localized }
-        static var payWithStripePaypalDescription: String { return "e_commerce_payment_method_selection_description_text".localized }
+        static var selectPaymentMethodText : String {
+            return "e_commerce_payment_method_selection_button_title".localized }
+        static var selectedPaymentMethodCreditCart : String {
+            return "e_commerce_payment_method_selection_credit_card".localized }
+        static var selectedPaymentMethodBankTransfer : String {
+            return "e_commerce_payment_method_selection_transfer".localized}
+        static var selectedPaymentMethodPayAtTheDoor : String {
+            return "e_commerce_payment_method_selection_pay_at_door".localized }
+        static var creditCartHolderNamePlaceholder : String {
+            return "e_commerce_payment_credit_card_name".localized }
+        static var creditCartNumberPlaceholder : String {
+            return "e_commerce_payment_credit_card_number".localized }
+        static var creditCartExpireDatePlaceholder : String {
+            return "e_commerce_payment_credit_card_expire_date".localized }
+        static var creditCartCvvPlaceholder : String {
+            return "e_commerce_payment_credit_card_security_code".localized }
+        static var payWithStripePaypalDescription: String {
+            return "e_commerce_payment_method_selection_description_text".localized }
     }
     
     
@@ -56,7 +65,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     
     init(viewModel: CheckOutPaymentViewModel) {
-        super.init(viewModel: viewModel, nibName: CheckOutPaymentViewController.nibName, bundle: Bundle(for:  CheckOutPaymentViewController.self))
+        super.init(
+            viewModel: viewModel,
+            nibName: CheckOutPaymentViewController.nibName,
+            bundle: Bundle(for:  CheckOutPaymentViewController.self))
     }
     
     override func setup() {
@@ -86,14 +98,25 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCartHolderNameTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartHolderNameTextField.layer.cornerRadius = 6
         creditCartHolderNameTextField.delegate = self
-        creditCartHolderNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: creditCartHolderNameTextField.frame.height))
+        creditCartHolderNameTextField.leftView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 15,
+                height: creditCartHolderNameTextField.frame.height))
         creditCartHolderNameTextField.leftViewMode = .always
         creditCartHolderNameTextField.placeholder = Constants.creditCartHolderNamePlaceholder
-        creditCartHolderNameTextField.addNextAction(target: self, selector: #selector(nextActionCreditCartHolderNameTextField))
+        creditCartHolderNameTextField.addNextAction(
+            target: self,
+            selector: #selector(nextActionCreditCartHolderNameTextField))
 
         creditCartNumberTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartNumberTextField.layer.cornerRadius = 6
-        creditCartNumberTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: creditCartNumberTextField.frame.height))
+        creditCartNumberTextField.leftView = UIView(
+            frame: CGRect(x: 0,
+                          y: 0,
+                          width: 15,
+                          height: creditCartNumberTextField.frame.height))
         creditCartNumberTextField.delegate = creditCardNumberListener
         creditCartNumberTextField.leftViewMode = .always
         creditCartNumberTextField.textContentType = .creditCardNumber
@@ -107,7 +130,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         
         creditCartExpireDateTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartExpireDateTextField.layer.cornerRadius = 6
-        creditCartExpireDateTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: creditCartExpireDateTextField.frame.height))
+        creditCartExpireDateTextField.leftView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 15,
+                height: creditCartExpireDateTextField.frame.height))
         creditCartExpireDateTextField.delegate = creditCardExpireDateListener
         creditCartExpireDateTextField.leftViewMode = .always
         creditCartExpireDateTextField.keyboardType = .numberPad
@@ -121,7 +149,12 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         
         creditCartCvvTextField.backgroundColor = .buttonLight.withAlphaComponent(0.7)
         creditCartCvvTextField.layer.cornerRadius = 6
-        creditCartCvvTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: creditCartCvvTextField.frame.height))
+        creditCartCvvTextField.leftView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 15,
+                height: creditCartCvvTextField.frame.height))
         creditCartCvvTextField.delegate = creditCardCvvListener
         creditCartCvvTextField.leftViewMode = .always
         creditCartCvvTextField.keyboardType = .numberPad
@@ -129,7 +162,10 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
         creditCardCvvListener.primaryMaskFormat = "[000]"
         creditCardCvvListener.affinityCalculationStrategy = .prefix
         creditCartCvvTextField.placeholder = Constants.creditCartCvvPlaceholder
-        creditCartCvvTextField.addCustomTextAction(title: "e_commerce_general_keyboard_done_action_text".localized, target: self, selector: #selector(toolbarDoneButtonClicked))
+        creditCartCvvTextField.addCustomTextAction(
+            title: "e_commerce_general_keyboard_done_action_text".localized,
+            target: self,
+            selector: #selector(toolbarDoneButtonClicked))
         
         stripeAndPaypalImage.image = .stripeAndPaypalIcon
         
