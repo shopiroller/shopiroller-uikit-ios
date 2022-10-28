@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-
-public class PopUpViewModel {
-    
+public class PopUpViewModel {    
     private let image: UIImage
     private let title: String
     private let description: String?

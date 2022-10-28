@@ -8,18 +8,13 @@
 import UIKit
 
 protocol BankTransferCellDelegate: AnyObject {
-    
-    func tappedCopyIbanButton()
+    func copyIbanButtonTapped()
 }
 
 class BankTransferTableViewCell: UITableViewCell {
-   
     private struct Constants {
-        
         static var accountIbanText: String { return "e_commerce_payment_bank_iban".localized }
-        
         static var accountDepartmentText: String { return "e_commerce_payment_bank_branch".localized }
-        
         static var accountNumberText: String { return "e_commerce_payment_bank_account".localized }
     }
     
@@ -88,7 +83,7 @@ class BankTransferTableViewCell: UITableViewCell {
         }
         bankAccountIban.attributedText = String().makeBoldString(
             boldText: Constants.accountIbanText,
-            normalText: model?.accountAddress,isReverse: false)
+            normalText: model?.accountAddress, isReverse: false)
         bankAccountDepartment.attributedText = String().makeBoldString(
             boldText: Constants.accountDepartmentText,
             normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),
@@ -121,6 +116,6 @@ class BankTransferTableViewCell: UITableViewCell {
     
     @IBAction func ibanCopyButtonTapped() {
         UIPasteboard.general.string = model?.accountAddress
-        delegate?.tappedCopyIbanButton()
+        delegate?.copyIbanButtonTapped()
     }
 }

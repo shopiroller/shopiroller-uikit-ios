@@ -12,21 +12,21 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     
     private struct Constants {
         
-        static var selectPaymentMethodText : String {
+        static var selectPaymentMethodText: String {
             return "e_commerce_payment_method_selection_button_title".localized }
-        static var selectedPaymentMethodCreditCart : String {
+        static var selectedPaymentMethodCreditCart: String {
             return "e_commerce_payment_method_selection_credit_card".localized }
-        static var selectedPaymentMethodBankTransfer : String {
+        static var selectedPaymentMethodBankTransfer: String {
             return "e_commerce_payment_method_selection_transfer".localized}
-        static var selectedPaymentMethodPayAtTheDoor : String {
+        static var selectedPaymentMethodPayAtTheDoor: String {
             return "e_commerce_payment_method_selection_pay_at_door".localized }
-        static var creditCartHolderNamePlaceholder : String {
+        static var creditCartHolderNamePlaceholder: String {
             return "e_commerce_payment_credit_card_name".localized }
-        static var creditCartNumberPlaceholder : String {
+        static var creditCartNumberPlaceholder: String {
             return "e_commerce_payment_credit_card_number".localized }
-        static var creditCartExpireDatePlaceholder : String {
+        static var creditCartExpireDatePlaceholder: String {
             return "e_commerce_payment_credit_card_expire_date".localized }
-        static var creditCartCvvPlaceholder : String {
+        static var creditCartCvvPlaceholder: String {
             return "e_commerce_payment_credit_card_security_code".localized }
         static var payWithStripePaypalDescription: String {
             return "e_commerce_payment_method_selection_description_text".localized }
@@ -56,7 +56,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
     @IBOutlet private weak var stripeAndPaypalImage: UIImageView!
     @IBOutlet private weak var stripeAndPaypalDescriptionLabel: UILabel!
     
-    weak var delegate : CheckOutProgressPageDelegate?
+    weak var delegate: CheckOutProgressPageDelegate?
     var creditCardNumberListener: MaskedTextFieldDelegate!
     var creditCardExpireDateListener: MaskedTextFieldDelegate!
     var creditCardCvvListener: MaskedTextFieldDelegate!
@@ -294,7 +294,7 @@ class CheckOutPaymentViewController: BaseViewController<CheckOutPaymentViewModel
             payAtTheDoorDescription.font = .regular14
             payAtTheDoorDescription.textColor = .textPCaption
             payAtTheDoorDescription.text = viewModel.getPaymentDescription()
-        case .Stripe , .Stripe3DS:
+        case .Stripe, .Stripe3DS:
             bankTransferContainer.isHidden = true
             creditCartContainer.isHidden = true
             payAtTheDoorContainer.isHidden = true
@@ -432,7 +432,7 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
         let model = viewModel.getBankAccountModel(position: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: BankTransferTableViewCell.reuseIdentifier, for: indexPath) as! BankTransferTableViewCell
         viewModel.isSelected = viewModel.selectedBankIndex == indexPath.row
-        if (viewModel.isSelected) {
+        if viewModel.isSelected {
             setBankTransferUI()
         }
         cell.configureBankList(model: model,index: indexPath.row, isSelected: viewModel.isSelected)
@@ -450,7 +450,7 @@ extension CheckOutPaymentViewController: UITableViewDelegate , UITableViewDataSo
 }
 
 extension CheckOutPaymentViewController: BankTransferCellDelegate {
-    func tappedCopyIbanButton() {
+    func copyIbanButtonTapped() {
         var style = ToastStyle()
         style.backgroundColor = .veryLightPink
         style.messageColor = .textPrimary

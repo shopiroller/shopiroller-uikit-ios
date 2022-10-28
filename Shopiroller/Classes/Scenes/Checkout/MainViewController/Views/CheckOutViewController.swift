@@ -29,7 +29,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var nextPageContainer: UIView!
     @IBOutlet private weak var nextPageTitleLabel: UILabel!
     
-    
     var index = 0
     
     private var checkOutPageViewController: CheckOutPageViewController?
@@ -254,7 +253,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         }
     }
     
-    private func loadOrderResultPage(isSuccess : Bool) {
+    private func loadOrderResultPage(isSuccess: Bool) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isSuccess: isSuccess))
         self.prompt(resultVC, animated: true)
     }

@@ -39,20 +39,20 @@ class CreditCardHelper {
     }
     
     static func formatCardNumber(cardNumber : String) -> String{
-        var s : String = ""
+        var emptyString: String = ""
         let card = cardNumber.replacingOccurrences(of: " ", with: "")
         for i in 0 ..< card.count {
-            let index = card.index(s.startIndex, offsetBy: i)
+            let index = card.index(emptyString.startIndex, offsetBy: i)
             if i > 0 && i%4 == 0{
-                s += " "
+                emptyString += " "
             }
-            s += String(card[index])
+            emptyString += String(card[index])
         }
-        return s
+        return emptyString
     }
     
     static func formatExpireDate(date : String) -> String{
-        var s : String = ""
+        var emptyString: String = ""
         var expireDate = date.replacingOccurrences(of: " ", with: "")
         
         if expireDate.count == 1 && Int(expireDate) ?? 0 > 1 {
@@ -64,15 +64,15 @@ class CreditCardHelper {
         }
         
         for i in 0 ..< expireDate.count {
-            let index = expireDate.index(s.startIndex, offsetBy: i)
+            let index = expireDate.index(emptyString.startIndex, offsetBy: i)
             if i > 0 && i%2 == 0 {
-                s += "/"
+                emptyString += "/"
             }
             if expireDate[index] != "/"  {
-                s += String(expireDate[index])
+                emptyString += String(expireDate[index])
             }
         }
-        return s
+        return emptyString
     }
     
 }

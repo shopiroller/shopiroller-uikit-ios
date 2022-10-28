@@ -171,7 +171,9 @@ extension SRProductListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            let vc = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: self.viewModel.getProductId(position: indexPath.row)))
+            let vc = SRProductDetailViewController(
+                viewModel: SRProductDetailViewModel(
+                    productId: self.viewModel.getProductId(position: indexPath.row)))
             self.prompt(vc, animated: true, completion: nil)
         })
     }

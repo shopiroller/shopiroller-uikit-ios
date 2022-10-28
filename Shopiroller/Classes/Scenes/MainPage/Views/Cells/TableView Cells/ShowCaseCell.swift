@@ -10,7 +10,7 @@ import Kingfisher
 
 protocol ShowCaseCellDelegate: AnyObject {
     func getProductId(productId: String)
-    func getShowCaseInfo(showcaseId : String?,title: String?)
+    func getShowCaseInfo(showcaseId: String?, title: String?)
 }
 
 public class ShowCaseCell: UICollectionViewCell  {

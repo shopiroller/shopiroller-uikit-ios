@@ -8,7 +8,6 @@
 import Foundation
 
 struct SRNetworkManagerRequests {
-    
     static func getProductsWithAdvancedFiltered(urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductListModel]> {
         return SRNetworkRequestManager(
             httpMethod: .get,
@@ -17,7 +16,7 @@ struct SRNetworkManagerRequests {
             urlQueryItems: urlQueryItems)
     }
     
-    static func getProducts(showProgress: Bool,urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductDetailResponseModel]> {
+    static func getProducts(showProgress: Bool, urlQueryItems: [URLQueryItem] = []) -> SRNetworkRequestManager<[ProductDetailResponseModel]> {
         return SRNetworkRequestManager(
             httpMethod: .get,
             path: .getProducts,
@@ -42,7 +41,7 @@ struct SRNetworkManagerRequests {
             resourceType: PaymentSettingsResponeModel.self)
     }
     
-    static func makeOrder(_ makeOrder: SRMakeOrderResponse,userId: String,showProgress: Bool? = nil) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
+    static func makeOrder(_ makeOrder: SRMakeOrderResponse, userId: String, showProgress: Bool? = nil) -> SRNetworkRequestManager<SROrderResponseInnerModel> {
         return SRNetworkRequestManager(
             httpMethod: .post,
             path: .makeOrder,
@@ -76,7 +75,7 @@ struct SRNetworkManagerRequests {
             resourceType: OrderDetailModel.self)
     }
     
-    static func getShoppingCart(userId: String,showProgress: Bool? = nil) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
+    static func getShoppingCart(userId: String, showProgress: Bool? = nil) -> SRNetworkRequestManager<SRShoppingCartResponseModel> {
         let subPath = "\(userId)\(SRNetworkManagerPaths.shoppingCart.rawValue)"
         
         return SRNetworkRequestManager(
@@ -127,7 +126,7 @@ struct SRNetworkManagerRequests {
             ignoreParse: true)
     }
     
-    static func addProductToShoppingCart(products: SRAddProductModel,userId: String) ->
+    static func addProductToShoppingCart(products: SRAddProductModel, userId: String) ->
     SRNetworkRequestManager<SRAddToCardResponse> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shoppingCartItems.rawValue)"
         return SRNetworkRequestManager(
@@ -138,7 +137,7 @@ struct SRNetworkManagerRequests {
             httpBody: products.data)
     }
     
-    static func setDefaultBillingAddress(_ userId: String,addressId: String,userBillingAddress: SRSetDefaultAddressRequest?) ->
+    static func setDefaultBillingAddress(_ userId: String, addressId: String, userBillingAddress: SRSetDefaultAddressRequest?) ->
     SRNetworkRequestManager<SuccessResponse> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)\(addressId)"
         return SRNetworkRequestManager(
@@ -294,7 +293,7 @@ struct SRNetworkManagerRequests {
             isUser: true)
     }
     
-    static func addBillingAddress(_ request: AddAddressModel,userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
+    static func addBillingAddress(_ request: AddAddressModel, userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)"
         return SRNetworkRequestManager(
             httpMethod: .post,
@@ -307,7 +306,7 @@ struct SRNetworkManagerRequests {
             isUser: true)
     }
     
-    static func addShippingAddress(_ request: AddAddressModel,userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
+    static func addShippingAddress(_ request: AddAddressModel, userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)"
         return SRNetworkRequestManager(
             httpMethod: .post,
@@ -320,7 +319,7 @@ struct SRNetworkManagerRequests {
             isUser: true)
     }
     
-    static func editBillingAddress(_ request: EditAddressModel,userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
+    static func editBillingAddress(_ request: EditAddressModel, userId: String) -> SRNetworkRequestManager<UserBillingAdressModel> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.billingAddress.rawValue)"
         return SRNetworkRequestManager(
             httpMethod: .put,
@@ -333,7 +332,7 @@ struct SRNetworkManagerRequests {
             isUser: true)
     }
     
-    static func editShippingAddress(_ request: EditAddressModel,userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
+    static func editShippingAddress(_ request: EditAddressModel, userId: String) -> SRNetworkRequestManager<UserShippingAddressModel> {
         let subpath = "\(userId)\(SRNetworkManagerPaths.shippingAddress.rawValue)"
         return SRNetworkRequestManager(
             httpMethod: .put,

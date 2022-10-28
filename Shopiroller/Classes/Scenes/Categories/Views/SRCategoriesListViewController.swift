@@ -68,8 +68,8 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
-        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
-        updateNavigationBar(rightBarButtonItems: [searchButton, cartButton],isBackButtonActive: true)
+        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
+        updateNavigationBar(rightBarButtonItems: [searchButton, cartButton], isBackButtonActive: true)
         cartButton.customView?.addSubview(badgeView)
     }
     
@@ -84,7 +84,11 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     }
     
     func setSubCategories(position: Int) {
-        let vc = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName(),categoryId: viewModel.getCategoryId()))
+        let vc = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(
+            categoryList: viewModel.categoryList?[position].subCategories,
+            isSubCategory: true,
+            selectedRowName: viewModel.getSelectedRowName(),
+            categoryId: viewModel.getCategoryId()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -98,7 +102,9 @@ extension SRCategoriesListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: SRCategoriesListCell.reuseIdentifier) as! SRCategoriesListCell
         cell.selectionStyle = .none
-        cell.setupCategories(model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel(),categoryDisplayTypeEnum: viewModel.getCategoryDisplayTypeEnum())
+        cell.setupCategories(
+            model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel(),
+            categoryDisplayTypeEnum: viewModel.getCategoryDisplayTypeEnum())
         return cell
         
     }
@@ -109,7 +115,9 @@ extension SRCategoriesListViewController: UITableViewDelegate, UITableViewDataSo
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
         } else {
-            let vc = SRProductListViewController(viewModel: SRProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, pageTitle: viewModel.categoryList?[indexPath.row].name))
+            let vc = SRProductListViewController(viewModel: SRProductListViewModel(
+                categoryId: viewModel.categoryList?[indexPath.row].categoryId,
+                pageTitle: viewModel.categoryList?[indexPath.row].name))
             prompt(vc, animated: true, completion: nil)
         }
     }

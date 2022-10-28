@@ -10,7 +10,7 @@ import Foundation
 
 class CheckOutViewModel {
     
-    private var currentStage : ProgressStageEnum?
+    private var currentStage: ProgressStageEnum?
     
     init(currentStage: ProgressStageEnum? = .address) {
         self.currentStage = currentStage
@@ -135,7 +135,7 @@ class CheckOutViewModel {
     }
     
     private func getResultPageFailModel() -> SRResultViewControllerViewModel {
-        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel,errorMessage: errorMessage != nil ? errorMessage : "")
+        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel, errorMessage: errorMessage != nil ? errorMessage : "")
     }
     
     private func getResultPageSuccessModel() -> SRResultViewControllerViewModel {

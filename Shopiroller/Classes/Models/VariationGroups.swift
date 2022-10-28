@@ -9,7 +9,6 @@ import Foundation
 
 
 struct VariationGroups : Codable {
-    
     var createdDate: String?
     var id: String?
     var isActive: Bool?

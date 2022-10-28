@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView {
     
-    func makeToast(text: String?,style: ToastStyle? = ToastStyle()) {
+    func makeToast(text: String?, style: ToastStyle? = ToastStyle()) {
         if let style = style {
             makeToast(text, duration: 3.0, position: .bottom,style: style)
         } else {

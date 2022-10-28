@@ -26,9 +26,9 @@ public class EmptyView: SRBaseView {
     
     weak var delegate: EmptyViewDelegate?
     
-    weak var addressDelegate : EmptyViewAddressDelegate?
+    weak var addressDelegate: EmptyViewAddressDelegate?
     
-    private var type : GeneralAddressType? = .shipping
+    private var type: GeneralAddressType? = .shipping
     
     func setup(model: EmptyModel) {
         super.setup()
@@ -70,6 +70,4 @@ public class EmptyView: SRBaseView {
     @IBAction func addAddressButtonClicked(_ sender: Any) {
         addressDelegate?.addAddressButtonClicked(type: self.type)
     }
-    
 }
-

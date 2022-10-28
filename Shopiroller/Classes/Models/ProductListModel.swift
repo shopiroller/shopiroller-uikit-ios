@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 struct ProductListModel: Codable {
-    
     var id: String?
     var title: String?
     var stock: Int?

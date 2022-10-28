@@ -43,7 +43,10 @@ class ECommerceUtil {
     
    static func getBoldNormal(_ bold: String, _ normal: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: bold, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)])
-        attributedString.append(NSMutableAttributedString(string: normal, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular)]))
+        attributedString.append(
+            NSMutableAttributedString(
+                string: normal,
+                attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular)]))
         return attributedString
     }
     

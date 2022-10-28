@@ -8,17 +8,12 @@
 import UIKit
 
 class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>, EmptyViewDelegate {
-    
     private struct Constants {
-        
         static var clearCartButtonText : String { return "e_commerce_shopping_cart_clear_cart".localized }
-        
         static var pageTitle: String { return "e_commerce_shopping_cart_title".localized }
-        
         static var checkOutButtonText: String { return "e_commerce_shopping_cart_checkout_button".localized }
     }
     
-
     @IBOutlet private weak var emptyView: EmptyView!
     
     @IBOutlet private weak var containerView: UIView!
@@ -277,7 +272,7 @@ extension SRShoppingCartViewController: PopUpViewViewControllerDelegate {
     }
 }
 
-extension SRShoppingCartViewController : ShoppingCartTableViewCouponCellDelegate {
+extension SRShoppingCartViewController: ShoppingCartTableViewCouponCellDelegate {
     
     func couponButtonTapped() {
         let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())

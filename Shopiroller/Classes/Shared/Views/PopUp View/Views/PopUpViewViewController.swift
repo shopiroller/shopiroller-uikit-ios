@@ -15,7 +15,6 @@ protocol PopUpViewViewControllerDelegate: AnyObject {
 }
 
 class PopUpViewViewController: BaseViewController<PopUpViewModel> {
-    
     @IBOutlet private weak var circleImageBackground: UIView!
     @IBOutlet private weak var circleImage: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -63,6 +62,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         
         circleImageBackground.backgroundColor = .white
         circleImageBackground.layer.cornerRadius = circleImageBackground.frame.width / 2
+        
         circleImage.layer.backgroundColor = UIColor.badgeSecondary.cgColor
         circleImage.layer.cornerRadius = circleImage.frame.width / 2
         

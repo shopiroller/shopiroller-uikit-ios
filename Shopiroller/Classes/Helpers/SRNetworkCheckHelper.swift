@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 import SystemConfiguration
 
 public class SRNetworkCheckHelper {

@@ -18,9 +18,8 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var checkoutButton: UIButton!
-    
     @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var checkoutButton: UIButton!
     
     private weak var delegate: ShoppingCartPopUpViewControllerDelegate?
     

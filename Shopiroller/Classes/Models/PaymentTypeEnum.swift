@@ -8,7 +8,6 @@
 import Foundation
 
 enum PaymentTypeEnum: String, Codable {
-    
     case PayAtDoor
     case Online
     case Online3DS

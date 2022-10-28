@@ -55,7 +55,7 @@ extension AddressListPageViewController: UIPageViewControllerDelegate {
         if completed {
             if(previousViewControllers[0].view.tag == 0) {
                 addressDelegate?.pageViewController(currentIndex: 1)
-            }else{
+            } else {
                 addressDelegate?.pageViewController(currentIndex: 0)
             }
         }

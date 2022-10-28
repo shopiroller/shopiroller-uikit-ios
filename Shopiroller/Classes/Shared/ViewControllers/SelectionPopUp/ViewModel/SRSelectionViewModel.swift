@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class SRSelectionViewModel: SRBaseViewModel {
     
     private var selectionPopUpModel: SelectionModel?

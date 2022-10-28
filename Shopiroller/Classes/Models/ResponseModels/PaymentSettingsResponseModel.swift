@@ -9,7 +9,6 @@ import Foundation
 
 
 struct PaymentSettingsResponeModel: Codable {
-    
     var description: String?
     var deliveryConditions: String?
     var cancellationProcedure: String?

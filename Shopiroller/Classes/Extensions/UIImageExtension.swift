@@ -86,47 +86,47 @@ extension UIImage {
     
     static let orderWaitingSupplying: UIImage = UIImage(named: "orderWaitingSupplying", in: .shopiroller, with: nil)!
     
-    static let radioOn : UIImage = UIImage(named: "radioOn", in: .shopiroller, with: nil)!
+    static let radioOn: UIImage = UIImage(named: "radioOn", in: .shopiroller, with: nil)!
     
-    static let radioOff : UIImage = UIImage(named: "radioOff", in: .shopiroller, with: nil)!
+    static let radioOff: UIImage = UIImage(named: "radioOff", in: .shopiroller, with: nil)!
     
     static let emptyPaymentMethod: UIImage = UIImage(named: "emptyPaymentMethod", in: .shopiroller, with: nil)!
     
-    static let creditCartIcon : UIImage = UIImage(named: "creditCartIcon", in: .shopiroller, with: nil)!
+    static let creditCartIcon: UIImage = UIImage(named: "creditCartIcon", in: .shopiroller, with: nil)!
     
-    static let bankIcon : UIImage = UIImage(named: "bankIcon", in: .shopiroller, with: nil)!
+    static let bankIcon: UIImage = UIImage(named: "bankIcon", in: .shopiroller, with: nil)!
     
-    static let paypalIcon : UIImage = UIImage(named: "paypalIcon", in: .shopiroller, with: nil)!
+    static let paypalIcon: UIImage = UIImage(named: "paypalIcon", in: .shopiroller, with: nil)!
     
-    static let payAtTheDoorIcon : UIImage = UIImage(named: "payAtTheDoorIcon", in: .shopiroller, with: nil)!
+    static let payAtTheDoorIcon: UIImage = UIImage(named: "payAtTheDoorIcon", in: .shopiroller, with: nil)!
     
-    static let masterCardIcon : UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
+    static let masterCardIcon: UIImage = UIImage(named: "masterCard", in: .shopiroller, with: nil)!
     
-    static let visaIcon : UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
+    static let visaIcon: UIImage = UIImage(named: "visaCard", in: .shopiroller, with: nil)!
     
-    static let copyIcon : UIImage = UIImage(systemName: "doc.on.doc.fill")!
+    static let copyIcon: UIImage = UIImage(systemName: "doc.on.doc.fill")!
     
-    static let cartIcon : UIImage = UIImage(named: "cartIcon", in: .shopiroller, with: nil)!
+    static let cartIcon: UIImage = UIImage(named: "cartIcon", in: .shopiroller, with: nil)!
     
-    static let paymentIcon : UIImage = UIImage(named: "paymentIcon", in: .shopiroller, with: nil)!
+    static let paymentIcon: UIImage = UIImage(named: "paymentIcon", in: .shopiroller, with: nil)!
     
-    static let billingAddressIcon : UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
+    static let billingAddressIcon: UIImage = UIImage(named: "billingAddressIcon", in: .shopiroller, with: nil)!
     
-    static let deliveryAddressIcon : UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
+    static let deliveryAddressIcon: UIImage = UIImage(named: "deliveryAddressIcon", in: .shopiroller, with: nil)!
     
-    static let paymentSuccess : UIImage = UIImage(named: "paymentSuccess",in: .shopiroller , with: nil)!
+    static let paymentSuccess: UIImage = UIImage(named: "paymentSuccess", in: .shopiroller , with: nil)!
     
-    static let noProductsIcon : UIImage = UIImage(named: "noProductsIcon",in: .shopiroller , with: nil)!
+    static let noProductsIcon: UIImage = UIImage(named: "noProductsIcon", in: .shopiroller , with: nil)!
     
-    static let checkBoxChecked : UIImage = UIImage(named: "checkBoxChecked",in: .shopiroller , with: nil)!
+    static let checkBoxChecked: UIImage = UIImage(named: "checkBoxChecked", in: .shopiroller , with: nil)!
     
-    static let checkBoxUnchecked : UIImage = UIImage(named: "checkBoxUnchecked",in: .shopiroller , with: nil)!
+    static let checkBoxUnchecked: UIImage = UIImage(named: "checkBoxUnchecked", in: .shopiroller , with: nil)!
     
-    static let dropdownIcon : UIImage = UIImage(systemName: "chevron.down.square")!
+    static let dropdownIcon: UIImage = UIImage(systemName: "chevron.down.square")!
     
-    static let stripeIcon : UIImage = UIImage(named: "stripeIcon", in: .shopiroller, with: nil)!
+    static let stripeIcon: UIImage = UIImage(named: "stripeIcon", in: .shopiroller, with: nil)!
     
-    static let stripeAndPaypalIcon : UIImage = UIImage(named: "stripeAndPaypalDescriptionLogo", in: .shopiroller , with: nil)!
+    static let stripeAndPaypalIcon: UIImage = UIImage(named: "stripeAndPaypalDescriptionLogo", in: .shopiroller , with: nil)!
     
 }
 

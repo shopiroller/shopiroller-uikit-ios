@@ -11,9 +11,7 @@ import UIKit
 class OrderTableViewCell: UITableViewCell {
     
     private struct Constants {
-        
         static var orderNo: String { return "e_commerce_list_order_number".localized }
-        
     }
     
     @IBOutlet private weak var containerView: UIView!

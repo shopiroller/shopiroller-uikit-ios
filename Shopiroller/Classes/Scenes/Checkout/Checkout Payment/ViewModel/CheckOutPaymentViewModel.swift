@@ -189,9 +189,9 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func isValidCreditCardExpireDate(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
-        if let creditCardExpireYear = creditCardExpireYear , creditCardExpireYear.count == 2 {
+        if let creditCardExpireYear = creditCardExpireYear, creditCardExpireYear.count == 2 {
             return true
-        } else if let creditCardExpireMonth = creditCardExpireMonth ,creditCardExpireMonth.count == 2 {
+        } else if let creditCardExpireMonth = creditCardExpireMonth, creditCardExpireMonth.count == 2 {
             return true
         } else if ((creditCardExpireYear == nil || creditCardExpireYear == "") || (creditCardExpireMonth == nil || creditCardExpireMonth == "")) {
             error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardExpireDateText)))
@@ -215,7 +215,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
-        if let cvv = creditCardCvv , cvv.isValidCreditCardCvv {
+        if let cvv = creditCardCvv, cvv.isValidCreditCardCvv {
             return true
         } else if (creditCardCvv == nil || creditCardCvv == "") {
             error?(ErrorViewModel.validationError(

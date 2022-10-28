@@ -72,7 +72,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.ShoppingCart.badgeCount) as? String ?? "0"
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.ShoppingCart.badgeCount)
+            userDefaults.set(newValue, forKey: SRAppConstants.ShoppingCart.badgeCount)
         }
     }
     
@@ -81,7 +81,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.userId) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.userId)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.userId)
         }
     }
     
@@ -90,7 +90,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.userEmail) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.userEmail)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.userEmail)
         }
     }
     
@@ -99,7 +99,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.userFullname) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.userFullname)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.userFullname)
         }
     }
     
@@ -109,7 +109,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.History.searchHistory) as? [String] ?? []
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.History.searchHistory)
+            userDefaults.set(newValue, forKey: SRAppConstants.History.searchHistory)
         }
     }
     
@@ -119,7 +119,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.aliasKey) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.aliasKey)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.aliasKey)
         }
     }
     
@@ -129,7 +129,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.apiKey) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.apiKey)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.apiKey)
         }
     }
     
@@ -139,7 +139,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appUserAppKey) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appUserAppKey)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.appUserAppKey)
         }
     }
     
@@ -149,7 +149,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appUserApiKey) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appUserApiKey)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.appUserApiKey)
         }
     }
     
@@ -158,7 +158,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.baseUrl) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.baseUrl)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.baseUrl)
         }
     }
     
@@ -167,7 +167,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appUserBaseUrl) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appUserBaseUrl)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.appUserBaseUrl)
         }
     }
     
@@ -176,7 +176,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.fallbackLanguage) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.fallbackLanguage)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.fallbackLanguage)
         }
     }
     
@@ -185,7 +185,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appLanguage) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appLanguage)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.appLanguage)
         }
     }
     
@@ -194,7 +194,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.UserDefaults.Key.appTitle) as? String ?? ""
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.UserDefaults.Key.appTitle)
+            userDefaults.set(newValue, forKey: SRAppConstants.UserDefaults.Key.appTitle)
         }
     }
     
@@ -203,7 +203,7 @@ extension SRAppContext {
             return userDefaults.object(forKey: SRAppConstants.SdkSettings.developmentMode) as? Bool ?? false
             }
         set {
-            userDefaults.set(newValue , forKey: SRAppConstants.SdkSettings.developmentMode)
+            userDefaults.set(newValue, forKey: SRAppConstants.SdkSettings.developmentMode)
         }
     }
     

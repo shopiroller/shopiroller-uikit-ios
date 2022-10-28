@@ -172,7 +172,7 @@ class SRAddressBottomSheetViewModel : SRBaseViewModel {
         }
     }
     
-    func saveEdittedBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func saveEdittedBillingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.editBillingAddress(editAddressModel, userId: SRAppContext.userId).response() {
             (result) in
             switch result {

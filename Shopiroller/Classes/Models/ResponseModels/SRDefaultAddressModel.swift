@@ -9,6 +9,6 @@ import Foundation
 
 class SRDefaultAddressModel: Codable {
     
-    var shippingAddress : UserShippingAddressModel?
-    var billingAddress : UserBillingAdressModel?
+    var shippingAddress: UserShippingAddressModel?
+    var billingAddress: UserBillingAdressModel?
 }

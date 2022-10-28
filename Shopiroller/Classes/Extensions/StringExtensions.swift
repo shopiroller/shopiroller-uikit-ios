@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension String {
     
     public static let NEW_LINE = "\n"

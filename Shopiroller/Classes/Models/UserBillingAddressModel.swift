@@ -45,25 +45,25 @@ struct UserBillingAdressModel: Codable {
     func getListBillingDescriptionArea() -> String {
         if(type == SRAppConstants.AddressType.Corporate) {
             return [contact?.nameSurname
-                    , String.NEW_LINE
-                    , addressLine
-                    , String.NEW_LINE
-                    , city , " / " , state , " / " , country
-                    , String.NEW_LINE
-                    , contact?.phoneNumber
-                    , String.NEW_LINE
-                    , taxOffice , " - " , taxNumber].compactMap { $0 }
+                    ,String.NEW_LINE
+                    ,addressLine
+                    ,String.NEW_LINE
+                    ,city , " / ", state, " / ", country
+                    ,String.NEW_LINE
+                    ,contact?.phoneNumber
+                    ,String.NEW_LINE
+                    ,taxOffice , " - ", taxNumber].compactMap { $0 }
                     .joined(separator: " ")
         } else {
             return [contact?.nameSurname
-                    , String.NEW_LINE
-                    , addressLine
-                    , String.NEW_LINE
-                    , city , " / " , state , " / " , country
-                    , String.NEW_LINE
-                    , contact?.phoneNumber
-                    , String.NEW_LINE
-                    , identityNumber].compactMap { $0 }
+                    ,String.NEW_LINE
+                    ,addressLine
+                    ,String.NEW_LINE
+                    ,city , " / ", state, " / ", country
+                    ,String.NEW_LINE
+                    ,contact?.phoneNumber
+                    ,String.NEW_LINE
+                    ,identityNumber].compactMap { $0 }
                     .joined(separator: " ")
         }
     }
@@ -73,7 +73,7 @@ struct UserBillingAdressModel: Codable {
                 ,String.NEW_LINE
                 ,addressLine
                 ,String.NEW_LINE
-                ,city , " / " , state , " / " , country
+                ,city , " / ", state, " / ", country
                 ,String.NEW_LINE
                 ,contact?.phoneNumber].compactMap { $0 }
                 .joined(separator: "")
@@ -81,11 +81,11 @@ struct UserBillingAdressModel: Codable {
     
     func getDescriptionArea() -> String {
         return [city
-                , " / ", state , " / ", country
-                , String.NEW_LINE
-                , contact?.nameSurname
-                , " - "
-                , contact?.phoneNumber].compactMap { $0 }
+                ," / ", state, " / ",country
+                ,String.NEW_LINE
+                ,contact?.nameSurname
+                ," - "
+                ,contact?.phoneNumber].compactMap { $0 }
                 .joined(separator: "")
         
     }
@@ -96,25 +96,25 @@ struct UserBillingAdressModel: Codable {
 
     func getPopupAddressSecondLine() -> String {
         return [city
-                , " / " , state
-                , " / " , country].compactMap { $0 }
+                ," / ", state
+                ," / ", country].compactMap { $0 }
                 .joined(separator: "")
     }
         
 
     func getPopupAddressThirdLine() -> String {
         return [contact?.nameSurname
-                , " - " ,contact?.phoneNumber].compactMap { $0 }
+                ," - ", contact?.phoneNumber].compactMap { $0 }
                 .joined(separator: "")
     }
     
     func getSummaryDescriptionArea () -> String {
         return [ addressLine
-                 , " " , city
-                 , " / " , state
-                 , " " , contact?.nameSurname
-                 , " - "
-                 , contact?.phoneNumber].compactMap{ $0 }
+                 ," ", city
+                 ," / ", state
+                 ," " ,contact?.nameSurname
+                 ," - "
+                 ,contact?.phoneNumber].compactMap{ $0 }
                  .joined(separator: "")
     }
         

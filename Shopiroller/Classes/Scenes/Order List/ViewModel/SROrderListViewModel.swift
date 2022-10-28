@@ -26,8 +26,9 @@ open class SROrderListViewModel: SRBaseViewModel {
     var selectedPosition: Int?
     
     func getOrderList(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppContext.userId), URLQueryItem(name: "perPage", value: "50"),
-                             URLQueryItem(name: "orderBy", value: "OrderByDescending"),]
+        let urlQueryItems = [URLQueryItem(name: SRAppConstants.Query.Keys.userId, value: SRAppContext.userId),
+                             URLQueryItem(name: "perPage", value: "50"),
+                             URLQueryItem(name: "orderBy", value: "OrderByDescending")]
         
         SRNetworkManagerRequests.getOrderList(urlQueryItems: urlQueryItems).response() {
             (result) in
@@ -66,7 +67,13 @@ open class SROrderListViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        return EmptyModel(image: .paymentFailed, title: Constants.emptyOrdersTitle, description: Constants.emptyOrdersDescription, button: ButtonModel(title: Constants.emptyOrdersActionButton, color: .black))
+        return EmptyModel(
+            image: .paymentFailed,
+            title: Constants.emptyOrdersTitle,
+            description: Constants.emptyOrdersDescription,
+            button: ButtonModel(
+                title: Constants.emptyOrdersActionButton,
+                color: .black))
     }
     
     func isOpenedFromResultPage() -> Bool? {

@@ -124,7 +124,6 @@ open class SRImageSlideshow: UIView {
         }
     }
 
-    /// Delegate called on image slideshow state change
     open weak var delegate: SRImageSlideshowDelegate?
 
     /// Called on each currentPage change
@@ -438,7 +437,11 @@ open class SRImageSlideshow: UIView {
 
     fileprivate func setTimerIfNeeded() {
         if slideshowInterval > 0 && scrollViewImages.count > 1 && slideshowTimer == nil {
-            slideshowTimer = Timer.scheduledTimer(timeInterval: slideshowInterval, target: self, selector: #selector(SRImageSlideshow.slideshowTick(_:)), userInfo: nil, repeats: true)
+            slideshowTimer = Timer.scheduledTimer(
+                timeInterval: slideshowInterval,
+                target: self,
+                selector: #selector(SRImageSlideshow.slideshowTick(_:)),
+                userInfo: nil, repeats: true)
         }
     }
 
@@ -597,9 +600,13 @@ extension SRImageSlideshow: UIScrollViewDelegate {
             let regularContentOffset = scrollView.frame.size.width * CGFloat(images.count)
 
             if scrollView.contentOffset.x >= scrollView.frame.size.width * CGFloat(images.count + 1) {
-                scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x - regularContentOffset, y: 0)
+                scrollView.contentOffset = CGPoint(
+                    x: scrollView.contentOffset.x - regularContentOffset,
+                    y: 0)
             } else if scrollView.contentOffset.x <= 0 {
-                scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x + regularContentOffset, y: 0)
+                scrollView.contentOffset = CGPoint(
+                    x: scrollView.contentOffset.x + regularContentOffset,
+                    y: 0)
             }
         }
 

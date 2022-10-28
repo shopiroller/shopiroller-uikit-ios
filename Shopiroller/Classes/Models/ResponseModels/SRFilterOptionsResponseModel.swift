@@ -7,17 +7,13 @@
 
 import Foundation
 
-
 struct SRFilterOptionsResponseModel: Codable {
-    
     var variationGroups: [VariationGroups]?
     var brands: [BrandsItem]?
     var categories: [CategoriesItem]?
-    
 }
 
 struct BrandsItem: Codable {
-    
     var updateDate: String?
     var name: String?
     var icon: ProductImageModel?
@@ -27,7 +23,6 @@ struct BrandsItem: Codable {
 }
 
 struct CategoriesItem: Codable {
-    
     var updateDate: String?
     var name: Dictionary<String, String>?
     var icon: ProductImageModel?
@@ -38,7 +33,6 @@ struct CategoriesItem: Codable {
     var categoryId: String?
     var subCategories: [CategoriesItem]?
     var createDate: String?
-    
 }
 
 struct MultiChoiceItem: Codable {

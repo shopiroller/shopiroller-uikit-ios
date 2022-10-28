@@ -8,7 +8,6 @@
 import Foundation
 
 struct MakeOrderAddressModel: Codable {
-    
     var id: String?
     var city: String?
     var country: String?
@@ -24,40 +23,41 @@ struct MakeOrderAddressModel: Codable {
     
     func getDescriptionArea() -> String {
         return [ description
-                , String.NEW_LINE
-                , city
-                , " / " , state , " / " , country
-                , String.NEW_LINE
-                , "%@"
-                , " - "
-                , phoneNumber].compactMap { $0 }
-                .joined(separator: " ")
+                 ,String.NEW_LINE
+                 ,city
+                 ," / " , state , " / " , country
+                 ,String.NEW_LINE
+                 ,"%@"
+                 ," - "
+                 ,phoneNumber].compactMap { $0 }
+            .joined(separator: " ")
     }
     
     func getBillingDescriptionArea() -> String {
         if (taxOffice != nil && taxOffice != "") {
             return [ description
-            , String.NEW_LINE
-            , city
-            , " / " , state , " / " , country
-            , String.NEW_LINE
-            , "%@"
-            , " - "
-            , phoneNumber
-            , String.NEW_LINE
-            , taxOffice , " - " , taxNumber].compactMap { $0 }
-            .joined(separator: " ")}
-        else{
+                     ,String.NEW_LINE
+                     ,city
+                     ," / " , state , " / " , country
+                     ,String.NEW_LINE
+                     ,"%@"
+                     ," - "
+                     ,phoneNumber
+                     ,String.NEW_LINE
+                     ,taxOffice , " - " , taxNumber].compactMap { $0 }
+                .joined(separator: " ")
+            
+        } else {
             return [ description
-            , String.NEW_LINE
-            , city
-            , " / " , state , " / " , country
-            , String.NEW_LINE
-            , "%@"
-            , " - "
-            , phoneNumber
-            , String.NEW_LINE
-            , identityNumber].compactMap { $0 }
+                     ,String.NEW_LINE
+                     ,city
+                     ," / " , state , " / " , country
+                     ,String.NEW_LINE
+                     ,"%@"
+                     ," - "
+                     ,phoneNumber
+                     ,String.NEW_LINE
+                     ,identityNumber].compactMap { $0 }
             .joined(separator: " ")}
     }
 }

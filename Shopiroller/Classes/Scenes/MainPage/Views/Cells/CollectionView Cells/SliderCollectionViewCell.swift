@@ -27,5 +27,3 @@ class SliderCollectionViewCell: UICollectionViewCell {
         sliderImage.setImages(url:  model?.imageUrl?.normal ?? "")
     }
 }
-
-

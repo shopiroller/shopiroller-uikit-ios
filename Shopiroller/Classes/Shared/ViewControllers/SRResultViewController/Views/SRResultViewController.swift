@@ -8,7 +8,6 @@
 import UIKit
 
 class SRResultViewController: BaseViewController<SRResultViewControllerViewModel> {
-    
     private struct Constants {
         static var pageTitle: String { "e_commerce_order_details_information_title".localized }
         static var successTitle: String { "e_commerce_result_success_title".localized }
@@ -66,25 +65,32 @@ class SRResultViewController: BaseViewController<SRResultViewControllerViewModel
     private func setFailUI() {
         resultImageView.image = .paymentFailed
         resultTitle.text = Constants.failTitle
+        
         resultDescription.text = Constants.failDescription
+        
+        resultDetailDescription.isHidden = viewModel.isErrorMessageEmpty()
+        resultDetailDescription.attributedText = viewModel.getFormattedErrorMesage()
+        
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.failUpdatePaymentMethodButtonText)
         resultFirstButton.setTitleColor(.white)
         resultFirstButton.titleLabel?.font = .semiBold14
-        resultDetailDescription.isHidden = viewModel.isErrorMessageEmpty()
-        resultDetailDescription.attributedText = viewModel.getFormattedErrorMesage()
+        
         resultSecondButton.isHidden = true
     }
     
     private func setSuccessUI() {
         resultImageView.image = .paymentSuccess
         resultTitle.text = Constants.successTitle
+        
         resultDescription.text = Constants.successDescription
         resultDetailDescription.isHidden = false
         resultDetailDescription.text = String(format: Constants.successOrderNumber, viewModel.getOrderNumber())
+        
         resultFirstButton.backgroundColor = .textPrimary
         resultFirstButton.setTitle(Constants.successCheckOrderButtonText)
         resultFirstButton.setTitleColor(.white)
+        
         resultSecondButton.backgroundColor = .buttonLight
         resultSecondButton.setTitle(Constants.successContinueShoppingButtonText)
         resultSecondButton.setTitleColor(.textPrimary)

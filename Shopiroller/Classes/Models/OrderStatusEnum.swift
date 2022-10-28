@@ -8,7 +8,6 @@
 import Foundation
 
 enum OrderStatusEnum: String, Codable {
-    
     case WaitingPayment
     case WaitingApproval
     case Approved
@@ -21,7 +20,7 @@ enum OrderStatusEnum: String, Codable {
     case Refunded
     case PaymentFailed
     
-    var text : String {
+    var text: String {
         switch self {
         case .WaitingPayment:
             return "e_commerce_order_status_waiting_payment".localized

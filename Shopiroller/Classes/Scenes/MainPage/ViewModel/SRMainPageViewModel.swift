@@ -207,7 +207,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func hasSubCategory(position: Int) -> Bool {
-        if categoriesWithOptions?.categories?[position].subCategories != nil , !(categoriesWithOptions?.categories?[position].subCategories?.isEmpty ?? false) {
+        if categoriesWithOptions?.categories?[position].subCategories != nil, !(categoriesWithOptions?.categories?[position].subCategories?.isEmpty ?? false) {
             return true
         }else {
             return false
@@ -292,7 +292,12 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getCategoriesListViewModel(position: Int) -> SRCategoriesListViewModel {
-        return SRCategoriesListViewModel(categoryList: getSubCategories(position: position), isSubCategory: true,selectedRowName: getCategoryName(position: position),categoryId: getCategoryId(position: position),categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
+        return SRCategoriesListViewModel(
+            categoryList: getSubCategories(position: position),
+            isSubCategory: true,
+            selectedRowName: getCategoryName(position: position),
+            categoryId: getCategoryId(position: position),
+            categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
     }
     
     func getProductListViewModel(position: Int) -> SRProductListViewModel {

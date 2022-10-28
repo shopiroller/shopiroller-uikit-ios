@@ -87,4 +87,3 @@ class SRTextField: SRBaseView {
 enum SRTextFieldType {
     case withPadding,withNoPadding
 }
-
