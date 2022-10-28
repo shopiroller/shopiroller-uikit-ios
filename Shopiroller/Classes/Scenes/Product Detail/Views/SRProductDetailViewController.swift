@@ -166,7 +166,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         
         shippingPriceContainer.makeCardView()
         shippingPriceContainer.clipsToBounds = true
-        shippingPriceContainer.backgroundColor = .badgeWarningInfo
+        shippingPriceContainer.backgroundColor = .badgeSecondary
         
         addToCardContainer.backgroundColor = .black
         addToCardButton.tintColor = .white
@@ -585,7 +585,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
             addToCardButton.titleLabel?.text = Constants.soldOutText
             soldOutContainer.isHidden = false
             soldOutContainer.makeCardView()
-            soldOutContainer.backgroundColor = .badgeWarningInfo
+            soldOutContainer.backgroundColor = .badgeSecondary
             soldOutLabel.textColor = .black
             soldOutLabel.text = Constants.soldOutText
             quantityContainer.isHidden = true

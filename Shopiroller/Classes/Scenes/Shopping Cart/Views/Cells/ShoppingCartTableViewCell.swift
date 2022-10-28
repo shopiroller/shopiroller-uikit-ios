@@ -40,7 +40,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        warningView.backgroundColor = .badgeWarningInfo
+        warningView.backgroundColor = .badgeSecondary
         warningView.layer.cornerRadius = 6
         warningLabel.textColor = .textSecondary
         warningLabel.font = .regular12
