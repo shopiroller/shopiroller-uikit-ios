@@ -76,8 +76,11 @@ class SRTextField: SRBaseView {
             if (type == .withNoPadding) {
                 textField.textColor = .textPrimary
                 textField.font = .semiBold14
-            } else {
+            } else if (type == .withPadding) {
                 textField.textColor = .textPCaption
+            } else {
+                textField.borderStyle = .none
+                textField.isUserInteractionEnabled = false
             }
         }
     }
@@ -85,6 +88,6 @@ class SRTextField: SRBaseView {
 }
 
 enum SRTextFieldType {
-    case withPadding,withNoPadding
+    case withPadding,withNoPadding,emptyTextField
 }
 
