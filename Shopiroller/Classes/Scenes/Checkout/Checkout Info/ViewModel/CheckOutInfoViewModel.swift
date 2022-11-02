@@ -35,7 +35,15 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getUpdateCardPopUpModel() -> PopUpViewModel {
-        return PopUpViewModel(image: UIImage(systemName: "pencil")!, title: "e_commerce_order_summary_update_order_popup_title".localized, description: String(format: "e_commerce_order_summary_update_order_popup_description".localized, String.NEW_LINE), firstButton: PopUpButtonModel(title: "e_commerce_order_summary_update_order_popup_button".localized, type: .darkButton), secondButton: nil)
+        return PopUpViewModel(
+            image: UIImage(systemName: "pencil")!,
+            title: "e_commerce_order_summary_update_order_popup_title".localized,
+            description: String(
+                format: "e_commerce_order_summary_update_order_popup_description".localized, String.NEW_LINE),
+            firstButton: PopUpButtonModel(
+                title: "e_commerce_order_summary_update_order_popup_button".localized,
+                type: .darkButton),
+            secondButton: nil)
     }
     
     func getCardDescription() -> String {
@@ -44,11 +52,19 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getBottomPriceModel() -> BottomPriceModel {
-        return BottomPriceModel(subTotalPrice: (shoppingCart?.subTotalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0), shippingPrice: shoppingCart?.shippingPrice, totalPrice: shoppingCart?.totalPrice, currency: shoppingCart?.currency, bottomPriceType: .normal,discountPrice: shoppingCart?.couponPrice)
+        return BottomPriceModel(
+            subTotalPrice: (shoppingCart?.subTotalPrice ?? 0) - (shoppingCart?.shippingPrice ?? 0),
+            shippingPrice: shoppingCart?.shippingPrice,
+            totalPrice: shoppingCart?.totalPrice,
+            currency: shoppingCart?.currency,
+            bottomPriceType: .normal,
+            discountPrice: shoppingCart?.couponPrice)
     }
     
     func getTrasnferToBankDescriptonText() -> String {
-        return String(format: "e_commerce_order_summary_bank_transfer_description".localized, String.NEW_LINE, SRSessionManager.shared.orderEvent.bankAccount?.accountToString as! CVarArg)
+        return String(
+            format: "e_commerce_order_summary_bank_transfer_description".localized,
+            String.NEW_LINE, SRSessionManager.shared.orderEvent.bankAccount?.accountToString as! CVarArg)
     }
     
     func getCreditCardDescription() -> String {
@@ -57,7 +73,14 @@ class CheckOutInfoViewModel: SRBaseViewModel {
     }
     
     func getAgreementCheckPopUpModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .validateCart, title: "e_commerce_order_summary_agreement_popup_title".localized, description: "e_commerce_order_summary_agreement_popup_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_order_summary_agreement_popup_button".localized, type: .darkButton), secondButton: nil)
+        return PopUpViewModel(
+            image: .validateCart,
+            title: "e_commerce_order_summary_agreement_popup_title".localized,
+            description: "e_commerce_order_summary_agreement_popup_description".localized,
+            firstButton: PopUpButtonModel(
+                title: "e_commerce_order_summary_agreement_popup_button".localized,
+                type: .darkButton),
+            secondButton: nil)
     }
     
     func isInvalidItemsAvailable() -> Bool {

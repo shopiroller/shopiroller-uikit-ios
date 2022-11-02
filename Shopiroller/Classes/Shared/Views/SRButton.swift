@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public enum SRButtonType {
 
     case darkButton

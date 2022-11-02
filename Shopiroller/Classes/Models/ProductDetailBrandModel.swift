@@ -13,8 +13,8 @@ struct ProductDetailBrandModel : Codable {
     var name : String?
     var icon : ProductImageModel?
     var isActive : Bool?
-    var createDate : String?
-    var updateDate : String?
+    var createdDate : String?
+    var updatedDate : String?
     
     
     enum CodingKeys: String,CodingKey {
@@ -22,7 +22,7 @@ struct ProductDetailBrandModel : Codable {
         case name = "name"
         case icon = "icon"
         case isActive = "isActive"
-        case createDate = "createDate"
-        case updateDate = "updateDate"
+        case createdDate = "createDate"
+        case updatedDate = "updateDate"
     }
 }

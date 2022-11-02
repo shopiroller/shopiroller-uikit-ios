@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct GeneralAddressModel {
     let title: String?
     let address: String?

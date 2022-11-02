@@ -8,11 +8,11 @@
 import UIKit
 
 
-protocol EmptyViewDelegate {
+protocol EmptyViewDelegate: AnyObject {
     func actionButtonClicked(_ sender: Any)
 }
 
-protocol EmptyViewAddressDelegate {
+protocol EmptyViewAddressDelegate: AnyObject {
     func addAddressButtonClicked(type: GeneralAddressType?)
 }
 
@@ -24,11 +24,11 @@ public class EmptyView: SRBaseView {
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet private weak var buttonContainer: UIView!
     
-    var delegate: EmptyViewDelegate?
+    weak var delegate: EmptyViewDelegate?
     
-    var addressDelegate : EmptyViewAddressDelegate?
+    weak var addressDelegate: EmptyViewAddressDelegate?
     
-    private var type : GeneralAddressType? = .shipping
+    private var type: GeneralAddressType? = .shipping
     
     func setup(model: EmptyModel) {
         super.setup()
@@ -57,7 +57,7 @@ public class EmptyView: SRBaseView {
             buttonContainer.isHidden = false
             actionButton.setTitle(button.title)
             actionButton.setTitleColor(.white)
-            if(button.color != nil){
+            if(button.color != nil) {
                 actionButton.backgroundColor = button.color
             }
         }
@@ -67,9 +67,7 @@ public class EmptyView: SRBaseView {
         delegate?.actionButtonClicked(sender)
     }
     
-    @IBAction func addAddressButtonClicked(_ sender: Any){
+    @IBAction func addAddressButtonClicked(_ sender: Any) {
         addressDelegate?.addAddressButtonClicked(type: self.type)
     }
-    
 }
-

@@ -17,15 +17,5 @@ struct SRNetworkManagerResponse<T: Decodable>: Decodable {
     
     //Only For Orders
     var paymentResult: SROrderPaymentResultModel?
-
-    enum CodingKeys: String, CodingKey {
-        case data = "data"
-        case success = "success"
-        case isUserFriendlyMessage = "isUserFriendlyMessage"
-        case key = "key"
-        case message = "message"
-        case errors = "errors"
-        case paymentResult = "paymentResult"
-    }
     
 }

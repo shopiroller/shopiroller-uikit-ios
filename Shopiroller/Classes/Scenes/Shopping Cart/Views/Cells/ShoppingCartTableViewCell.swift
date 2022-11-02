@@ -32,7 +32,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet private weak var productImageToStackView: NSLayoutConstraint!
     
     private var model: ShoppingCartItem?
-    private var delegate: ShoppingCartTableViewCellDelegate?
+    private weak var delegate: ShoppingCartTableViewCellDelegate?
     private var cellIndexAtRow: Int?
     
     override func awakeFromNib() {
@@ -40,7 +40,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        warningView.backgroundColor = .badgeWarningInfo
+        warningView.backgroundColor = .badgeSecondary
         warningView.layer.cornerRadius = 6
         warningLabel.textColor = .textSecondary
         warningLabel.font = .regular12
@@ -83,7 +83,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
                 
                 let campaignPrice = ECommerceUtil.getFormattedPrice(price: (model.product?.price ?? 0) * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: campaignPrice)
-                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
                 
                 discount.attributedText = attributeString
                 
@@ -101,7 +101,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
             minusButton.isEnabled = true
         }
         
-        if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
+        if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0) {
             warningView.isHidden = false
             warningLabel.text = String(format: "e_commerce_shopping_cart_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
             productImageToStackView.constant = 10

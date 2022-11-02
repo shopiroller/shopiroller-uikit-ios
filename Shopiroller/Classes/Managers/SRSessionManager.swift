@@ -8,7 +8,6 @@
 import Foundation
 
 class SRSessionManager {
-    
     static var shared = SRSessionManager()
     
     var orderEvent: OrderPaymentEvent = OrderPaymentEvent()

@@ -22,14 +22,4 @@ struct BankAccountModel: Codable {
     var accountToString: String? {
         return (name ?? "") + " " + (accountName ?? "") + " " + (accountCode ?? "") + " " + (accountNumber ?? "")
     }
-    
-    enum CodingKeys: String,CodingKey {
-        case accountAddress = "accountAddress"
-        case accountNumber = "accountNumber"
-        case accountCode = "accountCode"
-        case accountName = "accountName"
-        case name = "name"
-        case nameSurname = "nameSurname"
-        
-    }
 }

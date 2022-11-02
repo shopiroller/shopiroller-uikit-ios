@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FilterViewControllerDelegate {
+protocol FilterViewControllerDelegate: AnyObject {
     func confirmedFilter(model: FilterModel)
 }
 
@@ -16,9 +16,9 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     @IBOutlet private weak var filterTableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    private let delegate: FilterViewControllerDelegate
+    private weak var delegate: FilterViewControllerDelegate?
     
-    init(viewModel: FilterViewModel, delegate: FilterViewControllerDelegate) {
+    init(viewModel: FilterViewModel, delegate: FilterViewControllerDelegate?) {
         self.delegate = delegate
         super.init("e_commerce_search_list_filter".localized, viewModel: viewModel, nibName: FilterViewController.nibName, bundle: Bundle(for: FilterViewController.self))
     }
@@ -72,7 +72,7 @@ class FilterViewController: BaseViewController<FilterViewModel> {
     
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        delegate.confirmedFilter(model: viewModel.selectedModel)
+        delegate?.confirmedFilter(model: viewModel.selectedModel)
         pop(animated: true, completion: nil)
     }
     

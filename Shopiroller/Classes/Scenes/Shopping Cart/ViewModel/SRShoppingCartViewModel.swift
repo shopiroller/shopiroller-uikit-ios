@@ -166,7 +166,9 @@ class SRShoppingCartViewModel: SRBaseViewModel {
     }
     
     func insertCoupon(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.insertCoupon(userId: SRAppContext.userId, couponName: discountCoupon ?? "").response() {
+        SRNetworkManagerRequests.insertCoupon(
+            userId: SRAppContext.userId,
+            couponName: discountCoupon ?? "").response() {
             (result) in
             switch result {
             case .success(let response):

@@ -26,7 +26,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     
     private let badgeView = SRBadgeButton()
     
-    private var group : DispatchGroup? = nil
+    private var group : DispatchGroup?
     
     public init(viewModel: SRMainPageViewModel) {
         super.init(nil, viewModel: viewModel, nibName: SRMainPageViewController.nibName, bundle: Bundle(for: SRMainPageViewController.self))
@@ -60,7 +60,11 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -136,7 +140,7 @@ open class SRMainPageViewController: BaseViewController<SRMainPageViewModel> {
                 self.view.layoutIfNeeded()
                 self.mainCollectionView.reloadData()
             }
-        }) { [weak self] (errorViewModel) in
+        }) { [weak self] _ in
             guard let self = self else { return }
             if self.group != nil {
                 self.group?.leave()
@@ -348,7 +352,10 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reusableView = mainCollectionView!.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: Constants.productsTitleIdentifier, for: indexPath) as! ProductsTitleView
+        let reusableView = mainCollectionView!.dequeueReusableSupplementaryView(
+            ofKind: UICollectionElementKindSectionHeader,
+            withReuseIdentifier: Constants.productsTitleIdentifier,
+            for: indexPath) as! ProductsTitleView
         return reusableView
     }
     
@@ -426,17 +433,23 @@ extension SRMainPageViewController : CategoriesCellDelegate {
     
     func getSubCategories(position: Int) {
         
-        if viewModel.hasSubCategory(position: position){
-            let categoriesListVC = SRCategoriesListViewController(viewModel: viewModel.getCategoriesListViewModel(position: position))
+        if viewModel.hasSubCategory(position: position) {
+            let categoriesListVC = SRCategoriesListViewController(
+                viewModel: viewModel.getCategoriesListViewModel(position: position))
             post(categoriesListVC, animated: true, completion: nil)
         } else {
-            let productListVC = SRProductListViewController(viewModel: viewModel.getProductListViewModel(position: position))
+            let productListVC = SRProductListViewController(
+                viewModel: viewModel.getProductListViewModel(position: position))
             post(productListVC, animated: true, completion: nil)
         }
         
     }
     func getCategories(position: Int) {
-        let categoriesListViewController = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.getCategoriesViewModel(), isSubCategory: false,categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
+        let categoriesListViewController = SRCategoriesListViewController(
+            viewModel: SRCategoriesListViewModel(
+                categoryList: viewModel.getCategoriesViewModel(),
+                isSubCategory: false,
+                categoryDisplayTypeEnum: viewModel.getMobileSettingsEnum()))
         self.post(categoriesListViewController, animated: true, completion: nil)
     }
 }
@@ -449,7 +462,10 @@ extension SRMainPageViewController: SliderClickDelegate {
     }
     
     func openProductList(categoryId: String?) {
-        let productListVC = SRProductListViewController(viewModel: SRProductListViewModel(categoryId: categoryId,pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
+        let productListVC = SRProductListViewController(
+            viewModel: SRProductListViewModel(
+                categoryId: categoryId,
+                pageTitle: viewModel.getSliderCategoryName(id: categoryId)))
         post(productListVC, animated: false, completion: nil)
     }
     

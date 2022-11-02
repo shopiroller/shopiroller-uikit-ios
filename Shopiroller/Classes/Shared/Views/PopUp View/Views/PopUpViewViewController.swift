@@ -9,13 +9,12 @@ import UIKit
 import Kingfisher
 
 
-protocol PopUpViewViewControllerDelegate {
+protocol PopUpViewViewControllerDelegate: AnyObject {
     func firstButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
     func secondButtonClicked(_ sender: Any, popUpViewController: PopUpViewViewController)
 }
 
 class PopUpViewViewController: BaseViewController<PopUpViewModel> {
-    
     @IBOutlet private weak var circleImageBackground: UIView!
     @IBOutlet private weak var circleImage: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -30,7 +29,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
     @IBOutlet private weak var inputContainerView: UIView!
     @IBOutlet private weak var inputTextField: UITextField!
     
-    var delegate: PopUpViewViewControllerDelegate?
+    weak var delegate: PopUpViewViewControllerDelegate?
     
     public init(viewModel: PopUpViewModel) {
         super.init(viewModel: viewModel, nibName: PopUpViewViewController.nibName, bundle: Bundle(for: PopUpViewViewController.self))
@@ -63,6 +62,7 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
         
         circleImageBackground.backgroundColor = .white
         circleImageBackground.layer.cornerRadius = circleImageBackground.frame.width / 2
+        
         circleImage.layer.backgroundColor = UIColor.badgeSecondary.cgColor
         circleImage.layer.cornerRadius = circleImage.frame.width / 2
         
@@ -100,7 +100,8 @@ class PopUpViewViewController: BaseViewController<PopUpViewModel> {
             let description = NSMutableAttributedString(attributedString: htmlDescription)
             let myParagraphStyle = NSMutableParagraphStyle()
             myParagraphStyle.alignment = .center
-            description.addAttributes([.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
+            description.addAttributes(
+                [.paragraphStyle: myParagraphStyle], range: NSRange(location: 0, length: description.length))
             descriptionLabel.attributedText = description
         } else {
             descriptionLabel.text = viewModel.getDescription()

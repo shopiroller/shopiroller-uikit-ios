@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class ShopirollerErrorModel {
     let error: ShopirollerError
     

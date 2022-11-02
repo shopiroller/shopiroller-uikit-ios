@@ -147,21 +147,22 @@ extension UIViewController {
     @objc func openOptions() {
         let actionSheetController = UIAlertController(title: "Select", message: "Select An Action", preferredStyle: .actionSheet)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ -> Void in
             self.dismiss(animated: true, completion: nil)
         }
         actionSheetController.addAction(cancelAction)
 
-        let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { action -> Void in
+        let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { _ -> Void in
             let orderListVC = SROrderListViewController(viewModel: SROrderListViewModel())
             self.prompt(orderListVC, animated: true, completion: nil)
         }
         actionSheetController.addAction(chooseOrderAction)
         
-        let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { action -> Void in
+        let chooseAddressAction = UIAlertAction(title: "Adreslerim", style: .default) { _ -> Void in
             let addressListVC = SRUserAddressViewController(viewModel: SRUserAddressViewModel())
             self.prompt(addressListVC, animated: true, completion: nil)
         }
+        
         actionSheetController.addAction(chooseAddressAction)
 
         self.present(actionSheetController, animated: true, completion: nil)
@@ -224,9 +225,13 @@ extension UIViewController {
                    canceled: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let noInternetConnectionAction = UIAlertAction(title: "e_commerce_general_ok_button_text".localized, style: .default) { action -> Void in
-            self.pop(animated: true, completion: nil)
-        }
+        
+        let noInternetConnectionAction = UIAlertAction(
+            title: "e_commerce_general_ok_button_text".localized,
+            style: .default) { _ -> Void in
+                self.pop(animated: true, completion: nil)
+            }
+        
         alert.addAction(noInternetConnectionAction)
         
         popUp(alert)

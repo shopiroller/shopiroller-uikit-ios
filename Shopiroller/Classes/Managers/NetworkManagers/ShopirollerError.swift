@@ -56,7 +56,7 @@ public enum ShopirollerError: Error, Equatable {
     
     public var isUserFriendlyMessage: Bool? {
         switch self {
-        case .other(_,_,let isUserFriendlyMessage,_):
+        case .other(_, _, let isUserFriendlyMessage,_):
             return isUserFriendlyMessage
         default:
             return false
@@ -65,7 +65,7 @@ public enum ShopirollerError: Error, Equatable {
     
     public var title: String {
         switch self {
-        case .other(_,let title,_,_):
+        case .other(_, let title, _, _):
             return title ?? "generic-error-title"
         default:
             return "generic-error-title"
@@ -81,7 +81,7 @@ public enum ShopirollerError: Error, Equatable {
         }
     }
     
-    public static func ==(left: ShopirollerError, right: ShopirollerError) -> Bool {
+    public static func == (left: ShopirollerError, right: ShopirollerError) -> Bool {
         switch (left, right) {
         case (.network, .network),
              (.parseJSON, .parseJSON),
@@ -142,7 +142,6 @@ extension Error {
             if let decodeError = self as? DecodingError {
                 errorMessage = decodeError.localizedDescription
             }
-            break
         }
         SentrySDK.capture(message: "Error: \(error) \n" + "Error Message: \(errorMessage)")
         #if DEBUG

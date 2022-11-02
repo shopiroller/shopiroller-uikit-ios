@@ -11,11 +11,4 @@ struct SRSetDefaultAddressRequest: Codable{
     var appKey: String = SRAppContext.appUserAppKey
     var apiKey: String = SRAppContext.appUserApiKey
     var isDefault: Bool = true
-    
-    enum CodingKeys: String,CodingKey {
-        case appKey = "appKey"
-        case apiKey = "apiKey"
-        case isDefault = "isDefault"
-    }
-    
 }

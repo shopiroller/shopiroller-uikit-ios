@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FilterSwitchTableViewCellDelegate {
+protocol FilterSwitchTableViewCellDelegate: AnyObject {
     func checkedChanged(type: FilterSwitchType, isOn: Bool)
 }
 
@@ -17,7 +17,7 @@ class FilterSwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var cellSwitch: UISwitch!
     
     private var type: FilterSwitchType?
-    private var delegate: FilterSwitchTableViewCellDelegate?
+    private weak var delegate: FilterSwitchTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

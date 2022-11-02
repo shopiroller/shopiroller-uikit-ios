@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class SRSelectionViewModel: SRBaseViewModel {
     
     private var selectionPopUpModel: SelectionModel?
@@ -16,7 +15,7 @@ class SRSelectionViewModel: SRBaseViewModel {
     
     var searchText: String?
     
-    init(selectionPopUpModel: SelectionModel? = nil){
+    init(selectionPopUpModel: SelectionModel? = nil) {
         self.selectionPopUpModel = selectionPopUpModel
     }
     

@@ -79,7 +79,7 @@ class SRProductListViewModel : SRBaseViewModel {
                 DispatchQueue.main.async {
                     if self.currentPage != 0 {
                         self.productList = self.productList! + (response.data ?? [])
-                    }else{
+                    } else {
                         self.productList = response.data
                     }
                     succes?()

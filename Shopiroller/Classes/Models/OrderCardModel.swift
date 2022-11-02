@@ -14,14 +14,6 @@ struct OrderCardModel: Codable {
     var expireMonth: String?
     var expireYear: String?
     var cvc: String?
-    
-    enum CodingKeys: String,CodingKey {
-        case cardHolderName = "cardHolderName"
-        case cardNumber = "cardNumber"
-        case expireMonth = "expireMonth"
-        case expireYear = "expireYear"
-        case cvc = "cvc"
-    }
 }
 
 struct ShoppingCartCount: Codable {

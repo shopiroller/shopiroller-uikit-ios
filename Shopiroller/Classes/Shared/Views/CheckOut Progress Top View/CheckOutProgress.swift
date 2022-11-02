@@ -54,7 +54,7 @@ class CheckOutProgress : SRBaseView {
         
     }
     
-    func configureView(stage: ProgressStageEnum){
+    func configureView(stage: ProgressStageEnum) {
         switch stage {
         case .payment:
             paymentLabel.textColor = .textPrimary

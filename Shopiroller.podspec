@@ -8,25 +8,23 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.2.30'
-  s.summary          = 'A short description of Shopiroller.'
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/ealtaca/shopiroller_ios'
+  s.version          = '0.2.34'
+  s.summary          = 'Get your own eCommerce mobile app in minutes. Avoid all the coding & focus on user experience on Shopiroller iOS SDK'
+  s.homepage         = 'https://github.com/shopiroller/shopiroller-uikit-ios'
+  s.description      = 'Mobile e-commerce applications are now closer to your users with Shopiroller iOS SDK. It is now very easy to have your own mobile application. Our eCommerce mobile SDKs are readymade platforms to be taken over by you; accelerating your mobile app development process by months. It`s a head-start!'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ealtaca' => 'ealtaca@gmail.com' }
-  s.source           = { :git => 'https://github.com/ealtaca/shopiroller_ios.git', :tag => s.version.to_s }
-  s.swift_version = "4.0"
+  s.swift_version    = "4.0"
 
   s.ios.deployment_target = '13.0'
   
   s.platform     = :ios, '13.0'
-
+    
+  s.source       = { :git => 'git@github.com:shopiroller/shopiroller-uikit-ios.git', :tag => s.version }
+  
   s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}"
   
-  s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Fonts/*.{ttf}' , 'Shopiroller/Animations/*.{json}'
+  s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Colors.xcassets', 'Shopiroller/Fonts/*.{ttf}', 'Shopiroller/Animations/*.{json}'
 
   s.dependency 'SVProgressHUD'
   s.dependency 'MaterialComponents/Buttons'
@@ -38,4 +36,5 @@ TODO: Add long description of the pod here.
   s.dependency 'Stripe'
   s.dependency 'Braintree'
   s.dependency 'Sentry'
+  
 end

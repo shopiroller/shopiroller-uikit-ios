@@ -19,8 +19,11 @@ class SRSearchViewController: BaseViewController<SRSearchViewModel> {
     @IBOutlet private weak var searchTableView: UITableView!
     @IBOutlet private weak var backButton: UIButton!
     
-    init(viewModel: SRSearchViewModel){
-        super.init(viewModel: viewModel, nibName: SRSearchViewController.nibName, bundle: Bundle(for: SRSearchViewController.self))
+    init(viewModel: SRSearchViewModel) {
+        super.init(
+            viewModel: viewModel,
+            nibName: SRSearchViewController.nibName,
+            bundle: Bundle(for: SRSearchViewController.self))
     }
     
     override func setup() {
@@ -102,11 +105,9 @@ extension SRSearchViewController : UITableViewDelegate , UITableViewDataSource {
 
 extension SRSearchViewController : SearchTableViewCellDelegate {
     func deleteButtonTapped(title: String?) {
-        for keyword in SRAppContext.searchHistory {
-            if keyword == title {
-                let index = SRAppContext.searchHistory.firstIndex(of: keyword) ?? 0
-                SRAppContext.searchHistory.remove(at: index)
-            }
+        for keyword in SRAppContext.searchHistory where keyword == title {
+            let index = SRAppContext.searchHistory.firstIndex(of: keyword) ?? 0
+            SRAppContext.searchHistory.remove(at: index)
         }
         self.searchTableView.reloadData()
     }

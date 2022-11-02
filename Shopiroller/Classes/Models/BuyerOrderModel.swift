@@ -11,10 +11,4 @@ struct BuyerOrderModel: Codable {
     var name : String?
     var surname : String?
     var email : String?
-    
-    enum CodingKeys: String,CodingKey {
-        case name = "name"
-        case surname = "surname"
-        case email = "email"
-    }
 }

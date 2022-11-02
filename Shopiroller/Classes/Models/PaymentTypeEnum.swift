@@ -8,14 +8,13 @@
 import Foundation
 
 enum PaymentTypeEnum: String, Codable {
-    
-    case PayAtDoor = "PayAtDoor"
-    case Online = "Online"
-    case Online3DS = "Online3DS"
-    case Transfer = "Transfer"
-    case PayPal = "PayPal"
-    case Stripe = "Stripe"
-    case Stripe3DS = "Stripe3DS"
+    case PayAtDoor
+    case Online
+    case Online3DS
+    case Transfer
+    case PayPal
+    case Stripe
+    case Stripe3DS
     case Other
     
     var title: String {

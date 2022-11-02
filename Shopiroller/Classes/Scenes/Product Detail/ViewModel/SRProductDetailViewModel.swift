@@ -74,8 +74,15 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         }
     }
     
-    func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title, userFullName: SRAppContext.userFullname, userEmail: SRAppContext.userEmail), userId: SRAppContext.userId).response() {
+    func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.addProductToShoppingCart(
+            products: SRAddProductModel(
+                productId: self.productId,
+                quantity: self.quantityCount,
+                displayName: productDetailModel?.title,
+                userFullName: SRAppContext.userFullname,
+                userEmail: SRAppContext.userEmail),
+            userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case.success(let response):
@@ -317,7 +324,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     private func getSelectedVariantList() -> [ProductDetailResponseModel]? {
         var list = variantsList.map{ $0 }
-        for (_,element) in variantDataDictionary.enumerated() {
+        for (index,element) in variantDataDictionary.enumerated() {
             let variantId = getVariantIdFrom(variantName: element.key, variantValue: element.value)
             list = list?.filter {($0.variantData?.contains(where: { $0.variationId == variantId }) ?? false)}
         }
@@ -351,10 +358,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func getIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
         if let variantsList = variantsList {
-            for (index,element) in variantsList.enumerated() {
-                if element.id == variantModel.id {
-                    return index
-                }
+            for (index, element) in variantsList.enumerated() where element.id == variantModel.id {
+                return index
             }
         }
         return 0
@@ -363,10 +368,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     func getImageIndexOfVariant(variantModel: ProductDetailResponseModel) -> Int {
         if let variantsList = variantsList {
             let variantListWithImage = variantsList.filter{ $0.images?.count ?? 0 > 0}
-            for (index,element) in variantListWithImage.enumerated() {
-                if element.id == variantModel.id {
+            for (index,element) in variantListWithImage.enumerated() where element.id == variantModel.id {
                     return index
-                }
             }
         }
         return -1

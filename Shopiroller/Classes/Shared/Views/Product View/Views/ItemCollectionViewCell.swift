@@ -46,7 +46,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configureCell(viewModel: ProductViewModel){
+    func configureCell(viewModel: ProductViewModel) {
         
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary
@@ -64,14 +64,18 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium12
-            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency() ?? "")
-            
+            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(
+                currency: viewModel.getCurrency() ?? "")
             productNewPrice.font = .semiBold14
-            productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
+            productNewPrice.text = ECommerceUtil.getFormattedPrice(
+                price: Double(viewModel.getCampaignPrice()),
+                currency: viewModel.getCurrency())
         } else {
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(
+                price: Double(viewModel.getPrice()),
+                currency: viewModel.getCurrency())
             productOldPrice.font = .semiBold14
             productOldPrice.textColor = .black
         }

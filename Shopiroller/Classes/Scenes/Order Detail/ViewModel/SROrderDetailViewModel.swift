@@ -32,7 +32,9 @@ class SROrderDetailViewModel: SRBaseViewModel {
     }
     
     func getCreatedDate() -> String? {
-        return ECommerceUtil.convertServerDate(date: detail?.createdDate, toFormat: ECommerceUtil.ddMMMMyyy + " " + ECommerceUtil.EEEEhhmm)
+        return ECommerceUtil.convertServerDate(
+            date: detail?.createdDate,
+            toFormat: ECommerceUtil.ddMMMMyyy + " " + ECommerceUtil.EEEEhhmm)
     }
     
     func isCargoTrackingAvailable() -> Bool {
@@ -61,7 +63,9 @@ class SROrderDetailViewModel: SRBaseViewModel {
     }
     
     func getBankName() -> String {
-        let bankName = [detail?.paymentAccount?.name, " - ", detail?.paymentAccount?.accountName, " / ", detail?.paymentAccount?.accountCode]
+        let bankName = [detail?.paymentAccount?.name,
+                        " - ", detail?.paymentAccount?.accountName,
+                        " / ", detail?.paymentAccount?.accountCode]
             .compactMap { $0 }
             .joined(separator: " ")
         return bankName

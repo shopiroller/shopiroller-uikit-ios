@@ -9,11 +9,6 @@ import Foundation
 
 class SRDefaultAddressModel: Codable {
     
-    var shippingAddress : UserShippingAddressModel?
-    var billingAddress : UserBillingAdressModel?
-    
-    enum CodingKeys: String,CodingKey {
-        case shippingAddress = "shippingAddress"
-        case billingAddress = "billingAddress"
-    }
+    var shippingAddress: UserShippingAddressModel?
+    var billingAddress: UserBillingAdressModel?
 }

@@ -105,9 +105,16 @@ public extension UIView {
      @param completion The completion closure, executed after the toast view disappears.
      didTap will be `true` if the toast view was dismissed from a tap.
      */
-    func makeToast(_ message: String?, duration: TimeInterval = ToastManager.shared.duration, position: ToastPosition = ToastManager.shared.position, title: String? = nil, image: UIImage? = nil, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)? = nil) {
+    func makeToast(
+        _ message: String?,
+        duration: TimeInterval = ToastManager.shared.duration,
+        position: ToastPosition = ToastManager.shared.position,
+        title: String? = nil,
+        image: UIImage? = nil,
+        style: ToastStyle = ToastManager.shared.style,
+        completion: ((_ didTap: Bool) -> Void)? = nil) {
         do {
-            let toast = try toastViewForMessage(message, title: title, image: image, style: style)
+            let toast = try toastViewForMessage(message: message, title: title, image: image, style: style)
             showToast(toast, duration: duration, position: position, completion: completion)
         } catch ToastError.missingParameters {
             print("Error: message, title, and image are all nil")
@@ -128,7 +135,7 @@ public extension UIView {
      */
     func makeToast(_ message: String?, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, title: String?, image: UIImage?, style: ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Bool) -> Void)?) {
         do {
-            let toast = try toastViewForMessage(message, title: title, image: image, style: style)
+            let toast = try toastViewForMessage(message: message, title: title, image: image, style: style)
             showToast(toast, duration: duration, point: point, completion: completion)
         } catch ToastError.missingParameters {
             print("Error: message, title, and image cannot all be nil")
@@ -166,15 +173,15 @@ public extension UIView {
      didTap will be `true` if the toast view was dismissed from a tap.
      */
     func showToast(_ toast: UIView, duration: TimeInterval = ToastManager.shared.duration, point: CGPoint, completion: ((_ didTap: Bool) -> Void)? = nil) {
-        objc_setAssociatedObject(toast, &ToastKeys.completion, ToastCompletionWrapper(completion), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
+        objc_setAssociatedObject(toast, &ToastKeys.completion, ToastCompletionWrapper(completion), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
         if activeToasts.count > 0 , !(activeToasts.contains(toast)) {
             hideToast()
         }
         
         if ToastManager.shared.isQueueEnabled, activeToasts.count > 0 {
-            objc_setAssociatedObject(toast, &ToastKeys.duration, NSNumber(value: duration), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            objc_setAssociatedObject(toast, &ToastKeys.point, NSValue(cgPoint: point), .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(toast, &ToastKeys.duration, NSNumber(value: duration), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(toast, &ToastKeys.point, NSValue(cgPoint: point), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             queue.add(toast)
         } else {
             showToast(toast, duration: duration, point: point)
@@ -223,7 +230,7 @@ public extension UIView {
         }
         
         activeToasts.compactMap { $0 as? UIView }
-        .forEach { hideToast($0) }
+            .forEach { hideToast($0) }
         
         if includeActivity {
             hideToastActivity()
@@ -413,7 +420,11 @@ public extension UIView {
      @throws `ToastError.missingParameters` when message, title, and image are all nil
      @return The newly created toast view
      */
-    func toastViewForMessage(_ message: String?, title: String?, image: UIImage?, style: ToastStyle) throws -> UIView {
+    func toastViewForMessage(
+        message: String?,
+        title: String?,
+        image: UIImage?,
+        style: ToastStyle) throws -> UIView {
         // sanity
         guard message != nil || title != nil || image != nil else {
             throw ToastError.missingParameters
@@ -438,7 +449,11 @@ public extension UIView {
         if let image = image {
             imageView = UIImageView(image: image)
             imageView?.contentMode = .scaleAspectFit
-            imageView?.frame = CGRect(x: style.horizontalPadding, y: style.verticalPadding, width: style.imageSize.width, height: style.imageSize.height)
+            imageView?.frame = CGRect(
+                x: style.horizontalPadding,
+                y: style.verticalPadding,
+                width: style.imageSize.width,
+                height: style.imageSize.height)
         }
         
         var imageRect = CGRect.zero
@@ -458,9 +473,11 @@ public extension UIView {
             titleLabel?.lineBreakMode = .byTruncatingTail
             titleLabel?.textColor = style.titleColor
             titleLabel?.backgroundColor = UIColor.clear
-            titleLabel?.text = title;
+            titleLabel?.text = title
             
-            let maxTitleSize = CGSize(width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, height: self.bounds.size.height * style.maxHeightPercentage)
+            let maxTitleSize = CGSize(
+                width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width,
+                height: self.bounds.size.height * style.maxHeightPercentage)
             let titleSize = titleLabel?.sizeThatFits(maxTitleSize)
             if let titleSize = titleSize {
                 titleLabel?.frame = CGRect(x: 0.0, y: 0.0, width: titleSize.width, height: titleSize.height)
@@ -473,11 +490,13 @@ public extension UIView {
             messageLabel?.numberOfLines = style.messageNumberOfLines
             messageLabel?.font = style.messageFont
             messageLabel?.textAlignment = style.messageAlignment
-            messageLabel?.lineBreakMode = .byTruncatingTail;
+            messageLabel?.lineBreakMode = .byTruncatingTail
             messageLabel?.textColor = style.messageColor
             messageLabel?.backgroundColor = UIColor.clear
             
-            let maxMessageSize = CGSize(width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, height: self.bounds.size.height * style.maxHeightPercentage)
+            let maxMessageSize = CGSize(
+                width: (self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width,
+                height: self.bounds.size.height * style.maxHeightPercentage)
             let messageSize = messageLabel?.sizeThatFits(maxMessageSize)
             if let messageSize = messageSize {
                 let actualWidth = min(messageSize.width, maxMessageSize.width)
@@ -506,8 +525,12 @@ public extension UIView {
         
         let longerWidth = max(titleRect.size.width, messageRect.size.width)
         let longerX = max(titleRect.origin.x, messageRect.origin.x)
-        let wrapperWidth = max((imageRect.size.width + (style.horizontalPadding * 2.0)), (longerX + longerWidth + style.horizontalPadding))
-        let wrapperHeight = max((messageRect.origin.y + messageRect.size.height), (imageRect.size.height + (style.verticalPadding * 2.0)))
+        let wrapperWidth = max(
+            (imageRect.size.width + (style.horizontalPadding * 2.0)),
+            (longerX + longerWidth + style.horizontalPadding))
+        let wrapperHeight = max(
+            (messageRect.origin.y + messageRect.size.height),
+            (imageRect.size.height + (style.verticalPadding * 2.0)))
         
         wrapperView.frame = CGRect(x: 0.0, y: 350.0, width: wrapperWidth, height: wrapperHeight)
         
@@ -600,7 +623,7 @@ public struct ToastStyle {
     /**
      The corner radius. Default is 10.0.
      */
-    public var cornerRadius: CGFloat = 6.0;
+    public var cornerRadius: CGFloat = 6.0
     
     /**
      The title font. Default is `.boldSystemFont(16.0)`.

@@ -16,7 +16,7 @@ public class ShopirollerApp {
     
     public var theme: ShopirollerTheme = ShopirollerTheme()
     
-    public var delegate: ShopirollerDelegate?
+    public weak var delegate: ShopirollerDelegate?
     
     private let user = User()
     
@@ -50,7 +50,6 @@ public class ShopirollerApp {
             withFilenameString: "Poppins-Medium.ttf",
             bundle: .shopiroller
         )
-        
         
         UIFont.listAllFontsOnSystem()
         
@@ -178,7 +177,7 @@ public struct ShopirollerAppUserCredentials {
 }
 
 
-public protocol ShopirollerDelegate {
+public protocol ShopirollerDelegate: AnyObject {
     
     func userLoginNeeded(navigationController: UINavigationController?)
     

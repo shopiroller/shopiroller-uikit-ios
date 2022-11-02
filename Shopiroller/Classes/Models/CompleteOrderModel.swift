@@ -17,13 +17,4 @@ struct CompleteOrderModel: Codable {
     var card: OrderCardModel?
     var bankAccount: String?
     var paymentAccount: BankAccountModel?
-    
-    enum CodingKeys: String,CodingKey {
-        case orderId = "orderId"
-        case userNote = "userNote"
-        case nonce = "nonce"
-        case paymentType = "paymentType"
-        case card = "card"
-        case bankAccount = "bankAccount"
-    }
 }

@@ -30,9 +30,9 @@ class CheckOutAddressViewController: BaseViewController<CheckOutAddressViewModel
     @IBOutlet private weak var defaultDeliveryAddress: GeneralAddressView!
     @IBOutlet private weak var defaultBillingAddress: GeneralAddressView!
     
-    var delegate : CheckOutProgressPageDelegate?
+    weak var delegate : CheckOutProgressPageDelegate?
     
-    init(viewModel: CheckOutAddressViewModel){
+    init(viewModel: CheckOutAddressViewModel) {
         super.init(viewModel: viewModel, nibName: CheckOutAddressViewController.nibName, bundle: Bundle(for: CheckOutAddressViewController.self))
     }
     

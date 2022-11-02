@@ -7,19 +7,14 @@
 
 import UIKit
 
-protocol BankTransferCellDelegate {
-    
-    func tappedCopyIbanButton()
+protocol BankTransferCellDelegate: AnyObject {
+    func copyIbanButtonTapped()
 }
 
 class BankTransferTableViewCell: UITableViewCell {
-   
     private struct Constants {
-        
         static var accountIbanText: String { return "e_commerce_payment_bank_iban".localized }
-        
         static var accountDepartmentText: String { return "e_commerce_payment_bank_branch".localized }
-        
         static var accountNumberText: String { return "e_commerce_payment_bank_account".localized }
     }
     
@@ -39,7 +34,7 @@ class BankTransferTableViewCell: UITableViewCell {
     
     private var bankAccountIbanText: String? = ""
     
-    var delegate : BankTransferCellDelegate?
+    weak var delegate : BankTransferCellDelegate?
     var model: BankAccountModel?
     
     override func awakeFromNib() {
@@ -81,16 +76,23 @@ class BankTransferTableViewCell: UITableViewCell {
         
         bankAccountTitle.text = model?.name
         
-        if(model?.nameSurname != nil){
+        if(model?.nameSurname != nil) {
             bankAccountDescription.text = model?.nameSurname
         } else {
             bankAccountDescription.isHidden = true
         }
-        bankAccountIban.attributedText = String().makeBoldString(boldText: Constants.accountIbanText, normalText: model?.accountAddress,isReverse: false)
-        bankAccountDepartment.attributedText = String().makeBoldString(boldText: Constants.accountDepartmentText, normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),isReverse: false)
+        bankAccountIban.attributedText = String().makeBoldString(
+            boldText: Constants.accountIbanText,
+            normalText: model?.accountAddress, isReverse: false)
+        bankAccountDepartment.attributedText = String().makeBoldString(
+            boldText: Constants.accountDepartmentText,
+            normalText: (model?.accountName ?? "") + " / " + (model?.accountCode ?? ""),
+            isReverse: false)
         bankAccountDepartment.lineBreakMode = .byTruncatingTail
-        bankAccountNumber.attributedText = String().makeBoldString(boldText: Constants.accountNumberText, normalText: model?.accountNumber,isReverse: false)
-        
+        bankAccountNumber.attributedText = String().makeBoldString(
+            boldText: Constants.accountNumberText,
+            normalText: model?.accountNumber,
+            isReverse: false)
         if isSelected {
             setSelectedCell()
         } else {
@@ -114,6 +116,6 @@ class BankTransferTableViewCell: UITableViewCell {
     
     @IBAction func ibanCopyButtonTapped() {
         UIPasteboard.general.string = model?.accountAddress
-        delegate?.tappedCopyIbanButton()
+        delegate?.copyIbanButtonTapped()
     }
 }

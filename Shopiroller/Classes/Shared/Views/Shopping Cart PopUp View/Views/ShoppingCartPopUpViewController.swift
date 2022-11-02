@@ -18,13 +18,12 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var checkoutButton: UIButton!
     
-    @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
+    private weak var delegate: ShoppingCartPopUpViewControllerDelegate?
     
-    private let delegate: ShoppingCartPopUpViewControllerDelegate
-    
-    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate){
+    init(viewModel: ShoppingCartPopUpViewModel, delegate: ShoppingCartPopUpViewControllerDelegate?) {
         self.delegate = delegate
         super.init(viewModel: viewModel, nibName: ShoppingCartPopUpViewController.nibName, bundle: Bundle(for: ShoppingCartPopUpViewController.self))
     }
@@ -59,7 +58,7 @@ class ShoppingCartPopUpViewController: BaseViewController<ShoppingCartPopUpViewM
     
     @IBAction func readyToCheckoutClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        delegate.readyToCheckoutClicked(sender)
+        delegate?.readyToCheckoutClicked(sender)
     }
     
 }

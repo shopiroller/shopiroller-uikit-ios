@@ -10,12 +10,6 @@ import Foundation
 
 struct SRStripeOrderStatusModel: Codable {
     
-    var paymentId: String? = nil
-    var orderId: String? = nil
-    
-    enum CodingKeys: String,CodingKey {
-        case paymentId = "paymentId"
-        case orderId = "orderId"
-    }
-    
+    var paymentId: String?
+    var orderId: String?
 }

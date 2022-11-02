@@ -10,19 +10,19 @@ import Foundation
 
 class OrderDetailModel: Codable {
     
-    var id : String?
-    var totalPrice : Double?
-    var shippingPrice : Double?
-    var currency : String?
-    var currentStatus : OrderStatusEnum?
-    var orderCode : String?
-    var createdDate : String?
-    var userNote : String?
-    var paymentType : PaymentTypeEnum?
-    var cardNumber : String?
-    var productList : [SROrderProductModel]?
-    var shippingTrackingCode : String?
-    var shippingTrackingCompany : String?
+    var id: String?
+    var totalPrice: Double?
+    var shippingPrice: Double?
+    var currency: String?
+    var currentStatus: OrderStatusEnum?
+    var orderCode: String?
+    var createdDate: String?
+    var userNote: String?
+    var paymentType: PaymentTypeEnum?
+    var cardNumber: String?
+    var productList: [SROrderProductModel]?
+    var shippingTrackingCode: String?
+    var shippingTrackingCompany: String?
     var bankAccount: String?
     var paymentAccount: BankAccountModel?
     var appliedCoupon: AppliedCouponModel?

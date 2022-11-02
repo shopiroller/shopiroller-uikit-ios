@@ -10,9 +10,9 @@ import Foundation
 
 class CheckOutViewModel {
     
-    private var currentStage : ProgressStageEnum?
+    private var currentStage: ProgressStageEnum?
     
-    init(currentStage: ProgressStageEnum? = .address){
+    init(currentStage: ProgressStageEnum? = .address) {
         self.currentStage = currentStage
         self.getShoppingCart()
     }
@@ -44,7 +44,7 @@ class CheckOutViewModel {
     }
     
     func getResultPageModel(isSuccess: Bool) -> SRResultViewControllerViewModel {
-        if (isSuccess){
+        if (isSuccess) {
             return getResultPageSuccessModel()
         } else {
             return getResultPageFailModel()
@@ -135,7 +135,7 @@ class CheckOutViewModel {
     }
     
     private func getResultPageFailModel() -> SRResultViewControllerViewModel {
-        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel,errorMessage: errorMessage != nil ? errorMessage : "")
+        return SRResultViewControllerViewModel(type: .fail, orderResponse: SRSessionManager.shared.orderResponseInnerModel, errorMessage: errorMessage != nil ? errorMessage : "")
     }
     
     private func getResultPageSuccessModel() -> SRResultViewControllerViewModel {

@@ -10,8 +10,6 @@ import Lottie
 import SafariServices
 
 class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
-    
-    
     private struct Constants {
         static var shoppingCardViewTitle: String { return "e_commerce_order_summary_cart_title".localized }
         static var paymentCardViewTitle: String { return "e_commerce_order_summary_payment_title".localized }
@@ -59,10 +57,13 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     private let timeInSeconds: TimeInterval = Date().timeIntervalSince1970
     
     
-    var delegate: CheckOutProgressPageDelegate?
+    weak var delegate: CheckOutProgressPageDelegate?
     
-    init(viewModel: CheckOutInfoViewModel){
-        super.init(viewModel: viewModel, nibName: CheckOutInfoViewController.nibName, bundle: Bundle(for: CheckOutInfoViewController.self))
+    init(viewModel: CheckOutInfoViewModel) {
+        super.init(
+            viewModel: viewModel,
+            nibName: CheckOutInfoViewController.nibName,
+            bundle: Bundle(for: CheckOutInfoViewController.self))
     }
     
     override func setup() {
@@ -130,8 +131,11 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         self.animationView.frame = self.view.frame
         self.view.addSubview(animationView)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonTapped), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
-        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(confirmButtonTapped),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve),
+            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,15 +183,21 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     @IBAction func paymentViewEditButtonTapped() {
-        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve), object: nil)
+        NotificationCenter.default.post(
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updatePaymentMethodObserve),
+            object: nil)
     }
     
     @IBAction func billingAddressEditButtonTapped() {
-        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(
+            SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve),
+                                        object: nil)
     }
     
     @IBAction func deliveryAddressEditButtonTapped() {
-        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(
+            SRAppConstants.UserDefaults.Notifications.updateAddressMethodObserve),
+                                        object: nil)
     }
     
     
@@ -202,7 +212,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             }
     }
     
-    private func getShoppingCart(isCheckOut: Bool){
+    private func getShoppingCart(isCheckOut: Bool) {
         viewModel.getShoppingCart(success: {
             if isCheckOut {
                 if self.viewModel.isInvalidItemsAvailable() {
@@ -221,7 +231,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
     }
     
     private func makeOrder() {
-        if SRNetworkCheckHelper.isConnectedToNetwork(){
+        if SRNetworkCheckHelper.isConnectedToNetwork() {
             DispatchQueue.main.async {
                 if (!self.animationView.isAnimationPlaying) {
                     self.showAnimation()
@@ -279,7 +289,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 self.stopAnimation()
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+                NotificationCenter.default.post(
+                    name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve),
+                    object: nil)
             }
             
         })
@@ -293,7 +305,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
                     self.stopAnimation()
-                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+                    NotificationCenter.default.post(
+                        name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve),
+                        object: nil)
                 }
                 
             }
@@ -311,7 +325,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 self.stopAnimation()
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+                NotificationCenter.default.post(
+                    name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve),
+                    object: nil)
             }
             
         })
@@ -325,7 +341,9 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
                 if (SRSessionManager.shared.orderResponseInnerModel?.order?.paymentType != .PayPal) {
                     self.stopAnimation()
-                    NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve), object: nil)
+                    NotificationCenter.default.post(
+                        name: Notification.Name(SRAppConstants.UserDefaults.Notifications.orderInnerResponseObserve),
+                        object: nil)
                 }
             }
             self.showAlertError(viewModel: errorViewModel)

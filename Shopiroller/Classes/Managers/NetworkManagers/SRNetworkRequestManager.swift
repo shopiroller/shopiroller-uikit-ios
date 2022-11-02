@@ -53,7 +53,12 @@ extension SRNetworkRequestManager {
         api.objectResponse(for: self) { result in
             switch result {
             case .success(let responseObject):
-                let networkManagerResponse: SRNetworkManagerResponse<T> = SRNetworkManagerResponse(data: responseObject, isUserFriendlyMessage: nil, key: nil, message: nil, errors: nil)
+                let networkManagerResponse: SRNetworkManagerResponse<T> = SRNetworkManagerResponse(
+                    data: responseObject,
+                    isUserFriendlyMessage: nil,
+                    key: nil,
+                    message: nil,
+                    errors: nil)
                 response(SRResponseResult.success(result: networkManagerResponse))
             case .failure(let err):
                 response(SRResponseResult.failure(err))

@@ -9,8 +9,10 @@ import UIKit
 import MaterialComponents.MaterialButtons
 
 private struct Constants {
-    static var shippingTitle: String { return "user_address_delivery_address_title".localized }
-    static var billingTitle: String { return "user_address_invoice_address_title".localized }
+    static var shippingTitle: String {
+        return "user_address_delivery_address_title".localized }
+    static var billingTitle: String {
+        return "user_address_invoice_address_title".localized }
 }
 
 open class SRUserAddressViewController: BaseViewController<SRUserAddressViewModel> {
@@ -22,8 +24,12 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
     
     private var pageVC: AddressListPageViewController?
     
-    public init(viewModel: SRUserAddressViewModel){
-        super.init("user_my_address_title".localized, viewModel: viewModel, nibName: SRUserAddressViewController.nibName, bundle: Bundle(for: SRUserAddressViewController.self))
+    public init(viewModel: SRUserAddressViewModel) {
+        super.init(
+            "user_my_address_title".localized,
+            viewModel: viewModel,
+            nibName: SRUserAddressViewController.nibName,
+            bundle: Bundle(for: SRUserAddressViewController.self))
     }
     
     public override func setupNavigationBar() {
@@ -65,18 +71,17 @@ open class SRUserAddressViewController: BaseViewController<SRUserAddressViewMode
     }
     
     @IBAction func addButtonTapped() {
-        let addressBottomSheetViewController = SRAddressBottomSheetViewController(viewModel: SRAddressBottomSheetViewModel(type: segmentedControl.selectedSegmentIndex == 0 ? .shipping : .billing, isEditing: false))
+        let addressBottomSheetViewController = SRAddressBottomSheetViewController(
+            viewModel: SRAddressBottomSheetViewModel(
+                type: segmentedControl.selectedSegmentIndex == 0 ? .shipping : .billing,
+                isEditing: false))
         addressBottomSheetViewController.delegate = self
         self.sheet(addressBottomSheetViewController)
     }
     
     private func getCount() {
-        viewModel.getShoppingCartCount(success: {
-            [weak self] in
-            guard let self = self else { return }
-        }) {
-            [weak self] (errorViewModel) in
-            guard let self = self else { return }
+        viewModel.getShoppingCartCount(success: { 
+        }) { _ in
         }
     }
 }
@@ -88,10 +93,15 @@ extension SRUserAddressViewController: AddressListPageDelegate {
 }
 
 extension SRUserAddressViewController: AddressBottomViewDelegate {
-    func saveButtonTapped(userShippingAddressModel: UserShippingAddressModel?, userBillingAddressModel: UserBillingAdressModel?, defaultAddressModel: SRDefaultAddressModel?) {
+    func saveButtonTapped(
+        userShippingAddressModel: UserShippingAddressModel?,
+        userBillingAddressModel: UserBillingAdressModel?,
+        defaultAddressModel: SRDefaultAddressModel?) {
+            
         self.view.makeToast(String(format: "user_my_address_saved_toast_message".localized))
         NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userAddressListObserve), object: nil)
         dismiss(animated: true, completion: nil)
+            
     }
     
     func closeButtonTapped() {

@@ -29,7 +29,6 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     @IBOutlet private weak var nextPageContainer: UIView!
     @IBOutlet private weak var nextPageTitleLabel: UILabel!
     
-    
     var index = 0
     
     private var checkOutPageViewController: CheckOutPageViewController?
@@ -38,7 +37,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
     private var paymentIntentClientSecret: String?
     private var paymentIntentPaymentId: String?
 
-    init(viewModel: CheckOutViewModel){
+    init(viewModel: CheckOutViewModel) {
         super.init(viewModel.getPageTitle()?.localized, viewModel: viewModel, nibName: CheckOutViewController.nibName, bundle: Bundle(for: CheckOutViewController.self))
     }
     
@@ -122,7 +121,9 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 self.paymentIntentClientSecret = orderResponse.payment?.token ?? ""
                 self.paymentIntentPaymentId = paymentIntentClientSecret?.substring(toIndex: 27)
                 StripeAPI.defaultPublishableKey = orderResponse.payment?.publishableKey
-                viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(paymentId: paymentIntentPaymentId, orderId: orderResponse.order?.id)
+                viewModel.stripeOrderStatusModel = SRStripeOrderStatusModel(
+                    paymentId: paymentIntentPaymentId,
+                    orderId: orderResponse.order?.id)
                 loadPaymentSheet()
                 SRSessionManager.shared.makeOrder?.orderId = orderResponse.order?.id
             } else  if (orderResponse.order?.paymentType == PaymentTypeEnum.PayPal) {
@@ -164,7 +165,9 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                 self.setPaypalFailRequest()
                 self.loadOrderResultPage(isSuccess: false)
             } else {
-                NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage), object: nil)
+                NotificationCenter.default.post(
+                    name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateCheckOutInfoPage),
+                    object: nil)
             }
         }
     }
@@ -174,7 +177,9 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
                     return
                 }
         customerConfig.allowsDelayedPaymentMethods = true
-        self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret , configuration: customerConfig)
+        self.paymentSheet = PaymentSheet(
+            paymentIntentClientSecret: paymentIntentClientSecret,
+            configuration: customerConfig)
         handlePaymentResult()
     }
     
@@ -248,7 +253,7 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         }
     }
     
-    private func loadOrderResultPage(isSuccess : Bool) {
+    private func loadOrderResultPage(isSuccess: Bool) {
         let resultVC = SRResultViewController(viewModel: viewModel.getResultPageModel(isSuccess: isSuccess))
         self.prompt(resultVC, animated: true)
     }
@@ -309,13 +314,14 @@ class CheckOutViewController: BaseViewController<CheckOutViewModel> {
         case .payment:
             self.viewControllerTitle.text = "e_commerce_payment_method_selection_title".localized
         case .info:
-            self.viewControllerTitle.text =
-            "e_commerce_order_summary_title".localized
+            self.viewControllerTitle.text = "e_commerce_order_summary_title".localized
         }
     }
     
     @IBAction func confirmButtonTapped() {
-        NotificationCenter.default.post(name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve), object: nil)
+        NotificationCenter.default.post(
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.userConfirmOrderObserve),
+            object: nil)
     }
 }
 

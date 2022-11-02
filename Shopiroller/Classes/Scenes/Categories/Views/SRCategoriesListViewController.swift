@@ -15,7 +15,7 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     
     private let badgeView  = SRBadgeButton()
     
-    init(viewModel: SRCategoriesListViewModel){
+    init(viewModel: SRCategoriesListViewModel) {
         super.init(viewModel: viewModel, nibName: SRCategoriesListViewController.nibName, bundle: Bundle(for: SRCategoriesListViewController.self))
         title = viewModel.getPageTitle()
     }
@@ -49,7 +49,11 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     @objc func updateBadgeCount() {
@@ -64,8 +68,8 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let cartButton = UIBarButtonItem(customView: createNavigationItem(.generalCartIcon, .goToCard))
-        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon , .searchProduct))
-        updateNavigationBar(rightBarButtonItems: [searchButton, cartButton],isBackButtonActive: true)
+        let searchButton = UIBarButtonItem(customView: createNavigationItem(.searchIcon, .searchProduct))
+        updateNavigationBar(rightBarButtonItems: [searchButton, cartButton], isBackButtonActive: true)
         cartButton.customView?.addSubview(badgeView)
     }
     
@@ -74,13 +78,17 @@ class SRCategoriesListViewController: BaseViewController<SRCategoriesListViewMod
             [weak self] in
             guard let self = self else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard let self = self else { return }
         }
     }
     
-    func setSubCategories(position: Int){
-        let vc = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(categoryList: viewModel.categoryList?[position].subCategories, isSubCategory: true,selectedRowName: viewModel.getSelectedRowName(),categoryId: viewModel.getCategoryId()))
+    func setSubCategories(position: Int) {
+        let vc = SRCategoriesListViewController(viewModel: SRCategoriesListViewModel(
+            categoryList: viewModel.categoryList?[position].subCategories,
+            isSubCategory: true,
+            selectedRowName: viewModel.getSelectedRowName(),
+            categoryId: viewModel.getCategoryId()))
         prompt(vc, animated: true, completion: nil)
     }
     
@@ -94,18 +102,22 @@ extension SRCategoriesListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: SRCategoriesListCell.reuseIdentifier) as! SRCategoriesListCell
         cell.selectionStyle = .none
-        cell.setupCategories(model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel(),categoryDisplayTypeEnum: viewModel.getCategoryDisplayTypeEnum())
+        cell.setupCategories(
+            model: self.viewModel.getModel()?[indexPath.row] ?? SRCategoryResponseModel(),
+            categoryDisplayTypeEnum: viewModel.getCategoryDisplayTypeEnum())
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if viewModel.hasSubCategory(position: indexPath.row){
+        if viewModel.hasSubCategory(position: indexPath.row) {
             viewModel.setSelectedRowName(position: indexPath.row)
             viewModel.setCategoryId(position: indexPath.row)
             self.setSubCategories(position: indexPath.row)
         } else {
-            let vc = SRProductListViewController(viewModel: SRProductListViewModel(categoryId: viewModel.categoryList?[indexPath.row].categoryId, pageTitle: viewModel.categoryList?[indexPath.row].name))
+            let vc = SRProductListViewController(viewModel: SRProductListViewModel(
+                categoryId: viewModel.categoryList?[indexPath.row].categoryId,
+                pageTitle: viewModel.categoryList?[indexPath.row].name))
             prompt(vc, animated: true, completion: nil)
         }
     }

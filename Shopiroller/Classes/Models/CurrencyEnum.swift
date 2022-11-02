@@ -13,13 +13,13 @@ enum CurrencyEnum: String, EnumDecodable, Encodable {
         return .TRY
     }
     
-    case TRY = "TRY"
-    case EUR = "EUR"
-    case USD = "USD"
-    case GBP = "GBP"
-    case IRR = "IRR"
-    case NOK = "NOK"
-    case RUB = "RUB"
+    case TRY
+    case EUR
+    case USD
+    case GBP
+    case IRR
+    case NOK
+    case RUB
     
     var currencySymbol: String {
         switch self {

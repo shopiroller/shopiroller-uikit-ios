@@ -8,9 +8,9 @@
 import UIKit
 import Kingfisher
 
-protocol ShowCaseCellDelegate : AnyObject {
+protocol ShowCaseCellDelegate: AnyObject {
     func getProductId(productId: String)
-    func getShowCaseInfo(showcaseId : String?,title: String?)
+    func getShowCaseInfo(showcaseId: String?, title: String?)
 }
 
 public class ShowCaseCell: UICollectionViewCell  {
@@ -27,7 +27,7 @@ public class ShowCaseCell: UICollectionViewCell  {
     
     var viewModel: SRShowcaseResponseModel?
     
-    var delegate: ShowCaseCellDelegate?
+    weak var delegate: ShowCaseCellDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +47,7 @@ public class ShowCaseCell: UICollectionViewCell  {
         seeAllContainer.addGestureRecognizer(showAllTapGesture)
     }
       
-    func configureCell(viewModel: SRShowcaseResponseModel?){
+    func configureCell(viewModel: SRShowcaseResponseModel?) {
         self.viewModel = viewModel
         collectionView.reloadData()
         titleLabel.text = viewModel?.showcase?.name

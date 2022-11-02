@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-protocol GeneralAddressDelegate {
+protocol GeneralAddressDelegate: AnyObject {
     
     func editButtonTapped(type: GeneralAddressType)
     func selectOtherAdressButtonTapped(type: GeneralAddressType?)
@@ -19,7 +19,8 @@ public class GeneralAddressView: SRBaseView {
     
     private struct Constants {
         
-        static var selectOtherAdressButtonText: String { return "e_commerce_address_selection_other_addresses".localized }
+        static var selectOtherAdressButtonText: String {
+            return "e_commerce_address_selection_other_addresses".localized }
     }
     
     @IBOutlet private weak var containerView: UIView!
@@ -30,10 +31,10 @@ public class GeneralAddressView: SRBaseView {
     @IBOutlet private weak var selectOtherAddressButton: UIButton!
     
     
-    var delegate: GeneralAddressDelegate?
+    weak var delegate: GeneralAddressDelegate?
     
     var type: GeneralAddressType?
-        
+    
     func setup(model: GeneralAddressModel) {
         super.setup()
         
@@ -42,24 +43,24 @@ public class GeneralAddressView: SRBaseView {
         containerView.backgroundColor = .buttonLight
         containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true
-                
+        
         selectOtherAddressButton.setTitle(Constants.selectOtherAdressButtonText)
         selectOtherAddressButton.tintColor = .textPrimary
         selectOtherAddressButton.titleLabel?.font = .medium12
         
         titleLabel.textColor = .textPrimary
         titleLabel.font = .semiBold14
-    
+        
         addressLine.textColor = .textPCaption
         addressLine.font = .regular12
         addressLine.adjustsFontSizeToFitWidth = false
         addressLine.lineBreakMode = NSLineBreakMode.byTruncatingTail
-
+        
         descriptionArea.textColor = .textPCaption
         descriptionArea.font = .regular12
         descriptionArea.adjustsFontSizeToFitWidth = false
         descriptionArea.lineBreakMode = NSLineBreakMode.byTruncatingTail
-
+        
         
         editAddressButton.setImage(UIImage(systemName: "pencil"))
         editAddressButton.tintColor = .black

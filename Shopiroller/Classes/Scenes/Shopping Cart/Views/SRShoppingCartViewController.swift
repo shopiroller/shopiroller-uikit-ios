@@ -8,17 +8,12 @@
 import UIKit
 
 class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>, EmptyViewDelegate {
-    
     private struct Constants {
-        
         static var clearCartButtonText : String { return "e_commerce_shopping_cart_clear_cart".localized }
-        
         static var pageTitle: String { return "e_commerce_shopping_cart_title".localized }
-        
         static var checkOutButtonText: String { return "e_commerce_shopping_cart_checkout_button".localized }
     }
     
-
     @IBOutlet private weak var emptyView: EmptyView!
     
     @IBOutlet private weak var containerView: UIView!
@@ -34,7 +29,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     @IBOutlet private weak var checkoutButton: UIButton!
     
 
-    init(viewModel: SRShoppingCartViewModel){
+    init(viewModel: SRShoppingCartViewModel) {
         super.init(Constants.pageTitle, viewModel: viewModel, nibName: SRShoppingCartViewController.nibName, bundle: Bundle(for: SRShoppingCartViewController.self))
     }
     
@@ -139,7 +134,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     private func showIfHasInvalidItem() {
-        if(viewModel.hasInvalidItems()){
+        if(viewModel.hasInvalidItems()) {
             let vc = ShoppingCartPopUpViewController(viewModel: viewModel.geShoppingCartPopUpViewModel(), delegate: self)
             popUp(vc, completion: nil)
         }
@@ -156,7 +151,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     @IBAction func proceedToCheckoutClicked(_ sender: Any) {
-        if(!viewModel.hasInvalidItems()){
+        if(!viewModel.hasInvalidItems()) {
             let checkOutViewController = CheckOutViewController(viewModel: CheckOutViewModel())
             prompt(checkOutViewController, animated: true, completion: nil)
         } else {
@@ -199,7 +194,15 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     private func showCouponErrorDialog(error: String) {
-        let popupVC = PopUpViewViewController(viewModel: PopUpViewModel(image: .outOfStock, title: "e_commerce_shopping_cart_coupon_dialog_title".localized, description: error , firstButton: PopUpButtonModel(title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized, type: .lightButton), secondButton: nil))
+        let popupVC = PopUpViewViewController(
+            viewModel: PopUpViewModel(
+                image: .outOfStock,
+                title: "e_commerce_shopping_cart_coupon_dialog_title".localized,
+                description: error,
+                firstButton: PopUpButtonModel(
+                    title: "e_commerce_product_detail_terms_delivery_conditions_popup_button".localized,
+                    type: .lightButton),
+                secondButton: nil))
         popupVC.delegate = self
         popUp(popupVC, completion: nil)
     }
@@ -269,7 +272,7 @@ extension SRShoppingCartViewController: PopUpViewViewControllerDelegate {
     }
 }
 
-extension SRShoppingCartViewController : ShoppingCartTableViewCouponCellDelegate {
+extension SRShoppingCartViewController: ShoppingCartTableViewCouponCellDelegate {
     
     func couponButtonTapped() {
         let vc = PopUpViewViewController(viewModel: viewModel.getCouponPopUpViewModel())

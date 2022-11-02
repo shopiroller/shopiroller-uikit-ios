@@ -9,7 +9,7 @@ import Foundation
 
 class SRSearchViewModel : SRBaseViewModel {
     
-    private var _searchedKeyword: String? = nil
+    private var _searchedKeyword: String?
     
     var searchedKeyword : String? {
         set {

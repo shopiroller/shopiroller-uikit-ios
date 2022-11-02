@@ -9,7 +9,7 @@ import UIKit
 
 
 class BottomPriceView: SRBaseView {
-
+    
     @IBOutlet private weak var subTotalPriceLabel: UILabel!
     @IBOutlet private weak var shippingPriceLabel: UILabel!
     @IBOutlet private weak var totalLabel: UILabel!
@@ -36,26 +36,34 @@ class BottomPriceView: SRBaseView {
         
         if let discountPrice = model.discountPrice , discountPrice != 0.0 {
             discountPriceContainer.isHidden = false
-            discountPriceLabel.text = "e_commerce_shopping_cart_bottom_view_coupon_discount".localized + ECommerceUtil.getFormattedPrice(price: model.discountPrice, currency: model.currency)
+            discountPriceLabel.text = "e_commerce_shopping_cart_bottom_view_coupon_discount".localized +
+            ECommerceUtil.getFormattedPrice(price: model.discountPrice, currency: model.currency)
         } else {
             discountPriceContainer.isHidden = true
         }
         
         taxesInfoLabel.isHidden = model.bottomPriceType == .normal
- 
-        subTotalPriceLabel.text = "e_commerce_shopping_cart_products_price".localized + ECommerceUtil.getFormattedPrice(price: model.subTotalPrice, currency: model.currency)
         
-        let shippingPrice = ECommerceUtil.getFormattedPrice(price: model.shippingPrice, currency: model.currency)
+        subTotalPriceLabel.text = "e_commerce_shopping_cart_products_price".localized +
+        ECommerceUtil.getFormattedPrice(
+            price: model.subTotalPrice,
+            currency: model.currency)
+        
+        let shippingPrice = ECommerceUtil.getFormattedPrice(
+            price: model.shippingPrice,
+            currency: model.currency)
         
         shippingPriceLabel.text = "e_commerce_shopping_cart_shipping_price".localized + shippingPrice
         
         totalLabel.text = "e_commerce_shopping_cart_total_price".localized
-
-        priceLabel.text = ECommerceUtil.getFormattedPrice(price: model.totalPrice, currency: model.currency)
+        
+        priceLabel.text = ECommerceUtil.getFormattedPrice(
+            price: model.totalPrice,
+            currency: model.currency)
         
         taxesInfoLabel.text = "e_commerce_shopping_cart_taxes_included".localized
     }
-
+    
 }
 
 struct BottomPriceModel {

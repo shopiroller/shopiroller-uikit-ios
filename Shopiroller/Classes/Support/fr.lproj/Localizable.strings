@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "Vous ne pouvez plus commander ce produit, car il n'est plus en stock.";
 "e_commerce_product_detail_out_of_stock_button" = "Retour à la liste des produits";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Ajouté au panier";
-"e_commerce_product_detail_cargo_price" = "Frais de port";
+"e_commerce_product_detail_cargo_price" = "Frais de port ";
 "e_commerce_product_detail_not_found_product_title" = "Pas trouvé";
 "e_commerce_product_detail_not_found_product_description" = "La page que vous recherchez n'existe pas ou elle a peut-être été supprimée.";
 "e_commerce_product_detail_not_found_product_button" = "je comprends";

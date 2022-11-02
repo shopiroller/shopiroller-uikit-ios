@@ -25,7 +25,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     private var categoriesModel: SRCategoryResponseModel?
     private var mainDisplayTypeList: [MainPageDisplayTypes] = []
     private var clientModel: ClientResponseModel?
-
+    
     private var currentPage: Int = 0
     
     func getSliders(showProgress: Bool?,success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
@@ -50,7 +50,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         if !isPagination {
             productList = nil
         }
-
+        
         if productList?.count ?? 0 == 0 {
             currentPage = 1
         } else {
@@ -67,7 +67,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
         
         SRNetworkManagerRequests.getProducts(showProgress: showProgress ?? true, urlQueryItems: urlQueryItems).response() {
             (result) in
-            switch result{
+            switch result {
             case .success(let response):
                 if let productList = response.data , (!productList.isEmpty) {
                     if self.currentPage != 1 {
@@ -207,7 +207,7 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func hasSubCategory(position: Int) -> Bool {
-        if categoriesWithOptions?.categories?[position].subCategories != nil , !(categoriesWithOptions?.categories?[position].subCategories?.isEmpty ?? false) {
+        if categoriesWithOptions?.categories?[position].subCategories != nil, !(categoriesWithOptions?.categories?[position].subCategories?.isEmpty ?? false) {
             return true
         }else {
             return false
@@ -252,7 +252,11 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getEmptyModel() -> EmptyModel {
-        EmptyModel(image: .noProductsIcon, title: Constants.emptyViewTitle, description: Constants.emptyViewDescription, button: nil)
+        EmptyModel(
+            image: .noProductsIcon,
+            title: Constants.emptyViewTitle,
+            description: Constants.emptyViewDescription,
+            button: nil)
     }
     
     func getSectionCount() -> Int {
@@ -288,7 +292,12 @@ open class SRMainPageViewModel: SRBaseViewModel {
     }
     
     func getCategoriesListViewModel(position: Int) -> SRCategoriesListViewModel {
-        return SRCategoriesListViewModel(categoryList: getSubCategories(position: position), isSubCategory: true,selectedRowName: getCategoryName(position: position),categoryId: getCategoryId(position: position),categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
+        return SRCategoriesListViewModel(
+            categoryList: getSubCategories(position: position),
+            isSubCategory: true,
+            selectedRowName: getCategoryName(position: position),
+            categoryId: getCategoryId(position: position),
+            categoryDisplayTypeEnum: categoriesWithOptions?.mobileSettings?.categoryDisplayType)
     }
     
     func getProductListViewModel(position: Int) -> SRProductListViewModel {
@@ -298,10 +307,8 @@ open class SRMainPageViewModel: SRBaseViewModel {
     func getSliderCategoryName(id: String?) -> String? {
         var categoryName : String? = ""
         if let categories = categoriesWithOptions?.categories {
-            for category in categories {
-                if (category.categoryId == id) {
-                    categoryName = category.name
-                }
+            for category in categories where category.categoryId == id {
+                categoryName = category.name
             }
         }
         return categoryName

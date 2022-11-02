@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-protocol SelectionController {
+protocol SelectionControllerDelegate: AnyObject {
     func getCountryId(id: String?)
 }
 
@@ -24,7 +24,7 @@ class SRSelectionViewController: BaseViewController<SRSelectionViewModel> {
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var selectionPopUpView: UIView!
     
-    var delegate: SelectionController?
+    weak var delegate: SelectionControllerDelegate?
         
     init(viewModel: SRSelectionViewModel) {
         super.init(viewModel: viewModel, nibName: SRSelectionViewController.nibName, bundle: Bundle(for: SRSelectionViewController.self))
@@ -89,7 +89,9 @@ extension SRSelectionViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellModel = viewModel.getCellModel(position: indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionTableViewCell.reuseIdentifier, for: indexPath) as! SelectionTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SelectionTableViewCell.reuseIdentifier,
+            for: indexPath) as! SelectionTableViewCell
         cell.configureCell(model: cellModel)
         return cell
     }

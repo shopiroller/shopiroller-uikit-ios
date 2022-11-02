@@ -8,20 +8,19 @@
 import Foundation
 
 enum OrderStatusEnum: String, Codable {
+    case WaitingPayment
+    case WaitingApproval
+    case Approved
+    case WaitingForSupplying
+    case Preparing
+    case Shipped
+    case Delivered
+    case CancelRequested
+    case Canceled
+    case Refunded
+    case PaymentFailed
     
-    case WaitingPayment = "WaitingPayment"
-    case WaitingApproval = "WaitingApproval"
-    case Approved = "Approved"
-    case WaitingForSupplying = "WaitingForSupplying"
-    case Preparing = "Preparing"
-    case Shipped = "Shipped"
-    case Delivered = "Delivered"
-    case CancelRequested = "CancelRequested"
-    case Canceled = "Canceled"
-    case Refunded = "Refunded"
-    case PaymentFailed = "PaymentFailed"
-    
-    var text : String {
+    var text: String {
         switch self {
         case .WaitingPayment:
             return "e_commerce_order_status_waiting_payment".localized
@@ -65,13 +64,13 @@ enum OrderStatusEnum: String, Codable {
         case .Delivered:
             return .badgeSuccess
         case .CancelRequested:
-            return .dangerBadge
+            return .badgeDanger
         case .Canceled:
-            return .dangerBadge
+            return .badgeDanger
         case .Refunded:
-            return .dangerBadge
+            return .badgeDanger
         case .PaymentFailed:
-            return .dangerBadge
+            return .badgeDanger
         }
     }
     

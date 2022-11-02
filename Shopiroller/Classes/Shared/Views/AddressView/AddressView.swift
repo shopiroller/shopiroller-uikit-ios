@@ -8,11 +8,9 @@
 import UIKit
 
 class AddressView: SRBaseView {
-    
     @IBOutlet private weak var addressTitle: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var addressImageView: UIImageView!
-    
 
     private var type: AddressType?
     
@@ -22,8 +20,10 @@ class AddressView: SRBaseView {
         self.layer.cornerRadius = 6
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.textSecondary10.cgColor
+        
         addressLabel.textColor = .textPCaption
         addressLabel.font = .regular12
+        
         addressTitle.font = .semiBold14
         addressTitle.textColor = .textPrimary
     }
@@ -43,9 +43,10 @@ struct AddressCellModel {
     let image: UIImage
 }
 
-enum AddressType: String {
-    case shipping = "shipping"
-    case billing = "billing"
+enum AddressType {
+    
+    case shipping
+    case billing
     
     var text: String {
         switch self {

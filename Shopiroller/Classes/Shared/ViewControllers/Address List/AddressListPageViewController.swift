@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol AddressListPageDelegate {
+protocol AddressListPageDelegate: AnyObject {
     func pageViewController(currentIndex: Int)
 }
 
 class AddressListPageViewController: UIPageViewController {
     
     private var items: [UIViewController] = []
-    internal let addressDelegate: AddressListPageDelegate
+    private weak var addressDelegate: AddressListPageDelegate?
     
-    init(addressDelegate: AddressListPageDelegate) {
+    init(addressDelegate: AddressListPageDelegate?) {
         self.addressDelegate = addressDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
@@ -36,10 +36,14 @@ class AddressListPageViewController: UIPageViewController {
     }
     
     private func populateItems() {
-        let shippingVC = SRAddressListViewController(viewModel: SRAddressListViewModel(state: .shipping))
+        let shippingVC = SRAddressListViewController(
+            viewModel: SRAddressListViewModel(
+                state: .shipping))
         shippingVC.view.tag = 0
         items.append(shippingVC)
-        let billingVC = SRAddressListViewController(viewModel: SRAddressListViewModel(state: .billing))
+        let billingVC = SRAddressListViewController(
+            viewModel: SRAddressListViewModel(
+                state: .billing))
         billingVC.view.tag = 1
         items.append(billingVC)
     }
@@ -49,10 +53,10 @@ class AddressListPageViewController: UIPageViewController {
 extension AddressListPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            if(previousViewControllers[0].view.tag == 0){
-                addressDelegate.pageViewController(currentIndex: 1)
-            }else{
-                addressDelegate.pageViewController(currentIndex: 0)
+            if(previousViewControllers[0].view.tag == 0) {
+                addressDelegate?.pageViewController(currentIndex: 1)
+            } else {
+                addressDelegate?.pageViewController(currentIndex: 0)
             }
         }
     }

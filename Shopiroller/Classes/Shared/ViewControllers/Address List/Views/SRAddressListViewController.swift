@@ -13,7 +13,7 @@ class SRAddressListViewController: BaseViewController<SRAddressListViewModel> {
     @IBOutlet private weak var emptyView: EmptyView!
     @IBOutlet private weak var addButton: UIButton!
     
-    init(viewModel: SRAddressListViewModel){
+    init(viewModel: SRAddressListViewModel) {
         super.init(viewModel: viewModel, nibName: SRAddressListViewController.nibName, bundle: Bundle(for: SRAddressListViewController.self))
     }
     
@@ -33,14 +33,14 @@ class SRAddressListViewController: BaseViewController<SRAddressListViewModel> {
     }
     
     private func configure(isUpdate: Bool) {
-        if(viewModel.isListEmpty()){
+        if(viewModel.isListEmpty()) {
             addressTable.isHidden = true
             emptyView.isHidden = false
             emptyView.setup(model: viewModel.getEmptyModel())
         }else{
             addressTable.isHidden = false
             emptyView.isHidden = true
-            if(!isUpdate){
+            if(!isUpdate) {
                 addressTable.register(cellClass: AddressTableViewCell.self)
                 addressTable.delegate = self
                 addressTable.dataSource = self
@@ -98,7 +98,9 @@ extension SRAddressListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.reuseIdentifier, for: indexPath) as! AddressTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: AddressTableViewCell.reuseIdentifier,
+            for: indexPath) as! AddressTableViewCell
         cell.delegate = self
         switch viewModel.state {
         case .shipping:

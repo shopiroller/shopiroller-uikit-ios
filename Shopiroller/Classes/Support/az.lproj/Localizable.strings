@@ -67,7 +67,7 @@
 "e_commerce_product_detail_out_of_stock_description" = "Sifariş verə bilməzsiniz, çünki məhsul qalmayıb";
 "e_commerce_product_detail_out_of_stock_button" = "Məhsul siyahısına qayıdın";
 "e_commerce_product_detail_added_to_shopping_cart_button" = "Səbətə əlavə edildi";
-"e_commerce_product_detail_cargo_price" = "Çatdırılma haqqı %@";
+"e_commerce_product_detail_cargo_price" = "Çatdırılma haqqı ";
 "e_commerce_product_detail_not_found_product_title" = "Tapılmadı";
 "e_commerce_product_detail_not_found_product_description" = "Axtardığınız səhifə mövcud deyil və ya silinmiş ola bilər.";
 "e_commerce_product_detail_not_found_product_button" = "Başa düşürəm";

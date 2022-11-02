@@ -25,15 +25,15 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         
     }
     
-    private var paymentSettings : PaymentSettingsResponeModel?
+    private var paymentSettings: PaymentSettingsResponeModel?
     
-    private var _selectedPayment: PaymentTypeEnum? = nil
+    private var _selectedPayment: PaymentTypeEnum?
     
     var selectedBankIndex: Int?
     
     var isSelected: Bool = false
     
-    func getPaymentSettings(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func getPaymentSettings(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.getPaymentSettings().response() {
             (result) in
             switch result {
@@ -50,7 +50,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    func setDefaultBillingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func setDefaultBillingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.setDefaultBillingAddress(SRAppContext.userId, addressId: SRSessionManager.shared.userBillingAddress?.id ?? "", userBillingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
@@ -66,7 +66,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    func setDefaultShippingAddress(success: (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+    func setDefaultShippingAddress(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         SRNetworkManagerRequests.setDefaultShippingaddress(SRAppContext.userId, addressId: SRSessionManager.shared.userDeliveryAddress?.id ?? "", userShippingAddress: SRSetDefaultAddressRequest()).response() {
             (result) in
             switch result {
@@ -168,7 +168,7 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         }
     }
     
-    //MARK: Validation
+    // MARK: Validation
     
     func isValid(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
         if(isValidCreditCardHolder(error: error) && isValidCreditCardNumber(error: error) &&
@@ -189,9 +189,9 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
     }
     
     func isValidCreditCardExpireDate(error: ((ErrorViewModel) -> Void)? = nil) -> Bool {
-        if let creditCardExpireYear = creditCardExpireYear , creditCardExpireYear.count == 2 {
+        if let creditCardExpireYear = creditCardExpireYear, creditCardExpireYear.count == 2 {
             return true
-        } else if let creditCardExpireMonth = creditCardExpireMonth ,creditCardExpireMonth.count == 2 {
+        } else if let creditCardExpireMonth = creditCardExpireMonth, creditCardExpireMonth.count == 2 {
             return true
         } else if ((creditCardExpireYear == nil || creditCardExpireYear == "") || (creditCardExpireMonth == nil || creditCardExpireMonth == "")) {
             error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardExpireDateText)))
@@ -203,26 +203,34 @@ class CheckOutPaymentViewModel: SRBaseViewModel {
         if let cardNumber = creditCardNumber, cardNumber.isValidCreditCardNumber && (CreditCardHelper.validateCardNumber(str: cardNumber) == true) {
             return true
         } else if (creditCardNumber == nil || creditCardNumber == "") {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardNumberText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardEmptyError,
+                                Constants.creditCardNumberText)))
         } else {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardNumberText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardValidationError,
+                                Constants.creditCardNumberText)))
         }
         return false
     }
     
     func isValidCreditCardCvv(error: ((ErrorViewModel) -> Void)? = nil) -> Bool  {
-        if let cvv = creditCardCvv , cvv.isValidCreditCardCvv {
+        if let cvv = creditCardCvv, cvv.isValidCreditCardCvv {
             return true
         } else if (creditCardCvv == nil || creditCardCvv == "") {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardEmptyError, Constants.creditCardCVVText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardEmptyError,
+                                Constants.creditCardCVVText)))
         } else {
-            error?(ErrorViewModel.validationError(message: String(format: Constants.creditCardValidationError, Constants.creditCardCVVText)))
+            error?(ErrorViewModel.validationError(
+                message: String(format: Constants.creditCardValidationError,
+                                Constants.creditCardCVVText)))
         }
         return false
     }
     
     func getPaymentDescription() -> String? {
-        var description : String? = nil
+        var description: String? = ""
         if let paymentSettings = paymentSettings {
             paymentSettings.supportedPaymentTypes?.forEach {
                 if ($0.paymentType == _selectedPayment) {

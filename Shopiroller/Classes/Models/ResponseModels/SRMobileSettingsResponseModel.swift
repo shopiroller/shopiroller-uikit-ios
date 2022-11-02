@@ -9,19 +9,11 @@ import Foundation
 
 
 struct SRMobileSettingsResponseModel: Codable {
-    
     var categoryDisplayType: CategoryDisplayTypeEnum?
- 
-    enum CodingKeys: String, CodingKey {
-        case categoryDisplayType = "categoryDisplayType"
-    }
-    
 }
 
 enum CategoryDisplayTypeEnum: String, Codable {
-    
     case imageAndText = "ImageAndText"
     case textOnly = "TextOnly"
     case imageOnly = "ImageOnly"
-
 }

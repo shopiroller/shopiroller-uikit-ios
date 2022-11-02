@@ -28,7 +28,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
     
     private var filterRedDotView = UIView()
         
-    init(viewModel: SRProductListViewModel){
+    init(viewModel: SRProductListViewModel) {
         super.init(viewModel.getPageTitle(),viewModel: viewModel, nibName: SRProductListViewController.nibName, bundle: Bundle(for: SRProductListViewController.self))
         title = viewModel.getPageTitle()
     }
@@ -54,7 +54,12 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
         filterButton.setTitleColor(.textPrimary)
         filterButton.tintColor = .textPrimary
         
-        filterRedDotView = UIView(frame: CGRect(x: filterButton.imageView!.frame.width + 15, y: 0, width: 10, height: 10))
+        filterRedDotView = UIView(
+            frame: CGRect(
+                x: filterButton.imageView!.frame.width + 15,
+                y: 0,
+                width: 10,
+                height: 10))
         filterRedDotView.backgroundColor = .red
         filterRedDotView.layer.cornerRadius = filterRedDotView.frame.height / 2
         filterButton.imageView!.addSubview(filterRedDotView)
@@ -66,7 +71,11 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
         super.viewWillAppear(animated)
         getCount()
         filterRedDotView.isHidden = !viewModel.hasFilter()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeCount), name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateBadgeCount),
+            name: Notification.Name(SRAppConstants.UserDefaults.Notifications.updateShoppighCartObserve),
+            object: nil)
     }
     
     @objc func updateBadgeCount() {
@@ -99,7 +108,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
             [weak self] in
             guard self != nil else { return }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard self != nil else { return }
         }
     }
@@ -113,7 +122,7 @@ class SRProductListViewController: BaseViewController<SRProductListViewModel> {
                 self.configureEmptyView()
             }
         }) {
-            [weak self] (errorViewModel) in
+            [weak self] _ in
             guard self != nil else { return }
         }
     }
@@ -162,7 +171,9 @@ extension SRProductListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            let vc = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: self.viewModel.getProductId(position: indexPath.row)))
+            let vc = SRProductDetailViewController(
+                viewModel: SRProductDetailViewModel(
+                    productId: self.viewModel.getProductId(position: indexPath.row)))
             self.prompt(vc, animated: true, completion: nil)
         })
     }

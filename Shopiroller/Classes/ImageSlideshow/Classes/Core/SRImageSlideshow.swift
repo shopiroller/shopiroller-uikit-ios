@@ -124,7 +124,6 @@ open class SRImageSlideshow: UIView {
         }
     }
 
-    /// Delegate called on image slideshow state change
     open weak var delegate: SRImageSlideshowDelegate?
 
     /// Called on each currentPage change
@@ -291,10 +290,15 @@ open class SRImageSlideshow: UIView {
             }
 
             pageIndicatorView.sizeToFit()
-            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(for: frame, indicatorSize: CGSize(width: pageIndicatorView.frame.size.width + 20, height: pageIndicatorView.frame.size.height), edgeInsets: edgeInsets)
+            pageIndicatorView.frame = pageIndicatorPosition.indicatorFrame(
+                for: frame,
+                indicatorSize: CGSize(
+                    width: pageIndicatorView.frame.size.width + 20,
+                    height: pageIndicatorView.frame.size.height),
+                edgeInsets: edgeInsets)
         }
     }
-
+    
     /// updates frame of the scroll view and its inner items
     func layoutScrollView() {
         let pageIndicatorViewSize = pageIndicator?.view.frame.size
@@ -307,7 +311,11 @@ open class SRImageSlideshow: UIView {
             if !view.zoomInInitially {
                 view.zoomOut()
             }
-            view.frame = CGRect(x: scrollView.frame.size.width * CGFloat(index), y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+            view.frame = CGRect(
+                x: scrollView.frame.size.width * CGFloat(index),
+                y: 0,
+                width: scrollView.frame.size.width,
+                height: scrollView.frame.size.height)
         }
 
         setScrollViewPage(scrollViewPage, animated: false)
@@ -409,13 +417,17 @@ open class SRImageSlideshow: UIView {
     }
 
     /**
-     Change the scroll view page. This may differ from `setCurrentPage` as circular slider has two more dummy pages at indexes 0 and n-1 to provide fluent scrolling between first and last item.
      - parameter newScrollViewPage: new scroll view page
      - parameter animated: true if animate the change
      */
     open func setScrollViewPage(_ newScrollViewPage: Int, animated: Bool) {
         if scrollViewPage < scrollViewImages.count {
-            scrollView.scrollRectToVisible(CGRect(x: scrollView.frame.size.width * CGFloat(newScrollViewPage), y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height), animated: animated)
+            scrollView.scrollRectToVisible(
+                CGRect(
+                    x: scrollView.frame.size.width * CGFloat(newScrollViewPage),
+                    y: 0, width: scrollView.frame.size.width,
+                    height: scrollView.frame.size.height),
+                animated: animated)
             setCurrentPageForScrollViewPage(newScrollViewPage)
             if animated {
                 isAnimating = true
@@ -425,7 +437,11 @@ open class SRImageSlideshow: UIView {
 
     fileprivate func setTimerIfNeeded() {
         if slideshowInterval > 0 && scrollViewImages.count > 1 && slideshowTimer == nil {
-            slideshowTimer = Timer.scheduledTimer(timeInterval: slideshowInterval, target: self, selector: #selector(SRImageSlideshow.slideshowTick(_:)), userInfo: nil, repeats: true)
+            slideshowTimer = Timer.scheduledTimer(
+                timeInterval: slideshowInterval,
+                target: self,
+                selector: #selector(SRImageSlideshow.slideshowTick(_:)),
+                userInfo: nil, repeats: true)
         }
     }
 
@@ -548,7 +564,9 @@ open class SRImageSlideshow: UIView {
 
         fullscreen.initialPage = currentPage
         fullscreen.inputs = images
-        slideshowTransitioningDelegate = SRZoomAnimatedTransitioningDelegate(slideshowView: self, slideshowController: fullscreen)
+        slideshowTransitioningDelegate = SRZoomAnimatedTransitioningDelegate(
+            slideshowView: self,
+            slideshowController: fullscreen)
         fullscreen.transitioningDelegate = slideshowTransitioningDelegate
         fullscreen.modalPresentationStyle = .custom
         controller.present(fullscreen, animated: true, completion: completion)
@@ -582,9 +600,13 @@ extension SRImageSlideshow: UIScrollViewDelegate {
             let regularContentOffset = scrollView.frame.size.width * CGFloat(images.count)
 
             if scrollView.contentOffset.x >= scrollView.frame.size.width * CGFloat(images.count + 1) {
-                scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x - regularContentOffset, y: 0)
+                scrollView.contentOffset = CGPoint(
+                    x: scrollView.contentOffset.x - regularContentOffset,
+                    y: 0)
             } else if scrollView.contentOffset.x <= 0 {
-                scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x + regularContentOffset, y: 0)
+                scrollView.contentOffset = CGPoint(
+                    x: scrollView.contentOffset.x + regularContentOffset,
+                    y: 0)
             }
         }
 

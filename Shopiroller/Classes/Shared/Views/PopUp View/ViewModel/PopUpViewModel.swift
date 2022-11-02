@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-
-public class PopUpViewModel {
-    
+public class PopUpViewModel {    
     private let image: UIImage
     private let title: String
     private let description: String?
@@ -20,8 +18,15 @@ public class PopUpViewModel {
     private let secondButton: PopUpButtonModel?
     private var inputString: String?
     
-    init(image: UIImage, title: String, description: String? = nil, firstButton: PopUpButtonModel? = nil , secondButton: PopUpButtonModel? = nil, htmlDescription: NSAttributedString? = nil,
-         type: PopUpButtonType = .normalPopUp, inputString: String? = nil){
+    init(image: UIImage,
+         title: String,
+         description: String? = nil,
+         firstButton: PopUpButtonModel? = nil,
+         secondButton: PopUpButtonModel? = nil,
+         htmlDescription: NSAttributedString? = nil,
+         type: PopUpButtonType = .normalPopUp,
+         inputString: String? = nil) {
+        
         self.image = image
         self.title = title
         self.firstButton = firstButton

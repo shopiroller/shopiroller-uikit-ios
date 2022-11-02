@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol FilterChoiceViewControllerDelegate {
+protocol FilterChoiceViewControllerDelegate: AnyObject {
     func choiceConfirmed(selectedIds: SelectionIds)
 }
 
@@ -17,11 +17,15 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     @IBOutlet private weak var selectionTableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    private let delegate: FilterChoiceViewControllerDelegate
+    private weak var delegate: FilterChoiceViewControllerDelegate?
     
-    init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate) {
+    init(viewModel: FilterChoiceViewModel, delegate: FilterChoiceViewControllerDelegate?) {
         self.delegate = delegate
-        super.init(viewModel.title, viewModel: viewModel, nibName: FilterChoiceViewController.nibName, bundle: Bundle(for: FilterChoiceViewController.self))
+        super.init(
+            viewModel.title,
+            viewModel: viewModel,
+            nibName: FilterChoiceViewController.nibName,
+            bundle: Bundle(for: FilterChoiceViewController.self))
     }
     
     override func setup() {
@@ -50,7 +54,7 @@ class FilterChoiceViewController: BaseViewController<FilterChoiceViewModel> {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        delegate.choiceConfirmed(selectedIds: viewModel.getSelectedIds())
+        delegate?.choiceConfirmed(selectedIds: viewModel.getSelectedIds())
         pop(animated: true, completion: nil)
     }
     
@@ -76,7 +80,9 @@ extension FilterChoiceViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterChoiceTableViewCell.reuseIdentifier, for: indexPath) as! FilterChoiceTableViewCell
-        cell.setup(model: viewModel.getFilteredListData(position: indexPath.row), isCheckBox: viewModel.isMultipleChoice)
+        cell.setup(
+            model: viewModel.getFilteredListData(position: indexPath.row),
+            isCheckBox: viewModel.isMultipleChoice)
         return cell
     }
     

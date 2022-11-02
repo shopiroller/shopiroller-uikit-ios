@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import SafariServices
 
-protocol SliderClickDelegate {
+protocol SliderClickDelegate: AnyObject {
     func openProductDetail(id: String?)
     func openProductList(categoryId: String?)
     func openWebView(link : String?)
@@ -17,14 +17,13 @@ protocol SliderClickDelegate {
 
 
 public class SliderTableViewCell: UICollectionViewCell {
-    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pageControlContainer: UIView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
     var viewModel: [SliderSlidesModel]?
     
-    var delegate : SliderClickDelegate?
+    weak var delegate: SliderClickDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,8 +32,10 @@ public class SliderTableViewCell: UICollectionViewCell {
         collectionView.register(cellClass: SliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.4)
+        
         if #available(iOS 14.0, *) {
             pageControl.backgroundStyle = .minimal
             pageControl.allowsContinuousInteraction = false
@@ -45,11 +46,13 @@ public class SliderTableViewCell: UICollectionViewCell {
     func setup(viewModel : [SliderSlidesModel]?) {
         self.viewModel = viewModel
         pageControl.numberOfPages = viewModel?.count ?? 0
-        if viewModel?.count != 1 , viewModel?.count != 0 {
+        
+        if viewModel?.count != 1, viewModel?.count != 0 {
             pageControl.customizePageControl(pageControlContainer)
         } else {
             pageControl.isHidden = true
         }
+        
         collectionView.reloadData()
     }
     

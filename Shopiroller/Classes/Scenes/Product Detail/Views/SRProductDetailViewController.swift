@@ -166,7 +166,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         
         shippingPriceContainer.makeCardView()
         shippingPriceContainer.clipsToBounds = true
-        shippingPriceContainer.backgroundColor = .badgeWarningInfo
+        shippingPriceContainer.backgroundColor = .badgeSecondary
         
         addToCardContainer.backgroundColor = .black
         addToCardButton.tintColor = .white
@@ -230,7 +230,6 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     @objc func shareProduct() {
-        //TODO APP LINK
         let myWebsite = NSURL(string: "https://apps.apple.com/us/app/shopirollerg/id" )
         let objectsToShare: [Any] = [viewModel.getTitle(), viewModel.getPrice(), myWebsite]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -288,7 +287,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         }
     }
     
-    @IBAction private func addToCardshowAnimation(_ sender: Any){
+    @IBAction private func addToCardshowAnimation(_ sender: Any) {
         addToCardButton.isUserInteractionEnabled = false
         if ShopirollerApp.shared.isUserLoggedIn() {
             if (viewModel.isVariantCanBeAdded()) {
@@ -354,28 +353,24 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func getProductDetail() {
-        viewModel.getProductDetail(success: {
-            [weak self] in
+        viewModel.getProductDetail(success: { [weak self] in
             guard let self = self else { return }
             self.setUI()
             self.view.isHidden = false
             self.collectionView.reloadData()
             self.playVideoButton.isHidden = !self.viewModel.hasVideo()
-        }) {
-            [weak self] (errorViewModel) in
+        }) { [weak self] _ in
             guard let self = self else { return }
             self.showPopUp(viewModel: self.viewModel.getProductNotFoundPopUpViewModel())
         }
     }
     
     private func addProductToCart() {
-        viewModel.addProductToCart(success: {
-            [weak self] in
+        viewModel.addProductToCart(success: { [weak self] in
             guard let self = self else { return }
             self.showAddProductAnimation()
             self.navigationController?.viewWillLayoutSubviews()
-        }) {
-            [weak self] (errorViewModel) in
+        }) { [weak self] (errorViewModel) in
             guard let self = self else { return }
             if errorViewModel.key == SRAppConstants.URLResults.productMaxQuantityPerOrderExceeded {
                 self.showPopUp(viewModel: self.viewModel.getMaxQuantityPopUpViewModel())
@@ -590,7 +585,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
             addToCardButton.titleLabel?.text = Constants.soldOutText
             soldOutContainer.isHidden = false
             soldOutContainer.makeCardView()
-            soldOutContainer.backgroundColor = .badgeWarningInfo
+            soldOutContainer.backgroundColor = .badgeSecondary
             soldOutLabel.textColor = .black
             soldOutLabel.text = Constants.soldOutText
             quantityContainer.isHidden = true
@@ -691,7 +686,9 @@ extension SRProductDetailViewController : UICollectionViewDelegate , UICollectio
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier,
+            for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
         cell.configurecell(images: viewModel.getImages(position: indexPath.row))
         return cell
     }
@@ -746,7 +743,10 @@ extension SRProductDetailViewController: UITextFieldDelegate {
 extension SRProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     public func getCurrentIndex(index: Int) {
-        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        collectionView.selectItem(
+            at: NSIndexPath(item: index, section: 0) as IndexPath,
+            animated: false,
+            scrollPosition: .centeredHorizontally)
         pageControl.currentPage = index
     }
     
