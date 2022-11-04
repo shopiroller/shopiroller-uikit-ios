@@ -287,9 +287,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
             if (stackView.subviews.count == 2) {
                 stackView = UIStackView()
                 stackView.addArrangedSubview(textField)
-            } else if (stackView.subviews.count != 2) {
-                stackView.addArrangedSubview(textField)
             }
+            stackView.addArrangedSubview(textField)
             stackView.spacing = 20
             stackView.distribution = .fillEqually
             stackViews.append(stackView)
