@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '13.0'
   
   s.source       = { :git => 'git@github.com:shopiroller/shopiroller-uikit-ios.git', :tag => s.version }
-  s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}, Shopiroller/Animations/*.{json}"
+  s.source_files = "Shopiroller/**/*.{swift,xib,strings}", "Shopiroller/Fonts/*.{ttf}"
   
   s.resources = 'Shopiroller/Assets.xcassets', 'Shopiroller/Fonts/*.{ttf}' , 'Shopiroller/Animations/*.{json}'
 
