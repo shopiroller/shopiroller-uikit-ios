@@ -8,7 +8,7 @@ import Foundation
 
 struct ShoppingCartMessage: Codable {
     
-    var key: CartMessageKeyEnum?
+    var key: CartMessageKeyEnum? = nil
     var message: String?
     var type: String?
     
@@ -27,7 +27,25 @@ enum CartMessageKeyEnum: String, Codable {
     case OverPublishmentDate = "OverPublishmentDate"
     case ProductNotFound = "ProductNotFound"
     case FreeShippingCampaign = "FreeShippingCampaign"
+    case unknown = "unknown"
     
+    
+    public init(rawValue: RawValue) {
+        switch rawValue {
+        case "NotEnoughStock":
+            self = .NotEnoughStock
+        case "OutOfStock":
+            self = .OutOfStock
+        case "OverPublishmentDate":
+            self = .OverPublishmentDate
+        case "ProductNotFound":
+            self = .ProductNotFound
+        case "FreeShippingCampaign":
+            self = .FreeShippingCampaign
+        default:
+            self = .unknown
+        }
+    }
     
     var text: String {
         switch self {
@@ -43,6 +61,8 @@ enum CartMessageKeyEnum: String, Codable {
             return "e_commerce_shopping_cart_invalid_removed_basket".localized
         case .FreeShippingCampaign:
             return "FreeShippingCampaign".localized
+        default:
+            return "e_commerce_general_error_title".localized
         }
     }
 }
