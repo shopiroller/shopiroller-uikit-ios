@@ -544,7 +544,7 @@
                         <constraint firstItem="pYf-qf-rDK" firstAttribute="top" secondItem="5Yc-c7-irg" secondAttribute="bottom" id="zu4-Hp-v55"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-HS-kG0" customClass="AnimationView" customModule="Lottie">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-HS-kG0" customClass="LottieAnimationView" customModule="Lottie">
                     <rect key="frame" x="0.0" y="207.5" width="414" height="491"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
