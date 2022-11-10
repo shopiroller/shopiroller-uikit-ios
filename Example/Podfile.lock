@@ -14,7 +14,7 @@ PODS:
   - InputMask (6.1.0)
   - IQKeyboardManagerSwift (6.5.10)
   - Kingfisher (7.1.2)
-  - lottie-ios (3.4.3)
+  - lottie-ios (3.5.0)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
   - MaterialComponents/Buttons (124.2.0):
@@ -126,7 +126,7 @@ SPEC CHECKSUMS:
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
-  lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
+  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
