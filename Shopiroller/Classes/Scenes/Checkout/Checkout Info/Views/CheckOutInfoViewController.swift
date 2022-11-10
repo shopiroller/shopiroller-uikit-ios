@@ -257,7 +257,7 @@ class CheckOutInfoViewController: BaseViewController<CheckOutInfoViewModel> {
         self.bottomPriceView.isHidden = true
         self.mainContainerView.isHidden = true
         self.mainContainerView.backgroundColor = .white
-        animationView.animation = Animation.named("progress_bar",bundle: .shopiroller)
+        animationView.animation = LottieAnimation.named("progress_bar",bundle: .shopiroller)
         animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFit
         animationView.play()
