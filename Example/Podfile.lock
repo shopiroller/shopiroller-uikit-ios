@@ -77,7 +77,7 @@ PODS:
     - lottie-ios
     - MaterialComponents/Buttons
     - Sentry
-    - Stripe
+    - Stripe (~> 22.8.1)
     - SVProgressHUD
   - Stripe (22.8.1):
     - Stripe/Stripe3DS2 (= 22.8.1)
@@ -131,13 +131,13 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   Sentry: d6b16e66a0ad0c39a0b76d9a1194e68e78c37ce6
-  Shopiroller: ce314cae9aabba69e8135a37a2f2536a8a9f8b19
+  Shopiroller: a5285d63c2f0bbdcd6a4b8c178e698015c0cb8f7
   Stripe: b4cf3aa317a8e984b930d3545bac10b490dd3106
   StripeApplePay: 858c1dadc39b658d317661dea8cc2b7158533a17
   StripeCore: 52e0aba2fad604455692db593bf5edc04758b760
   StripeUICore: b3d64c5cbcb4cacfa88f9a0950cdf1b4df72792e
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
+PODFILE CHECKSUM: 72c47f46c6323bdbff37b9a780ba6df607eaa209
 
 COCOAPODS: 1.11.3

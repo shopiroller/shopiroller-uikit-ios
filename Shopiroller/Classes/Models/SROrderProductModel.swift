@@ -14,7 +14,7 @@ struct SROrderProductModel: Codable {
     var featuredImage : ProductImageModel?
     var paidPrice: Double?
     var quantity : Int?
-    var currency : CurrencyEnum?
+    var currency : String?
     var campaignPrice: Double?
     
     enum CodingKeys: String,CodingKey {

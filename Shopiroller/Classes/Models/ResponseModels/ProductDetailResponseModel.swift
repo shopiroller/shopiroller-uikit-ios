@@ -24,7 +24,7 @@ struct ProductDetailResponseModel : Codable {
     var price : Double?
     var campaignPrice : Double?
     var shippingPrice: Double?
-    var currency: CurrencyEnum?
+    var currency: String?
     var featuredImage: ProductImageModel?
     var videos: [String]?
     
