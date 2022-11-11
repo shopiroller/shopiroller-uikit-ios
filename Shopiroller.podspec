@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'InputMask'
   s.dependency 'lottie-ios'
   s.dependency 'IQKeyboardManagerSwift'
-  s.dependency 'Stripe'
+  s.dependency 'Stripe', '~> 22.8.1'
   s.dependency 'Braintree'
   s.dependency 'Sentry'
 end
