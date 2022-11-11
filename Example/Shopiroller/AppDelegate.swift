@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         //Set Theme Colors
         
         shopirollerTheme.navigationTitleTintColor = .white
-        shopirollerTheme.navigationBarTintColor = .red
+        shopirollerTheme.navigationBarTintColor = UIColor(named: "navigationTint")
         shopirollerTheme.navigationIconsTintColor = .white
         
         //Set UINavigationBarAppearance

@@ -1,9 +1,21 @@
 # Shopiroller
 
-[![CI Status](https://img.shields.io/travis/ealtaca/Shopiroller.svg?style=flat)](https://travis-ci.org/ealtaca/Shopiroller)
-[![Version](https://img.shields.io/cocoapods/v/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
-[![License](https://img.shields.io/cocoapods/l/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
-[![Platform](https://img.shields.io/cocoapods/p/Shopiroller.svg?style=flat)](https://cocoapods.org/pods/Shopiroller)
+[![Build](https://img.shields.io/github/checks-status/ealtaca/shopiroller_ios/master)](https://cocoapods.org/pods/Shopiroller)
+[![Version](https://img.shields.io/cocoapods/v/ShopiRoller)](https://cocoapods.org/pods/Shopiroller)
+[![Platform](https://img.shields.io/badge/platform-iOS-green)]()
+[![Swift](https://img.shields.io/badge/swift-4.0-green)]()
+[![Release](https://img.shields.io/github/v/release/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/releases/latest)
+[![PR](https://img.shields.io/github/issues-pr-raw/ealtaca/shopiroller_ios)](https://github.com/ealtaca/shopiroller_ios/pulls)
+<br>
+
+Social
+---
+
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/shopiroller)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/shopiroller/)
+
+
+
 
 Table of Contents
 ===
@@ -50,7 +62,7 @@ Set your credentials through `AppDelegate` as below:
 // AppDelegate.swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-      window = UIWindow(frame: UIScreen.main.bounds)
+      ...
 
       let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl") /* You need to change string variables iosAliasKey, apiKey and baseUrl with your credentials */
       let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl") /* These credentials for users these variables need to be changed like below code with your credentials */
@@ -80,12 +92,12 @@ Set your theme through AppDelegate as below:
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-    window = UIWindow(frame: UIScreen.main.bounds)
+    ...
 
     //Set Theme Colors
 
     shopirollerTheme.navigationTitleTintColor = .white
-    shopirollerTheme.navigationBarTintColor = .red
+    shopirollerTheme.navigationBarTintColor = UIColor(named: "navigationTint")
     shopirollerTheme.navigationIconsTintColor = .white
 
     //Set UINavigationBarAppearance
@@ -106,9 +118,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 You can specify color whatever you want there are two sample color for <br/>
 * navigationBarTitleTintColor .white
-* navigationBarTintColor .red <br/>
+* navigationBarTintColor UIColor(named: "navigationTint") <br/>
 
-![](https://user-images.githubusercontent.com/86607113/191032268-d7396d19-74e7-4468-9460-1e54826fc85b.png) 
+![Gif](./sample-gif/sample.gif)
 
 
 ### 3 - Add Login Required
