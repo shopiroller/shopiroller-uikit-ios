@@ -16,7 +16,7 @@ struct PaymentSettingsResponeModel: Codable {
     var distanceSalesContract: String?
     var paymentAccounts: [BankAccountModel]?
     var supportedPaymentTypes: [SupportedPaymentType]?
-    var defaultCurrency: CurrencyEnum?
+    var defaultCurrency: String?
     var deliveryConditionsTitle: String?
     var cancellationProcedureTitle: String?
     

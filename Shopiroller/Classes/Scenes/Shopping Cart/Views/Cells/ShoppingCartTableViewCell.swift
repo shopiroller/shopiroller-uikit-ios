@@ -103,7 +103,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         if(model.product?.useFixPrice != true && model.product?.shippingPrice != 0){
             warningView.isHidden = false
-            warningLabel.text = String(format: "e_commerce_shopping_cart_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency?.rawValue))
+            warningLabel.text = String(format: "e_commerce_shopping_cart_cargo_warning".localized, ECommerceUtil.getFormattedPrice(price: model.product?.shippingPrice, currency: model.product?.currency))
             productImageToStackView.constant = 10
         }
     }
