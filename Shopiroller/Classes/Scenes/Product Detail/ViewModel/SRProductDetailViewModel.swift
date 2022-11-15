@@ -30,6 +30,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var isPopUpState: Bool = false
     private var isUserFriendly: Bool = false
     private var textFields : [SRTextField] = [SRTextField]()
+    private var stackViews = [UIStackView]()
     
     
     init (productId: String = String()) {
@@ -254,7 +255,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         }
     }
     
-    func getVariantFields() -> [SRTextField] {
+    func getVariantFields() -> [UIStackView] {
         if let variationGroups = variationGroups {
             for (index,variations) in variationGroups.enumerated() {
                 let textFld = SRTextField()
@@ -262,15 +263,46 @@ public class SRProductDetailViewModel: SRBaseViewModel {
                 textFld.setup(rightViewImage: UIImage(systemName: "chevron.down"), type: .withNoPadding)
                 textFld.isEnabled = false
                 textFld.getTextField().text = variations.variations?[0].value
-                variantDataDictionary.updateValue(variations.variations?[0].value ?? "", forKey: variations.name ?? "")
+                if let variation = variations.variations?[0] {
+                    variantDataDictionary.updateValue(variation.value ?? "", forKey: variations.name ?? "")
+                }
                 textFld.tag = index
                 textFields.append(textFld)
             }
             productDetailModel = variantsList?[0]
             productId = productDetailModel?.id ?? ""
-            return textFields
+            let stackViews = getStackViews()
+            return stackViews
         }
-        return [SRTextField]()
+        return [UIStackView]()
+    }
+    
+    private func getStackViews() -> [UIStackView] {
+        var isOdd = false
+        if ((variationGroups?.count ?? 0) % 2 != 0) {
+            isOdd = true
+        }
+        var stackView = UIStackView()
+        for textField in textFields {
+            if (stackView.subviews.count == 2) {
+                stackView = UIStackView()
+                stackView.addArrangedSubview(textField)
+            }
+            stackView.addArrangedSubview(textField)
+            stackView.spacing = 20
+            stackView.distribution = .fillEqually
+            stackViews.append(stackView)
+        }
+        if(isOdd) {
+            let emptyTextField = SRTextField()
+            emptyTextField.setup(rightViewImage: nil, type: .emptyTextField)
+            emptyTextField.isEnabled = false
+            let lastStack = stackViews.last
+            lastStack?.addArrangedSubview(emptyTextField)
+            stackViews = stackViews.dropLast()
+            stackViews.append(lastStack ?? UIStackView())
+        }
+        return stackViews
     }
     
     func setSelectedVariantTextFieldIndex(index: Int) {
