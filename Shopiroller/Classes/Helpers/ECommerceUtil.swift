@@ -34,7 +34,7 @@ class ECommerceUtil {
         } else {
             formatter.decimalSeparator = "."
         }
-        let number = NSNumber(value: price)
+        let number = NSNumber(value: round(price))
         formatter.numberStyle = .decimal
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
