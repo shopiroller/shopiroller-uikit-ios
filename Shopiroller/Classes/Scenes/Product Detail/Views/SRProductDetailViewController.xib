@@ -53,6 +53,7 @@
                 <outlet property="sumImage" destination="Lub-j2-Vlc" id="UGN-hW-wpe"/>
                 <outlet property="topViewGradient" destination="Xz7-zK-shE" id="9Y1-LT-Jhv"/>
                 <outlet property="variantStackView" destination="mO1-Y5-v6j" id="T37-HM-bMO"/>
+                <outlet property="variantStackViewHeight" destination="kLn-OR-tJJ" id="Bam-V8-USY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -87,7 +88,7 @@
                                                             </collectionViewFlowLayout>
                                                         </collectionView>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-yT-Ta8">
-                                                            <rect key="frame" x="356" y="90" width="40" height="40"/>
+                                                            <rect key="frame" x="356" y="289" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="JuD-d4-BdY"/>
                                                                 <constraint firstAttribute="height" constant="40" id="ge1-7I-w2d"/>
@@ -305,7 +306,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Y5-v6j">
+                                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Y5-v6j">
                                                                     <rect key="frame" x="0.0" y="608" width="384" height="45"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="45" id="kLn-OR-tJJ"/>

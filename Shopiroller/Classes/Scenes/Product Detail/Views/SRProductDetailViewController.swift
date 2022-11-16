@@ -111,6 +111,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
     @IBOutlet private weak var variantStackView: UIStackView!
+    @IBOutlet private weak var variantStackViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var backgroundView: UIView!
     
@@ -485,12 +486,17 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     private func setVariantUI() {
         if(!viewModel.isVariantEmpty()) {
             variantStackView.isHidden = false
-            let textFields = viewModel.getVariantFields()
-            for textField in textFields {
-                let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(variantButtonTapped(_:)))
-                textField.addGestureRecognizer(tapVariantButton)
-                variantStackView.addArrangedSubview(textField)
+            let stackViews = viewModel.getVariantFields()
+            for stackView in stackViews {
+                (stackView.subviews as? [SRTextField])?.forEach { textField in
+                    if (textField.getTextField().text != "") {
+                        let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(variantButtonTapped(_:)))
+                        textField.addGestureRecognizer(tapVariantButton)
+                    }
+                }
+                variantStackView.addArrangedSubview(stackView)
             }
+            variantStackViewHeight.constant = CGFloat(((variantStackView.subviews.count) * 50))
         }
     }
     
@@ -555,11 +561,15 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         viewModel.setSelectedVariantValue(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
         
         for subview in variantStackView.subviews as [UIView] {
-            if let srTextField = subview as? SRTextField {
-                if srTextField.tag == viewModel.getSelectedVariantGroupIndex() {
-                    let selectedVariant = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
-                    srTextField.getTextField().text = selectedVariant ?? ""
-                    viewModel.setSelectedVariantForPickerView(pickerViewIndex: pickerViewSelectedIndex)
+            if let stackViews = subview as? UIStackView {
+                stackViews.subviews.forEach { textField in
+                    if textField.tag == viewModel.getSelectedVariantGroupIndex() {
+                        let selectedVariant = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
+                        if let textField = (textField as? SRTextField), textField.getTextField().text != "" {
+                            (textField as? SRTextField)?.getTextField().text = selectedVariant ?? ""
+                        }
+                        viewModel.setSelectedVariantForPickerView(pickerViewIndex: pickerViewSelectedIndex)
+                    }
                 }
             }
         }

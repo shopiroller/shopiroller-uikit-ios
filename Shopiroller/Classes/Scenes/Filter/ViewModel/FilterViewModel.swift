@@ -140,8 +140,8 @@ class FilterViewModel: SRBaseViewModel {
         }
     }
     
-    func getCurrency() -> CurrencyEnum {
-        return paymentSettings?.defaultCurrency ?? .TRY
+    func getCurrency() -> String {
+        return paymentSettings?.defaultCurrency ?? "USD"
     }
     
     func getFilterChoiceViewModel() -> FilterChoiceViewModel? {

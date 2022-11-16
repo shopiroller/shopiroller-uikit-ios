@@ -12,16 +12,16 @@ struct SROrderProductModel: Codable {
     var id : String?
     var title : String?
     var featuredImage : ProductImageModel?
-    var paidPrice: Double?
+    var price: Double?
     var quantity : Int?
-    var currency : CurrencyEnum?
+    var currency : String?
     var campaignPrice: Double?
     
     enum CodingKeys: String,CodingKey {
         case id = "id"
         case title = "title"
         case featuredImage = "featuredImage"
-        case paidPrice = "paidPrice"
+        case price = "price"
         case quantity = "quantity"
         case currency = "currency"
         case campaignPrice = "campaignPrice"
