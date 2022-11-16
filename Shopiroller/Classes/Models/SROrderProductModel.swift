@@ -12,7 +12,7 @@ struct SROrderProductModel: Codable {
     var id : String?
     var title : String?
     var featuredImage : ProductImageModel?
-    var paidPrice: Double?
+    var price: Double?
     var quantity : Int?
     var currency : String?
     var campaignPrice: Double?
@@ -21,7 +21,7 @@ struct SROrderProductModel: Codable {
         case id = "id"
         case title = "title"
         case featuredImage = "featuredImage"
-        case paidPrice = "paidPrice"
+        case price = "price"
         case quantity = "quantity"
         case currency = "currency"
         case campaignPrice = "campaignPrice"

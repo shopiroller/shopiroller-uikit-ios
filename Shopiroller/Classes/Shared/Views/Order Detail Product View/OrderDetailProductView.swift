@@ -32,9 +32,8 @@ class OrderDetailProductView: SRBaseView {
             orderPiece.attributedText = ECommerceUtil.getBoldNormal("e_commerce_order_details_quantity".localized, String(quantity))
         }
         
-        let calculatedPrice: Double? = (model.paidPrice == 0) ? model.campaignPrice : model.paidPrice
+        orderPrice.text = ECommerceUtil.getFormattedPrice(price: ((model.price ?? 0.0) * Double(model.quantity ?? 0)), currency: model.currency?.currencySymbol)
         
-        orderPrice.text = ECommerceUtil.getFormattedPrice(price:(calculatedPrice ?? 0 * Double(model.quantity ?? 0)), currency: model.currency?.currencySymbol)
     }
     
 }
