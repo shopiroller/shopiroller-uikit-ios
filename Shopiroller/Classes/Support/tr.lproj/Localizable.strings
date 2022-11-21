@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Ürün kaldırıldı";
 "e_commerce_shopping_cart_invalid_popup_button" = "Devam Et";
 "e_commerce_shopping_cart_updating_popup_title" = "Sepetini Güncelle";
+"e_commerce_shopping_cart_back_to_cart" = "Sepete Dön";
 "e_commerce_shopping_cart_updating_popup_description" = "Sepetin aşağıdaki nedenlerden dolayı güncellenecek";
 "e_commerce_shopping_cart_empty_view_title" = "Sepetiniz boş";
 "e_commerce_shopping_cart_empty_view_description" = "Alışveriş sepetinizde hiç ürün yok.";

@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Produit supprimé";
 "e_commerce_shopping_cart_invalid_popup_button" = "Prêt pour le paiement";
 "e_commerce_shopping_cart_updating_popup_title" = "Le panier est en cours de mise à jour";
+"e_commerce_shopping_cart_back_to_cart" = "Retour au panier" ;
 "e_commerce_shopping_cart_updating_popup_description" = "Votre panier va être mis à jour pour les raisons suivantes";
 "e_commerce_shopping_cart_empty_view_title" = "Votre panier est vide";
 "e_commerce_shopping_cart_empty_view_description" = "Vous n'avez aucun article dans votre panier.";
