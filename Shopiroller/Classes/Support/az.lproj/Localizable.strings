@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Məhsul silindi";
 "e_commerce_shopping_cart_invalid_popup_button" = "Davam et";
 "e_commerce_shopping_cart_updating_popup_title" = "Səbəti yeniləyin";
+"e_commerce_shopping_cart_back_to_cart" = "Səbətə qayıt";
 "e_commerce_shopping_cart_updating_popup_description" = "Səbətiniz aşağıdakı səbəblərə görə yenilənəcək";
 "e_commerce_shopping_cart_empty_view_title" = "Səbətiniz boşdur";
 "e_commerce_shopping_cart_empty_view_description" = "Alış-veriş səbətinizdə heç bir element yoxdur.";
