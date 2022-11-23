@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shopiroller'
-  s.version          = '0.2.35'
+  s.version          = '0.2.36'
   s.summary          = 'Get your own eCommerce mobile app in minutes. Avoid all the coding & focus on user experience on Shopiroller iOS SDK'
   s.homepage         = 'https://github.com/shopiroller/shopiroller-uikit-ios'
   s.description      = 'Mobile e-commerce applications are now closer to your users with Shopiroller iOS SDK. It is now very easy to have your own mobile application. Our eCommerce mobile SDKs are readymade platforms to be taken over by you; accelerating your mobile app development process by months. It`s a head-start!'
