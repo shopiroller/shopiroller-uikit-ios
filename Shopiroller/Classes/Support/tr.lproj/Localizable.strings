@@ -30,7 +30,6 @@
 "e_commerce_list_categories" = "Kategoriler";
 "e_commerce_list_see_all" = "Hepsini Gör";
 "e_commerce_list_explore" = "Keşfet";
-
 "e_commerce_category_list_categories_title" = "Kategoriler";
 "e_commerce_category_list_category_item_count" = "%@ ürün";
 "e_commerce_category_list_see_all_product_for_category" = "Tüm %@ Ürünleri";
@@ -45,7 +44,6 @@
 "e_commerce_category_product_list_order_dialog_price_increasing" = "Fiyat Artan";
 "e_commerce_category_product_list_order_dialog_price_decreasing" = "Fiyat Azalan";
 "e_commerce_category_product_list_order_dialog_most_recent_added" = "En Yeniler";
-
 "e_commerce_product_search_no_result_title" = "%@ ile ilgili sonuç bulunamadı";
 "e_commerce_product_search_no_result_description" = "Aramanız ile ilgili bir sonuç bulunamadı. Başka bir şey deneyin.";
 
@@ -118,7 +116,7 @@
 "e_commerce_payment_bank_iban" = "Iban: ";
 "e_commerce_payment_bank_branch" = "Şube: ";
 "e_commerce_payment_bank_account" = "Hesap: ";
-"e_commerce_payment_bank_copy_toast_message" = "Panoya kopyalandı.";
+"e_commerce_payment_bank_copy_toast_message" = "Panoya kopyalandı";
 
 //MARK: - ORDER SUMMARY USAGE
 "e_commerce_order_summary_title" = "Sipariş Özeti";
@@ -167,7 +165,6 @@
 "e_commerce_result_fail_detail_description_will_replace" = "status=";
 "e_commerce_result_fail_detail_description_to_replace" = "Hata Kodu";
 "e_commerce_result_pay_pal_currency_not_supported" = "Kullanılan para birimi desteklenmemektedir.";
-
 "e_commerce_list_order_number" = "Sipariş Numarası %@";
 "e_commerce_my_orders_title" = "Siparişlerim";
 "e_commerce_my_orders_no_order_title" = "Sipariş bulunamadı.";
@@ -260,7 +257,6 @@
 "e_commerce_filter_multi_choice_search" = "Ara";
 "e_commerce_filter_multi_choice_apply" = "Uygula";
 "e_commerce_filter_selection_apply" = "Uygula";
-
 "e_commerce_filter_clear" = "Temizle";
 "e_commerce_multi_choice_search" = "Ara";
 "e_commerce_multi_choice_apply" = "Uygula";
@@ -299,7 +295,6 @@
 "user_address_form_tax_office_empty" = "Lütfen vergi dairesini girin";
 "user_address_form_tax_number_empty" = "Lütfen vergi numarasını girin";
 "user_address_form_identity_number_empty" = "Lütfen kimlik numarasını girin";
-
 "user_address_form_name_valid" = "Lütfen geçerli bir ad girin";
 "user_address_form_surname_valid" = "Lütfen geçerli bir soyad girin";
 "user_address_form_phone_valid" = "Lütfen geçerli bir telefon numarası girin";
@@ -307,28 +302,24 @@
 "user_address_form_postal_code_valid" = "Lütfen geçerli bir posta kodu girin";
 "user_address_form_address_title_valid" = "Lütfen geçerli bir adres başlığı girin";
 "user_address_form_identity_number_valid" = "Lütfen geçerli bir kimlik numarası giriniz";
-
 "search_bar_search_text" = "Ürün Ara";
 "payment_bank_branch_code" = "Şube Kodu:";
 "payment_bank_branch_number" = "Hesap Numarası:";
 "action_copied_clipboard" = "Panoya kopyalandı";
-
 "user_address_delivery_address_title" = "Teslimat Adresi";
 "user_address_invoice_address_title" = "Fatura Adresi";
-
 "user_my_address_title" = "Adreslerim";
 "user_my_address_no_address_title" = "Adres Yok";
 "user_my_address_no_address_description" = "Kayıtlı adres bulunamadı. Lütfen yeni bir adres ekleyin.";
-
 "user_my_address_action_delete" = "SİL";
 "user_my_address_address_action_edit" = "Düzenle";
 "user_my_address_delete_address_title" = "%@ adresini silmek istediğinize emin misiniz?";
 "user_my_address_delete_address_cancel_button" = "İptal";
 "user_my_address_delete_address_delete_button" = "Sil";
-
 "user_my_address_new_address_title" = "Yeni Adres";
 "user_my_address_update_address_title" = "Adresi Güncelle";
 "user_my_address_saved_toast_message" = "Adres kaydedildi";
 "user_my_address_shipping_address_removed_message" = "Teslimat adresi başarıyla silinmiştir.";
 "user_my_address_billing_address_removed_message" = "Fatura adresi başarıyla silinmiştir.";
+
 
