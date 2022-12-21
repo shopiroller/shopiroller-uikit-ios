@@ -31,7 +31,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var isUserFriendly: Bool = false
     private var textFields : [SRTextField] = [SRTextField]()
     private var stackViews = [UIStackView]()
-    
+    private var currentVariantIndex = 0
     
     init (productId: String = String()) {
         self.productId = productId
@@ -277,6 +277,10 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         return [UIStackView]()
     }
     
+    private func setSelectedVariantIndex()  {
+        currentVariantIndex = variantsList?.firstIndex(where: { $0.id == productId }) ?? 0
+    }
+    
     private func getStackViews() -> [UIStackView] {
         var isOdd = false
         if ((variationGroups?.count ?? 0) % 2 != 0) {
@@ -314,16 +318,38 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVariantListAt(index: Int) -> [Variation]? {
-        return variationGroups?[index].variations
+        
+        let currentVariant = variantsList?[currentVariantIndex]
+        
+        var variationList: [Variation]? = []
+        
+        let variantGroupId = variationGroups?[index].id
+        
+        if let variantList = variantsList {
+            var copyVariants = variantList
+            if let currentVariantData = currentVariant?.variantData {
+                for item in currentVariantData {
+                    if item.variationGroupId != variantGroupId {
+                        copyVariants = copyVariants.filter { $0.variantData!.contains(item)}
+                    }
+                }
+            }
+            
+            for item in copyVariants {
+                let variant = item.variantData?.first { $0.variationGroupId == variantGroupId }
+                variationList?.append(Variation(id: variant?.variationId, value: variant?.value))
+            }
+            
+        }
+        return variationList
     }
     
     func getVariantListCountAt(index: Int) -> Int {
-        return variationGroups?[index].variations?.count ?? 1
+        return getVariantListAt(index: index)?.count ?? 1
     }
     
     func getVariantValueAt(index: Int, variantGroupIndex: Int) -> String? {
-        guard let variantValue = variationGroups?[variantGroupIndex].variations?[index].value else { return "" }
-        return variantValue
+        return getVariantListAt(index: variantGroupIndex)?[index].value
     }
     
     func setSelectedVariantValue(index: Int, variantGroupIndex: Int) {
@@ -337,9 +363,10 @@ public class SRProductDetailViewModel: SRBaseViewModel {
             let model = list[0]
             productDetailModel = model
             productId = model.id
+            setSelectedVariantIndex()
             let imageIndex = (getImageIndexOfVariant(variantModel: model))
             if imageIndex != -1 {
-                tempImageIndex = imageIndex //+ productDetailImagesCount
+                tempImageIndex = imageIndex
             } else {
                 return tempImageIndex
             }
@@ -403,7 +430,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         }
         return -1
     }
-
+    
     func isVariantEmpty() -> Bool {
         guard let variationGroups = variationGroups else {
             return false
@@ -415,7 +442,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         guard let variantsList = variantsList else {
             return
         }
-//        productDetailImagesCount = productDetailModel?.images?.count ?? 0
         
         for variants in variantsList {
             variantImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
@@ -425,8 +451,11 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getPickerViewModel(items: [UIBarButtonItem]?) -> PickerViewModel? {
-        let pickerViewHeight = CGFloat(getVariantListCountAt(index: selectedVariantGroupIndex)) * 120
-        return PickerViewModel(pickerViewHeight: pickerViewHeight, items: items)
+        var estimatedHeight = CGFloat(getVariantListCountAt(index: selectedVariantGroupIndex)) * 120
+        if (estimatedHeight < 250 || (estimatedHeight > (UIScreen.main.bounds.height / 10 ) * 45)) {
+            estimatedHeight = 250
+        }
+        return PickerViewModel(pickerViewHeight: estimatedHeight, items: items)
     }
     
     func getPickerViewTitle() -> String? {
