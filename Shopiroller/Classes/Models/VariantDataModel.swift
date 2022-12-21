@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VariantDataModel : Codable {
+struct VariantDataModel : Codable, Equatable {
     var value: String?
     var variationGroupId: String?
     var variationId: String?
@@ -17,4 +17,8 @@ struct VariantDataModel : Codable {
         case variationGroupId = "variationGroupId"
         case variationId = "variationId"
     }
+}
+
+func ==(lhs:VariantDataModel, rhs:VariantDataModel) -> Bool { // Implement Equatable
+    return lhs.variationId == rhs.variationId && lhs.variationGroupId == rhs.variationGroupId
 }
