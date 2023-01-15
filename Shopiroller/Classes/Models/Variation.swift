@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct Variation : Codable {
+struct Variation: Codable, Hashable {
     var id: String?
     var value: String?
+    
+    var isSelected: Bool = false
+    var isAvailable: Bool = false
     
     enum CodingKeys: String,CodingKey {
         case id = "id"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductDetailResponseModel : Codable {
+struct ProductDetailResponseModel: Codable {
     
     var description : String?
     var images : [ProductImageModel]?
