@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChildVariantCollectionViewCell" customModule="Shopiroller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="111" height="36"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="111" height="36"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggq-AZ-r5Y">
+                        <rect key="frame" x="5" y="5" width="101" height="26"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9r-87-lhR" customClass="CustomDiagonalLineView" customModule="Shopiroller" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="26"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-cL-ceB">
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="26"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Fbl-cL-ceB" secondAttribute="bottom" id="1hz-Co-cWK"/>
+                            <constraint firstAttribute="bottom" secondItem="Fbl-cL-ceB" secondAttribute="bottom" id="6Hn-Yc-yfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Fbl-cL-ceB" secondAttribute="trailing" id="9Dw-fO-1zN"/>
+                            <constraint firstAttribute="bottom" secondItem="u9r-87-lhR" secondAttribute="bottom" id="9hz-hd-Qf3"/>
+                            <constraint firstItem="Fbl-cL-ceB" firstAttribute="top" secondItem="Ggq-AZ-r5Y" secondAttribute="top" id="Eau-Jf-OrF"/>
+                            <constraint firstItem="u9r-87-lhR" firstAttribute="leading" secondItem="Ggq-AZ-r5Y" secondAttribute="leading" id="GPQ-9V-c2F"/>
+                            <constraint firstItem="Fbl-cL-ceB" firstAttribute="centerX" secondItem="Ggq-AZ-r5Y" secondAttribute="centerX" id="IqV-Cf-XmO"/>
+                            <constraint firstItem="Fbl-cL-ceB" firstAttribute="centerY" secondItem="Ggq-AZ-r5Y" secondAttribute="centerY" id="RdF-ho-Ntp"/>
+                            <constraint firstItem="Fbl-cL-ceB" firstAttribute="top" secondItem="Ggq-AZ-r5Y" secondAttribute="top" id="cOT-F4-97d"/>
+                            <constraint firstItem="Fbl-cL-ceB" firstAttribute="leading" secondItem="Ggq-AZ-r5Y" secondAttribute="leading" id="maW-ij-kPz"/>
+                            <constraint firstItem="u9r-87-lhR" firstAttribute="top" secondItem="Ggq-AZ-r5Y" secondAttribute="top" id="rbb-bF-tS3"/>
+                            <constraint firstAttribute="trailing" secondItem="u9r-87-lhR" secondAttribute="trailing" id="s4M-Xz-p5v"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ggq-AZ-r5Y" secondAttribute="trailing" constant="5" id="3ST-Kg-Ra2"/>
+                <constraint firstItem="Ggq-AZ-r5Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="TDC-qs-gpr"/>
+                <constraint firstAttribute="bottom" secondItem="Ggq-AZ-r5Y" secondAttribute="bottom" constant="5" id="jee-fs-sfq"/>
+                <constraint firstItem="Ggq-AZ-r5Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="rQX-U7-1o8"/>
+            </constraints>
+            <size key="customSize" width="111" height="66"/>
+            <connections>
+                <outlet property="containerView" destination="Ggq-AZ-r5Y" id="PnD-X5-09D"/>
+                <outlet property="crossedView" destination="u9r-87-lhR" id="xx4-iE-yh4"/>
+                <outlet property="variantSelectionButton" destination="Fbl-cL-ceB" id="10y-NQ-Ijw"/>
+            </connections>
+            <point key="canvasLocation" x="183.96946564885496" y="21.83098591549296"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

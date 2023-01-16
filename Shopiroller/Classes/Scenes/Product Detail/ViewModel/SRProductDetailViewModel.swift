@@ -20,7 +20,17 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var productImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantDataDictionary = [String : String]()
-    private var pickerViewSelectedVariant = [Int : Int]()
+    
+    private var selectedVariant: String?
+    private var selectedVariantId: String?
+    private var selectedVariantGroupId: String?
+    private var nextVariationGroupId: String?
+    
+    private var variantIndex: Int?
+    private var variantGroupIndex: Int?
+    private var variantSelectionModels: [VariantSelectionModel] = []
+    private var filterDataModel: [VariantDataModel] = []
+    
     
     var quantityCount = 1
     private var selectedVariantGroupIndex = 0
@@ -29,8 +39,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var tempImageIndex = 0
     private var isPopUpState: Bool = false
     private var isUserFriendly: Bool = false
-    private var textFields : [SRTextField] = [SRTextField]()
-    private var stackViews = [UIStackView]()
     
     
     init (productId: String = String()) {
@@ -226,7 +234,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVariantDoesNotExistPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_does_not_exist_variant_error".localized, description: "e_commerce_product_detail_does_not_exist_variant_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_variant_selection_error_title".localized, description: "e_commerce_product_detail_variant_selection_error_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
     }
     
     func isStateSoldOut() -> Bool {
@@ -253,56 +261,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         } else {
             return "e_commerce_product_detail_return_terms".localized
         }
-    }
-    
-    func getVariantFields() -> [UIStackView] {
-        if let variationGroups = variationGroups {
-            for (index,variations) in variationGroups.enumerated() {
-                let textFld = SRTextField()
-                textFld.getTextField().backgroundColor = .buttonLight
-                textFld.setup(rightViewImage: UIImage(systemName: "chevron.down"), type: .withNoPadding)
-                textFld.isEnabled = false
-                textFld.getTextField().text = variations.variations?[0].value
-                if let variation = variations.variations?[0] {
-                    variantDataDictionary.updateValue(variation.value ?? "", forKey: variations.name ?? "")
-                }
-                textFld.tag = index
-                textFields.append(textFld)
-            }
-            productDetailModel = variantsList?[0]
-            productId = productDetailModel?.id ?? ""
-            let stackViews = getStackViews()
-            return stackViews
-        }
-        return [UIStackView]()
-    }
-    
-    private func getStackViews() -> [UIStackView] {
-        var isOdd = false
-        if ((variationGroups?.count ?? 0) % 2 != 0) {
-            isOdd = true
-        }
-        var stackView = UIStackView()
-        for textField in textFields {
-            if (stackView.subviews.count == 2) {
-                stackView = UIStackView()
-                stackView.addArrangedSubview(textField)
-            }
-            stackView.addArrangedSubview(textField)
-            stackView.spacing = 20
-            stackView.distribution = .fillEqually
-            stackViews.append(stackView)
-        }
-        if(isOdd) {
-            let emptyTextField = SRTextField()
-            emptyTextField.setup(rightViewImage: nil, type: .emptyTextField)
-            emptyTextField.isEnabled = false
-            let lastStack = stackViews.last
-            lastStack?.addArrangedSubview(emptyTextField)
-            stackViews = stackViews.dropLast()
-            stackViews.append(lastStack ?? UIStackView())
-        }
-        return stackViews
     }
     
     func setSelectedVariantTextFieldIndex(index: Int) {
@@ -332,7 +290,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         }
     }
     
-    func getImageIndexAtVariant(index: Int, variantGroupIndex: Int) -> Int {
+    func getImageIndexAtVariant() -> Int {
         if let list = getSelectedVariantList() , !(list.isEmpty) {
             let model = list[0]
             productDetailModel = model
@@ -358,7 +316,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func isVariantCanBeAdded() -> Bool {
         if let variants = variantsList , !variants.isEmpty {
-            if let list = getSelectedVariantList() , !(list).isEmpty {
+            if let list = getSelectedVariantList() , !(list).isEmpty && filterDataModel.count == variationGroups?.count {
                 return true
             } else {
                 return false
@@ -403,7 +361,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         }
         return -1
     }
-
+    
     func isVariantEmpty() -> Bool {
         guard let variationGroups = variationGroups else {
             return false
@@ -415,7 +373,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         guard let variantsList = variantsList else {
             return
         }
-//        productDetailImagesCount = productDetailModel?.images?.count ?? 0
+        //        productDetailImagesCount = productDetailModel?.images?.count ?? 0
         
         for variants in variantsList {
             variantImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
@@ -423,38 +381,181 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         productImagesList.append(contentsOf: variantImagesList)
         productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
     }
-    
-    func getPickerViewModel(items: [UIBarButtonItem]?) -> PickerViewModel? {
-        let pickerViewHeight = CGFloat(getVariantListCountAt(index: selectedVariantGroupIndex)) * 120
-        return PickerViewModel(pickerViewHeight: pickerViewHeight, items: items)
-    }
-    
-    func getPickerViewTitle() -> String? {
-        return variationGroups?[selectedVariantGroupIndex].name ?? ""
-    }
-    
-    func setSelectedVariantForPickerView(pickerViewIndex: Int) {
-        pickerViewSelectedVariant.updateValue(pickerViewIndex, forKey: selectedVariantGroupIndex)
-    }
-    
-    func getSelectedVariantIndexForPickerView() -> Int {
-        if let variantIndex = pickerViewSelectedVariant[selectedVariantGroupIndex] {
-            return variantIndex
+
+    func setVariantSelectionModels() {
+        var isVariantGroupActive = true
+        if let variationGroups = variationGroups {
+            for i in 0..<variationGroups.count {
+                if (i != 0) {
+                    isVariantGroupActive = false
+                }
+                variantSelectionModels.append(
+                    VariantSelectionModel(
+                        variationList: variationGroups[i].variations,
+                        variantGroupId: variationGroups[i].id,
+                        variantGroupName: variationGroups[i].name,
+                        variantGroupIsActive: isVariantGroupActive))
+            }
         }
-        return 0
     }
     
+    func getVariantGroupsModels() -> [VariationGroups]? {
+        return variationGroups
+    }
+    
+    func getVariantSelectionList() -> [VariantSelectionModel] {
+        return variantSelectionModels
+    }
+    
+    func getVariantListHeight() -> CGFloat {
+        return CGFloat((variationGroups?.count ?? 0) * 110)
+    }
+    
+    func setSelectedCurrentVariant(variantIndex: Int?, variantGroupIndex: Int?) {
+        
+        variantSelectionModels[variantGroupIndex ?? 0].variationList?.indices.forEach {
+            variantSelectionModels[variantGroupIndex ?? 0].variationList?[$0].isSelected = false
+        }
+        
+        variantSelectionModels[variantGroupIndex ?? 0].variationList?[variantIndex ?? 0].isSelected = true
+        
+        self.variantIndex = variantIndex
+        self.variantGroupIndex = variantGroupIndex
+        
+        setCurrentVariantData()
+        
+        for selectionIndex in 0..<(variantSelectionModels.count) {
+            let index = getGroupIndexOfSelectionModel(variantSelectionModel: variantSelectionModels[selectionIndex])
+            if (index > variantGroupIndex ?? 0) {
+                variantSelectionModels[selectionIndex].variantGroupIsActive = false
+                for i in 0..<(variantSelectionModels[selectionIndex].variationList?.count ?? 0) {
+                    variantSelectionModels[selectionIndex].variationList?[i].isAvailable = false
+                    variantSelectionModels[selectionIndex].variationList?[i].isSelected = false
+                }
+                }
+            }
+        
+        var selectionModelIndex = 0
+        
+        if (filterDataModel.count != variantSelectionModels.count) {
+            selectionModelIndex = filterDataModel.count
+        } else {
+            selectionModelIndex = filterDataModel.count - 1
+        }
+        
+        setAvailableVariants(selectionModelIndex: selectionModelIndex)
+        
+        if (variantSelectionModels[selectionModelIndex].variantGroupId == selectedVariantGroupId) {
+            for i in 0..<(variantSelectionModels[selectionModelIndex].variationList?.count ?? 0) {
+                if (variantSelectionModels[selectionModelIndex].variationList?[i].id != selectedVariantId) {
+                    variantSelectionModels[selectionModelIndex].variationList?[i].isSelected = false
+                }
+            }
+        }
+        
+        variantDataDictionary.updateValue(selectedVariant ?? "", forKey: variationGroups?[variantGroupIndex ?? 0].name ?? "")
+        
+        variantSelectionModels[getNextVariationGroupIndex()].variantGroupIsActive = true
+        
+    }
+    
+    private func getNextVariationGroupIndex() -> Int {
+        var nextVariationGroupIndex = 0
+        
+        for i in 0..<(variationGroups?.count ?? 0) {
+            if (variationGroups?[i].id == nextVariationGroupId) {
+                nextVariationGroupIndex = i
+            }
+        }
+        return nextVariationGroupIndex
+    }
+    
+    private func setCurrentVariantData() {
+        selectedVariant = variationGroups?[variantGroupIndex ?? 0].variations?[variantIndex ?? 0].value
+        selectedVariantId = variationGroups?[variantGroupIndex ?? 0].variations?[variantIndex ?? 0].id
+        selectedVariantGroupId = variationGroups?[variantGroupIndex ?? 0].id
+        
+        if(variantGroupIndex != (variationGroups?.count ?? 0) - 1) {
+            nextVariationGroupId = variationGroups?[(variantGroupIndex ?? 0) + 1].id
+        } else {
+            nextVariationGroupId = variationGroups?[variantGroupIndex ?? 0].id
+        }
+        
+        if (!filterDataModel.isEmpty && variantGroupIndex ?? 0 < filterDataModel.count - 1) {
+            for _ in (variantGroupIndex ?? 0)..<filterDataModel.count {
+                filterDataModel.remove(at: variantGroupIndex ?? 0)
+            }
+        }
+        
+        let currentSelectedVariantDataModel = VariantDataModel(value: selectedVariant, variationGroupId: selectedVariantGroupId, variationId: selectedVariantId)
+        
+        if (filterDataModel.isEmpty || variantGroupIndex ?? 0 >= filterDataModel.count) {
+            filterDataModel.append(currentSelectedVariantDataModel)
+        } else {
+            filterDataModel[variantGroupIndex ?? 0] = currentSelectedVariantDataModel
+        }
+    }
+    
+    private func setAvailableVariants(selectionModelIndex: Int) {
+        
+        var tempAvailableVariants = [Variation]()
+        
+        if let variantsList = variantsList {
+            for (variantListIndex, _) in variantsList.enumerated() {
+                if let variantData = variantsList[variantListIndex].variantData {
+                    if (filterDataModel.allSatisfy(variantData.contains)) {
+                        for (variantDataIndex, _) in variantData.enumerated() {
+                            if (variantsList[variantListIndex].variantData?[variantDataIndex].variationGroupId == nextVariationGroupId) {
+                                tempAvailableVariants.append(
+                                    Variation(
+                                        id: variantsList[variantListIndex].variantData?[variantDataIndex].variationId,
+                                        value: variantsList[variantListIndex].variantData?[variantDataIndex].value,
+                                        isSelected: false,
+                                        isAvailable: true))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        let availableVariants = tempAvailableVariants.uniqued()
+        
+        if (availableVariants.count != variantSelectionModels[selectionModelIndex].variationList?.count) {
+            for availableVariant in availableVariants {
+                for i in 0..<(variantSelectionModels[selectionModelIndex].variationList?.count ?? 0) {
+                    let currentVariantModel = variantSelectionModels[selectionModelIndex].variationList?[i]
+                    if (!( currentVariantModel?.id ?? "" == availableVariant.id ?? "")) {
+                        variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = (currentVariantModel?.isAvailable ?? false || false)
+                    } else {
+                        variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = true
+                    }
+                }
+            }
+        } else {
+            for i in 0..<(variantSelectionModels[selectionModelIndex].variationList?.count ?? 0) {
+                variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = true
+            }
+        }
+    }
+    
+    private func getGroupIndexOfSelectionModel(variantSelectionModel: VariantSelectionModel) -> Int {
+        for i in 0..<(variationGroups?.count ?? 0) {
+            if (variantSelectionModel.variantGroupId == variationGroups?[i].id) {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    func allVariantsSelected() -> Bool {
+        return filterDataModel.count == variationGroups?.count
+    }
 }
 
-struct PickerViewModel {
-    var pickerViewHeight: CGFloat?
-    let items: [UIBarButtonItem]?
-}
-
-extension Array {
-    func allSameForProperty<T:Equatable> (_ p:KeyPath<Element,T>) -> Bool {
-        return self.isEmpty || self.allSatisfy{
-            self.first![keyPath:p] == $0[keyPath:p]
-        }
+public extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter{ seen.insert($0).inserted }
     }
 }

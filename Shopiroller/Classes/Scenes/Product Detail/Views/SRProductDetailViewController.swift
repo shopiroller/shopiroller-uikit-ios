@@ -52,11 +52,6 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         
         static var maxQuantityDescription: String { return "e_commerce_product_detail_maximum_product_limit_description".localized }
         
-        static var pickerViewConfirmButton: String { return
-            "e_commerce_general_ok_button_text".localized }
-        
-        static var pickerViewCancelButton: String { return
-            "e_commerce_general_cancel_button_text".localized }
     }
     
     
@@ -110,15 +105,14 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     @IBOutlet private weak var quantityTextField: UITextField!
     @IBOutlet private weak var productBrandImage: UIImageView!
     @IBOutlet private weak var shippingPriceContainerConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var variantStackView: UIStackView!
-    @IBOutlet private weak var variantStackViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var backgroundView: UIView!
     
-    private let badgeView  = SRBadgeButton()
+    @IBOutlet private weak var mainVariantCollectionView: UICollectionView!
     
-    private var toolBar = UIToolbar()
-    private var pickerView  = UIPickerView()
+    @IBOutlet private weak var mainVariantCollectionViewHeightConstraint: NSLayoutConstraint!
+    
+    private let badgeView  = SRBadgeButton()
     
     public init(viewModel: SRProductDetailViewModel) {
         super.init(viewModel: viewModel, nibName: SRProductDetailViewController.nibName, bundle: Bundle(for: SRProductDetailViewController.self))
@@ -200,16 +194,16 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         
         let deliveryRecognizer = UITapGestureRecognizer(target: self, action: #selector(deliveryTermsContainerTapped(_:)))
         deliveryTermsContainer.addGestureRecognizer(deliveryRecognizer)
-        
-        let pickerViewDismissTapGesture = UITapGestureRecognizer(target: self, action: #selector(pickerViewCancelButtonTapped))
-        self.view.addGestureRecognizer(pickerViewDismissTapGesture)
-        pickerViewDismissTapGesture.cancelsTouchesInView = false
-        pickerViewDismissTapGesture.delegate = self
-        
+    
         collectionView.register(cellClass: SRProductDetailImageSliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset.top = -(view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+        
+        mainVariantCollectionView.register(cellClass: MainVariantCollectionViewCell.self)
+        mainVariantCollectionView.isScrollEnabled = false
+        mainVariantCollectionView.delegate = self
+        mainVariantCollectionView.dataSource = self
         
         quantityTextField.text = "1"
         quantityTextField.font = .semiBold14
@@ -484,111 +478,24 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func setVariantUI() {
+        
         if(!viewModel.isVariantEmpty()) {
-            variantStackView.isHidden = false
-            let stackViews = viewModel.getVariantFields()
-            for stackView in stackViews {
-                (stackView.subviews as? [SRTextField])?.forEach { textField in
-                    if (textField.getTextField().text != "") {
-                        let tapVariantButton = UITapGestureRecognizer(target: self, action: #selector(variantButtonTapped(_:)))
-                        textField.addGestureRecognizer(tapVariantButton)
-                    }
-                }
-                variantStackView.addArrangedSubview(stackView)
-            }
-            variantStackViewHeight.constant = CGFloat(((variantStackView.subviews.count) * 50))
+            
+            viewModel.setVariantSelectionModels()
+            
+            mainVariantCollectionView.reloadData()
+            
+            mainVariantCollectionViewHeightConstraint.constant = viewModel.getVariantListHeight()
+            
         }
     }
     
-    @objc func variantButtonTapped(_ sender: UITapGestureRecognizer) {
-        guard let selectedIndex = sender.view?.tag else {
-            return
+    private func loadVariantImage() {
+        if (viewModel.allVariantsSelected()) {
+            let index = viewModel.getImageIndexAtVariant()
+            collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
+            pageControl.currentPage = index
         }
-        viewModel.setSelectedVariantTextFieldIndex(index: selectedIndex)
-        self.view.subviews.contains(pickerView) ? removePickerViewFromSuperView() : createPickerView()
-    }
-    
-    private func removePickerViewFromSuperView() {
-        pickerView.removeFromSuperview()
-        toolBar.removeFromSuperview()
-    }
-    
-    private func createPickerView() {
-        var items = [UIBarButtonItem]()
-        
-        let doneButton = UIBarButtonItem(title: Constants.pickerViewConfirmButton, style: .done, target: self, action: #selector(pickerViewDoneButtonTapped))
-        doneButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-        
-        let cancelButton = UIBarButtonItem(title: Constants.pickerViewCancelButton, style: .plain, target: self, action: #selector(pickerViewCancelButtonTapped))
-        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-        
-        let toolbarTitle = UIBarButtonItem(title: viewModel.getPickerViewTitle(), style: .plain, target: self, action: nil)
-        toolbarTitle.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-        
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        
-        items.append(cancelButton)
-        items.append(flexibleSpace)
-        items.append(toolbarTitle)
-        items.append(flexibleSpace)
-        items.append(doneButton)
-        
-        var pickerViewModel = viewModel.getPickerViewModel(items: items)
-
-        if (pickerViewModel?.pickerViewHeight ?? 0 > self.view.frame.height / 10 * 5 ) {
-            pickerViewModel?.pickerViewHeight = (self.view.frame.height / 10 * 3).rounded(.toNearestOrEven)
-        }
-        
-        pickerView = initializePickerView(pickerViewHeight: pickerViewModel?.pickerViewHeight)
-        
-        toolBar = initializeToolbar(pickerViewModel: pickerViewModel)
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        self.view.addSubview(pickerView)
-        
-        self.view.addSubview(toolBar)
-        
-        pickerView.selectRow(viewModel.getSelectedVariantIndexForPickerView(), inComponent: 0, animated: true)
-        
-    }
-    
-    @objc func pickerViewDoneButtonTapped() {
-        
-        let pickerViewSelectedIndex = pickerView.selectedRow(inComponent: 0)
-        
-        viewModel.setSelectedVariantValue(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
-        
-        for subview in variantStackView.subviews as [UIView] {
-            if let stackViews = subview as? UIStackView {
-                stackViews.subviews.forEach { textField in
-                    if textField.tag == viewModel.getSelectedVariantGroupIndex() {
-                        let selectedVariant = viewModel.getVariantValueAt(index: pickerViewSelectedIndex, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
-                        if let textField = (textField as? SRTextField), textField.getTextField().text != "" {
-                            (textField as? SRTextField)?.getTextField().text = selectedVariant ?? ""
-                        }
-                        viewModel.setSelectedVariantForPickerView(pickerViewIndex: pickerViewSelectedIndex)
-                    }
-                }
-            }
-        }
-        
-        loadVariantImage(index: pickerViewSelectedIndex)
-        setOutOfStockUI()
-        setDiscountUI()
-        setFreeShippingUI()
-        removePickerViewFromSuperView()
-    }
-    
-    @objc func pickerViewCancelButtonTapped() {
-        removePickerViewFromSuperView()
-    }
-    
-    private func loadVariantImage(index: Int) {
-        let index = viewModel.getImageIndexAtVariant(index: index, variantGroupIndex: viewModel.getSelectedVariantGroupIndex())
-        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
-        pageControl.currentPage = index
     }
     
     private func setOutOfStockUI() {
@@ -648,7 +555,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
             productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
             productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
             productNewPrice.font = .semiBold20
-        }else{
+        } else {
             discountContainer.isHidden = true
             productNewPrice.isHidden = true
             productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
@@ -690,42 +597,73 @@ extension SRProductDetailViewController : PopUpViewViewControllerDelegate {
 }
 
 
+
 extension SRProductDetailViewController : UICollectionViewDelegate , UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getItemCount() ?? 0
+        if (collectionView == mainVariantCollectionView) {
+            return 1
+        } else {
+            return viewModel.getItemCount() ?? 0
+        }
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        if (collectionView != self.collectionView) {
+            return viewModel.getVariantGroupsModels()?.count ?? 0
+        } else {
+            return 1
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
-        cell.configurecell(images: viewModel.getImages(position: indexPath.row))
-        return cell
+        if (collectionView == mainVariantCollectionView) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainVariantCollectionViewCell.reuseIdentifier, for: indexPath) as! MainVariantCollectionViewCell
+            cell.setup(list: viewModel.getVariantSelectionList(), variantGroupIndex: indexPath.section, delegate: self)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SRProductDetailImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! SRProductDetailImageSliderCollectionViewCell
+            cell.configurecell(images: viewModel.getImages(position: indexPath.row))
+            return cell
+        }
+        
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let fullScreenController = SRFullScreenSlideshowViewController()
-        var imagesArray : [ImageSlideModel] = [ImageSlideModel]()
-        let images = viewModel.getImageArray()
-        fullScreenController.slideshow.pageIndicator?.view.tintColor = .white
-        images?.forEach{ image in
-            imagesArray.append(ImageSlideModel(url: URL(string: image.normal ?? "")!))
+        if (collectionView == self.collectionView) {
+            let fullScreenController = SRFullScreenSlideshowViewController()
+            var imagesArray : [ImageSlideModel] = [ImageSlideModel]()
+            let images = viewModel.getImageArray()
+            fullScreenController.slideshow.pageIndicator?.view.tintColor = .white
+            images?.forEach{ image in
+                imagesArray.append(ImageSlideModel(url: URL(string: image.normal ?? "")!))
+            }
+            fullScreenController.inputs = imagesArray.map{ $0.inputSource }
+            fullScreenController.initialPage = indexPath.row
+            fullScreenController.delegate = self
+            present(fullScreenController, animated: true, completion: nil)
         }
-        fullScreenController.inputs = imagesArray.map{ $0.inputSource }
-        fullScreenController.initialPage = indexPath.row
-        fullScreenController.delegate = self
-        present(fullScreenController, animated: true, completion: nil)
+        
     }
     
+}
+
+extension SRProductDetailViewController: SRFullScreenSlideshowDelegate {
+    
+    public func getCurrentIndex(index: Int) {
+        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        pageControl.currentPage = index
+    }
     
 }
 
 extension SRProductDetailViewController : UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        if (collectionView == self.collectionView) {
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 100)
+        }
     }
 }
 
@@ -753,42 +691,16 @@ extension SRProductDetailViewController: UITextFieldDelegate {
     }
 }
 
-extension SRProductDetailViewController: SRFullScreenSlideshowDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    public func getCurrentIndex(index: Int) {
-        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: false, scrollPosition: .centeredHorizontally)
-        pageControl.currentPage = index
-    }
-    
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return viewModel.getVariantListCountAt(index: viewModel.getSelectedVariantGroupIndex())
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let variants = viewModel.getVariantListAt(index: viewModel.getSelectedVariantGroupIndex()) else {
-            return ""
-        }
-        return variants[row].value
-    }
-    
-}
 
-
-extension SRProductDetailViewController : UIGestureRecognizerDelegate {
-    
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if let touchedView = touch.view {
-            if !((touchedView.isDescendant(of: pickerView)) || (touchedView.isDescendant(of: toolBar))) {
-                removePickerViewFromSuperView()
-            } else {
-                return false
-            }
+extension SRProductDetailViewController: MainVariantDelegate {
+    func childVariantClicked(variantIndex: Int?, variantGroupIndex: Int?) {
+        DispatchQueue.main.async {
+            self.viewModel.setSelectedCurrentVariant(variantIndex: variantIndex ?? 0, variantGroupIndex: variantGroupIndex ?? 0)
+            self.loadVariantImage()
+            self.mainVariantCollectionView.reloadData()
         }
-        return true
+        self.setOutOfStockUI()
+        self.setDiscountUI()
+        self.setFreeShippingUI()
     }
-    
 }
