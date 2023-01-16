@@ -524,12 +524,9 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         if (availableVariants.count != variantSelectionModels[selectionModelIndex].variationList?.count) {
             for availableVariant in availableVariants {
                 for i in 0..<(variantSelectionModels[selectionModelIndex].variationList?.count ?? 0) {
-                    if (!(variantSelectionModels[selectionModelIndex].variationList?[i].id ?? "" == availableVariant.id ?? "")) {
-                        if (variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable == true) {
-                            variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = false
-                        } else {
-                            variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = false
-                        }
+                    let currentVariantModel = variantSelectionModels[selectionModelIndex].variationList?[i]
+                    if (!( currentVariantModel?.id ?? "" == availableVariant.id ?? "")) {
+                        variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = (currentVariantModel?.isAvailable ?? false || false)
                     } else {
                         variantSelectionModels[selectionModelIndex].variationList?[i].isAvailable = true
                     }
