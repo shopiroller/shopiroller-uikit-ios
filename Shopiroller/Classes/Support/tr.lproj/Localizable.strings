@@ -58,8 +58,8 @@
 "e_commerce_product_detail_sold_out_button" = "Tükendi";
 "e_commerce_product_detail_sold_out_badge" = "Tükendi";
 "e_commerce_product_detail_free_shipping_badge" = "Ücretsiz Kargo";
-"e_commerce_product_detail_does_not_exist_variant_error" = "Varyant Hatası";
-"e_commerce_product_detail_does_not_exist_variant_description" = "Üründe olmayan bir varyantı seçtiniz. Lütfen varyant seçiminizi değiştiriniz.";
+"e_commerce_product_detail_variant_selection_error_title" = "Varyant Hatası";
+"e_commerce_product_detail_variant_selection_error_description" = "Lütfen ürün içerisindeki varyant seçimlerinizi kontrol ediniz.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maksimum Ürün Sınırı";
 "e_commerce_product_detail_maximum_product_limit_description" = "Maksimum ürün satın alma sınırına ulaştınız. Sepetinize maksimum %@ ürün ekleyebilirsiniz";
 "e_commerce_product_detail_maximum_product_limit_button" = "Ürüne dön";

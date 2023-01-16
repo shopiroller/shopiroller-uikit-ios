@@ -20,7 +20,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var productImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantImagesList: [ProductImageModel] = [ProductImageModel]()
     private var variantDataDictionary = [String : String]()
-    private var pickerViewSelectedVariant = [Int : Int]()
     
     private var selectedVariant: String?
     private var selectedVariantId: String?
@@ -235,7 +234,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVariantDoesNotExistPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_does_not_exist_variant_error".localized, description: "e_commerce_product_detail_does_not_exist_variant_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_variant_selection_error_title".localized, description: "e_commerce_product_detail_variant_selection_error_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
     }
     
     func isStateSoldOut() -> Bool {
@@ -382,27 +381,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         productImagesList.append(contentsOf: variantImagesList)
         productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
     }
-    
-    func getPickerViewModel(items: [UIBarButtonItem]?) -> PickerViewModel? {
-        let pickerViewHeight = CGFloat(getVariantListCountAt(index: selectedVariantGroupIndex)) * 120
-        return PickerViewModel(pickerViewHeight: pickerViewHeight, items: items)
-    }
-    
-    func getPickerViewTitle() -> String? {
-        return variationGroups?[selectedVariantGroupIndex].name ?? ""
-    }
-    
-    func setSelectedVariantForPickerView(pickerViewIndex: Int) {
-        pickerViewSelectedVariant.updateValue(pickerViewIndex, forKey: selectedVariantGroupIndex)
-    }
-    
-    func getSelectedVariantIndexForPickerView() -> Int {
-        if let variantIndex = pickerViewSelectedVariant[selectedVariantGroupIndex] {
-            return variantIndex
-        }
-        return 0
-    }
-    
+
     func setVariantSelectionModels() {
         var isVariantGroupActive = true
         if let variationGroups = variationGroups {
@@ -575,12 +554,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     func allVariantsSelected() -> Bool {
         return filterDataModel.count == variationGroups?.count
     }
-}
-
-
-struct PickerViewModel {
-    var pickerViewHeight: CGFloat?
-    let items: [UIBarButtonItem]?
 }
 
 public extension Array where Element: Hashable {
