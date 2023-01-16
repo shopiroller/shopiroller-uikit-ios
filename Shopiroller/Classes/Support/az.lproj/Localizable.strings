@@ -58,8 +58,8 @@
 "e_commerce_product_detail_sold_out_button" = "Satıldı";
 "e_commerce_product_detail_sold_out_badge" = "Satıldı";
 "e_commerce_product_detail_free_shipping_badge" = "Pulsuz Göndərmə";
-"e_commerce_product_detail_does_not_exist_variant_error" = "Variant xətası";
-"e_commerce_product_detail_does_not_exist_variant_description" = "Siz məhsulda olmayan variant seçdiniz. Lütfən, variant seçiminizi dəyişdirin.";
+"e_commerce_product_detail_variant_selection_error_title" = "Variant xətası";
+"e_commerce_product_detail_variant_selection_error_description" = "Zəhmət olmasa məhsuldakı variant seçimlərinizi yoxlayın.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maksimum Məhsul Limiti";
 "e_commerce_product_detail_maximum_product_limit_description" = "Maksimum məhsul alış limitinə çatdınız. Səbətinizə maksimum %@ məhsul əlavə edə bilərsiniz";
 "e_commerce_product_detail_maximum_product_limit_button" = "Məhsula qayıt";
@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Məhsul silindi";
 "e_commerce_shopping_cart_invalid_popup_button" = "Davam et";
 "e_commerce_shopping_cart_updating_popup_title" = "Səbəti yeniləyin";
+"e_commerce_shopping_cart_back_to_cart" = "Səbətə qayıt";
 "e_commerce_shopping_cart_updating_popup_description" = "Səbətiniz aşağıdakı səbəblərə görə yenilənəcək";
 "e_commerce_shopping_cart_empty_view_title" = "Səbətiniz boşdur";
 "e_commerce_shopping_cart_empty_view_description" = "Alış-veriş səbətinizdə heç bir element yoxdur.";

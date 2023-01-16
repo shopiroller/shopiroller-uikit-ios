@@ -58,8 +58,8 @@
 "e_commerce_product_detail_sold_out_button" = "Распродано";
 "e_commerce_product_detail_sold_out_badge" = "Распродано";
 "e_commerce_product_detail_free_shipping_badge" = "Бесплатная доставка";
-"e_commerce_product_detail_does_not_exist_variant_error" = "Ошибка варианта";
-"e_commerce_product_detail_does_not_exist_variant_description" = "Вы выбрали вариант, которого нет в продукте. Измените выбор варианта.";
+"e_commerce_product_detail_variant_selection_error_title" = "Ошибка варианта";
+"e_commerce_product_detail_variant_selection_error_description" = "Пожалуйста, проверьте выбор вариантов в продукте.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Максимальный лимит продукта";
 "e_commerce_product_detail_maximum_product_limit_description" = "Вы достигли максимального предела покупок товаров. Вы можете добавить в корзину не более %@ ​​товаров";
 "e_commerce_product_detail_maximum_product_limit_button" = "Вернуться к продукту";
@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Товар удален";
 "e_commerce_shopping_cart_invalid_popup_button" = "Продолжить";
 "e_commerce_shopping_cart_updating_popup_title" = "Обновить корзину";
+"e_commerce_shopping_cart_back_to_cart" = "Вернуться в корзину";
 "e_commerce_shopping_cart_updating_popup_description" = "Ваша корзина будет обновлена ​​по следующим причинам";
 "e_commerce_shopping_cart_empty_view_title" = "Ваша корзина пуста";
 "e_commerce_shopping_cart_empty_view_description" = "В вашей корзине нет товаров.";

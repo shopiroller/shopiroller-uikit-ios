@@ -58,8 +58,8 @@
 "e_commerce_product_detail_sold_out_button" = "Sold Out";
 "e_commerce_product_detail_sold_out_badge" = "Sold Out";
 "e_commerce_product_detail_free_shipping_badge" = "Free Shipping";
-"e_commerce_product_detail_does_not_exist_variant_error" = "Variant Error";
-"e_commerce_product_detail_does_not_exist_variant_description" = "You have selected a variant that is not in the product. Please change your variant selection.";
+"e_commerce_product_detail_variant_selection_error_title" = "Variant Error";
+"e_commerce_product_detail_variant_selection_error_description" = "Please check your variant selections in the product.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maximum Product Limit";
 "e_commerce_product_detail_maximum_product_limit_description" = "You have reached the maximum product purchase limit. You can add a maximum of %@ products to your cart";
 "e_commerce_product_detail_maximum_product_limit_button" = "Back to product";
@@ -216,6 +216,7 @@
 "e_commerce_shopping_cart_invalid_publishment_end" = "Product removed";
 "e_commerce_shopping_cart_invalid_popup_button" = "Continue";
 "e_commerce_shopping_cart_updating_popup_title" = "Update Cart";
+"e_commerce_shopping_cart_back_to_cart" = "Back to Cart";
 "e_commerce_shopping_cart_updating_popup_description" = "Your cart will be updated for the following reasons";
 "e_commerce_shopping_cart_empty_view_title" = "Your cart is empty";
 "e_commerce_shopping_cart_empty_view_description" = "You have no items in your shopping cart.";
