@@ -491,9 +491,11 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func loadVariantImage() {
-        let index = viewModel.getImageIndexAtVariant()
-        collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
-        pageControl.currentPage = index
+        if (viewModel.allVariantsSelected()) {
+            let index = viewModel.getImageIndexAtVariant()
+            collectionView.selectItem(at: NSIndexPath(item: index, section: 0) as IndexPath, animated: true, scrollPosition: .centeredHorizontally)
+            pageControl.currentPage = index
+        }
     }
     
     private func setOutOfStockUI() {

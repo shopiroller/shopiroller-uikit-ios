@@ -302,8 +302,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
             } else {
                 return tempImageIndex
             }
-            productDetailModel = model
-            productId = model.id
         }
         return tempImageIndex
     }
@@ -319,7 +317,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func isVariantCanBeAdded() -> Bool {
         if let variants = variantsList , !variants.isEmpty {
-            if let list = getSelectedVariantList() , !(list).isEmpty {
+            if let list = getSelectedVariantList() , !(list).isEmpty && filterDataModel.count == variationGroups?.count {
                 return true
             } else {
                 return false
@@ -476,7 +474,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
             }
         }
         
-        variantDataDictionary.updateValue(variationGroups?[variantGroupIndex ?? 0].name ?? "", forKey: selectedVariant ?? "")
+        variantDataDictionary.updateValue(selectedVariant ?? "", forKey: variationGroups?[variantGroupIndex ?? 0].name ?? "")
         
         variantSelectionModels[getNextVariationGroupIndex()].variantGroupIsActive = true
         
@@ -572,6 +570,10 @@ public class SRProductDetailViewModel: SRBaseViewModel {
             }
         }
         return -1
+    }
+    
+    func allVariantsSelected() -> Bool {
+        return filterDataModel.count == variationGroups?.count
     }
 }
 
