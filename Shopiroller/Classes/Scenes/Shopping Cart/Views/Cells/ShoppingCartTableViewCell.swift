@@ -12,7 +12,7 @@ protocol ShoppingCartTableViewCellDelegate: ShoppingCartPopUpTableViewCellDelega
 }
 
 class ShoppingCartTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var warningView: UIView!
     @IBOutlet private weak var warningLabel: UILabel!
     
@@ -61,7 +61,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         
         controlView.layer.cornerRadius = 6
     }
-
+    
     func setup(model: ShoppingCartItem,_ delegate: ShoppingCartTableViewCellDelegate? = nil, index: Int?,isLast: Bool) {
         self.model = model
         self.delegate = delegate
@@ -72,7 +72,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         if let imageUrl = model.product?.featuredImage?.normal {
             productImage.setImages(url: imageUrl)
         }
-      
+        
         title.text = model.product?.title
         
         if let campaignPrice = model.product?.campaignPrice,
@@ -81,11 +81,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
             if(campaignPrice != 0) {
                 price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
                 
-                let campaignPrice = ECommerceUtil.getFormattedPrice(price: (model.product?.price ?? 0) * Double(quantity), currency: model.product?.currency?.currencySymbol)
-                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: campaignPrice)
-                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-                
-                discount.attributedText = attributeString
+                discount.attributedText = ECommerceUtil.getStrikethroughPrice(price: model.product?.price, currency: model.product?.currency?.currencySymbol)
                 
             }
         } else if let productPrice = model.product?.price {
@@ -117,7 +113,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
             delegate?.updateQuantityClicked(itemId: model?.id, quantity: quantity - 1)
         }
     }
-  
+    
     @IBAction func plusButtonClicked(_ sender: Any) {
         if let quantity = model?.quantity {
             if (model?.product?.variantData?.isEmpty == false) {

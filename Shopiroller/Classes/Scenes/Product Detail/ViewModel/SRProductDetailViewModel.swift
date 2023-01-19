@@ -167,8 +167,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         return String(productDetailModel?.shippingPrice ?? 0.0)
     }
     
-    func getPrice() -> String {
-        return String(productDetailModel?.price ?? 0.0)
+    func getPrice() -> Double? {
+        return productDetailModel?.price
     }
     
     func getCampaignPrice() -> String {
