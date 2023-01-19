@@ -29,7 +29,7 @@ class ECommerceUtil {
     static func getFormattedPrice(price: Double?, currency: String?) -> String {
         guard let price = price, let currency = currency else { return "" }
         let formatter = NumberFormatter()
-        formatter.currencyCode = "EUR"
+        formatter.currencyCode = currency
         formatter.numberStyle = .currency
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2

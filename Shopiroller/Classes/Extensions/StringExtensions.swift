@@ -16,10 +16,6 @@ extension String {
         return count
     }
     
-    var currencySymbol: String {
-        return CurrencyHelper.sharedInstance.getSymbolForCurrency(currency: self) ?? ""
-    }
-    
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }

@@ -159,8 +159,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         return productDetailModel?.campaignPrice != nil && productDetailModel?.campaignPrice != 0
     }
     
-    func getCurrency() -> String {
-        return productDetailModel?.currency?.currencySymbol ?? ""
+    func getCurrency() -> String? {
+        return productDetailModel?.currency
     }
     
     func getShippingPrice() -> String {

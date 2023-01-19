@@ -79,14 +79,14 @@ class ShoppingCartTableViewCell: UITableViewCell {
            let quantity = model.quantity {
             
             if(campaignPrice != 0) {
-                price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: model.product?.currency?.currencySymbol)
+                price.text = ECommerceUtil.getFormattedPrice(price: campaignPrice * Double(quantity), currency: model.product?.currency)
                 
-                discount.attributedText = ECommerceUtil.getStrikethroughPrice(price: model.product?.price, currency: model.product?.currency?.currencySymbol)
+                discount.attributedText = ECommerceUtil.getStrikethroughPrice(price: model.product?.price, currency: model.product?.currency)
                 
             }
         } else if let productPrice = model.product?.price {
             discount.isHidden = true
-            price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(model.quantity ?? 1), currency: model.product?.currency?.currencySymbol)
+            price.text = ECommerceUtil.getFormattedPrice(price: productPrice * Double(model.quantity ?? 1), currency: model.product?.currency)
         }
         
         count.text = String(model.quantity ?? 0)
