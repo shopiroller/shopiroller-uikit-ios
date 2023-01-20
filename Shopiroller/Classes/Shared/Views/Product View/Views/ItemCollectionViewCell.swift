@@ -37,7 +37,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.font = .regular12
-                
+        
         productNewPrice.font = .semiBold14
         
         productImageContainer.layer.masksToBounds = true
@@ -51,7 +51,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
-                
+        
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
             productNewPrice.isHidden = false
@@ -64,18 +64,18 @@ class ItemCollectionViewCell: UICollectionViewCell {
             
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium12
-            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency() ?? "")
+            productOldPrice.attributedText = ECommerceUtil.getStrikethroughPrice(price: viewModel.getPrice(), currency: viewModel.getCurrency())
             
             productNewPrice.font = .semiBold14
-            productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
+            productNewPrice.text = ECommerceUtil.getFormattedPrice(price: viewModel.getCampaignPrice(), currency: viewModel.getCurrency())
         } else {
             productDiscountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: viewModel.getPrice(), currency: viewModel.getCurrency())
             productOldPrice.font = .semiBold14
             productOldPrice.textColor = .black
         }
-            
+        
         if let image = viewModel.getImage() {
             productImage.setImages(url: image)
         } else {
@@ -112,6 +112,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         [productImageContainer,productDiscountContainer,productTitleLabel,productPriceContainer].forEach {
             Shimmer.start(for: $0)
         }
-    }      
+    }
     
 }

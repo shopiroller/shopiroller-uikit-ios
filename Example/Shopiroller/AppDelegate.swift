@@ -34,9 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         coloredAppearance.backgroundColor = shopirollerTheme.navigationBarTintColor
         coloredAppearance.titleTextAttributes = [.foregroundColor: shopirollerTheme.navigationTitleTintColor]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: shopirollerTheme.navigationBarTintColor]
-                       
+        
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
         
         let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl")
         let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl")
