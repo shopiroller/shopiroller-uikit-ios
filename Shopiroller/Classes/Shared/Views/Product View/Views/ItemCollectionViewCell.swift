@@ -45,12 +45,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
         productDiscountLabel.font = .semiBold12
     }
     
-    
     func configureCell(viewModel: ProductViewModel){
         
         productTitleLabel.font = .regular12
         productTitleLabel.textColor = .textSecondary
         productTitleLabel.text = viewModel.getTitle()
+        
+        productOldPrice.attributedText = nil
+        productOldPrice.text = nil
+        productNewPrice.attributedText = nil
+        productNewPrice.text = nil
         
         if viewModel.hasDiscount() {
             productDiscountContainer.isHidden = false
