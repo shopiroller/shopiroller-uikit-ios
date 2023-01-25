@@ -11,6 +11,7 @@
 "e_commerce_general_next_step_text" = "Növbəti";
 "e_commerce_general_ok_button_text" = "Tamam";
 "e_commerce_general_cancel_button_text" = "Ləğv et";
+"e_commerce_general_and" = "və";
 "e_commerce_internet_connection_error_title" = "İnternet bağlantısı yoxdur";
 "e_commerce_internet_connection_error_description" = "Lütfən, internet bağlantınızı yoxlayın";
 "e_commerce_general_start_shopping_button_text" = "Alış-verişə başlayın";
@@ -59,7 +60,7 @@
 "e_commerce_product_detail_sold_out_badge" = "Satıldı";
 "e_commerce_product_detail_free_shipping_badge" = "Pulsuz Göndərmə";
 "e_commerce_product_detail_variant_selection_error_title" = "Variant xətası";
-"e_commerce_product_detail_variant_selection_error_description" = "Zəhmət olmasa məhsuldakı variant seçimlərinizi yoxlayın.";
+"e_commerce_product_detail_variant_selection_error_description" = "Zəhmət olmasa məhsulda %@ seçimlərinizi yoxlayın.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maksimum Məhsul Limiti";
 "e_commerce_product_detail_maximum_product_limit_description" = "Maksimum məhsul alış limitinə çatdınız. Səbətinizə maksimum %@ məhsul əlavə edə bilərsiniz";
 "e_commerce_product_detail_maximum_product_limit_button" = "Məhsula qayıt";

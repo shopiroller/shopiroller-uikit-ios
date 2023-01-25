@@ -11,6 +11,7 @@
 "e_commerce_general_next_step_text" = "Sonraki";
 "e_commerce_general_ok_button_text" = "Tamam";
 "e_commerce_general_cancel_button_text" = "Vazgeç";
+"e_commerce_general_and" = "ve";
 "e_commerce_internet_connection_error_title" = "Internet bağlantısı yok";
 "e_commerce_internet_connection_error_description" = "Lütfen internet bağlantınızı kontrol edin";
 "e_commerce_general_start_shopping_button_text" = "Alışverişe Başla";
@@ -59,7 +60,7 @@
 "e_commerce_product_detail_sold_out_badge" = "Tükendi";
 "e_commerce_product_detail_free_shipping_badge" = "Ücretsiz Kargo";
 "e_commerce_product_detail_variant_selection_error_title" = "Varyant Hatası";
-"e_commerce_product_detail_variant_selection_error_description" = "Lütfen ürün içerisindeki varyant seçimlerinizi kontrol ediniz.";
+"e_commerce_product_detail_variant_selection_error_description" = "Lütfen üründeki %@ seçimlerinizi kontrol ediniz.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Maksimum Ürün Sınırı";
 "e_commerce_product_detail_maximum_product_limit_description" = "Maksimum ürün satın alma sınırına ulaştınız. Sepetinize maksimum %@ ürün ekleyebilirsiniz";
 "e_commerce_product_detail_maximum_product_limit_button" = "Ürüne dön";

@@ -694,9 +694,9 @@ extension SRProductDetailViewController: MainVariantDelegate {
             self.viewModel.setSelectedCurrentVariant(variantIndex: variantIndex ?? 0, variantGroupIndex: variantGroupIndex ?? 0)
             self.loadVariantImage()
             self.mainVariantCollectionView.reloadData()
+            self.setOutOfStockUI()
+            self.setDiscountUI()
+            self.setFreeShippingUI()
         }
-        self.setOutOfStockUI()
-        self.setDiscountUI()
-        self.setFreeShippingUI()
     }
 }

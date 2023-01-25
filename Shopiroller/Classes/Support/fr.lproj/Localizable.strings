@@ -11,6 +11,7 @@
 "e_commerce_general_next_step_text" = "Suivant";
 "e_commerce_general_ok_button_text" = "D'ACCORD";
 "e_commerce_general_cancel_button_text" = "Annuler";
+"e_commerce_general_and" = "et";
 "e_commerce_internet_connection_error_title" = "Pas de connexion Internet";
 "e_commerce_internet_connection_error_description" = "Veuillez vérifier votre connexion Internet";
 "e_commerce_general_start_shopping_button_text" = "Commencez vos achats";
@@ -59,7 +60,7 @@
 "e_commerce_product_detail_sold_out_badge" = "Épuisé";
 "e_commerce_product_detail_free_shipping_badge" = "Livraison gratuite";
 "e_commerce_product_detail_variant_selection_error_title" = "Erreur de variante" ;
-"e_commerce_product_detail_variant_selection_error_description" = "Veuillez vérifier vos sélections de variantes dans le produit.";
+"e_commerce_product_detail_variant_selection_error_description" = "Veuillez vérifier vos %@ sélections sur le produit.";
 "e_commerce_product_detail_maximum_product_limit_title" = "Limite maximale de produits";
 "e_commerce_product_detail_maximum_product_limit_description" = "Vous avez atteint la limite maximale d'achat de produits. Vous pouvez ajouter un maximum de %@ produits dans votre panier.";
 "e_commerce_product_detail_maximum_product_limit_button" = "Retourner au produit";
