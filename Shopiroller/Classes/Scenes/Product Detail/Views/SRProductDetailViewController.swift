@@ -194,7 +194,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         
         let deliveryRecognizer = UITapGestureRecognizer(target: self, action: #selector(deliveryTermsContainerTapped(_:)))
         deliveryTermsContainer.addGestureRecognizer(deliveryRecognizer)
-    
+        
         collectionView.register(cellClass: SRProductDetailImageSliderCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -552,13 +552,13 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
             discountLabel.font = .bold14
             productOldPrice.textColor = .textPCaption
             productOldPrice.font = .medium14
-            productOldPrice.attributedText = viewModel.getPrice().makeStrokeCurrency(currency: viewModel.getCurrency())
+            productOldPrice.attributedText = ECommerceUtil.getStrikethroughPrice(price: viewModel.getPrice(), currency: viewModel.getCurrency())
             productNewPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getCampaignPrice()), currency: viewModel.getCurrency())
             productNewPrice.font = .semiBold20
         } else {
             discountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: Double(viewModel.getPrice()), currency: viewModel.getCurrency())
+            productOldPrice.text = ECommerceUtil.getFormattedPrice(price: viewModel.getPrice(), currency: viewModel.getCurrency())
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
         }
@@ -595,8 +595,6 @@ extension SRProductDetailViewController : PopUpViewViewControllerDelegate {
         }
     }
 }
-
-
 
 extension SRProductDetailViewController : UICollectionViewDelegate , UICollectionViewDataSource {
     
@@ -671,7 +669,6 @@ extension SRProductDetailViewController: UIScrollViewDelegate {
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-        
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
@@ -691,16 +688,15 @@ extension SRProductDetailViewController: UITextFieldDelegate {
     }
 }
 
-
 extension SRProductDetailViewController: MainVariantDelegate {
     func childVariantClicked(variantIndex: Int?, variantGroupIndex: Int?) {
         DispatchQueue.main.async {
             self.viewModel.setSelectedCurrentVariant(variantIndex: variantIndex ?? 0, variantGroupIndex: variantGroupIndex ?? 0)
             self.loadVariantImage()
             self.mainVariantCollectionView.reloadData()
+            self.setOutOfStockUI()
+            self.setDiscountUI()
+            self.setFreeShippingUI()
         }
-        self.setOutOfStockUI()
-        self.setDiscountUI()
-        self.setFreeShippingUI()
     }
 }

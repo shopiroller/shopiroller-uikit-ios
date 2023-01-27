@@ -68,13 +68,13 @@ PODS:
   - Sentry (7.19.0):
     - Sentry/Core (= 7.19.0)
   - Sentry/Core (7.19.0)
-  - Shopiroller (0.2.36):
-    - Braintree
-    - FittedSheets
+  - Shopiroller (0.2.37):
+    - Braintree (~> 5.12.0)
+    - FittedSheets (~> 2.4.2)
     - InputMask
     - IQKeyboardManagerSwift
     - Kingfisher (~> 7.1.2)
-    - lottie-ios
+    - lottie-ios (~> 3.5.0)
     - MaterialComponents/Buttons
     - Sentry
     - Stripe (~> 22.8.1)
@@ -131,7 +131,7 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   Sentry: d6b16e66a0ad0c39a0b76d9a1194e68e78c37ce6
-  Shopiroller: b5e80a9c2cbf17947edec6dcc0e47d7bbfe065b1
+  Shopiroller: b75feee32e80d8a47c2cd7e57c80767f4c91b838
   Stripe: b4cf3aa317a8e984b930d3545bac10b490dd3106
   StripeApplePay: 858c1dadc39b658d317661dea8cc2b7158533a17
   StripeCore: 52e0aba2fad604455692db593bf5edc04758b760

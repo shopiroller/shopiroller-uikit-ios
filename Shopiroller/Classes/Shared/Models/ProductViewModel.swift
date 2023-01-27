@@ -22,9 +22,9 @@ class ProductViewModel {
     }
     
     func hasDiscount() -> Bool {
-        if let campaingPrice = productDetailModel?.campaignPrice, campaingPrice != 0 {
+        if let campaingPrice = productDetailModel?.campaignPrice, campaingPrice != 0.0 {
             return true
-        } else if let campaignPrice = productListModel?.campaignPrice, campaignPrice != 0 {
+        } else if let campaignPrice = productListModel?.campaignPrice, campaignPrice != 0.0 {
             return true
         } else {
             return false
@@ -62,16 +62,16 @@ class ProductViewModel {
         return productListModel?.stock == 0 || (productDetailModel?.stock == 0)
     }
     
-    func getPrice() -> String {
-        return String(productListModel?.price ?? (productDetailModel?.price ?? 0.0))
+    func getPrice() -> Double? {
+        return productListModel?.price ?? productDetailModel?.price
     }
     
     func getCurrency() -> String? {
-        return productListModel?.currency?.currencySymbol ?? (productDetailModel?.currency?.currencySymbol)
+        return productListModel?.currency ?? productDetailModel?.currency
     }
     
-    func getCampaignPrice() -> String {
-        return String(productListModel?.campaignPrice ?? (productDetailModel?.campaignPrice ?? 0.0))
+    func getCampaignPrice() -> Double? {
+        return productListModel?.campaignPrice ?? productDetailModel?.campaignPrice
     }
     
 }

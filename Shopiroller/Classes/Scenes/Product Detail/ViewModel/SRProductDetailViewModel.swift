@@ -159,16 +159,16 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         return productDetailModel?.campaignPrice != nil && productDetailModel?.campaignPrice != 0
     }
     
-    func getCurrency() -> String {
-        return productDetailModel?.currency?.currencySymbol ?? ""
+    func getCurrency() -> String? {
+        return productDetailModel?.currency
     }
     
     func getShippingPrice() -> String {
         return String(productDetailModel?.shippingPrice ?? 0.0)
     }
     
-    func getPrice() -> String {
-        return String(productDetailModel?.price ?? 0.0)
+    func getPrice() -> Double? {
+        return productDetailModel?.price
     }
     
     func getCampaignPrice() -> String {
@@ -234,7 +234,19 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getVariantDoesNotExistPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_variant_selection_error_title".localized, description: "e_commerce_product_detail_variant_selection_error_description".localized, firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
+        var unselectedGroupNames: [String] = []
+        if let variationGroups = variationGroups {
+            var filterDataModel = filterDataModel
+            for i in variationGroups {
+                if let index = filterDataModel.firstIndex(where: { $0.variationGroupId == i.id }) {
+                    filterDataModel.remove(at: index)
+                } else {
+                    unselectedGroupNames.append(i.name ?? "")
+                }
+            }
+        }
+        let expression = unselectedGroupNames.count <= 2 ? unselectedGroupNames.joined(separator: " \("e_commerce_general_and".localized) ") : unselectedGroupNames.dropLast().joined(separator: ", ") + ", \("e_commerce_general_and".localized) " + unselectedGroupNames.last!
+        return PopUpViewModel(image: .outOfStock, title: "e_commerce_product_detail_variant_selection_error_title".localized, description: String(format: "e_commerce_product_detail_variant_selection_error_description".localized, expression), firstButton: PopUpButtonModel(title: "e_commerce_product_detail_maximum_product_limit_button".localized, type: .lightButton), secondButton: nil)
     }
     
     func isStateSoldOut() -> Bool {
@@ -316,6 +328,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func isVariantCanBeAdded() -> Bool {
         if let variants = variantsList , !variants.isEmpty {
+            let a = getSelectedVariantList()
             if let list = getSelectedVariantList() , !(list).isEmpty && filterDataModel.count == variationGroups?.count {
                 return true
             } else {
@@ -381,7 +394,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         productImagesList.append(contentsOf: variantImagesList)
         productImagesList.append(contentsOf: productDetailModel?.images ?? [ProductImageModel]())
     }
-
+    
     func setVariantSelectionModels() {
         var isVariantGroupActive = true
         if let variationGroups = variationGroups {
@@ -432,8 +445,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
                     variantSelectionModels[selectionIndex].variationList?[i].isAvailable = false
                     variantSelectionModels[selectionIndex].variationList?[i].isSelected = false
                 }
-                }
             }
+        }
         
         var selectionModelIndex = 0
         
