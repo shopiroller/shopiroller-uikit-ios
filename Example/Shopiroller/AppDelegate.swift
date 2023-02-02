@@ -39,12 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ShopirollerDelegate {
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
         
-        let ecommerce = ShopirollerCredentials(aliasKey: "iosAliasKey", apiKey: "apiKey", baseUrl: "baseUrl")
-        let appUser = ShopirollerAppUserCredentials(appKey: "userAppKey", apiKey: "userApiKey", baseUrl: "userBaseUrl")
+        let ecommerce = ShopirollerCredentials(aliasKey: "xhQCJutUaoVPv/jtNiEfQzkQwuA=", apiKey: "ARz1Er9DHR0juxtDLHcywIGWVe86m7UzkLhpUeRMVtY=", baseUrl: "dev.ecommerce.applyze.com")
+        let appUser = ShopirollerAppUserCredentials(appKey: "D++ONskoEuKc4kl8gwLOY5j/UcI=", apiKey: "tKcdWgA5O7H2L0UAK4IpDMqDedkMY6VC2AafIs3mvaI=", baseUrl: "dev.applyze.com")
         
         ShopirollerApp.shared.initiliaze(eCommerceCredentials: ecommerce, appUserCredentials: appUser, baseUrl: "", theme: shopirollerTheme)
         
-        ShopirollerApp.shared.setUserId("userId")
+        ShopirollerApp.shared.setUserId("62221ee8944dc204e5a4262f")
         ShopirollerApp.shared.setUserEmail("sample@sample.com")
         let languageCode = Locale.current.languageCode ?? "en"
         ShopirollerApp.shared.setFallbackLanguage(languageCode)

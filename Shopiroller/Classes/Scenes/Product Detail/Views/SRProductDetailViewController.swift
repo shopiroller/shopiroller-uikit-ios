@@ -541,7 +541,6 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func setDiscountUI() {
-        
         if viewModel.hasDiscount() {
             discountContainer.isHidden = false
             productNewPrice.isHidden = false
