@@ -541,6 +541,7 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
     }
     
     private func setDiscountUI() {
+        
         if viewModel.hasDiscount() {
             discountContainer.isHidden = false
             productNewPrice.isHidden = false
@@ -557,7 +558,6 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         } else {
             discountContainer.isHidden = true
             productNewPrice.isHidden = true
-            productOldPrice.attributedText = nil
             productOldPrice.text = ECommerceUtil.getFormattedPrice(price: viewModel.getPrice(), currency: viewModel.getCurrency())
             productOldPrice.textColor = .black
             productOldPrice.font = .semiBold20
