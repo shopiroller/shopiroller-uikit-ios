@@ -74,9 +74,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
                 } else {
                     self.variationGroups = self.productDetailModel?.variationGroups
                     self.setVariantListVariables()
-                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 0)
-                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 1)
-                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 2)
                     DispatchQueue.main.async {
                         success?()
                     }
@@ -96,6 +93,13 @@ public class SRProductDetailViewModel: SRBaseViewModel {
                 self.variationGroups = response.data?.variationGroups
                 self.setVariantListVariables()
                 self.setVariantSelectionModels()
+                if let variantData = self.productDetailModel?.variantData {
+                    for (index, value) in variantData.enumerated() {
+                        if let variationIndex = self.variationGroups?[index].variations?.firstIndex(where: { $0.id == value.variationId }) {
+                            self.setSelectedCurrentVariant(variantIndex: variationIndex, variantGroupIndex: index)
+                        }
+                    }
+                }
                 DispatchQueue.main.async {
                     success?()
                 }

@@ -352,9 +352,10 @@ public class SRProductDetailViewController: BaseViewController<SRProductDetailVi
         viewModel.getProductDetail(success: {
             [weak self] in
             guard let self = self else { return }
-            self.setUI()
-            self.view.isHidden = false
             self.collectionView.reloadData()
+            self.setUI()
+            self.loadVariantImage()
+            self.view.isHidden = false
             self.playVideoButton.isHidden = !self.viewModel.hasVideo()
         }) {
             [weak self] (errorViewModel) in
