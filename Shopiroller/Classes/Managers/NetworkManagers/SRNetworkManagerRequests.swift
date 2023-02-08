@@ -20,7 +20,12 @@ struct SRNetworkManagerRequests {
     
     static func getProduct(productId: String) -> SRNetworkRequestManager<ProductDetailResponseModel> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProduct, subpath:
-        "\(productId)",resourceType: ProductDetailResponseModel.self)
+        "\(productId)", resourceType: ProductDetailResponseModel.self)
+    }
+    
+    static func getVariationGroups(productId: String) -> SRNetworkRequestManager<[VariationGroups]> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getProduct, subpath:
+        "\(productId)/variation-groups", resourceType: [VariationGroups].self)
     }
     
     static func getPaymentSettings() -> SRNetworkRequestManager<PaymentSettingsResponeModel> {

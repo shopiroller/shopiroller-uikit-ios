@@ -11,7 +11,7 @@ import AVFoundation
 
 public class SRProductDetailViewModel: SRBaseViewModel {
     
-    private var productId: String?
+    private var productID: String
     private var productDetailModel: ProductDetailResponseModel?
     private var paymentSettings: PaymentSettingsResponeModel?
     private var variantData: [VariantDataModel]?
@@ -40,9 +40,8 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     private var isPopUpState: Bool = false
     private var isUserFriendly: Bool = false
     
-    
-    init (productId: String = String()) {
-        self.productId = productId
+    init (productID: String) {
+        self.productID = productID
     }
     
     func getProductTerms(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
@@ -63,15 +62,40 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func getProductDetail(success: (() -> Void)? = nil, error: ((ErrorViewModel) -> Void)? = nil) {
-        SRNetworkManagerRequests.getProduct(productId: self.productId ?? "").response() {
+        SRNetworkManagerRequests.getProduct(productId: self.productID).response() {
             (result) in
-            switch result{
+            switch result {
             case .success(let response):
                 self.productDetailModel = response.data
                 self.variantData = self.productDetailModel?.variantData
                 self.variantsList = self.productDetailModel?.variants
-                self.variationGroups = self.productDetailModel?.variationGroups
+                if let variantOfProductID = response.data?.variantOfProductID {
+                    self.getVariantGroup(variantOfProductID: variantOfProductID, success: success, error: error)
+                } else {
+                    self.variationGroups = self.productDetailModel?.variationGroups
+                    self.setVariantListVariables()
+                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 0)
+                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 1)
+                    self.setSelectedCurrentVariant(variantIndex: 0, variantGroupIndex: 2)
+                    DispatchQueue.main.async {
+                        success?()
+                    }
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    error?(ErrorViewModel(error: err))
+                }
+            }
+        }
+    }
+    
+    func getVariantGroup(variantOfProductID: String, success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil) {
+        SRNetworkManagerRequests.getProduct(productId: variantOfProductID).response() { (result) in
+            switch result {
+            case .success(let response):
+                self.variationGroups = response.data?.variationGroups
                 self.setVariantListVariables()
+                self.setVariantSelectionModels()
                 DispatchQueue.main.async {
                     success?()
                 }
@@ -84,7 +108,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     }
     
     func addProductToCart(success : (() -> Void)? = nil , error: ((ErrorViewModel) -> Void)? = nil){
-        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productId, quantity: self.quantityCount, displayName: productDetailModel?.title, userFullName: SRAppContext.userFullname, userEmail: SRAppContext.userEmail), userId: SRAppContext.userId).response() {
+        SRNetworkManagerRequests.addProductToShoppingCart(products: SRAddProductModel(productId: self.productID, quantity: self.quantityCount, displayName: productDetailModel?.title, userFullName: SRAppContext.userFullname, userEmail: SRAppContext.userEmail), userId: SRAppContext.userId).response() {
             (result) in
             switch result {
             case.success(let response):
@@ -306,7 +330,7 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         if let list = getSelectedVariantList() , !(list.isEmpty) {
             let model = list[0]
             productDetailModel = model
-            productId = model.id
+            productID = model.id ?? ""
             let imageIndex = (getImageIndexOfVariant(variantModel: model))
             if imageIndex != -1 {
                 tempImageIndex = imageIndex //+ productDetailImagesCount
@@ -328,7 +352,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
     
     func isVariantCanBeAdded() -> Bool {
         if let variants = variantsList , !variants.isEmpty {
-            let a = getSelectedVariantList()
             if let list = getSelectedVariantList() , !(list).isEmpty && filterDataModel.count == variationGroups?.count {
                 return true
             } else {
@@ -386,7 +409,6 @@ public class SRProductDetailViewModel: SRBaseViewModel {
         guard let variantsList = variantsList else {
             return
         }
-        //        productDetailImagesCount = productDetailModel?.images?.count ?? 0
         
         for variants in variantsList {
             variantImagesList.append(contentsOf: variants.images ?? [ProductImageModel]())
