@@ -83,6 +83,21 @@ extension UIViewController {
         }
     }
     
+    func popToViewController(_ viewController: AnyClass, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let navigationController = navigationController {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
+            if let vc = navigationController.viewControllers.filter({$0.isKind(of: viewController)}).first {
+                navigationController.popToViewController(vc, animated: flag)
+            } else {
+                navigationController.popToRootViewController(animated: flag)
+            }
+            CATransaction.commit()
+        } else {
+            dismiss(animated: flag, completion: completion)
+        }
+    }
+    
     func pop(animated flag: Bool, completion: (() -> Void)? = nil) {
         if let navigationController = navigationController {
             CATransaction.begin()
@@ -133,7 +148,7 @@ extension UIViewController {
     @objc func goToCard() {
         if ShopirollerApp.shared.isUserLoggedIn() {
             prompt(SRShoppingCartViewController(viewModel: SRShoppingCartViewModel())
-               , animated: true, completion: nil)
+                   , animated: true, completion: nil)
         } else {
             ShopirollerApp.shared.delegate?.userLoginNeeded(navigationController: self.navigationController)
         }
@@ -146,12 +161,12 @@ extension UIViewController {
     
     @objc func openOptions() {
         let actionSheetController = UIAlertController(title: "Select", message: "Select An Action", preferredStyle: .actionSheet)
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             self.dismiss(animated: true, completion: nil)
         }
         actionSheetController.addAction(cancelAction)
-
+        
         let chooseOrderAction = UIAlertAction(title: "Siparislerim", style: .default) { action -> Void in
             let orderListVC = SROrderListViewController(viewModel: SROrderListViewModel())
             self.prompt(orderListVC, animated: true, completion: nil)
@@ -163,7 +178,7 @@ extension UIViewController {
             self.prompt(addressListVC, animated: true, completion: nil)
         }
         actionSheetController.addAction(chooseAddressAction)
-
+        
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
@@ -181,7 +196,7 @@ extension UIViewController {
         navigationController?.navigationBar.backgroundColor = ShopirollerApp.shared.theme.navigationBarTintColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: ShopirollerApp.shared.theme.navigationTitleTintColor]
         navigationController?.navigationBar.titleTextAttributes = textAttributes as [NSAttributedString.Key : Any]
-
+        
     }
     
     func updateNavigationBar(rightBarButtonItems: [UIBarButtonItem]? = nil, isBackButtonActive: Bool? = false) {
@@ -197,7 +212,7 @@ extension UIViewController {
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-
+        
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     

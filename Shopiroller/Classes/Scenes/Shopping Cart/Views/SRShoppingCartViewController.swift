@@ -18,7 +18,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
         static var checkOutButtonText: String { return "e_commerce_shopping_cart_checkout_button".localized }
     }
     
-
+    
     @IBOutlet private weak var emptyView: EmptyView!
     
     @IBOutlet private weak var containerView: UIView!
@@ -33,7 +33,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     @IBOutlet private weak var bottomPriceView: BottomPriceView!
     @IBOutlet private weak var checkoutButton: UIButton!
     
-
+    
     init(viewModel: SRShoppingCartViewModel){
         super.init(Constants.pageTitle, viewModel: viewModel, nibName: SRShoppingCartViewController.nibName, bundle: Bundle(for: SRShoppingCartViewController.self))
     }
@@ -146,7 +146,7 @@ class SRShoppingCartViewController: BaseViewController<SRShoppingCartViewModel>,
     }
     
     func actionButtonClicked(_ sender: Any) {
-       popToRoot(animated: true, completion: nil)
+        popToViewController(SRMainPageViewController.self, animated: true)
     }
     
     @IBAction func clearCartButtonClicked(_ sender: Any) {
@@ -277,8 +277,8 @@ extension SRShoppingCartViewController : ShoppingCartTableViewCouponCellDelegate
         popUp(vc, completion: nil)
     }
     
-   func removeButtonTapped() {
-       self.removeCoupon()
+    func removeButtonTapped() {
+        self.removeCoupon()
     }
     
 }
