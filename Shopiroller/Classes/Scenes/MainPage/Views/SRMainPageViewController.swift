@@ -261,7 +261,7 @@ extension SRMainPageViewController : ShowCaseCellDelegate {
     }
     
     func getProductId(productId: String) {
-        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: productId))
+        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productID: productId))
         post(productDetailVC, animated: true)
     }
 }
@@ -340,7 +340,7 @@ extension SRMainPageViewController: UICollectionViewDelegate, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModel.getSectionAt(position: indexPath.section) {
         case .products:
-            let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: viewModel.getProductId(position: indexPath.row) ?? ""))
+            let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productID: viewModel.getProductId(position: indexPath.row) ?? ""))
             self.post(productDetailVC, animated: true, completion: nil)
         default:
             break
@@ -444,7 +444,7 @@ extension SRMainPageViewController : CategoriesCellDelegate {
 extension SRMainPageViewController: SliderClickDelegate {
     
     func openProductDetail(id: String?) {
-        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productId: id ?? ""))
+        let productDetailVC = SRProductDetailViewController(viewModel: SRProductDetailViewModel(productID: id ?? ""))
         post(productDetailVC, animated: false, completion: nil)
     }
     

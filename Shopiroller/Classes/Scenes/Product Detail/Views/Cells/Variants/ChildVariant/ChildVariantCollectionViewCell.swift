@@ -55,7 +55,7 @@ class ChildVariantCollectionViewCell: UICollectionViewCell {
             crossedView.isHidden = true
             variantSelectionButton.isEnabled = true
         }
-
+        
         if (model.isSelected) {
             containerView.layer.borderWidth = 2
         } else {
