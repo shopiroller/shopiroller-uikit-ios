@@ -96,7 +96,6 @@ public struct SRAppConstants {
         
         struct Values {
             static let userId = "61c4168a2c630dd87543d153"
-            static let page = "1"
             static let productsPerPageSize = 15
         }
     }
