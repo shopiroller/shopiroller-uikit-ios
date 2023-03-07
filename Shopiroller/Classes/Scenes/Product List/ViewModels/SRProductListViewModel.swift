@@ -17,7 +17,7 @@ class SRProductListViewModel : SRBaseViewModel {
     
     private var pageTitle: String?
     
-    private var currentPage = 0
+    private var currentPage = 1
     private var productList: [ProductListModel]?
     private var filterModel: FilterModel = FilterModel()
     private var showcaseId: String?
@@ -54,7 +54,7 @@ class SRProductListViewModel : SRBaseViewModel {
         urlQueryItems.append(contentsOf: getSortQueryItems())
         
         if productList?.count ?? 0 == 0 {
-            currentPage = 0
+            currentPage = 1
         } else {
             if ((productList?.count ?? 0) % SRAppConstants.Query.Values.productsPerPageSize != 0) {
                 return
@@ -62,7 +62,7 @@ class SRProductListViewModel : SRBaseViewModel {
                 currentPage = currentPage + 1
         }
         
-        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(SRAppConstants.Query.Values.page)))
+        urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.page, value: String(currentPage)))
         urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.perPage, value: String(SRAppConstants.Query.Values.productsPerPageSize)))
         if let title = title {
             urlQueryItems.append(URLQueryItem(name: SRAppConstants.Query.Keys.title, value: title))
@@ -77,7 +77,7 @@ class SRProductListViewModel : SRBaseViewModel {
             switch result{
             case .success(let response):
                 DispatchQueue.main.async {
-                    if self.currentPage != 0 {
+                    if self.currentPage != 1 {
                         self.productList = self.productList! + (response.data ?? [])
                     }else{
                         self.productList = response.data
