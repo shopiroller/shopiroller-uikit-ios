@@ -28,11 +28,12 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD'
   s.dependency 'MaterialComponents/Buttons'
   s.dependency 'FittedSheets', '~> 2.4.2'
-  s.dependency 'Kingfisher' , '~> 7.1.2'
+  s.dependency 'Kingfisher' , '~> 7.6.1'
   s.dependency 'InputMask'
   s.dependency 'lottie-ios', '~> 3.5.0'
   s.dependency 'IQKeyboardManagerSwift'
   s.dependency 'Stripe', '~> 22.8.1'
   s.dependency 'Braintree', '~> 5.12.0'
-  s.dependency 'Sentry'
+  s.dependency 'Sentry', '~> 8.4.0'
+
 end
