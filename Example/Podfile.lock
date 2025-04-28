@@ -10,7 +10,7 @@ PODS:
     - Braintree/Core
     - Braintree/PayPalDataCollector
   - Braintree/PayPalDataCollector (5.12.0)
-  - FittedSheets (2.6.1)
+  - FittedSheets (2.7.1)
   - InputMask (6.1.0)
   - IQKeyboardManagerSwift (6.5.16)
   - Kingfisher (7.10.2)
@@ -65,21 +65,20 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
-  - Sentry (8.4.0):
-    - Sentry/Core (= 8.4.0)
-    - SentryPrivate (= 8.4.0)
-  - Sentry/Core (8.4.0):
-    - SentryPrivate (= 8.4.0)
+  - Sentry (8.33.0):
+    - Sentry/Core (= 8.33.0)
+  - Sentry/Core (8.33.0)
   - SentryPrivate (8.4.0)
   - Shopiroller (0.2.40):
     - Braintree (~> 5.12.0)
-    - FittedSheets
+    - FittedSheets (~> 2.7.1)
     - InputMask
     - IQKeyboardManagerSwift (~> 6.5.11)
     - Kingfisher (~> 7.10.0)
     - lottie-ios (~> 3.5.0)
     - MaterialComponents/Buttons
-    - Sentry (~> 8.4.0)
+    - Sentry (~> 8.33.0)
+    - SentryPrivate (~> 8.4.0)
     - Stripe (~> 22.8.1)
     - SVProgressHUD
   - Stripe (22.8.4):
@@ -128,7 +127,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Braintree: fff8f8bc05fb5299c650913c957216843efd4400
-  FittedSheets: 37e35f105c531f3845075f1788dd8517a35315c4
+  FittedSheets: 38ec85129bf5c970f99d4dba4fbf48185c5fa98a
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
@@ -136,15 +135,15 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  Sentry: 16d46dd5ca10e7f4469a2611805a3de123188add
+  Sentry: 8560050221424aef0bebc8e31eedf00af80f90a6
   SentryPrivate: 2bb4f8d9ff558b25ac70b66c1dedc58a7c43630b
-  Shopiroller: 6ca5392b9b623dd08b2f416865f4174c78ebb540
+  Shopiroller: 8c7f91d2a866318c847bb5f474e331760d3fb144
   Stripe: 59f6659e8ea413def19c97c57e23f5ec6ea48cf8
   StripeApplePay: 6e9aebd3d248464836e9fbdaef6e5fb1817d56a6
   StripeCore: 193f27552fb98108ebfe0df11651fe5f38948305
   StripeUICore: 6a5bbea0164d63bd91000f001903e7901859e1a4
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
 
-PODFILE CHECKSUM: 031a9a8e89502bb3742eafcdd7022504fea55c8b
+PODFILE CHECKSUM: e36c83756e6620911226df8cbc6ae8c6b78e58fd
 
 COCOAPODS: 1.15.2
