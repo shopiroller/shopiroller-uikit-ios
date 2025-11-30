@@ -23,6 +23,16 @@ struct SRNetworkManagerRequests {
         "\(productId)", resourceType: ProductDetailResponseModel.self)
     }
     
+    static func getProductBySlug(slug: String) -> SRNetworkRequestManager<ProductDetailResponseModel> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getProductBySlug, subpath:
+        "\(slug)", resourceType: ProductDetailResponseModel.self)
+    }
+    
+    static func getCategoryBySlug(slug: String) -> SRNetworkRequestManager<SRCategoryResponseModel> {
+        return SRNetworkRequestManager(httpMethod: .get, path: .getCategoryBySlug, subpath:
+        "\(slug)", resourceType: SRCategoryResponseModel.self)
+    }
+    
     static func getVariationGroups(productId: String) -> SRNetworkRequestManager<[VariationGroups]> {
         return SRNetworkRequestManager(httpMethod: .get, path: .getProduct, subpath:
         "\(productId)/variation-groups", resourceType: [VariationGroups].self)

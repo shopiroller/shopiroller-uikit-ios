@@ -71,9 +71,39 @@ extension SliderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         let navigationLink = viewModel?[indexPath.row].navigationLink
         switch viewModel?[indexPath.row].navigationType {
         case .category:
-            delegate?.openProductList(categoryId: navigationLink)
+            if let slug = navigationLink {
+                SRNetworkManagerRequests.getCategoryBySlug(slug: slug).response() { result in
+                    switch result {
+                    case .success(let response):
+                        DispatchQueue.main.async {
+                            self.delegate?.openProductList(categoryId: response.data?.categoryId)
+                        }
+                    case .failure(_):
+                        DispatchQueue.main.async {
+                            self.delegate?.openProductList(categoryId: nil)
+                        }
+                    }
+                }
+            } else {
+                delegate?.openProductList(categoryId: nil)
+            }
         case .product:
-            delegate?.openProductDetail(id: navigationLink)
+            if let slug = navigationLink {
+                SRNetworkManagerRequests.getProductBySlug(slug: slug).response() { result in
+                    switch result {
+                    case .success(let response):
+                        DispatchQueue.main.async {
+                            self.delegate?.openProductDetail(id: response.data?.id)
+                        }
+                    case .failure(_):
+                        DispatchQueue.main.async {
+                            self.delegate?.openProductDetail(id: nil)
+                        }
+                    }
+                }
+            } else {
+                delegate?.openProductDetail(id: nil)
+            }
         case .web:
             let url = URL(string: navigationLink ?? "")!
             let controller = SFSafariViewController(url: url)

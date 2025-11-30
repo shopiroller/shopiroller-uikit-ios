@@ -12,6 +12,8 @@ enum SRNetworkManagerPaths: String {
     case getProductsWithAdvancedFiltered = "/products/advanced-filtered"
     case getProducts = "/products"
     case getProduct = "/products/"
+    case getProductBySlug = "/products/slugs/"
+    case getCategoryBySlug = "/categories/slugs/"
     case getPaymentSettings = "/paymentSettings"
     case makeOrder = "/orders/user"
     case tryAgain = "/orders/complete"
@@ -47,6 +49,8 @@ enum SRNetworkManagerPaths: String {
         switch self {
         case.addresses:
             return "/appuser/v1\(rawValue)"
+        case .getProductBySlug, .getCategoryBySlug:
+        return "/v2.0\(rawValue)"
 //        case .authorizationServer:
 //            return rawValue
         default:
